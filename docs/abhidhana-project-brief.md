@@ -1,8 +1,8 @@
 # Tipiṭaka Pāḷi-Myanmā Abhidhāna — project brief
 
 *Written 21 September 2026, at the end of the volume-25 pilot; §10–12 revised 24 September
-2026, after volume 1 was done end to end and the repository was made public; §18–21 added
-25 September 2026 (spelling folds, the witness join, vols. 6 and 7). Everything in
+2026, after volume 1 was done end to end and the repository was made public; §18–22 added
+25 September 2026 (spelling folds, the witness join, vols. 6–8). Everything in
 this file was measured. Do not re-derive a figure it carries; if a new one is needed,
 measure it rather than estimating.*
 
@@ -511,4 +511,42 @@ recall and all placed right by the fuzzy alignment. Not a one-for-one fold, so n
 `abhidhana_fold.py`. (2) A gutter taken inside the accepted range but left of the channel
 (p. 527, 0.467): the right column came out as interleaved fragments. Pages where the whole-page
 pass reads ≥ 3 headwords more than the column pass are the candidates: 9 in vol. 7, 23 in vol. 6.
+
+## 22. Vol. 8, and gutters cut inside the right column (25 September 2026)
+
+849 PDF pages, 6,448 index headwords (6,262 distinct), rendered at 72 dpi (images mixed, 57–72
+ppi; the low ones are front matter). `ocr/08/ocr-report.md`, `ocr/08/articles-report.md`.
+
+| | vol. 8 |
+|---|---:|
+| headwords verbatim, either pass (with the folds) | 91.5% (92.2%) |
+| in printed order, column pass | 75.2% |
+| pages with every headword / ≥ 80% / < 50% | 58.2% / 86.6% / 13 |
+| articles located | 92.1% |
+| normalised label + body | 87.7% |
+| witness has the headword (distinct) | 99.9% |
+| labels agreeing with the witness | 99.1% |
+
+No page out of order, no misfiled headwords. The ဍ section (pp. 804–818) is weak: a headword's
+bold ဍ is read as ဒ, and short forms fall below the fuzzy threshold.
+
+Spot check (pp. 500, 810, 413): 13 of 28 at the right entry, **1 wrong**, 14 unlocated; no label
+wrong, 3 not read. The wrong one (ဇေဋ္ဌရာဇ, p. 500, placed at the analysis of ဇေဋ္ဌရာဇဓီတု¹) is the
+first in a spot check since vol. 2, and it comes from the gutter.
+
+**Gutters at the upper edge.** The accepted range 0.44–0.555 is too wide on the right. On p. 500
+the cut at 0.554 ran through the right column's first letters, and every head there lost its
+opening syllable. Column-pass recall on pages whose gutter is ≥ 0.54, against the rest of the book:
+
+| | vol. 2 | vol. 3 | vol. 6 | vol. 8 |
+|---|---:|---:|---:|---:|
+| pages ≥ 0.54 | 19 | 24 | 25 | 10 |
+| their column recall | 74.3% | 89.2% | 78.5% | 68.6% |
+| the rest | 88.0% | 88.4% | 87.7% | 87.6% |
+
+Vols. 1, 4/2, 5 and 7 have none, 4/1 and 4/3 one each. Vol. 3's are unaffected, so a high value is
+not wrong by itself; where the rule is printed off-centre, it is right. The fix is to check the
+cut, not to narrow the range: a cut that leaves many of the right column's lines starting with a
+dependent vowel or medial (U+102B–103E) has gone through the letters. Vol. 7 p. 527 (0.467,
+brief §21) is the same failure on the left.
 
