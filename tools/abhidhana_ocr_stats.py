@@ -16,7 +16,8 @@ for book in sys.argv[1:]:
     c = sqlite3.connect(f'file:{ROOT}/db/tipitaka_abidan.db?mode=ro', uri=True)
     start, = c.execute('select start_page from books where id=?', (book,)).fetchone()
     rows = c.execute('select word,page_number from words where book_id=?', (book,)).fetchall()
-    idxpages = {p+start for _, p in rows}
+    from abhidhana_ocr import index   # with the index's page errors corrected (PAGE_FIX, ID_PAGE_FIX)
+    idxpages = set(index(book)[0])
     npdf = int(subprocess.run(['pdfinfo', str(ROOT/f'pdfs/{book}.pdf')], capture_output=True, text=True).stdout.split('Pages:')[1].split()[0])
     recs = [json.loads(f.read_text()) for f in sorted((ROOT/f'ocr/{book}/pages').glob('p*.json'))]
     ind = [r for r in recs if r['headwords']]

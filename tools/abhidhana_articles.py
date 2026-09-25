@@ -334,43 +334,12 @@ LABEL_LOOSE = re.compile(r'^\s*(?:[\(（]\s*([^)）\n\[]{1,14}?)\s*(?=\[)|([^\s(
 # is resolved by the headword's ending only where that was checked too, and marked
 # `label_how: "inferred"`. A reading not in the table is left unnormalised: `label` is then
 # None and `label_ocr` keeps what the OCR printed.
-LABEL_SET = ('ပု', 'ထီ', 'န', 'တိ', 'ကြိ', 'ကြိ၊ဝိ', 'ကာ၊ကြိ', 'နာမ-ကြိ', 'ဗျ',
-             'ပု၊န', 'ပု၊ထီ', 'ပု၊တိ', 'န၊ပု', 'န၊ထီ', 'န၊တိ', 'တိ၊န', 'ပုံ-ဗဟု',
-             'စတုတ္ထန္တ', 'တတိယန္တ-ဗျ', 'ကမ္မ၊ကြိ', 'ထီ၊န', 'ထီ၊ပု', 'အ-လိင်', 'ကာ၊ကြိ၊ဝိ',
-             'ကာ၊ကမ္မ၊ကြိ')
-_LABEL_READINGS = {
-    'ပု':      'ပု ပ ၇ ပြ ပူ ပုံ ဖု ြု ၇ု ု ပ၇ ပြု မ ပု၊ ပု။',
-    'ထီ':      'ထီ ထိ ထံ ထ တီ သီ ၊ထီ',
-    'န':       'န နံ',
-    'တိ':      'တိ တ တ် ဘိ',
-    'ကြိ':     'ကြိ က ကြ ကြု ကြံ ကြ် ကကြ ကြို ကြီ ကြါ ကြပ် ကြရ ကိ ဤ ၍',
-    'ကြိ၊ဝိ':  'ကြိ၊ဝိ ကြ၊ဝိ ကြ်၊ဝိ ကြံ၊ဝိ ကြို၊ဝိ ကြါ၊ဝိ ကြီ၊ဝိ ကဝိ ၉ြိ၊ဝိ ကြိးဝိ ကြိ[ဝိ '
-               'ကြု၊ဝိ ကြ၊ဒိ ကိ၊ဝိ ကြိ၊ဒိ ကြိုဝိ ကြိုငိ ကြုဝိ ကြ၊ပိ ကြါဝိ ကြိဝိ ကြ၊ဝ ကြ၊ ကြင် ကြံးဝိ ကြ်းဝိ ကြီးဝိ ကြိ၊ိ ိ၊ဝိ ကြဝိ',
-    'ကာ၊ကြိ':  'ကာ၊ကြို ကာ၊ကြ ကာ၊ကြ်',
-    'နာမ-ကြိ': 'နာမ-ကြ',
-    'ဗျ':      'ဗျ ဗ',
-    'ပု၊န':    'ပုန ပု၊န ပန ပု၊နု ပုန၊',
-    'ပု၊ထီ':   'ပု၊ထီ ပုထ ပုသ ပု၊ထီ?',
-    'ပု၊တိ':   'ပု၊တိ ပတိ',
-    'န၊ပု':    'န၊ပု န၊၇',
-    'န၊ထီ':    'န၊ထီ န၊ထံ န၊ထိ န၊သီ နု၊သီ န၊တီ',
-    'န၊တိ':    'န၊တိ နတိ',
-    'တိ၊န':    'တိ၊န',
-    'ပုံ-ဗဟု': 'ပုဗဟု ပုံဗဟု ပုံ-ဗဟု ပု-ဗဟု',
-    'စတုတ္ထန္တ': 'စတုတ္ထန္တ',
-    'တတိယန္တ-ဗျ': 'တတိယန္တ-ဗျ',
-    # from vol. 2; each is a label the typed PCED witness prints (docs/labels.md §4)
-    'ကမ္မ၊ကြိ': 'ကမ္မ၊ကြိ ကမ္မ၊ကြို ကမ္မ၊ကြ် ကမ္မကြို ကမ္မကြိ ကမ္ပကြိ ကမ္ပ၊ကြိ',   # ကမ္ပ (ကြိ): 4b p. 300
-    'ထီ၊န':    'ထီ၊န ထံ၊န',   # ထံ၊န: vol. 4b p. 300, image-checked
-    'ထီ၊ပု':   'ထီ၊ပု ထိ၊ပု ထိ၊ပူ',
-    'အ-လိင်':  'အ-လိင် အလိင်',   # aliṅga, from vol. 3; the witness prints it 20 times
-    # causative absolutive; vol. 6 p. 852 ဂါဟေတွာ, image-checked. Until 25 Sep 2026 it fell to the
-    # junk-tail rule below and was cut to (ကာ၊ကြိ): 35 rows in vols. 3-6, all -tvā / -tvāna.
-    'ကာ၊ကြိ၊ဝိ': 'ကာ၊ကြိ၊ဝိ ကာ၊ကြ၊ဝိ ကာ၊ကြိံဝိ ကာ၊ကြိဝိ ကာကြိဝိ ကာ၊ကြ၊ဝိ၊ ကာ၊ကြါ၊ဝိ ကာ၊ကြးဝိ',
-    # causative passive; clean in the text layer of 14b (7 times), printed 43 times by the witness;
-    # readings from vols. 8 and after (docs/after-batch-handoff.md)
-    'ကာ၊ကမ္မ၊ကြိ': 'ကာ၊ကမ္မ၊ကြိ ကာ၊ကမ္မ၊ကြို ကာ၊ကမ္မ၊ကြ',
-}
+# The labels and their OCR readings are one table, docs/labels.md §0, read by
+# tools/abhidhana_labels.py and shared with the website (25 Sep 2026; until then LABEL_SET and
+# _LABEL_READINGS were written out here, and the table reproduces them exactly).
+from abhidhana_labels import LABELS
+LABEL_SET = tuple(d['label'] for d in LABELS)
+_LABEL_READINGS = {d['label']: ' '.join(d['readings']) for d in LABELS}
 LABEL_MAP = {r: lab for lab, rs in _LABEL_READINGS.items() for r in rs.split()}
 # Not mapped, because the image showed them ambiguous: (တံ) is (တိ) on id 455 and (ထီ) on
 # ids 7901 and 4572 (atibuddhi, an -i stem), so the ending cannot decide it; (ယီ) is a
