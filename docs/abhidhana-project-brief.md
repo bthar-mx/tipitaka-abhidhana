@@ -2,7 +2,7 @@
 
 *Written 21 September 2026, at the end of the volume-25 pilot; §10–12 revised 24 September
 2026, after volume 1 was done end to end and the repository was made public; §18–26 added
-25 September 2026 (spelling folds, the witness join, vols. 6–9, re-cutting gutters, vol. 14/2's text layer, the batch of vols. 10–22); §27 the same evening (vols. 23, 24 and 14/2 finished, the index's page errors applied, book 21 explained, the Reader in binary); §28 the public website, the page images and the label table; §29 vol. 21 finished, vol. 25's resolution, the dictionary's own account of its labels; §30 vol. 25 done, all 29 books. Everything in
+25 September 2026 (spelling folds, the witness join, vols. 6–9, re-cutting gutters, vol. 14/2's text layer, the batch of vols. 10–22); §27 the same evening (vols. 23, 24 and 14/2 finished, the index's page errors applied, book 21 explained, the Reader in binary); §28 the public website, the page images and the label table; §29 vol. 21 finished, vol. 25's resolution, the dictionary's own account of its labels; §30 vol. 25 done, all 29 books; §31 (later on 25 Sep) the page-image tool's bitmap test. Everything in
 this file was measured. Do not re-derive a figure it carries; if a new one is needed,
 measure it rather than estimating.*
 
@@ -860,4 +860,37 @@ index gives one printed entry, သ္နေဟယတိ၊ သ္နေဟေတ
 **All 29 books: 221,154 index rows, 94.1% located, 88.1% with label + body.** Every book is in
 the Reader. The README now has the progress of all 29, the layout, the typed witnesses and the
 index errata, and a section in Spanish.
+
+## 31. The page images: the bitmap test was too strict (25 September 2026, afternoon, Mexico time)
+
+Angel's first run of `tools/abhidhana_pages_r2.py render` (all books) was stopped in 4a: **522 of
+vol. 1's 913 pages and 479 of vol. 2's 898** had been stored as 1,800 px lossy WebP (~430 KB) rather
+than as the native bitmap (~90 KB). The test for storing a page's own bitmap compared its aspect ratio
+with the page box's, within 0.03; but on many pages the scan sits in a page box with a blank margin
+(vol. 1 p. 500: 2051 × 3002 px at 73 ppi, i.e. 2,961 pt tall, on a 3,142 pt page), so they fell to the
+render. At that rate the set would have been ~6 GB, not ~2.5 GB.
+
+The test is now: one 1-bit image, **undistorted** (x-ppi = y-ppi within 3%, from `pdfimages -list`),
+covering **≥ 85% of the page each way** (and ≤ 103%). Measured over all 29 books with `pdfimages -list`:
+it accepts every page the old test accepted and ~3,500 more (vol. 1 391 → 912, vol. 2 419 → 897, vol. 6
+627 → 1,038, vol. 12 626 → 1,122, vol. 15 651 → 849; lowest coverage accepted 0.887). What it still
+renders: 14b's typeset pages, covers and front matter, and one vol. 13 page (p. 28, 84% high). The bitmap
+is stored without the page box's blank margin. Vol. 1 pp. 495–505 re-rendered with the fix: all native,
+84–92 KB; p. 500 viewed, upright and whole.
+
+A plain re-run now **redoes a stored page only when it should be the bitmap and is not** (its width
+differs from the bitmap's): after the stop, 521 in vol. 1, 478 in vol. 2, 48 in vol. 3, none in 4a.
+
+**`check` could not see a flipped page.** Its mean-difference score was ~21 for right pages and 32.5 for
+the same page flipped, under its threshold of 35. It now blurs both images at 300 px wide and takes the
+correlation at the best offset (the bitmap may sit inside the page box): right pages 0.95–0.98, flipped
+0.53, rotated 180° 0.35; flagged under 0.80.
+
+**Vol. 1, the trial (Angel, on the Mac).** `render 01`: 521 pages redone as native bitmaps, 392 kept,
+28 s; 81.9 MB, **88 KB a page**. `check 01`: 12 sample pages, correlation 0.938–0.999, none flagged.
+`upload 01`: 863 uploaded (76.7 MB) in 37 s, 50 already in the bucket. On the live site (in-app browser):
+`/v/01/500` shows the page beside its articles at 2051 × 3002; pp. 49, 50, 120, 300, 505, 700 and 913
+load at native size and p. 1 (the cover) at 1,800 px, as intended. The dark theme shows the page
+inverted on purpose (`--page-filter` in `site/src/assets/style.css`). The image host sends no CORS header:
+`<img>` does not need one, but a script that `fetch()`es an image would.
 

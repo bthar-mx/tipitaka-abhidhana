@@ -57,13 +57,27 @@ def page_info(pdf, p):
 
 
 def images(pdf, p):
-    """the page's images from pdfimages -list: [(width, height, color, comp, bpc)]"""
+    """the page's images from pdfimages -list: [(width, height, color, comp, bpc, x-ppi, y-ppi)]"""
     rows = []
     for line in run('pdfimages', '-list', '-f', p, '-l', p, pdf).splitlines()[2:]:
         f = line.split()
-        if len(f) > 8 and f[2] == 'image':
-            rows.append((int(f[3]), int(f[4]), f[5], int(f[6]), int(f[7])))
+        if len(f) > 13 and f[2] == 'image':
+            rows.append((int(f[3]), int(f[4]), f[5], int(f[6]), int(f[7]), float(f[12]), float(f[13])))
     return rows
+
+
+def bilevel_bitmap(imgs, pw, ph):
+    """True when the page is one 1-bit image, placed undistorted (x-ppi = y-ppi within 3%) and
+    covering at least 85% of the page each way. Such a bitmap is the whole scan, stored as is.
+    (Until 25 Sep 2026 the test was the bitmap's aspect ratio against the page's, within 0.03; it
+    sent ~3,500 pages whose scan sits in a page box with a blank margin, e.g. vol. 1 p. 500,
+    2051 x 3002 px at 73 ppi on a 3,142 pt page, to the lossy render, at ~4x the size.
+    Measured over all 29 books: the new test accepts every page the old one did.)"""
+    if len(imgs) != 1 or imgs[0][3] != 1 or imgs[0][4] != 1: return False
+    w, h, _, _, _, xp, yp = imgs[0]
+    if xp <= 0 or yp <= 0 or abs(xp - yp) / max(xp, yp) > 0.03: return False
+    cw, ch = w / xp * 72 / pw, h / yp * 72 / ph
+    return min(cw, ch) >= 0.85 and max(cw, ch) <= 1.03
 
 
 def render_page(args):
@@ -73,21 +87,26 @@ def render_page(args):
     Image.MAX_IMAGE_PIXELS = None
     pdf = ROOT / f'pdfs/{book}.pdf'
     out = OUT / book / f'{p:04d}.webp'
-    if out.exists() and not force: return p, 'kept', out.stat().st_size
     out.parent.mkdir(parents=True, exist_ok=True)
     try:
         pw, ph, rot = page_info(pdf, p)
         if rot in (90, 270): pw, ph = ph, pw
         imgs = images(pdf, p)
+        bilevel = bilevel_bitmap(imgs, pw, ph)
+        if out.exists() and not force:
+            # keep a page already done, unless it was rendered where the bitmap should be stored
+            # (the old test): then its width is MAX_W or less and not the bitmap's
+            bw, bh = imgs[0][:2] if bilevel else (0, 0)
+            if rot in (90, 270): bw, bh = bh, bw
+            if not bilevel or Image.open(out).width == bw:
+                return p, 'kept', out.stat().st_size
         im, kind = None, None
         with tempfile.TemporaryDirectory() as td:
-            if len(imgs) == 1 and imgs[0][3] == 1 and imgs[0][4] == 1:
+            if bilevel:
                 run('pdfimages', '-png', '-f', p, '-l', p, pdf, f'{td}/x')
                 src = Image.open(next(Path(td).glob('x-*.png'))).convert('1')
                 if rot: src = src.rotate(-rot, expand=True)
-                # the bitmap must fill the page the way the PDF shows it; if not, render instead
-                if abs(src.width / src.height - pw / ph) < 0.03:
-                    im, kind = src, 'bilevel'
+                im, kind = src, 'bilevel'
             if im is None:
                 dpi = min(300, max(72, round(MAX_W / (pw / 72))))
                 colour = any(c[2] not in ('gray', 'index') or c[3] > 1 for c in imgs)
@@ -126,13 +145,23 @@ def cmd_render(books, a):
         for p, e in errors: print(f'  p. {p}: {e}')
 
 
+def correlation(a, b):
+    """Pearson correlation of two greyscale images of the same size"""
+    x, y = a.tobytes(), b.tobytes(); n = len(x)
+    mx, my = sum(x) / n, sum(y) / n
+    sxy = sum((u - mx) * (v - my) for u, v in zip(x, y))
+    sx = sum((u - mx) ** 2 for u in x) ** .5; sy = sum((v - my) ** 2 for v in y) ** .5
+    return sxy / (sx * sy) if sx and sy else 0.0
+
+
 def cmd_check(books, a):
     """render a sample plainly and compare with the stored WebP: catches a bitmap stored rotated,
-    flipped or cropped differently from the page (mean difference, 0-255, both at 300 px wide).
-    A heuristic: a 1-bit page against its anti-aliased render differs by ~5-20 anyway, and a
-    scanned page inset in a larger page box (14b's front matter) by ~25-32; a rotated or
-    flipped page by far more. Look at anything flagged."""
-    from PIL import Image, ImageChops, ImageStat
+    flipped or cropped differently from the page. Both at 300 px wide, blurred, compared by
+    correlation at the best offset (a stored bitmap may sit inside a larger page box).
+    Measured 25 Sep 2026 on vol. 1: right pages 0.95-0.98; the same pages flipped 0.53, rotated
+    0.35. (The mean difference used before scored a right page ~21 and a flipped one 32.5, under
+    its threshold of 35: it could not see a flip.) Pages under 0.80 are flagged."""
+    from PIL import Image, ImageFilter
     for book in books:
         pdf = ROOT / f'pdfs/{book}.pdf'; ps = list(pages_of(book, a))
         bad = 0
@@ -142,11 +171,25 @@ def cmd_check(books, a):
             with tempfile.TemporaryDirectory() as td:
                 run('pdftoppm', '-png', '-gray', '-scale-to-x', 300, '-scale-to-y', -1, '-f', p, '-l', p, '-singlefile', pdf, f'{td}/c')
                 ref = Image.open(f'{td}/c.png').convert('L')
-            got = Image.open(f).convert('L').resize(ref.size, Image.BILINEAR)
-            d = ImageStat.Stat(ImageChops.difference(ref, got)).mean[0]
-            flag = '  <-- look at this page' if d > 35 else ''
+            got = Image.open(f).convert('L')
+            # a stored bitmap may be smaller than the page box (a blank margin, see
+            # bilevel_bitmap): scale it as the PDF does and find where it sits on the page
+            pw, ph, rot = page_info(pdf, p)
+            if rot in (90, 270): pw, ph = ph, pw
+            imgs = images(pdf, p)
+            if bilevel_bitmap(imgs, pw, ph):
+                xp = imgs[0][5]
+                sw = max(1, min(ref.width, round(got.width / xp * 72 / pw * ref.width)))
+                sh = max(1, min(ref.height, round(got.height / xp * 72 / ph * ref.height)))
+            else:
+                sw, sh = ref.size
+            blur = ImageFilter.GaussianBlur(2)
+            got = got.resize((sw, sh), Image.BOX).filter(blur)
+            r = max(correlation(ref.crop((x, y, x + sw, y + sh)).filter(blur), got)
+                    for x in range(0, ref.width - sw + 1, 3) for y in range(0, ref.height - sh + 1, 3))
+            flag = '  <-- look at this page' if r < 0.80 else ''
             bad += bool(flag)
-            print(f'  {book} p. {p}: mean difference {d:.1f}{flag}')
+            print(f'  {book} p. {p}: correlation {r:.3f}{flag}')
         print(f'{book}: {bad} page(s) to look at')
 
 
