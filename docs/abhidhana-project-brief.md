@@ -1,8 +1,8 @@
 # Tipiṭaka Pāḷi-Myanmā Abhidhāna — project brief
 
 *Written 21 September 2026, at the end of the volume-25 pilot; §10–12 revised 24 September
-2026, after volume 1 was done end to end and the repository was made public; §18–22 added
-25 September 2026 (spelling folds, the witness join, vols. 6–8). Everything in
+2026, after volume 1 was done end to end and the repository was made public; §18–24 added
+25 September 2026 (spelling folds, the witness join, vols. 6–9, re-cutting gutters). Everything in
 this file was measured. Do not re-derive a figure it carries; if a new one is needed,
 measure it rather than estimating.*
 
@@ -549,4 +549,56 @@ not wrong by itself; where the rule is printed off-centre, it is right. The fix 
 cut, not to narrow the range: a cut that leaves many of the right column's lines starting with a
 dependent vowel or medial (U+102B–103E) has gone through the letters. Vol. 7 p. 527 (0.467,
 brief §21) is the same failure on the left.
+
+## 23. Vol. 9 (25 September 2026)
+
+893 PDF pages, 6,805 index headwords (6,652 distinct), 75 dpi. `ocr/09/ocr-report.md`,
+`ocr/09/articles-report.md`.
+
+| | vol. 9 |
+|---|---:|
+| headwords verbatim, either pass (with the folds) | 89.5% (90.1%) |
+| in printed order, column pass | 73.8% |
+| pages with every headword / ≥ 80% / < 50% | 51.6% / 84.5% / 8 |
+| articles located | 92.5% |
+| normalised label + body | 86.0% |
+| witness has the headword (distinct) | 99.9% |
+| labels agreeing with the witness | 98.6% |
+
+No page out of order, no misfiled headwords. The print sets the anusvāra of ိံ apart (တာဝတိ˙သ), which
+recall misses and the fuzzy alignment mostly recovers. Spot check (pp. 500, 422, 823): 21 of 35 at the
+right entry, none wrong, 14 unlocated, 12 of them on p. 823.
+
+**P. 823 was a failed reading.** A clean page, read on the Mac as fragments in both passes (1 and 3
+of 12); the same code on the same page in the cloud container read 11 of 12. The cause is unknown.
+Other pages under 30% (vol. 8 pp. 112, 413, 718, 806, 807, 810; vol. 9 pp. 422, 423, 436, 437) re-read
+there came out as before, so such failures are rare; p. 823 is the one found.
+
+## 24. Re-cutting gutters: `tools/abhidhana_recut.py` (25 September 2026)
+
+A separate tool, so that `abhidhana_ocr.py` need not change while a book is being read. It finds
+the column channel with a **band count**: the page (rows 12–95%) is split into 100 horizontal
+bands, and a pixel column is white if it carries ink in at most one. A mean over the whole height
+cannot tell the gutter from the hanging indent of the right-hand column, which only the headwords
+cross; a band count can. White runs between 0.40 and 0.60 of the width, separated only by a rule
+(≤ 1.5%), form the channel. A page is flagged when either edge of its old crops (cut ± 8 px) is
+not white: *cut through text*, or *rule in a crop*.
+
+**Vol. 8, all 687 indexed pages scanned** (in the cloud container): ok 288, rule in a crop 368,
+cut through text 25, no channel 6. Vol. 8 p. 329 is an example recall cannot see: cut at 0.448,
+inside the left column, it read 8 of 8 headwords, because the headwords sit at the line starts
+and only the ends of the left column's lines went to the wrong image.
+
+**Re-read, 37 vol. 8 pages** (cloud container, tesseract 5.3.4):
+
+| | pages | column recall before | after | worse on |
+|---|---:|---:|---:|---:|
+| cut through text | 25 | 78.4% | 88.9% | 4 |
+| rule in a crop (a sample) | 12 | 87.6% | 86.5% | 2 |
+
+So `--run` re-reads only pages cut through text, and keeps a new reading only when it finds at
+least as many headwords as the old one (the rejected cut is recorded as `_cut_rejected`). That
+choice between two readings of a page uses the index, as the rest of the pipeline does. These
+cloud readings are not in the folder: the re-run is to be done natively, for consistency with the
+rest of the OCR. After it, each book's articles, romanisation, witness join and Reader are re-run.
 

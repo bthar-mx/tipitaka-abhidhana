@@ -1,9 +1,9 @@
-# Abhidhāna — handover, 25 September 2026 (after vol. 8)
+# Abhidhāna — handover, 25 September 2026 (after vol. 9)
 
-*Vols. 1–8 (vol. 4 in three parts) are digitised end to end, spot-checked and in the Reader. Read
+*Vols. 1–9 (vol. 4 in three parts) are digitised end to end, spot-checked and in the Reader. Read
 `abhidhana-project-brief.md` first: §12 covers vol. 1, §13 vols. 2–3, §14–17 the witness and vols.
 4/1–5, §18 the spelling folds and the homonym and misfiled-headword fixes, §19 the witness join, §20
-vol. 6, §21 vol. 7, §22 vol. 8 and the gutter failures. Every figure is there. `docs/labels.md` holds the label map, `docs/witness.md` and
+vol. 6, §21 vol. 7, §22 vol. 8 and the gutter failures, §23 vol. 9, §24 the re-cut tool. Every figure is there. `docs/labels.md` holds the label map, `docs/witness.md` and
 `docs/witness-join.md` the typed witness.*
 
 ## Every session
@@ -23,29 +23,27 @@ vol. 6, §21 vol. 7, §22 vol. 8 and the gutter failures. Every figure is there.
 
 ## State
 
-| | vols. 1–7 | vol. 8 | vol. 9 |
+| | vols. 1–8 | vol. 9 | vol. 10 |
 |---|---|---|---|
-| OCR, articles, romanisation | done | done 25 Sep | OCR next (Angel) |
+| OCR, articles, romanisation | done | done 25 Sep | OCR running (Angel, 25 Sep) |
 | reports, spot check, Reader | done | done 25 Sep | — |
-| page records in release `sources-v1` | uploaded (07: check) | `release/ocr-08-pages.tar.gz`, to upload | — |
-| GitHub issue | #1–#9 (close any still open) | #10, close after this commit | open |
+| page records in release `sources-v1` | uploaded (07, 08: check) | `release/ocr-09-pages.tar.gz`, to upload | — |
+| GitHub issue | close any of #1–#10 still open | #11, close after this commit | open |
 
 `tmp/_to_delete/` holds nine `*.json.gz` files from a first try at the Reader's data; the VM
 cannot delete. Delete the folder by hand (`tmp/` is gitignored).
 
 ## Next, in order
 
-1. **Vol. 9** (book 09, တ – ထောမေဿာမိ, 893 PDF pages, 6,805 index headwords). Images 75–77 ppi
-   (672 at 75, 220 at 76, 1 at 77): render at 75, as vols. 3 and 6. OCR natively, then as for vol. 8.
-   The typed witness covers it.
-2. **Gutter failures, then the `page.psm6` fallback** (brief §21–22). Gutters at ≥ 0.54 cut into the
-   right column on 19 pages of vol. 2, 25 of vol. 6 and 10 of vol. 8 (column recall 69–79% on
-   them against ~88%); vol. 7 p. 527 failed at 0.467 on the left. Write the check as its own
-   script (`tools/abhidhana_recut.py`), so `abhidhana_ocr.py` need not change while an OCR runs:
-   flag a cut when many of a column's lines start with a dependent vowel or medial, re-find the
-   white channel, re-OCR the column pass for those pages only, and measure before and after,
-   against recall and the witness join. Then try placing the still-unlocated headwords from the
-   whole-page pass (vol. 6: 710 of 915 are in the page text), bounded by placed neighbours.
+1. **Vol. 10** (book 10, ဒ – ဒွေဠှကပုစ္ဆာ, 981 PDF pages, 7,366 index headwords), OCR started 25 Sep at
+   75 dpi (images 71–75 ppi). Then as for vol. 9. The typed witness covers it.
+2. **Re-cut the gutters** with `tools/abhidhana_recut.py` (brief §24), natively, book by book, when
+   no OCR is running (it competes for the CPU, not for files):
+   `python3 tools/abhidhana_recut.py NN --scan --workers 10`, then `--run --workers 10`. Then
+   re-run articles, romanisation, the witness join and the Reader for every book, and compare
+   located and label + body before and after. **Vol. 9 p. 823** (a failed reading, brief §23):
+   move `ocr/09/pages/p0823.json` aside and re-run `abhidhana_ocr.py 09 ... --first 823 --last 823`
+   before that. Afterwards try the `page.psm6` fallback for headwords still unlocated.
 3. **Image-check the label disagreements** with the witness (`docs/witness-join.md` §3): a sample
    of (တိ)/(gender), (ပု)/(ပု၊န), (ကြိ)/(တိ). And the vol. 6 readings (ထိန), (ထီ၊၇), (ထိ၊န)
    (`docs/labels.md` §7; ids 51227, 51941, 54340), and vol. 8's (ကာ၊ကမ္မ၊ကြို) (the witness has
@@ -55,7 +53,7 @@ cannot delete. Delete the folder by hand (`tmp/` is gitignored).
 5. **An index-errata list**, `docs/index-errata.md`, with the printed form: the typos of brief §15–17,
    the misfiled runs of §18 (4c p. 615 → 613, 06 p. 851 → 852), ကဉ္စိက.
 6. **Re-run vol. 25** with `--columns` at its native resolution.
-7. **Next volumes**: 10 onwards. **Vol. 15** must be joined with 4c's supplement to it (53 ဘိဇ္ဇ
+7. **Next volumes**: 11 onwards. **Vol. 15** must be joined with 4c's supplement to it (53 ဘိဇ္ဇ
    headwords indexed only there). Per volume: reports, a 3-page spot check, the Reader, the witness
    join, then close the issue.
 
