@@ -74,4 +74,3 @@ Three pages, every article compared with `07.pdf` at 72 dpi (25 September 2026).
   five are unlocated.
 
 No article on the three pages is placed at a wrong entry, and no label is wrong.
-

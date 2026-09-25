@@ -13,14 +13,14 @@
 | **located, any** | **6,512 = 89.5%** |
 | unlocated | 767 = 10.5% |
 | label ( ) read | 6,211 = 85.3% |
-| label normalised to the closed set (docs/labels.md) | 6,097 = 83.8% |
-| of which read exactly as printed / mapped / inferred from the ending | 4,644 / 1,451 / 2 |
-| label read but left unnormalised | 114 = 1.6% |
+| label normalised to the closed set (docs/labels.md) | 6,099 = 83.8% |
+| of which read exactly as printed / mapped / inferred from the ending | 4,644 / 1,453 / 2 |
+| label read but left unnormalised | 112 = 1.5% |
 | compound analysis [ ] recovered | 5,326 = 73.2% |
 | of which + signs repaired (normalise_analysis) | 1,604 = 22.0% |
 | non-empty body | 6,506 = 89.4% |
 | at least one citation parsed | 4,448 = 61.1% |
-| label + body (the article is usable) | 6,096 = 83.7% |
+| label + body (the article is usable) | 6,098 = 83.8% |
 
 **Romanised headwords against OSBCT** (682,010 canonical words):
 
@@ -30,9 +30,9 @@
 | inside a canonical word | 3,137 = 43.1% |
 | neither | 2,407 = 33.1% |
 
-Labels, normalised: (တိ) 1,625 · (ပု) 1,434 · (န) 1,259 · (ကြိ) 748 · (ထီ) 543 · (ကာ၊ကြိ) 175 · (ကြိ၊ဝိ) 148 · (ပု၊န) 53 · (န၊ထီ) 37 · (ကာ၊ကြိ၊ဝိ) 33 · (ကမ္မ၊ကြိ) 29 · (ဗျ) 9 · (ပု၊ထီ) 3 · (ထီ၊န) 1
+Labels, normalised: (တိ) 1,625 · (ပု) 1,434 · (န) 1,259 · (ကြိ) 748 · (ထီ) 543 · (ကာ၊ကြိ) 175 · (ကြိ၊ဝိ) 148 · (ပု၊န) 53 · (န၊ထီ) 37 · (ကာ၊ကြိ၊ဝိ) 33 · (ကမ္မ၊ကြိ) 29 · (ဗျ) 9 · (ပု၊ထီ) 3 · (ကာ၊ကမ္မ၊ကြိ) 2 · (ထီ၊န) 1
 
-Readings left unnormalised: (ဏာ) 8 · (ပ္ပ) 8 · (၃) 6 · (တံ) 6 · (၂) 4 · (နု) 3 · (၅) 3 · (၁) 3 · (ရီ) 2 · (ဂ္ဂ) 2 · (ဇျာ) 2 · (တို့) 2 · (ဖ) 2 · (ကာ၊ ကို) 2 · (တူ) 2 · (ဥာ) 2 · (တ္တ) 2 · (သာရတ္ထ။၁။၁ဂ၇) 1 · (ကမ္မ၊ကြံ) 1 · (ကြု အန္တိ] (က) 1 · (ပဒို ပက္ခန္ဒ) 1 · (ကာကြိ၊ဝိ) 1 · (ကြို၊ိ) 1 · (ကြိ၊ဝ) 1 · (ဂြံ) 1 · (ကမ္မ ကိ) 1 · (နု၊ ထိ) 1 · (ဒီ၊ဝ။၁၁၊၆၆။) 1 · (ပဋိသံ။၃၄) 1 · (ပါ) 1 · (လ္လိရက (တိ) 1 · (သဋ္ဌ၊ ၂။၁၁၀) 1 · (ပဋိသံ။ ၃၀၂) 1 · (လ) 1 · (ကို) 1 · ([ဟိ) 1 · (ပဋိသံ။၃၀) 1 · (က မက်) 1 · (ကမ္မက) 1 · (ကာ။ ကြု) 1 · (သန္နိဿိတ (တိ) 1 · (ခီ) 1 · (ကီ) 1 · (၇၂) 1 · (မဟာနိ။ ၃၆၁) 1 · (ကာ၊ ကမ္မ၊ ကြို) 1 · (ကာ၊ ကမ္မ၊ကြ) 1 · (ထီ၊ပူ) 1 · (တြိ) 1 · (ဠုစ္စရ (န) 1 · (ပဋပေါဋလိကံ။ သီ) 1 · (ဏီ) 1 · (တိဂအယနဋ္ဌ (၇) 1 · (ါအာဂစ္ဆတိ (ကြု) 1 · (ကြဤ) 1 · (တို) 1 · (ဂ) 1 · (ရ) 1 · (ကျကြည်။ ၆) 1 · (ခီရလ (န) 1 · (နိယ (တိ) 1 · (ဟိ) 1 · (ကြီး) 1 · (ကမ္မံ၊ ကြိ) 1 · (ရီရဘာဝ (ပု) 1 · (ပ္ပဟာနု (န) 1 · (န်) 1 · (၁( မှား) 1 · (ပုရ) 1 · (ပ္ပဿဒ္ဓန္တ (ပု) 1 · (ပ္ပဿမ္ဘနာ (န) 1 · (ကင်္ခါ။ ၁၂၉) 1
+Readings left unnormalised: (ဏာ) 8 · (ပ္ပ) 8 · (၃) 6 · (တံ) 6 · (၂) 4 · (နု) 3 · (၅) 3 · (၁) 3 · (ရီ) 2 · (ဂ္ဂ) 2 · (ဇျာ) 2 · (တို့) 2 · (ဖ) 2 · (ကာ၊ ကို) 2 · (တူ) 2 · (ဥာ) 2 · (တ္တ) 2 · (သာရတ္ထ။၁။၁ဂ၇) 1 · (ကမ္မ၊ကြံ) 1 · (ကြု အန္တိ] (က) 1 · (ပဒို ပက္ခန္ဒ) 1 · (ကာကြိ၊ဝိ) 1 · (ကြို၊ိ) 1 · (ကြိ၊ဝ) 1 · (ဂြံ) 1 · (ကမ္မ ကိ) 1 · (နု၊ ထိ) 1 · (ဒီ၊ဝ။၁၁၊၆၆။) 1 · (ပဋိသံ။၃၄) 1 · (ပါ) 1 · (လ္လိရက (တိ) 1 · (သဋ္ဌ၊ ၂။၁၁၀) 1 · (ပဋိသံ။ ၃၀၂) 1 · (လ) 1 · (ကို) 1 · ([ဟိ) 1 · (ပဋိသံ။၃၀) 1 · (က မက်) 1 · (ကမ္မက) 1 · (ကာ။ ကြု) 1 · (သန္နိဿိတ (တိ) 1 · (ခီ) 1 · (ကီ) 1 · (၇၂) 1 · (မဟာနိ။ ၃၆၁) 1 · (ထီ၊ပူ) 1 · (တြိ) 1 · (ဠုစ္စရ (န) 1 · (ပဋပေါဋလိကံ။ သီ) 1 · (ဏီ) 1 · (တိဂအယနဋ္ဌ (၇) 1 · (ါအာဂစ္ဆတိ (ကြု) 1 · (ကြဤ) 1 · (တို) 1 · (ဂ) 1 · (ရ) 1 · (ကျကြည်။ ၆) 1 · (ခီရလ (န) 1 · (နိယ (တိ) 1 · (ဟိ) 1 · (ကြီး) 1 · (ကမ္မံ၊ ကြိ) 1 · (ရီရဘာဝ (ပု) 1 · (ပ္ပဟာနု (န) 1 · (န်) 1 · (၁( မှား) 1 · (ပုရ) 1 · (ပ္ပဿဒ္ဓန္တ (ပု) 1 · (ပ္ပဿမ္ဘနာ (န) 1 · (ကင်္ခါ။ ၁၂၉) 1
 
 ## What these figures mean
 
@@ -41,7 +41,7 @@ As for vols. 1–3 and 6: see `ocr/03/articles-report.md` for how articles are l
 
 ## Vol. 13 specifics
 
-- Located 89.5% (24.9% by fuzzy match), label + body 83.7%, analysis 73.2%.
+- Located 89.5% (24.9% by fuzzy match), label + body 83.8%, analysis 73.2% (re-run 25 Sep with the fixes of brief §27).
 - **Against the typed witnesses** (`docs/witness-join.md`, `docs/witness-pndaza.md`): labels agree on 99.3% of 6,095 rows where both have one; analyses are ≥ 0.8 / < 0.4 similar in 89.4% / 0.3%. Pn Daza's page-referenced copy gives a typed text for 767 of the articles the OCR could not place.
 - **The index files 232 headwords of vol. 15 under vol. 13.** Index pages 145–160 of book 13 (PDF pp. 175–190) list ဗလိ … ဗဟိဒ္ဓါသမုဋ္ဌာန, ဗ entries that belong to vol. 15 (whose own index lists ဗလိ… again, at its pages 144–148). The pages themselves print ပဂ္ဂဏှာထ … ပဂ္ဃရဏလက္ခဏ. Pn Daza's typed text files the same ဗ entries under vol. 13 pp. 145–160, so the error is in the typed source the index was built from, not in our join. The real headwords of those sixteen pages are in neither the index nor the typed text; the OCR is the only copy. These pages score 0, and pull the second hundred down to 71%.
 - P. 856 (4 of 23) is shared ပ… stems, not a page out of order.

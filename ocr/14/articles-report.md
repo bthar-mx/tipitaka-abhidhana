@@ -13,14 +13,14 @@
 | **located, any** | **5,044 = 96.6%** |
 | unlocated | 175 = 3.4% |
 | label ( ) read | 4,878 = 93.5% |
-| label normalised to the closed set (docs/labels.md) | 4,817 = 92.3% |
-| of which read exactly as printed / mapped / inferred from the ending | 3,750 / 1,066 / 1 |
-| label read but left unnormalised | 61 = 1.2% |
+| label normalised to the closed set (docs/labels.md) | 4,824 = 92.4% |
+| of which read exactly as printed / mapped / inferred from the ending | 3,754 / 1,069 / 1 |
+| label read but left unnormalised | 54 = 1.0% |
 | compound analysis [ ] recovered | 3,131 = 60.0% |
 | of which + signs repaired (normalise_analysis) | 301 = 5.8% |
 | non-empty body | 5,041 = 96.6% |
 | at least one citation parsed | 3,511 = 67.3% |
-| label + body (the article is usable) | 4,817 = 92.3% |
+| label + body (the article is usable) | 4,824 = 92.4% |
 
 **Romanised headwords against OSBCT** (682,010 canonical words):
 
@@ -30,9 +30,9 @@
 | inside a canonical word | 2,208 = 42.3% |
 | neither | 1,759 = 33.7% |
 
-Labels, normalised: (တိ) 1,267 · (ပု) 1,124 · (န) 980 · (ကြိ) 549 · (ထီ) 443 · (ကာ၊ကြိ) 150 · (ပု၊န) 102 · (ကြိ၊ဝိ) 101 · (န၊ထီ) 32 · (ကာ၊ကြိ၊ဝိ) 32 · (ပု၊ထီ) 17 · (ကမ္မ၊ကြိ) 16 · (ဗျ) 4
+Labels, normalised: (တိ) 1,267 · (ပု) 1,124 · (န) 980 · (ကြိ) 549 · (ထီ) 443 · (ကာ၊ကြိ) 150 · (ပု၊န) 102 · (ကြိ၊ဝိ) 101 · (န၊ထီ) 32 · (ကာ၊ကြိ၊ဝိ) 32 · (ပု၊ထီ) 17 · (ကမ္မ၊ကြိ) 16 · (ကာ၊ကမ္မ၊ကြိ) 7 · (ဗျ) 4
 
-Readings left unnormalised: (၃) 9 · (ဝိ) 6 · (ကာ၊ကမ္မ၊ကြိ) 4 · (လာ) 4 · (ပ္ပ) 3 · (တ္တု) 2 · (၅) 2 · (ဏာ) 2 · (ခ) 1 · (၁) 1 · (မ၊၃။၁၉၆) 1 · (သံ၊ဋ္ဌ၊၃။၈၄) 1 · (ရုဟတိ (ကြိ) 1 · (ပဋိသံ။၅၅) 1 · (ကမ္မ၊ကြီ) 1 · (ကမ္မ ကြံ) 1 · (စရိယာ။၃၈၆) 1 · (ပ၇ု) 1 · (အပ၊၁။၃) 1 · (ကာ၊ကမ္မ၊ ကြိ) 1 · (ယံ) 1 · (ပ္ပဟာရ (၇) 1 · (ပ၊ န) 1 · (ကြံ ပဏ-ဏေ (ဏယ) 1 · (၃၇) 1 · (၄) 1 · (ကာ၊ ကမ္မ၊ကြိ) 1 · (တြိ) 1 · (တ္ထိ) 1 · (ဝိ၃။၁၃၂) 1 · (သွေ) 1 · (ဠဉ္စ (ပုန) 1 · (ဝိဋ္ဌ၊၃။၄) 1 · (ပုထီ) 1 · (ကြိပ+ဘိဒ(ဘိဒိ) 1 · (ကာ၊ကမ္မ၊ ကြို) 1 · (ကြိီ၊ဝိ) 1
+Readings left unnormalised: (၃) 9 · (ဝိ) 6 · (လာ) 4 · (ပ္ပ) 3 · (တ္တု) 2 · (၅) 2 · (ဏာ) 2 · (ခ) 1 · (၁) 1 · (မ၊၃။၁၉၆) 1 · (သံ၊ဋ္ဌ၊၃။၈၄) 1 · (ရုဟတိ (ကြိ) 1 · (ပဋိသံ။၅၅) 1 · (ကမ္မ၊ကြီ) 1 · (ကမ္မ ကြံ) 1 · (စရိယာ။၃၈၆) 1 · (ပ၇ု) 1 · (အပ၊၁။၃) 1 · (ယံ) 1 · (ပ္ပဟာရ (၇) 1 · (ပ၊ န) 1 · (ကြံ ပဏ-ဏေ (ဏယ) 1 · (၃၇) 1 · (၄) 1 · (တြိ) 1 · (တ္ထိ) 1 · (ဝိ၃။၁၃၂) 1 · (သွေ) 1 · (ဠဉ္စ (ပုန) 1 · (ဝိဋ္ဌ၊၃။၄) 1 · (ပုထီ) 1 · (ကြိပ+ဘိဒ(ဘိဒိ) 1 · (ကြိီ၊ဝိ) 1
 
 ## What these figures mean
 
@@ -41,7 +41,7 @@ As for vols. 1–3 and 6: see `ocr/03/articles-report.md` for how articles are l
 
 ## Vol. 14 specifics
 
-- Located 96.6% (14.0% by fuzzy match), label + body 92.3%, analysis 60.0%.
+- Located 96.6% (14.0% by fuzzy match), label + body 92.4%, analysis 60.0% (re-run 25 Sep with the fixes of brief §27).
 - **Against the typed witnesses** (`docs/witness-join.md`, `docs/witness-pndaza.md`): labels agree on 99.5% of 4,815 rows where both have one; analyses are ≥ 0.8 / < 0.4 similar in 95.3% / 0.2%. Pn Daza's page-referenced copy gives a typed text for 175 of the articles the OCR could not place.
 - P. 448 (0 of 9): the index lists ပတိမာနေ… for a page that prints ပတိဋ္ဌာပ…; not yet explained.
 

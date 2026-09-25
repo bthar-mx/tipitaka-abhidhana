@@ -12,15 +12,15 @@
 | located by bounded fuzzy match | 1,429 = 22.2% |
 | **located, any** | **5,937 = 92.1%** |
 | unlocated | 511 = 7.9% |
-| label ( ) read | 5,724 = 88.8% |
-| label normalised to the closed set (docs/labels.md) | 5,657 = 87.7% |
-| of which read exactly as printed / mapped / inferred from the ending | 4,633 / 1,019 / 5 |
-| label read but left unnormalised | 67 = 1.0% |
-| compound analysis [ ] recovered | 4,948 = 76.7% |
-| of which + signs repaired (normalise_analysis) | 1,344 = 20.8% |
+| label ( ) read | 5,725 = 88.8% |
+| label normalised to the closed set (docs/labels.md) | 5,662 = 87.8% |
+| of which read exactly as printed / mapped / inferred from the ending | 4,634 / 1,023 / 5 |
+| label read but left unnormalised | 63 = 1.0% |
+| compound analysis [ ] recovered | 4,949 = 76.8% |
+| of which + signs repaired (normalise_analysis) | 1,345 = 20.9% |
 | non-empty body | 5,933 = 92.0% |
 | at least one citation parsed | 4,240 = 65.8% |
-| label + body (the article is usable) | 5,654 = 87.7% |
+| label + body (the article is usable) | 5,659 = 87.8% |
 
 **Romanised headwords against OSBCT** (682,010 canonical words):
 
@@ -30,9 +30,9 @@
 | inside a canonical word | 2,873 = 44.6% |
 | neither | 2,264 = 35.1% |
 
-Labels, normalised: (ပု) 1,621 · (တိ) 1,495 · (န) 1,184 · (ထီ) 607 · (ကြိ) 346 · (ကာ၊ကြိ) 158 · (ပု၊န) 83 · (ကြိ၊ဝိ) 79 · (ကာ၊ကြိ၊ဝိ) 28 · (န၊ထီ) 19 · (ကမ္မ၊ကြိ) 17 · (ပု၊ထီ) 11 · (ဗျ) 6 · (ထီ၊န) 2 · (ပု၊တိ) 1
+Labels, normalised: (ပု) 1,621 · (တိ) 1,495 · (န) 1,184 · (ထီ) 607 · (ကြိ) 346 · (ကာ၊ကြိ) 158 · (ပု၊န) 83 · (ကြိ၊ဝိ) 79 · (ကာ၊ကြိ၊ဝိ) 28 · (န၊ထီ) 19 · (ကမ္မ၊ကြိ) 17 · (ပု၊ထီ) 11 · (ဗျ) 6 · (ကာ၊ကမ္မ၊ကြိ) 5 · (ထီ၊န) 2 · (ပု၊တိ) 1
 
-Readings left unnormalised: (၂) 5 · (၁) 4 · (ခ) 3 · (၃) 3 · (ပ္ပ) 3 · (ရီ) 2 · (ရ) 2 · (နီဌာ) 2 · (ကာ၊ကမ္မ၊ ကြို) 2 · (၇၂) 2 · (ပ္ပတ္တ (တိ) 2 · (လီ) 2 · (ဋ္ဌ) 2 · (ဝ) 2 · (ဂ) 2 · (ဇာ၊၂။၁၄၃) 1 · (ခန္ဓာ) 1 · (ဃာ) 1 · (ပု ထီ) 1 · (ကာ။ကြိ) 1 · (ကာ၊ ကကြ) 1 · (မ၊၁။၂၀) 1 · (ဒ္ဓ) 1 · (မူလဋီ၊ ၂၁၀၉) 1 · (ဗုဒ္ဓဝ။၃၄၀) 1 · (ကြိုးဝိ) 1 · (ကာ၊ကမ္မ၊ကြိ) 1 · (ဝိ၊ဋ္ဌ၊၁။၃၃၇) 1 · (ဗုဒ္ဓဝံ။၃၇၉) 1 · (လာဘဟေတု (တိ) 1 · (ပဋိသံ။၉၈) 1 · (သံ၊ဋ္ဌ၊၃။၃၆) 1 · (၁၊) 1 · (ကာ။ ကြိ၊ဝိ) 1 · (၁၁) 1 · (ဝိဋ္ဌ၄။၁၇၇) 1 · (နို) 1 · (နေတ္တိ။၄၅) 1 · (ကာ၊ ကမ္မ၊ကြိ) 1 · (ကမ္မ ကြု) 1 · (ကမ္မ၊ကြ) 1 · (ကကိ) 1 · (၅) 1 · (ဒွိ) 1
+Readings left unnormalised: (၂) 5 · (၁) 4 · (ခ) 3 · (၃) 3 · (ပ္ပ) 3 · (ရီ) 2 · (ရ) 2 · (နီဌာ) 2 · (၇၂) 2 · (ပ္ပတ္တ (တိ) 2 · (လီ) 2 · (ဋ္ဌ) 2 · (ဝ) 2 · (ဂ) 2 · (ဇာ၊၂။၁၄၃) 1 · (ခန္ဓာ) 1 · (ဃာ) 1 · (ပု ထီ) 1 · (ကာ။ကြိ) 1 · (ကာ၊ ကကြ) 1 · (မ၊၁။၂၀) 1 · (ဒ္ဓ) 1 · (မူလဋီ၊ ၂၁၀၉) 1 · (ဗုဒ္ဓဝ။၃၄၀) 1 · (ကြိုးဝိ) 1 · (ဝိ၊ဋ္ဌ၊၁။၃၃၇) 1 · (ဗုဒ္ဓဝံ။၃၇၉) 1 · (လာဘဟေတု (တိ) 1 · (ပဋိသံ။၉၈) 1 · (သံ၊ဋ္ဌ၊၃။၃၆) 1 · (၁၊) 1 · (ကာ။ ကြိ၊ဝိ) 1 · (၁၁) 1 · (ဝိဋ္ဌ၄။၁၇၇) 1 · (နို) 1 · (နေတ္တိ။၄၅) 1 · (ကမ္မ ကြု) 1 · (ကမ္မ၊ကြ) 1 · (ကကိ) 1 · (၅) 1 · (ဒွိ) 1
 
 ## What these figures mean
 
@@ -77,4 +77,3 @@ Three pages, every article compared with `08.pdf` at 72 dpi (25 September 2026).
   are unlocated, for the reason above.
 - **P. 413**: ဇိဝှါ… printed with ှ, which the OCR drops (ဇိဝါ…). Seven of eight placed by fuzzy
   match, all right.
-

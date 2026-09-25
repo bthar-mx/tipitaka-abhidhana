@@ -41,7 +41,7 @@ As for vols. 1–3 and 6: see `ocr/03/articles-report.md` for how articles are l
 
 ## Vol. 15 specifics
 
-- Located 93.4% (23.1% by fuzzy match), label + body 87.6%, analysis 75.9%.
+- Located 93.4% (23.1% by fuzzy match), label + body 87.6%, analysis 75.9% (re-run 25 Sep with the fixes of brief §27).
 - **Against the typed witnesses** (`docs/witness-join.md`, `docs/witness-pndaza.md`): labels agree on 99.4% of 8,187 rows where both have one; analyses are ≥ 0.8 / < 0.4 similar in 87.8% / 0.5%. Pn Daza's page-referenced copy gives a typed text for 616 of the articles the OCR could not place.
 - Nothing out of the ordinary; p. 448 (0 of 1) and p. 473 (3 of 13) are glyph confusions.
 

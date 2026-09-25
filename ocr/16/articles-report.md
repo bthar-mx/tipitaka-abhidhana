@@ -41,7 +41,7 @@ As for vols. 1–3 and 6: see `ocr/03/articles-report.md` for how articles are l
 
 ## Vol. 16 specifics
 
-- Located 92.8% (28.6% by fuzzy match), label + body 86.6%, analysis 71.4%.
+- Located 92.8% (28.6% by fuzzy match), label + body 86.6%, analysis 71.4% (re-run 25 Sep with the fixes of brief §27).
 - **Against the typed witnesses** (`docs/witness-join.md`, `docs/witness-pndaza.md`): labels agree on 99.0% of 9,000 rows where both have one; analyses are ≥ 0.8 / < 0.4 similar in 91.0% / 0.3%. Pn Daza's page-referenced copy gives a typed text for 745 of the articles the OCR could not place.
 - The largest book so far (10,394 headwords). Several heads print a spelling variant in brackets (မဟာပိ(ပီ)ဠကာ…), which the fuzzy match places.
 

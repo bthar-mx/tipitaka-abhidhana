@@ -41,7 +41,7 @@ As for vols. 1–3 and 6: see `ocr/03/articles-report.md` for how articles are l
 
 ## Vol. 11 specifics
 
-- Located 93.0% (24.3% by fuzzy match), label + body 86.2%, analysis 75.1%.
+- Located 93.0% (24.3% by fuzzy match), label + body 86.2%, analysis 75.1% (re-run 25 Sep with the fixes of brief §27).
 - **Against the typed witnesses** (`docs/witness-join.md`, `docs/witness-pndaza.md`): labels agree on 98.5% of 4,882 rows where both have one; analyses are ≥ 0.8 / < 0.4 similar in 86.9% / 0.7%. Pn Daza's page-referenced copy gives a typed text for 399 of the articles the OCR could not place.
 - P. 478 (0 of 18): the column text splits the headwords of the နန္ဒနဝန… run (နန္ဒန on a line of its own); the image was not checked. Pp. 250–251 (2 of 23, 3 of 15) print ဓမ္မဿ(သ)ဝန…, the index's two spellings in one head.
 
