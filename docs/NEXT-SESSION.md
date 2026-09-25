@@ -85,8 +85,15 @@ vol. 25 runs.
    book, and compare. Vol. 24 has 15 pages with a gutter ≥ 0.54 (column recall 80.8%). **Vol. 9
    p. 823** (brief §23): move `ocr/09/pages/p0823.json` aside and re-run it before that. Afterwards
    try the `page.psm6` fallback for headwords still unlocated.
-7. **Why is compound analysis low in vols. 23 and 14/3** (59%) against ~72–81% elsewhere? Look at a
-   page's [ ] in the text.
+7. ~~Why is compound analysis low in vols. 23 and 14/3~~: done 25 Sep for vol. 23 (brief §33: a lost
+   opening bracket; all books re-run, analysis 75.0 → 77.2%, witness agreement of the gains 97.2%).
+7b. **14/3's analysis** (60.0%): its `+` signs are lost and its `]` read as ု/ျု/ါ. Try delimiting the
+   analysis by the headword (the elements spell it out, sandhi aside), test on books 01–19 against
+   the witness, and image-check a 14/3 page before keeping it.
+7c. **History on the About page** (brief §34): review the romanised names in `docs/history.md` (and
+   its open points: vol. 25's era year, vol. 4's compiler, vol. 14's), then change its status line to
+   `<!-- site: publish -->`. The Project description and instructions still credit the Masoeyein
+   board with the whole dictionary.
 8. **Image-check the label disagreements** with the witness (`docs/witness-join.md` §3): a sample
    of (တိ)/(gender), (ပု)/(ပု၊န), (ကြိ)/(တိ). And (ထိန), (ထီ၊၇), (ထိ၊န) (`docs/labels.md` §7; ids
    51227, 51941, 54340; vol. 24 has (ထီ၊ ၇) 17 and (ထိ၊ န) 11 unnormalised) before mapping them.

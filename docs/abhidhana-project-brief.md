@@ -2,15 +2,18 @@
 
 *Written 21 September 2026, at the end of the volume-25 pilot; §10–12 revised 24 September
 2026, after volume 1 was done end to end and the repository was made public; §18–26 added
-25 September 2026 (spelling folds, the witness join, vols. 6–9, re-cutting gutters, vol. 14/2's text layer, the batch of vols. 10–22); §27 the same evening (vols. 23, 24 and 14/2 finished, the index's page errors applied, book 21 explained, the Reader in binary); §28 the public website, the page images and the label table; §29 vol. 21 finished, vol. 25's resolution, the dictionary's own account of its labels; §30 vol. 25 done, all 29 books; §31 (later on 25 Sep) the page-image tool's bitmap test; §32 the weak page corrections, image-checked. Everything in
+25 September 2026 (spelling folds, the witness join, vols. 6–9, re-cutting gutters, vol. 14/2's text layer, the batch of vols. 10–22); §27 the same evening (vols. 23, 24 and 14/2 finished, the index's page errors applied, book 21 explained, the Reader in binary); §28 the public website, the page images and the label table; §29 vol. 21 finished, vol. 25's resolution, the dictionary's own account of its labels; §30 vol. 25 done, all 29 books; §31 (later on 25 Sep) the page-image tool's bitmap test; §32 the weak page corrections, image-checked; §33 the compound analysis with its [ lost; §34 the dictionary's history on the site. Everything in
 this file was measured. Do not re-derive a figure it carries; if a new one is needed,
 measure it rather than estimating.*
 
 ## 1. What the work is
 
 The Tipiṭaka Pāḷi-Myanmā Abhidhāna is a Pāḷi → Burmese dictionary in **25 volumes, bound as
-29 books**, compiled by the မစိုးရိမ် (Masoeyein) Board of Scholar-Elders in Mandalay and
-published by the Department for the Promotion and Propagation of the Sāsana, Ministry of
+29 books**, compiled from the 1950s to 2023 by five teams of scholar-monks among which the
+alphabet was divided — the Masoeyein (မစိုးရိမ်) monastery in Mandalay wrote vols. 5–6 and 15–16
+(vol. 17, pp. 6–7; `docs/history.md`; *corrected 25 Sep 2026: this line used to credit the whole
+work to the Masoeyein board*) — and published by the Union of Burma Buddha Sāsana Council (vol. 1,
+1964), then by the Department for the Promotion and Propagation of the Sāsana, Ministry of
 Religious Affairs, Union of Myanmar. The imprint of vol. 4 part 3 reads Sāsana 2553 /
 Kawza 1372 / 2010, printed at the Ministry's own press.
 
@@ -924,4 +927,52 @@ and 0.24). §18's rule handles the case where the first of two is placed and the
 converse. Across all 29 books there are **177 runs of identical headwords where an earlier one is
 unplaced and a later one placed on the same page**. Not all are wrong (the earlier head may simply be
 unread), and none was changed: for books 01–19 the witness joins can sort them, elsewhere the image.
+
+## 33. The compound analysis when its opening bracket is lost (25 September 2026, evening)
+
+NEXT-SESSION item 7: why vols. 23 and 14/3 recovered the analysis for only ~59% of articles.
+Among the labelled articles with no analysis, measured on the 70 characters after the label:
+
+| | vol. 23 | 14/3 | 14/1 | 24 | 22 | 12 |
+|---|---:|---:|---:|---:|---:|---:|
+| labelled, no analysis | 36.8% | 31.0% | 35.5% | 20.4% | 19.9% | 12.9% |
+| of those: no `[`, but `+` | **81.9%** | 20.7% | **75.2%** | 69.6% | 51.0% | 54.2% |
+| `[`, no `+` | 7.1% | **56.1%** | 10.0% | 12.0% | 24.1% | 19.1% |
+
+**Vol. 23 sets its brackets apart**, `[ သမ္မဇ္ဇနီ + ဒဏ္ဍ ]` (image, PDF p. 40), and OCR drops the
+free-standing `[` (1,673 rows) or reads it as `]` (322), keeping the `+` signs and usually the `]`.
+`abhidhana_articles.py` now takes, after the two existing attempts and only where they fail,
+elements joined by `+` straight after the label, optionally led by a `]` or `|`, **when a `]` follows**
+(allowing a derivation note after `။`, up to 60 characters, as the print's bracket does). Flagged
+`analysis_bracket_damaged` and `analysis_open_lost`.
+
+Re-run on all 29 books (articles, romanisation, witness joins, Reader data): **analysis 75.0% →
+77.2%** (+4,907 rows); vol. 23 59.3 → **74.1%**, 14/1 60.0 → 71.2%, 24 72.8 → 81.2%, 22 73.2 →
+78.3%, 12 80.6 → 84.5%. **No analysis already read changed**, nor any placement or label. Against the
+typed witness (books 01–19) the 1,758 gained analyses it can check are ≥ 0.8 similar in **97.2%**,
+< 0.4 in 0.2%, against 90.1% / 0.6% for the rest. Vol. 23 (no witness): on PDF p. 40 the one gained
+row (185537, သမ္ပဇ္ဇနံ + ဒဏ္ဍ for the printed သမ္မဇ္ဇနီ + ဒဏ္ဍ) is right in structure, with ordinary
+letter errors. `docs/witness-join.md` §2 and `docs/witness-pndaza.md` now show all of books 01–19.
+
+**14/3 is a different failure and is not fixed**: the `[` is read and the `+` signs are lost
+(`[ပါစိတ္တိယဒိဋ္ဌိ …`, `[ပဟာရ ဌာန …`), and its `]` is usually read as ု, ျု or ါ glued to the last
+element (`…ဒါယကု`). Without either the `+` or the `]`, where the analysis ends cannot be told from the
+text alone; the headword, which the elements spell out, could delimit it (NEXT-SESSION item 7b).
+14/3 stays at 60.0%.
+
+## 34. The dictionary's history on the About page (25 September 2026, evening)
+
+Angel's `docs/history.md` (EN/ES, from the dictionary's own front matter) is built into the About
+page as a **History / Historia** section by `tools/abhidhana_site.py` (a small Markdown subset,
+standard library; Burmese runs set in the site's Burmese face). **It is not yet published**: the
+build includes it only when the file's status line reads `<!-- site: publish -->`; it now reads
+`site: draft`, because the romanised names of people and monasteries are mine and need Angel's
+review. `ABHIDHANA_SITE_DRAFTS=1` includes it in a local build, marked as a draft. Checked in a
+headless browser at 1,200 and 390 px, both languages.
+
+**The attribution is corrected** on the About, home and Reader pages, in the README and in §1:
+by vol. 17 pp. 6–7 the dictionary was written by five teams among which the alphabet was divided,
+Masoeyein monastery writing vols. 5–6 and 15–16, not by "the Masoeyein Board of Scholar-Elders".
+The corrected line names no one but Masoeyein, so it is live on the next push. The Project's own
+description and instructions still carry the old line (Angel's to edit).
 
