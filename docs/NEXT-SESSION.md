@@ -1,9 +1,9 @@
-# Abhidhāna — handover, 25 September 2026 (after vol. 9)
+# Abhidhāna — handover, 25 September 2026 (after the batch of vols. 10–22)
 
-*Vols. 1–9 (vol. 4 in three parts) are digitised end to end, spot-checked and in the Reader. Read
+*Vols. 1–20 and 22 (vol. 4 in three parts, 14 in three) — all but 14/2's articles, 21, 23, 24, 25 — are digitised end to end, spot-checked and in the Reader. Read
 `abhidhana-project-brief.md` first: §12 covers vol. 1, §13 vols. 2–3, §14–17 the witness and vols.
 4/1–5, §18 the spelling folds and the homonym and misfiled-headword fixes, §19 the witness join, §20
-vol. 6, §21 vol. 7, §22 vol. 8 and the gutter failures, §23 vol. 9, §24 the re-cut tool, §25 vol. 14/2's text layer. Every figure is there. `docs/labels.md` holds the label map, `docs/witness.md` and
+vol. 6, §21 vol. 7, §22 vol. 8 and the gutter failures, §23 vol. 9, §24 the re-cut tool, §25 vol. 14/2's text layer, §26 the batch (vols. 10–22). Every figure is there. `docs/labels.md` holds the label map, `docs/witness.md` and
 `docs/witness-join.md` the typed witness.*
 
 ## Every session
@@ -23,18 +23,24 @@ vol. 6, §21 vol. 7, §22 vol. 8 and the gutter failures, §23 vol. 9, §24 the 
 
 ## State
 
-| | vols. 1–8 | vol. 9 | vol. 10 |
-|---|---|---|---|
-| OCR, articles, romanisation | done | done 25 Sep | OCR done; articles in the batch |
-| reports, spot check, Reader | done | done 25 Sep | — |
-| page records in release `sources-v1` | uploaded (07, 08: check) | `release/ocr-09-pages.tar.gz`, to upload | — |
-| GitHub issue | close any of #1–#10 still open | #11, close after this commit | open |
+| | vols. 1–20, 22 | vols. 23, 24 | 14/2 | 21, 25 |
+|---|---|---|---|---|
+| OCR, articles, romanisation | done | in the batch | text layer extracted; articles after the batch | not run |
+| reports, spot check, Reader | done (10–22 on 25 Sep, one-page spot checks) | after the batch | after | — |
+| page records in `sources-v1` | to upload: 10–20, 14c, 22 (`release/ocr-NN-pages.tar.gz`) | — | uploaded | — |
+| GitHub issues | close 10–20, 14c, 22 after this commit | open | open | open |
 
 `tmp/_to_delete/` holds nine `*.json.gz` files from a first try at the Reader's data; the VM
 cannot delete. Delete the folder by hand (`tmp/` is gitignored).
 
 ## Next, in order
 
+00. **After the batch** (23 and 24 still running at 13:14): reports, a spot check and the Reader for
+   23 and 24. **The Reader is at 63.5 MB of 64**: before adding them, move its data out of base64
+   text (e.g. gzip bytes in a served binary type, or drop the romanised citations `ci`, which can be
+   made in the page), and measure. Then the page-offset corrections of brief §26: vol. 22 pp. 920–933
+   one page back (a page is missing from the scan), 14/3's eight runs and the small ones in 10, 18, 22
+   (`ID_PAGE_FIX`), and the vol. 13 index error (pp. 175–190) recorded in `docs/index-errata.md`.
 0. **The batch run** (`tools/run_volumes.sh`, started 25 Sep by Angel): OCR, articles and
    romanisation for vol. 10's articles and vols. 11–24, one after another, about 5 hours; skips
    14b, 21 and 25; logs in `logs/`. **While it runs, don't change `abhidhana_ocr.py`,
@@ -46,8 +52,7 @@ cannot delete. Delete the folder by hand (`tmp/` is gitignored).
    Held back until then: (ကာ၊ကမ္မ၊ကြိ) in the label map (clean in 14b, 7 times; the witness 43);
    `abhidhana_articles.py 14b` and `abhidhana_romanise.py 14b` on the text-layer records already in
    `ocr/14b/pages/` (brief §25; a trial gave 98.2% located, 97.5% label + body).
-1. **Vol. 10** (book 10, ဒ – ဒွေဠှကပုစ္ဆာ, 981 PDF pages, 7,366 index headwords): OCR done 25 Sep at
-   75 dpi; its articles are in the batch. Reports, spot check, Reader after the batch.
+1. ~~Vol. 10~~: done in the batch, reports 25 Sep (brief §26).
 2. **Re-cut the gutters** with `tools/abhidhana_recut.py` (brief §24), natively, book by book, when
    no OCR is running (it competes for the CPU, not for files):
    `python3 tools/abhidhana_recut.py NN --scan --workers 10`, then `--run --workers 10`. Then

@@ -1,8 +1,8 @@
 # Tipiṭaka Pāḷi-Myanmā Abhidhāna — project brief
 
 *Written 21 September 2026, at the end of the volume-25 pilot; §10–12 revised 24 September
-2026, after volume 1 was done end to end and the repository was made public; §18–25 added
-25 September 2026 (spelling folds, the witness join, vols. 6–9, re-cutting gutters, vol. 14/2's text layer). Everything in
+2026, after volume 1 was done end to end and the repository was made public; §18–26 added
+25 September 2026 (spelling folds, the witness join, vols. 6–9, re-cutting gutters, vol. 14/2's text layer, the batch of vols. 10–22). Everything in
 this file was measured. Do not re-derive a figure it carries; if a new one is needed,
 measure it rather than estimating.*
 
@@ -626,4 +626,53 @@ image on p. 300: word for word. No typed witness covers the book; the text layer
 (ကာ၊ကမ္မ၊ကြိ) occurs 7 times, cleanly: a label to add to the map (the witness prints it 43 times).
 
 **Vol. 23** is scanned at about 323 ppi on A4 pages (Angel); `tools/run_volumes.sh` renders it at that.
+
+## 26. Vols. 10–20 and 22: Angel's batch (25 September 2026)
+
+`tools/run_volumes.sh` (written by the other chat) ran OCR, articles and romanisation for one book
+after another, natively, 09:20–13:14 for these (vol. 21 skipped by rule, 14/2 not a scan, 23 and 24
+after). Reports in `ocr/NN/`, the Reader has them all.
+
+| vol. | PDF pages | index headwords | dpi | verbatim (folded) | in order | located | label + body |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| 10 | 981 | 7,366 | 75 | 90.1% (90.3%) | 74.0% | 90.8% | 84.3% |
+| 11 | 769 | 5,663 | 72 | 89.1% (89.5%) | 74.7% | 93.0% | 86.2% |
+| 12 | 1,123 | 7,022 | 72 | 94.0% (94.5%) | 77.9% | 96.9% | 91.7% |
+| 13 | 896 | 7,279 | 73 | 85.8% (86.3%) | 70.9% | 89.5% | 83.7% |
+| 14/1 | 821 | 5,219 | 70 | 93.8% (94.3%) | 77.0% | 96.6% | 92.3% |
+| 14/3 | 1,107 | 10,390 | 72 | 91.9% (92.2%) | 75.7% | 91.1% | 84.8% |
+| 15 | 853 | 9,342 | 74 | 91.0% (91.3%) | 76.2% | 93.4% | 87.6% |
+| 16 | 890 | 10,394 | 73 | 88.7% (89.4%) | 75.5% | 92.8% | 86.6% |
+| 17 | 879 | 6,520 | 69 | 91.3% (91.7%) | 75.2% | 93.4% | 84.9% |
+| 18 | 890 | 7,829 | 72 | 89.2% (89.9%) | 74.3% | 92.4% | 84.4% |
+| 19 | 982 | 9,251 | 72 | 96.3% (96.6%) | 78.5% | 96.3% | 89.5% |
+| 20 | 945 | 7,366 | 72 | 91.5% (91.7%) | 76.6% | 95.7% | 87.1% |
+| 22 | 933 | 8,075 | 72 | 88.5% (90.4%) | 80.6% | 95.1% | 89.0% |
+
+Against the typed witnesses (vols. 10–19): labels agree on 98.1–99.5%, and Pn Daza's page-referenced
+copy supplies a typed text for 175–767 unplaced articles per book. **Spot checks this time are one
+page per book**: on the image for the three books no witness covers (14/3 p. 580: 9 of 10 right, 1
+unlocated; 20 p. 465: 12 of 12; 22 p. 419: 9 of 9), and in the text and against the witness for the
+rest (every placed row right, every label as the witness). No wrong placement was found.
+
+**What the batch turned up**
+- **Vol. 13: the index files vol. 15's ဗ headwords under vol. 13.** Index pages 145–160 of book 13
+  (PDF pp. 175–190) list 232 ဗ headwords (ဗလိ … ဗဟိဒ္ဓါသမုဋ္ဌာန) for pages that print ပဂ္ဂဏှာထ … ပဂ္ဃရဏ-
+  လက္ခဏ. Pn Daza's typed text has the same ဗ entries under vol. 13 pp. 145–160: the error is in the
+  typing the index was built from (§4 of `docs/witness-pndaza.md`). Those sixteen pages' real
+  headwords are in no source but our OCR.
+- **Vol. 22: one printed page is missing from the scan near PDF p. 919.** From p. 920 to the end,
+  each page's index headwords are found on the page before; the index's last page implies PDF
+  p. 934 and the PDF has 933. A page-offset correction for pp. 920–933 after the batch; the missing
+  page's headwords are lost with it. (Compare book 21, whose index runs 65 pages past its PDF.)
+- **Vol. 14/3: eight small runs of headwords printed a page later than the index files them**
+  (unindexed pp. 402, 565, 625, 930, 936, 962, and weaker 605, 976), besides three pages where the
+  next page's list scores higher (564, 607, 620). Smaller cases in vols. 10 (p. 219), 18 (p. 815)
+  and 22 (pp. 169, 184, 253, 894). All for `ID_PAGE_FIX` after the batch.
+- **Vol. 17 was rendered at 69 dpi** (the median of three sampled pages, 72/68/69), though 502 of its
+  879 page images are 72 ppi. Its recall (91.3%) is ordinary; a re-read at 72 would be a test.
+- **Vol. 22** prints ညာ and ာ where the index writes ဉာ and ါ on whole runs (pp. 171–175, 828–837):
+  the folds recover most (90.4% with them, against 88.5%).
+- **The Reader's data is at 63.5 MB** of the 64 MB an artifact version may hold. Vols. 23 and 24
+  will not fit as base64 text; they need a binary container or a lighter record (NEXT-SESSION).
 
