@@ -1,6 +1,6 @@
-# Abhidhāna — handover, 24 September 2026 (end of day)
+# Abhidhāna — handover, 25 September 2026
 
-*Vols. 1–3 are digitised end to end. Read `abhidhana-project-brief.md` first: §12 covers vol. 1
+*Vols. 1–3 are digitised end to end, spot-checked and in the Reader. Read `abhidhana-project-brief.md` first: §12 covers vol. 1
 and §13 vols. 2–3, and every figure is there. `docs/labels.md` holds the label map and the typed
 witness.*
 
@@ -16,31 +16,32 @@ witness.*
 
 ## State
 
-| | vol. 1 | vol. 2 | vol. 3 |
-|---|---|---|---|
-| OCR, articles, romanisation | done, committed | done | done |
-| reports (`ocr-report`, `articles-report`, `pali-report`) | done | done | done |
-| image spot check | done (38 placements, 32 labels) | done (pp. 500, 241–242, 115) | **not done** |
-| in the Reader | yes | **no** | **no** |
-| page records in the release | `ocr-01-pages.tar.gz` | `release/ocr-02-pages.tar.gz`, to upload | `release/ocr-03-pages.tar.gz`, to upload |
-| GitHub issue | #1 closed | #2: close after the commit | #3: keep open until the spot check and the Reader |
+| | vol. 1 | vol. 2 | vol. 3 | vol. 4a |
+|---|---|---|---|---|
+| OCR, articles, romanisation | done | done | done | OCR started 25 Sep on the Mac (96 dpi native) |
+| reports (`ocr-report`, `articles-report`, `pali-report`) | done | done | done | — |
+| image spot check | done (38 placements, 32 labels) | done (pp. 500, 241–242, 115) | done 25 Sep (pp. 600, 654, 1008) | — |
+| in the Reader | yes | yes, 25 Sep | yes, 25 Sep | — |
+| page records in the release | `ocr-01-pages.tar.gz` | `release/ocr-02-pages.tar.gz`, to upload if not yet | `release/ocr-03-pages.tar.gz`, to upload if not yet | — |
+| GitHub issue | #1 closed | #2: close (committed in `83cf739`) | #3: close after this session's commit | open when the OCR is done |
 
-`abhidhana_articles.py` changed today. Vol. 1 was regenerated with it (94.1% located), so vol. 1's
-files change in the next commit too. What changed: the vol. 2 page-order fix (`PAGE_FIX`);
-spelling-variant entries (`variant_of`); unindexed pages read into their article (`runs_through`);
-debris removed before the compound analysis is read; the bracket-damaged analysis fallback;
-running heads with debris above them; and the new labels (ကမ္မ၊ကြိ, ထီ၊န, ထီ၊ပု, အ-လိင်).
+Vols. 1–3 were committed and pushed in `83cf739`. This session (25 Sep) changed
+`ocr/03/articles-report.md` (the spot checks), `reader/index.html` (the volume switch) and the brief
+and this file. The Reader's data files (`reader/vol0N.json`) are gitignored; the artifact now holds
+all three, vol. 1 regenerated from the current `articles.jsonl` (94.1% located).
+
+**Vol. 3 spot check, in short**: 30 of 31 headwords at the right entry, none wrong, 1 unlocated (a
+variant twin); no label wrong, 2 not read. P. 654's 0 of 4 is the index writing ါ where the print
+has ာ after a stacked consonant, not an OCR failure. Details in `ocr/03/articles-report.md`.
 
 ## Next, in order
 
-1. **Spot-check vol. 3** against `03.pdf`: an ordinary page, the worst page (p. 654, 0 of 4), and
-   one of pp. 1007–1009.
-2. **Reader: add vols. 2–3 with a volume switch.** Build `reader/vol02.json` and `vol03.json` with
-   `tools/abhidhana_reader_data.py NN` (gitignored). Change `reader/index.html` so it loads
-   `vol{NN}.json` from a volume selector: today it is vol.-1 specific (title, the "a – anīḷaka"
-   range, the default page 300, the footer links). Republish to
-   claude.ai/artifact/RjuFxtkh4FASRkhBeYhVS3: read it with the Artifact tool first, then publish
-   all three json files beside the page.
+1. **Vol. 4a**: when Angel's OCR run finishes, `abhidhana_articles.py 4a` and then
+   `abhidhana_romanise.py 4a`; the reports; a 3-page spot check; add `4a` to `VOLS` in
+   `reader/index.html` (id, Burmese and roman range from `books.name_info`, a default page) and build
+   `vol4a.json`; republish (read the artifact and each published json first).
+2. **Fold ါ/ာ after a stacked consonant** when matching headwords (`abhidhana_ocr.py` scoring and
+   `abhidhana_articles.py`). Measured: it would recover 1, 6 and 26 of the missed headwords in vols. 1–3.
 3. **The typed witness.** PCED 1.94's "Tipiṭaka Pāḷi-Myanmar Dictionary" (public repo
    `siongui/data`, `dictionary/dict_words_{1,2}.csv`, dictionary id `K`, 157,271 entries, **Zawgyi**)
    has 94.5–96.0% of each volume's headwords. The plan:
@@ -55,7 +56,7 @@ running heads with debris above them; and the new labels (ကမ္မ၊ကြ�
 4. **Angel's review of the new labels**: `docs/labels.md` §1 and §6. There is a Pāḷi expansion and a
    Spanish abbreviation for each (ကြိ၊ဝိ, ဗျ, ကာ၊ကြိ, ကမ္မ၊ကြိ, …).
 5. **Re-run vol. 25** with `--columns` at its native resolution.
-6. **Next volumes**: 4a, 4b, 4c, then 05 onwards, on the Mac natively or on Winston's.
+6. **Next volumes**: 4b, 4c, then 05 onwards, on the Mac natively or on Winston's.
    Per volume: reports, a 3-page spot check, the Reader, then close the issue.
 
 Don't translate at scale. Flag uncertainty rather than guessing.

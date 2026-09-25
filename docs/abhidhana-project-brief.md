@@ -192,7 +192,7 @@ distribution, and IEBH will not treat the licence as a blocker. The project is n
 - Vol. 25 pilot is still whole-page. Re-run with `--columns` at its native resolution.
 - ~~Labels are not normalised; the unlocated 13% not recovered.~~ Done 24 Sep (§12, `docs/labels.md`).
 - The typed PCED copy of this dictionary (`docs/labels.md` §4) is not yet converted from Zawgyi or used.
-- Vol. 3 is not yet spot-checked against the images; the Reader does not yet show vols. 2–3.
+- ~~Vol. 3 is not yet spot-checked; the Reader does not show vols. 2–3.~~ Done 25 Sep (§13).
 - Citations are parsed but not resolved against OSBCT.
 - No Spanish exists beyond the drafted sample in `docs/spanish-method.md`.
 - Book 21's offset and the per-volume entry counts are unchecked.
@@ -271,4 +271,12 @@ the Mac, not the container, the place to run volumes. The full figures are in `o
   2.9%, and 3.6 vs 2.1% in vols. 1–3. A misplaced article would carry a neighbour's analysis.
 - **Image spot checks, vol. 2.** P. 500: 11 of 11 placed right. Pp. 241–242: 15 of 15. P. 115 (the
   variant page, the worst): 7 right, 1 wrong, 6 unlocated.
-
+- **Image spot checks, vol. 3** (25 Sep). P. 600: 13 of 14 at the right entry, 1 unlocated (a variant
+  twin). P. 654, the "worst page": 4 of 4 right. P. 1008: 13 of 13. No wrong entry and no wrong label
+  on the three pages; 2 labels not read.
+- **The print writes ာ where the index writes ါ, after a stacked consonant** (အလမ္ပာန as printed, အလမ္ပါန
+  in the index). That, not the OCR, is why p. 654 scored 0 of 4. Of the headwords with a stacked
+  consonant + ါ that recall missed, 1 of 17 (vol. 1), 6 of 26 (vol. 2) and 26 of 48 (vol. 3) are
+  present verbatim with ာ. Folding the two when matching is not yet implemented. A stacked ဖ read as ဗ
+  (အသမ္ဖ…) is the other cause on pp. 1007–1009.
+- **The Reader shows vols. 1–3** with a volume switch (25 Sep); `#v03p654` links to a page.

@@ -113,14 +113,18 @@ footer a{color:var(--accent)}
 <div class="wrap">
   <header class="top">
     <div class="brand">
-      <div class="my">တိပိဋက ပါဠိ-မြန်မာ အဘိဓာန် · အတွဲ ၁</div>
-      <div class="ro"><b>Tipiṭaka Pāḷi-Myanmā Abhidhāna</b>, vol. 1 · a – anīḷaka</div>
+      <div class="my">တိပိဋက ပါဠိ-မြန်မာ အဘိဓာန် · <span id="vmy">အတွဲ ၁</span></div>
+      <div class="ro"><b>Tipiṭaka Pāḷi-Myanmā Abhidhāna</b>, <span id="vro">vol. 1 · a – anīḷaka</span></div>
     </div>
     <div class="stats" id="stats"><span>Loading…</span></div>
   </header>
   <p class="notice"><strong>Unproofed OCR.</strong> Each headword comes from the dictionary’s index and is spelled correctly. Everything after it (label, analysis, definition, citations) is machine-read Burmese and contains errors. Labels are normalised to the printed label; hover over one to see what the OCR read. Check the printed page before quoting an article. Pāḷi quoted in a definition is shown <span class="pali" style="cursor:auto">in roman</span>; hover over it for the Burmese it was read from, or untick “Pāḷi in roman” to see the definition as read.</p>
 
   <div class="bar" role="search">
+    <div class="filter">
+      <label for="vol">Volume</label>
+      <select id="vol"></select>
+    </div>
     <label class="search" for="q">
       <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><circle cx="7" cy="7" r="5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M11 11l3.5 3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
       <input id="q" type="search" placeholder="Search a headword: အကုသလ or akusala" autocomplete="off" spellcheck="false">
@@ -143,10 +147,10 @@ footer a{color:var(--accent)}
 
   <div id="results" class="results" hidden></div>
   <div class="pagehead" id="pagehead"></div>
-  <div id="list" class="list"><div class="loading">Loading 8,150 articles…</div></div>
+  <div id="list" class="list"><div class="loading">Loading…</div></div>
 
   <footer>
-    Source scans: release <a href="https://github.com/bthar-mx/tipitaka-abhidhana/releases/tag/sources-v1" target="_blank" rel="noopener">sources-v1</a> (the “PDF p.” number is the page in <code>01.pdf</code>). Data: <a href="https://github.com/bthar-mx/tipitaka-abhidhana/blob/main/ocr/01/articles.jsonl" target="_blank" rel="noopener">ocr/01/articles.jsonl</a>. Methods and measurements: <a href="https://github.com/bthar-mx/tipitaka-abhidhana/blob/main/ocr/01/ocr-report.md" target="_blank" rel="noopener">OCR report</a> and <a href="https://github.com/bthar-mx/tipitaka-abhidhana/blob/main/ocr/01/articles-report.md" target="_blank" rel="noopener">articles report</a>.
+    Source scans: release <a href="https://github.com/bthar-mx/tipitaka-abhidhana/releases/tag/sources-v1" target="_blank" rel="noopener">sources-v1</a> (the “PDF p.” number is the page in <code id="fpdf">01.pdf</code>). Data: <a id="fdata" href="https://github.com/bthar-mx/tipitaka-abhidhana/blob/main/ocr/01/articles.jsonl" target="_blank" rel="noopener">ocr/01/articles.jsonl</a>. Methods and measurements: <a id="focr" href="https://github.com/bthar-mx/tipitaka-abhidhana/blob/main/ocr/01/ocr-report.md" target="_blank" rel="noopener">OCR report</a> and <a id="fart" href="https://github.com/bthar-mx/tipitaka-abhidhana/blob/main/ocr/01/articles-report.md" target="_blank" rel="noopener">articles report</a>.
     The dictionary was compiled by the Masoeyein Board of Scholar-Elders and published by the Ministry of Religious Affairs, Myanmar. Scans and index: the Tipiṭaka Abidan app by Pn Daza and the monks and libraries credited in the repository README.
   </footer>
 </div>
@@ -160,7 +164,15 @@ footer a{color:var(--accent)}
     'ကာ၊ကြိ':'caus. v.','နာမ-ကြိ':'denom. v.','ပုံ-ဗဟု':'m. pl.'};
   const LOC={v:['c-v','located'],f:['c-f','fuzzy match'],u:['c-u','not located']};
   const OS={word:'in canon',inside:'inside a canon word',none:'not in canon'};
-  let D=[],pages=[],byPage=new Map(),cur=300,hitIdx=-1;
+  // One entry per volume in the Reader; the ranges are the index's own (books.name_info).
+  const VOLS=[
+    {id:'01',n:1,my:'အ – အနီဠက',ro:'a – anīḷaka',start:300},
+    {id:'02',n:2,my:'အနု – အဗ္ဘောက္ကိရဏ',ro:'anu – abbhokkiraṇa',start:500},
+    {id:'03',n:3,my:'အဗျဂ္ဂ – အဠာရပမှ',ro:'abyagga – aḷārapamha',start:600},
+  ];
+  const GH='https://github.com/bthar-mx/tipitaka-abhidhana/blob/main/ocr/';
+  const cache=new Map();
+  let V=VOLS[0],D=[],pages=[],byPage=new Map(),cur=300,hitIdx=-1,loadSeq=0;
   const $=id=>document.getElementById(id);
   const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
   const my2=n=>String(n).replace(/\d/g,d=>'၀၁၂၃၄၅၆၇၈၉'[d]);
@@ -188,7 +200,7 @@ footer a{color:var(--accent)}
   function render(p,scrollTo){
     if(!byPage.has(p)){const n=pages.find(x=>x>=p)??pages[pages.length-1];p=n}
     cur=p; $('pg').value=p;
-    try{history.replaceState(null,'','#p'+p)}catch(e){}
+    try{history.replaceState(null,'','#v'+V.id+'p'+p)}catch(e){}
     const idx=byPage.get(p)||[], f=$('show').value;
     const rows=idx.filter(i=>f==='all'||D[i].x===f);
     const c={v:0,f:0,u:0}; idx.forEach(i=>c[D[i].x]++);
@@ -219,7 +231,7 @@ footer a{color:var(--accent)}
     box.innerHTML=`<h3>${out.length.toLocaleString()} headword${out.length===1?'':'s'} match</h3>`+
       top.map(([, ,i])=>`<button class="res" data-i="${i}"><span><span class="my" lang="my">${esc(D[i].h)}</span><span class="ro">${esc(D[i].r)}</span></span><span class="pg">p. ${D[i].p}</span></button>`).join('')+
       (out.length>60?`<div class="more">Showing the first 60. Type more of the word to narrow it.</div>`:'')+
-      (out.length?'':`<div class="more">Nothing in vol. 1 matches. This volume covers headwords from အ to အနီဠက (a to anīḷaka).</div>`);
+      (out.length?'':`<div class="more">Nothing in vol. ${V.n} matches. This volume covers headwords from ${esc(V.my)} (${esc(V.ro)}). The Reader has ${VOLS.map(v=>`vol. ${v.n}, ${esc(v.ro)}`).join('; ')}.</div>`);
   }
   $('results').addEventListener('click',e=>{
     const b=e.target.closest('.res'); if(!b)return;
@@ -237,14 +249,36 @@ footer a{color:var(--accent)}
     if(e.key==='/'){e.preventDefault();$('q').focus()}
   });
 
-  fetch('vol01.json').then(r=>{if(!r.ok)throw new Error(r.status);return r.json()}).then(data=>{
-    D=data;
+  function show(data,page){
+    D=data; byPage=new Map();
     D.forEach((d,i)=>{if(!byPage.has(d.p))byPage.set(d.p,[]);byPage.get(d.p).push(i)});
     pages=[...byPage.keys()].sort((a,b)=>a-b);
     const n={v:0,f:0,u:0}; D.forEach(d=>n[d.x]++);
     const lab=D.filter(d=>d.l&&d.b).length;
     $('stats').innerHTML=`<span><b>${D.length.toLocaleString()}</b> headwords</span><span><b>${pages.length}</b> pages</span><span><b>${(100*(n.v+n.f)/D.length).toFixed(1)}%</b> located</span><span><b>${(100*lab/D.length).toFixed(1)}%</b> with label + definition</span>`;
-    const m=/^#p(\d+)$/.exec(location.hash); render(m?+m[1]:300);
-  }).catch(err=>{$('list').innerHTML=`<div class="loading">The article data didn’t load (${esc(err.message)}). Reload the page to try again.</div>`});
+    hitIdx=-1; render(page||V.start);
+    if($('q').value.trim()) search($('q').value);
+  }
+  function loadVol(id,page){
+    V=VOLS.find(v=>v.id===id)||VOLS[0]; $('vol').value=V.id;
+    $('vmy').textContent='အတွဲ '+my2(V.n); $('vro').textContent=`vol. ${V.n} · ${V.ro}`;
+    document.title=`Abhidhāna Reader · vol. ${V.n}`;
+    $('fpdf').textContent=V.id+'.pdf';
+    $('fdata').href=GH+V.id+'/articles.jsonl'; $('fdata').textContent=`ocr/${V.id}/articles.jsonl`;
+    $('focr').href=GH+V.id+'/ocr-report.md'; $('fart').href=GH+V.id+'/articles-report.md';
+    const seq=++loadSeq;
+    if(cache.has(V.id)){show(cache.get(V.id),page);return}
+    $('stats').innerHTML='<span>Loading…</span>'; $('pagehead').innerHTML='';
+    $('list').innerHTML=`<div class="loading">Loading vol. ${V.n}…</div>`;
+    ['prev','next'].forEach(k=>$(k).disabled=true);
+    fetch(`vol${V.id}.json`).then(r=>{if(!r.ok)throw new Error(r.status);return r.json()}).then(data=>{
+      cache.set(V.id,data); if(seq===loadSeq) show(data,page);
+    }).catch(err=>{if(seq===loadSeq)$('list').innerHTML=`<div class="loading">Vol. ${V.n}’s article data didn’t load (${esc(err.message)}). Reload the page to try again.</div>`});
+  }
+  $('vol').innerHTML=VOLS.map(v=>`<option value="${v.id}">${v.n} · ${esc(v.ro)}</option>`).join('');
+  $('vol').addEventListener('change',e=>{$('show').value='all';window.scrollTo({top:0});loadVol(e.target.value)});
+  // #v02p500, or the older #p300 (vol. 1)
+  const m=/^#(?:v(\w+?))?p(\d+)$/.exec(location.hash);
+  loadVol(m&&m[1]?m[1]:'01', m?+m[2]:0);
 })();
 </script>

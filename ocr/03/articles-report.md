@@ -78,4 +78,35 @@ Readings left unnormalised: (၂) 11 · (ဝီ) 10 · (၅) 6 · (ခ) 6 · (�
   lists, and each matches its own best.
 - New labels, each one printed by the typed witness: (ကမ္မ၊ကြိ) 24 and (အ-လိင်). The latter is a
   label the witness gives 20 times.
-- **Not yet spot-checked against the page images.**
+
+## Spot checks against the page images
+
+Three pages, every article compared with `03.pdf` (checked 25 September 2026, at the native 75 dpi,
+headword lines of p. 654 enlarged 3×).
+
+| page | chosen because | index headwords | at the right entry | wrong entry | unlocated | labels |
+|---|---|---:|---:|---:|---:|---|
+| 600 | an ordinary page | 14 | 13 | 0 | 1 | 12 right, 1 not read |
+| 654 | the worst page (0 of 4 read) | 4 | 4 | 0 | 0 | 4 right |
+| 1008 | one of pp. 1007–1009 (6 of 13 read) | 13 | 13 | 0 | 0 | 12 right, 1 not read |
+
+No article on the three pages is placed at a wrong entry, and no label is wrong.
+
+- **P. 600**: 13 of 14 at their own entry. The one unlocated, အရူပပ္ပဝတ္တိ, is the second spelling
+  of the variant entry printed အရူပပ(ပ္ပ)ဝတ္တိ (ထီ). Its twin အရူပပဝတ္တိ is placed right, but the OCR
+  broke the printed head, so `variant_of` did not fire, and the label (ထီ) was not read.
+- **P. 654 is not an OCR failure.** Column 1 is the tail of အလမရိယဉာဏဒဿနဝိသေသ; column 2 holds the
+  four indexed entries, all found and at the right entry (fuzzy). Recall is 0 because the print
+  writes a stacked ပ with the round ာ (အလမ္ပာန, အလမ္ပာယန¹, ², အလမ္ပာယနမန္တ) where the index writes ါ
+  (အလမ္ပါန …). The index's consonant ပ is right (enlarged; OSBCT has *alampāyana*). The print's
+  query mark in (န?) on အလမ္ပာယန¹ is not carried into `label`.
+- **P. 1008**: all 13 at the right entry; the label (တိ) of အသမ္ဖပ္ပလာပီ was not read. Two causes of
+  the low recall: the same ါ/ာ difference on the အသမ္ပါ… entries, and the stacked ဖ of အသမ္ဖ… read
+  as ဗ. The print's stack appears to be ဖ, as in the index, but that was read at 75 dpi and not
+  enlarged. Pp. 1007 and 1009 were not image-checked; their OCR shows the same two patterns.
+
+**The ါ/ာ difference, measured** over the page records: of the index headwords with a stacked
+consonant followed by ါ, recall misses 17 of 142 in vol. 1, 26 of 174 in vol. 2 and 48 of 193 in
+vol. 3; of those misses, 1, 6 and 26 are present verbatim once ါ is written ာ. Folding ါ/ာ after a
+stacked consonant when matching would recover them. It is not yet implemented, and it would not
+change the article layer much: the fuzzy pass already places most of these.
