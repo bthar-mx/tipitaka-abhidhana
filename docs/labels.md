@@ -10,8 +10,12 @@ OCR read) and `label_how` (`exact`, `mapped`, `inferred`).*
 (`tools/abhidhana_labels.py` parses it; `tools/abhidhana_articles.py` maps OCR readings with it;
 the site's label pop-ups and its Labels page show it). Edit it here and nowhere else.*
 
-- **status**: `confirmed` once Angel has agreed the label and its Pāḷi; otherwise `provisional`,
-  and the site says so. Confirmed so far: the five of `docs/spanish-method.md` §2, (ဗျ) and (ကာ၊ကြိ)
+- **printed, source**: the dictionary's own expansion and where it is printed. Its tables of
+  abbreviations (vol. 1 p. 120, vol. 2 p. 14, vol. 4/1 p. 42) and its prose on the brackets (vol. 5
+  p. 48) are the authority; `docs/abbreviations.md` transcribes them.
+- **status**: `confirmed` once Angel has agreed the label and its Pāḷi; `printed` when the
+  dictionary itself gives the meaning (the Pāḷi column may still carry a `?` for Angel); otherwise
+  `provisional`, and the site says so. Confirmed: (ပု) (ထီ) (န) (တိ) (ကြိ), (ဗျ) and (ကာ၊ကြိ)
   (Angel, 25 Sep 2026).
 - **English, Spanish**: what the label marks, as the pop-up shows it. The Spanish is a draft
   (`es` = `draft`) until Angel confirms it; the site marks a draft as provisional in the Spanish
@@ -23,33 +27,33 @@ the site's label pop-ups and its Labels page show it). Edit it here and nowhere 
 - The row order is the order the pipeline tries them; it matters only for the "junk tail" rule.
 
 <!-- labels:begin -->
-| label | Pāḷi | English | Spanish | abbr. en | abbr. es | status | es | OCR readings |
-|---|---|---|---|---|---|---|---|---|
-| (ပု) | pulliṅga | masculine noun | sustantivo masculino | m. |  | confirmed | draft | ပု ပ ၇ ပြ ပူ ပုံ ဖု ြု ၇ု ု ပ၇ ပြု မ ပု၊ ပု။ |
-| (ထီ) | itthiliṅga | feminine noun | sustantivo femenino | f. |  | confirmed | draft | ထီ ထိ ထံ ထ တီ သီ ၊ထီ |
-| (န) | napuṁsaka | neuter noun | sustantivo neutro | n. |  | confirmed | draft | န နံ |
-| (တိ) | tiliṅga | adjective | adjetivo | adj. |  | confirmed | draft | တိ တ တ် ဘိ |
-| (ကြိ) | kriyā | verb | verbo | v. |  | confirmed | draft | ကြိ က ကြ ကြု ကြံ ကြ် ကကြ ကြို ကြီ ကြါ ကြပ် ကြရ ကိ ဤ ၍ |
-| (ကြိ၊ဝိ) | kriyā-visesana? | absolutive or infinitive (-tvā, -tvāna, -tuṁ, -ya) | absolutivo o infinitivo (-tvā, -tvāna, -tuṁ, -ya) | abs./inf. |  | provisional | draft | ကြိ၊ဝိ ကြ၊ဝိ ကြ်၊ဝိ ကြံ၊ဝိ ကြို၊ဝိ ကြါ၊ဝိ ကြီ၊ဝိ ကဝိ ၉ြိ၊ဝိ ကြိးဝိ ကြိ[ဝိ ကြု၊ဝိ ကြ၊ဒိ ကိ၊ဝိ ကြိ၊ဒိ ကြိုဝိ ကြိုငိ ကြုဝိ ကြ၊ပိ ကြါဝိ ကြိဝိ ကြ၊ဝ ကြ၊ ကြင် ကြံးဝိ ကြ်းဝိ ကြီးဝိ ကြိ၊ိ ိ၊ဝိ ကြဝိ |
-| (ကာ၊ကြိ) | kārita-kriyā | causative verb | verbo causativo | caus. v. |  | confirmed | draft | ကာ၊ကြို ကာ၊ကြ ကာ၊ကြ် |
-| (နာမ-ကြိ) | nāmadhātu? | denominative verb | verbo denominativo | denom. v. |  | provisional | draft | နာမ-ကြ |
-| (ဗျ) | abyaya | indeclinable | indeclinable | indecl. |  | confirmed | draft | ဗျ ဗ |
-| (ပု၊န) | pulliṅga-napuṁsaka | masculine or neuter noun | sustantivo masculino o neutro | m./n. |  | provisional | draft | ပုန ပု၊န ပန ပု၊နု ပုန၊ |
-| (ပု၊ထီ) | pulliṅga-itthiliṅga | masculine or feminine noun | sustantivo masculino o femenino | m./f. |  | provisional | draft | ပု၊ထီ ပုထ ပုသ ပု၊ထီ? |
-| (ပု၊တိ) | pulliṅga-tiliṅga | masculine noun or adjective | sustantivo masculino o adjetivo | m./adj. |  | provisional | draft | ပု၊တိ ပတိ |
-| (န၊ပု) | napuṁsaka-pulliṅga | neuter or masculine noun | sustantivo neutro o masculino | n./m. |  | provisional | draft | န၊ပု န၊၇ |
-| (န၊ထီ) | napuṁsaka-itthiliṅga | neuter or feminine noun | sustantivo neutro o femenino | n./f. |  | provisional | draft | န၊ထီ န၊ထံ န၊ထိ န၊သီ နု၊သီ န၊တီ |
-| (န၊တိ) | napuṁsaka-tiliṅga | neuter noun or adjective | sustantivo neutro o adjetivo | n./adj. |  | provisional | draft | န၊တိ နတိ |
-| (တိ၊န) | tiliṅga-napuṁsaka | adjective or neuter noun | adjetivo o sustantivo neutro | adj./n. |  | provisional | draft | တိ၊န |
-| (ပုံ-ဗဟု) | pulliṅga bahuvacana | masculine, plural only | masculino, solo en plural | m. pl. |  | provisional | draft | ပုဗဟု ပုံဗဟု ပုံ-ဗဟု ပု-ဗဟု |
-| (စတုတ္ထန္တ) | catutthanta | ending in the fourth case (meaning a guess) | terminado en el cuarto caso (significado supuesto) |  |  | provisional | draft | စတုတ္ထန္တ |
-| (တတိယန္တ-ဗျ) | tatiyanta abyaya? | indeclinable ending in the third case (not image-checked) | indeclinable terminado en el tercer caso (no comprobado en la imagen) |  |  | provisional | draft | တတိယန္တ-ဗျ |
-| (ကမ္မ၊ကြိ) | kamma-kriyā? | passive verb | verbo pasivo | pass. v. |  | provisional | draft | ကမ္မ၊ကြိ ကမ္မ၊ကြို ကမ္မ၊ကြ် ကမ္မကြို ကမ္မကြိ ကမ္ပကြိ ကမ္ပ၊ကြိ |
-| (ထီ၊န) | itthiliṅga-napuṁsaka | feminine or neuter noun | sustantivo femenino o neutro | f./n. |  | provisional | draft | ထီ၊န ထံ၊န |
-| (ထီ၊ပု) | itthiliṅga-pulliṅga | feminine or masculine noun | sustantivo femenino o masculino | f./m. |  | provisional | draft | ထီ၊ပု ထိ၊ပု ထိ၊ပူ |
-| (အ-လိင်) | aliṅga | without gender | sin género |  |  | provisional | draft | အ-လိင် အလိင် |
-| (ကာ၊ကြိ၊ဝိ) | kārita-kriyā-visesana? | causative absolutive | absolutivo causativo | caus. abs. |  | provisional | draft | ကာ၊ကြိ၊ဝိ ကာ၊ကြ၊ဝိ ကာ၊ကြိံဝိ ကာ၊ကြိဝိ ကာကြိဝိ ကာ၊ကြ၊ဝိ၊ ကာ၊ကြါ၊ဝိ ကာ၊ကြးဝိ |
-| (ကာ၊ကမ္မ၊ကြိ) | kārita-kamma-kriyā? | causative passive verb | verbo causativo pasivo | caus. pass. v. |  | provisional | draft | ကာ၊ကမ္မ၊ကြိ ကာ၊ကမ္မ၊ကြို ကာ၊ကမ္မ၊ကြ |
+| label | printed | Pāḷi | English | Spanish | abbr. en | abbr. es | status | es | source | OCR readings |
+|---|---|---|---|---|---|---|---|---|---|---|
+| (ပု) | ပုလ္လိင် | pulliṅga | masculine noun | sustantivo masculino | m. |  | confirmed | draft | vol. 1 p. 120, vol. 2 p. 14, vol. 4/1 p. 42, vol. 5 p. 48 | ပု ပ ၇ ပြ ပူ ပုံ ဖု ြု ၇ု ု ပ၇ ပြု မ ပု၊ ပု။ |
+| (ထီ) | ဣတ္ထိလိင် | itthiliṅga | feminine noun | sustantivo femenino | f. |  | confirmed | draft | vol. 1 p. 120, vol. 2 p. 14, vol. 4/1 p. 42, vol. 5 p. 48 | ထီ ထိ ထံ ထ တီ သီ ၊ထီ |
+| (န) | နပုလ္လိင် | napuṁsakaliṅga | neuter noun | sustantivo neutro | n. |  | confirmed | draft | vol. 1 p. 120, vol. 2 p. 14, vol. 4/1 p. 42, vol. 5 p. 48 | န နံ |
+| (တိ) | တိလိင်၊ လိင် ၃-ပါး | tiliṅga | adjective (all three genders) | adjetivo (los tres géneros) | adj. |  | confirmed | draft | vol. 1 p. 120, vol. 2 p. 14, vol. 4/1 p. 42; vol. 5 p. 48: "all three genders, i.e. an adjective (visesana)" | တိ တ တ် ဘိ |
+| (ကြိ) | ကြိယာပုဒ်၊ အာချာတ်ပုဒ် | kriyā(pada), ākhyāta(pada) | verb | verbo | v. |  | confirmed | draft | vol. 1 p. 120, vol. 2 p. 14, vol. 4/1 p. 42, vol. 5 p. 48 | ကြိ က ကြ ကြု ကြံ ကြ် ကကြ ကြို ကြီ ကြါ ကြပ် ကြရ ကိ ဤ ၍ |
+| (ကြိ၊ဝိ) | ကြိယာဝိသေသန | kriyāvisesana | verbal qualifier: absolutive, infinitive (-tvā, -tvāna, -tuṁ …) | calificativo verbal: absolutivo, infinitivo (-tvā, -tvāna, -tuṁ …) | abs./inf. |  | printed | draft | vol. 1 p. 120, vol. 2 p. 14, vol. 4/1 p. 42, vol. 5 p. 48 | ကြိ၊ဝိ ကြ၊ဝိ ကြ်၊ဝိ ကြံ၊ဝိ ကြို၊ဝိ ကြါ၊ဝိ ကြီ၊ဝိ ကဝိ ၉ြိ၊ဝိ ကြိးဝိ ကြိ[ဝိ ကြု၊ဝိ ကြ၊ဒိ ကိ၊ဝိ ကြိ၊ဒိ ကြိုဝိ ကြိုငိ ကြုဝိ ကြ၊ပိ ကြါဝိ ကြိဝိ ကြ၊ဝ ကြ၊ ကြင် ကြံးဝိ ကြ်းဝိ ကြီးဝိ ကြိ၊ိ ိ၊ဝိ ကြဝိ |
+| (ကာ၊ကြိ) | ကာရိတ်ကြိယာ (4/1: ကာရိုက်ကြိယာ) | kārita-kriyā | causative verb | verbo causativo | caus. v. |  | confirmed | draft | vol. 1 p. 120, vol. 2 p. 14, vol. 4/1 p. 42, vol. 5 p. 48; Angel, 25 Sep 2026 | ကာ၊ကြို ကာ၊ကြ ကာ၊ကြ် |
+| (နာမ-ကြိ) |  | nāmadhātu? | denominative verb | verbo denominativo | denom. v. |  | provisional | draft | not in the tables; image, vol. 1 p. 500 (aticirāyati) | နာမ-ကြ |
+| (ဗျ) | အဗျယပုဒ် | abyaya(pada) | indeclinable (upasagga, nipāta and the like) | indeclinable (upasagga, nipāta y semejantes) | indecl. |  | confirmed | draft | vol. 1 p. 120, vol. 2 p. 14, vol. 4/1 p. 42; vol. 5 p. 48: "upasagga, nipāta and other indeclinables"; Angel, 25 Sep 2026 | ဗျ ဗ |
+| (ပု၊န) |  | pulliṅga-napuṁsakaliṅga | masculine or neuter noun | sustantivo masculino o neutro | m./n. |  | printed | draft | vol. 5 p. 48: two genders mixed, (ပု၊န) | ပုန ပု၊န ပန ပု၊နု ပုန၊ |
+| (ပု၊ထီ) |  | pulliṅga-itthiliṅga | masculine or feminine noun | sustantivo masculino o femenino | m./f. |  | provisional | draft | by analogy with the combinations of vol. 5 p. 48 | ပု၊ထီ ပုထ ပုသ ပု၊ထီ? |
+| (ပု၊တိ) |  | pulliṅga-tiliṅga | masculine noun or adjective | sustantivo masculino o adjetivo | m./adj. |  | provisional | draft | by analogy; images, vol. 1 pp. 152, 228 | ပု၊တိ ပတိ |
+| (န၊ပု) |  | napuṁsakaliṅga-pulliṅga | neuter or masculine noun | sustantivo neutro o masculino | n./m. |  | provisional | draft | by analogy; not image-checked | န၊ပု န၊၇ |
+| (န၊ထီ) |  | napuṁsakaliṅga-itthiliṅga | neuter or feminine noun | sustantivo neutro o femenino | n./f. |  | provisional | draft | by analogy; image, vol. 1 p. 159 | န၊ထီ န၊ထံ န၊ထိ န၊သီ နု၊သီ န၊တီ |
+| (န၊တိ) |  | napuṁsakaliṅga-tiliṅga | neuter noun or adjective | sustantivo neutro o adjetivo | n./adj. |  | provisional | draft | by analogy; images, vol. 1 pp. 152, 228 | န၊တိ နတိ |
+| (တိ၊န) |  | tiliṅga-napuṁsakaliṅga | adjective or neuter noun | adjetivo o sustantivo neutro | adj./n. |  | provisional | draft | by analogy; images, vol. 1 pp. 152, 228 | တိ၊န |
+| (ပုံ-ဗဟု) |  | pulliṅga bahuvacana | masculine, plural only | masculino, solo en plural | m. pl. |  | printed | draft | ဗဟု = ဗဟုဝုစ် bahuvacana, vol. 4/1 p. 42; image, vol. 1 p. 272 | ပုဗဟု ပုံဗဟု ပုံ-ဗဟု ပု-ဗဟု |
+| (စတုတ္ထန္တ) |  | catutthanta | ending in the fourth case (dative) | terminado en el cuarto caso (dativo) |  |  | provisional | draft | စတုတ္ထီ = catutthī vibhatti, vol. 4/1 p. 42; image, vol. 1 p. 407 (aññā) | စတုတ္ထန္တ |
+| (တတိယန္တ-ဗျ) |  | tatiyanta abyaya? | indeclinable ending in the third case (instrumental) | indeclinable terminado en el tercer caso (instrumental) |  |  | provisional | draft | တတိယာ = tatiyā vibhatti, vol. 4/1 p. 42; not image-checked | တတိယန္တ-ဗျ |
+| (ကမ္မ၊ကြိ) | ကံဟောကြိယာ | kammavācaka-kriyā? | passive verb | verbo pasivo | pass. v. |  | printed | draft | vol. 2 p. 14, vol. 4/1 p. 42, vol. 5 p. 48 (the Pāḷi term is ours, for Angel to confirm) | ကမ္မ၊ကြိ ကမ္မ၊ကြို ကမ္မ၊ကြ် ကမ္မကြို ကမ္မကြိ ကမ္ပကြိ ကမ္ပ၊ကြိ |
+| (ထီ၊န) |  | itthiliṅga-napuṁsakaliṅga | feminine or neuter noun | sustantivo femenino o neutro | f./n. |  | printed | draft | vol. 5 p. 48: two genders mixed, (ထီ၊န) | ထီ၊န ထံ၊န |
+| (ထီ၊ပု) |  | itthiliṅga-pulliṅga | feminine or masculine noun | sustantivo femenino o masculino | f./m. |  | printed | draft | vol. 5 p. 48: two genders mixed, (ထီ၊ပု) | ထီ၊ပု ထိ၊ပု ထိ၊ပူ |
+| (အ-လိင်) |  | aliṅga | without gender | sin género |  |  | provisional | draft | printed by the typed witness 20 times; vol. 5 pp. 23–25 discuss words whose gender does not show (OCR only) | အ-လိင် အလိင် |
+| (ကာ၊ကြိ၊ဝိ) |  | kārita-kriyāvisesana? | causative absolutive | absolutivo causativo | caus. abs. |  | provisional | draft | composed of (ကာ၊ကြိ) and (ကြိ၊ဝိ); not in the tables; vol. 6 p. 852 (image) | ကာ၊ကြိ၊ဝိ ကာ၊ကြ၊ဝိ ကာ၊ကြိံဝိ ကာ၊ကြိဝိ ကာကြိဝိ ကာ၊ကြ၊ဝိ၊ ကာ၊ကြါ၊ဝိ ကာ၊ကြးဝိ |
+| (ကာ၊ကမ္မ၊ကြိ) |  | kārita-kammavācaka-kriyā? | causative passive verb | verbo causativo pasivo | caus. pass. v. |  | printed | draft | composed of (ကာ၊ကြိ) and (ကမ္မ၊ကြိ), both printed; not itself in the tables | ကာ၊ကမ္မ၊ကြိ ကာ၊ကမ္မ၊ကြို ကာ၊ကမ္မ၊ကြ |
 <!-- labels:end -->
 
 ## 1. The labels vol. 1 prints

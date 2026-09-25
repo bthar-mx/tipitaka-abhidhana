@@ -9,12 +9,64 @@ the dictionary's own, not our guesses.*
 | book | PDF page | printed | heading | contents |
 |---|---:|---|---|---|
 | 01 | 120 | နိဒါန်း p. ၁၁၇ | **သင်္ကေတများ** | 10 abbreviations (below), after a table of special letters |
-| 02 | 14 | [ည] | သင်္ကေတများ | the vol. 1 list plus ကမ္မ၊ကြိ and ဗု၊သံ (read from OCR only, not yet from the image) |
+| 02 | 14 | [ည] | **သင်္ကေတများ** | 12 abbreviations: the vol. 1 list plus ကမ္မ၊ကြိ and ဗု၊သံ (image-checked 25 Sep, below) |
+| 05 | 48 | [ဃီ] | **( ) လက်သည်းကွင်း** | prose: what each label in the brackets means (image-checked 25 Sep, below) |
 | 4a | 42 | [ဂါး] | **သင်္ကေတအချုပ်** ("summary of abbreviations") | the fullest list: adds number and the cases (below) |
 
-Other front-matter pages with many label words (vol. 4a pp. 18–36, vol. 5 pp. 23–25 and 46–48,
-vol. 15 pp. 17–22) were found by keyword and are not yet read; they may be introductions that
-explain the labels in prose.
+The other front-matter pages found by keyword were read on 25 Sep (vol. 5 p. 48 and vol. 2 p. 14
+on the image; the rest in their OCR text only, so treat their description as approximate):
+
+| pages | what they are |
+|---|---|
+| vol. 4/1 pp. 18–29 | introduction: why a Pāḷi grammar and dictionary are needed, the Sanskrit grammars and dictionaries (Pāṇini) behind them. General; no label explained. |
+| vol. 4/1 pp. 31–36, vol. 15 pp. 17–22 | **ကျမ်းမည်သင်္ကေတ**: the order in which texts are cited (canon, then aṭṭhakathā, then ṭīkā) and the table of **citation abbreviations** (ဝိ၊ ၁ for the Pārājika, ဒီ၊ဋီ၊ ၁, သီ၊ဋီ၊ …). Not labels, but the key for resolving citations. |
+| vol. 5 pp. 23–26 | why a headword's gender (liṅga) matters: five ways gender and meaning change together or apart; p. 25 lists words whose gender does not show (pronouns, numerals, -thā indeclinables, -tave/-tuṁ/-tuna/-tvāna/-tvā forms, upasagga, nipāta). Background for (ဗျ), (ကြိ၊ဝိ) and perhaps (အ-လိင်). |
+| vol. 5 pp. 46–47 | how headwords are chosen: nouns under their stem; verbs under the 3rd person singular in -ti (active) and -te; passives (ကံဟောပုဒ်, kammarūpa) likewise, e.g. ကာမိယန္တိ (ကမ္မ၊ကြိ); forms used only in the plural. |
+| vol. 5 p. 48 | the labels, in prose (below), and the other uses of round brackets. |
+
+## Vol. 2, PDF p. 14 (image-checked 25 Sep 2026)
+
+Headed **ဤကျမ်း၌ အသုံးပြုသော မြန်မာသက္ကတ စာလုံးများမှ ထူးသော စာလုံးများ** (special letters) and then
+**သင်္ကေတများ**:
+
+| abbreviation | printed expansion |
+|---|---|
+| ပု | ပုလ္လိင် |
+| ထီ | ဣတ္ထိလိင် |
+| န | နပုလ္လိင် |
+| တိ | တိလိင်၊ လိင် ၃-ပါး |
+| ကြိ | ကြိယာပုဒ်၊ အာချာတ်ပုဒ် |
+| ကမ္မ၊ကြိ | ကံဟောကြိယာ |
+| ကာ၊ကြိ | ကာရိတ်ကြိယာ |
+| ကြိ၊ဝိ | ကြိယာဝိသေသန |
+| ဗျ | အဗျယပုဒ် |
+| သံ | သက္ကတ |
+| ဗု၊သံ | ဗုဒ္ဓဘာသာသက္ကတ (Buddhist Sanskrit) |
+| ပြာ | ပြာကြိုဋ် |
+
+This confirms the OCR reading of 25 Sep: the vol. 1 list plus (ကမ္မ၊ကြိ) and ဗု၊သံ.
+
+## Vol. 5, PDF p. 48 (printed [ဃီ]), "( ) လက်သည်းကွင်း" (image-checked 25 Sep 2026)
+
+The page opens by saying that kita verbal forms ending in -māna, -anta, -tuṁ, -tuna, -tvāna, -tvā
+and the like are all entered as headwords of their own. Then, in substance (not a translation for
+publication):
+
+> The ( ) after a headword shows: if it is a noun (နာမ်ပုဒ်), masculine (ပု), feminine (ထီ), neuter
+> (န); if two genders are mixed, (ထီ၊ပု) (ပု၊န) (ထီ၊န); if all three genders, that is an
+> adjective (ဝိသေသနပုဒ်), (တိ). If it is a verb (ကြိယာပုဒ်), (ကြိ); a causative verb
+> (ကာရိုက်ကြိယာ), (ကာ၊ကြိ); active (ကတ္တားဟော), (ကြိ); passive (ကံဟော), (ကမ္မ၊ကြိ); a verbal
+> qualifier (ကြိယာဝိသေသနပုဒ်), (ကြိ၊ဝိ); an indeclinable noun (အဗျယနာမ်ပုဒ်) such as an upasagga
+> or nipāta, (ဗျ).
+
+The same round brackets have seven other uses, listed (က)–(ဆ) with examples: a word of the same
+meaning; words added to complete the sense; a note; the gloss taken; the text a word occurs in; the
+work cited; a differing view. **So not every ( ) after a headword is a label**, which the label map
+already assumes (it maps only known readings).
+
+What this adds to `docs/labels.md` §0: (ထီ၊ပု), (ပု၊န), (ထီ၊န) are printed as combinations of two
+genders; (ကြိ) is the active verb as against (ကမ္မ၊ကြိ), the passive; (ဗျ) includes upasagga and
+nipāta.
 
 ## Vol. 1, PDF p. 120 (image-checked)
 
@@ -64,7 +116,7 @@ The two columns on this page are set with the expansion slightly above its abbre
 above follow the printed order. The abbreviation for the 5th case is a ligature not fully legible
 at this resolution.
 
-## What this settles in `docs/labels.md`
+## What this settles in `docs/labels.md` (now applied there, §0)
 
 - (ကြိ၊ဝိ) = **kriyāvisesana**: the guess was right, now confirmed by the print.
 - (ကာ၊ကြိ) = **kārita-kriyā** and (ဗျ) = **abyaya(pada)**: printed, and confirmed by Angel.

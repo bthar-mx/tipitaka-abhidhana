@@ -51,6 +51,9 @@ for b in "${BOOKS[@]}"; do
     say "$b: no scanned images found in $pdf; not a scan, skipped (needs its own treatment)"
     continue
   fi
+  # Vol. 25 is the exception to "render at native": at its 300 ppi, 16 pages read 57.8% of their
+  # headwords; at 200 dpi, 88.3% (brief §5 and §29). Measured per book, never assumed.
+  if [ "$b" = "25" ]; then dpi=200; fi
   say "$b: $n pages, scan ppi ${ppis[*]} -> --dpi $dpi"
 
   t0=$(date +%s)
