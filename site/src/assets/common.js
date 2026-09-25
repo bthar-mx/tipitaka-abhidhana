@@ -6,7 +6,8 @@ const IMG = 'https://abhidhana-img.buddha-dhamma.net/';
 
 const T = {
   en: {
-    about: 'About', home: 'Volumes',
+    about: 'About', home: 'Volumes', intro: 'Introduction', v_tr: 'Translation', v_my: 'Burmese original', v_both: 'Side by side',
+    abbr_ph: 'Search the abbreviations: ဒီ, dī, Dīgha…', abbr_n: (k, n) => k === n ? `${n} abbreviations` : `${k} of ${n} abbreviations`, to_dark: 'Switch to dark mode', to_light: 'Switch to light mode',
     search_ph: 'Search all volumes: အကုသလ or akusala',
     search_loading: 'Loading the headword list…',
     search_fail: 'The headword list did not load. Reload the page to try again.',
@@ -37,7 +38,8 @@ const T = {
     notice: '<strong>Unproofed OCR.</strong> Each headword comes from the dictionary’s index and is spelled as the index spells it. Everything after it (label, analysis, definition, citations) is machine-read Burmese and contains errors. Check the page image before quoting an article.',
   },
   es: {
-    about: 'Acerca de', home: 'Volúmenes',
+    about: 'Acerca de', home: 'Volúmenes', intro: 'Introducción', v_tr: 'Traducción', v_my: 'Original birmano', v_both: 'En paralelo',
+    abbr_ph: 'Buscar en las abreviaturas: ဒီ, dī, Dīgha…', abbr_n: (k, n) => k === n ? `${n} abreviaturas` : `${k} de ${n} abreviaturas`, to_dark: 'Cambiar al modo oscuro', to_light: 'Cambiar al modo claro',
     search_ph: 'Buscar en todos los volúmenes: အကုသလ o akusala',
     search_loading: 'Cargando la lista de entradas…',
     search_fail: 'La lista de entradas no se cargó. Recargue la página para intentarlo de nuevo.',
@@ -91,6 +93,24 @@ function applyLang() {
 }
 function setLang(l) { LANG = l; try { localStorage.setItem('lang', l); } catch (e) {} applyLang(); }
 document.addEventListener('click', e => { const b = e.target.closest('.lang button'); if (b) setLang(b.dataset.lang); });
+
+// --- light / dark: the system's choice until the button is used, then the viewer's (remembered)
+const darkMQ = window.matchMedia ? matchMedia('(prefers-color-scheme: dark)') : null;
+const theme = () => document.documentElement.dataset.theme || (darkMQ && darkMQ.matches ? 'dark' : 'light');
+function themeButton() {
+  document.querySelectorAll('button.theme').forEach(b => {
+    const l = t(theme() === 'dark' ? 'to_light' : 'to_dark'); b.title = l; b.setAttribute('aria-label', l);
+  });
+}
+document.addEventListener('click', e => {
+  if (!e.target.closest('button.theme')) return;
+  const n = theme() === 'dark' ? 'light' : 'dark';
+  document.documentElement.dataset.theme = n;
+  try { localStorage.setItem('theme', n); } catch (err) {}
+  themeButton();
+});
+if (darkMQ && darkMQ.addEventListener) darkMQ.addEventListener('change', themeButton);
+langHooks.push(themeButton);
 
 // --- volumes and search ------------------------------------------------------------------
 let VOLS = null, VOLS_P = null;

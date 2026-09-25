@@ -14,6 +14,7 @@ only our OCR and what the project adds (structure, labels, romanisation, attesta
 
 Output, site/dist/ (gitignored):
     everything in site/src/, with <!--VOLUMES--> in index.html filled in
+    introduction/index.html   <!--INTRO--> filled from docs/introduction/ (tools/abhidhana_intro.py)
     about/index.html      <!--HISTORY-EN--> / <!--HISTORY-ES--> filled from docs/history.md, but only
                           when its first lines hold `<!-- site: publish -->` (the romanised names
                           need review first); `<!-- site: draft -->` leaves them empty, unless the
@@ -137,6 +138,9 @@ def main():
     for lang in ('en', 'es'):
         a = a.replace(f'<!--HISTORY-{lang.upper()}-->', history_html(lang))
     about.write_text(a, encoding='utf-8')
+    from abhidhana_intro import fill as intro_fill   # docs/introduction/ -> /introduction/
+    ip = OUT / 'introduction/index.html'
+    ip.write_text(intro_fill(ip.read_text(encoding='utf-8')), encoding='utf-8')
     (OUT / 'data').mkdir()
     search = []; lab_n = {}
     for v in vols:

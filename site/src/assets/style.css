@@ -41,6 +41,8 @@ a{color:var(--accent)}
 .lang{display:inline-flex;border:1px solid var(--rule);border-radius:6px;overflow:hidden}
 .lang button{border:0;border-radius:0;padding:4px 9px;font:500 13px var(--ui);background:var(--surface);color:var(--muted);cursor:pointer}
 .lang button[aria-pressed="true"]{background:var(--accent);color:var(--surface)}
+.theme{display:inline-flex;align-items:center;justify-content:center;margin-left:8px;width:30px;height:28px;padding:0;border:1px solid var(--rule);border-radius:6px;background:var(--surface);color:var(--muted);cursor:pointer;vertical-align:middle}
+.theme:hover{color:var(--ink)}
 
 /* search */
 .searchbox{display:flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--rule);border-radius:6px;padding:0 10px;flex:1 1 280px}
@@ -174,3 +176,53 @@ html[data-lang="es"] [lang="en"].tr, html[data-lang="en"] [lang="es"].tr{display
 
 footer.site-foot{margin-top:36px;padding-top:14px;border-top:1px solid var(--rule);font-size:12.5px;color:var(--muted);max-width:90ch}
 @media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+
+/* --- the Introduction page (tools/abhidhana_intro.py, assets/intro.js) --- */
+.site nav a + a{margin-left:12px}
+.intro h1 .my{font-size:20px;color:var(--muted);font-weight:400;margin-left:6px}
+.viewsw{display:inline-flex;border:1px solid var(--rule);border-radius:6px;overflow:hidden;margin:6px 0 14px;flex-wrap:wrap}
+.viewsw button{border:0;padding:6px 12px;font:500 13.5px var(--ui);background:var(--surface);color:var(--muted);cursor:pointer}
+.viewsw button[aria-pressed="true"]{background:var(--accent);color:var(--surface)}
+.draft-banner{background:var(--warn-soft);color:var(--ink);border-left:4px solid var(--warn);padding:10px 14px;border-radius:4px;margin:4px 0 18px;font-size:14.5px}
+.pgdemo,.pg{font:500 12px var(--mono);white-space:nowrap}
+a.pg{text-decoration:none;border:1px solid var(--rule);border-radius:4px;padding:0 5px;background:var(--surface)}
+a.pg:hover{border-color:var(--accent)}
+.pgline{margin:14px 0 4px}
+.toc{border:1px solid var(--rule);border-radius:6px;background:var(--surface);padding:6px 18px 10px;margin:0 0 24px}
+.toc h2{margin:10px 0 6px}
+.toc ol,.toc ul{margin:4px 0;padding-left:22px}
+.toc li{margin:2px 0}
+.toc ul li{font-size:14.5px}
+.toc .note,.toc-extra{margin:8px 0 2px}
+.chap{margin:34px 0 10px;scroll-margin-top:12px}
+.chap-title{font:600 21px/1.35 var(--ui);margin:8px 0 6px}
+.chap-meta{color:var(--muted);font-size:14px;margin-bottom:12px}
+.chips{margin:6px 0}
+.chip{display:inline-block;font:500 12.5px var(--ui);padding:2px 8px;border-radius:10px;margin:2px 6px 2px 0;background:var(--accent-soft);color:var(--accent)}
+.chip.st-drafted{background:var(--warn-soft);color:var(--warn)}
+.chip.st-reviewed,.chip.st-corrected{background:var(--ok-soft);color:var(--ok)}
+.chip.st-pending{background:transparent;color:var(--muted);border:1px dashed var(--rule)}
+.chip-lab{font:500 12.5px var(--mono);color:var(--muted);margin-right:4px}
+.intro h3{font:600 16px/1.4 var(--ui);margin:22px 0 6px;scroll-margin-top:12px}
+.intro blockquote{margin:8px 0 8px 14px;padding-left:12px;border-left:2px solid var(--rule);color:var(--muted);font-size:14.5px}
+.my-text,.my-text p,.my-text li,.my-text blockquote{font-family:var(--my);font-size:16.5px;line-height:1.95}
+.my-text h3{font-family:var(--my);font-size:17px;line-height:1.8}
+.chap-title .my,.toc .my{font-family:var(--my)}
+.notes{margin:18px 0;border:1px solid var(--rule);border-radius:6px;padding:6px 14px;background:var(--surface)}
+.notes summary{cursor:pointer;font:500 14px var(--ui);color:var(--muted)}
+.notes p,.notes li{font-size:14.5px}
+.pair-row{display:grid;grid-template-columns:1fr 1fr;gap:28px;border-top:1px solid var(--rule);padding:6px 0}
+.pair-row:first-child{border-top:0}
+@media (max-width:760px){.pair-row{grid-template-columns:1fr;gap:4px}.pair-row>div:first-child{border-bottom:1px dotted var(--rule);padding-bottom:6px}}
+/* which copy each view shows */
+.intro[data-view="tr"] .s-my,.intro[data-view="tr"] .s-pair,.intro[data-view="tr"] .t-my,.intro[data-view="tr"] .s-tm,
+.intro[data-view="my"] .s-tr,.intro[data-view="my"] .s-pair,.intro[data-view="my"] .t-tr,.intro[data-view="my"] .s-tt,
+.intro[data-view="both"] .s-tr,.intro[data-view="both"] .s-my,.intro[data-view="both"] .t-my,.intro[data-view="both"] .s-tm{display:none}
+.intro[data-view="tr"] .s-mycol{display:none}
+.abbr-search{margin:4px 0 2px;max-width:520px}
+.abbr-wrap{overflow-x:auto}
+table.abbr{font-size:14px;width:100%}
+table.abbr td.my{font-family:var(--my);font-size:16px;white-space:nowrap}
+table.abbr td.ro{font-family:var(--roman);white-space:nowrap}
+table.abbr td.s-mycol{white-space:normal;min-width:16em}
+@media (max-width:760px){table.abbr td.s-mycol{min-width:11em}table.abbr{font-size:13px}}
