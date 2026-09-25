@@ -2,7 +2,7 @@
 
 *Written 21 September 2026, at the end of the volume-25 pilot; §10–12 revised 24 September
 2026, after volume 1 was done end to end and the repository was made public; §18–26 added
-25 September 2026 (spelling folds, the witness join, vols. 6–9, re-cutting gutters, vol. 14/2's text layer, the batch of vols. 10–22). Everything in
+25 September 2026 (spelling folds, the witness join, vols. 6–9, re-cutting gutters, vol. 14/2's text layer, the batch of vols. 10–22); §27 the same evening (vols. 23, 24 and 14/2 finished, the index's page errors applied, book 21 explained, the Reader in binary). Everything in
 this file was measured. Do not re-derive a figure it carries; if a new one is needed,
 measure it rather than estimating.*
 
@@ -64,9 +64,9 @@ before a pixel is read**. This is the asset the Nissayas project does not have, 
 changes what OCR has to achieve: it does not have to read the headword correctly, only well
 enough to locate it.
 
-**One anomaly, unexplained**: book 21's highest index page plus its `start_page` is 990
-against 925 PDF pages. Every other book's index fits inside its PDF. Do not use book 21's
-offset until this is understood.
+**Book 21's anomaly, explained 25 Sep 2026 (§27)**: its highest index page plus its
+`start_page` is 990 against 925 PDF pages, but only because ten headwords carry p. 962 for 692.
+The offset holds; `ID_PAGE_FIX` corrects the ten.
 
 **A second check exists and has not been used**: each volume's title page states its own
 entry count. Vol. 4 part 3 says 5,163; the index holds 5,230 for that book. The 67
@@ -190,13 +190,13 @@ distribution, and IEBH will not treat the licence as a blocker. The project is n
 
 ## 11. What has not been done (revised 24 September 2026)
 
-- Vol. 25 pilot is still whole-page. Re-run with `--columns` at its native resolution.
+- Vol. 25 pilot is still whole-page. Re-run with `--columns` at its native resolution (300 ppi); the pilot's pages were moved to `tmp/ocr-25-pilot-pages` on 25 Sep (§27).
 - ~~Labels are not normalised; the unlocated 13% not recovered.~~ Done 24 Sep (§12, `docs/labels.md`).
 - ~~The typed PCED copy is not yet converted from Zawgyi.~~ Converted 25 Sep (§14, `docs/witness.md`); joined to the articles 25 Sep (§19).
 - ~~Vol. 3 is not yet spot-checked; the Reader does not show vols. 2–3.~~ Done 25 Sep (§13).
 - Citations are parsed but not resolved against OSBCT.
 - No Spanish exists beyond the drafted sample in `docs/spanish-method.md`.
-- Book 21's offset and the per-volume entry counts are unchecked.
+- ~~Book 21's offset~~ explained 25 Sep (§27). The per-volume entry counts are unchecked.
 - Nothing whatever has been reviewed by a Burmese reader.
 
 ## 12. Volume 1, end to end (24 September 2026)
@@ -674,5 +674,86 @@ rest (every placed row right, every label as the witness). No wrong placement wa
 - **Vol. 22** prints ညာ and ာ where the index writes ဉာ and ါ on whole runs (pp. 171–175, 828–837):
   the folds recover most (90.4% with them, against 88.5%).
 - **The Reader's data is at 63.5 MB** of the 64 MB an artifact version may hold. Vols. 23 and 24
-  will not fit as base64 text; they need a binary container or a lighter record (NEXT-SESSION).
+  will not fit as base64 text; they need a binary container or a lighter record (NEXT-SESSION). *Done in §27.*
+
+## 27. After the batch: vols. 23, 24, 14/2; the index's page errors; book 21 (25 September 2026, evening)
+
+**Vols. 23 and 24** (reports in `ocr/23/`, `ocr/24/`; OCR by the batch, 12:58–13:26):
+
+| | vol. 23 | vol. 24 |
+|---|---:|---:|
+| PDF pages / index headwords | 780 / 7,182 | 718 / 7,088 |
+| dpi (native) | **323** | 72 |
+| headwords verbatim, either pass (with the folds) | 91.0% (91.2%) | 91.5% (91.9%) |
+| **in printed order, column pass** | **83.2%** | **84.1%** |
+| pages with every headword / ≥ 80% / < 50% | 53.8% / 88.1% / 10 | 49.5% / 88.4% / 4 |
+| articles located | **97.7%** | 96.4% |
+| normalised label + body | **92.7%** | 90.0% |
+| compound analysis recovered | 59.3% | 72.8% |
+
+Vol. 23 is the only high-resolution scan in the set (323 ppi, A4). It did not raise recall above
+the 72-dpi books, and cost no more time (14 minutes for 780 pages); its in-order share and its
+located share are the best of the scanned books, but whether that is resolution or print is not
+separated. Its analysis recovery (59.3%, like 14/3's 59.6%) is low and not yet looked into. No
+typed witness covers either book.
+
+Spot checks, on the image (two pages each, a middle page and the worst): vol. 23 pp. 400 and 100,
+16 of 18 at the right entry, 2 unlocated, none wrong; vol. 24 pp. 360 and 540, 8 of 9 right on the
+page and **1 wrong** (သုတ္တန္တိကဒေသနာ, placed at a quotation line inside its own article: its label
+and definition are lost), plus the eight misfiled headwords below. Both worst pages were index
+errors, not OCR.
+
+**Vol. 14/2 (book 14b)**, articles on the text-layer records of §25: located **98.2%**, label + body
+**97.6%**, analysis 97.3%, the best of any book. One page checked in the text (p. 600): 13 of 13.
+The text was extracted on 25 Sep (§25) and did not need extracting again.
+
+**The index's page errors, applied** (`docs/index-errata.md` lists them all, with the spelling
+errors and the vol. 13 / vol. 15 mix-up):
+- `PAGE_FIX['22']`: index pp. 880–894 read one PDF page back. The scan lacks a printed page before
+  PDF p. 920; its own headwords (11 on the index's list for PDF 919) stay unlocated.
+- `ID_PAGE_FIX`: six runs in 14/3, four in 22, five in 23, two in 24 (one of them, ids
+  208187–208194, found by the vol. 24 spot check: p. 540 prints only the long article သုမန²), and
+  book 21's ten. Weaker candidates (14/3 pp. 605, 976; 18 p. 815; 10 p. 219) wait for an image check.
+- Gains in located: 14/3 91.1 → 91.7%, 22 95.1 → 96.4%, 23 97.0 → 97.7%, 24 96.2 → 96.4%.
+- `abhidhana_ocr.py`'s `index()` now applies the same corrections, so a page is scored against the
+  headwords printed on it. Pages already on disk keep their old scores until re-scored.
+
+**The label (ကာ၊ကမ္မ၊ကြိ)**, causative passive, is in the label map (readings from vols. 8–24;
+clean in 14b). It now normalises 50 rows across 15 books; label + body rose by 0.1 point in vols.
+8, 12, 13, 14/1, 18, 19.
+
+**Book 21 explained.** Its index is not offset. Ten headwords (ids 170346–170355,
+သတ္ထုဝဏ္ဏာဘတ … သတ္ထုဝိဿာသိက) carry p. **962** for **692**, and index p. 692 is otherwise empty; with
+them corrected the highest page is 896, PDF p. 924 of 925. Checked on the image: PDF p. 720 prints
+၆၉၂ with exactly those ten headwords, and PDF p. 924 prints ၈၉၆ with the index's last seven. Book
+21's scan is 70–72 ppi. `tools/run_volumes.sh` no longer skips it.
+
+**Vol. 25**: the pilot's page records (484, whole-page, 200 dpi) were moved from `ocr/25/pages/` to
+`tmp/ocr-25-pilot-pages/`, so the OCR starts clean. The scan is 300 ppi (three pages sampled).
+`ocr/25/pages-container.tar.gz` also unpacks into `pages/`: do not unpack it there.
+
+**Every book re-run** (articles, romanisation) with the above, then the PCED and Pn Daza witness
+joins for books 01–19 (figures in `docs/witness-join.md`, `docs/witness-pndaza.md`):
+
+| | 01 | 02 | 03 | 4a | 4b | 4c | 05 | 06 | 07 | 08 | 09 | 10 | 11 | 12 |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| located | 94.4 | 93.6 | 94.8 | 92.2 | 96.7 | 92.5 | 93.6 | 92.0 | 93.1 | 92.1 | 92.5 | 90.8 | 93.0 | 96.9 |
+| label + body | 89.0 | 88.4 | 89.6 | 85.0 | 91.1 | 86.8 | 87.7 | 86.3 | 87.3 | 87.8 | 86.0 | 84.3 | 86.2 | 91.8 |
+
+| | 13 | 14/1 | 14/2 | 14/3 | 15 | 16 | 17 | 18 | 19 | 20 | 22 | 23 | 24 |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| located | 89.5 | 96.6 | 98.2 | 91.7 | 93.4 | 92.8 | 93.4 | 92.4 | 96.3 | 95.7 | 96.4 | 97.7 | 96.4 |
+| label + body | 83.8 | 92.4 | 97.6 | 85.4 | 87.6 | 86.6 | 84.9 | 84.5 | 89.7 | 87.1 | 90.2 | 92.7 | 90.0 |
+
+**All 27 books together: 208,979 index rows** (every row of the index but books 21 and 25),
+**94.0% located, 88.0% with label + body.** Vol. 13's 232 rows of vol. 15 headwords are among the
+unlocated.
+
+**The Reader** now has all 27 books. Its data moved from base64 text (`.gz.txt`) to gzip bytes
+published under a `.wasm` name, which the artifact serves as `application/wasm`: 52.5 MB for the
+27 books and the search index, against 63.5 MB for 24 as base64. The page reads the bytes with
+`fetch().arrayBuffer()` and inflates them with `DecompressionStream`; if a server ever sends them
+already inflated, it parses them as JSON directly. Verified in Node on the published bytes; not
+yet opened in a browser by this session (the Cowork browser is not signed in to claude.ai).
+Books 21 and 25 will add about 4 MB.
 

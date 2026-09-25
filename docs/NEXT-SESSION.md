@@ -1,9 +1,9 @@
-# Abhidhāna — handover, 25 September 2026 (after the batch of vols. 10–22)
+# Abhidhāna — handover, 25 September 2026, evening (after vols. 23, 24, 14/2)
 
-*Vols. 1–20 and 22 (vol. 4 in three parts, 14 in three) — all but 14/2's articles, 21, 23, 24, 25 — are digitised end to end, spot-checked and in the Reader. Read
+*27 books — vols. 1–20 and 22–24, vol. 4 in three parts and 14 in three — are digitised end to end, spot-checked and in the Reader: 208,979 index rows, 94.0% located, 88.0% with label + body. Books 21 and 25 remain; both are ready to OCR. Read
 `abhidhana-project-brief.md` first: §12 covers vol. 1, §13 vols. 2–3, §14–17 the witness and vols.
 4/1–5, §18 the spelling folds and the homonym and misfiled-headword fixes, §19 the witness join, §20
-vol. 6, §21 vol. 7, §22 vol. 8 and the gutter failures, §23 vol. 9, §24 the re-cut tool, §25 vol. 14/2's text layer, §26 the batch (vols. 10–22). Every figure is there. `docs/labels.md` holds the label map, `docs/witness.md` and
+vol. 6, §21 vol. 7, §22 vol. 8 and the gutter failures, §23 vol. 9, §24 the re-cut tool, §25 vol. 14/2's text layer, §26 the batch (vols. 10–22), §27 vols. 23, 24, 14/2, the index's page errors, book 21 and the Reader in binary. Every figure is there. `docs/labels.md` holds the label map, `docs/index-errata.md` the index's errors, `docs/witness.md` and
 `docs/witness-join.md` the typed witness.*
 
 ## Every session
@@ -17,68 +17,59 @@ vol. 6, §21 vol. 7, §22 vol. 8 and the gutter failures, §23 vol. 9, §24 the 
   `abhidhana_articles.py NN` and then `abhidhana_romanise.py NN`, always in that order; then
   `abhidhana_reader_data.py NN` and `abhidhana_witness_join.py` with every witnessed book.
 - **In the Cowork VM, a background job dies when the call returns**, and `pkill -f` with a pattern
-  that appears in the command line kills the calling shell. Run the article step for up to four
-  books in parallel inside one call (about 55 s a book).
-- **The Reader's data are `reader/*.gz.txt`** (gzip, base64), not `.json`: republish those.
+  that appears in the command line kills the calling shell. Run the article step for up to five
+  books in parallel inside one call (about 45–65 s for five).
+- **The Reader's data are `reader/*.wasm`** (gzip bytes, served as application/wasm), not `.json`
+  or the old `.gz.txt`: republish those with `reader/index.html`. `reader/*.wasm` is not yet in
+  `.gitignore` (Angel's file): don't commit them.
+- **Pipeline order per book**: `abhidhana_articles.py NN`, `abhidhana_romanise.py NN`, then
+  `abhidhana_reader_data.py NN [NN ...]` (it now takes several books) and the witness joins.
+  In a fresh Cowork VM, `pip install --user aksharamukha python-myanmar pymupdf` first.
 
 ## State
 
-| | vols. 1–20, 22 | vols. 23, 24 | 14/2 | 21, 25 |
-|---|---|---|---|---|
-| OCR, articles, romanisation | done | in the batch | text layer extracted; articles after the batch | not run |
-| reports, spot check, Reader | done (10–22 on 25 Sep, one-page spot checks) | after the batch | after | — |
-| page records in `sources-v1` | to upload: 10–20, 14c, 22 (`release/ocr-NN-pages.tar.gz`) | — | uploaded | — |
-| GitHub issues | close 10–20, 14c, 22 after this commit | open | open | open |
+| | 27 books (1–20, 22–24 with 4/1–4/3, 14/1–14/3) | 21 | 25 |
+|---|---|---|---|
+| OCR / text, articles, romanisation | done (14/2 from its text layer) | ready: index explained (brief §27) | ready: pilot moved aside |
+| reports, spot check, Reader | done | — | — |
+| page records in `sources-v1` | to upload: 10–20, 14c, 22, 23, 24 (`release/ocr-NN-pages.tar.gz`) | — | — |
+| GitHub issues | close 10–20, 14c, 22, 23, 24, 14b | open | open |
 
-`tmp/_to_delete/` holds nine `*.json.gz` files from a first try at the Reader's data; the VM
-cannot delete. Delete the folder by hand (`tmp/` is gitignored).
+`tmp/_to_delete/` holds nine `*.json.gz` files from a first try at the Reader's data; delete it by
+hand (`tmp/` is gitignored). `tmp/ocr-25-pilot-pages/` is the old vol. 25 pilot; keep or delete.
 
 ## Next, in order
 
-00. **After the batch** (23 and 24 still running at 13:14): reports, a spot check and the Reader for
-   23 and 24. **The Reader is at 63.5 MB of 64**: before adding them, move its data out of base64
-   text (e.g. gzip bytes in a served binary type, or drop the romanised citations `ci`, which can be
-   made in the page), and measure. Then the page-offset corrections of brief §26: vol. 22 pp. 920–933
-   one page back (a page is missing from the scan), 14/3's eight runs and the small ones in 10, 18, 22
-   (`ID_PAGE_FIX`), and the vol. 13 index error (pp. 175–190) recorded in `docs/index-errata.md`.
-0. **The batch run** (`tools/run_volumes.sh`, started 25 Sep by Angel): OCR, articles and
-   romanisation for vol. 10's articles and vols. 11–24, one after another, about 5 hours; skips
-   14b, 21 and 25; logs in `logs/`. **While it runs, don't change `abhidhana_ocr.py`,
-   `abhidhana_articles.py` or `abhidhana_romanise.py`, and don't run OCR or articles steps.** When it
-   says `all done`: reports, spot checks, the witness join and the Reader for vols. 10–24, commits;
-   then the changes held back (below), and the articles step again for every book.
-   Also then: `python3 tools/abhidhana_witness_pndaza.py join` for every book 01–19 (Pn Daza's
-   typed text joined by book, page and headword; `docs/witness-pndaza.md` §8), beside the PCED join.
-   Held back until then: (ကာ၊ကမ္မ၊ကြိ) in the label map (clean in 14b, 7 times; the witness 43);
-   `abhidhana_articles.py 14b` and `abhidhana_romanise.py 14b` on the text-layer records already in
-   `ocr/14b/pages/` (brief §25; a trial gave 98.2% located, 97.5% label + body).
-1. ~~Vol. 10~~: done in the batch, reports 25 Sep (brief §26).
-2. **Re-cut the gutters** with `tools/abhidhana_recut.py` (brief §24), natively, book by book, when
-   no OCR is running (it competes for the CPU, not for files):
-   `python3 tools/abhidhana_recut.py NN --scan --workers 10`, then `--run --workers 10`. Then
-   re-run articles, romanisation, the witness join and the Reader for every book, and compare
-   located and label + body before and after. **Vol. 9 p. 823** (a failed reading, brief §23):
-   move `ocr/09/pages/p0823.json` aside and re-run `abhidhana_ocr.py 09 ... --first 823 --last 823`
-   before that. Afterwards try the `page.psm6` fallback for headwords still unlocated.
-3. **Image-check the label disagreements** with the witness (`docs/witness-join.md` §3): a sample
-   of (တိ)/(gender), (ပု)/(ပု၊န), (ကြိ)/(တိ). And the vol. 6 readings (ထိန), (ထီ၊၇), (ထိ၊န)
-   (`docs/labels.md` §7; ids 51227, 51941, 54340), and vol. 8's (ကာ၊ကမ္မ၊ကြို) (the witness has
-   (ကာ၊ကမ္မ၊ကြိ) 43 times), before mapping them.
-4. **Angel's review of the labels**: `docs/labels.md` §1, §6 and now §7 (ကာ၊ကြိ၊ဝိ). A Pāḷi expansion
-   and a Spanish abbreviation for each.
-5. **An index-errata list**, `docs/index-errata.md`, with the printed form: the typos of brief §15–17,
-   the misfiled runs of §18 (4c p. 615 → 613, 06 p. 851 → 852), ကဉ္စိက.
-6. **Re-run vol. 25** with `--columns` at its native resolution.
-7. **Next volumes**: 11–24 are in the batch (not 14b, 21, 25). **Vol. 15** must be joined with 4c's supplement to it (53 ဘိဇ္ဇ
-   headwords indexed only there). Per volume: reports, a 3-page spot check, the Reader, the witness
-   join, then close the issue.
+0. **OCR books 21 and 25**, natively: `caffeinate -i tools/run_volumes.sh 21 25` (21 at ~72 dpi,
+   25 at 300; the script now runs both). Then reports (the OCR report's figures:
+   `python3 tools/abhidhana_ocr_stats.py 21 25`; model the text on `ocr/23/ocr-report.md`), a 3-page
+   spot check, the Reader, and close the issues. Vol. 25's new figures replace the
+   pilot's (brief §5), which were whole-page at 200 dpi.
+1. **The public website** (Angel, 25 Sep evening): Cloudflare Pages from `site/` in the repo, page
+   images in R2. Proposal first, then build; see the chat of 25 Sep evening.
+2. **Weak `ID_PAGE_FIX` candidates**, on the image: 14/3 pp. 605 (198069–198070) and 976
+   (201781–201786), 18 p. 815 (146728–146731), 10 p. 219 (81975–81976); and 14/3 pp. 564, 607, 620.
+3. **Re-cut the gutters** with `tools/abhidhana_recut.py` (brief §24), natively, book by book, when
+   no OCR is running: `python3 tools/abhidhana_recut.py NN --scan --workers 10`, then `--run
+   --workers 10`. Then re-run articles, romanisation, the witness joins and the Reader for every
+   book, and compare. Vol. 24 has 15 pages with a gutter ≥ 0.54 (column recall 80.8%). **Vol. 9
+   p. 823** (brief §23): move `ocr/09/pages/p0823.json` aside and re-run it before that. Afterwards
+   try the `page.psm6` fallback for headwords still unlocated.
+4. **Why is compound analysis low in vols. 23 and 14/3** (59%) against ~72% elsewhere? Look at a
+   page's [ ] in the text.
+5. **Image-check the label disagreements** with the witness (`docs/witness-join.md` §3): a sample
+   of (တိ)/(gender), (ပု)/(ပု၊န), (ကြိ)/(တိ). And (ထိန), (ထီ၊၇), (ထိ၊န) (`docs/labels.md` §7; ids
+   51227, 51941, 54340; vol. 24 has (ထီ၊ ၇) 17 and (ထိ၊ န) 11 unnormalised) before mapping them.
+6. **Angel's review of the labels**: `docs/labels.md` §1, §6, §7, and now (ကာ၊ကမ္မ၊ကြိ). A Pāḷi
+   expansion and a Spanish abbreviation for each.
+7. **Vol. 15** must be joined with 4c's supplement to it (53 ဘိဇ္ဇ headwords indexed only there).
+8. **Vol. 13's sixteen pages of vol. 15 headwords** (`docs/index-errata.md` §2): their real
+   headwords can only come from our OCR; a later task.
 
 Don't translate at scale. Flag uncertainty rather than guessing.
 
 ## Open questions
 
-- **Book 21's index runs 65 pages past its PDF** (990 vs 925). Don't run it until this is
-  explained; the misfiled runs of brief §18 and the vol. 2 page swap show what such problems look like.
 - **Title-page entry counts vs the index**: vol. 4/3 prints 5,163; the index has 5,007 for 4/3 itself
   and 223 for the supplements bound after it. Neither matches. Read the title page again; explain per volume.
 - **The witness's labels for rows we could not read** (7,002): usable privately; not published
@@ -87,3 +78,5 @@ Don't translate at scale. Flag uncertainty rather than guessing.
 - **The last 160 pages of 4a** are worn print. `pdfs-drive/` has another copy of vol. 4/1; compare a page before re-OCRing.
 - **`myap` redistribution**: check Pn Daza's licence before attaching the model to the release.
 - **The Reader needs `DecompressionStream`** (Safari 16.4+, Chrome 80+, Firefox 113+). Say so if someone reports a blank page.
+- **The Reader's `.wasm` data have not been opened in a browser by Claude** (brief §27). If a
+  volume fails to load, check the response's Content-Type and first bytes (should be 1f 8b).

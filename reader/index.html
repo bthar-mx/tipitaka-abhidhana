@@ -161,7 +161,7 @@ footer a{color:var(--accent)}
   // labels beyond the first five are not yet agreed (docs/labels.md).
   const GL={'တိ':'adj.','န':'n.','ပု':'m.','ထီ':'f.','ကြိ':'v.','ကြိ၊ဝိ':'abs./inf.','ဗျ':'indecl.',
     'ပု၊န':'m./n.','ပု၊ထီ':'m./f.','ပု၊တိ':'m./adj.','န၊ပု':'n./m.','န၊ထီ':'n./f.','န၊တိ':'n./adj.','တိ၊န':'adj./n.',
-    'ကာ၊ကြိ':'caus. v.','ကာ၊ကြိ၊ဝိ':'caus. abs.','နာမ-ကြိ':'denom. v.','ပုံ-ဗဟု':'m. pl.'};
+    'ကာ၊ကြိ':'caus. v.','ကာ၊ကြိ၊ဝိ':'caus. abs.','ကာ၊ကမ္မ၊ကြိ':'caus. pass. v.','နာမ-ကြိ':'denom. v.','ပုံ-ဗဟု':'m. pl.'};
   const LOC={v:['c-v','located'],f:['c-f','fuzzy match'],u:['c-u','not located']};
   const OS={word:'in canon',inside:'inside a canon word',none:'not in canon'};
   // One entry per book in the Reader; the ranges are the index's own (books.name_info). n is
@@ -183,6 +183,7 @@ footer a{color:var(--accent)}
     {id:'12',n:12,my:'နိက္ခိတ္တ – နှာရုသုတ္တနိဗန္ဓန',ro:'nikkhitta – nhārusuttanibandhana',start:589},
     {id:'13',n:13,my:'ပ – ပဋိဗြူဟန',ro:'pa – paṭibrūhana',start:447},
     {id:'14',n:'14/1',mt:'အတွဲ ၁၄ · အပိုင်း ၁',my:'ပဋိဘံသု – ပမဇ္ဇေယျ',ro:'paṭibhaṁsu – pamajjeyya',start:337},
+    {id:'14b',n:'14/2',mt:'အတွဲ ၁၄ · အပိုင်း ၂',my:'ပမတ္တ – ပလ္လောမ',ro:'pamatta – palloma (typeset text, not a scan)',start:600},
     {id:'14c',n:'14/3',mt:'အတွဲ ၁၄ · အပိုင်း ၃',my:'ပဝ – ပ္လုတ',ro:'pava – pluta',start:580},
     {id:'15',n:15,my:'ဖ – ဘောဝါဒီ',ro:'pha – bhovādī',start:485},
     {id:'16',n:16,my:'မ – မှိတပုဗ္ဗ',ro:'ma – mhitapubba',start:471},
@@ -191,16 +192,20 @@ footer a{color:var(--accent)}
     {id:'19',n:19,my:'ဝါ – ဝိဝေကောဓိမုတ္တိ',ro:'vā – vivekodhimutti',start:531},
     {id:'20',n:20,my:'ဝိဝေကာနိသံသ – သံဝေါဟာရ',ro:'vivekānisaṁsa – saṁvohāra',start:465},
     {id:'22',n:22,my:'သန္နိကဋ္ဌ – သမ္ဘောန္တိ',ro:'sannikaṭṭha – sambhonti',start:419},
+    {id:'23',n:23,my:'သမ္မ – သိဟလ',ro:'samma – sihala',start:400},
+    {id:'24',n:24,my:'သီကတိ – သူသူ',ro:'sīkati – sūsū',start:360},
   ];
   const GH='https://github.com/bthar-mx/tipitaka-abhidhana/blob/main/ocr/';
   const cache=new Map();
-  // The data files are published gzipped and base64-encoded (vol06.gz.txt): eight volumes as
-  // plain JSON are past the artifact's size limit, and artifacts do not serve .gz.
+  // The data files are published as gzip bytes under a .wasm name (vol06.wasm): artifacts serve
+  // .wasm as binary and do not serve .gz, and base64 text (.gz.txt, until 25 Sep 2026) cost a
+  // third more than the 64 MB an artifact version may hold once 24 books were in.
   async function getJSON(name){
-    const r=await fetch(name.replace(/\.json$/,'.gz.txt')); if(!r.ok) throw new Error(r.status);
-    const b=atob((await r.text()).trim()), buf=new Uint8Array(b.length);
-    for(let i=0;i<b.length;i++) buf[i]=b.charCodeAt(i);
+    const r=await fetch(name.replace(/\.json$/,'.wasm')); if(!r.ok) throw new Error(r.status);
+    const buf=new Uint8Array(await r.arrayBuffer());
     if(typeof DecompressionStream==='undefined') throw new Error('this browser cannot inflate gzip');
+    // a server that sent the file already inflated (Content-Encoding) leaves JSON, not gzip
+    if(buf[0]!==0x1f||buf[1]!==0x8b) return JSON.parse(new TextDecoder().decode(buf));
     const st=new Blob([buf]).stream().pipeThrough(new DecompressionStream('gzip'));
     return JSON.parse(await new Response(st).text());
   }
