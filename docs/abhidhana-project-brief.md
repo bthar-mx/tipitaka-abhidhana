@@ -757,3 +757,35 @@ already inflated, it parses them as JSON directly. Verified in Node on the publi
 yet opened in a browser by this session (the Cowork browser is not signed in to claude.ai).
 Books 21 and 25 will add about 4 MB.
 
+## 29. Vol. 21 finished; vol. 25 at the wrong resolution; the labels as the dictionary explains them (25 September 2026, night)
+
+**Vol. 21**: reports in `ocr/21/`. 925 pages, 8,129 headwords, 70 dpi; verbatim 91.8% (92.3%
+folded), in printed order 75.9%, **located 97.4%**, label + body 89.8%, analysis 80.7%. Spot check
+on the image (pp. 500, 318, 720): 31 of 32 at the right entry, 1 unlocated, none wrong, every label
+right. In the Reader.
+
+**Vol. 25 must be re-read at 200 dpi.** The batch rendered it at its native 300 ppi, and recall
+fell to 88.2% (column pass 79.3%) against the pilot's 94.0% at 200 dpi (§5, which already said
+"200 dpi, not 300" for this book). Measured on the same 16 pages (chosen among the worst of the
+300-dpi run, so the gap is exaggerated): **300 dpi 57.8%, 200 dpi with the column cut 88.3%**, the
+pilot's whole-page 200 dpi 89.0% (cloud container, tesseract 5.3.4). Vol. 23 at 323 ppi was not
+hurt, so it is this book's type size, not resolution as such. The 300-dpi pages, articles and
+reports were moved to `tmp/ocr-25-300dpi/`; `run_volumes.sh` now renders 25 at 200. **"Render at
+native" is a default, not a rule: measure a sample per book.**
+
+**The dictionary explains its labels.** Besides the tables of abbreviations (vol. 1 p. 120, vol. 4/1
+p. 42; vol. 2 p. 14 now checked on the image: 12 entries, adding (ကမ္မ၊ကြိ) ကံဟောကြိယာ and ဗု၊သံ
+ဗုဒ္ဓဘာသာသက္ကတ), vol. 5 p. 48 describes the brackets in prose: (ထီ၊ပု) (ပု၊န) (ထီ၊န) are "two
+genders mixed", (တိ) "all three genders, i.e. an adjective", (ကြိ) the active verb against (ကမ္မ၊ကြိ)
+the passive, (ဗျ) indeclinables "such as upasagga and nipāta"; and the same brackets have seven
+other uses, so not every ( ) is a label. Vol. 4/1 pp. 31–36 and vol. 15 pp. 17–22 hold the table of
+citation abbreviations (the key for resolving citations later). `docs/abbreviations.md` has it all.
+
+`docs/labels.md` §0 now carries, for each label, the printed expansion and where it is printed, and
+a third status: `confirmed` (Angel: the five genders/verb labels, (ဗျ), (ကာ၊ကြိ)), `printed` (the
+dictionary gives the meaning: (ကြိ၊ဝိ), (ကမ္မ၊ကြိ), (ကာ၊ကမ္မ၊ကြိ) by composition, (ပု၊န) (ထီ၊ပု)
+(ထီ၊န), (ပုံ-ဗဟု)), `provisional` (the rest). The OCR readings are unchanged, so no re-run.
+`tools/abhidhana_labels.py` now finds columns by their header. The site's pop-up shows the printed
+expansion too, and says "provisional" only for provisional labels (and, in Spanish, while the
+Spanish is a draft).
+
