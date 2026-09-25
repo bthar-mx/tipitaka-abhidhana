@@ -2,7 +2,7 @@
 
 *Written 21 September 2026, at the end of the volume-25 pilot; §10–12 revised 24 September
 2026, after volume 1 was done end to end and the repository was made public; §18–26 added
-25 September 2026 (spelling folds, the witness join, vols. 6–9, re-cutting gutters, vol. 14/2's text layer, the batch of vols. 10–22); §27 the same evening (vols. 23, 24 and 14/2 finished, the index's page errors applied, book 21 explained, the Reader in binary). Everything in
+25 September 2026 (spelling folds, the witness join, vols. 6–9, re-cutting gutters, vol. 14/2's text layer, the batch of vols. 10–22); §27 the same evening (vols. 23, 24 and 14/2 finished, the index's page errors applied, book 21 explained, the Reader in binary); §28 the public website, the page images and the label table; §29 vol. 21 finished, vol. 25's resolution, the dictionary's own account of its labels; §30 vol. 25 done, all 29 books. Everything in
 this file was measured. Do not re-derive a figure it carries; if a new one is needed,
 measure it rather than estimating.*
 
@@ -757,6 +757,56 @@ already inflated, it parses them as JSON directly. Verified in Node on the publi
 yet opened in a browser by this session (the Cowork browser is not signed in to claude.ai).
 Books 21 and 25 will add about 4 MB.
 
+## 28. The public website, the page images, one label table (25 September 2026, night)
+
+**Decided with Angel** (the other chat and this one): a public site on Cloudflare Pages at
+**abhidhana.buddha-dhamma.net**, built from the repo on every push; page images in Cloudflare R2
+(bucket `abhidhana-pages`) at **abhidhana-img.buddha-dhamma.net**; the PDFs stay in `sources-v1`.
+One level of subdomain only: Cloudflare's Universal SSL does not cover `a.b.buddha-dhamma.net`.
+Content rule: only our OCR and our additions; nothing of PCED or Pn Daza's `dict.db` until he
+agrees.
+
+**The site** (`site/`, built by `tools/abhidhana_site.py`, standard library only, into the
+gitignored `site/dist/`): home with search and the volume list; `/v/<book>/<page>` with the
+articles beside the page image; `/about/` (the dictionary, credits as in the README, licences,
+reporting an error through a pre-filled GitHub issue); `/labels/`. Spanish and English, following
+the browser, with a switch. A book is published when its `articles.jsonl` and `pali.jsonl` are
+committed; the others show as "coming". Built over all books: 43 files, 250 MB, the largest data
+file 12 MB (vol. 3; Pages allows 25 MiB a file, 20,000 files), 217,108 headwords in the search
+file. Tested in a headless browser (desktop and phone widths, both languages), not yet deployed.
+
+**Page images: native-resolution, 1-bit, lossless WebP.** Asked to compare 1,200 and 1,600 px, I
+measured on the densest pages (vol. 3 p. 641, 23 headwords; vol. 24 p. 681; vol. 23 p. 300):
+
+| | vol. 3 p. 641 | vol. 24 p. 681 | vol. 23 p. 300 |
+|---|---:|---:|---:|
+| 1,200 px, lossy WebP q70 | 211 KB | 157 KB | 165 KB |
+| 1,600 px, lossy WebP q70 | 299 KB | 219 KB | 235 KB |
+| native bitmap (pdfimages), lossless WebP | **99 KB** | **60 KB** | **91 KB** |
+
+The scans are 1-bit; any downscale turns them grey, which lossy WebP then stores worse than the
+original bits. At 1,200 px the stacked marks (ဂ္ဂ, ဗ္ဗ) are legible but soft; at 1,600 better; the
+native bitmap is the print itself, and smaller than either. On 20 sample pages of vols. 1, 13, 23
+and 4/3 it averaged 96 KB (0.2 s a page to encode): **about 2.5 GB for the whole set**, not the
+1–1.5 GB first guessed, within R2's free 10 GB. No separate "view larger" is needed: the viewer
+has fit-width and actual-size. Pages that are not one 1-bit image (covers, front matter, all of
+14b's typeset text) are rendered with pdftoppm at up to 1,800 px, lossy WebP q80 (14b: ~190 KB a
+page). `tools/abhidhana_pages_r2.py` does it (render, check, upload); tried in the cloud container
+on 40 pages each of vols. 24 and 14b.
+
+**One label table.** `docs/labels.md` §0 is now the only place the labels live: label, Pāḷi,
+English, Spanish, abbreviations, status, Spanish status (`draft` / `confirmed`), and the OCR
+readings. `tools/abhidhana_labels.py` parses it; `abhidhana_articles.py` builds its map from it
+(checked: identical to the old dict, so no re-run was needed); the site's pop-ups and Labels page
+read it. Confirmed: the five of `spanish-method.md` §2, (ဗျ) abyaya and (ကာ၊ကြိ) kārita-kriyā
+(Angel, 25 Sep). Every Spanish meaning is my draft. The pop-up opens only on a click or tap on
+the label (dotted underline), one at a time, floats just below the label's line, and can be
+turned off (remembered per browser). (§29 adds the printed expansions and a third status.)
+
+**Repo size.** Committed data: `articles.jsonl` 395 MB and `pali.jsonl` 308 MB over 28 books;
+`.git` is 309 MB, all loose objects (no pack). About 40% of each file repeats another field
+(`raw` in articles, `body_joined` in pali). Proposal in NEXT-SESSION.
+
 ## 29. Vol. 21 finished; vol. 25 at the wrong resolution; the labels as the dictionary explains them (25 September 2026, night)
 
 **Vol. 21**: reports in `ocr/21/`. 925 pages, 8,129 headwords, 70 dpi; verbatim 91.8% (92.3%
@@ -788,4 +838,26 @@ dictionary gives the meaning: (ကြိ၊ဝိ), (ကမ္မ၊ကြိ), 
 `tools/abhidhana_labels.py` now finds columns by their header. The site's pop-up shows the printed
 expansion too, and says "provisional" only for provisional labels (and, in Spanish, while the
 Spanish is a draft).
+
+## 30. Vol. 25 at 200 dpi: all 29 books done (25 September 2026, night)
+
+Re-read natively at 200 dpi (8 minutes). Reports in `ocr/25/`.
+
+| | vol. 25, 200 dpi | 300 dpi (discarded) | pilot (§5) |
+|---|---:|---:|---:|
+| headwords verbatim, either pass (with the folds) | **94.9%** (95.0%) | 88.2% | 94.0% |
+| column pass alone | 89.4% | 79.3% | |
+| **in printed order, column pass** | **83.4%** | 73.3% | |
+| pages with every headword / ≥ 80% / < 50% | 67.1% / 95.3% / 2 | 45.5% / 82.1% / 12 | 63% / 92% / 0 |
+| articles located | **95.3%** | 93.3% | |
+| normalised label + body | 87.4% | 86.5% | |
+
+The best recall and in-order share of any scanned book. Its worst pages (pp. 158–160) are the
+headwords in သ္နေ, a stacked consonant the OCR does not read; the fuzzy alignment places them.
+Spot check on the image (pp. 400, 159): 19 of 20 index rows at the right entry, 1 unlocated (the
+index gives one printed entry, သ္နေဟယတိ၊ သ္နေဟေတိ, two rows), none wrong; 3 labels not read.
+
+**All 29 books: 221,154 index rows, 94.1% located, 88.1% with label + body.** Every book is in
+the Reader. The README now has the progress of all 29, the layout, the typed witnesses and the
+index errata, and a section in Spanish.
 
