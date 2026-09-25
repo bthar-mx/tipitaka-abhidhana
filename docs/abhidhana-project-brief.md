@@ -310,7 +310,7 @@ pass, it had let a homonym's first entry take the second's line; that version wa
 | headwords verbatim, either pass | 88.9% | 92.9% |
 | in printed order, column pass | 73.1% | 77.3% |
 | articles located | 92.1% | 94.6% |
-| normalised label + body | 83.8% | 88.5% |
+| normalised label + body | 83.8% (85.0% after §15) | 88.5% |
 
 The shortfall is the last 160 pages, a scan of worn print (pp. 700–863: recall 79.2%, located 89.0%;
 pp. 1–699: 91.5%, 92.9%), and one glyph, the stacked ဆ of ဉ္ဆ, read as ဉ္စ. Spot check (pp. 300,
@@ -319,4 +319,58 @@ No page is out of order.
 
 **The Reader** covers vols. 1, 2, 3 and 4/1, and its search runs across all of them
 (`reader/search.json`, built by `abhidhana_reader_data.py`).
+
+## 15. Vol. 4/2 (book 4b), and labels with a lost bracket (25 September 2026, later)
+
+**Labels with a lost bracket.** "(ကြို [" and "ထီ) [" — a label whose ( or ) was lost, with the [
+of the analysis after it — are now read when the reading is in the label map
+(`label_bracket_damaged`), and two image-checked readings were added (ထံ၊န → ထီ၊န, ကမ္ပကြိ →
+ကမ္မ၊ကြိ). Gains: 88 / 91 / 119 / 86 / 314 labels in vols. 1, 2, 3, 4/1, 4/2; no label already read
+changed. Against the typed witness, 671 of the 694 new labels it has agree (96.7%), against about
+99% for the others.
+
+**Vol. 4/2** (681 PDF pages, 6,655 headwords, 72 dpi) is the best book so far. It is set in a
+cleaner typeface.
+
+| | vol. 1 | vol. 2 | vol. 3 | vol. 4/1 | vol. 4/2 |
+|---|---:|---:|---:|---:|---:|
+| headwords verbatim, either pass | 92.0% | 92.7% | 92.9% | 88.9% | 93.3% |
+| in printed order, column pass | 76.1% | 75.5% | 77.3% | 73.1% | 76.0% |
+| articles located | 94.2% | 93.5% | 94.7% | 92.1% | **96.6%** |
+| normalised label + body | 88.9% | 88.4% | 89.6% | 85.0% | **90.8%** |
+
+Its worst page (p. 74, 0 of 7) is the index writing ဉာ where 4b prints ညာ (ဥဒယဗ္ဗယညာဏ…); the
+OCR is right, and all 7 are placed right. Spot check (pp. 300, 74, 416): 33 of 35 at the right
+entry, none wrong, 2 unlocated; no label wrong, 1 not read. One index typo found
+(ဥဒယဗ္ဗကဉာကပဋိပါဋိ for ဥဒယဗ္ဗယညာဏပဋိပါဋိ).
+
+**Print and index spell differently in three ways now**, each invisible to recall: ါ/ာ after a
+stacked consonant (vols. 3, 4/2), ဉာ/ညာ (vol. 4/2), and the index's own typos. Folding the first
+two when matching is item 3 in NEXT-SESSION.
+
+## 16. Vol. 4/3 (book 4c) and its supplements (25 September 2026, night)
+
+**4c's PDF is vol. 4/3 plus three supplements.** PDF pp. 713–735 are "entries added to" vols. 15
+(ဘိဇ္ဇ…, 53 headwords), 4/2 (ဥဒဝါ…ဥဠုဂ္ဂဟယုဒ္ဓ, 114) and 16 (မံသကာရဏ…မောဟိတဗ္ဗ, 56), each so
+headed in print. The index files all 223 under book 4c (index pp. 686–708). Vol. 4/3 itself has
+5,007 index headwords. The title page's 5,163 (§3) matches neither 5,007 nor 5,230: the "67" of §3
+was a coincidence of this sum, and the difference is still unexplained. **The supplement to vol. 15
+is the only place its 53 ဘိဇ္ဇ headwords are indexed**; when vol. 15 is done, they belong beside it.
+
+| | vol. 4/3 (all) | vol. 4/3 itself | the supplements |
+|---|---:|---:|---:|
+| index headwords | 5,230 | 5,007 | 223 |
+| headwords verbatim, either pass | 90.5% | 90.7% | 86.1% |
+| in printed order, column pass | 72.3% | | |
+| articles located | 92.2% | 92.2% | 92.8% |
+| normalised label + body | 86.4% | 86.3% | 89.2% |
+
+Rendered at 72 dpi (pages are 69–73 ppi). **No typed witness** covers it. Spot check (pp. 300, 615,
+721): 28 of 32 index headwords at the right entry (not counting the ten filed on the wrong page),
+none wrong; no label wrong, 1 not read.
+
+**The index is least reliable here.** On three pages: ten headwords filed two pages late (p. 615,
+ids 176418–176427), four typos (ဩလမ္ဗတကုလာဝက, ဥဒါနိ, ဥပါဃာတဘူမိ, စကစတုက္ကာဒိကဆတ္တိက), a variant
+entry split into bare ဧဏိ / ဧဏီ, and one headword (ဥပက္ကိလေသ) with no printed entry. The index is
+still the authority for *which* headwords there are, but not for their spelling or their page.
 

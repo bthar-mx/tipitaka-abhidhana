@@ -11,15 +11,15 @@
 | located by bounded fuzzy match | 2,156 = 26.5% |
 | **located, any** | **7,681 = 94.2%** |
 | unlocated | 469 = 5.8% |
-| label ( ) read | 7,244 = 88.9% |
-| label normalised to the closed set (docs/labels.md) | 7,184 = 88.1% |
-| of which read exactly as printed / mapped / inferred from the ending | 5,901 / 1,280 / 3 |
+| label ( ) read | 7,332 = 90.0% |
+| label normalised to the closed set (docs/labels.md) | 7,272 = 89.2% |
+| of which read exactly as printed / mapped / inferred from the ending | 5,965 / 1,304 / 3 |
 | label read but left unnormalised | 60 = 0.7% |
-| compound analysis [ ] recovered | 5,873 = 72.1% |
-| of which + signs repaired (normalise_analysis) | 1,602 = 19.7% |
+| compound analysis [ ] recovered | 5,941 = 72.9% |
+| of which + signs repaired (normalise_analysis) | 1,629 = 20.0% |
 | non-empty body | 7,629 = 93.6% |
 | at least one citation parsed | 4,963 = 60.9% |
-| label + body (the article is usable) | 7,156 = 87.8% |
+| label + body (the article is usable) | 7,244 = 88.9% |
 
 **Romanised headwords against OSBCT** (682,010 canonical words):
 
@@ -29,7 +29,7 @@
 | inside a canonical word | 3,923 = 48.1% |
 | neither | 2,482 = 30.5% |
 
-Labels, normalised: (တိ) 3,019 · (ပု) 1,465 · (န) 1,290 · (ထီ) 811 · (ကြိ) 237 · (ကြိ၊ဝိ) 175 · (ပု၊န) 70 · (ဗျ) 41 · (န၊ထီ) 30 · (န၊တိ) 9 · (ကာ၊ကြိ) 9 · (ပု၊တိ) 7 · (ပု၊ထီ) 7 · (န၊ပု) 5 · (တိ၊န) 4 · (ပုံ-ဗဟု) 2 · (စတုတ္ထန္တ) 1 · (တတိယန္တ-ဗျ) 1 · (နာမ-ကြိ) 1
+Labels, normalised: (တိ) 3,045 · (ပု) 1,486 · (န) 1,300 · (ထီ) 825 · (ကြိ) 245 · (ကြိ၊ဝိ) 176 · (ပု၊န) 70 · (ဗျ) 44 · (န၊ထီ) 32 · (ကာ၊ကြိ) 12 · (န၊တိ) 9 · (ပု၊တိ) 7 · (ပု၊ထီ) 7 · (န၊ပု) 5 · (တိ၊န) 4 · (ပုံ-ဗဟု) 2 · (စတုတ္ထန္တ) 1 · (တတိယန္တ-ဗျ) 1 · (နာမ-ကြိ) 1
 
 Readings left unnormalised: (၂) 9 · (တ္တူ) 7 · (တ္ထူ) 7 · (တံ) 4 · (ဋ္ဌူ) 4 · (တ္တ) 4 · (ဿိ) 2 · (၅) 2 · (၃) 2 · (၁) 2 · (ရီ) 2 · (မူ) 2 · (ဿ) 2 · (နီ) 2 · (=မူလျေ) 1 · (= ပါပကရဏေ) 1 · (ဆံ) 1 · (သီ၊က) 1 · (မူလဋီ။ ၁။၁၁ ။) 1 · (.) 1 · (ဂ) 1 · (ယီ) 1 · (ခ) 1
 
@@ -91,3 +91,9 @@ glued to the headword (အါ, အဝ်, အည”, အမူလကာါ), and
 line of its own. The pass runs last, only for headwords still unplaced and only inside the span
 their placed neighbours leave, so no earlier placement moved. 7,670 → 7,681 located (+11): the five entries for အ on pp. 121–122 and six homonyms whose superscript was read as ” or ါ (အည, အညာတ, အတိဗာဟေတိ, အတ္တသမ, အဒ္ဒက္ခိ, အနာဒိယ). The tables above are
 the re-run's.
+
+**Labels with a lost bracket** (25 September 2026, later): a label whose ( or ) was lost, with the
+[ of the analysis after it — "(ကြို [", "ထီ) [" — is now read when the reading is one the label map
+knows (`label_bracket_damaged`). 88 labels gained; label + body 87.8% → 88.9%. Checked against the
+typed witness (`docs/witness.md`): 85 of the 86 it has agree, against 99% for the other labels.
+No label already read changed.

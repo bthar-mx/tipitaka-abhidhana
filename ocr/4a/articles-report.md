@@ -11,15 +11,15 @@
 | located by bounded fuzzy match | 2,036 = 27.1% |
 | **located, any** | **6,931 = 92.1%** |
 | unlocated | 593 = 7.9% |
-| label ( ) read | 6,451 = 85.7% |
-| label normalised to the closed set (docs/labels.md) | 6,309 = 83.9% |
-| of which read exactly as printed / mapped / inferred from the ending | 5,185 / 1,121 / 3 |
+| label ( ) read | 6,537 = 86.9% |
+| label normalised to the closed set (docs/labels.md) | 6,395 = 85.0% |
+| of which read exactly as printed / mapped / inferred from the ending | 5,225 / 1,167 / 3 |
 | label read but left unnormalised | 142 = 1.9% |
-| compound analysis [ ] recovered | 5,348 = 71.1% |
-| of which + signs repaired (normalise_analysis) | 1,698 = 22.6% |
-| non-empty body | 6,883 = 91.5% |
+| compound analysis [ ] recovered | 5,425 = 72.1% |
+| of which + signs repaired (normalise_analysis) | 1,728 = 23.0% |
+| non-empty body | 6,882 = 91.5% |
 | at least one citation parsed | 5,296 = 70.4% |
-| label + body (the article is usable) | 6,307 = 83.8% |
+| label + body (the article is usable) | 6,392 = 85.0% |
 
 **Romanised headwords against OSBCT** (682,010 canonical words):
 
@@ -29,7 +29,7 @@
 | inside a canonical word | 3,464 = 46.0% |
 | neither | 2,319 = 30.8% |
 
-Labels, normalised: (တိ) 2,001 · (ပု) 1,525 · (န) 1,400 · (ထီ) 712 · (ကြိ၊ဝိ) 247 · (ကြိ) 232 · (ပု၊န) 51 · (ကာ၊ကြိ) 50 · (န၊ထီ) 39 · (ဗျ) 27 · (ကမ္မ၊ကြိ) 17 · (ပု၊ထီ) 7 · (ထီ၊န) 1
+Labels, normalised: (တိ) 2,016 · (ပု) 1,536 · (န) 1,413 · (ထီ) 719 · (ကြိ) 256 · (ကြိ၊ဝိ) 250 · (ကာ၊ကြိ) 58 · (ပု၊န) 52 · (န၊ထီ) 39 · (ဗျ) 28 · (ကမ္မ၊ကြိ) 20 · (ပု၊ထီ) 7 · (ထီ၊န) 1
 
 Readings left unnormalised: (၃) 10 · (ကာ) 5 · (တ္တ) 5 · (ကို) 4 · (ဂ္ဂါ) 4 · (၂) 3 · (၅) 3 · (ဟိ) 3 · (တဘိ) 3 · (မ္မီ) 2 · (ပ္ပ) 2 · (ဠှီ) 2 · (သိ) 2 · (ပ္ပတ္တ (တိ) 2 · (ဧ) 2 · (ကိံ) 2 · (ဏ္ဍာ) 2 · (ခါ) 1 · (အာကာသေသျ သျာ) 1 · (အဘိ၊ ဓ။၆ဂ) 1 · (ညာ) 1 · (သံ၊၁။၃၂၉) 1 · (သံ၊ဋ္ဌ၊ ၃။၁၁၈) 1 · (ဒီ၊ဋ္ဌ၊ ၁။၃၂၅) 1 · (ခ) 1 · (လ) 1 · (ဘတိ) 1 · (ကြိ ] ဝိ) 1 · (ဆီ) 1 · (မူလဋီ၊၂။၉၄) 1 · (ကဝ) 1 · (တို) 1 · (တံ) 1 · (ပဠိဝိဘတ္တ (န) 1 · (ကမ္မ၊ ကြု) 1 · (သံ၊ ၃။၁၁) 1 · (တ္ထ) 1 · (မ၊ဋ္ဌ၊၄။၂၁၁) 1 · (မ္ဘ) 1 · (ဏံ) 1 · (တိန) 1 · (ဂဟဏ (န) 1 · (မဟာနိ။ ၉၇) 1 · (အာဠိန္ဒက) 1 · (လို်တ (တိ) 1 · (ဝိ၊ဋ္ဌ၊၁။၇၆) 1 · (ပ္ပုဋိဗဒ္ဓ (တိ) 1 · (တ္တဟာရ (ပ) 1 · (ဆိဒ္ဒ (န) 1 · (အာဝဋာ၊ သီ) 1 · (မဟာနိ။၁ဂ) 1 · (ကံ) 1 · (ကိလေသာ) 1 · (ထေရ။ ၂၄၅၇) 1 · (အာသာဋိကဟရဏံ”) 1 · (ဠီ နက္ခတ္တ (န) 1 · (ဠီ ပုဏ္ဏမီ (ထီ) 1 · (အာဒိသိတွာ။ က) 1 · (ကုပ်) 1 · (တတာ (ကြပ်) 1 · (ရီယမာန (တိ) 1 · (နု) 1 · (ဏ) 1 · (မ၊၂။၁၁၁) 1 · (ဥဒ န။၉၁) 1 · (ဝိ၊၄။၄၆၄) 1 · (အံ၊၂။၄၄၀) 1 · (ပဧ) 1 · (ဣဒံ) 1 · (ဒီ၊၃။၂) 1 · (မဟာရာဇ) 1 · (ဇာ၊ ၁။၃၉၅) 1 · (=ပခောရ+ဏျ) 1 · (သ၊ဋ္ဌ၊ ၂၇၃) 1 · (မု) 1 · (ဝိမာန။၅၆) 1 · (အာဒေသ.ဥ) 1 · (အာဒေသ-ဥ) 1 · (န ထီ) 1 · (ကြိ၊ဝီ) 1 · (ပဥက္ခပကဝါဇ) 1 · (ဥဒဂ္ဂါ) 1 · (ဏှာ) 1 · (သေရ။၃၅၃) 1 · (ဒ) 1 · (ကမ္မ၊ က) 1 · (ဥစ္ဆုဘဏ္ဍိကာ) 1 · (ဟာ) 1 · (ကြိ.ဝိ) 1 · (ကာက) 1 · (ကိ ဝိ) 1 · (တေ) 1 · (သံ၊ ဋီ ၁။၃၀၆) 1 · (ကိ၊ ဒိ) 1 · (သံ၊ ၃။၄) 1 · ([ကီ) 1 · (သမ္ပုပ္ဖိတ) 1 · (ဥဒေန) 1 · (ကာ၊ ကို) 1 · (၁) 1 · (ဝျ) 1 · (ကိ၊) 1 · (သာရတ္ထ၊၃။၂၃၁) 1
 
@@ -76,3 +76,8 @@ No article on the three pages is placed at a wrong entry, and no label is wrong.
 - **P. 786**: worn type. 10 of 13 at their entry. ဥဋ္ဌိတဦမိ, ဥဋ္ဌိတစောရ and ဥဋ္ဌိတဇင်္ဃ are unlocated,
   and their text stays inside the article before each. ဋ္ဌ is read as ဒ, ဋ or ဒ္ဒ in most heads.
 
+**Labels with a lost bracket** (25 September 2026, later): a label whose ( or ) was lost, with the
+[ of the analysis after it — "(ကြို [", "ထီ) [" — is now read when the reading is one the label map
+knows (`label_bracket_damaged`). 86 labels gained; label + body 83.8% → 85.0%. Checked against the
+typed witness (`docs/witness.md`): 84 of the 86 it has agree, against 99% for the other labels.
+No label already read changed.

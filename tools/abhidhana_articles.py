@@ -250,6 +250,9 @@ def locate(text, gold):
 
 
 LABEL = re.compile(r'^\s*[\(（]\s*([^)）\n]{1,14}?)\s*[\)）]')
+# A label with one of its brackets lost, the [ of the analysis following: "(ကြို [" (vol. 4b
+# p. 300), "ထီ) [" (p. 74). Taken only when the reading normalises to a label.
+LABEL_LOOSE = re.compile(r'^\s*(?:[\(（]\s*([^)）\n\[]{1,14}?)\s*(?=\[)|([^\s()（）\[\]]{1,8})\s*[\)）](?=\s*\[))')
 
 # ---- grammatical labels ---------------------------------------------------------------
 # The label is a closed set (docs/spanish-method.md §2, extended by docs/labels.md). OCR
@@ -284,8 +287,8 @@ _LABEL_READINGS = {
     'စတုတ္ထန္တ': 'စတုတ္ထန္တ',
     'တတိယန္တ-ဗျ': 'တတိယန္တ-ဗျ',
     # from vol. 2; each is a label the typed PCED witness prints (docs/labels.md §4)
-    'ကမ္မ၊ကြိ': 'ကမ္မ၊ကြိ ကမ္မ၊ကြို ကမ္မ၊ကြ် ကမ္မကြို ကမ္မကြိ',
-    'ထီ၊န':    'ထီ၊န',
+    'ကမ္မ၊ကြိ': 'ကမ္မ၊ကြိ ကမ္မ၊ကြို ကမ္မ၊ကြ် ကမ္မကြို ကမ္မကြိ ကမ္ပကြိ ကမ္ပ၊ကြိ',   # ကမ္ပ (ကြိ): 4b p. 300
+    'ထီ၊န':    'ထီ၊န ထံ၊န',   # ထံ၊န: vol. 4b p. 300, image-checked
     'ထီ၊ပု':   'ထီ၊ပု ထိ၊ပု ထိ၊ပူ',
     'အ-လိင်':  'အ-လိင် အလိင်',   # aliṅga, from vol. 3; the witness prints it 20 times
 }
@@ -389,6 +392,13 @@ def fields_after(rest, out_hw, iast='', glued=False):
     out = {'label': None, 'label_ocr': None, 'label_how': None, 'analysis': None,
            'headword_ocr': out_hw}
     m = LABEL.match(rest)
+    if not m:
+        ml = LABEL_LOOSE.match(rest)
+        if ml and normalise_label((ml.group(1) or ml.group(2)).strip(), iast)[0]:
+            r1 = (ml.group(1) or ml.group(2)).strip(); rest = rest[ml.end():]
+            lab, how = normalise_label(r1, iast)
+            out['label_ocr'] = r1; out['label'] = lab; out['label_how'] = how
+            out['label_bracket_damaged'] = True
     if m:
         r1 = m.group(1).strip(); rest = rest[m.end():]
         lab, how = normalise_label(r1, iast)
