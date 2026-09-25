@@ -1,0 +1,128 @@
+id	kind	burmese	pali	en	es	status	flag	occ_v01	art_v01	note
+F001	formula	X-ကြည့်	—	See X.	Véase X.	proposed				X is a headword: linked, and romanised from the index, not from the text
+F002	formula	X-လည်းကြည့်	—	See also X.	Véase también X.	proposed				
+F003	formula	X, Y-တို့ကြည့် / တို့လည်းကြည့်	—	See X, Y. / See also X, Y.	Véanse X, Y. / Véanse también X, Y.	proposed				
+F004	formula	X-နှင့် အနက်တူ	—	Same meaning as X.	Mismo significado que X.	proposed				
+F005	formula	အထက်ပုဒ်နှင့် အနက်တူ	—	Same meaning as the preceding headword.	Mismo significado que la entrada anterior.	proposed				
+F006	formula	(၁) (၂) … / (က) (ခ) …	—	1. 2. … / a. b. …	1. 2. … / a. b. …	proposed				as docs/spanish-method.md §2
+F007	formula	a-b-c (hyphen)	—	a / b / c	a / b / c	proposed				alternatives of one Pāḷi element, kept apart; a long dash (–) separates groups (vol. 1 p. 92)
+F008	formula	…သော၊ သူ၊ သည်	tiliṅga	… (said of a person; of a thing)	… (dicho de una persona; de una cosa)	proposed	review			"the adjective used as a noun: သူ a person, သည် a thing or state. Alternative: ""one who …; that which …"" / ""el que …; lo que …"""
+F009	formula	-ခြင်း	-na, -tā, bhāva	the …-ing; the act of …-ing	el … (infinitivo sustantivado); el hecho de …	proposed				verbal noun
+F010	formula	-မှု	-na, kamma	…-ing (as a deed)	el …; la acción de …	proposed				
+F011	formula	-သော	relative, adjectival	that …; …-ing	que …	proposed				
+F012	formula	-အပ်သော	-ta, -tabba, -anīya	…-ed; to be …-ed	…-do; que ha de ser …-do	proposed	review			past and future passive share the form; the Pāḷi suffix decides, where the analysis gives it
+F013	formula	-(သည်)၏ အဖြစ်	-tā, -tta, bhāva	the state of being …	el hecho de ser …	proposed				as docs/spanish-method.md §4
+F014	formula	-ရှိသော	-vant, -ika, bahubbīhi	having …	que tiene …	proposed				
+F015	formula	-တတ်သော / -လေ့ရှိသော	-sīla, -ī, -ka	apt to …; in the habit of …	que suele …; acostumbrado a …	proposed				
+F016	formula	-ခြင်းငှါ	-tuṁ	in order to …; to …	para …	proposed				
+F017	formula	-၍	-tvā	having …	habiendo …; tras …	proposed				
+F018	formula	-၏ (verb)	-ti	… (3rd sing., present)	… (3.ª sing., presente)	proposed				a verb headword is glossed in the 3rd person: သွား၏ goes / va
+F019	formula	-လတ္တံ့သော	-ssanta (future)	that will …	que …-rá	proposed				
+F020	formula	မ-…	a-, na-	not …; un-	no …; in-	proposed				negation
+F021	formula	-ရာ	-ṭhāna, locative	the place where …; that in which …	el lugar donde …; aquello en que …	proposed				
+F022	formula	-စေ-	causative	to cause to …; to make …	hacer …	proposed				
+F023	formula	X-ဟု ဆိုအပ်သော / ခေါ်သော	saṅkhāta	called X; reckoned as X	llamado X; considerado X	proposed				
+F024	formula	X-ဟူသော	appositive	X, namely …; which is X	es decir X; que es X	proposed				
+F025	formula	X-စသော / အစရှိသော	-ādi	X and so on; beginning with X	X, etc.; que comienza por X	proposed				as docs/spanish-method.md §5
+F026	formula	X-ကဲ့သို့	viya, iva	like X	como X	proposed				
+F027	formula	X-နှင့် တူသော	sadisa	like X; resembling X	semejante a X	proposed				
+L001	lexical	တရား	dhamma	state; phenomenon; the Teaching	estado; fenómeno; la Enseñanza	proposed	glossary	232	185	"dhamma: which rendering where is a glossary decision; in definitions it is mostly ""a state / phenomenon"" after an adjective"
+L002	lexical	မိမိ	atta- (reflexive), ajjhatta	oneself; one's own	uno mismo; propio	proposed		195	137	
+L003	lexical	အခြား	añña	other	otro	proposed		188	148	
+L004	lexical	တပါး / တစ်ပါး	añña	another	otro	proposed		235	175	"usually an alternative to အခြား: ""other / another"""
+L005	lexical	အကြောင်း	kāraṇa, hetu; vatthu	cause, reason; account	causa, razón; relato	proposed	review	181	157	"X၏ အကြောင်း in a sutta or jātaka title is ""the account of X"""
+L006	lexical	အလွန်	ati-, adhi-	exceedingly; very	sumamente; muy	proposed		149	140	
+L007	lexical	လွန်	ati-, atikkama	to pass beyond; to exceed	pasar más allá; exceder	proposed		135	112	
+L008	lexical	သဘော	sabhāva, bhāva	nature	naturaleza	proposed	glossary	131	109	sabhāva
+L009	lexical	သိ	jānāti, ñā	to know	conocer; saber	proposed		121	96	
+L010	lexical	စိတ်	citta	mind	mente	proposed	glossary	125	104	citta: mente / conciencia / consciencia; IEBH to fix
+L011	lexical	ပြု	karoti	to do; to make	hacer	proposed		122	110	
+L012	lexical	အနက်	attha	meaning	significado	proposed		117	98	
+L013	lexical	စကား	vacana, vācā, kathā	speech; words	palabras; habla	proposed		109	94	
+L014	lexical	အကျိုး	phala; attha	fruit, result; benefit	fruto, resultado; beneficio	proposed	review	98	77	two senses: phala (result) and attha (benefit); the Pāḷi of the headword decides
+L015	lexical	ပြည့်စုံ	sampanna, samaṅgī	endowed with; complete	dotado de; completo	proposed		94	78	
+L016	lexical	မဟုတ်	na (… hoti)	not (being) …	no (ser) …	proposed		93	83	
+L017	lexical	အကျိုးစီးပွါး	attha, hita	welfare; benefit	bienestar; provecho	proposed		93	74	
+L018	lexical	လွန်ကဲ	adhika, ati-	excessive	excesivo	proposed		90	75	
+L019	lexical	မြတ်	agga, uttama, ariya	excellent; noble	excelente; noble	proposed		86	62	
+L020	lexical	နေ	vasati, viharati / sūriya	to dwell / the sun	morar / el sol	proposed	homograph	40	36	"two words: the verb, and နေ ""the sun"" (aṁsumālī: နေ။)"
+L021	lexical	ရောက်	patta, gacchati	to reach; to arrive at	llegar a; alcanzar	proposed		82	71	
+L022	lexical	အပိုင်းအခြား	pariccheda, pariyanta	limit; boundary	límite	proposed		80	68	
+L023	lexical	နိဗ္ဗာန်	nibbāna	Nibbāna	Nibbāna	proposed	glossary	74	57	kept in Pāḷi, as IEBH keeps Buddha
+L024	lexical	ပြ	dasseti	to show	mostrar	proposed		71	63	
+L025	lexical	ဆုံးဖြတ်	vinicchaya	to decide; to judge	decidir; juzgar	proposed		71	55	
+L026	lexical	အဆုံး	anta, pariyosāna	end	fin	proposed		68	56	
+L027	lexical	စင်စစ်	accanta, ekanta	absolutely; utterly	absolutamente	proposed		70	65	
+L028	lexical	မှီ	nissaya, nissita	to depend on; to rest on	depender de; apoyarse en	proposed		67	47	
+L029	lexical	ရ	labhati	to obtain	obtener	proposed		67	55	
+L030	lexical	လွှမ်းမိုး	abhibhavati	to overpower	dominar; vencer	proposed		65	57	
+L031	lexical	ကျော်လွန်	atikkamati	to go beyond; to transgress	sobrepasar; traspasar	proposed		65	55	
+L032	lexical	အချင်းချင်း	aññamañña	one another; mutually	unos a otros; mutuamente	proposed		63	61	
+L033	lexical	တူ	sadisa, sama	alike; similar	semejante; igual	proposed		60	54	
+L034	lexical	ဆို	vadati, vuccati	to say	decir	proposed		59	55	ဟု ဆိုအပ်သော is formula F023
+L035	lexical	တည်	tiṭṭhati, ṭhita	to stand; to abide	permanecer; estar asentado	proposed		57	45	
+L036	lexical	မီး	aggi	fire	fuego	proposed		57	49	
+L037	lexical	လွန်ကျူး	vītikkama	to transgress	transgredir	proposed		56	47	
+L038	lexical	အကျင့်	paṭipatti, cariyā	practice; conduct	práctica; conducta	proposed		56	49	
+L039	lexical	အလို	icchā, chanda, kāma	wish; desire	deseo	proposed	glossary	55	41	"not ""craving"" (taṇhā)"
+L040	lexical	သက်ဝင်	ogāhati, pavisati	to enter into	adentrarse en; entrar en	proposed		54	36	
+L041	lexical	အင်္ဂါ	aṅga	limb; factor	miembro; factor	proposed		55	34	
+L042	lexical	မိမိကိုယ်	attānaṁ	oneself	a sí mismo	proposed		53	44	
+L043	lexical	ဟော	deseti, bhāsati	to teach; to preach	enseñar; exponer	proposed		53	50	
+L044	lexical	ကင်း	rahita, vigata	free from; without	libre de; sin	proposed		52	48	
+L045	lexical	ဆောင်	vahati, āvaha	to bring; to carry	traer; llevar	proposed		52	38	
+L046	lexical	ဖြစ်စေ	janeti, uppādeti	to produce; to cause	producir; causar	proposed		52	42	
+L047	lexical	ထား	ṭhapeti, nikkhitta	to place; to set	poner; colocar	proposed		49	30	
+L048	lexical	ဝတ္ထု	vatthu	story; object; basis	relato; objeto; base	proposed	review	48	43	three senses; the headword decides
+L049	lexical	အမှတ်	saññā	perception; notion	percepción; noción	proposed	glossary	48	44	saññā
+L050	lexical	အဋ္ဌကထာ	aṭṭhakathā	commentary	comentario	proposed		48	47	
+L051	lexical	အပြစ်	dosa, vajja	fault	falta; defecto	proposed		36	31	
+L052	lexical	နှိပ်စက်	pīḷeti	to oppress; to afflict	oprimir; afligir	proposed		47	43	
+L053	lexical	မကောင်းမှု	pāpa	evil deed	mala acción	proposed	glossary	16	15	pāpa
+L054	lexical	ကောင်းမှု	puñña, kusala	good deed; merit	buena acción; mérito	proposed	glossary	12	10	puñña
+L055	lexical	သုတ်	sutta	sutta	sutta	proposed		47	41	
+L056	lexical	ပြောဆို	katheti, vadati	to speak	hablar	proposed		45	37	
+L057	lexical	ယှဉ်	sampayutta, yutta	associated with	asociado con	proposed		45	43	
+L058	lexical	သွား	gacchati / danta	to go / tooth	ir / diente	proposed	homograph	45	38	"aggadanta: ရှေ့သွား ""front tooth"""
+L059	lexical	အာရုံ	ārammaṇa	object (of the mind)	objeto (de la mente)	proposed	glossary	44	36	ārammaṇa
+L060	lexical	အနက်သဘော	attha	meaning; sense	significado; sentido	proposed		44	41	
+L061	lexical	လွန်ပြီး	atīta, atikkanta	past; gone by	pasado	proposed		44	32	
+L062	lexical	ဆင်းရဲ	dukkha	suffering; pain	sufrimiento; dolor	proposed	glossary	43	34	dukkha
+L063	lexical	အနက်အဓိပ္ပါယ်	attha	meaning	significado	proposed		43	39	
+L064	lexical	တပ်မက်	rāga, rajjati	passion; to be attached	pasión; apegarse	proposed	glossary	42	32	rāga
+L065	lexical	သင့်	yutta, arahati	fitting; proper	conveniente; apropiado	proposed		42	38	
+L066	lexical	စွဲယူ	gāha, parāmasati	to cling to; to grasp	aferrarse a	proposed		42	28	
+L067	lexical	အကုသိုလ်	akusala	unwholesome	no saludable (akusala)	proposed	glossary	41	38	akusala: IEBH to fix (inhábil / insano / perjudicial …)
+L068	lexical	ဧကန်	ekanta	certainly; wholly	ciertamente; enteramente	proposed		41	38	
+L069	lexical	ကျင့်	carati, paṭipajjati	to practise	practicar	proposed		41	32	
+L070	lexical	အကျိုးမဲ့	anattha	harm; what is useless	daño; lo inútil	proposed		41	36	
+L071	lexical	မမြဲ	anicca	impermanent	impermanente	proposed	glossary	41	24	anicca
+L072	lexical	အမြတ်ဆုံး	agga, seṭṭha	foremost; highest	el más excelso; supremo	proposed		40	34	
+L073	lexical	အပေါင်း	samūha, piṇḍa	collection; group	conjunto; agrupación	proposed		39	38	
+L074	lexical	မတရား	adhamma	unrighteous; improper	injusto; indebido	proposed		39	27	
+L075	lexical	အယူ	diṭṭhi, laddhi, gāha	view; belief	opinión; creencia	proposed	glossary	39	32	diṭṭhi
+L076	lexical	အက္ခရာ	akkhara	letter; syllable	letra; sílaba	proposed		38	29	
+L077	lexical	အခြင်းအရာ	ākāra	mode; manner	modo; aspecto	proposed		52	49	
+L078	lexical	ယူ	gaṇhāti	to take	tomar	proposed		38	35	
+L079	lexical	သဒ္ဒါ	sadda	word; grammar	palabra; gramática	proposed		38	25	
+L080	lexical	ထက်ဝက်	aḍḍha	half	mitad	proposed		38	36	
+L081	lexical	လူ	manussa	human being	ser humano	proposed		37	15	
+L082	lexical	ကိုယ်	kāya	body	cuerpo	proposed		37	28	
+L083	lexical	ပျက်စီး	vinassati, bhaṅga	to perish; to be destroyed	perecer; destruirse	proposed		37	32	
+L084	lexical	အတ္တဘော	attabhāva	individual existence; body	existencia individual; cuerpo	proposed	glossary	36	31	attabhāva
+L085	lexical	ထိုက်	araha	worthy of; deserving	digno de	proposed		36	31	
+L086	lexical	ပိုင်းခြား	paricchindati	to delimit; to discern	delimitar; discernir	proposed		36	28	
+L087	lexical	မြင်	passati, dassana	to see	ver	proposed		20	15	
+L088	lexical	အင်္ဂါကြီးငယ်	aṅgapaccaṅga	the limbs, major and minor	los miembros mayores y menores	proposed		34	33	
+L089	lexical	မျက်စိ	cakkhu, akkhi	eye	ojo	proposed		34	29	
+L090	lexical	သင်္ကန်း	cīvara	robe	hábito	proposed	glossary	33	26	cīvara: hábito / túnica
+L091	lexical	အရပ်	ṭhāna, padesa, disā	place; region	lugar; región	proposed		33	31	
+L092	lexical	အခြားမဲ့	anantara	immediately following	inmediatamente siguiente	proposed		33	30	
+L093	lexical	တုန်လှုပ်	kampati	to tremble; to be shaken	temblar; estremecerse	proposed		13	11	
+L094	lexical	နင်း	akkamati	to tread on	pisar	proposed		32	27	
+L095	lexical	နှစ်သက်	ruci, abhinandati	to delight in; to like	deleitarse en; gustar de	proposed		33	23	
+L096	lexical	အမည်	nāma	name	nombre	proposed		32	21	
+L097	lexical	အတိုင်းအရှည်	pamāṇa	measure; extent	medida; extensión	proposed		32	27	
+L098	lexical	ကျေးဇူး	upakāra	kindness done; favour	favor; beneficio recibido	proposed		11	11	
+L099	lexical	ဉာဏ်	ñāṇa	knowledge	conocimiento	proposed	glossary	27	27	ñāṇa: conocimiento / sabiduría
+L100	lexical	နေရာ	ṭhāna, āsana	place; seat	lugar; asiento	proposed		42	35	

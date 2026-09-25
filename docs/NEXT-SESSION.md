@@ -53,6 +53,9 @@ vol. 25 runs.
    makes browsers revalidate `/data/*` and `/assets/*` on every load; with the old one-hour cache a
    visitor saw vol. 25 as "coming" after it was published.
 1. ~~Page images~~: all 29 books live, 25,700 pages, 2.5 GB; `check` clean (brief §35).
+1b. **Translation, batch 1** (brief §37): waiting for Angel's review of `docs/translation/batch01-review.md`
+   and his three decisions there (source text, composed drafts, the glossary). Then: fill the 390
+   formula articles of vol. 1, draft the rest in alphabetical runs, next batch of stems.
 2a. **Site redesign** per `docs/site-design.md` (agreed 25 Sep; the mockup is the artifact "Abhidhāna
    site mockup"). Proposed changes to the spec sent to Angel before building; wait for his answer.
 2. **The Introduction page** (brief §35) rebuilds itself from `docs/introduction/` on every push; keep the

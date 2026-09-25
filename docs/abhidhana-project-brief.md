@@ -2,7 +2,7 @@
 
 *Written 21 September 2026, at the end of the volume-25 pilot; §10–12 revised 24 September
 2026, after volume 1 was done end to end and the repository was made public; §18–26 added
-25 September 2026 (spelling folds, the witness join, vols. 6–9, re-cutting gutters, vol. 14/2's text layer, the batch of vols. 10–22); §27 the same evening (vols. 23, 24 and 14/2 finished, the index's page errors applied, book 21 explained, the Reader in binary); §28 the public website, the page images and the label table; §29 vol. 21 finished, vol. 25's resolution, the dictionary's own account of its labels; §30 vol. 25 done, all 29 books; §31 (later on 25 Sep) the page-image tool's bitmap test; §32 the weak page corrections, image-checked; §33 the compound analysis with its [ lost; §34 the dictionary's history on the site; §35 all page images live, a light/dark switch, the Introduction page; §36 citations keep their whole abbreviation. Everything in
+25 September 2026 (spelling folds, the witness join, vols. 6–9, re-cutting gutters, vol. 14/2's text layer, the batch of vols. 10–22); §27 the same evening (vols. 23, 24 and 14/2 finished, the index's page errors applied, book 21 explained, the Reader in binary); §28 the public website, the page images and the label table; §29 vol. 21 finished, vol. 25's resolution, the dictionary's own account of its labels; §30 vol. 25 done, all 29 books; §31 (later on 25 Sep) the page-image tool's bitmap test; §32 the weak page corrections, image-checked; §33 the compound analysis with its [ lost; §34 the dictionary's history on the site; §35 all page images live, a light/dark switch, the Introduction page; §36 citations keep their whole abbreviation; §37 translation, batch 1. Everything in
 this file was measured. Do not re-derive a figure it carries; if a new one is needed,
 measure it rather than estimating.*
 
@@ -1027,4 +1027,29 @@ commentary marks (ဌ, ္ဌ, ဋ for ဋ္ဌ; ဋံ, ဋိ for ဋီ), `�
 and works absent from vol. 1's table: 14/3, 4/2 and 4/3 match 57–60%, vol. 24 65%. Vol. 4/1 pp. 31–36
 and vol. 15 pp. 17–22 print fuller tables (NEXT-SESSION 3b). Matching for the site is to fold the
 commentary marks and stay silent where nothing matches.
+
+## 37. Translation: batch 1 of the stem lexicon (25 September 2026, night)
+
+Angel's decisions (site design): the Meaning box shows drafted translations marked drafted, and
+stays visible, "not yet translated", until filled; Spanish label abbreviations proposed for him to
+confirm. Then: translate from the Burmese into Spanish and English, by stem, vol. 1 first.
+
+**Measured on vol. 1.** Our OCR of the definitions is too noisy to build stems from (debris, split
+words, early stops); the PCED typed text is clean for vols. 1–19. On PCED (8,148 definitions,
+40,877 stem occurrences, 12,510 distinct stems): the top 100 stems cover 32% of occurrences and 1.7%
+of articles wholly; top 1,000 59% / 16.6%; top 5,000 82% / 50%. By shape: **390 articles (4.8%) are
+pure formula** ("see X", "see also X", "same meaning as X"), 1,003 (12.3%) one stem, 1,398 two,
+5,356 (66%) three or more. So stems fix the vocabulary; most articles still need a composed sentence.
+A stem is a hyphen alternative with its grammatical ending removed (`~/tr` scripts in the VM; the
+Burmese mark order ့် / ့် must be normalised first: PCED and my patterns differ, invisibly).
+
+**Batch 1** (`docs/translation/stems.tsv`, `docs/translation/batch01-review.md`, also in the Project):
+27 formulas and the 100 commonest lexical stems, EN and ES each from the Burmese, all `proposed`;
+flags for glossary terms (dhamma, citta, saññā, akusala, dukkha …), homographs (နေ, သွား) and doubtful
+choices. Approved, it fills 390 vol. 1 articles by rule and gives 253 more (3.1%) all their stems;
+the 100 stems cover 15.3% of stem occurrences. Also proposed: Spanish abbreviations for the labels.
+
+**Open, for Angel**: translate from PCED or from our OCR (licence); mechanical fill plus composed
+drafts for the rest; where the doctrinal IEBH glossary is (only the grammatical one was found,
+`~/Tipitaka/nissaya/anchor/glosario-gramaticas.md`).
 
