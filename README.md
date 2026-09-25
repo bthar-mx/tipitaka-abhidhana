@@ -1,10 +1,12 @@
 # Tipiṭaka Pāḷi-Myanmā Abhidhāna — digitised
 
 **တိပိဋက ပါဠိ-မြန်မာ အဘိဓာန်** is a Pāḷi → Burmese dictionary of the whole Tipiṭaka in
-**25 volumes, bound as 29 books**, with about 215,000 headwords. It was compiled by the
-မစိုးရိမ် (Masoeyein) Board of Scholar-Elders in Mandalay and published by the Department
-for the Promotion and Propagation of the Sāsana, Ministry of Religious Affairs, Union of
-Myanmar.
+**25 volumes, bound as 29 books**, with about 215,000 headwords. It was compiled from the
+1950s to 2023 by five teams of scholar-monks, each taking part of the alphabet (vol. 17,
+pp. 6–7), among them မစိုးရိမ် (Masoeyein) monastery in Mandalay, which wrote vols. 5–6 and
+15–16; vol. 1 was published in 1964 by the Union of Burma Buddha Sāsana Council, the later
+volumes by the Department for the Promotion and Propagation of the Sāsana, Ministry of
+Religious Affairs, Union of Myanmar. Its history is in [`docs/history.md`](docs/history.md).
 
 **All 29 books are now digitised**: 221,154 index headwords over 25,700 pages; 94.1% of the
 articles are located in the OCR and 88.1% have both their grammatical label and their definition.
@@ -15,8 +17,9 @@ are in [`ocr/`](ocr/).
 ## En español
 
 Este repositorio convierte en datos el *Tipiṭaka Pāḷi-Myanmā Abhidhāna*, el diccionario
-pāḷi–birmano del Tipiṭaka en 25 volúmenes (29 libros), compilado por el Consejo de Maestros
-Ancianos de Masoeyein y publicado por el Ministerio de Asuntos Religiosos de Myanmar. Los 29
+pāḷi–birmano del Tipiṭaka en 25 volúmenes (29 libros), compilado entre los años cincuenta y 2023
+por cinco equipos de monjes eruditos (entre ellos el del monasterio de Masoeyein, vols. 5–6 y
+15–16) y publicado por el Consejo del Buddha Sāsana y el Ministerio de Asuntos Religiosos de Myanmar. Los 29
 libros están digitalizados: cada artículo se ancla en la entrada correcta (tomada del índice del
 diccionario), se divide en sus campos (categoría gramatical, análisis, definición, citas) y la
 entrada se romaniza (IAST). **Nada está revisado**: el birmano es una lectura automática (OCR) y
@@ -158,9 +161,11 @@ OCR uses tesseract 5 with the `myap` Burmese-Pāḷi model by Pn Daza
 
 ## Sources and credits
 
-The dictionary is the work of the **မစိုးရိမ် Board of Scholar-Elders** (Masoeyein
-Monastery, Mandalay), published by the **Department for the Promotion and Propagation of
-the Sāsana, Ministry of Religious Affairs**, Union of Myanmar. We claim nothing in its
+The dictionary is the work of **five teams of scholar-monks**, 1950s–2023, among which the
+alphabet was divided (vol. 17, pp. 6–7; [`docs/history.md`](docs/history.md)); **မစိုးရိမ်**
+(Masoeyein) monastery, Mandalay, wrote vols. 5–6 and 15–16. Vol. 1 was published by the Union
+of Burma Buddha Sāsana Council (1964), the later volumes by the **Department for the Promotion
+and Propagation of the Sāsana, Ministry of Religious Affairs**, Union of Myanmar. We claim nothing in its
 text. The licences below cover only what this project adds.
 
 The page scans and the headword index come from the **Tipiṭaka Abidan** app, developed

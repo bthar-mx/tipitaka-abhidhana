@@ -14,6 +14,10 @@ only our OCR and what the project adds (structure, labels, romanisation, attesta
 
 Output, site/dist/ (gitignored):
     everything in site/src/, with <!--VOLUMES--> in index.html filled in
+    about/index.html      <!--HISTORY-EN--> / <!--HISTORY-ES--> filled from docs/history.md, but only
+                          when its first lines hold `<!-- site: publish -->` (the romanised names
+                          need review first); `<!-- site: draft -->` leaves them empty, unless the
+                          build runs with ABHIDHANA_SITE_DRAFTS=1 (a local preview, marked draft)
     data/volumes.json     the books, their status and their figures
     data/v<book>.json     one per published book: compact records, in index order
     data/search.json      [book, id, p, h, r] per headword, for search across all books
@@ -70,10 +74,69 @@ def dump(path, obj):
     path.write_text(json.dumps(obj, ensure_ascii=False, separators=(',', ':')), encoding='utf-8')
 
 
+def md_inline(t):
+    t = html.escape(t, quote=False)
+    t = re.sub(r'\*\*(.+?)\*\*', r'<strong>\1</strong>', t)
+    t = re.sub(r'(?<![\w*])\*(?!\s)(.+?)(?<!\s)\*(?![\w*])', r'<em>\1</em>', t)
+    t = re.sub(r'\[([^\]]+)\]\((https?://[^)\s]+)\)', r'<a href="\2">\1</a>', t)
+    # Burmese script in the site's Burmese face
+    return re.sub(r'[\u1000-\u109f](?:[\u1000-\u109f\s\-]*[\u1000-\u109f])?',
+                  lambda m: f'<span class="my" lang="my">{m.group(0)}</span>', t)
+
+
+def history_html(lang):
+    """The History section of the About page, from docs/history.md (## English / ## Español,
+    each running to the next ---), or '' while the file is a draft. A small Markdown subset:
+    ### headings, paragraphs, '- ' lists, **bold**, *italics*, links."""
+    f = ROOT / 'docs/history.md'
+    if not f.exists(): return ''
+    text = f.read_text(encoding='utf-8')
+    publish = re.search(r'<!--\s*site:\s*publish\s*-->', text[:600]) is not None
+    draft = not publish and os.environ.get('ABHIDHANA_SITE_DRAFTS') == '1'
+    if not (publish or draft): return ''
+    head = {'en': '## English', 'es': '## Español'}[lang]
+    body = text.split(head, 1)[1].split('\n---', 1)[0]
+    out = ['<h2 id="history">' + ('History' if lang == 'en' else 'Historia') + '</h2>']
+    if draft:
+        out.append('<p class="note"><strong>' + ('Draft, not published: the romanised names await review.'
+                   if lang == 'en' else 'Borrador, no publicado: los nombres romanizados esperan revisión.') + '</strong></p>')
+    out.append('<p class="note">' + ("Written from the dictionary's own front matter; page numbers are those of the PDFs."
+               if lang == 'en' else 'Redactado a partir de las páginas preliminares del propio diccionario; los números de página son los de los PDF.') + '</p>')
+    blocks, cur = [], []
+    for line in body.strip('\n').split('\n'):
+        if not line.strip():
+            if cur: blocks.append(cur); cur = []
+        elif line.startswith('### ') or (line.startswith('- ') and cur and not cur[-1].startswith('- ') and not cur[0].startswith('- ')):
+            if cur: blocks.append(cur)
+            cur = [line]
+        else:
+            cur.append(line)
+    if cur: blocks.append(cur)
+    for b in blocks:
+        if b[0].startswith('### '):
+            out.append('<h3>' + md_inline(b[0][4:].strip()) + '</h3>')
+            b = b[1:]
+            if not b: continue
+        if b[0].startswith('- '):
+            items = []
+            for ln in b:
+                if ln.startswith('- '): items.append(ln[2:].strip())
+                else: items[-1] += ' ' + ln.strip()
+            out.append('<ul>' + ''.join('<li>' + md_inline(i) + '</li>' for i in items) + '</ul>')
+        else:
+            out.append('<p>' + md_inline(' '.join(ln.strip() for ln in b)) + '</p>')
+    return '\n  '.join(out)
+
+
 def main():
     vols = json.loads((ROOT / 'site/volumes.json').read_text(encoding='utf-8'))
     if OUT.exists(): shutil.rmtree(OUT)
     shutil.copytree(SRC, OUT)
+    about = OUT / 'about/index.html'
+    a = about.read_text(encoding='utf-8')
+    for lang in ('en', 'es'):
+        a = a.replace(f'<!--HISTORY-{lang.upper()}-->', history_html(lang))
+    about.write_text(a, encoding='utf-8')
     (OUT / 'data').mkdir()
     search = []; lab_n = {}
     for v in vols:

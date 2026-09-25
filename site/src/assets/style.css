@@ -164,6 +164,8 @@ table.labels tr.hit{background:var(--mark)}
 .prose{max-width:74ch;padding:10px 0 20px}
 .prose h1{font:600 26px/1.3 var(--ui);margin:22px 0 10px}
 .prose h2{font:600 18px/1.35 var(--ui);margin:28px 0 8px}
+.prose h3{font:600 15.5px/1.35 var(--ui);margin:20px 0 6px}
+.prose p.note{font-size:13.5px;color:var(--muted)}
 .prose p,.prose li{font-size:15.5px}
 .prose .my{font-family:var(--my);font-size:16px}
 .prose table{border-collapse:collapse;font-size:14px;margin:8px 0}
