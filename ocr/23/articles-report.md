@@ -16,10 +16,10 @@
 | label normalised to the closed set (docs/labels.md) | 6,660 = 92.7% |
 | of which read exactly as printed / mapped / inferred from the ending | 5,008 / 1,652 / 0 |
 | label read but left unnormalised | 144 = 2.0% |
-| compound analysis [ ] recovered | 4,259 = 59.3% |
-| of which + signs repaired (normalise_analysis) | 302 = 4.2% |
+| compound analysis [ ] recovered | 5,321 = 74.1% |
+| of which + signs repaired (normalise_analysis) | 303 = 4.2% |
 | non-empty body | 7,008 = 97.6% |
-| at least one citation parsed | 5,525 = 76.9% |
+| at least one citation parsed | 5,524 = 76.9% |
 | label + body (the article is usable) | 6,656 = 92.7% |
 
 **Romanised headwords against OSBCT** (682,010 canonical words):
@@ -62,4 +62,3 @@ Two pages, on the image (25 Sep 2026):
   wrong; every label read is right. The index also writes ပတဋ္ဌာပန for the printed ပတိဋ္ဌာပန.
 
 18 index headwords checked: 16 right, 2 unlocated, none wrong.
-

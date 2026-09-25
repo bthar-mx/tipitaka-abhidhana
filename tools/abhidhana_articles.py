@@ -486,6 +486,15 @@ def fields_after(rest, out_hw, iast='', glued=False):
         if m and '+' in m.group(1):
             out['analysis'] = m.group(1).strip(); out['analysis_bracket_damaged'] = True
             rest = rest[m.end():]
+        else:
+            # the opening [ lost, or read as ] or | (vol. 23 sets it apart, "[ သမ္မဇ္ဇနီ + ဒဏ္ဍ ]",
+            # and OCR drops it: brief §33): elements joined by + straight after the label,
+            # accepted only when the closing ] follows them
+            m = re.match(r'^\s*[\]|]?\s*([^\s\[\]+()]+(?:\s*\+\s*[^\s\[\]+()]+)+(?:\s*။[^\[\]()]{0,60}?)?)\s*\]', rest)
+            if m:
+                out['analysis'] = re.sub(r'\s+', ' ', m.group(1)).strip()
+                out['analysis_bracket_damaged'] = True; out['analysis_open_lost'] = True
+                rest = rest[m.end():]
     # tesseract turns the dots and marks between lines into short lines of debris
     # ("ဝ ချူ ဝ ။", "[ ကြု တး ဝ"). A line whose every token is three characters or fewer is
     # dropped from the body; `raw` keeps it.

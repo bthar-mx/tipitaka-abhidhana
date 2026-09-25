@@ -16,7 +16,7 @@
 | label normalised to the closed set (docs/labels.md) | 6,386 = 90.1% |
 | of which read exactly as printed / mapped / inferred from the ending | 4,782 / 1,604 / 0 |
 | label read but left unnormalised | 195 = 2.8% |
-| compound analysis [ ] recovered | 5,162 = 72.8% |
+| compound analysis [ ] recovered | 5,758 = 81.2% |
 | of which + signs repaired (normalise_analysis) | 654 = 9.2% |
 | non-empty body | 6,819 = 96.2% |
 | at least one citation parsed | 5,189 = 73.2% |
@@ -64,4 +64,3 @@ Two pages, on the image (25 Sep 2026):
 
 17 index headwords checked (10 on p. 540 before the fix): 8 right on the page, 1 wrong line inside
 its own article, 8 misfiled by the index and fixed.
-

@@ -16,11 +16,11 @@
 | label normalised to the closed set (docs/labels.md) | 10,519 = 89.7% |
 | of which read exactly as printed / mapped / inferred from the ending | 9,245 / 1,265 / 9 |
 | label read but left unnormalised | 155 = 1.3% |
-| compound analysis [ ] recovered | 9,174 = 78.2% |
-| of which + signs repaired (normalise_analysis) | 2,795 = 23.8% |
-| non-empty body | 11,097 = 94.6% |
-| at least one citation parsed | 8,429 = 71.9% |
-| label + body (the article is usable) | 10,510 = 89.6% |
+| compound analysis [ ] recovered | 9,207 = 78.5% |
+| of which + signs repaired (normalise_analysis) | 2,797 = 23.9% |
+| non-empty body | 11,096 = 94.6% |
+| at least one citation parsed | 8,428 = 71.9% |
+| label + body (the article is usable) | 10,509 = 89.6% |
 
 **Romanised headwords against OSBCT** (682,010 canonical words):
 

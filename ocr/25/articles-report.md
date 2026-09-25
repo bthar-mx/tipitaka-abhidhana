@@ -16,8 +16,8 @@
 | label normalised to the closed set (docs/labels.md) | 3,539 = 87.5% |
 | of which read exactly as printed / mapped / inferred from the ending | 2,989 / 550 / 0 |
 | label read but left unnormalised | 77 = 1.9% |
-| compound analysis [ ] recovered | 2,896 = 71.6% |
-| of which + signs repaired (normalise_analysis) | 543 = 13.4% |
+| compound analysis [ ] recovered | 3,174 = 78.4% |
+| of which + signs repaired (normalise_analysis) | 545 = 13.5% |
 | non-empty body | 3,850 = 95.2% |
 | at least one citation parsed | 2,965 = 73.3% |
 | label + body (the article is usable) | 3,535 = 87.4% |
@@ -59,4 +59,3 @@ Two pages, on the image (25 Sep 2026):
   2 not read ((ကာ၊ ကြို) on the doubled entry, (န) on သ္နေဟဝိဂမန).
 
 20 index rows checked: 19 right, 1 unlocated, none wrong.
-

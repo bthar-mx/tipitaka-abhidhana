@@ -16,8 +16,8 @@
 | label normalised to the closed set (docs/labels.md) | 9,004 = 86.6% |
 | of which read exactly as printed / mapped / inferred from the ending | 6,996 / 2,006 / 2 |
 | label read but left unnormalised | 258 = 2.5% |
-| compound analysis [ ] recovered | 7,422 = 71.4% |
-| of which + signs repaired (normalise_analysis) | 1,907 = 18.3% |
+| compound analysis [ ] recovered | 7,486 = 72.0% |
+| of which + signs repaired (normalise_analysis) | 1,912 = 18.4% |
 | non-empty body | 9,638 = 92.7% |
 | at least one citation parsed | 6,783 = 65.3% |
 | label + body (the article is usable) | 8,999 = 86.6% |

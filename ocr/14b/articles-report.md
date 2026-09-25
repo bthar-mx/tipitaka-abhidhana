@@ -16,7 +16,7 @@
 | label normalised to the closed set (docs/labels.md) | 6,776 = 97.6% |
 | of which read exactly as printed / mapped / inferred from the ending | 6,699 / 73 / 4 |
 | label read but left unnormalised | 21 = 0.3% |
-| compound analysis [ ] recovered | 6,753 = 97.3% |
+| compound analysis [ ] recovered | 6,759 = 97.4% |
 | of which + signs repaired (normalise_analysis) | 365 = 5.3% |
 | non-empty body | 6,817 = 98.2% |
 | at least one citation parsed | 4,915 = 70.8% |
@@ -53,4 +53,3 @@ row is `status: "ocr"` all the same (the conversion is not proofread).
 One page, p. 600, in the text (the text layer is the page; p. 300 was checked against the image in
 `extract-report.md`): **13 of 13 at the right entry**, every label as printed. One index typo:
 ပရိဘိန္ဒသု for the printed ပရိဘိန္ဒိံသု (placed by fuzzy match).
-

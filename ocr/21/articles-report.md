@@ -16,7 +16,7 @@
 | label normalised to the closed set (docs/labels.md) | 7,309 = 89.9% |
 | of which read exactly as printed / mapped / inferred from the ending | 5,570 / 1,739 / 0 |
 | label read but left unnormalised | 269 = 3.3% |
-| compound analysis [ ] recovered | 6,559 = 80.7% |
+| compound analysis [ ] recovered | 6,929 = 85.2% |
 | of which + signs repaired (normalise_analysis) | 563 = 6.9% |
 | non-empty body | 7,891 = 97.1% |
 | at least one citation parsed | 6,193 = 76.2% |
@@ -59,4 +59,3 @@ Three pages, on the image (25 Sep 2026):
 - **p. 720** (the index's p. 962): 10 of 10 placed (9 verbatim, 1 fuzzy), every label as printed.
 
 32 index headwords checked: 31 right, 1 unlocated, none wrong.
-
