@@ -41,6 +41,8 @@ cannot delete. Delete the folder by hand (`tmp/` is gitignored).
    `abhidhana_articles.py` or `abhidhana_romanise.py`, and don't run OCR or articles steps.** When it
    says `all done`: reports, spot checks, the witness join and the Reader for vols. 10–24, commits;
    then the changes held back (below), and the articles step again for every book.
+   Also then: `python3 tools/abhidhana_witness_pndaza.py join` for every book 01–19 (Pn Daza's
+   typed text joined by book, page and headword; `docs/witness-pndaza.md` §8), beside the PCED join.
    Held back until then: (ကာ၊ကမ္မ၊ကြိ) in the label map (clean in 14b, 7 times; the witness 43);
    `abhidhana_articles.py 14b` and `abhidhana_romanise.py 14b` on the text-layer records already in
    `ocr/14b/pages/` (brief §25; a trial gave 98.2% located, 97.5% label + body).
