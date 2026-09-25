@@ -1,7 +1,7 @@
-# Abhidhāna — handover, 25 September 2026 (late)
+# Abhidhāna — handover, 25 September 2026 (after vol. 5)
 
-*Vols. 1–3 and 4/1–4/3 are digitised end to end, spot-checked and in the Reader. Read `abhidhana-project-brief.md` first: §12 covers vol. 1
-§13 vols. 2–3, §14–16 the witness and vols. 4/1–4/3; every figure is there. `docs/labels.md` holds the label map and the typed
+*Vols. 1–5 (vol. 4 in three parts) are digitised end to end, spot-checked and in the Reader. Read `abhidhana-project-brief.md` first: §12 covers vol. 1
+§13 vols. 2–3, §14–17 the witness and vols. 4/1–5; every figure is there. `docs/labels.md` holds the label map and the typed
 witness.*
 
 ## Every session
@@ -16,31 +16,31 @@ witness.*
 
 ## State
 
-| | vols. 1–3 | vols. 4/1, 4/2 | vol. 4/3 (4c) | vol. 5 |
-|---|---|---|---|---|
-| OCR, articles, romanisation | done | done | done 25 Sep | not started |
-| reports, spot check, Reader | done | done | done 25 Sep | — |
-| page records in the release | uploaded | to upload if not yet | `release/ocr-4c-pages.tar.gz`, to upload | — |
-| GitHub issue | closed | close | close after this commit | open |
+| | vols. 1–4/3 | vol. 5 | vol. 6 |
+|---|---|---|---|
+| OCR, articles, romanisation | done | done 25 Sep | OCR next (Angel) |
+| reports, spot check, Reader | done | done 25 Sep | — |
+| page records in the release | uploaded or to upload (`--clobber` is safe) | `release/ocr-05-pages.tar.gz`, to upload | — |
+| GitHub issue | close any still open | close after this commit | open |
 
-Done on 25 Sep (brief §14–16): vols. 4/1, 4/2 and 4/3; the Reader with all six books and search
-across them; the typed witness in Unicode; homonym and one-letter headwords; labels with a lost
-bracket. **4c's PDF carries supplements to vols. 15, 4/2 and 16** (PDF pp. 713–735, brief §16).
+Done on 25 Sep (brief §14–17): vols. 4/1, 4/2, 4/3 and 5; the Reader with all seven books and
+search across them; the typed witness; homonym and one-letter headwords; labels with a lost
+bracket. **4c's PDF carries supplements to vols. 15, 4/2 and 16** (brief §16).
 
 ## Next, in order
 
-1. **Vol. 5** (book 05, က – ကိလေဒေတွာ): check `pdfimages -list` first; OCR natively; then as for 4c.
-   The witness covers it, so the witness join (item 2) can be tried on it at once.
+1. **Vol. 6** (book 06, ကိလေသ – ငကာရ, 1,039 PDF pages, images 74–77 ppi: render at 75, as vol. 3
+   was): OCR natively; then as for vol. 5.
 2. **Join the witness to the articles** (`docs/witness.md` §6): per article, by headword and
    homonym order; flag label and analysis disagreements; report agreement per volume. Its text is
    not published until its licence is known (it is not stated anywhere found).
-3. **Fold ါ/ာ after a stacked consonant, and ဉာ/ညာ,** when matching headwords (`abhidhana_ocr.py` scoring and
+3. **Fold ါ/ာ after a stacked consonant, ဉာ/ညာ, and the stacked-letter confusions (ဉ္ဇ/ဉ္စ, ဏ္ဌ/ဏ္ဍ/ဏ္ဏ, ဋ/ဌ/ဠ, ဉ္ဆ/ဉ္စ),** when matching headwords (`abhidhana_ocr.py` scoring and
    `abhidhana_articles.py`): it would recover 1, 6 and 26 missed headwords in vols. 1–3. Also
    ဉ္ဆ/ဉ္စ in 4a (27 missed). ဉာ/ညာ: 6 of 4b's 9 misses of ဉာ-headwords. Don't edit `abhidhana_ocr.py` while an OCR run is going.
 4. **Angel's review of the new labels**: `docs/labels.md` §1 and §6. There is a Pāḷi expansion and a
    Spanish abbreviation for each (ကြိ၊ဝိ, ဗျ, ကာ၊ကြိ, ကမ္မ၊ကြိ, …).
 5. **Re-run vol. 25** with `--columns` at its native resolution.
-6. **Next volumes**: 06 onwards, on the Mac natively or on Winston's. **Vol. 15** must be joined with
+6. **Next volumes**: 07 onwards, on the Mac natively or on Winston's. **Vol. 15** must be joined with
    4c's supplement to it (53 ဘိဇ္ဇ headwords indexed only there).
    Per volume: reports, a 3-page spot check, the Reader, then close the issue.
 

@@ -374,3 +374,22 @@ ids 176418–176427), four typos (ဩလမ္ဗတကုလာဝက, ဥဒ�
 entry split into bare ဧဏိ / ဧဏီ, and one headword (ဥပက္ကိလေသ) with no printed entry. The index is
 still the authority for *which* headwords there are, but not for their spelling or their page.
 
+## 17. Vol. 5 (25 September 2026, late)
+
+883 PDF pages, 8,015 index headwords, 72 dpi. The typed witness covers it.
+
+| | vol. 5 |
+|---|---:|
+| headwords verbatim, either pass | 90.2% |
+| in printed order, column pass | 74.6% |
+| articles located | 93.4% (29.1% by fuzzy match, the highest share so far) |
+| normalised label + body | 87.6% |
+| labels agreeing with the typed witness | 99.4% (6,904 / 6,949) |
+| witness has the headword | 98.6% |
+
+**Three stacked-letter confusions account for most misses here**: ဉ္ဇ read ဉ္စ (27 of 47 missed
+headwords with ဉ္ဇ), ဏ္ဌ read ဏ္ဍ/ဏ္ဏ (20 of 20), ဋ read ဌ/ဠ (14 of 141). The ဉ္ဇ confusion is in
+every book from vol. 3 on. A table of such confusions, used when matching, would join the ါ/ာ and
+ဉာ/ညာ folds (NEXT-SESSION item 3). Spot check (pp. 500, 106, 142): 30 of 36 at the right entry,
+none wrong, 6 unlocated; no label wrong, 1 not read. One more index typo: ကဉ္စိက for ကဉ္ဇိက.
+
