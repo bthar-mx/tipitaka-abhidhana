@@ -156,9 +156,11 @@ article.hit{background:linear-gradient(var(--mark),var(--mark)) left/4px 100% no
 .prose.wide{max-width:100ch}
 table.labels{width:100%}
 table.labels td.my{white-space:nowrap}
+table.labels td.st{font-size:13px}
+table.labels .src{font-size:11.5px;color:var(--muted)}
 table.labels td.num{text-align:right;font-family:var(--mono);font-size:13px}
 table.labels tr.hit{background:var(--mark)}
-@media (max-width:600px){table.labels th:nth-child(4),table.labels td:nth-child(4){display:none}}
+@media (max-width:700px){table.labels th:nth-child(5),table.labels td:nth-child(5),table.labels .src{display:none}}
 .prose{max-width:74ch;padding:10px 0 20px}
 .prose h1{font:600 26px/1.3 var(--ui);margin:22px 0 10px}
 .prose h2{font:600 18px/1.35 var(--ui);margin:28px 0 8px}

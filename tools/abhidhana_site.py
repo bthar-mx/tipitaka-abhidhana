@@ -92,18 +92,24 @@ def main():
         print(f'{b:>3}: {n:,} records, {(OUT / f"data/v{b}.json").stat().st_size / 1e6:.1f} MB')
     dump(OUT / 'data/volumes.json', vols)
     dump(OUT / 'data/search.json', search)
-    labels = [{k: d[k] for k in ('label', 'pali', 'en', 'es', 'abbr_en', 'abbr_es', 'status', 'es_status')}
+    labels = [{k: d.get(k, '') for k in ('label', 'printed', 'pali', 'en', 'es', 'abbr_en', 'abbr_es',
+                                         'status', 'es_status', 'source')}
               | {'n': lab_n.get(d['label'], 0)} for d in LABELS]
     dump(OUT / 'data/labels.json', labels)
     E = html.escape
     lrows = []
     for k, d in enumerate(labels):
-        prov = lambda lang: '' if (d['status'] == 'confirmed' and (lang == 'en' or d['es_status'] == 'confirmed')) else \
-            f'<span class="prov" data-i18n="provisional">provisional</span>'
+        prov = lambda lang: '' if (d['status'] != 'provisional' and (lang == 'en' or d['es_status'] == 'confirmed')) else \
+            '<span class="prov" data-i18n="provisional">provisional</span>'
+        st = {'confirmed': ('confirmed', 'confirmada'), 'printed': ('printed in the dictionary', 'impresa en el diccionario'),
+              'provisional': ('provisional', 'provisional')}[d['status']]
         lrows.append(
-            f'<tr id="l{k}"><td class="my" lang="my">({E(d["label"])})</td><td lang="pi"><i>{E(d["pali"])}</i></td>'
+            f'<tr id="l{k}"><td class="my" lang="my">({E(d["label"])})</td><td class="my" lang="my">{E(d["printed"])}</td>'
+            f'<td lang="pi"><i>{E(d["pali"])}</i></td>'
             f'<td><span class="tr" lang="en">{E(d["en"])} {prov("en")}</span><span class="tr" lang="es">{E(d["es"])} {prov("es")}</span></td>'
             f'<td><span class="tr" lang="en">{E(d["abbr_en"])}</span><span class="tr" lang="es">{E(d["abbr_es"])}</span></td>'
+            f'<td class="st"><span class="tr" lang="en">{st[0]}</span><span class="tr" lang="es">{st[1]}</span>'
+            f'<div class="src">{E(d["source"])}</div></td>'
             f'<td class="num">{d["n"]:,}</td></tr>')
     lp = OUT / 'labels/index.html'
     lp.write_text(lp.read_text(encoding='utf-8').replace('<!--LABELS-->', '\n'.join(lrows)), encoding='utf-8')
