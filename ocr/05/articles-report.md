@@ -6,20 +6,21 @@
 
 | | |
 |---|---:|
-| located verbatim (line start or before ( / [ ) | 5,134 = 64.1% |
-| located verbatim, inline only | 26 = 0.3% |
-| located by bounded fuzzy match | 2,329 = 29.1% |
-| **located, any** | **7,489 = 93.4%** |
-| unlocated | 526 = 6.6% |
-| label ( ) read | 7,140 = 89.1% |
-| label normalised to the closed set (docs/labels.md) | 7,025 = 87.6% |
-| of which read exactly as printed / mapped / inferred from the ending | 5,809 / 1,216 / 0 |
-| label read but left unnormalised | 115 = 1.4% |
-| compound analysis [ ] recovered | 6,092 = 76.0% |
-| of which + signs repaired (normalise_analysis) | 1,991 = 24.8% |
-| non-empty body | 7,481 = 93.3% |
-| at least one citation parsed | 5,493 = 68.5% |
-| label + body (the article is usable) | 7,020 = 87.6% |
+| located verbatim (line start or before ( / [ ) | 5,140 = 64.1% |
+| located verbatim after folding (tools/abhidhana_fold.py) | 183 = 2.3% |
+| located verbatim, inline only | 25 = 0.3% |
+| located by bounded fuzzy match | 2,152 = 26.8% |
+| **located, any** | **7,500 = 93.6%** |
+| unlocated | 515 = 6.4% |
+| label ( ) read | 7,149 = 89.2% |
+| label normalised to the closed set (docs/labels.md) | 7,033 = 87.7% |
+| of which read exactly as printed / mapped / inferred from the ending | 5,814 / 1,219 / 0 |
+| label read but left unnormalised | 116 = 1.4% |
+| compound analysis [ ] recovered | 6,098 = 76.1% |
+| of which + signs repaired (normalise_analysis) | 1,994 = 24.9% |
+| non-empty body | 7,492 = 93.5% |
+| at least one citation parsed | 5,499 = 68.6% |
+| label + body (the article is usable) | 7,028 = 87.7% |
 
 **Romanised headwords against OSBCT** (682,010 canonical words):
 
@@ -29,9 +30,9 @@
 | inside a canonical word | 3,760 = 46.9% |
 | neither | 3,038 = 37.9% |
 
-Labels, normalised: (တိ) 2,155 · (ပု) 1,939 · (န) 1,597 · (ထီ) 815 · (ကြိ) 152 · (ပု၊န) 138 · (ကာ၊ကြိ) 81 · (ထီ၊န) 60 · (ဗျ) 45 · (ကြိ၊ဝိ) 28 · (ထီ၊ပု) 15
+Labels, normalised: (တိ) 2,155 · (ပု) 1,940 · (န) 1,600 · (ထီ) 815 · (ကြိ) 153 · (ပု၊န) 140 · (ကာ၊ကြိ) 72 · (ထီ၊န) 60 · (ဗျ) 45 · (ကြိ၊ဝိ) 28 · (ထီ၊ပု) 15 · (ကာ၊ကြိ၊ဝိ) 10
 
-Readings left unnormalised: (၂) 16 · (ဠ) 6 · (၃) 5 · (ထိ၊ န) 4 · (ပ္ပ) 4 · (ထိ၊န) 3 · (ထံ၊ပု) 3 · (တံ) 3 · (ထိန) 3 · (၁) 3 · (ိ) 3 · (စော) 2 · (ဟိ) 2 · (လီ) 2 · (လ) 2 · (၅) 2 · (ဏော) 2 · (ဏ) 2 · (ယာ) 2 · (စ္ဆိရကာရာ (ထီ) 1 · (အဋ္ဌ၊ ၂။၈၈) 1 · (ထေရီ။ ၂၁) 1 · (ထိ၊) 1 · (ဥ) 1 · (ဝိ၊နိစ္ဆယ။ ၂၃၁) 1 · (သံ၊ဋ္ဌ၊၃။၁၀၆) 1 · (နု) 1 · (ဒီ၊ဋ္ဌ၊ ၁။ဂဝ) 1 · (ပု ုန) 1 · (မဟာနိ။ ၂၀၉) 1 · (ဝိ၊ဋ္ဌ၊၄။၂၀၁) 1 · (တာ) 1 · (ကလ္လ) 1 · (ထီ၊၇) 1 · (ဒီ) 1 · (ဂ) 1 · (ဇာ၊ဋ္ဌ၊ ၅၂၈၀) 1 · (ဿာ) 1 · (ဒီ၊ ၃။၁၄၈) 1 · (အ) 1 · (ကြိဝ်) 1 · (ဝိ) 1 · (ကာကာတိဍာယိ ၅) 1 · (ထေရ။ ၃၁၆) 1 · (ဇာ၊ ၁။၆၂) 1 · (ဟု) 1 · (တီ၊ န) 1 · (ဠှီဗဟုလ(တိ) 1 · (ပ္ပဋိဗဒ္ဓ (တိ) 1 · (နိ) 1 · (ထံ၊ ပု) 1 · (ထါ၊န) 1 · (န္တ) 1 · (ဉ္စိရက (ပ) 1 · (ဋ) 1 · (ူ) 1 · (သ) 1 · (သဋ္ဌ။၁။၉၇) 1 · (ဝိ၊၅။၁၀၁) 1 · (ကုဗ္ဗ (တိ) 1 · (ထ၊ပု) 1 · (ကြီး) 1 · (သံ၊ ၁။၆၆) 1 · (”) 1 · (.) 1
+Readings left unnormalised: (၂) 16 · (၃) 6 · (ဠ) 6 · (ထိ၊ န) 4 · (ပ္ပ) 4 · (ထိ၊န) 3 · (ထံ၊ပု) 3 · (တံ) 3 · (ထိန) 3 · (၁) 3 · (ိ) 3 · (စော) 2 · (ဟိ) 2 · (လီ) 2 · (လ) 2 · (၅) 2 · (ဏော) 2 · (ဏ) 2 · (ယာ) 2 · (စ္ဆိရကာရာ (ထီ) 1 · (အဋ္ဌ၊ ၂။၈၈) 1 · (ထေရီ။ ၂၁) 1 · (ထိ၊) 1 · (ဥ) 1 · (ဝိ၊နိစ္ဆယ။ ၂၃၁) 1 · (သံ၊ဋ္ဌ၊၃။၁၀၆) 1 · (နု) 1 · (ဒီ၊ဋ္ဌ၊ ၁။ဂဝ) 1 · (ပု ုန) 1 · (မဟာနိ။ ၂၀၉) 1 · (ဝိ၊ဋ္ဌ၊၄။၂၀၁) 1 · (တာ) 1 · (ကလ္လ) 1 · (ထီ၊၇) 1 · (ဒီ) 1 · (ဂ) 1 · (ဇာ၊ဋ္ဌ၊ ၅၂၈၀) 1 · (ဿာ) 1 · (ဒီ၊ ၃။၁၄၈) 1 · (အ) 1 · (ကြိဝ်) 1 · (ဝိ) 1 · (ကာကာတိဍာယိ ၅) 1 · (ထေရ။ ၃၁၆) 1 · (ဇာ၊ ၁။၆၂) 1 · (ဟု) 1 · (တီ၊ န) 1 · (ဠှီဗဟုလ(တိ) 1 · (ပ္ပဋိဗဒ္ဓ (တိ) 1 · (နိ) 1 · (ထံ၊ ပု) 1 · (ထါ၊န) 1 · (န္တ) 1 · (ဉ္စိရက (ပ) 1 · (ဋ) 1 · (ူ) 1 · (သ) 1 · (သဋ္ဌ။၁။၉၇) 1 · (ဝိ၊၅။၁၀၁) 1 · (ကုဗ္ဗ (တိ) 1 · (ထ၊ပု) 1 · (ကြီး) 1 · (သံ၊ ၁။၆၆) 1 · (”) 1 · (.) 1
 
 ## What these figures mean
 
@@ -41,9 +42,14 @@ means, and how labels are normalised. Every row is `status: "ocr"`. Nothing is p
 ## Vol. 5 specifics
 
 - **Placements survive the glyph confusions** of `ocr-report.md`: recall is 90.2%, but 93.4% of
-  articles are located, most of the difference by fuzzy match (29.1%, the highest share so far).
-- **Against the typed witness** (`docs/witness.md`): it has 7,786 of this book's 7,899 distinct
-  headwords (98.6%). Where both have a label, ours agrees on 6,904 of 6,949 (99.4%).
+  articles were located, most of the difference by fuzzy match (29.1%, the highest share so far).
+  After the spelling folds and the homonym fix (25 Sep, later) it is 93.6%; 177 fuzzy placements
+  are now confirmed by folding (`folded`), and 6 homonyms taken one entry late (ကကစ¹, p. 63) are
+  corrected.
+- **Against the typed witness** (`docs/witness.md`): it has 7,887 of this book's 7,899 distinct
+  headwords (99.8%) as the index spells them, 7,894 with the spelling folds. (This line said
+  "7,786 (98.6%)" until 25 Sep; that did not reproduce.) Paired homonym by homonym
+  (`docs/witness-join.md`), labels agree on 99.4% of the 7,031 rows where both have one.
 - **An index typo**: ကဉ္စိက (p. 106) for the printed ကဉ္ဇိက; the neighbours in the index have ဉ္ဇ.
 
 ## Spot checks against the page images
@@ -66,4 +72,3 @@ No article on the three pages is placed at a wrong entry, and no label is wrong.
   ကဉ္ဇိကဒါန are unlocated; the other eight are placed with their labels.
 - **P. 142**: ကဏ္ဌ… is read ကဏ္ဍ… or ကဏ္ဏ… in every head; twelve of thirteen are placed by fuzzy
   match, all with their labels. ကဏ္ဌာဒိဝဏ္ဏပ္ပဝတ္တိဋ္ဌာန, the last, is unlocated.
-

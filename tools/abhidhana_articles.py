@@ -32,6 +32,8 @@ Nothing here is reviewed. Every row carries status "ocr" and the Burmese is raw 
 import json, re, sqlite3, sys, unicodedata
 from difflib import SequenceMatcher
 from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from abhidhana_fold import fold
 
 ROOT = Path(__file__).resolve().parent.parent
 nfc = lambda s: unicodedata.normalize('NFC', s)
@@ -82,6 +84,16 @@ def page_text(rec):
 # Vol. 2: printed pp. 223 and 224 are PDF pp. 242 and 241 (the running heads say ၂၂၄ on 241),
 # so the index's page 223 headwords are on 242 and its 224 headwords on 241.
 PAGE_FIX = {'02': {241: 242, 242: 241}}
+
+# Headwords the index files on the wrong page. {book: [(first id, last id, pdf page printed on)]}.
+# Each run was found as a page the index gives no headwords (inside the body) whose column text
+# begins entries with the unlocated headwords of a neighbouring page, and checked in the text.
+#   4c: ids 176418-176427 are indexed at p. 615 and printed on p. 613, which the index skips
+#       (brief §16).
+#   06: ids 58264-58277 (ဂါဟေတဗ္ဗဂါမ ... ဂါဟေဿာမိ) are indexed at p. 851 and printed on p. 852,
+#       which the index skips.
+# They keep the index page the index gives them (`index_page`) and are marked `index_misfiled`.
+ID_PAGE_FIX = {'4c': [(176418, 176427, 613)], '06': [(58264, 58277, 852)]}
 
 # a homonym's superscript, as OCR reads it: glued debris, or a token of its own
 SUP = re.compile(r'^(ာ?ါ|ဝ်|[”"\'’?၁-၉\-–—။]{1,3})?(?:\s+(ာ?ါ|ဝ်|[”"\'’?၁-၉]{1,2})(?=\s|[(\[（]))?(\s*)(\S?)')
@@ -226,6 +238,31 @@ def locate(text, gold):
             if 0 <= k < len(gold) and pos[k] in two and twin[k] is None and pos[k] not in taken \
                     and max(SequenceMatcher(None, hd, h).ratio() for hd in two[pos[k]]) >= .85:
                 pos[i] = pos[k]; how[i] = 'fuzzy'; twin[i] = k; taken.add(pos[k]); break
+    # Folded: a headword still unplaced after the fuzzy alignment, looked for again with the
+    # spellings print, index and OCR disagree on folded together (tools/abhidhana_fold.py:
+    # ါ/ာ, ဉ/ည, ဋ/ဌ/ဠ, ည္ဇ/ည္ဆ/ည္စ, ဏ္ဍ/ဏ္ဏ/ဏ္ဌ). Only between its placed neighbours, rank 2
+    # or better. Run before the fuzzy alignment it moved three placements in vol. 5, two of them
+    # wrongly (a quotation line; a cross-reference, "ကာသာဝကဏ္ဍ (ခ) ကြည့်"), so it runs after
+    # it and moves nothing.
+    ff = fold(f)
+    for i, g in enumerate(gold):
+        if pos[i] is not None: continue
+        h = fold(re.sub(r'\s', '', g))
+        lo = max([pos[k] + len(re.sub(r'\s', '', gold[k])) for k in range(i) if pos[k] is not None], default=0)
+        hi = min([pos[k] for k in range(i + 1, len(gold)) if pos[k] is not None], default=len(f))
+        best = (0, None); j = ff.find(h, lo)
+        while j != -1 and j + len(h) <= hi:
+            r = rank(j, len(h))
+            if r > best[0]: best = (r, j)
+            if r == 4: break
+            j = ff.find(h, j + 1)
+        if best[0] >= 2:
+            pos[i] = best[1]; how[i] = 'folded'; inline[i] = None
+    # A fuzzy placement whose line starts with the headword once folded is as good as verbatim:
+    # say so, without moving it.
+    for i, g in enumerate(gold):
+        if how[i] == 'fuzzy' and twin[i] is None and ff.startswith(fold(re.sub(r'\s', '', g)), pos[i]):
+            how[i] = 'folded'
     # Homonyms whose superscript was read as debris (အမူလကာါ (န), အဝ် အာ-ဥပသာရ): a last pass,
     # for headwords still unplaced, inside the span their placed neighbours leave. Tried first
     # in the verbatim pass, it let a homonym's first entry take the second's line when the first
@@ -239,6 +276,25 @@ def locate(text, gold):
         for s0 in sorted(line_starts):
             if lo <= s0 < hi and s0 not in used and f.startswith(h, s0) and sup_rank(s0, h):
                 pos[i] = s0; how[i] = 'verbatim'; used.add(s0); break
+    # Homonyms taken one line late. When a homonym's first entry is misread (its superscript read
+    # as a glued ာ, "ကကစာ (ပုန) [", which SUP does not pass, since အာ is a word), the verbatim
+    # pass gives the first index row the second entry's line and leaves the second unplaced
+    # (vol. 5 p. 63: ကကစ¹ carried ကကစ²'s article; the typed witness showed it, see
+    # docs/witness-join.md). For two identical headwords in a row, the first placed and the
+    # second not, a line start between the first's placed predecessor and its position that
+    # begins with the headword, then at most two characters of superscript debris (ာ ါ, a quote
+    # mark, a digit), then ( or [, is the first's
+    # entry: the second moves down to the line the first had.
+    for i in range(len(gold) - 1):
+        if not (pos[i] is not None and pos[i + 1] is None and twin[i] is None
+                and re.sub(r'\s', '', gold[i]) == re.sub(r'\s', '', gold[i + 1])): continue
+        h = re.sub(r'\s', '', gold[i])
+        lo = max([pos[k] + 1 for k in range(i) if pos[k] is not None], default=0)
+        for s0 in sorted(line_starts):
+            if lo <= s0 < pos[i] and f.startswith(h, s0) and re.match(r'[ာါ”"\'’၁-၉¹²³]{0,2}[(\[（]', f[s0 + len(h):s0 + len(h) + 3]) \
+                    and s0 not in used:
+                pos[i + 1], how[i + 1] = pos[i], how[i]
+                pos[i], how[i] = s0, 'verbatim'; used.add(s0); break
     for i, g in enumerate(gold):
         if pos[i] is not None or inline[i] is None: continue
         lo = max([pos[k] + 1 for k in range(i) if pos[k] is not None], default=0)
@@ -264,7 +320,7 @@ LABEL_LOOSE = re.compile(r'^\s*(?:[\(（]\s*([^)）\n\[]{1,14}?)\s*(?=\[)|([^\s(
 # None and `label_ocr` keeps what the OCR printed.
 LABEL_SET = ('ပု', 'ထီ', 'န', 'တိ', 'ကြိ', 'ကြိ၊ဝိ', 'ကာ၊ကြိ', 'နာမ-ကြိ', 'ဗျ',
              'ပု၊န', 'ပု၊ထီ', 'ပု၊တိ', 'န၊ပု', 'န၊ထီ', 'န၊တိ', 'တိ၊န', 'ပုံ-ဗဟု',
-             'စတုတ္ထန္တ', 'တတိယန္တ-ဗျ', 'ကမ္မ၊ကြိ', 'ထီ၊န', 'ထီ၊ပု', 'အ-လိင်')
+             'စတုတ္ထန္တ', 'တတိယန္တ-ဗျ', 'ကမ္မ၊ကြိ', 'ထီ၊န', 'ထီ၊ပု', 'အ-လိင်', 'ကာ၊ကြိ၊ဝိ')
 _LABEL_READINGS = {
     'ပု':      'ပု ပ ၇ ပြ ပူ ပုံ ဖု ြု ၇ု ု ပ၇ ပြု မ ပု၊ ပု။',
     'ထီ':      'ထီ ထိ ထံ ထ တီ သီ ၊ထီ',
@@ -291,6 +347,9 @@ _LABEL_READINGS = {
     'ထီ၊န':    'ထီ၊န ထံ၊န',   # ထံ၊န: vol. 4b p. 300, image-checked
     'ထီ၊ပု':   'ထီ၊ပု ထိ၊ပု ထိ၊ပူ',
     'အ-လိင်':  'အ-လိင် အလိင်',   # aliṅga, from vol. 3; the witness prints it 20 times
+    # causative absolutive; vol. 6 p. 852 ဂါဟေတွာ, image-checked. Until 25 Sep 2026 it fell to the
+    # junk-tail rule below and was cut to (ကာ၊ကြိ): 35 rows in vols. 3-6, all -tvā / -tvāna.
+    'ကာ၊ကြိ၊ဝိ': 'ကာ၊ကြိ၊ဝိ ကာ၊ကြ၊ဝိ ကာ၊ကြိံဝိ ကာ၊ကြိဝိ ကာကြိဝိ ကာ၊ကြ၊ဝိ၊ ကာ၊ကြါ၊ဝိ ကာ၊ကြးဝိ',
 }
 LABEL_MAP = {r: lab for lab, rs in _LABEL_READINGS.items() for r in rs.split()}
 # Not mapped, because the image showed them ambiguous: (တံ) is (တိ) on id 455 and (ထီ) on
@@ -455,9 +514,13 @@ def main(book):
     idx = {}
     fix = PAGE_FIX.get(book, {})
     ipage = {}
+    misfiled = {}
     for wid, w, p in c.execute('select id,word,page_number from words where book_id=? order by id', (book,)):
         q = fix.get(p + start, p + start)
-        idx.setdefault(q, []).append((wid, nfc(w))); ipage[q] = p
+        for a, b, pq in ID_PAGE_FIX.get(book, []):
+            if a <= wid <= b: q = pq; misfiled[wid] = p
+        idx.setdefault(q, []).append((wid, nfc(w)))
+        if q not in ipage or wid not in misfiled: ipage[q] = p
     pdir = ROOT / f'ocr/{book}/pages'
     pages = {}
     for p in sorted(idx):
@@ -514,6 +577,7 @@ def main(book):
             row = dict(id=wid, book=book, pdf_page=p, index_page=ipage[p], headword=hw,
                        located=how[i], status='ocr')
             if twins[p][i] is not None: row['variant_of'] = ents[twins[p][i]][0]
+            if wid in misfiled: row['index_page'] = misfiled[wid]; row['index_misfiled'] = True
             base = re.sub('[' + MY_DIGITS + r'\d\s]', '', hw)
             iast = transliterate.process('Burmese', 'IAST', base).replace('ṃ', 'ṁ')
             if pos[i] is not None:
@@ -544,6 +608,7 @@ def main(book):
            f'{n:,} index headwords on {len(pages)} OCR\'d indexed pages (of {len(idx)} indexed).', '',
            '| | |', '|---|---:|',
            f'| located verbatim (line start or before ( / [ ) | {pct(cnt(lambda r: r["located"] == "verbatim"))} |',
+           f'| located verbatim after folding (tools/abhidhana_fold.py) | {pct(cnt(lambda r: r["located"] == "folded"))} |',
            f'| located verbatim, inline only | {pct(cnt(lambda r: r["located"] == "verbatim-inline"))} |',
            f'| located by bounded fuzzy match | {pct(cnt(lambda r: r["located"] == "fuzzy"))} |',
            f'| **located, any** | **{pct(loc)}** |',

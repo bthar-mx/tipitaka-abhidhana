@@ -1,7 +1,8 @@
 # Tipiṭaka Pāḷi-Myanmā Abhidhāna — project brief
 
 *Written 21 September 2026, at the end of the volume-25 pilot; §10–12 revised 24 September
-2026, after volume 1 was done end to end and the repository was made public. Everything in
+2026, after volume 1 was done end to end and the repository was made public; §18–20 added
+25 September 2026 (spelling folds, the witness join, vol. 6). Everything in
 this file was measured. Do not re-derive a figure it carries; if a new one is needed,
 measure it rather than estimating.*
 
@@ -191,7 +192,7 @@ distribution, and IEBH will not treat the licence as a blocker. The project is n
 
 - Vol. 25 pilot is still whole-page. Re-run with `--columns` at its native resolution.
 - ~~Labels are not normalised; the unlocated 13% not recovered.~~ Done 24 Sep (§12, `docs/labels.md`).
-- ~~The typed PCED copy is not yet converted from Zawgyi.~~ Converted 25 Sep (§14, `docs/witness.md`); not yet joined to the articles.
+- ~~The typed PCED copy is not yet converted from Zawgyi.~~ Converted 25 Sep (§14, `docs/witness.md`); joined to the articles 25 Sep (§19).
 - ~~Vol. 3 is not yet spot-checked; the Reader does not show vols. 2–3.~~ Done 25 Sep (§13).
 - Citations are parsed but not resolved against OSBCT.
 - No Spanish exists beyond the drafted sample in `docs/spanish-method.md`.
@@ -392,4 +393,98 @@ headwords with ဉ္ဇ), ဏ္ဌ read ဏ္ဍ/ဏ္ဏ (20 of 20), ဋ re
 every book from vol. 3 on. A table of such confusions, used when matching, would join the ါ/ာ and
 ဉာ/ညာ folds (NEXT-SESSION item 3). Spot check (pp. 500, 106, 142): 30 of 36 at the right entry,
 none wrong, 6 unlocated; no label wrong, 1 not read. One more index typo: ကဉ္စိက for ကဉ္ဇိက.
+
+*Correction (§19):* the vol. 5 report said the witness has 7,786 of 7,899 distinct headwords
+(98.6%). Measured again it is **7,887 (99.8%)**; the earlier figure does not reproduce.
+
+## 18. Spelling folds, homonyms placed late, headwords filed on the wrong page (25 September 2026)
+
+**Folds.** `tools/abhidhana_fold.py` folds, one character for one, the spellings print, index and
+OCR disagree on: ါ→ာ, ဉ→ည, ဌ ဠ→ဋ, ည္ဇ ည္ဆ→ည္စ, ဏ္ဍ ဏ္ဏ→ဏ္ဋ. It is used for matching only; nothing
+folded is written out. Recall with the folds, over the page records:
+
+| | 01 | 02 | 03 | 4a | 4b | 4c | 05 | 06 |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| verbatim | 92.0% | 92.7% | 92.9% | 88.9% | 93.3% | 90.5% | 90.2% | 92.4% |
+| with the folds | 92.4% | 93.0% | 93.5% | 89.6% | 94.0% | 90.8% | 91.4% | 93.1% |
+
+`abhidhana_ocr.py` now records `union_folded` per page and prints both. In `abhidhana_articles.py`
+the folded search runs **after** the fuzzy alignment, for headwords still unplaced, rank 2 or better
+between placed neighbours. Run before it, it moved three placements in vol. 5, two of them wrongly
+(a quotation line; a cross-reference "ကာသာဝကဏ္ဍ (ခ) ကြည့်"), so that version was dropped. A fuzzy
+placement whose line begins with the folded headword is relabelled `folded` (868 in vols. 1–5). It
+gains little on its own (15 articles in vols. 1–5): the fuzzy alignment had already placed most.
+
+**Homonyms taken one entry late.** Found through the witness (§19): when a homonym's superscript
+is read as a glued ာ ("ကကစာ (ပုန) [", vol. 5 p. 63), the verbatim pass gave the first index row the
+second entry's line and left the second unplaced. For two identical headwords in a row, the first
+placed and the second not, an entry line of the headword before the first's position, with at
+most two characters of superscript debris (ာ ါ, a quote mark, a digit), now takes the first; the
+second moves to the first's old line. In vols. 1–5: 50 verbatim placements moved, 9 inline ones,
+45 unlocated headwords placed. The witness agrees with 67 of 70 of their labels; their analyses
+are ≥ 0.8 similar in 51 of 60, < 0.4 in 3. (A version allowing any two characters also moved
+ကတတ္တ onto the line of ကတတ္တံ and was narrowed.)
+
+**Headwords filed on the wrong page.** `ID_PAGE_FIX` reads an id range on the page it is printed on,
+keeping `index_page` and marking `index_misfiled`. Two runs, found as unindexed pages inside the
+body whose entries begin with a neighbour's unlocated headwords (no other case in vols. 3, 4/3, 5):
+4c ids 176418–176427 (indexed p. 615, printed p. 613: 9 of 10 now placed) and 06 ids 58264–58277
+(indexed p. 851, printed p. 852: 14 of 14, image-checked).
+
+**A label lost.** (ကာ၊ကြိ၊ဝိ), the causative absolutive, fell to the junk-tail rule and was cut to
+(ကာ၊ကြိ): 35 rows in vols. 3–6. Now in the label map (`docs/labels.md` §7; image, vol. 6 p. 852).
+
+Articles now, every volume re-run with all of the above:
+
+| | 01 | 02 | 03 | 4a | 4b | 4c | 05 | 06 |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| located | 94.4% | 93.6% | 94.8% | 92.2% | 96.7% | 92.5% | 93.6% | 92.0% |
+| label + body | 89.0% | 88.4% | 89.6% | 85.0% | 91.1% | 86.8% | 87.7% | 86.3% |
+
+## 19. The witness joined to the articles (25 September 2026)
+
+`tools/abhidhana_witness_join.py`, `docs/witness-join.md`; per-article output in the gitignored
+`witness/join-NN.jsonl`. Homonyms are paired in order, all books at once; the headword is looked up
+as the index spells it, then folded. Analyses are compared on their first clause (to ။): the
+witness's analysis field, like the print's bracket, runs on into the grammarians' derivation.
+
+| | 01 | 02 | 03 | 4a | 4b | 05 | 06 |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| index rows paired | 100.0% | 100.0% | 100.0% | 99.9% | 100.0% | 99.9% | 99.9% |
+| labels agree (where both have one) | 98.8% | 99.0% | 98.7% | 99.0% | 99.0% | 99.4% | 99.4% |
+| analyses ≥ 0.8 similar | 85.0% | 90.8% | 90.8% | 87.2% | 95.4% | 91.6% | 90.6% |
+| analyses < 0.4 | 1.5% | 0.6% | 0.8% | 0.6% | 0.2% | 0.6% | 0.4% |
+
+These supersede the label agreements of §12–17, which counted distinct headwords. Analyses under
+0.4 are no commoner for fuzzy placements (0.1–1.0%) than for verbatim ones (0.2–1.6%). The 511 label
+disagreements are mostly (တိ) against a single gender (195), (ပု) against (ပု၊န) (31) and (ကြိ)
+against (တိ) (44); which side is right is not checked. The witness has a label for 7,002 rows where
+we read none. The body ratio (the witness omits quotations) says little and is not a proofreading
+score. Nothing of the witness's text is published.
+
+## 20. Vol. 6 (25 September 2026)
+
+1,039 PDF pages, 11,429 index headwords (11,232 distinct), 75 dpi (images 74–77 ppi), OCR'd
+natively on Angel's Mac. `ocr/06/ocr-report.md`, `ocr/06/articles-report.md`.
+
+| | vol. 6 |
+|---|---:|
+| headwords verbatim, either pass (with the folds) | 92.4% (93.1%) |
+| in printed order, column pass | 75.3% |
+| pages with every headword / ≥ 80% / < 50% | 48.3% / 92.3% / 4 |
+| articles located | 92.0% |
+| normalised label + body | 86.3% |
+| witness has the headword (distinct) | 99.8% |
+| labels agreeing with the witness | 99.4% |
+
+No page is bound out of order. **The index files 14 headwords of p. 852 under p. 851** (§18).
+Spot check (pp. 500, 110, 852): 43 of 46 at the right entry, none wrong, 3 unlocated; one label
+wrong (ဂါဟေတွာ, the lost ၊ဝိ, since fixed). Located is below vols. 3 and 5; 710 of the 915
+unlocated are in the page text but not at an entry's head, which is where the `page.psm6`
+fallback (NEXT-SESSION, open questions) would be tried.
+
+**The Reader** now has vols. 1–6. Its data are published gzipped and base64-encoded
+(`reader/*.gz.txt`, 21.7 MB for eight books): as plain JSON they passed the artifact's 64 MB per
+version, and artifacts do not serve `.gz`. The page inflates them with `DecompressionStream`,
+which needs a 2023-or-later browser.
 

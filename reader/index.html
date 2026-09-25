@@ -161,7 +161,7 @@ footer a{color:var(--accent)}
   // labels beyond the first five are not yet agreed (docs/labels.md).
   const GL={'တိ':'adj.','န':'n.','ပု':'m.','ထီ':'f.','ကြိ':'v.','ကြိ၊ဝိ':'abs./inf.','ဗျ':'indecl.',
     'ပု၊န':'m./n.','ပု၊ထီ':'m./f.','ပု၊တိ':'m./adj.','န၊ပု':'n./m.','န၊ထီ':'n./f.','န၊တိ':'n./adj.','တိ၊န':'adj./n.',
-    'ကာ၊ကြိ':'caus. v.','နာမ-ကြိ':'denom. v.','ပုံ-ဗဟု':'m. pl.'};
+    'ကာ၊ကြိ':'caus. v.','ကာ၊ကြိ၊ဝိ':'caus. abs.','နာမ-ကြိ':'denom. v.','ပုံ-ဗဟု':'m. pl.'};
   const LOC={v:['c-v','located'],f:['c-f','fuzzy match'],u:['c-u','not located']};
   const OS={word:'in canon',inside:'inside a canon word',none:'not in canon'};
   // One entry per book in the Reader; the ranges are the index's own (books.name_info). n is
@@ -174,9 +174,20 @@ footer a{color:var(--accent)}
     {id:'4b',n:'4/2',mt:'အတွဲ ၄ · အပိုင်း ၂',my:'ဥဒ – ဥဠုရာဇ',ro:'uda – uḷurāja',start:300},
     {id:'4c',n:'4/3',mt:'အတွဲ ၄ · အပိုင်း ၃',my:'ဦ – ဩဠုမ္ပိက',ro:'ū – oḷumpika (+ supplements, pp. 713–735)',start:300},
     {id:'05',n:5,my:'က – ကိလေဒေတွာ',ro:'ka – kiledetvā',start:500},
+    {id:'06',n:6,my:'ကိလေသ – ငကာရ',ro:'kilesa – ṅakāra',start:500},
   ];
   const GH='https://github.com/bthar-mx/tipitaka-abhidhana/blob/main/ocr/';
   const cache=new Map();
+  // The data files are published gzipped and base64-encoded (vol06.gz.txt): eight volumes as
+  // plain JSON are past the artifact's size limit, and artifacts do not serve .gz.
+  async function getJSON(name){
+    const r=await fetch(name.replace(/\.json$/,'.gz.txt')); if(!r.ok) throw new Error(r.status);
+    const b=atob((await r.text()).trim()), buf=new Uint8Array(b.length);
+    for(let i=0;i<b.length;i++) buf[i]=b.charCodeAt(i);
+    if(typeof DecompressionStream==='undefined') throw new Error('this browser cannot inflate gzip');
+    const st=new Blob([buf]).stream().pipeThrough(new DecompressionStream('gzip'));
+    return JSON.parse(await new Response(st).text());
+  }
   let V=VOLS[0],D=[],pages=[],byPage=new Map(),cur=300,hitIdx=-1,loadSeq=0;
   const $=id=>document.getElementById(id);
   const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
@@ -282,11 +293,11 @@ footer a{color:var(--accent)}
     $('stats').innerHTML='<span>Loading…</span>'; $('pagehead').innerHTML='';
     $('list').innerHTML=`<div class="loading">Loading vol. ${V.n}…</div>`;
     ['prev','next'].forEach(k=>$(k).disabled=true);
-    fetch(`vol${V.id}.json`).then(r=>{if(!r.ok)throw new Error(r.status);return r.json()}).then(data=>{
+    getJSON(`vol${V.id}.json`).then(data=>{
       cache.set(V.id,data); if(seq===loadSeq) show(data,page,hit);
     }).catch(err=>{if(seq===loadSeq)$('list').innerHTML=`<div class="loading">Vol. ${V.n}’s article data didn’t load (${esc(err.message)}). Reload the page to try again.</div>`});
   }
-  fetch('search.json').then(r=>{if(!r.ok)throw new Error(r.status);return r.json()}).then(x=>{S=x;if($('q').value.trim())search($('q').value)}).catch(()=>{});
+  getJSON('search.json').then(x=>{S=x;if($('q').value.trim())search($('q').value)}).catch(()=>{});
   $('vol').innerHTML=VOLS.map(v=>`<option value="${v.id}">${v.n} · ${esc(v.ro)}</option>`).join('');
   $('vol').addEventListener('change',e=>{$('show').value='all';window.scrollTo({top:0});loadVol(e.target.value)});
   // #v02p500, or the older #p300 (vol. 1)

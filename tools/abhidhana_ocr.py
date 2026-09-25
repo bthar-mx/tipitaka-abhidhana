@@ -50,6 +50,8 @@ from bisect import bisect_left
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 from PIL import Image
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from abhidhana_fold import fold
 
 ROOT = Path(__file__).resolve().parent.parent
 DB = ROOT / 'db/tipitaka_abidan.db'
@@ -155,7 +157,9 @@ def score(texts, gold):
                 per_pass={k: sum(1 for g in gold if flat(g) in v) for k, v in fl.items()},
                 order={k: in_order(v, gold) for k, v in fl.items()},
                 union=sum(1 for g in gold if any(flat(g) in v for v in fl.values())),
-                missed=[g for g in gold if not any(flat(g) in v for v in fl.values())])
+                missed=[g for g in gold if not any(flat(g) in v for v in fl.values())],
+                # with the spellings print, index and OCR disagree on folded (abhidhana_fold.py)
+                union_folded=sum(1 for g in gold if any(fold(flat(g)) in fold(v) for v in fl.values())))
 
 
 def main():
@@ -202,16 +206,19 @@ def main():
         print(f'+{n} pages this slice, {len(todo)-n} of {npdf} still to do')
 
     got = sorted(outdir.glob('p*.json'))
-    tot = hit = 0; per = {}; order = {}
+    tot = hit = hitf = 0; per = {}; order = {}
     for f in got:
         d = json.loads(f.read_text())
         if not d['headwords']: continue
         tot += d['headwords']; hit += d['union']
+        hitf += d['union_folded'] if 'union_folded' in d else d['union'] + sum(
+            1 for g in d['missed'] if any(fold(flat(g)) in fold(flat(v)) for k, v in d['text'].items()
+                                          if isinstance(v, str) and not k.startswith('_')))
         for k, v in d['per_pass'].items(): per[k] = per.get(k, 0) + v
         for k, v in (d.get('order') or {}).items(): order[k] = order.get(k, 0) + v
     if tot:
         print(f'{len(got)}/{npdf} pages on disk · {hit:,}/{tot:,} headwords verbatim '
-              f'= {100*hit/tot:.1f}% (union)')
+              f'= {100*hit/tot:.1f}% (union); {100*hitf/tot:.1f}% with the spelling folds')
         for k in sorted(per):
             o = f'  in order {100*order[k]/tot:5.1f}%' if k in order else ''
             print(f'   {k:12} {100*per[k]/tot:5.1f}%{o}')

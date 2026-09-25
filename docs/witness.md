@@ -86,8 +86,9 @@ publishes nothing of its text.
 
 ## 6. Next
 
-1. Join it to `ocr/NN/articles.jsonl` by headword (and homonym order), and flag label and
-   analysis disagreements per article.
+1. ~~Join it to `ocr/NN/articles.jsonl` by headword (and homonym order), and flag label and
+   analysis disagreements per article.~~ Done 25 Sep: `docs/witness-join.md`,
+   `tools/abhidhana_witness_join.py`. It found homonyms placed one entry late, now fixed.
 2. Offer its definition beside the OCR one in the Reader, only after §5 is settled (or privately).
 3. Where our article is unlocated (e.g. the short headwords such as အ¹–⁵), its text is the only
    clean one we have; say so in the Reader rather than silently substituting it.

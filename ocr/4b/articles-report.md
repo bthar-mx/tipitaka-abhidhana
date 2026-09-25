@@ -6,20 +6,21 @@
 
 | | |
 |---|---:|
-| located verbatim (line start or before ( / [ ) | 4,989 = 75.0% |
-| located verbatim, inline only | 10 = 0.2% |
-| located by bounded fuzzy match | 1,428 = 21.5% |
-| **located, any** | **6,427 = 96.6%** |
-| unlocated | 228 = 3.4% |
-| label ( ) read | 6,237 = 93.7% |
-| label normalised to the closed set (docs/labels.md) | 6,050 = 90.9% |
-| of which read exactly as printed / mapped / inferred from the ending | 4,236 / 1,809 / 5 |
-| label read but left unnormalised | 187 = 2.8% |
-| compound analysis [ ] recovered | 5,356 = 80.5% |
-| of which + signs repaired (normalise_analysis) | 718 = 10.8% |
-| non-empty body | 6,422 = 96.5% |
-| at least one citation parsed | 4,192 = 63.0% |
-| label + body (the article is usable) | 6,045 = 90.8% |
+| located verbatim (line start or before ( / [ ) | 5,001 = 75.1% |
+| located verbatim after folding (tools/abhidhana_fold.py) | 86 = 1.3% |
+| located verbatim, inline only | 8 = 0.1% |
+| located by bounded fuzzy match | 1,342 = 20.2% |
+| **located, any** | **6,437 = 96.7%** |
+| unlocated | 218 = 3.3% |
+| label ( ) read | 6,249 = 93.9% |
+| label normalised to the closed set (docs/labels.md) | 6,063 = 91.1% |
+| of which read exactly as printed / mapped / inferred from the ending | 4,246 / 1,812 / 5 |
+| label read but left unnormalised | 186 = 2.8% |
+| compound analysis [ ] recovered | 5,370 = 80.7% |
+| of which + signs repaired (normalise_analysis) | 719 = 10.8% |
+| non-empty body | 6,434 = 96.7% |
+| at least one citation parsed | 4,197 = 63.1% |
+| label + body (the article is usable) | 6,060 = 91.1% |
 
 **Romanised headwords against OSBCT** (682,010 canonical words):
 
@@ -29,9 +30,9 @@
 | inside a canonical word | 2,722 = 40.9% |
 | neither | 2,227 = 33.5% |
 
-Labels, normalised: (တိ) 1,754 · (ပု) 1,272 · (န) 1,195 · (ကြိ) 758 · (ထီ) 513 · (ကြိ၊ဝိ) 166 · (ကာ၊ကြိ) 146 · (ပု၊န) 80 · (ဗျ) 68 · (ထီ၊န) 51 · (ကမ္မ၊ကြိ) 40 · (ထီ၊ပု) 4 · (န၊ထီ) 2 · (ပု၊ထီ) 1
+Labels, normalised: (တိ) 1,756 · (ပု) 1,273 · (န) 1,200 · (ကြိ) 760 · (ထီ) 514 · (ကြိ၊ဝိ) 166 · (ကာ၊ကြိ) 141 · (ပု၊န) 80 · (ဗျ) 68 · (ထီ၊န) 51 · (ကမ္မ၊ကြိ) 40 · (ကာ၊ကြိ၊ဝိ) 7 · (ထီ၊ပု) 4 · (န၊ထီ) 2 · (ပု၊ထီ) 1
 
-Readings left unnormalised: (တံ) 78 · (၃) 13 · (ကြိံဝိ) 6 · (ပ္ပ) 5 · ([ြိ) 4 · (၁) 3 · (ထ၊ပု) 3 · (ထီ၊ ၇) 2 · (ပုဗ္ဗု၊ဗုဗ္ဗု) 2 · (ထံ၊ပု) 2 · (ကာ+ကြိ) 2 · (ထ၊န) 2 · (ဋ္ဌီ) 2 · (ထီန) 2 · (ကာ) 2 · (ဠ) 2 · (ဝိဿန္ဒ နက) 1 · (ပိစ္ဆိလ္လေ) 1 · (ဗုဗ္ဗုဠက (ပုန) 1 · (သီ၊ဋီသစ်၊ ၂။၈၈) 1 · (မဟာနိ။၂၆၉) 1 · (ထံပု) 1 · (ပုရ (၁) 1 · (ဟိ) 1 · (.) 1 · (၃၇) 1 · (ကံ) 1 · (ကာကိံ) 1 · (၂) 1 · (ကြဝံ) 1 · (ကြိနဝိ) 1 · (ဒီဠ္ဌ၊၃။၂၂၀) 1 · (စိ) 1 · (ဥပစေဠ) 1 · ([ြိီ) 1 · (ကာက) 1 · (ကာ။ ကြိ) 1 · (ဝိ၊၃။၃၉၈) 1 · (ရူပကာယကို) 1 · (မဟာနိ၊ဋ္ဌ၊၂၂၆) 1 · (ကမ္မက) 1 · (ြိံဝိ) 1 · (နေတ္တိ၊ဋ္ဌ။ ၂၁) 1 · (တ္ထ) 1 · (ကိံ) 1 · (အရိယမဂ်၏) 1 · (န၊ထ) 1 · (ဥပသာရအဗျယ) 1 · (ကမ္မ္ပါကြိ) 1 · (ဒီ၊ ၂။၂၀၇) 1 · (ထီ၊ပ) 1 · (ကြိံ၊ဝိ) 1 · (သံ၊၁။ ၁၁၃) 1 · (အနုဋံာ။၂၉-လာ) 1 · (သံ၊ဋ္ဌ၊၁။၉၆) 1 · (ထံန) 1 · (ထိန) 1 · (ြိဝိ) 1 · (မ၊ဋ္ဌ၊၂။၂၇၄) 1 · (အနုဋံ၊၃။၉၈) 1 · (သီပု) 1 · (န၊ပ) 1 · (ယိ) 1 · (က္ခုန္ဓ (ပ) 1 · (ပေတ။၁၃၈) 1 · (ကာကြိဝိ) 1 · (ဝိရဟိတ) 1 · (ဇိ) 1 · (မဟာနိ။၆၇) 1 · (ထန) 1 · (ဒီဋ္ဌ၊၁။၁၅၅) 1 · (ဗျု) 1 · (အံ၊၂။၂၇၁) 1
+Readings left unnormalised: (တံ) 78 · (၃) 13 · (ကြိံဝိ) 6 · (ပ္ပ) 5 · ([ြိ) 4 · (၁) 3 · (ထ၊ပု) 3 · (ထီ၊ ၇) 2 · (ပုဗ္ဗု၊ဗုဗ္ဗု) 2 · (ထံ၊ပု) 2 · (ကာ+ကြိ) 2 · (ထ၊န) 2 · (ဋ္ဌီ) 2 · (ထီန) 2 · (ကာ) 2 · (ဠ) 2 · (ဝိဿန္ဒ နက) 1 · (ပိစ္ဆိလ္လေ) 1 · (ဗုဗ္ဗုဠက (ပုန) 1 · (သီ၊ဋီသစ်၊ ၂။၈၈) 1 · (မဟာနိ။၂၆၉) 1 · (ထံပု) 1 · (ပုရ (၁) 1 · (ဟိ) 1 · (.) 1 · (၃၇) 1 · (ကံ) 1 · (ကာကိံ) 1 · (၂) 1 · (ကြဝံ) 1 · (ကြိနဝိ) 1 · (ဒီဠ္ဌ၊၃။၂၂၀) 1 · (စိ) 1 · (ဥပစေဠ) 1 · ([ြိီ) 1 · (ကာက) 1 · (ကာ။ ကြိ) 1 · (ဝိ၊၃။၃၉၈) 1 · (ရူပကာယကို) 1 · (မဟာနိ၊ဋ္ဌ၊၂၂၆) 1 · (ကမ္မက) 1 · (ြိံဝိ) 1 · (နေတ္တိ၊ဋ္ဌ။ ၂၁) 1 · (တ္ထ) 1 · (ကိံ) 1 · (အရိယမဂ်၏) 1 · (န၊ထ) 1 · (ဥပသာရအဗျယ) 1 · (ကမ္မ္ပါကြိ) 1 · (ဒီ၊ ၂။၂၀၇) 1 · (ထီ၊ပ) 1 · (ကြိံ၊ဝိ) 1 · (သံ၊၁။ ၁၁၃) 1 · (အနုဋံာ။၂၉-လာ) 1 · (သံ၊ဋ္ဌ၊၁။၉၆) 1 · (ထံန) 1 · (ထိန) 1 · (ြိဝိ) 1 · (မ၊ဋ္ဌ၊၂။၂၇၄) 1 · (အနုဋံ၊၃။၉၈) 1 · (သီပု) 1 · (န၊ပ) 1 · (ယိ) 1 · (က္ခုန္ဓ (ပ) 1 · (ပေတ။၁၃၈) 1 · (ဝိရဟိတ) 1 · (ဇိ) 1 · (မဟာနိ။၆၇) 1 · (ထန) 1 · (ဒီဋ္ဌ၊၁။၁၅၅) 1 · (ဗျု) 1 · (အံ၊၂။၂၇၁) 1
 
 ## What these figures mean
 
@@ -72,4 +73,3 @@ No article on the three pages is placed at a wrong entry, and no label is wrong.
   the article before them. ဥပသဝန္တိ, printed without a label, starts on the third line of its own
   article, at a quotation, because its head was misread. ဥပသာဂရ's (ပု) was read "(၃)", which the
   map does not take.
-

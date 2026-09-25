@@ -118,3 +118,23 @@ Readings also mapped: (န၊တီ) → (န၊ထီ); (ပုန၊) → (ပ
 A sense number run into the label, (ပု ၂), is read as the label. Against the witness, the
 normalised labels agree on 99.0% (vol. 1), 99.2% (vol. 2) and 98.8% (vol. 3) of the articles
 normalised. The raw readings agree on 81.2%, 83.0% and 86.4%.
+
+## 7. Added from vol. 6 (25 September 2026)
+
+| label | rows, vols. 3–6 | Pāḷi | what it marks | how firm |
+|---|---:|---|---|---|
+| (ကာ၊ကြိ၊ဝိ) | 35 | kārita-kriyā-visesana? | causative absolutive: every row is a -tvā / -tvāna form (ဂါဟေတွာ, ခါဒါပေတွာ, ဥပ္ပါဒယိတွာန) | image, vol. 6 p. 852 (ဂါဟေတွာ); the witness prints it 418 times; **expansion a guess**, from the other two |
+
+Until now the reading fell to the "junk tail after a valid combination" rule and was cut to
+(ကာ၊ကြိ), dropping the ၊ဝိ. Readings mapped: (ကာ၊ကြိ၊ဝိ), (ကာ၊ကြ၊ဝိ), (ကာ၊ကြိံဝိ), (ကာ၊ကြိဝိ),
+(ကာကြိဝိ), (ကာ၊ကြ၊ဝိ၊), (ကာ၊ကြါ၊ဝိ), (ကာ၊ကြးဝိ). Only the first was checked on the image; the
+others are the same misreadings of ကြိ and ၊ already mapped for (ကြိ၊ဝိ) and (ကာ၊ကြိ).
+
+**Readings seen in vol. 6 and not mapped**, because not image-checked: (ထိန) 8, (ထီ၊၇) 4, (ထိ၊ ၇) 3,
+(ထိ၊န) 3, (ထီ၊ ၇) 2, (ထိ၊ န) 2. They look like (ထီ၊န) and (ထီ၊ပု) (၇ is the usual misreading of
+ပု), but that is a guess. Examples to check: ids 51227 (p. 211), 51941 (p. 294), 54340 (p. 527).
+
+**Against the typed witness**, with the join of `docs/witness-join.md` (homonyms paired in order),
+the normalised labels agree on 98.7–99.2% per volume. About half the remaining disagreements are
+(တိ) against a single gender, (ထီ)/(န)/(ပု), as §4 found; a sample has not yet been checked on the
+image to say which side is right.

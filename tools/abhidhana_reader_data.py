@@ -19,14 +19,16 @@ abhidhana_romanise.py first) and writes one compact record per headword, in inde
     c  citations         ci citations, romanised
 
 The page itself is the private artifact "Abhidhāna Reader"; this file is published beside it
-as vol<book>.json. Without `lo`, and run on commit 40e6be1's data, this reproduces the
+gzipped and base64-encoded, as vol<book>.gz.txt (and search.gz.txt): eight volumes as plain
+JSON passed the artifact's 64 MB per version (25 Sep 2026), and artifacts do not serve .gz. The
+page decodes and inflates them (atob + DecompressionStream). Without `lo`, and run on commit 40e6be1's data, this reproduces the
 vol01.json that was first published byte for byte.
 """
-import json, re, sys
+import base64, gzip, json, re, sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-X = {'verbatim': 'v', 'verbatim-inline': 'v', 'fuzzy': 'f', 'unlocated': 'u'}
+X = {'verbatim': 'v', 'verbatim-inline': 'v', 'folded': 'v', 'fuzzy': 'f', 'unlocated': 'u'}
 
 
 def main(book):
@@ -52,8 +54,16 @@ def main(book):
     out = ROOT / f'reader/vol{book}.json'
     out.parent.mkdir(exist_ok=True)
     out.write_text(json.dumps(V, ensure_ascii=False, separators=(',', ':')))
-    print(f'{out.relative_to(ROOT)}: {len(V):,} records, {out.stat().st_size / 1e6:.1f} MB')
+    gz(out)
+    print(f'{out.relative_to(ROOT)}: {len(V):,} records, {out.stat().st_size / 1e6:.1f} MB '
+          f'({out.with_suffix(".gz.txt").stat().st_size / 1e6:.1f} MB as .gz.txt)')
     search_index()
+
+
+def gz(path):
+    """<stem>.gz.txt beside path: gzip (reproducible: no name or time in the header), base64"""
+    z = gzip.compress(path.read_bytes(), compresslevel=9, mtime=0)
+    path.with_suffix('.gz.txt').write_bytes(base64.b64encode(z))
 
 
 def search_index():
@@ -64,6 +74,7 @@ def search_index():
             S.append([book, i, d['p'], d['h'], d['r']])
     out = ROOT / 'reader/search.json'
     out.write_text(json.dumps(S, ensure_ascii=False, separators=(',', ':')))
+    gz(out)
     print(f'{out.relative_to(ROOT)}: {len(S):,} headwords from {len({r[0] for r in S})} volumes, '
           f'{out.stat().st_size / 1e6:.1f} MB')
 
