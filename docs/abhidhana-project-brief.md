@@ -2,7 +2,7 @@
 
 *Written 21 September 2026, at the end of the volume-25 pilot; §10–12 revised 24 September
 2026, after volume 1 was done end to end and the repository was made public; §18–26 added
-25 September 2026 (spelling folds, the witness join, vols. 6–9, re-cutting gutters, vol. 14/2's text layer, the batch of vols. 10–22); §27 the same evening (vols. 23, 24 and 14/2 finished, the index's page errors applied, book 21 explained, the Reader in binary); §28 the public website, the page images and the label table; §29 vol. 21 finished, vol. 25's resolution, the dictionary's own account of its labels; §30 vol. 25 done, all 29 books; §31 (later on 25 Sep) the page-image tool's bitmap test; §32 the weak page corrections, image-checked; §33 the compound analysis with its [ lost; §34 the dictionary's history on the site; §35 all page images live, a light/dark switch, the Introduction page. Everything in
+25 September 2026 (spelling folds, the witness join, vols. 6–9, re-cutting gutters, vol. 14/2's text layer, the batch of vols. 10–22); §27 the same evening (vols. 23, 24 and 14/2 finished, the index's page errors applied, book 21 explained, the Reader in binary); §28 the public website, the page images and the label table; §29 vol. 21 finished, vol. 25's resolution, the dictionary's own account of its labels; §30 vol. 25 done, all 29 books; §31 (later on 25 Sep) the page-image tool's bitmap test; §32 the weak page corrections, image-checked; §33 the compound analysis with its [ lost; §34 the dictionary's history on the site; §35 all page images live, a light/dark switch, the Introduction page; §36 citations keep their whole abbreviation. Everything in
 this file was measured. Do not re-derive a figure it carries; if a new one is needed,
 measure it rather than estimating.*
 
@@ -1011,4 +1011,20 @@ Linked from the home and About headers and from About's first section. Tested in
 1,200 and 390 px, both languages, all three views, light and dark: no script errors, no horizontal scroll.
 **Unlike the About page's History (§34), it publishes drafts**, under the banner, as Angel asked; ch. 4 holds
 the same romanised names that keep the History back.
+
+## 36. Citations keep their whole abbreviation (25 September 2026, night)
+
+The citation pattern in `abhidhana_articles.py` allowed one run of letters before the numbers, so
+`ဒီ၊ ဋ္ဌ၊ ၂။၃၉၆။` (Dīgha Aṭṭhakathā 2.396) was stored as `ဋ္ဌ၊၂။၃၉၆။`: the work was lost on every
+commentary and subcommentary citation. Measured against vol. 1's 100 citation abbreviations
+(`docs/introduction/citation-abbreviations.tsv`), only **28%** of the 530,971 citations matched one.
+The pattern now takes up to three parts joined by ၊; a leading part that carries asat, visarga or
+dot below is a Burmese word, not abbreviation, and is dropped (`cite_trim`). On vols. 5, 14/3 and 23,
+before the re-run: the same 47,541 citations, matched 30.1% → **71.4%**; all books, measured with the
+preceding words restored, 77.8%. All 29 books re-run (articles, romanisation): the same 530,971
+citations, **no other field changed in any row**. What still does not match is mostly OCR forms of the
+commentary marks (ဌ, ္ဌ, ဋ for ဋ္ဌ; ဋံ, ဋိ for ဋီ), `သစ်` glued on (probably "new [edition]", unchecked),
+and works absent from vol. 1's table: 14/3, 4/2 and 4/3 match 57–60%, vol. 24 65%. Vol. 4/1 pp. 31–36
+and vol. 15 pp. 17–22 print fuller tables (NEXT-SESSION 3b). Matching for the site is to fold the
+commentary marks and stay silent where nothing matches.
 

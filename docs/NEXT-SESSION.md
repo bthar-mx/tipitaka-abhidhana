@@ -53,6 +53,8 @@ vol. 25 runs.
    makes browsers revalidate `/data/*` and `/assets/*` on every load; with the old one-hour cache a
    visitor saw vol. 25 as "coming" after it was published.
 1. ~~Page images~~: all 29 books live, 25,700 pages, 2.5 GB; `check` clean (brief §35).
+2a. **Site redesign** per `docs/site-design.md` (agreed 25 Sep; the mockup is the artifact "Abhidhāna
+   site mockup"). Proposed changes to the spec sent to Angel before building; wait for his answer.
 2. **The Introduction page** (brief §35) rebuilds itself from `docs/introduction/` on every push; keep the
    chapter files to the contract in `tools/abhidhana_intro.py`'s docstring. It shows drafts under a banner,
    while the About page's History waits for review (item 7c): decide whether ch. 4's names should wait too.

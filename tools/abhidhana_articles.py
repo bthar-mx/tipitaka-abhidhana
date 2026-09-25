@@ -381,10 +381,25 @@ def normalise_label(reading, iast):
 
 
 ANALYSIS = re.compile(r'^\s*\[([^\]\n]{0,90}(?:\n[^\]\n]{0,90})?)\]')
-CITE = re.compile(r'[\u1000-\u1049\u104C-\u109F]{1,8}\s*[၊,.]\s*[' + MY_DIGITS + r']+(?:\s*[၊။,.]\s*[' + MY_DIGITS + r']+)*\s*။')
+# A citation: the work's abbreviation, then volume, page (and more numbers), then ။. The
+# abbreviation can have up to three parts joined by ၊ -- ဒီ၊ ဋ္ဌ၊ ၂။၃၉၆။ is the Dīgha
+# Aṭṭhakathā, vol. 2 p. 396. (Until 25 Sep 2026 only the last part was kept, ဋ္ဌ၊၂။၃၉၆။,
+# which lost the work: brief §36.)
+_SEG = r'[\u1000-\u1049\u104C-\u109F]{1,8}'
+CITE = re.compile(r'(?:' + _SEG + r'\s*၊\s*){0,2}' + _SEG + r'\s*[၊,.]\s*[' + MY_DIGITS + r']+(?:\s*[၊။,.]\s*[' + MY_DIGITS + r']+)*\s*။')
 
 # Burmese marks that Pāḷi written in Burmese script never carries: asat, visarga-tone, dot-below
 BURMESE_ONLY = re.compile('[\u103A\u1038\u1037\u104A\u104B]')
+
+
+def cite_trim(c):
+    """drop leading parts of a citation that are Burmese words, not abbreviation: a Pāḷi
+    abbreviation never carries asat, visarga or dot below (the one exception, သစ် "new", only
+    ever follows a work, never leads)"""
+    parts = re.split(r'(\s*၊\s*)', c)
+    while len(parts) > 2 and BURMESE_ONLY.search(parts[0]) and not re.search('[' + MY_DIGITS + ']', parts[0]):
+        parts = parts[2:]
+    return ''.join(parts)
 
 
 def normalise_analysis(a):
@@ -508,7 +523,7 @@ def fields_after(rest, out_hw, iast='', glued=False):
             out['analysis_ocr'] = out['analysis']
         out['analysis'] = norm
     out['body'] = body
-    out['citations'] = [re.sub(r'\s+', '', c) for c in CITE.findall(body)]
+    out['citations'] = [re.sub(r'\s+', '', cite_trim(c)) for c in CITE.findall(body)]
     return out
 
 
