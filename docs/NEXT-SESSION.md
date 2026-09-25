@@ -1,9 +1,9 @@
-# Abhidhāna — handover, 25 September 2026 (after vol. 6)
+# Abhidhāna — handover, 25 September 2026 (after vol. 7)
 
-*Vols. 1–6 (vol. 4 in three parts) are digitised end to end, spot-checked and in the Reader. Read
+*Vols. 1–7 (vol. 4 in three parts) are digitised end to end, spot-checked and in the Reader. Read
 `abhidhana-project-brief.md` first: §12 covers vol. 1, §13 vols. 2–3, §14–17 the witness and vols.
 4/1–5, §18 the spelling folds and the homonym and misfiled-headword fixes, §19 the witness join, §20
-vol. 6. Every figure is there. `docs/labels.md` holds the label map, `docs/witness.md` and
+vol. 6, §21 vol. 7. Every figure is there. `docs/labels.md` holds the label map, `docs/witness.md` and
 `docs/witness-join.md` the typed witness.*
 
 ## Every session
@@ -23,22 +23,27 @@ vol. 6. Every figure is there. `docs/labels.md` holds the label map, `docs/witne
 
 ## State
 
-| | vols. 1–5 | vol. 6 | vol. 7 |
+| | vols. 1–6 | vol. 7 | vol. 8 |
 |---|---|---|---|
-| OCR, articles, romanisation | done; articles re-run 25 Sep (brief §18) | done 25 Sep | OCR next (Angel) |
+| OCR, articles, romanisation | done | done 25 Sep | OCR next (Angel) |
 | reports, spot check, Reader | done | done 25 Sep | — |
-| page records in release `sources-v1` | uploaded 25 Sep (01–05, 4a–4c) | uploaded 25 Sep | — |
-| GitHub issue | close any still open | close after this commit | open |
+| page records in release `sources-v1` | uploaded | `release/ocr-07-pages.tar.gz`, to upload | — |
+| GitHub issue | #8 closed; close any of #1–#7 still open | #9, close after this commit | open |
 
 `tmp/_to_delete/` holds nine `*.json.gz` files from a first try at the Reader's data; the VM
 cannot delete. Delete the folder by hand (`tmp/` is gitignored).
 
 ## Next, in order
 
-1. **Vol. 7** (book 07, စ – ဆိဒ္ဒေယျုံ, 6,877 index headwords): check its dpi, OCR natively, then as
-   for vol. 6. The typed witness covers it.
-2. **The `page.psm6` fallback**: in vol. 6, 710 of 915 unlocated headwords are in the page text
-   but not at an entry's head. Try placing them from the whole-page pass, bounded by placed
+1. **Vol. 8** (book 08, ဆိဒ္ဒ – ဏျပစ္စယတ္ထ, 849 PDF pages, 6,448 index headwords). Its images are
+   mixed: 376 pages at 72 ppi, 146 at 71, 212 at 70, 94 at 69, 21 at 57–58. Render at 72 (the
+   highest, so nothing is downsampled); record the mix in its report and look at the 57-ppi pages'
+   recall separately. OCR natively, then as for vol. 7. The typed witness covers it.
+2. **The `page.psm6` fallback**, and **gutter failures**: in vol. 6, 710 of 915 unlocated headwords
+   are in the page text but not at an entry's head. Vol. 7 p. 527 shows one cause: a gutter cut
+   inside the accepted range but left of the channel (brief §21). Re-cut the pages where the
+   whole-page pass beats the column pass by ≥ 3 headwords (9 in vol. 7, 23 in vol. 6) before
+   trying the fallback. Try placing them from the whole-page pass, bounded by placed
    neighbours, and measure against the witness join (labels, analyses) before keeping it.
 3. **Image-check the label disagreements** with the witness (`docs/witness-join.md` §3): a sample
    of (တိ)/(gender), (ပု)/(ပု၊န), (ကြိ)/(တိ). And the vol. 6 readings (ထိန), (ထီ၊၇), (ထိ၊န)
@@ -48,7 +53,7 @@ cannot delete. Delete the folder by hand (`tmp/` is gitignored).
 5. **An index-errata list**, `docs/index-errata.md`, with the printed form: the typos of brief §15–17,
    the misfiled runs of §18 (4c p. 615 → 613, 06 p. 851 → 852), ကဉ္စိက.
 6. **Re-run vol. 25** with `--columns` at its native resolution.
-7. **Next volumes**: 08 onwards. **Vol. 15** must be joined with 4c's supplement to it (53 ဘိဇ္ဇ
+7. **Next volumes**: 09 onwards. **Vol. 15** must be joined with 4c's supplement to it (53 ဘိဇ္ဇ
    headwords indexed only there). Per volume: reports, a 3-page spot check, the Reader, the witness
    join, then close the issue.
 

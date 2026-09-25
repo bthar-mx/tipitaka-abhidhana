@@ -1,8 +1,8 @@
 # Tipiṭaka Pāḷi-Myanmā Abhidhāna — project brief
 
 *Written 21 September 2026, at the end of the volume-25 pilot; §10–12 revised 24 September
-2026, after volume 1 was done end to end and the repository was made public; §18–20 added
-25 September 2026 (spelling folds, the witness join, vol. 6). Everything in
+2026, after volume 1 was done end to end and the repository was made public; §18–21 added
+25 September 2026 (spelling folds, the witness join, vols. 6 and 7). Everything in
 this file was measured. Do not re-derive a figure it carries; if a new one is needed,
 measure it rather than estimating.*
 
@@ -487,4 +487,28 @@ fallback (NEXT-SESSION, open questions) would be tried.
 (`reader/*.gz.txt`, 21.7 MB for eight books): as plain JSON they passed the artifact's 64 MB per
 version, and artifacts do not serve `.gz`. The page inflates them with `DecompressionStream`,
 which needs a 2023-or-later browser.
+
+## 21. Vol. 7 (25 September 2026)
+
+861 PDF pages, 6,877 index headwords (6,702 distinct), 72 dpi, OCR'd natively on Angel's Mac.
+`ocr/07/ocr-report.md`, `ocr/07/articles-report.md`.
+
+| | vol. 7 |
+|---|---:|
+| headwords verbatim, either pass (with the folds) | 91.5% (91.9%) |
+| in printed order, column pass | 73.8% |
+| pages with every headword / ≥ 80% / < 50% | 50.4% / 88.7% / 3 |
+| articles located | 93.1% |
+| normalised label + body | 87.3% |
+| witness has the headword (distinct) | 99.8% |
+| labels agreeing with the witness | 98.9% |
+
+No page out of order, no misfiled headwords. Spot check (pp. 400, 759, 527): 28 of 35 at the right
+entry, none wrong, 5 unlocated, 2 placed inside garbled text; no label wrong, 2 not read.
+
+**Two new failure modes.** (1) ဒွ read as ဒ္ဒ: the run ဆဒွါရ… on p. 759, 14 headwords, all missed by
+recall and all placed right by the fuzzy alignment. Not a one-for-one fold, so not in
+`abhidhana_fold.py`. (2) A gutter taken inside the accepted range but left of the channel
+(p. 527, 0.467): the right column came out as interleaved fragments. Pages where the whole-page
+pass reads ≥ 3 headwords more than the column pass are the candidates: 9 in vol. 7, 23 in vol. 6.
 
