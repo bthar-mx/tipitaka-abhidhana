@@ -23,12 +23,15 @@ books.start_page`, unless corrected here.
 | 23 | 187848–187857, 187871–187878, 189039–189048, 189502–189513, 190351–190359 | the page before | PDF 275, 277, 390, 436, 523 | same (text) | `ID_PAGE_FIX` |
 | 24 | 206034–206036 | the page before | PDF 329 | same (text) | `ID_PAGE_FIX` |
 | 24 | 208187–208194 (8) | PDF 540 | PDF 542 | p. 540 prints only the long article သုမန², which runs to p. 542 (image, spot check) | `ID_PAGE_FIX` |
+| 14c | 198064–198070 (7), 198090–198096 (7), 198166–198168 (3), 201781–201786 (6) | the page before | PDF 605, 608, 621, 976 (printed ၅၇၈, ၅၈၁, ၅၉၄, ၉၄၉) | unindexed pages; each begins with exactly these headwords (image, 25 Sep 2026) | `ID_PAGE_FIX` |
+| 10 | 81975 (ဒသ²) | PDF 220 | PDF 219 (printed ၁၇၁) | of the index's four ဒသ for p. 172, the first is printed on p. 171; ဒသ¹ on PDF 218, ဒသ³⁻⁵ on 220 (image, 25 Sep 2026) | `ID_PAGE_FIX` |
+| 18 | 146728–146731 (ဝသ²⁻⁵) | PDF 816 | PDF 816: **the index is right** | PDF 815 is wholly inside ဝသ¹; 816 prints ဝသ²⁻⁵ (image, 25 Sep 2026) | none needed |
 | 02 | — | PDF 241 / 242 | 242 / 241 | pages bound out of order in the scan, not an index error (brief §13) | `PAGE_FIX` |
 
-**Not yet applied** (weak: 2 of 4–6 headwords found, or a run of two; check the image first):
-14c 201781–201786 → PDF 976; 14c 198069–198070 → PDF 605; 18 146728–146731 → PDF 815;
-10 81975–81976 → PDF 219. And pages where the next page's list scores higher than the page's own:
-14c pp. 564, 607, 620.
+**Candidates checked on the image, 25 Sep 2026.** The weak candidates (14c 201781–201786, 198069–198070;
+18 146728–146731; 10 81975–81976) and 14c pp. 564, 607, 620 are resolved in the table above: 14c p. 564
+was already covered by 197721–197732 → 565; the 14c run at p. 605 is seven headwords, not two; vol. 10
+needs only one of its two; vol. 18 needs none.
 
 ## 2. Headwords belonging to another volume
 
@@ -47,6 +50,12 @@ books.start_page`, unless corrected here.
 |---|---|---|---|---|
 | 23 | 186075–186085 (index pp. 65–66, PDF 100–101) | အမ္မဝါဒ…, အမ္မဝါယာမ… | သမ္မာဝါဒ…, သမ္မာဝါယာမ… | image, p. 100 |
 | 23 | 186076 | …ပတဋ္ဌာပန | …ပတိဋ္ဌာပန | image |
+| 14c | 198058 | ပိဏ္ဍစရဏဝီရိယ | ပိဏ္ဍပါတစရဏဝီရိယ | image, PDF 604 |
+| 14c | 198068 | ပိဏ္ဍပါတနီဟရဏ | ပိဏ္ဍပါတနီဟရက | image, PDF 605 |
+| 14c | 198083 | ပိဏ္ဍပလိဗောဓ | ပိဏ္ဍပါတပလိဗောဓ | image, PDF 607 |
+| 14c | 198088 | ပိဏ္ဍပါတဘောဇန (the index has it twice; the second, 198091, is right) | ပိဏ္ဍပါတဘာဇန | image, PDF 607–608 |
+| 14c | 198164 | ပိဟာမဟဒွန္ဒ | ပိတာမဟဒွန္ဒ | image, PDF 620 |
+| 10 | 81979 | ဒသအကုလလကမ္မပထ | ဒသအကုသလ(ဒသာကုသလ)ကမ္မပထ | image, PDF 220 |
 | 23 | 188777 | အဟဿအဿာဇာနီယ | presumably သဟဿ… | **not checked** |
 | 4b | — | ဥဒယဗ္ဗကဉာကပဋိပါဋိ | ဥဒယဗ္ဗယညာဏပဋိပါဋိ | image (brief §15) |
 | 4c | — | ဩလမ္ဗတကုလာဝက, ဥဒါနိ, ဥပါဃာတဘူမိ, စကစတုက္ကာဒိကဆတ္တိက | printed forms not recorded in the brief | image (brief §16) |

@@ -71,8 +71,14 @@ vol. 25 runs.
    `body_joined` (pali), which repeat other fields (~40%), and keep them in a release tarball;
    only past ~1 GB move `articles.jsonl` / `pali.jsonl` to release assets, with the site build
    downloading them.
-5. **Weak `ID_PAGE_FIX` candidates**, on the image: 14/3 pp. 605 (198069–198070) and 976
-   (201781–201786), 18 p. 815 (146728–146731), 10 p. 219 (81975–81976); and 14/3 pp. 564, 607, 620.
+5. ~~Weak `ID_PAGE_FIX` candidates~~: done 25 Sep (brief §32): four 14/3 runs and vol. 10's ဒသ² applied,
+   vol. 18's rejected (the index is right). The Reader artifact is **not yet republished** with vols. 10
+   and 14/3's new data (`reader/vol10.wasm`, `vol14c.wasm`, `search.wasm`); the website follows on push.
+5b. **Homonyms paired one entry late, the converse of §18** (brief §32): 177 runs where an earlier
+   identical headword is unplaced and a later one placed on the same page (vol. 10 p. 220: 81977–81978
+   hold ဒသ³⁻⁴). Sort them with the witness joins for books 01–19 (a placed row whose body ratio
+   against its own witness row is low but high against the next one's), on the image elsewhere; then
+   a rule in `abhidhana_articles.py`, tested so that it moves nothing already right.
 6. **Re-cut the gutters** with `tools/abhidhana_recut.py` (brief §24), natively, book by book, when
    no OCR is running: `python3 tools/abhidhana_recut.py NN --scan --workers 10`, then `--run
    --workers 10`. Then re-run articles, romanisation, the witness joins and the Reader for every

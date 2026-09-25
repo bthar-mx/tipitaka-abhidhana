@@ -2,7 +2,7 @@
 
 *Written 21 September 2026, at the end of the volume-25 pilot; §10–12 revised 24 September
 2026, after volume 1 was done end to end and the repository was made public; §18–26 added
-25 September 2026 (spelling folds, the witness join, vols. 6–9, re-cutting gutters, vol. 14/2's text layer, the batch of vols. 10–22); §27 the same evening (vols. 23, 24 and 14/2 finished, the index's page errors applied, book 21 explained, the Reader in binary); §28 the public website, the page images and the label table; §29 vol. 21 finished, vol. 25's resolution, the dictionary's own account of its labels; §30 vol. 25 done, all 29 books; §31 (later on 25 Sep) the page-image tool's bitmap test. Everything in
+25 September 2026 (spelling folds, the witness join, vols. 6–9, re-cutting gutters, vol. 14/2's text layer, the batch of vols. 10–22); §27 the same evening (vols. 23, 24 and 14/2 finished, the index's page errors applied, book 21 explained, the Reader in binary); §28 the public website, the page images and the label table; §29 vol. 21 finished, vol. 25's resolution, the dictionary's own account of its labels; §30 vol. 25 done, all 29 books; §31 (later on 25 Sep) the page-image tool's bitmap test; §32 the weak page corrections, image-checked. Everything in
 this file was measured. Do not re-derive a figure it carries; if a new one is needed,
 measure it rather than estimating.*
 
@@ -893,4 +893,35 @@ correlation at the best offset (the bitmap may sit inside the page box): right p
 load at native size and p. 1 (the cover) at 1,800 px, as intended. The dark theme shows the page
 inverted on purpose (`--page-filter` in `site/src/assets/style.css`). The image host sends no CORS header:
 `<img>` does not need one, but a script that `fetch()`es an image would.
+
+## 32. The weak page corrections, checked on the image (25 September 2026, afternoon)
+
+NEXT-SESSION item 5. Every candidate was read on the page image (`docs/index-errata.md` §1, §3):
+
+| candidate | on the image | applied |
+|---|---|---|
+| 14/3 201781–201786 → PDF 976 | p. 976 (printed ၉၄၉) begins with exactly these six | `ID_PAGE_FIX` |
+| 14/3 198069–198070 → PDF 605 | p. 605 (၅၇၈) begins with **seven**: 198064–198070 | `ID_PAGE_FIX`, 198064–198070 |
+| 14/3 p. 607 | the list for p. 607 runs on to the unindexed p. 608 (၅၈၁): 198090–198096 | `ID_PAGE_FIX` |
+| 14/3 p. 620 | the same, p. 621 (၅၉၄): 198166–198168 | `ID_PAGE_FIX` |
+| 14/3 p. 564 | already covered by 197721–197732 → 565 (§27) | — |
+| 18 146728–146731 → PDF 815 | p. 815 is wholly inside ဝသ¹; p. 816 prints ဝသ²⁻⁵: **the index is right** | none |
+| 10 81975–81976 → PDF 219 | p. 219 (၁၇၁) prints only ဒသ²; ဒသ¹ is on 218, ဒသ³⁻⁵ on 220 | `ID_PAGE_FIX`, 81975 only |
+
+Re-run: articles and romanisation for books 10 and 14c, both witness joins (01–19), Reader data. 14/3:
+located 91.7 → **91.9%**, label + body 85.4 → 85.6%; the 23 rows placed, with labels as on the image,
+and four neighbours lost the following articles they had swallowed. Vol. 10: 81975 placed at ဒသ²
+(analysis 1.0 against the witness); vol. 10's witness figures rise by one row. All 29 books: still
+94.1% located, 88.1% with label + body (194,857 of 221,154).
+
+Six index typos read on these pages: 14/3 198058 ပိဏ္ဍစရဏဝီရိယ (ပိဏ္ဍပါတ…), 198068 …နီဟရဏ (…နီဟရက), 198083
+ပိဏ္ဍပလိဗောဓ (ပိဏ္ဍပါတ…), 198088 …ဘောဇန (…ဘာဇန), 198164 ပိဟာမဟဒွန္ဒ (ပိတာ…); vol. 10 81979
+ဒသအကုလလကမ္မပထ (ဒသအကုသလ(ဒသာကုသလ)ကမ္မပထ).
+
+**Homonyms paired one entry late, the other way round.** On vol. 10 p. 220 the first ဒသ of three is
+unplaced and the second and third hold the articles of ဒသ³ and ဒသ⁴ (the typed witness: body ratios 0.36
+and 0.24). §18's rule handles the case where the first of two is placed and the second not; this is the
+converse. Across all 29 books there are **177 runs of identical headwords where an earlier one is
+unplaced and a later one placed on the same page**. Not all are wrong (the earlier head may simply be
+unread), and none was changed: for books 01–19 the witness joins can sort them, elsewhere the image.
 
