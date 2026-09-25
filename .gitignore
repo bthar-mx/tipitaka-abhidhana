@@ -17,3 +17,6 @@ tmp/
 __pycache__/
 _incoming/
 release/
+
+# Reader data: regenerable with tools/abhidhana_reader_data.py; published beside the artifact
+reader/*.json

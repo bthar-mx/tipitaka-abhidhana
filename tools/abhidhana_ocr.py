@@ -110,7 +110,10 @@ def gutter(im):
 
 
 def render(pdf, page, dpi):
-    base = SCRATCH / f'{pdf.stem}-{page}'
+    # the process id is in the name: two runs sharing one scratch folder (two Terminal tabs,
+    # say) would otherwise write the same file at once, and one reads it half-written
+    # ("OSError: image file is truncated", vol. 2, 24 Sep 2026)
+    base = SCRATCH / f'{pdf.stem}-{page}-{os.getpid()}'
     subprocess.run(['pdftoppm', '-f', str(page), '-l', str(page), '-r', str(dpi), '-gray',
                     '-png', str(pdf), str(base)], check=True, capture_output=True)
     return Path(glob.glob(str(base) + '-*.png')[0])
@@ -183,7 +186,11 @@ def main():
         t0 = time.time(); n = 0
         def work(p):
             if time.time() - t0 > a.budget: return None
-            texts = ocr_page(pdf, p, a.dpi, a.columns, [x for x in a.passes.split(',') if x])
+            if (outdir / f'p{p:04d}.json').exists(): return None   # another run got there first
+            try:
+                texts = ocr_page(pdf, p, a.dpi, a.columns, [x for x in a.passes.split(',') if x])
+            except OSError as e:
+                print(f'p. {p}: {e}; skipped, re-run to retry', flush=True); return None
             gold = idx.get(p, [])
             rec = dict(pdf_page=p, index_page=p - start, dpi=a.dpi, indexed=p in idx,
                        **score(texts, gold), text=texts)

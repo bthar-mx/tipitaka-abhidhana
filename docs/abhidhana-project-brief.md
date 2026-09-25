@@ -190,7 +190,8 @@ distribution, and IEBH will not treat the licence as a blocker. The project is n
 ## 11. What has not been done (revised 24 September 2026)
 
 - Vol. 25 pilot is still whole-page. Re-run with `--columns` at its native resolution.
-- Labels are not normalised; the unlocated 13% of vol. 1 articles are not recovered.
+- ~~Labels are not normalised; the unlocated 13% not recovered.~~ Done 24 Sep (§12, `docs/labels.md`).
+- The typed PCED copy of this dictionary (`docs/labels.md` §4) is not yet converted from Zawgyi or used.
 - Citations are parsed but not resolved against OSBCT.
 - No Spanish exists beyond the drafted sample in `docs/spanish-method.md`.
 - Book 21's offset and the per-volume entry counts are unchecked.
@@ -208,10 +209,11 @@ distribution, and IEBH will not treat the licence as a blocker. The project is n
 | **in printed order, column pass** | **76.1%** (whole-page: 42.3%) |
 | pages with every headword | 53.5% |
 | pages ≥ 80% | 90.0% |
-| articles located in the text | 87.0% |
-| articles with label + body | **80.3%** |
-| compound analysis recovered | 68.6% |
-| at least one citation parsed | 57.2% |
+| articles located in the text | 87.0% → **93.8%** (24 Sep) |
+| articles with label + body | 80.3% → **87.3%** (normalised label) |
+| compound analysis recovered | 68.6% → 71.3% |
+| at least one citation parsed | 57.2% → 60.5% |
+| labels agreeing with the typed PCED witness | 81.3% raw → **98.5%** normalised |
 | headwords attested in OSBCT, whole or inside | 69.5% |
 
 **Three things vol. 1 taught that the pilot could not:**
@@ -228,7 +230,13 @@ distribution, and IEBH will not treat the licence as a blocker. The project is n
    the container. Anyone helping (e.g. Winston) must run natively in Terminal; see `RUNBOOK.md`.
 
 **Known weaknesses of the article layer**, from a spot check of p. 300 against the image:
-labels are read, not normalised. (ကြိ) came out as (က), and `+` in the analysis as ၂. The label
-tail (၇), (က), (ကြု), (ထိ), (ပ) is mostly such confusions. Normalising against the closed label
-set in `docs/spanish-method.md` §2 is the next step. 13.0% of articles are unlocated: the headword
-was damaged past a 0.80 match or split across a line, and their text sits inside the previous row.
+labels were read, not normalised, and `+` in the analysis came out as ၂. All three were fixed on
+24 Sep: `normalise_analysis` for the + signs; the label map (`docs/labels.md`: 125 readings → 19
+printed labels, image-checked, 98.5% agreement with the typed witness); and an ordered alignment
+of the headwords between placed neighbours, which cut unlocated articles from 13.0% to 6.2%.
+
+**A typed copy exists.** Pali Canon E-Dictionary 1.94, the data behind dictionary.sutta.org, holds
+this dictionary as its "Tipiṭaka Pāḷi-Myanmar Dictionary" (157,271 entries, Zawgyi encoding,
+repo `siongui/data`). It has 94.7% of vol. 1's headwords, and gives the label, analysis and
+definition but apparently not the quotations. It is the Burmese side's first witness other than
+Angel.

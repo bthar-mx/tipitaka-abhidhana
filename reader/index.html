@@ -1,0 +1,250 @@
+<title>Abhidhāna Reader</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gentium+Book+Plus:ital,wght@0,400;0,700;1,400&family=Padauk:wght@400;700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+:root{
+  --bg:#F3F5F3; --surface:#FFFFFF; --ink:#1C2326; --muted:#5B686D; --rule:#D8DEDC;
+  --accent:#2B5D6C; --accent-soft:#E2ECEE; --mark:#F6E7B8;
+  --ok:#2F6E43; --ok-soft:#E1EFE4; --warn:#8C5E12; --warn-soft:#F5EAD3; --crit:#9B3A33; --crit-soft:#F6E1DE;
+  --my:"Padauk","Myanmar Text","Noto Sans Myanmar",sans-serif;
+  --roman:"Gentium Book Plus","Gentium Plus",Georgia,serif;
+  --ui:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --bg:#111719; --surface:#182023; --ink:#E3E9E8; --muted:#94A3A7; --rule:#2B3639;
+    --accent:#86BCCB; --accent-soft:#1F3238; --mark:#5A4A1C;
+    --ok:#86C79A; --ok-soft:#1C3024; --warn:#DDB36B; --warn-soft:#342A17; --crit:#E69A92; --crit-soft:#3A2220;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#111719; --surface:#182023; --ink:#E3E9E8; --muted:#94A3A7; --rule:#2B3639;
+  --accent:#86BCCB; --accent-soft:#1F3238; --mark:#5A4A1C;
+  --ok:#86C79A; --ok-soft:#1C3024; --warn:#DDB36B; --warn-soft:#342A17; --crit:#E69A92; --crit-soft:#3A2220;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--ui);font-size:15px;line-height:1.5}
+.wrap{max-width:1080px;margin:0 auto;padding-inline:20px;padding-block:20px 60px}
+header.top{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:12px 24px;padding-bottom:14px;border-bottom:1px solid var(--rule)}
+.brand{display:flex;flex-direction:column;gap:2px}
+.brand .my{font-family:var(--my);font-size:22px;line-height:1.6;font-weight:700}
+.brand .ro{font-family:var(--roman);font-size:16px;color:var(--muted)}
+.brand .ro b{color:var(--ink);font-weight:700}
+.stats{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:13px;color:var(--muted)}
+.stats span b{color:var(--ink);font-variant-numeric:tabular-nums;font-weight:600}
+.notice{margin-top:14px;font-size:13.5px;color:var(--muted);max-width:75ch}
+.notice strong{color:var(--ink)}
+
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);display:flex;flex-wrap:wrap;gap:10px 14px;align-items:center;padding-block:12px;border-bottom:1px solid var(--rule)}
+.search{flex:1 1 260px;display:flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--rule);border-radius:6px;padding:0 10px}
+.search input{flex:1;border:0;background:transparent;color:var(--ink);font:16px var(--ui);padding:9px 0;outline:none;min-width:0}
+.search:focus-within{border-color:var(--accent);box-shadow:0 0 0 2px var(--accent-soft)}
+.search svg{flex:none;color:var(--muted)}
+.pager{display:flex;align-items:center;gap:6px}
+button,.btn{font:500 14px var(--ui);color:var(--ink);background:var(--surface);border:1px solid var(--rule);border-radius:6px;padding:7px 11px;cursor:pointer}
+button:hover{border-color:var(--accent)}
+button:focus-visible,input:focus-visible,select:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+button:disabled{opacity:.45;cursor:default}
+.pageno{display:flex;align-items:center;gap:6px;font-family:var(--mono);font-size:13px;color:var(--muted)}
+.pageno input{width:4.5em;font:15px var(--mono);color:var(--ink);background:var(--surface);border:1px solid var(--rule);border-radius:6px;padding:6px 6px;text-align:center}
+.filter{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--muted)}
+.filter select{font:14px var(--ui);color:var(--ink);background:var(--surface);border:1px solid var(--rule);border-radius:6px;padding:6px 8px}
+
+.pagehead{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:6px 16px;margin:22px 0 10px}
+.pagehead h2{margin:0;font:600 13px var(--ui);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.pagehead h2 b{font-family:var(--mono);font-weight:500;color:var(--ink);letter-spacing:0;text-transform:none;font-size:15px}
+.pagehead .src{font-size:13px;color:var(--muted)}
+.pagehead .src a{color:var(--accent)}
+.summary{display:flex;gap:6px;flex-wrap:wrap}
+
+.list{display:flex;flex-direction:column;gap:0;background:var(--surface);border:1px solid var(--rule);border-radius:8px}
+article{display:grid;grid-template-columns:minmax(0,15rem) minmax(0,1fr);gap:4px 22px;padding:16px 18px;border-top:1px solid var(--rule);scroll-margin-top:90px}
+article:first-child{border-top:0}
+article.hit{background:linear-gradient(var(--mark),var(--mark)) left/4px 100% no-repeat}
+.hw{display:flex;flex-direction:column;gap:2px;min-width:0}
+.hw .my{font-family:var(--my);font-size:21px;font-weight:700;line-height:1.7;overflow-wrap:anywhere}
+.hw .ro{font-family:var(--roman);font-style:italic;font-size:17px;overflow-wrap:anywhere}
+.hw .meta{display:flex;flex-wrap:wrap;gap:4px;margin-top:6px}
+.body{min-width:0}
+.line1{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 10px;margin-bottom:4px}
+.label{font-family:var(--my);font-size:15px;background:var(--accent-soft);color:var(--accent);border-radius:4px;padding:0 7px;line-height:1.9}
+.label .gl{font-family:var(--ui);font-size:12px;margin-left:5px;opacity:.85}
+.analysis{font-family:var(--my);font-size:15px;color:var(--muted)}
+.analysis::before{content:"["} .analysis::after{content:"]"}
+.def{font-family:var(--my);font-size:16px;line-height:1.95;max-width:68ch;overflow-wrap:anywhere;margin:0}
+.pali{font-family:var(--roman);font-style:italic;font-size:17px;color:var(--accent);border-bottom:1px dotted color-mix(in srgb,var(--accent) 45%,transparent);cursor:help}
+.an-ro{font-family:var(--roman);font-style:italic;font-size:16px;color:var(--muted)}
+.cite .ro{font-family:var(--mono);font-size:12px}
+.toggle{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--muted);cursor:pointer}
+.toggle input{accent-color:var(--accent);width:16px;height:16px}
+.cites{display:flex;flex-wrap:wrap;gap:4px;margin-top:6px}
+.cite{font-family:var(--my);font-size:13px;color:var(--muted);border:1px solid var(--rule);border-radius:4px;padding:0 6px;line-height:1.8}
+.empty{font-size:13.5px;color:var(--muted);font-style:italic}
+.chip{display:inline-flex;align-items:center;gap:4px;font:500 11.5px var(--ui);letter-spacing:.02em;border-radius:999px;padding:1px 8px;white-space:nowrap}
+.chip::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
+.c-v{color:var(--ok);background:var(--ok-soft)} .c-f{color:var(--warn);background:var(--warn-soft)} .c-u{color:var(--crit);background:var(--crit-soft)}
+.c-o{color:var(--muted);background:transparent;border:1px solid var(--rule)} .c-o::before{display:none}
+.c-s{color:var(--muted);background:transparent;border:1px dashed var(--rule)} .c-s::before{display:none}
+
+.results{background:var(--surface);border:1px solid var(--rule);border-radius:8px;margin-top:18px}
+.results h3{margin:0;padding:12px 16px;font:600 13px var(--ui);letter-spacing:.05em;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--rule)}
+.res{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 12px;padding:9px 16px;border-top:1px solid var(--rule);cursor:pointer;text-align:left;width:100%;background:none;border-radius:0;border-left:0;border-right:0;border-bottom:0}
+.res:first-of-type{border-top:0}
+.res:hover{background:var(--accent-soft)}
+.res .my{font-family:var(--my);font-size:17px;line-height:1.7}
+.res .ro{font-family:var(--roman);font-style:italic;color:var(--muted);margin-left:8px}
+.res .pg{font-family:var(--mono);font-size:12.5px;color:var(--muted);align-self:center}
+.more{padding:10px 16px;font-size:13px;color:var(--muted)}
+.loading{padding:40px 0;text-align:center;color:var(--muted)}
+footer{margin-top:28px;font-size:12.5px;color:var(--muted);max-width:80ch}
+footer a{color:var(--accent)}
+@media (max-width:700px){
+  article{grid-template-columns:1fr;padding:14px}
+  .bar{gap:8px}
+  .pager{flex-wrap:wrap}
+}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <div class="brand">
+      <div class="my">တိပိဋက ပါဠိ-မြန်မာ အဘိဓာန် · အတွဲ ၁</div>
+      <div class="ro"><b>Tipiṭaka Pāḷi-Myanmā Abhidhāna</b>, vol. 1 · a – anīḷaka</div>
+    </div>
+    <div class="stats" id="stats"><span>Loading…</span></div>
+  </header>
+  <p class="notice"><strong>Unproofed OCR.</strong> Each headword comes from the dictionary’s index and is spelled correctly. Everything after it (label, analysis, definition, citations) is machine-read Burmese and contains errors. Labels are normalised to the printed label; hover over one to see what the OCR read. Check the printed page before quoting an article. Pāḷi quoted in a definition is shown <span class="pali" style="cursor:auto">in roman</span>; hover over it for the Burmese it was read from, or untick “Pāḷi in roman” to see the definition as read.</p>
+
+  <div class="bar" role="search">
+    <label class="search" for="q">
+      <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><circle cx="7" cy="7" r="5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M11 11l3.5 3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+      <input id="q" type="search" placeholder="Search a headword: အကုသလ or akusala" autocomplete="off" spellcheck="false">
+    </label>
+    <div class="pager">
+      <button id="prev" aria-label="Previous page">‹ Prev</button>
+      <span class="pageno"><label for="pg">PDF p.</label><input id="pg" inputmode="numeric" value="300"></span>
+      <button id="next" aria-label="Next page">Next ›</button>
+    </div>
+    <div class="filter">
+      <label for="show">Show</label>
+      <select id="show">
+        <option value="all">all articles</option>
+        <option value="f">fuzzy matches</option>
+        <option value="u">not located</option>
+      </select>
+    </div>
+    <label class="toggle" for="rom"><input id="rom" type="checkbox" checked> Pāḷi in roman</label>
+  </div>
+
+  <div id="results" class="results" hidden></div>
+  <div class="pagehead" id="pagehead"></div>
+  <div id="list" class="list"><div class="loading">Loading 8,150 articles…</div></div>
+
+  <footer>
+    Source scans: release <a href="https://github.com/bthar-mx/tipitaka-abhidhana/releases/tag/sources-v1" target="_blank" rel="noopener">sources-v1</a> (the “PDF p.” number is the page in <code>01.pdf</code>). Data: <a href="https://github.com/bthar-mx/tipitaka-abhidhana/blob/main/ocr/01/articles.jsonl" target="_blank" rel="noopener">ocr/01/articles.jsonl</a>. Methods and measurements: <a href="https://github.com/bthar-mx/tipitaka-abhidhana/blob/main/ocr/01/ocr-report.md" target="_blank" rel="noopener">OCR report</a> and <a href="https://github.com/bthar-mx/tipitaka-abhidhana/blob/main/ocr/01/articles-report.md" target="_blank" rel="noopener">articles report</a>.
+    The dictionary was compiled by the Masoeyein Board of Scholar-Elders and published by the Ministry of Religious Affairs, Myanmar. Scans and index: the Tipiṭaka Abidan app by Pn Daza and the monks and libraries credited in the repository README.
+  </footer>
+</div>
+
+<script>
+(function(){
+  // English glosses for display only; the Pāḷi expansions and Spanish abbreviations of the
+  // labels beyond the first five are not yet agreed (docs/labels.md).
+  const GL={'တိ':'adj.','န':'n.','ပု':'m.','ထီ':'f.','ကြိ':'v.','ကြိ၊ဝိ':'abs./inf.','ဗျ':'indecl.',
+    'ပု၊န':'m./n.','ပု၊ထီ':'m./f.','ပု၊တိ':'m./adj.','န၊ပု':'n./m.','န၊ထီ':'n./f.','န၊တိ':'n./adj.','တိ၊န':'adj./n.',
+    'ကာ၊ကြိ':'caus. v.','နာမ-ကြိ':'denom. v.','ပုံ-ဗဟု':'m. pl.'};
+  const LOC={v:['c-v','located'],f:['c-f','fuzzy match'],u:['c-u','not located']};
+  const OS={word:'in canon',inside:'inside a canon word',none:'not in canon'};
+  let D=[],pages=[],byPage=new Map(),cur=300,hitIdx=-1;
+  const $=id=>document.getElementById(id);
+  const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  const my2=n=>String(n).replace(/\d/g,d=>'၀၁၂၃၄၅၆၇၈၉'[d]);
+  const fold=s=>s.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
+
+  let roman=true;
+  function renderBody(d){
+    if(!d.sp||!roman) return esc(d.b);
+    let out='',k=0;
+    for(const [a,b,r] of d.sp){ out+=esc(d.b.slice(k,a))+`<span class="pali" lang="pi" title="${esc(d.b.slice(a,b))}">${esc(r)}</span>`; k=b; }
+    return out+esc(d.b.slice(k));
+  }
+  function chip(cls,t){return `<span class="chip ${cls}">${esc(t)}</span>`}
+  function card(d,i){
+    const [lc,lt]=LOC[d.x];
+    const lab=d.l?`<span class="label"${d.lo?` title="OCR read (${esc(d.lo)})"`:''}>(${esc(d.l)})${GL[d.l]?`<span class="gl">${GL[d.l]}</span>`:''}</span>`:(d.lo?`<span class="label" style="opacity:.6" title="OCR reading, not normalised">(${esc(d.lo)}?)</span>`:'');
+    const an=d.a?`<span class="analysis">${esc(d.a)}</span>${d.ai?`<span class="an-ro" lang="pi">[${esc(d.ai)}]</span>`:''}`:'';
+    const body=d.b?`<p class="def" lang="my">${renderBody(d)}</p>`:`<p class="empty">${d.x==='u'?'Headword not found in the OCR text. The article is probably inside the previous one.':'No definition text recovered.'}</p>`;
+    const ci=d.c&&d.c.length?`<div class="cites">${d.c.map((c,j)=>`<span class="cite">${roman&&d.ci?`<span class="ro">${esc(d.ci[j])}</span>`:esc(c)}</span>`).join('')}</div>`:'';
+    return `<article id="a${i}" class="${i===hitIdx?'hit':''}">
+      <div class="hw"><span class="my" lang="my">${esc(d.h)}</span><span class="ro" lang="pi">${esc(d.r)}</span>
+        <div class="meta">${chip(lc,lt)}${d.o?chip('c-o',OS[d.o]):''}${chip('c-s','OCR · unproofed')}</div></div>
+      <div class="body"><div class="line1">${lab}${an}</div>${body}${ci}</div></article>`;
+  }
+  function render(p,scrollTo){
+    if(!byPage.has(p)){const n=pages.find(x=>x>=p)??pages[pages.length-1];p=n}
+    cur=p; $('pg').value=p;
+    try{history.replaceState(null,'','#p'+p)}catch(e){}
+    const idx=byPage.get(p)||[], f=$('show').value;
+    const rows=idx.filter(i=>f==='all'||D[i].x===f);
+    const c={v:0,f:0,u:0}; idx.forEach(i=>c[D[i].x]++);
+    const d0=D[idx[0]];
+    $('pagehead').innerHTML=`<h2>Page <b>${p}</b> of the PDF · printed p. <b>${d0?my2(d0.q):'–'}</b> · ${idx.length} headwords</h2>
+      <div class="summary">${chip('c-v',c.v+' located')}${c.f?chip('c-f',c.f+' fuzzy'):''}${c.u?chip('c-u',c.u+' not located'):''}</div>`;
+    $('list').innerHTML=rows.length?rows.map(i=>card(D[i],i)).join(''):`<div class="loading">No ${f==='f'?'fuzzy matches':'unlocated headwords'} on this page.</div>`;
+    const k=pages.indexOf(p); $('prev').disabled=k<=0; $('next').disabled=k>=pages.length-1;
+    if(scrollTo!=null){const el=$('a'+scrollTo); if(el) el.scrollIntoView({block:'start'})}
+  }
+  function step(dir){
+    const f=$('show').value; let k=pages.indexOf(cur);
+    do{k+=dir}while(k>=0&&k<pages.length&&f!=='all'&&!(byPage.get(pages[k])||[]).some(i=>D[i].x===f));
+    if(k>=0&&k<pages.length){hitIdx=-1;render(pages[k]);window.scrollTo({top:0})}
+  }
+  function search(q){
+    const box=$('results'); q=q.trim();
+    if(!q){box.hidden=true;return}
+    const isMy=/[က-႟]/.test(q), fq=fold(q), out=[];
+    for(let i=0;i<D.length;i++){
+      const d=D[i]; const hay=isMy?d.h:fold(d.r);
+      const pos=hay.indexOf(isMy?q:fq); if(pos<0)continue;
+      out.push([pos===0?0:1,hay.length,i]);
+    }
+    out.sort((a,b)=>a[0]-b[0]||a[1]-b[1]||a[2]-b[2]);
+    const top=out.slice(0,60);
+    box.hidden=false;
+    box.innerHTML=`<h3>${out.length.toLocaleString()} headword${out.length===1?'':'s'} match</h3>`+
+      top.map(([, ,i])=>`<button class="res" data-i="${i}"><span><span class="my" lang="my">${esc(D[i].h)}</span><span class="ro">${esc(D[i].r)}</span></span><span class="pg">p. ${D[i].p}</span></button>`).join('')+
+      (out.length>60?`<div class="more">Showing the first 60. Type more of the word to narrow it.</div>`:'')+
+      (out.length?'':`<div class="more">Nothing in vol. 1 matches. This volume covers headwords from အ to အနီဠက (a to anīḷaka).</div>`);
+  }
+  $('results').addEventListener('click',e=>{
+    const b=e.target.closest('.res'); if(!b)return;
+    const i=+b.dataset.i; hitIdx=i; $('show').value='all'; render(D[i].p,i);
+  });
+  let t; $('q').addEventListener('input',e=>{clearTimeout(t);t=setTimeout(()=>search(e.target.value),120)});
+  $('rom').addEventListener('change',e=>{roman=e.target.checked;render(cur)});
+  $('prev').onclick=()=>step(-1); $('next').onclick=()=>step(1);
+  $('pg').addEventListener('change',e=>{const n=parseInt(e.target.value,10); if(n){hitIdx=-1;render(n)}});
+  $('pg').addEventListener('keydown',e=>{if(e.key==='Enter')e.target.dispatchEvent(new Event('change'))});
+  $('show').addEventListener('change',()=>{const f=$('show').value; if(f!=='all'&&!(byPage.get(cur)||[]).some(i=>D[i].x===f))step(1); else render(cur)});
+  document.addEventListener('keydown',e=>{
+    if(e.target.matches('input,select,textarea'))return;
+    if(e.key==='ArrowLeft')step(-1); if(e.key==='ArrowRight')step(1);
+    if(e.key==='/'){e.preventDefault();$('q').focus()}
+  });
+
+  fetch('vol01.json').then(r=>{if(!r.ok)throw new Error(r.status);return r.json()}).then(data=>{
+    D=data;
+    D.forEach((d,i)=>{if(!byPage.has(d.p))byPage.set(d.p,[]);byPage.get(d.p).push(i)});
+    pages=[...byPage.keys()].sort((a,b)=>a-b);
+    const n={v:0,f:0,u:0}; D.forEach(d=>n[d.x]++);
+    const lab=D.filter(d=>d.l&&d.b).length;
+    $('stats').innerHTML=`<span><b>${D.length.toLocaleString()}</b> headwords</span><span><b>${pages.length}</b> pages</span><span><b>${(100*(n.v+n.f)/D.length).toFixed(1)}%</b> located</span><span><b>${(100*lab/D.length).toFixed(1)}%</b> with label + definition</span>`;
+    const m=/^#p(\d+)$/.exec(location.hash); render(m?+m[1]:300);
+  }).catch(err=>{$('list').innerHTML=`<div class="loading">The article data didn’t load (${esc(err.message)}). Reload the page to try again.</div>`});
+})();
+</script>
