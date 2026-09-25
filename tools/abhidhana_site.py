@@ -1,0 +1,138 @@
+#!/usr/bin/env python3
+"""Build the public website (site/dist/) from the committed data. Standard library only.
+
+    python3 tools/abhidhana_site.py            # what Cloudflare Pages runs on every push
+    ABHIDHANA_SITE_OUT=/tmp/dist python3 tools/abhidhana_site.py   # build elsewhere, to test
+
+Inputs, all in git: site/src/ (the pages, scripts, styles, _headers, _redirects),
+docs/labels.md §0 (the label table, via tools/abhidhana_labels.py), site/volumes.json (one row per book: numbering, Burmese and romanised range, PDF pages, index
+headwords, the page to open on), and ocr/<book>/articles.jsonl + pali.jsonl.
+
+A book is published when its articles.jsonl and pali.jsonl exist; the others are listed as
+"coming". Nothing from the typed witnesses (PCED, Pn Daza's dict.db) is read or published:
+only our OCR and what the project adds (structure, labels, romanisation, attestation, status).
+
+Output, site/dist/ (gitignored):
+    everything in site/src/, with <!--VOLUMES--> in index.html filled in
+    data/volumes.json     the books, their status and their figures
+    data/v<book>.json     one per published book: compact records, in index order
+    data/search.json      [book, id, p, h, r] per headword, for search across all books
+    data/labels.json      the label table (no OCR readings), with the number of articles per label
+    labels/index.html     the Labels page: <!--LABELS--> filled with the table
+
+Record keys (as in the Reader, docs of tools/abhidhana_reader_data.py, plus i, s, m):
+    i id  p PDF page  q printed page  h headword  r IAST  o OSBCT  x v/f/u  l label  lo OCR label
+    a analysis  ai analysis IAST  b body  sp Pāḷi spans  c citations  ci citations IAST
+    s status (ocr / drafted / reviewed / corrected)  m 1 if the index files it on another page
+"""
+import html, json, os, re, shutil, sys
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent.parent
+SRC = ROOT / 'site/src'
+OUT = Path(os.environ.get('ABHIDHANA_SITE_OUT', ROOT / 'site/dist'))
+sys.path.insert(0, str(ROOT / 'tools'))
+from abhidhana_labels import LABELS   # docs/labels.md §0: the one label table
+X = {'verbatim': 'v', 'verbatim-inline': 'v', 'folded': 'v', 'fuzzy': 'f', 'unlocated': 'u'}
+MAX_FILE = 25 * 1024 * 1024      # Cloudflare Pages: 25 MiB per file
+MAX_FILES = 20000                # and 20,000 files per site on the free plan
+
+
+def records(book):
+    P = {}
+    with (ROOT / f'ocr/{book}/pali.jsonl').open(encoding='utf-8') as f:
+        for line in f:
+            r = json.loads(line); P[r['id']] = r
+    V = []
+    with (ROOT / f'ocr/{book}/articles.jsonl').open(encoding='utf-8') as f:
+        for line in f:
+            r = json.loads(line); p = P.get(r['id'], {})
+            d = {'i': r['id'], 'p': r['pdf_page'], 'q': r['index_page'], 'h': r['headword'],
+                 'r': r.get('iast') or p.get('headword_iast') or ''}
+            if r.get('osbct'): d['o'] = r['osbct']
+            d['x'] = X[r['located']]
+            if r.get('label'): d['l'] = r['label']
+            if r.get('label_ocr') and r['label_ocr'] != r.get('label'): d['lo'] = r['label_ocr']
+            if r.get('analysis'): d['a'] = r['analysis']
+            b = p.get('body_joined') or re.sub(r'-\s*\n\s*', '', r.get('body') or '').replace('\n', ' ')
+            if b: d['b'] = b
+            if r.get('citations'): d['c'] = r['citations']
+            if p.get('analysis_iast'): d['ai'] = p['analysis_iast']
+            if p.get('citations_iast'): d['ci'] = p['citations_iast']
+            if p.get('pali'): d['sp'] = [[s['start'], s['end'], s['iast']] for s in p['pali']]
+            d['s'] = r.get('status') or 'ocr'
+            if r.get('index_misfiled'): d['m'] = 1
+            V.append(d)
+    return V
+
+
+def dump(path, obj):
+    path.write_text(json.dumps(obj, ensure_ascii=False, separators=(',', ':')), encoding='utf-8')
+
+
+def main():
+    vols = json.loads((ROOT / 'site/volumes.json').read_text(encoding='utf-8'))
+    if OUT.exists(): shutil.rmtree(OUT)
+    shutil.copytree(SRC, OUT)
+    (OUT / 'data').mkdir()
+    search = []; lab_n = {}
+    for v in vols:
+        b = v['id']
+        if not ((ROOT / f'ocr/{b}/articles.jsonl').exists() and (ROOT / f'ocr/{b}/pali.jsonl').exists()):
+            v['status'] = 'coming'; continue
+        V = records(b)
+        dump(OUT / f'data/v{b}.json', V)
+        n = len(V)
+        v.update(status='done', records=n, pages=len({d['p'] for d in V}),
+                 located=round(100 * sum(d['x'] != 'u' for d in V) / n, 1),
+                 usable=round(100 * sum(bool(d.get('l') and d.get('b')) for d in V) / n, 1))
+        search += [[b, d['i'], d['p'], d['h'], d['r']] for d in V]
+        for d in V:
+            if d.get('l'): lab_n[d['l']] = lab_n.get(d['l'], 0) + 1
+        print(f'{b:>3}: {n:,} records, {(OUT / f"data/v{b}.json").stat().st_size / 1e6:.1f} MB')
+    dump(OUT / 'data/volumes.json', vols)
+    dump(OUT / 'data/search.json', search)
+    labels = [{k: d[k] for k in ('label', 'pali', 'en', 'es', 'abbr_en', 'abbr_es', 'status', 'es_status')}
+              | {'n': lab_n.get(d['label'], 0)} for d in LABELS]
+    dump(OUT / 'data/labels.json', labels)
+    E = html.escape
+    lrows = []
+    for k, d in enumerate(labels):
+        prov = lambda lang: '' if (d['status'] == 'confirmed' and (lang == 'en' or d['es_status'] == 'confirmed')) else \
+            f'<span class="prov" data-i18n="provisional">provisional</span>'
+        lrows.append(
+            f'<tr id="l{k}"><td class="my" lang="my">({E(d["label"])})</td><td lang="pi"><i>{E(d["pali"])}</i></td>'
+            f'<td><span class="tr" lang="en">{E(d["en"])} {prov("en")}</span><span class="tr" lang="es">{E(d["es"])} {prov("es")}</span></td>'
+            f'<td><span class="tr" lang="en">{E(d["abbr_en"])}</span><span class="tr" lang="es">{E(d["abbr_es"])}</span></td>'
+            f'<td class="num">{d["n"]:,}</td></tr>')
+    lp = OUT / 'labels/index.html'
+    lp.write_text(lp.read_text(encoding='utf-8').replace('<!--LABELS-->', '\n'.join(lrows)), encoding='utf-8')
+
+    # the volume list, in the page itself (readable without JavaScript and by search engines)
+    rows = []
+    for v in vols:
+        done = v['status'] == 'done'
+        inner = (f'<span class="vn">{html.escape(v["n"])}</span><span class="rg">'
+                 f'<span class="my" lang="my">{html.escape(v["range_my"])}</span>'
+                 f'<span class="ro" lang="pi">{html.escape(v["range_ro"])}</span></span>')
+        link = (f'<a class="vl" href="/v/{v["id"]}/{v["start"]}">{inner}</a>' if done
+                else f'<span class="vl">{inner}</span>')
+        stat = (f'<span class="num">{v["headwords"]:,}</span>'
+                f'<span class="state {"done" if done else "coming"}" data-i18n="{"st_done" if done else "st_coming"}">'
+                f'{"digitised" if done else "coming"}</span>')
+        rows.append(f'<li class="vol{"" if done else " soon"}" data-id="{v["id"]}">{link}{stat}</li>')
+    ix = OUT / 'index.html'
+    ix.write_text(ix.read_text(encoding='utf-8').replace('<!--VOLUMES-->', '\n'.join(rows)), encoding='utf-8')
+
+    files = [f for f in OUT.rglob('*') if f.is_file()]
+    big = [f for f in files if f.stat().st_size > MAX_FILE]
+    print(f'site/dist: {len(files)} files, {sum(f.stat().st_size for f in files) / 1e6:.0f} MB; '
+          f'search {len(search):,} headwords; '
+          f'{sum(v["status"] == "done" for v in vols)} books published, '
+          f'{sum(v["status"] == "coming" for v in vols)} coming')
+    if big or len(files) > MAX_FILES:
+        sys.exit(f'over the Pages limits: {len(files)} files; too large: {[str(f) for f in big]}')
+
+
+if __name__ == '__main__':
+    main()

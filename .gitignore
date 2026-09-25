@@ -25,3 +25,5 @@ reader/*.gz.txt
 # Typed witness (PCED dictionary K): licence not stated, so kept out of git (docs/witness.md §5)
 witness/
 logs/
+reader/*.wasm
+site/dist/

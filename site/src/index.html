@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tipiṭaka Pāḷi-Myanmā Abhidhāna — digitised</title>
+<meta name="description" content="The Tipiṭaka Pāḷi-Myanmā Abhidhāna, the 25-volume Pāḷi–Burmese dictionary of the Tipiṭaka, digitised: search every headword, read the articles, and check them against the page images. Unproofed OCR.">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gentium+Book+Plus:ital,wght@0,400;0,700;1,400&family=Padauk:wght@400;700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+<div class="wrap">
+  <header class="site">
+    <a class="home" href="/"><span class="my" lang="my">တိပိဋက ပါဠိ-မြန်မာ အဘိဓာန်</span><span class="ro">Tipiṭaka Pāḷi-Myanmā Abhidhāna</span></a>
+    <nav><a href="/about/" data-i18n="about">About</a>
+      <span class="lang" role="group" aria-label="Language / Idioma"><button data-lang="es" aria-pressed="false">ES</button><button data-lang="en" aria-pressed="false">EN</button></span></nav>
+  </header>
+
+  <section class="hero">
+    <h1 class="tr" lang="en">The Pāḷi–Burmese dictionary of the Tipiṭaka, digitised</h1>
+    <h1 class="tr" lang="es">El diccionario pāḷi–birmano del Tipiṭaka, digitalizado</h1>
+    <p class="tr" lang="en">The <em>Tipiṭaka Pāḷi-Myanmā Abhidhāna</em> explains in Burmese about 215,000 Pāḷi headwords, with quotations from the canon and its commentaries, in 25 volumes. It was compiled by the Masoeyein Board of Scholar-Elders and published by the Ministry of Religious Affairs of Myanmar. Here it is searchable, article by article, beside the printed page.</p>
+    <p class="tr" lang="es">El <em>Tipiṭaka Pāḷi-Myanmā Abhidhāna</em> explica en birmano unas 215 000 entradas pāḷi, con citas del canon y de sus comentarios, en 25 volúmenes. Lo compiló el Consejo de Maestros Ancianos de Masoeyein y lo publicó el Ministerio de Asuntos Religiosos de Myanmar. Aquí se puede consultar artículo por artículo, junto a la página impresa.</p>
+    <div class="notice" data-i18n-html="notice"></div>
+  </section>
+
+  <label class="searchbox" for="q">
+    <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><circle cx="7" cy="7" r="5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M11 11l3.5 3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+    <input id="q" type="search" data-i18n-ph="search_ph" autocomplete="off" spellcheck="false" autofocus>
+  </label>
+  <div id="results" class="results" hidden></div>
+
+  <h2 class="sec" data-i18n="home">Volumes</h2>
+  <ul class="vols" id="vols">
+<!--VOLUMES-->
+  </ul>
+  <p class="totals" id="totals"></p>
+
+  <footer class="site-foot">
+    <span class="tr" lang="en">A project of the <a href="https://iebh.org">Instituto de Estudios Budistas Hispano</a>. Data and code: <a href="https://github.com/bthar-mx/tipitaka-abhidhana">GitHub</a>. See <a href="/about/">About</a> for credits and licences.</span>
+    <span class="tr" lang="es">Un proyecto del <a href="https://iebh.org">Instituto de Estudios Budistas Hispano</a>. Datos y código: <a href="https://github.com/bthar-mx/tipitaka-abhidhana">GitHub</a>. Créditos y licencias en <a href="/about/">Acerca de</a>.</span>
+  </footer>
+</div>
+<script src="/assets/common.js"></script>
+<script>
+wireSearch($('q'), $('results'));
+volumes().then(V => {
+  const done = V.filter(v => v.status === 'done');
+  const n = done.reduce((a, v) => a + v.records, 0);
+  const upd = () => {
+    $('totals').textContent = LANG === 'es'
+      ? `${done.length} de ${V.length} libros digitalizados · ${n.toLocaleString('es')} entradas del índice`
+      : `${done.length} of ${V.length} books digitised · ${n.toLocaleString('en')} index headwords`;
+  };
+  langHooks.push(upd); upd();
+}).catch(() => {});
+applyLang();
+</script>
+</body>
+</html>

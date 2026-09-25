@@ -1,0 +1,296 @@
+[
+ {
+  "id": "01",
+  "n": "1",
+  "title_my": "အတွဲ ၁",
+  "range_my": "အ – အနီဠက",
+  "range_ro": "a – anīḷaka",
+  "pdf_pages": 913,
+  "headwords": 8150,
+  "start": 300
+ },
+ {
+  "id": "02",
+  "n": "2",
+  "title_my": "အတွဲ ၂",
+  "range_my": "အနု – အဗ္ဘောက္ကိရဏ",
+  "range_ro": "anu – abbhokkiraṇa",
+  "pdf_pages": 898,
+  "headwords": 7189,
+  "start": 500
+ },
+ {
+  "id": "03",
+  "n": "3",
+  "title_my": "အတွဲ ၃",
+  "range_my": "အဗျဂ္ဂ – အဠာရပမှ",
+  "range_ro": "abyagga – aḷārapamha",
+  "pdf_pages": 1177,
+  "headwords": 11726,
+  "start": 600
+ },
+ {
+  "id": "4a",
+  "n": "4/1",
+  "title_my": "အတွဲ ၄-အပိုင်း ၁",
+  "range_my": "အာ – ဥတြာသေယျုံ",
+  "range_ro": "ā – utrāseyyuṁ",
+  "pdf_pages": 863,
+  "headwords": 7524,
+  "start": 300
+ },
+ {
+  "id": "4b",
+  "n": "4/2",
+  "title_my": "အတွဲ ၄-အပိုင်း ၂",
+  "range_my": "ဥဒ – ဥဠုရာဇ",
+  "range_ro": "uda – uḷurāja",
+  "pdf_pages": 681,
+  "headwords": 6655,
+  "start": 300
+ },
+ {
+  "id": "4c",
+  "n": "4/3",
+  "title_my": "အတွဲ ၄-အပိုင်း ၃",
+  "range_my": "ဦ – ဩဠုမ္ပိက",
+  "range_ro": "ū – oḷumpika",
+  "pdf_pages": 736,
+  "headwords": 5230,
+  "start": 300,
+  "note_en": "with supplements to vols. 15, 4/2 and 16 (PDF pp. 713–735)",
+  "note_es": "con suplementos a los vols. 15, 4/2 y 16 (pp. 713–735 del PDF)"
+ },
+ {
+  "id": "05",
+  "n": "5",
+  "title_my": "အတွဲ ၅",
+  "range_my": "က – ကိလေဒေတွာ",
+  "range_ro": "ka – kiledetvā",
+  "pdf_pages": 883,
+  "headwords": 8015,
+  "start": 500
+ },
+ {
+  "id": "06",
+  "n": "6",
+  "title_my": "အတွဲ ၆",
+  "range_my": "ကိလေသ – ငကာရ",
+  "range_ro": "kilesa – ṅakāra",
+  "pdf_pages": 1039,
+  "headwords": 11429,
+  "start": 500
+ },
+ {
+  "id": "07",
+  "n": "7",
+  "title_my": "အတွဲ ၇",
+  "range_my": "စ – ဆိဒ္ဒေယျုံ",
+  "range_ro": "ca – chiddeyyuṁ",
+  "pdf_pages": 861,
+  "headwords": 6877,
+  "start": 400
+ },
+ {
+  "id": "08",
+  "n": "8",
+  "title_my": "အတွဲ ၈",
+  "range_my": "ဆိဒ္ဒ – ဏျပစ္စယတ္ထ",
+  "range_ro": "chidda – ṇyapaccayattha",
+  "pdf_pages": 849,
+  "headwords": 6448,
+  "start": 400
+ },
+ {
+  "id": "09",
+  "n": "9",
+  "title_my": "အတွဲ ၉",
+  "range_my": "တ – ထောမေဿာမိ",
+  "range_ro": "ta – thomessāmi",
+  "pdf_pages": 893,
+  "headwords": 6805,
+  "start": 500
+ },
+ {
+  "id": "10",
+  "n": "10",
+  "title_my": "အတွဲ ၁၀",
+  "range_my": "ဒ – ဒွေဠှကပုစ္ဆာ",
+  "range_ro": "da – dveḷhakapucchā",
+  "pdf_pages": 981,
+  "headwords": 7366,
+  "start": 578
+ },
+ {
+  "id": "11",
+  "n": "11",
+  "title_my": "အတွဲ ၁၁",
+  "range_my": "ဓ – နိက္ခာမေသုံ",
+  "range_ro": "dha – nikkhāmesuṁ",
+  "pdf_pages": 769,
+  "headwords": 5663,
+  "start": 444
+ },
+ {
+  "id": "12",
+  "n": "12",
+  "title_my": "အတွဲ ၁၂",
+  "range_my": "နိက္ခိတ္တ – နှာရုသုတ္တနိဗန္ဓန",
+  "range_ro": "nikkhitta – nhārusuttanibandhana",
+  "pdf_pages": 1123,
+  "headwords": 7022,
+  "start": 589
+ },
+ {
+  "id": "13",
+  "n": "13",
+  "title_my": "အတွဲ ၁၃",
+  "range_my": "ပ – ပဋိဗြူဟန",
+  "range_ro": "pa – paṭibrūhana",
+  "pdf_pages": 896,
+  "headwords": 7279,
+  "start": 447
+ },
+ {
+  "id": "14",
+  "n": "14/1",
+  "title_my": "အတွဲ ၁၄-အပိုင်း ၁",
+  "range_my": "ပဋိဘံသု – ပမဇ္ဇေယျ",
+  "range_ro": "paṭibhaṁsu – pamajjeyya",
+  "pdf_pages": 821,
+  "headwords": 5219,
+  "start": 337
+ },
+ {
+  "id": "14b",
+  "n": "14/2",
+  "title_my": "အတွဲ ၁၄-အပိုင်း ၂",
+  "range_my": "ပမတ္တ – ပလ္လောမ",
+  "range_ro": "pamatta – palloma",
+  "pdf_pages": 949,
+  "headwords": 6942,
+  "start": 600,
+  "note_en": "typeset text, not a scan",
+  "note_es": "texto tipográfico, no un escaneo"
+ },
+ {
+  "id": "14c",
+  "n": "14/3",
+  "title_my": "အတွဲ ၁၄-အပိုင်း ၃",
+  "range_my": "ပဝ – ပ္လုတ",
+  "range_ro": "pava – pluta",
+  "pdf_pages": 1107,
+  "headwords": 10390,
+  "start": 580
+ },
+ {
+  "id": "15",
+  "n": "15",
+  "title_my": "အတွဲ ၁၅",
+  "range_my": "ဖ – ဘောဝါဒီ",
+  "range_ro": "pha – bhovādī",
+  "pdf_pages": 853,
+  "headwords": 9342,
+  "start": 485
+ },
+ {
+  "id": "16",
+  "n": "16",
+  "title_my": "အတွဲ ၁၆",
+  "range_my": "မ – မှိတပုဗ္ဗ",
+  "range_ro": "ma – mhitapubba",
+  "pdf_pages": 890,
+  "headwords": 10394,
+  "start": 471
+ },
+ {
+  "id": "17",
+  "n": "17",
+  "title_my": "အတွဲ ၁၇",
+  "range_my": "ယ – ရောဟိသ",
+  "range_ro": "ya – rohisa",
+  "pdf_pages": 879,
+  "headwords": 6520,
+  "start": 465
+ },
+ {
+  "id": "18",
+  "n": "18",
+  "title_my": "အတွဲ ၁၈",
+  "range_my": "လ – ဝဠာဝါရထ",
+  "range_ro": "la – vaḷāvāratha",
+  "pdf_pages": 890,
+  "headwords": 7829,
+  "start": 476
+ },
+ {
+  "id": "19",
+  "n": "19",
+  "title_my": "အတွဲ ၁၉",
+  "range_my": "ဝါ – ဝိဝေကောဓိမုတ္တိ",
+  "range_ro": "vā – vivekodhimutti",
+  "pdf_pages": 982,
+  "headwords": 9251,
+  "start": 531
+ },
+ {
+  "id": "20",
+  "n": "20",
+  "title_my": "အတွဲ ၂၀",
+  "range_my": "ဝိဝေကာနိသံသ – သံဝေါဟာရ",
+  "range_ro": "vivekānisaṁsa – saṁvohāra",
+  "pdf_pages": 945,
+  "headwords": 7366,
+  "start": 465
+ },
+ {
+  "id": "21",
+  "n": "21",
+  "title_my": "အတွဲ ၂၁",
+  "range_my": "သံသ – သန္နာဟယာမသေ",
+  "range_ro": "saṁsa – sannāhayāmase",
+  "pdf_pages": 925,
+  "headwords": 8129,
+  "start": 450
+ },
+ {
+  "id": "22",
+  "n": "22",
+  "title_my": "အတွဲ ၂၂",
+  "range_my": "သန္နိကဋ္ဌ – သမ္ဘောန္တိ",
+  "range_ro": "sannikaṭṭha – sambhonti",
+  "pdf_pages": 933,
+  "headwords": 8078,
+  "start": 419
+ },
+ {
+  "id": "23",
+  "n": "23",
+  "title_my": "အတွဲ ၂၃",
+  "range_my": "သမ္မ – သိဟလ",
+  "range_ro": "samma – sihala",
+  "pdf_pages": 780,
+  "headwords": 7182,
+  "start": 400
+ },
+ {
+  "id": "24",
+  "n": "24",
+  "title_my": "အတွဲ ၂၄",
+  "range_my": "သီကတိ – သူသူ",
+  "range_ro": "sīkati – sūsū",
+  "pdf_pages": 718,
+  "headwords": 7088,
+  "start": 360
+ },
+ {
+  "id": "25",
+  "n": "25",
+  "title_my": "အတွဲ ၂၅",
+  "range_my": "သော – ဠကာရ",
+  "range_ro": "so – ḷakāra",
+  "pdf_pages": 466,
+  "headwords": 4046,
+  "start": 240
+ }
+]

@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tipiṭaka Pāḷi-Myanmā Abhidhāna</title>
+<meta name="description" content="An article of the Tipiṭaka Pāḷi-Myanmā Abhidhāna beside its printed page. Unproofed OCR.">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gentium+Book+Plus:ital,wght@0,400;0,700;1,400&family=Padauk:wght@400;700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+<div class="wrap">
+  <header class="site">
+    <a class="home" href="/"><span class="my" lang="my">တိပိဋက ပါဠိ-မြန်မာ အဘိဓာန်</span><span class="ro">Tipiṭaka Pāḷi-Myanmā Abhidhāna</span></a>
+    <nav><a href="/" data-i18n="home">Volumes</a><a href="/about/" data-i18n="about">About</a>
+      <span class="lang" role="group" aria-label="Language / Idioma"><button data-lang="es" aria-pressed="false">ES</button><button data-lang="en" aria-pressed="false">EN</button></span></nav>
+  </header>
+
+  <div class="bar" role="search">
+    <select id="vol" aria-label="Volume"></select>
+    <label class="searchbox" for="q">
+      <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><circle cx="7" cy="7" r="5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M11 11l3.5 3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+      <input id="q" type="search" data-i18n-ph="search_ph" autocomplete="off" spellcheck="false">
+    </label>
+    <button id="prev" data-i18n="prev">‹ Prev</button>
+    <span class="pageno"><label for="pg" data-i18n="pdfp">PDF p.</label><input id="pg" inputmode="numeric"></span>
+    <button id="next" data-i18n="next">Next ›</button>
+    <select id="show" aria-label="Show">
+      <option value="all" data-i18n="show_all">all articles</option>
+      <option value="f" data-i18n="show_f">fuzzy matches</option>
+      <option value="u" data-i18n="show_u">not located</option>
+    </select>
+    <label class="toggle" for="rom"><input id="rom" type="checkbox" checked> <span data-i18n="roman">Pāḷi in roman</span></label>
+    <label class="toggle" for="lhelp"><input id="lhelp" type="checkbox" checked> <span data-i18n="labelhelp">Explain labels</span></label>
+  </div>
+  <div id="results" class="results" hidden></div>
+
+  <div class="vtitle"><h1 id="vmy" lang="my"></h1><span class="ro" id="vro"></span></div>
+  <div class="stats" id="stats"></div>
+  <div class="notice" data-i18n-html="notice"></div>
+
+  <div class="pagehead" id="pagehead"></div>
+  <div class="cols">
+    <div id="list" class="list"><div class="loading">…</div></div>
+    <aside class="scan" id="scan">
+      <div class="tools">
+        <span data-i18n="scan">Page image</span>
+        <span>
+          <button id="zoom" data-i18n="actual">Actual size</button>
+          <a class="btn" id="imgopen" target="_blank" rel="noopener" data-i18n="newtab">Open image</a>
+          <button id="imgtoggle" data-i18n="hide">Hide</button>
+        </span>
+      </div>
+      <div class="view" id="view"><img id="img" alt="" decoding="async"></div>
+      <div class="missing" id="imgmiss" hidden><span data-i18n="img_missing"></span><br><a id="pdf" data-i18n="pdf">PDF</a></div>
+    </aside>
+  </div>
+
+  <footer class="site-foot">
+    <span class="tr" lang="en">The dictionary was compiled by the Masoeyein Board of Scholar-Elders and published by the Ministry of Religious Affairs, Myanmar. Scans and index: the Tipiṭaka Abidan app by Pn Daza and the monks and libraries credited on the <a href="/about/">About</a> page. Data: <a id="fdata" href="#">articles.jsonl</a>; methods and figures: <a id="frep" href="#">articles report</a>.</span>
+    <span class="tr" lang="es">El diccionario lo compiló el Consejo de Maestros Ancianos de Masoeyein y lo publicó el Ministerio de Asuntos Religiosos de Myanmar. Escaneos e índice: la aplicación Tipiṭaka Abidan de Pn Daza y los monjes y bibliotecas citados en <a href="/about/">Acerca de</a>. Datos: <a id="fdata2" href="#">articles.jsonl</a>; métodos y cifras: <a id="frep2" href="#">informe de artículos</a>.</span>
+  </footer>
+</div>
+<script src="/assets/common.js"></script>
+<script src="/assets/read.js"></script>
+</body>
+</html>
