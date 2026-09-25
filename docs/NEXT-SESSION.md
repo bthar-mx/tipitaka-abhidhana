@@ -47,11 +47,16 @@ vol. 25 runs.
 
 ## Next, in order
 
-0. ~~Vol. 25 at 200 dpi~~ and ~~the README~~: done 25 Sep night (brief §30). Add the website's
-   link to the README once it is live.
-2. **The website** (brief §28): Angel deploys it (Cloudflare Pages + R2; steps in the chat of 25
-   Sep night), renders and uploads the page images with `tools/abhidhana_pages_r2.py all`, then
-   checks a page per book on the live site.
+0. ~~Vol. 25 at 200 dpi~~, ~~the README~~, ~~the website~~: done 25–26 Sep. **The site is live** at
+   https://abhidhana.buddha-dhamma.net (Angel deployed it; checked 26 Sep in the browser: all 29 books,
+   221,154 headwords, search, label pop-ups, About and Labels pages, 404 page). `site/src/_headers` now
+   makes browsers revalidate `/data/*` and `/assets/*` on every load; with the old one-hour cache a
+   visitor saw vol. 25 as "coming" after it was published.
+1. **Page images**: `https://abhidhana-img.buddha-dhamma.net/<book>/<NNNN>.webp` answers 404, so the
+   R2 domain is connected but nothing is uploaded yet (the site shows "image not yet available").
+   Angel: create the R2 token, then on the Mac `python3 tools/abhidhana_pages_r2.py render 01 --last
+   50`, `check 01`, then `all` (renders and uploads every book; ~2.5 GB; resumable). Afterwards open a
+   page of each book on the site.
 3. **Labels, Angel's to confirm** (`docs/labels.md` §0; `python3 tools/abhidhana_labels.py` checks
    the table after an edit): kammavācaka-kriyā for ကံဟောကြိယာ; sakkata, pākata (and ဗု၊သံ,
    ဗုဒ္ဓဘာသာသက္ကတ, "Buddhist Sanskrit", vol. 2 p. 14); (နာမ-ကြိ) nāmadhātu?; the provisional

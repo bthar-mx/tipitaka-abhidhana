@@ -3,9 +3,12 @@
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: interest-cohort=()
 
-# Data change on every build: let browsers keep them for an hour, then revalidate (ETag).
+# Data and scripts change on every build, and must change together (volumes.json names the books
+# whose v<book>.json exist). Browsers revalidate on every load (a 304 costs almost nothing), so no
+# one sees an old volume list beside new data. (Until 26 Sep 2026: max-age=3600, which showed vol. 25
+# as "coming" for up to an hour after it was published.)
 /data/*
-  Cache-Control: public, max-age=3600, must-revalidate
+  Cache-Control: public, no-cache
 
 /assets/*
-  Cache-Control: public, max-age=3600, must-revalidate
+  Cache-Control: public, no-cache

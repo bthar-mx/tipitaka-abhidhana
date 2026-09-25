@@ -8,8 +8,9 @@ Myanmar.
 
 **All 29 books are now digitised**: 221,154 index headwords over 25,700 pages; 94.1% of the
 articles are located in the OCR and 88.1% have both their grammatical label and their definition.
-**Nothing is proofread.** A public website, **abhidhana.buddha-dhamma.net**, is being set up
-(the source is in [`site/`](site/)); until it is live, the data are in [`ocr/`](ocr/).
+**Nothing is proofread.** Read and search it at **[abhidhana.buddha-dhamma.net](https://abhidhana.buddha-dhamma.net)**,
+article by article beside the printed page (the site's source is in [`site/`](site/)); the data
+are in [`ocr/`](ocr/).
 
 ## En español
 
@@ -21,8 +22,8 @@ diccionario), se divide en sus campos (categoría gramatical, análisis, definic
 entrada se romaniza (IAST). **Nada está revisado**: el birmano es una lectura automática (OCR) y
 contiene errores; compare siempre con la imagen de la página. La traducción al español, hecha
 desde el birmano y nunca a través del inglés, aún no ha comenzado
-([`docs/spanish-method.md`](docs/spanish-method.md)). El sitio web público,
-**abhidhana.buddha-dhamma.net**, está en preparación, en español e inglés. Proyecto del
+([`docs/spanish-method.md`](docs/spanish-method.md)). Consulta y búsqueda en
+**[abhidhana.buddha-dhamma.net](https://abhidhana.buddha-dhamma.net)**, en español e inglés. Proyecto del
 [Instituto de Estudios Budistas Hispano](https://iebh.org).
 
 ## What this repository does
