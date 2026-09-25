@@ -1,17 +1,17 @@
-# Vol. 01 — romanised Pāḷi
+# Vol. 03 — romanised Pāḷi
 
-*`tools/abhidhana_romanise.py 01` over `articles.jsonl`. Aksharamukha Burmese → IAST, ṃ written ṁ.
+*`tools/abhidhana_romanise.py 03` over `articles.jsonl`. Aksharamukha Burmese → IAST, ṃ written ṁ.
 Output: `pali.jsonl`, one row per article, keyed by `id`.*
 
 | | |
 |---|---:|
-| headwords romanised | 8,150 (all) |
-| compound analyses romanised | 5,869 |
-| of which every element Pāḷi-shaped | 5,151 = 87.8% (the rest keep Burmese parts in ⟨ ⟩) |
-| articles with Pāḷi found in the definition | 6,665 = 81.8% |
-| Pāḷi spans | 26,269 |
-| tokens in those spans | 106,508, of which **88.3% attested in OSBCT** |
-| citations romanised (mechanically, abbreviations not expanded) | 12,528 |
+| headwords romanised | 11,726 (all) |
+| compound analyses romanised | 9,065 |
+| of which every element Pāḷi-shaped | 8,431 = 93.0% (the rest keep Burmese parts in ⟨ ⟩) |
+| articles with Pāḷi found in the definition | 10,253 = 87.4% |
+| Pāḷi spans | 33,196 |
+| tokens in those spans | 115,795, of which **88.3% attested in OSBCT** |
+| citations romanised (mechanically, abbreviations not expanded) | 28,813 |
 
 What is and is not claimed:
 

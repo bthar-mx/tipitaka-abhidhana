@@ -54,8 +54,18 @@ def header_cut(col):
     the page and would otherwise be taken for the first article.
     """
     lines = col.split('\n')
-    while lines and not lines[0].strip(): lines.pop(0)
-    if lines and len(re.sub(r'\s', '', lines[0])) <= 24: lines.pop(0)
+    # blank lines, and up to three lines of debris above the head (the page's top rule and
+    # specks, read as ပ or ဝ)
+    k = 0
+    while lines and (not lines[0].strip() or (k < 3 and all(len(t) <= 3 for t in lines[0].split())
+                                               and not re.search(r'[(\[]', lines[0]))):
+        k += bool(lines[0].strip()); lines.pop(0)
+    if lines:
+        head = re.sub(r'\s', '', lines[0])
+        # a head carrying a spelling variant, အနုပါဒိဏ္ဏ(န္န)ကအာဟာရ, runs longer (vol. 2 p. 115)
+        if len(head) <= 24 or (len(head) <= 36 and re.search(r'[(（][^)）]{1,6}[)）]\S', head)
+                               and not re.search(r'[\[။]', head)):
+            lines.pop(0)
     return '\n'.join(lines)
 
 
@@ -67,6 +77,11 @@ def page_text(rec):
     cols = [p for p in parts if p.strip()]
     return '\n'.join(header_cut(c) for c in cols)
 
+
+# Scans bound out of order. {book: {pdf page the index implies: pdf page the text is on}}.
+# Vol. 2: printed pp. 223 and 224 are PDF pp. 242 and 241 (the running heads say ၂၂၄ on 241),
+# so the index's page 223 headwords are on 242 and its 224 headwords on 241.
+PAGE_FIX = {'02': {241: 242, 242: 241}}
 
 FUZZY_MIN = float(__import__('os').environ.get('ABH_FUZZY_MIN', '0.70'))
 FUZZY_SPAN = 48
@@ -98,6 +113,7 @@ def locate(text, gold):
         return 1 if spaced else 0
     loose = lambda s: s.replace('ံ', '').replace('့', '')
     pos = [None] * len(gold); how = ['unlocated'] * len(gold); inline = [None] * len(gold)
+    twin = [None] * len(gold)
     cur = 0
     for i, g in enumerate(gold):
         h = re.sub(r'\s', '', g); best = (0, None); j = f.find(h, cur)
@@ -121,10 +137,25 @@ def locate(text, gold):
         # article start, though the next line's head would otherwise be read through it
         o = offs[s0]; e = text.find('\n', o); line = text[o:e if e != -1 else len(text)]
         if not re.search(r'[(\[（]', line) and all(len(tk) <= 3 for tk in line.split()): continue
-        head = loose(re.sub(r'[-—‐]', '', f[s0:s0 + m.start()]))
+        heads = [f[s0:s0 + m.start()]]
+        # a ( that never closes before the next bracket is a variant whose ) was lost,
+        # "အနုပါဒိဏ္ဏ(န္နဂဂအာဟာရ (၇)": read through it, or the stem alone would match every
+        # compound of the stem (vol. 2 p. 115)
+        if f[s0 + m.start()] in '(（':
+            m2 = re.match(r'[(（]([^()（）\[\]]{1,30}?)(?=[(\[（])', f[s0 + m.start():s0 + FUZZY_SPAN + 30])
+            if m2: heads = [heads[0] + m2.group(1)]
+        # A spelling variant printed inside the headword, glued to what follows it:
+        # အနုပါဒိဏ္ဏ(န္န)က (vol. 2 p. 115) is one printed entry for two index headwords,
+        # အနုပါဒိဏ္ဏက and အနုပါဒိန္နက. Read both spellings: without the parenthesis, and with
+        # it replacing as many characters before it as it has.
+        v = re.match(r'([(（])([^()（）]{1,6})[)）]([^(\[（]*?)(?=[(\[（])', f[s0 + m.start():s0 + FUZZY_SPAN + 12])
+        if v and v.group(3) and not normalise_label(v.group(2), '')[0]:
+            pre, y, post = heads[0], v.group(2), v.group(3)
+            heads = [pre + post, pre[:max(0, len(pre) - len(y))] + y + post]
+        heads = tuple(loose(re.sub(r'[-—‐]', '', hd)) for hd in heads)
         # punctuation or a numeral inside the head means running text, not a headword
         # (vol. 1 p. 520: "အတပ္ပနီယံ..ကော တံ (အဂ္ဂိ" had taken the line of အတပ္ပနီယ)
-        if head and not re.search(r'[။၊.,:;"“”‘’၀-၉0-9]', head): starts.append((s0, head))
+        if heads[0] and not re.search(r'[။၊.,:;"“”‘’၀-၉0-9]', ''.join(heads)): starts.append((s0, heads))
     # Align each run of headwords the verbatim pass left unplaced to the article starts lying
     # between its placed neighbours, in order (a small Needleman-Wunsch: a headword and a
     # start may each be skipped, a pair scores its similarity above FUZZY_MIN). Choosing each
@@ -143,8 +174,10 @@ def locate(text, gold):
         if cands:
             # the head must be about the headword's length: a longer run before the bracket is
             # running text (a quotation, a citation), not a damaged headword
-            sim = [[round(SequenceMatcher(None, hd[:len(h) + 2], h).ratio(), 6) if len(hd) <= len(h) + 6 else 0
-                    for _, hd in cands] for h in run]
+            # a head much longer than the headword is running text, not a damaged headword
+            score = lambda hd, h: round(SequenceMatcher(None, hd[:len(h) + 2], h).ratio(), 6) \
+                if len(hd) <= len(h) + 6 else 0
+            sim = [[max(score(hd, h) for hd in hds) for _, hds in cands] for h in run]
             n, m_ = len(run), len(cands)
             D = [[0.0] * (m_ + 1) for _ in range(n + 1)]
             for a_ in range(1, n + 1):
@@ -157,17 +190,31 @@ def locate(text, gold):
                 pair = sim[a_ - 1][b_ - 1] - FUZZY_MIN
                 if pair >= 0 and D[a_][b_] == D[a_ - 1][b_ - 1] + pair:
                     k = i + a_ - 1; pos[k] = cands[b_ - 1][0]
-                    how[k] = 'verbatim' if sim[a_ - 1][b_ - 1] == 1 else 'fuzzy'
+                    how[k] = 'verbatim' if sim[a_ - 1][b_ - 1] == 1 and len(cands[b_ - 1][1]) == 1 else 'fuzzy'
                     a_ -= 1; b_ -= 1
                 elif D[a_][b_] == D[a_][b_ - 1]: b_ -= 1     # skip a start before a headword
                 else: a_ -= 1
         i = j
+    # The second spelling of a variant entry shares its article: place it on the start its
+    # twin took, when that start carries two spellings and the other one matches it.
+    # Strict: the twin itself must not be a twin, a start takes one twin, and the spelling
+    # must match >= 0.85 -- the run-on compounds of one stem are otherwise all alike.
+    two = {s0: hds for s0, hds in starts if len(hds) == 2}
+    taken = set()
+    for i, g in enumerate(gold):
+        if pos[i] is not None: continue
+        h = loose(re.sub(r'\s', '', g))
+        for k in (i - 1, i + 1):
+            if 0 <= k < len(gold) and pos[k] in two and twin[k] is None and pos[k] not in taken \
+                    and max(SequenceMatcher(None, hd, h).ratio() for hd in two[pos[k]]) >= .85:
+                pos[i] = pos[k]; how[i] = 'fuzzy'; twin[i] = k; taken.add(pos[k]); break
     for i, g in enumerate(gold):
         if pos[i] is not None or inline[i] is None: continue
         lo = max([pos[k] + 1 for k in range(i) if pos[k] is not None], default=0)
         hi = min([pos[k] for k in range(i + 1, len(gold)) if pos[k] is not None], default=len(f))
         if lo <= inline[i] < hi:
             pos[i] = inline[i]; how[i] = 'verbatim-inline'
+    locate.twin = twin
     return f, offs, pos, how
 
 
@@ -183,7 +230,7 @@ LABEL = re.compile(r'^\s*[\(（]\s*([^)）\n]{1,14}?)\s*[\)）]')
 # None and `label_ocr` keeps what the OCR printed.
 LABEL_SET = ('ပု', 'ထီ', 'န', 'တိ', 'ကြိ', 'ကြိ၊ဝိ', 'ကာ၊ကြိ', 'နာမ-ကြိ', 'ဗျ',
              'ပု၊န', 'ပု၊ထီ', 'ပု၊တိ', 'န၊ပု', 'န၊ထီ', 'န၊တိ', 'တိ၊န', 'ပုံ-ဗဟု',
-             'စတုတ္ထန္တ', 'တတိယန္တ-ဗျ')
+             'စတုတ္ထန္တ', 'တတိယန္တ-ဗျ', 'ကမ္မ၊ကြိ', 'ထီ၊န', 'ထီ၊ပု', 'အ-လိင်')
 _LABEL_READINGS = {
     'ပု':      'ပု ပ ၇ ပြ ပူ ပုံ ဖု ြု ၇ု ု ပ၇ ပြု မ ပု၊ ပု။',
     'ထီ':      'ထီ ထိ ထံ ထ တီ သီ ၊ထီ',
@@ -191,20 +238,25 @@ _LABEL_READINGS = {
     'တိ':      'တိ တ တ် ဘိ',
     'ကြိ':     'ကြိ က ကြ ကြု ကြံ ကြ် ကကြ ကြို ကြီ ကြါ ကြပ် ကြရ ကိ ဤ ၍',
     'ကြိ၊ဝိ':  'ကြိ၊ဝိ ကြ၊ဝိ ကြ်၊ဝိ ကြံ၊ဝိ ကြို၊ဝိ ကြါ၊ဝိ ကြီ၊ဝိ ကဝိ ၉ြိ၊ဝိ ကြိးဝိ ကြိ[ဝိ '
-               'ကြု၊ဝိ ကြ၊ဒိ ကိ၊ဝိ ကြိ၊ဒိ ကြိုဝိ ကြိုငိ ကြုဝိ ကြ၊ပိ ကြါဝိ ကြိဝိ ကြ၊ဝ ကြ၊ ကြင် ကြံးဝိ ကြ်းဝိ',
+               'ကြု၊ဝိ ကြ၊ဒိ ကိ၊ဝိ ကြိ၊ဒိ ကြိုဝိ ကြိုငိ ကြုဝိ ကြ၊ပိ ကြါဝိ ကြိဝိ ကြ၊ဝ ကြ၊ ကြင် ကြံးဝိ ကြ်းဝိ ကြီးဝိ ကြိ၊ိ ိ၊ဝိ ကြဝိ',
     'ကာ၊ကြိ':  'ကာ၊ကြို ကာ၊ကြ ကာ၊ကြ်',
     'နာမ-ကြိ': 'နာမ-ကြ',
     'ဗျ':      'ဗျ ဗ',
-    'ပု၊န':    'ပုန ပု၊န ပန ပု၊နု',
+    'ပု၊န':    'ပုန ပု၊န ပန ပု၊နု ပုန၊',
     'ပု၊ထီ':   'ပု၊ထီ ပုထ ပုသ ပု၊ထီ?',
     'ပု၊တိ':   'ပု၊တိ ပတိ',
     'န၊ပု':    'န၊ပု န၊၇',
-    'န၊ထီ':    'န၊ထီ န၊ထံ န၊ထိ န၊သီ နု၊သီ',
+    'န၊ထီ':    'န၊ထီ န၊ထံ န၊ထိ န၊သီ နု၊သီ န၊တီ',
     'န၊တိ':    'န၊တိ နတိ',
     'တိ၊န':    'တိ၊န',
     'ပုံ-ဗဟု': 'ပုဗဟု ပုံဗဟု ပုံ-ဗဟု ပု-ဗဟု',
     'စတုတ္ထန္တ': 'စတုတ္ထန္တ',
     'တတိယန္တ-ဗျ': 'တတိယန္တ-ဗျ',
+    # from vol. 2; each is a label the typed PCED witness prints (docs/labels.md §4)
+    'ကမ္မ၊ကြိ': 'ကမ္မ၊ကြိ ကမ္မ၊ကြို ကမ္မ၊ကြ် ကမ္မကြို ကမ္မကြိ',
+    'ထီ၊န':    'ထီ၊န',
+    'ထီ၊ပု':   'ထီ၊ပု ထိ၊ပု ထိ၊ပူ',
+    'အ-လိင်':  'အ-လိင် အလိင်',   # aliṅga, from vol. 3; the witness prints it 20 times
 }
 LABEL_MAP = {r: lab for lab, rs in _LABEL_READINGS.items() for r in rs.split()}
 # Not mapped, because the image showed them ambiguous: (တံ) is (တိ) on id 455 and (ထီ) on
@@ -220,7 +272,9 @@ def label_clean(s):
     """candidate keys for a reading: whole, then cut at a stray [ (the analysis run in)"""
     strip = lambda x: re.sub(r'[\s(\[（?”"။]', '', x)
     s = s.lstrip('[')
-    return [strip(s), strip(s.split('[')[0]), strip(re.split(r'[(（]', s)[0])]
+    c = [strip(s), strip(s.split('[')[0]), strip(re.split(r'[(（]', s)[0])]
+    # a sense number run into the label: (ပု ၂) -> ပု
+    return c + [re.sub('[၀-၉]+$', '', x) for x in c if re.search('[^၀-၉][၀-၉]+$', x)]
 
 
 def normalise_label(reading, iast):
@@ -285,7 +339,7 @@ def fields(raw, hw, iast=''):
     # non-space characters
     # A spelling variant can sit inside the printed headword, အကာလုသိ(ဿိ)ယ (န): take it as
     # part of the headword when it is not itself a label and a ( or [ follows.
-    m = re.match(r'^\s*([^\s(\[（]+[(（]([^()（）\s]{1,6})[)）][^\s(\[（]+)\s*(?=[(\[（])', rest)
+    m = re.match(r'^\s*([^\s(\[（]+ ?[(（] ?([^()（）\s]{1,6}) ?[)）][^\s(\[（]+)\s*(?=[(\[（])', rest)
     if m and not normalise_label(m.group(2), iast)[0] and len(m.group(1)) <= len(h) + 10:
         out = fields_after(rest[m.end():], out_hw=m.group(1), iast=iast)
         out['headword_variant'] = m.group(2)
@@ -318,13 +372,22 @@ def fields_after(rest, out_hw, iast='', glued=False):
                 out['headword_variant' if glued else 'label_debris'] = r1
                 r1, lab, how = r2, lab2, how2; rest = rest[m2.end():]
         out['label_ocr'] = r1; out['label'] = lab; out['label_how'] = how
+    # Debris lines (below) can fall inside a compound analysis that breaks across a line,
+    # "[အပရန္တကပ္ပိက+ / တု ပ တ ပ / ဘာဝ ]" (vol. 2 p. 500), and hide its closing ]. Drop them
+    # before reading the analysis, but keep a short line that carries the ] or a +.
+    lines = rest.split('\n')
+    debris = lambda ln: ln.split() and all(len(t) <= 3 for t in ln.split()) and not re.search(r'[\]+]', ln)
+    pre_noise = sum(1 for ln in lines if debris(ln))
+    rest = '\n'.join(ln for ln in lines if not debris(ln))
     m = ANALYSIS.match(rest)
     if m:
         out['analysis'] = re.sub(r'\s+', ' ', m.group(1)).strip(); rest = rest[m.end():]
     else:
         # the closing ] is often read as ျ ု ံ ါ or lost: take the opening [ and the run of
         # tokens that carry a + , and flag it
-        m = re.match(r'^\s*\[((?:[^\s\[\]]*\+[^\s\[\]]*|[^\s\[\]]+(?=\s*\+))(?:\s*\+?\s*[^\s\[\]]*\+[^\s\[\]]*)*)', rest)
+        # element (+ element)+, the elements free of brackets and +; the last may keep the
+        # character the ] was misread as (ပရိစ္ဆိန္နံ for ပရိစ္ဆိန္န]) -- hence the flag
+        m = re.match(r'^\s*\[\s*([^\s\[\]+]+(?:\s*\+\s*[^\s\[\]+]+)+)', rest)
         if m and '+' in m.group(1):
             out['analysis'] = m.group(1).strip(); out['analysis_bracket_damaged'] = True
             rest = rest[m.end():]
@@ -333,7 +396,7 @@ def fields_after(rest, out_hw, iast='', glued=False):
     # dropped from the body; `raw` keeps it.
     keep = [ln for ln in rest.split('\n')
             if ln.strip() and not all(len(t) <= 3 for t in ln.split())]
-    out['noise_lines'] = sum(1 for ln in rest.split('\n') if ln.strip()) - len(keep)
+    out['noise_lines'] = pre_noise + sum(1 for ln in rest.split('\n') if ln.strip()) - len(keep)
     body = re.sub(r'[ \t]+', ' ', '\n'.join(keep)).strip()
     if out.get('analysis'):
         norm, changed = normalise_analysis(out['analysis'])
@@ -349,8 +412,11 @@ def main(book):
     c = sqlite3.connect(f'file:{ROOT}/db/tipitaka_abidan.db?mode=ro', uri=True)
     start = c.execute('select start_page from books where id=?', (book,)).fetchone()[0]
     idx = {}
+    fix = PAGE_FIX.get(book, {})
+    ipage = {}
     for wid, w, p in c.execute('select id,word,page_number from words where book_id=? order by id', (book,)):
-        idx.setdefault(p + start, []).append((wid, nfc(w)))
+        q = fix.get(p + start, p + start)
+        idx.setdefault(q, []).append((wid, nfc(w))); ipage[q] = p
     pdir = ROOT / f'ocr/{book}/pages'
     pages = {}
     for p in sorted(idx):
@@ -363,33 +429,62 @@ def main(book):
     blob = '\n' + '\n'.join(vocab) + '\n' if vocab else ''
 
     # first pass: locate on every page
-    located = {}
+    located = {}; twins = {}
     for p, rec in pages.items():
         t = page_text(rec); gold = [w for _, w in idx[p]]
-        located[p] = (t,) + locate(t, gold)
+        located[p] = (t,) + locate(t, gold); twins[p] = locate.twin
 
-    rows = []; order = sorted(pages)
+    # Reading order. A page's place is the PDF page the index implies for it (PAGE_FIX undone);
+    # pages the index does not cover at all lie inside a long article (vol. 1 has 22 such pages
+    # between its first and last indexed page, vol. 2 has 24) and are read whole into it.
+    inv = {v: k for k, v in fix.items()}
+    place = lambda q: inv.get(q, q)
+    lo_p, hi_p = min(pages), max(pages)
+    seq = sorted((q for q in range(lo_p, hi_p + 2) if (pdir / f'p{q:04d}.json').exists()), key=place)
+    nxt_in_seq = {a: b for a, b in zip(seq, seq[1:]) if place(b) == place(a) + 1}
+    order = sorted(pages, key=place)
+
+    def continuation(p):
+        """text after the last located article of page p, up to the next located headword"""
+        parts, via, uncertain = [], [], False
+        q = nxt_in_seq.get(p)
+        while q is not None:
+            if q in located:
+                t2, f2, offs2, pos2, _ = located[q]
+                first = min([x for x in pos2 if x is not None], default=None)
+                cont = t2[:offs2[first]] if first is not None else ''
+                if cont.strip(): parts.append(cont); via.append(q)
+                if first is None or pos2[0] is None: uncertain = True
+                break
+            rec = json.loads((pdir / f'p{q:04d}.json').read_text())
+            parts.append(page_text(rec)); via.append(q)
+            q = nxt_in_seq.get(q)
+        return parts, via, uncertain
+
+    rows = []
     for pi, p in enumerate(order):
         t, f, offs, pos, how = located[p]
         ents = idx[p]
         found = sorted((pos[i], i) for i in range(len(ents)) if pos[i] is not None)
-        nxt_pos = {i: (found[k + 1][0] if k + 1 < len(found) else None) for k, (_, i) in enumerate(found)}
+        # an article runs to the next located headword at a later position (the two spellings
+        # of a variant entry share one position and one article)
+        nxt_pos = {i: next((q for q, _ in found[k + 1:] if q > pos[i]), None) for k, (_, i) in enumerate(found)}
         for i, (wid, hw) in enumerate(ents):
-            row = dict(id=wid, book=book, pdf_page=p, index_page=p - start, headword=hw,
+            row = dict(id=wid, book=book, pdf_page=p, index_page=ipage[p], headword=hw,
                        located=how[i], status='ocr')
+            if twins[p][i] is not None: row['variant_of'] = ents[twins[p][i]][0]
             base = re.sub('[' + MY_DIGITS + r'\d\s]', '', hw)
             iast = transliterate.process('Burmese', 'IAST', base).replace('ṃ', 'ṁ')
             if pos[i] is not None:
                 a = offs[pos[i]]
                 e = offs[nxt_pos[i]] if nxt_pos[i] is not None else len(t)
                 raw = t[a:e]
-                if nxt_pos[i] is None and pi + 1 < len(order) and order[pi + 1] == p + 1:
-                    t2, f2, offs2, pos2, _ = located[p + 1]
-                    first = min([q for q in pos2 if q is not None], default=None)
-                    cont = t2[:offs2[first]] if first is not None else ''
-                    if cont.strip():
-                        raw += '\n' + cont; row['continues_on'] = p + 1
-                    if first is None or pos2[0] is None: row['continuation_uncertain'] = True
+                if nxt_pos[i] is None:
+                    parts, via, uncertain = continuation(p)
+                    if parts:
+                        raw += '\n' + '\n'.join(parts); row['continues_on'] = via[0]
+                        if len(via) > 1: row['runs_through'] = via
+                    if uncertain: row['continuation_uncertain'] = True
                 row['raw'] = raw.strip()
                 row.update(fields(raw, hw, iast))
             row['iast'] = iast

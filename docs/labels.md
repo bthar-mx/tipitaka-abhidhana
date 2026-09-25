@@ -102,3 +102,19 @@ printed page is the authority for everything else.
 
 Re-run the census: `label_ocr` values with `label` None are listed at the foot of each
 `articles-report.md`. Add a reading to `_LABEL_READINGS` only after checking it on the image.
+
+## 6. Added from vols. 2–3 (24 September 2026)
+
+Each of these is a label the typed witness prints, so it was added without an image check.
+
+| label | vol. 2 | vol. 3 | read as | what it marks (as far as the headwords show) |
+|---|---:|---:|---|---|
+| (ကမ္မ၊ကြိ) | 11 | 24 | (ကမ္မ၊ကြို), (ကမ္မ၊ကြ်), (ကမ္မ ကြို) | passive verb? (kamma-kriyā); the witness has 507 |
+| (ထီ၊န) | 2 | 1 | | feminine or neuter |
+| (ထီ၊ပု) | 3 | 2 | (ထိ၊ပု), (ထိ၊ ပူ) | feminine or masculine |
+| (အ-လိင်) | – | yes | (အလိင်) | aliṅga, "without gender"; the witness has 20 |
+
+Readings also mapped: (န၊တီ) → (န၊ထီ); (ပုန၊) → (ပု၊န); (ကြီးဝိ), (ကြိ၊ိ), (ိ၊ဝိ), (ကြ။ ဝိ) → (ကြိ၊ဝိ).
+A sense number run into the label, (ပု ၂), is read as the label. Against the witness, the
+normalised labels agree on 99.0% (vol. 1), 99.2% (vol. 2) and 98.8% (vol. 3) of the articles
+normalised. The raw readings agree on 81.2%, 83.0% and 86.4%.

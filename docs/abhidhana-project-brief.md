@@ -192,6 +192,7 @@ distribution, and IEBH will not treat the licence as a blocker. The project is n
 - Vol. 25 pilot is still whole-page. Re-run with `--columns` at its native resolution.
 - ~~Labels are not normalised; the unlocated 13% not recovered.~~ Done 24 Sep (§12, `docs/labels.md`).
 - The typed PCED copy of this dictionary (`docs/labels.md` §4) is not yet converted from Zawgyi or used.
+- Vol. 3 is not yet spot-checked against the images; the Reader does not yet show vols. 2–3.
 - Citations are parsed but not resolved against OSBCT.
 - No Spanish exists beyond the drafted sample in `docs/spanish-method.md`.
 - Book 21's offset and the per-volume entry counts are unchecked.
@@ -209,11 +210,11 @@ distribution, and IEBH will not treat the licence as a blocker. The project is n
 | **in printed order, column pass** | **76.1%** (whole-page: 42.3%) |
 | pages with every headword | 53.5% |
 | pages ≥ 80% | 90.0% |
-| articles located in the text | 87.0% → **93.8%** (24 Sep) |
-| articles with label + body | 80.3% → **87.3%** (normalised label) |
-| compound analysis recovered | 68.6% → 71.3% |
-| at least one citation parsed | 57.2% → 60.5% |
-| labels agreeing with the typed PCED witness | 81.3% raw → **98.5%** normalised |
+| articles located in the text | 87.0% → **94.1%** (24 Sep) |
+| articles with label + body | 80.3% → **87.7%** (normalised label) |
+| compound analysis recovered | 68.6% → 72.0% |
+| at least one citation parsed | 57.2% → 60.8% |
+| labels agreeing with the typed PCED witness | 81.2% raw → **99.0%** of those normalised |
 | headwords attested in OSBCT, whole or inside | 69.5% |
 
 **Three things vol. 1 taught that the pilot could not:**
@@ -240,3 +241,34 @@ this dictionary as its "Tipiṭaka Pāḷi-Myanmar Dictionary" (157,271 entries,
 repo `siongui/data`). It has 94.7% of vol. 1's headwords, and gives the label, analysis and
 definition but apparently not the quotations. It is the Burmese side's first witness other than
 Angel.
+
+## 13. Volumes 2 and 3 (24 September 2026)
+
+Both were OCR'd natively on Angel's Mac, at about 45 pages a minute with 10 workers. That makes
+the Mac, not the container, the place to run volumes. The full figures are in `ocr/0N/*-report.md`.
+
+| | vol. 1 | vol. 2 | vol. 3 |
+|---|---:|---:|---:|
+| PDF pages / index headwords | 913 / 8,150 | 898 / 7,189 | 1,177 / 11,726 |
+| dpi (native) | 72 | 72 | 75 |
+| headwords verbatim, either pass | 92.0% | 92.7% (92.9% with the page fix) | 92.9% |
+| in printed order, column pass | 76.1% | 75.5% | 77.3% |
+| articles located | 94.1% | 93.5% | 94.6% |
+| normalised label + body | 87.7% | 87.1% | 88.5% |
+| labels agreeing with the typed witness (of those normalised) | 99.0% | 99.2% | 98.8% |
+| typed witness has the headword | 94.7% | 96.0% | 94.5% |
+
+**What they added to the method.**
+- **Scans can be bound out of order.** In vol. 2, PDF pp. 241/242 are printed pp. 224/223.
+  `PAGE_FIX` in `abhidhana_articles.py` records such cases per book. To find them, test each page
+  scoring below 50% against its neighbours' index lists; vol. 3 has none.
+- **Spelling-variant entries**, e.g. အနုပါဒိဏ္ဏ(န္န)ကဇာတိ, are one printed article for two index
+  headwords. Both spellings are read, and the second headword shares the article (`variant_of`).
+- **Pages the index skips** (22 in vol. 1, 24 in vol. 2, 43 in vol. 3) lie inside a long article
+  and are now read into it (`runs_through`).
+- **Placements checked without images.** Against the typed witness, the analysis we read disagrees
+  (similarity < 0.4) about as often for fuzzy placements as for verbatim ones: 5.7 vs 5.5%, 3.7 vs
+  2.9%, and 3.6 vs 2.1% in vols. 1–3. A misplaced article would carry a neighbour's analysis.
+- **Image spot checks, vol. 2.** P. 500: 11 of 11 placed right. Pp. 241–242: 15 of 15. P. 115 (the
+  variant page, the worst): 7 right, 1 wrong, 6 unlocated.
+
