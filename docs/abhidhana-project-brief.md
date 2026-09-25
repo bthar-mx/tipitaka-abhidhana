@@ -1,8 +1,8 @@
 # Tipiṭaka Pāḷi-Myanmā Abhidhāna — project brief
 
 *Written 21 September 2026, at the end of the volume-25 pilot; §10–12 revised 24 September
-2026, after volume 1 was done end to end and the repository was made public; §18–24 added
-25 September 2026 (spelling folds, the witness join, vols. 6–9, re-cutting gutters). Everything in
+2026, after volume 1 was done end to end and the repository was made public; §18–25 added
+25 September 2026 (spelling folds, the witness join, vols. 6–9, re-cutting gutters, vol. 14/2's text layer). Everything in
 this file was measured. Do not re-derive a figure it carries; if a new one is needed,
 measure it rather than estimating.*
 
@@ -601,4 +601,29 @@ least as many headwords as the old one (the rejected cut is recorded as `_cut_re
 choice between two readings of a page uses the index, as the rest of the pipeline does. These
 cloud readings are not in the folder: the re-run is to be done natively, for consistency with the
 rest of the OCR. After it, each book's articles, romanisation, witness join and Reader are re-run.
+
+## 25. Vol. 14/2 (book 14b) is text, not a scan (25 September 2026)
+
+Found by Angel: 14b.pdf is typeset text in the legacy WinInnwa font family (WinResearcher,
+WinHaka, WinPinya, …), 480 × 713 pt pages, made by iText. `tools/abhidhana_winburmese.py` reads the
+text layer (pymupdf), converts it with python-myanmar's `wininnwa` converter plus the corrections
+listed in `ocr/14b/extract-report.md` (ဝ versus the digit ၀, which share one code; stacked ta under
+na; truncated ligatures; marks in drawing order; marks set as separate spans; punctuation glyphs
+identified on the page image), and writes page records in the OCR records' shape, `source: "text
+layer"`, so the rest of the pipeline runs on them unchanged.
+
+| | vol. 14/2, text layer |
+|---|---:|
+| index headwords verbatim | 93.7% |
+| with the folds, and variants printed inside a headword | 96.6% |
+| pages with every headword | 73.3% |
+| articles located (a trial run in the cloud container, not in the folder) | 98.2% |
+| normalised label + body (same trial) | 97.5% |
+
+The misses are print against index, not conversion: this book's index was typed separately and
+has more typos (ပရတီိိရ, ဇ္စျ for ဇ္ဈ) and headwords filed on a neighbouring page. Checked against the
+image on p. 300: word for word. No typed witness covers the book; the text layer is its text.
+(ကာ၊ကမ္မ၊ကြိ) occurs 7 times, cleanly: a label to add to the map (the witness prints it 43 times).
+
+**Vol. 23** is scanned at about 323 ppi on A4 pages (Angel); `tools/run_volumes.sh` renders it at that.
 

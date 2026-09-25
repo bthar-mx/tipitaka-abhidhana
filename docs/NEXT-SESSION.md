@@ -3,7 +3,7 @@
 *Vols. 1–9 (vol. 4 in three parts) are digitised end to end, spot-checked and in the Reader. Read
 `abhidhana-project-brief.md` first: §12 covers vol. 1, §13 vols. 2–3, §14–17 the witness and vols.
 4/1–5, §18 the spelling folds and the homonym and misfiled-headword fixes, §19 the witness join, §20
-vol. 6, §21 vol. 7, §22 vol. 8 and the gutter failures, §23 vol. 9, §24 the re-cut tool. Every figure is there. `docs/labels.md` holds the label map, `docs/witness.md` and
+vol. 6, §21 vol. 7, §22 vol. 8 and the gutter failures, §23 vol. 9, §24 the re-cut tool, §25 vol. 14/2's text layer. Every figure is there. `docs/labels.md` holds the label map, `docs/witness.md` and
 `docs/witness-join.md` the typed witness.*
 
 ## Every session
@@ -25,7 +25,7 @@ vol. 6, §21 vol. 7, §22 vol. 8 and the gutter failures, §23 vol. 9, §24 the 
 
 | | vols. 1–8 | vol. 9 | vol. 10 |
 |---|---|---|---|
-| OCR, articles, romanisation | done | done 25 Sep | OCR running (Angel, 25 Sep) |
+| OCR, articles, romanisation | done | done 25 Sep | OCR done; articles in the batch |
 | reports, spot check, Reader | done | done 25 Sep | — |
 | page records in release `sources-v1` | uploaded (07, 08: check) | `release/ocr-09-pages.tar.gz`, to upload | — |
 | GitHub issue | close any of #1–#10 still open | #11, close after this commit | open |
@@ -35,8 +35,17 @@ cannot delete. Delete the folder by hand (`tmp/` is gitignored).
 
 ## Next, in order
 
-1. **Vol. 10** (book 10, ဒ – ဒွေဠှကပုစ္ဆာ, 981 PDF pages, 7,366 index headwords), OCR started 25 Sep at
-   75 dpi (images 71–75 ppi). Then as for vol. 9. The typed witness covers it.
+0. **The batch run** (`tools/run_volumes.sh`, started 25 Sep by Angel): OCR, articles and
+   romanisation for vol. 10's articles and vols. 11–24, one after another, about 5 hours; skips
+   14b, 21 and 25; logs in `logs/`. **While it runs, don't change `abhidhana_ocr.py`,
+   `abhidhana_articles.py` or `abhidhana_romanise.py`, and don't run OCR or articles steps.** When it
+   says `all done`: reports, spot checks, the witness join and the Reader for vols. 10–24, commits;
+   then the changes held back (below), and the articles step again for every book.
+   Held back until then: (ကာ၊ကမ္မ၊ကြိ) in the label map (clean in 14b, 7 times; the witness 43);
+   `abhidhana_articles.py 14b` and `abhidhana_romanise.py 14b` on the text-layer records already in
+   `ocr/14b/pages/` (brief §25; a trial gave 98.2% located, 97.5% label + body).
+1. **Vol. 10** (book 10, ဒ – ဒွေဠှကပုစ္ဆာ, 981 PDF pages, 7,366 index headwords): OCR done 25 Sep at
+   75 dpi; its articles are in the batch. Reports, spot check, Reader after the batch.
 2. **Re-cut the gutters** with `tools/abhidhana_recut.py` (brief §24), natively, book by book, when
    no OCR is running (it competes for the CPU, not for files):
    `python3 tools/abhidhana_recut.py NN --scan --workers 10`, then `--run --workers 10`. Then
@@ -53,7 +62,7 @@ cannot delete. Delete the folder by hand (`tmp/` is gitignored).
 5. **An index-errata list**, `docs/index-errata.md`, with the printed form: the typos of brief §15–17,
    the misfiled runs of §18 (4c p. 615 → 613, 06 p. 851 → 852), ကဉ္စိက.
 6. **Re-run vol. 25** with `--columns` at its native resolution.
-7. **Next volumes**: 11 onwards. **Vol. 15** must be joined with 4c's supplement to it (53 ဘိဇ္ဇ
+7. **Next volumes**: 11–24 are in the batch (not 14b, 21, 25). **Vol. 15** must be joined with 4c's supplement to it (53 ဘိဇ္ဇ
    headwords indexed only there). Per volume: reports, a 3-page spot check, the Reader, the witness
    join, then close the issue.
 
