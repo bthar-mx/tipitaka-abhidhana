@@ -1,0 +1,19 @@
+# Source material: published as release assets (release "sources-v1"), fetched by tools/fetch_sources.sh
+pdfs/*.pdf
+pdfs-drive/
+db/*.db
+
+# OCR working files: the per-page records are large and regenerable; the extracted
+# articles (ocr/<book>/articles.jsonl) and reports ARE committed
+ocr/*/pages/
+ocr/*/*.tar.gz
+ocr/osbct_vocab.txt
+abh_tmp/
+tmp/
+
+# local only
+*.zip
+.DS_Store
+__pycache__/
+_incoming/
+release/
