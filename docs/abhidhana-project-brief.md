@@ -2,7 +2,7 @@
 
 *Written 21 September 2026, at the end of the volume-25 pilot; §10–12 revised 24 September
 2026, after volume 1 was done end to end and the repository was made public; §18–26 added
-25 September 2026 (spelling folds, the witness join, vols. 6–9, re-cutting gutters, vol. 14/2's text layer, the batch of vols. 10–22); §27 the same evening (vols. 23, 24 and 14/2 finished, the index's page errors applied, book 21 explained, the Reader in binary); §28 the public website, the page images and the label table; §29 vol. 21 finished, vol. 25's resolution, the dictionary's own account of its labels; §30 vol. 25 done, all 29 books; §31 (later on 25 Sep) the page-image tool's bitmap test; §32 the weak page corrections, image-checked; §33 the compound analysis with its [ lost; §34 the dictionary's history on the site. Everything in
+25 September 2026 (spelling folds, the witness join, vols. 6–9, re-cutting gutters, vol. 14/2's text layer, the batch of vols. 10–22); §27 the same evening (vols. 23, 24 and 14/2 finished, the index's page errors applied, book 21 explained, the Reader in binary); §28 the public website, the page images and the label table; §29 vol. 21 finished, vol. 25's resolution, the dictionary's own account of its labels; §30 vol. 25 done, all 29 books; §31 (later on 25 Sep) the page-image tool's bitmap test; §32 the weak page corrections, image-checked; §33 the compound analysis with its [ lost; §34 the dictionary's history on the site; §35 all page images live, a light/dark switch, the Introduction page. Everything in
 this file was measured. Do not re-derive a figure it carries; if a new one is needed,
 measure it rather than estimating.*
 
@@ -975,4 +975,40 @@ by vol. 17 pp. 6–7 the dictionary was written by five teams among which the al
 Masoeyein monastery writing vols. 5–6 and 15–16, not by "the Masoeyein Board of Scholar-Elders".
 The corrected line names no one but Masoeyein, so it is live on the next push. The Project's own
 description and instructions still carry the old line (Angel's to edit).
+
+## 35. All page images live; a light/dark switch; the Introduction page (25 September 2026, night)
+
+**Page images.** Angel ran `abhidhana_pages_r2.py all` on the Mac: **25,700 pages, 2,509 MB** in R2
+(`abhidhana-pages`), 19–49 s a book to upload. The scans average **87 KB a page**; 14/2's typeset pages,
+rendered, **377 KB** (the §28 estimate was ~190 KB), 357 MB of the total. In the in-app browser, the
+first, middle and last page of every book load from abhidhana-img.buddha-dhamma.net (87 images, none
+failed). `check` on all 29 books: no page flagged. Vols. 14/1 and 19 score 0.85–0.88 throughout (and
+three vol. 10 pages 0.87) against 0.94–0.99 elsewhere: book-wide, so the scan's type and not a page stored
+wrong (a flipped page scores ≤ 0.53); not looked into further.
+
+**Light / dark.** A button in every page's header switches the theme; the choice is remembered per browser
+(`localStorage.theme`), and until it is used the system's setting decides, as before. A small script in each
+page's head applies a remembered choice before the page is drawn. *Its first version declared a global `t`,
+which collides with `common.js`'s `const t` and stopped common.js on every page; caught in a headless-browser
+test before any push and fixed (the script is now wrapped in a function).*
+
+**The Introduction page, `/introduction/`**, built by `tools/abhidhana_intro.py` (standard library) from
+`docs/introduction/`, which another chat is filling chapter by chapter. The contract it reads, stated in the
+module's docstring: one `chN-*.md` a chapter, with `## 1. Burmese transcription`, `## 2. English`,
+`## 3. Español` and `## Notes for review …`; a status table before the first `##` (per part, or per batch);
+page markers `` `[p. N]` ``; headings as lines wholly in bold. The page has:
+- a table of contents from the chapter titles (each language's from its own section) and the headings in
+  each section, and a line saying which chapters (by `README.md`'s table) are not yet transcribed;
+- three views, remembered: the translation (EN/ES by the site's switch), the Burmese original, or side by
+  side, which pairs the Burmese and the translation page by page where the translation carries the page
+  markers (ch. 4) and shows the two whole sections where it does not (ch. 5);
+- every page marker a link to that page's image (vol. 1, PDF page N);
+- each file's status table as labels (drafted / reviewed / corrected / not yet done), and a draft banner
+  while anything is unreviewed; the notes for review folded under each chapter;
+- `citation-abbreviations.tsv` (100 rows) as a table with a search that ignores diacritics (dīgha = digha)
+  and reads Burmese; the Burmese entry as printed shows in the Burmese and side-by-side views.
+Linked from the home and About headers and from About's first section. Tested in a headless browser at
+1,200 and 390 px, both languages, all three views, light and dark: no script errors, no horizontal scroll.
+**Unlike the About page's History (§34), it publishes drafts**, under the banner, as Angel asked; ch. 4 holds
+the same romanised names that keep the History back.
 

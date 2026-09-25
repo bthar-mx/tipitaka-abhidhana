@@ -52,10 +52,10 @@ vol. 25 runs.
    221,154 headwords, search, label pop-ups, About and Labels pages, 404 page). `site/src/_headers` now
    makes browsers revalidate `/data/*` and `/assets/*` on every load; with the old one-hour cache a
    visitor saw vol. 25 as "coming" after it was published.
-1. **Page images** (brief §28, §31): the tool is fixed (25 Sep) and **vol. 1 is uploaded and checked on
-   the site** (88 KB a page). Next, on the Mac: `python3 tools/abhidhana_pages_r2.py all` (renders the
-   other 28 books, redoing only the pages of vols. 2–3 stored the old way, then uploads everything; the
-   other 28 books at ~88 KB a page make ~2.2 GB; resumable). Then `check` on each book and open a page of each book on the site.
+1. ~~Page images~~: all 29 books live, 25,700 pages, 2.5 GB; `check` clean (brief §35).
+2. **The Introduction page** (brief §35) rebuilds itself from `docs/introduction/` on every push; keep the
+   chapter files to the contract in `tools/abhidhana_intro.py`'s docstring. It shows drafts under a banner,
+   while the About page's History waits for review (item 7c): decide whether ch. 4's names should wait too.
 3. **Labels, Angel's to confirm** (`docs/labels.md` §0; `python3 tools/abhidhana_labels.py` checks
    the table after an edit): kammavācaka-kriyā for ကံဟောကြိယာ; sakkata, pākata (and ဗု၊သံ,
    ဗုဒ္ဓဘာသာသက္ကတ, "Buddhist Sanskrit", vol. 2 p. 14); (နာမ-ကြိ) nāmadhātu?; the provisional
