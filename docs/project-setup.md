@@ -4,7 +4,8 @@
 can check that the fields still match what the project actually does. If they diverge,
 this file is the record of what was agreed; fix the fields, not this file, unless the change
 was deliberate. Revised 24 September 2026: licence decided, repository public, OCR placement
-measured. Paste the Instructions below into the project's field.*
+measured; dictionary.sutta.org added as the word-formation cross-check. Paste the Instructions
+below into the project's field.*
 
 ## Description
 
@@ -51,6 +52,12 @@ carry the bulk of the corpus. The hyphens inside a definition are **alternative 
 of one Pāḷi element** — the same device as the nissaya's `, ဝါ-` — and merging them into one
 Spanish phrase drops a reading. Pāḷi gender belongs to the Pāḷi word and is not carried onto
 the Spanish noun. See `docs/spanish-method.md`.
+
+**Cross-check word formations** (the compound analysis in [ ], e.g. [အတိ+အာ+ဝဒ+အ+တိ]) against
+https://dictionary.sutta.org/ — an online Pāḷi dictionary with a Pāḷi-Burmese section, built
+from Pali Canon E-Dictionary 1.94 (PCED). Use it to confirm an analysis OCR has damaged; say
+which entry was checked. It is a second witness, not ground truth: the app's index stays the
+authority for headwords, and the printed page for everything else.
 
 Terminology is fixed by IEBH's glossary, not decided per session. Once a Pāḷi term has an
 agreed English and Spanish rendering, use it without variation. Propose additions; do not

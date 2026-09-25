@@ -12,10 +12,11 @@
 | **located, any** | **7,091 = 87.0%** |
 | unlocated | 1,059 = 13.0% |
 | label ( ) recovered | 6,648 = 81.6% |
-| compound analysis [ ] recovered | 5,591 = 68.6% |
-| non-empty body | 6,955 = 85.3% |
-| at least one citation parsed | 4,658 = 57.2% |
-| label + body (the article is usable) | 6,545 = 80.3% |
+| compound analysis [ ] recovered | 5,386 = 66.1% |
+| of which + signs repaired (normalise_analysis) | 1,445 = 17.7% |
+| non-empty body | 7,033 = 86.3% |
+| at least one citation parsed | 4,695 = 57.6% |
+| label + body (the article is usable) | 6,623 = 81.3% |
 
 **Romanised headwords against OSBCT** (682,010 canonical words):
 
@@ -38,6 +39,12 @@ Labels: (တိ) 2,753 · (န) 1,210 · (ပု) 733 · (ထီ) 555 · (ပ) 3
   out as (က); `+` in the analysis as ၂. The long tail above — (၇), (က), (ကြု), (ထိ), (ပ) — is
   mostly such confusions of (ကြိ), (ထီ), (ပု). A normalisation table against the label set the
   dictionary actually uses is the next step; until then treat `label` as a reading.
+- **+ signs in the compound analysis are repaired** (`normalise_analysis`, 17.7% of articles): OCR
+  reads + as ၂ or drops it, e.g. p. 300 အစ္စာဝဒတိ came out "အတိ ၂ အာ ဝဒ အ တိ" and now reads
+  "အတိ + အာ + ဝဒ + အ + တိ", as printed (checked by Angel). Only analyses made wholly of Pāḷi
+  elements are rejoined; ones holding a derivation note or Burmese are left as read. The OCR
+  text is kept in `analysis_ocr`. Word formations can be cross-checked at
+  https://dictionary.sutta.org/ (Pāḷi-Burmese, from PCED 1.94).
 - **`analysis_bracket_damaged`**: the closing `]` was misread and the analysis was taken as
   the run of `+`-joined tokens. Check these against the page.
 - **Citations** are parsed only in their full form (abbreviation ၊ vol ။ para ။). 57% of
