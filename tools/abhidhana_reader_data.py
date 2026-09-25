@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Build the Abhidhāna Reader's data file for one volume.
 
-    python3 tools/abhidhana_reader_data.py 01      ->  reader/vol01.json, and reader/search.json
+    python3 tools/abhidhana_reader_data.py 01 [02 ...]  ->  reader/vol01.json (+ .wasm), and reader/search.json
 
 search.json is rebuilt each time from every reader/vol*.json present: one row per headword,
 [book, i, p, h, r] (i is the record's position in vol<book>.json), so the Reader can search all
@@ -19,19 +19,21 @@ abhidhana_romanise.py first) and writes one compact record per headword, in inde
     c  citations         ci citations, romanised
 
 The page itself is the private artifact "Abhidhāna Reader"; this file is published beside it
-gzipped and base64-encoded, as vol<book>.gz.txt (and search.gz.txt): eight volumes as plain
-JSON passed the artifact's 64 MB per version (25 Sep 2026), and artifacts do not serve .gz. The
-page decodes and inflates them (atob + DecompressionStream). Without `lo`, and run on commit 40e6be1's data, this reproduces the
+gzipped, as vol<book>.wasm (and search.wasm): the gzip bytes under a .wasm name, because
+artifacts serve .wasm as binary and do not serve .gz. Eight volumes as plain JSON passed the
+artifact's 64 MB per version (25 Sep 2026); twenty-one as base64 text (.gz.txt, until 25 Sep
+2026) reached 63.5 MB, and base64 costs a third. As raw gzip, twenty-four books are ~52 MB. The
+page inflates them with DecompressionStream. Without `lo`, and run on commit 40e6be1's data, this reproduces the
 vol01.json that was first published byte for byte.
 """
-import base64, gzip, json, re, sys
+import gzip, json, re, sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 X = {'verbatim': 'v', 'verbatim-inline': 'v', 'folded': 'v', 'fuzzy': 'f', 'unlocated': 'u'}
 
 
-def main(book):
+def main(book, index=True):
     P = {}
     for line in (ROOT / f'ocr/{book}/pali.jsonl').open():
         r = json.loads(line); P[r['id']] = r
@@ -56,14 +58,13 @@ def main(book):
     out.write_text(json.dumps(V, ensure_ascii=False, separators=(',', ':')))
     gz(out)
     print(f'{out.relative_to(ROOT)}: {len(V):,} records, {out.stat().st_size / 1e6:.1f} MB '
-          f'({out.with_suffix(".gz.txt").stat().st_size / 1e6:.1f} MB as .gz.txt)')
-    search_index()
+          f'({out.with_suffix(".wasm").stat().st_size / 1e6:.1f} MB as .wasm)')
+    if index: search_index()
 
 
 def gz(path):
-    """<stem>.gz.txt beside path: gzip (reproducible: no name or time in the header), base64"""
-    z = gzip.compress(path.read_bytes(), compresslevel=9, mtime=0)
-    path.with_suffix('.gz.txt').write_bytes(base64.b64encode(z))
+    """<stem>.wasm beside path: gzip bytes (reproducible: no name or time in the header)"""
+    path.with_suffix('.wasm').write_bytes(gzip.compress(path.read_bytes(), compresslevel=9, mtime=0))
 
 
 def search_index():
@@ -76,8 +77,9 @@ def search_index():
     out.write_text(json.dumps(S, ensure_ascii=False, separators=(',', ':')))
     gz(out)
     print(f'{out.relative_to(ROOT)}: {len(S):,} headwords from {len({r[0] for r in S})} volumes, '
-          f'{out.stat().st_size / 1e6:.1f} MB')
+          f'{out.stat().st_size / 1e6:.1f} MB ({out.with_suffix(".wasm").stat().st_size / 1e6:.1f} MB as .wasm)')
 
 
 if __name__ == '__main__':
-    main(sys.argv[1])
+    for b in sys.argv[1:]: main(b, index=False)
+    search_index()

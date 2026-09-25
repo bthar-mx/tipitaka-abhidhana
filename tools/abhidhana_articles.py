@@ -83,7 +83,10 @@ def page_text(rec):
 # Scans bound out of order. {book: {pdf page the index implies: pdf page the text is on}}.
 # Vol. 2: printed pp. 223 and 224 are PDF pp. 242 and 241 (the running heads say ၂၂၄ on 241),
 # so the index's page 223 headwords are on 242 and its 224 headwords on 241.
-PAGE_FIX = {'02': {241: 242, 242: 241}}
+# Vol. 22: one printed page is missing from the scan just before PDF p. 920. PDF p. 919 holds the
+# index's p. 920 list (9 of 9) and only 2 of 11 of its own; from p. 920 to the end each index list
+# sits one PDF page early (brief §26-27). The missing page's own headwords are lost with it.
+PAGE_FIX = {'02': {241: 242, 242: 241}, '22': {q: q - 1 for q in range(920, 935)}}
 
 # Headwords the index files on the wrong page. {book: [(first id, last id, pdf page printed on)]}.
 # Each run was found as a page the index gives no headwords (inside the body) whose column text
@@ -93,7 +96,20 @@ PAGE_FIX = {'02': {241: 242, 242: 241}}
 #   06: ids 58264-58277 (ဂါဟေတဗ္ဗဂါမ ... ဂါဟေဿာမိ) are indexed at p. 851 and printed on p. 852,
 #       which the index skips.
 # They keep the index page the index gives them (`index_page`) and are marked `index_misfiled`.
-ID_PAGE_FIX = {'4c': [(176418, 176427, 613)], '06': [(58264, 58277, 852)]}
+#   14c, 22, 23, 24: runs found after the batch of 25 Sep 2026 (docs/after-batch-handoff.md;
+#       brief §27), each an unindexed page whose entries begin with a neighbour's unlocated headwords.
+ID_PAGE_FIX = {'4c': [(176418, 176427, 613)], '06': [(58264, 58277, 852)],
+               '14c': [(196222, 196234, 402), (197721, 197732, 565), (198200, 198207, 625),
+                       (201263, 201269, 930), (201325, 201334, 936), (201634, 201646, 962)],
+               '22': [(178676, 178682, 169), (178835, 178847, 184), (179577, 179585, 253),
+                      (185264, 185267, 894)],
+               '23': [(187848, 187857, 275), (187871, 187878, 277), (189039, 189048, 390),
+                      (189502, 189513, 436), (190351, 190359, 523)],
+               '24': [(206034, 206036, 329), (208187, 208194, 542)],
+               # 21: the index gives p. 962 for p. 692 (a transposition); PDF p. 720 prints ၆၉၂ with
+               # exactly these ten headwords (image, 25 Sep 2026). This, not an offset, is why book
+               # 21's index seemed to run 65 pages past its PDF.
+               '21': [(170346, 170355, 720)]}
 
 # a homonym's superscript, as OCR reads it: glued debris, or a token of its own
 SUP = re.compile(r'^(ာ?ါ|ဝ်|[”"\'’?၁-၉\-–—။]{1,3})?(?:\s+(ာ?ါ|ဝ်|[”"\'’?၁-၉]{1,2})(?=\s|[(\[（]))?(\s*)(\S?)')
@@ -320,7 +336,8 @@ LABEL_LOOSE = re.compile(r'^\s*(?:[\(（]\s*([^)）\n\[]{1,14}?)\s*(?=\[)|([^\s(
 # None and `label_ocr` keeps what the OCR printed.
 LABEL_SET = ('ပု', 'ထီ', 'န', 'တိ', 'ကြိ', 'ကြိ၊ဝိ', 'ကာ၊ကြိ', 'နာမ-ကြိ', 'ဗျ',
              'ပု၊န', 'ပု၊ထီ', 'ပု၊တိ', 'န၊ပု', 'န၊ထီ', 'န၊တိ', 'တိ၊န', 'ပုံ-ဗဟု',
-             'စတုတ္ထန္တ', 'တတိယန္တ-ဗျ', 'ကမ္မ၊ကြိ', 'ထီ၊န', 'ထီ၊ပု', 'အ-လိင်', 'ကာ၊ကြိ၊ဝိ')
+             'စတုတ္ထန္တ', 'တတိယန္တ-ဗျ', 'ကမ္မ၊ကြိ', 'ထီ၊န', 'ထီ၊ပု', 'အ-လိင်', 'ကာ၊ကြိ၊ဝိ',
+             'ကာ၊ကမ္မ၊ကြိ')
 _LABEL_READINGS = {
     'ပု':      'ပု ပ ၇ ပြ ပူ ပုံ ဖု ြု ၇ု ု ပ၇ ပြု မ ပု၊ ပု။',
     'ထီ':      'ထီ ထိ ထံ ထ တီ သီ ၊ထီ',
@@ -350,6 +367,9 @@ _LABEL_READINGS = {
     # causative absolutive; vol. 6 p. 852 ဂါဟေတွာ, image-checked. Until 25 Sep 2026 it fell to the
     # junk-tail rule below and was cut to (ကာ၊ကြိ): 35 rows in vols. 3-6, all -tvā / -tvāna.
     'ကာ၊ကြိ၊ဝိ': 'ကာ၊ကြိ၊ဝိ ကာ၊ကြ၊ဝိ ကာ၊ကြိံဝိ ကာ၊ကြိဝိ ကာကြိဝိ ကာ၊ကြ၊ဝိ၊ ကာ၊ကြါ၊ဝိ ကာ၊ကြးဝိ',
+    # causative passive; clean in the text layer of 14b (7 times), printed 43 times by the witness;
+    # readings from vols. 8 and after (docs/after-batch-handoff.md)
+    'ကာ၊ကမ္မ၊ကြိ': 'ကာ၊ကမ္မ၊ကြိ ကာ၊ကမ္မ၊ကြို ကာ၊ကမ္မ၊ကြ',
 }
 LABEL_MAP = {r: lab for lab, rs in _LABEL_READINGS.items() for r in rs.split()}
 # Not mapped, because the image showed them ambiguous: (တံ) is (တိ) on id 455 and (ထီ) on

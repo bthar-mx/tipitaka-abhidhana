@@ -69,8 +69,16 @@ def index(book):
     row = c.execute('select start_page from books where id=?', (book,)).fetchone()
     if not row: sys.exit(f'book {book} is not in {DB}')
     start = row[0]; out = {}
-    for w, p in c.execute('select word,page_number from words where book_id=? order by id', (book,)):
-        out.setdefault(p + start, []).append(nfc(w))
+    # the index's own page errors, as abhidhana_articles.py corrects them (PAGE_FIX, ID_PAGE_FIX),
+    # so that a page is scored against the headwords printed on it (from 25 Sep 2026; book 21's
+    # index p. 962 for 692 is the case that needed it before OCR: brief §27)
+    from abhidhana_articles import PAGE_FIX, ID_PAGE_FIX
+    fix = PAGE_FIX.get(book, {})
+    for i, w, p in c.execute('select id,word,page_number from words where book_id=? order by id', (book,)):
+        q = fix.get(p + start, p + start)
+        for a, b, pq in ID_PAGE_FIX.get(book, []):
+            if a <= i <= b: q = pq
+        out.setdefault(q, []).append(nfc(w))
     return out, start
 
 

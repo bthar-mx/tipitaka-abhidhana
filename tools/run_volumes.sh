@@ -11,9 +11,10 @@
 #   recall (vol. 1: 92.1% native vs 87.8% at 200 dpi), so never render above native.
 # - Resumable: OCR skips pages already on disk; a book whose articles.jsonl exists is skipped
 #   entirely. Re-running the script after an interruption carries on where it stopped.
-# - Book 21 is left out on purpose (its index runs 65 pages past its PDF, unexplained).
-#   Book 25 is left out too: ocr/25/pages holds the old whole-page pilot, which the OCR would
-#   reuse. Move it aside before running 25.
+# - Book 21 used to be left out: its index seemed to run 65 pages past its PDF. It does not; ten
+#   headwords carry p. 962 for 692 (brief §27), now corrected by ID_PAGE_FIX, so 21 runs normally.
+# - Book 25's old whole-page pilot (200 dpi, no column cut) was moved out of ocr/25/pages to
+#   tmp/ocr-25-pilot-pages on 25 Sep 2026, so 25 now runs like any other book (300 ppi scan).
 # - Book 14b is not a scan: it is typeset text in legacy Win-Burmese fonts (WinResearcher,
 #   WinPinya, WinHaka), so it has no page images and is skipped automatically. Its text can be
 #   extracted and converted to Unicode instead of OCR'd.
@@ -33,7 +34,6 @@ say() { echo "$(date '+%Y-%m-%d %H:%M:%S')  $*" | tee -a "$LOG"; }
 
 say "start: ${BOOKS[*]}  (workers $WORKERS)"
 for b in "${BOOKS[@]}"; do
-  if [ "$b" = "21" ] || [ "$b" = "25" ]; then say "$b: skipped by rule (see header)"; continue; fi
   pdf="pdfs/$b.pdf"
   if [ ! -f "$pdf" ]; then say "$b: no $pdf, skipped"; continue; fi
   if [ -f "ocr/$b/articles.jsonl" ]; then say "$b: articles.jsonl exists, skipped"; continue; fi
