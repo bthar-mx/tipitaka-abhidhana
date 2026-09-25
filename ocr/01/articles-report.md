@@ -6,20 +6,20 @@
 
 | | |
 |---|---:|
-| located verbatim (line start or before ( / [ ) | 5,486 = 67.3% |
+| located verbatim (line start or before ( / [ ) | 5,497 = 67.4% |
 | located verbatim, inline only | 28 = 0.3% |
 | located by bounded fuzzy match | 2,156 = 26.5% |
-| **located, any** | **7,670 = 94.1%** |
-| unlocated | 480 = 5.9% |
-| label ( ) read | 7,239 = 88.8% |
-| label normalised to the closed set (docs/labels.md) | 7,179 = 88.1% |
-| of which read exactly as printed / mapped / inferred from the ending | 5,898 / 1,278 / 3 |
+| **located, any** | **7,681 = 94.2%** |
+| unlocated | 469 = 5.8% |
+| label ( ) read | 7,244 = 88.9% |
+| label normalised to the closed set (docs/labels.md) | 7,184 = 88.1% |
+| of which read exactly as printed / mapped / inferred from the ending | 5,901 / 1,280 / 3 |
 | label read but left unnormalised | 60 = 0.7% |
-| compound analysis [ ] recovered | 5,869 = 72.0% |
+| compound analysis [ ] recovered | 5,873 = 72.1% |
 | of which + signs repaired (normalise_analysis) | 1,602 = 19.7% |
-| non-empty body | 7,618 = 93.5% |
-| at least one citation parsed | 4,957 = 60.8% |
-| label + body (the article is usable) | 7,151 = 87.7% |
+| non-empty body | 7,629 = 93.6% |
+| at least one citation parsed | 4,963 = 60.9% |
+| label + body (the article is usable) | 7,156 = 87.8% |
 
 **Romanised headwords against OSBCT** (682,010 canonical words):
 
@@ -29,7 +29,7 @@
 | inside a canonical word | 3,923 = 48.1% |
 | neither | 2,482 = 30.5% |
 
-Labels, normalised: (တိ) 3,016 · (ပု) 1,465 · (န) 1,290 · (ထီ) 811 · (ကြိ) 236 · (ကြိ၊ဝိ) 174 · (ပု၊န) 70 · (ဗျ) 41 · (န၊ထီ) 30 · (န၊တိ) 9 · (ကာ၊ကြိ) 9 · (ပု၊တိ) 7 · (ပု၊ထီ) 7 · (န၊ပု) 5 · (တိ၊န) 4 · (ပုံ-ဗဟု) 2 · (စတုတ္ထန္တ) 1 · (တတိယန္တ-ဗျ) 1 · (နာမ-ကြိ) 1
+Labels, normalised: (တိ) 3,019 · (ပု) 1,465 · (န) 1,290 · (ထီ) 811 · (ကြိ) 237 · (ကြိ၊ဝိ) 175 · (ပု၊န) 70 · (ဗျ) 41 · (န၊ထီ) 30 · (န၊တိ) 9 · (ကာ၊ကြိ) 9 · (ပု၊တိ) 7 · (ပု၊ထီ) 7 · (န၊ပု) 5 · (တိ၊န) 4 · (ပုံ-ဗဟု) 2 · (စတုတ္ထန္တ) 1 · (တတိယန္တ-ဗျ) 1 · (နာမ-ကြိ) 1
 
 Readings left unnormalised: (၂) 9 · (တ္တူ) 7 · (တ္ထူ) 7 · (တံ) 4 · (ဋ္ဌူ) 4 · (တ္တ) 4 · (ဿိ) 2 · (၅) 2 · (၃) 2 · (၁) 2 · (ရီ) 2 · (မူ) 2 · (ဿ) 2 · (နီ) 2 · (=မူလျေ) 1 · (= ပါပကရဏေ) 1 · (ဆံ) 1 · (သီ၊က) 1 · (မူလဋီ။ ၁။၁၁ ။) 1 · (.) 1 · (ဂ) 1 · (ယီ) 1 · (ခ) 1
 
@@ -83,3 +83,11 @@ Readings left unnormalised: (၂) 9 · (တ္တူ) 7 · (တ္ထူ) 7 · (
 The last column adds: spelling-variant entries read as two headwords (29 `variant_of` rows),
 unindexed pages read into the article that covers them (14 `runs_through` rows), debris lines
 removed before the compound analysis is read, and a running head with debris above it cut.
+
+## Re-run, 25 September 2026
+
+`abhidhana_articles.py` now reads a homonym's superscript numeral, which OCR turns into debris
+glued to the headword (အါ, အဝ်, အည”, အမူလကာါ), and places a one- or two-character headword on a
+line of its own. The pass runs last, only for headwords still unplaced and only inside the span
+their placed neighbours leave, so no earlier placement moved. 7,670 → 7,681 located (+11): the five entries for အ on pp. 121–122 and six homonyms whose superscript was read as ” or ါ (အည, အညာတ, အတိဗာဟေတိ, အတ္တသမ, အဒ္ဒက္ခိ, အနာဒိယ). The tables above are
+the re-run's.

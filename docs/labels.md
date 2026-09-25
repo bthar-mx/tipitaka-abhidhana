@@ -81,7 +81,7 @@ dictionary.sutta.org is built from Pali Canon E-Dictionary 1.94. Its data, in th
 quotations and their citations: 158 of the 7,714 vol. 1 entries have a reference numeral.
 
 It has an entry for **7,714 of vol. 1's 8,150 headwords (94.7%)**, matched on the romanised
-headword. Its first label, converted from Zawgyi (ႀကိ → ကြိ, ဗ် → ဗျ, ကမၼ → ကမ္မ) and set against
+headword. *(25 Sep: matched on the converted Burmese instead, it has 99.9% of vol. 1's headwords; see `docs/witness.md`.)* Its first label, converted from Zawgyi (ႀကိ → ကြိ, ဗ် → ဗျ, ကမၼ → ကမ္မ) and set against
 ours on the 6,836 articles where both exist:
 
 | | agree with the witness |

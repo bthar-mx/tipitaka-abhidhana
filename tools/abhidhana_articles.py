@@ -83,6 +83,8 @@ def page_text(rec):
 # so the index's page 223 headwords are on 242 and its 224 headwords on 241.
 PAGE_FIX = {'02': {241: 242, 242: 241}}
 
+# a homonym's superscript, as OCR reads it: glued debris, or a token of its own
+SUP = re.compile(r'^(ာ?ါ|ဝ်|[”"\'’?၁-၉\-–—။]{1,3})?(?:\s+(ာ?ါ|ဝ်|[”"\'’?၁-၉]{1,2})(?=\s|[(\[（]))?(\s*)(\S?)')
 FUZZY_MIN = float(__import__('os').environ.get('ABH_FUZZY_MIN', '0.70'))
 FUZZY_SPAN = 48
 
@@ -95,20 +97,36 @@ def locate(text, gold):
     start and followed by a space.  A bare occurrence inside running text (rank 1) is the
     commonest false hit -- the headword quoted in another article, or a longer word that
     begins with it -- so it is tried only after the bounded fuzzy match has failed.
-    Headwords of one or two characters (အ, အံ) need rank 3 or better.
+    Headwords of one or two characters (အ, အံ) need rank 3 or better, or a line of their own
+    (rank 2: at a line start and followed by a space).
+
+    A homonym's superscript numeral (အ¹, အည³) is read as debris glued to the headword or just
+    after it: ါ, ာါ, ဝ်, a quote mark, a digit, a dash or ။ (ဤ”--, ဤ။- at the head of a letter). Debris of that shape between the headword and
+    a bracket is passed over at a line start (rank 4); between a short headword and a space,
+    too (rank 2). A single ာ is not, as အာ is a word.
     """
     f, offs = flatmap(text)
     line_starts = {0}
     for m in re.finditer('\n', text):
         k = len(re.sub(r'\s', '', text[:m.start() + 1]))
         line_starts.add(k)
+    def sup_rank(j, h):
+        """rank of h at line start j when a superscript's debris follows it, else 0"""
+        o = offs[j]; e = text.find('\n', o); line = text[o:e if e != -1 else len(text)]
+        if not line.startswith(h): return 0
+        m = SUP.match(line[len(h):])
+        if not m or not (m.group(1) or m.group(2)): return 0
+        if m.group(4) in ('(', '[', '（'): return 4
+        # without a bracket after it, only a short headword: in running text a longer word
+        # ends in a real ါ (ဗဒ္ဓါ) or a closing quote as often as in a superscript
+        return 2 if len(h) <= 2 and m.group(3) and m.group(4) else 0
     def rank(j, n):
         e = j + n
         nxt = f[e:e + 1]
         spaced = e >= len(f) or offs[e] - offs[e - 1] > 1
         ls = j in line_starts
         if nxt in ('(', '[', '（'): return 4 if ls else 3
-        if n <= 2: return 0
+        if n <= 2: return 2 if ls and spaced else 0
         if ls and spaced: return 2
         return 1 if spaced else 0
     loose = lambda s: s.replace('ံ', '').replace('့', '')
@@ -208,6 +226,19 @@ def locate(text, gold):
             if 0 <= k < len(gold) and pos[k] in two and twin[k] is None and pos[k] not in taken \
                     and max(SequenceMatcher(None, hd, h).ratio() for hd in two[pos[k]]) >= .85:
                 pos[i] = pos[k]; how[i] = 'fuzzy'; twin[i] = k; taken.add(pos[k]); break
+    # Homonyms whose superscript was read as debris (အမူလကာါ (န), အဝ် အာ-ဥပသာရ): a last pass,
+    # for headwords still unplaced, inside the span their placed neighbours leave. Tried first
+    # in the verbatim pass, it let a homonym's first entry take the second's line when the first
+    # line was misread (vol. 3 pp. 334, 384), where the fuzzy alignment had placed both right.
+    used = {x for x in pos if x is not None}
+    for i, g in enumerate(gold):
+        if pos[i] is not None: continue
+        h = re.sub(r'\s', '', g)
+        lo = max([pos[k] + 1 for k in range(i) if pos[k] is not None], default=0)
+        hi = min([pos[k] for k in range(i + 1, len(gold)) if pos[k] is not None], default=len(f))
+        for s0 in sorted(line_starts):
+            if lo <= s0 < hi and s0 not in used and f.startswith(h, s0) and sup_rank(s0, h):
+                pos[i] = s0; how[i] = 'verbatim'; used.add(s0); break
     for i, g in enumerate(gold):
         if pos[i] is not None or inline[i] is None: continue
         lo = max([pos[k] + 1 for k in range(i) if pos[k] is not None], default=0)
@@ -533,7 +564,17 @@ def main(book):
         if r.get('label_ocr') and not r.get('label'): left[r['label_ocr']] = left.get(r['label_ocr'], 0) + 1
     if left:
         rep += ['', 'Readings left unnormalised: ' + ' · '.join(f'({k}) {v:,}' for k, v in sorted(left.items(), key=lambda x: -x[1]))]
-    (ROOT / f'ocr/{book}/articles-report.md').write_text('\n'.join(rep) + '\n')
+    # Keep what was written by hand: the title and the italic note under it, and everything from
+    # the first "## " heading on. Only the tables between them are regenerated. (Until 25 Sep
+    # 2026 the whole file was overwritten, and the notes had to be restored from git.)
+    rp = ROOT / f'ocr/{book}/articles-report.md'
+    if rp.exists():
+        old_rep = rp.read_text()
+        head = old_rep.split('\n\n')[:2]
+        if len(head) == 2 and head[1].startswith('*'): rep[:1] = [head[0], '', head[1]]
+        k = old_rep.find('\n## ')
+        if k != -1: rep += [old_rep[k:].rstrip('\n')]
+    rp.write_text('\n'.join(rep) + '\n')
     print('\n'.join(rep))
 
 

@@ -6,20 +6,20 @@
 
 | | |
 |---|---:|
-| located verbatim (line start or before ( / [ ) | 8,102 = 69.1% |
-| located verbatim, inline only | 27 = 0.2% |
+| located verbatim (line start or before ( / [ ) | 8,110 = 69.2% |
+| located verbatim, inline only | 26 = 0.2% |
 | located by bounded fuzzy match | 2,969 = 25.3% |
-| **located, any** | **11,098 = 94.6%** |
-| unlocated | 628 = 5.4% |
-| label ( ) read | 10,540 = 89.9% |
-| label normalised to the closed set (docs/labels.md) | 10,385 = 88.6% |
-| of which read exactly as printed / mapped / inferred from the ending | 9,158 / 1,219 / 8 |
+| **located, any** | **11,105 = 94.7%** |
+| unlocated | 621 = 5.3% |
+| label ( ) read | 10,548 = 90.0% |
+| label normalised to the closed set (docs/labels.md) | 10,393 = 88.6% |
+| of which read exactly as printed / mapped / inferred from the ending | 9,165 / 1,220 / 8 |
 | label read but left unnormalised | 155 = 1.3% |
-| compound analysis [ ] recovered | 9,065 = 77.3% |
+| compound analysis [ ] recovered | 9,071 = 77.4% |
 | of which + signs repaired (normalise_analysis) | 2,753 = 23.5% |
-| non-empty body | 11,081 = 94.5% |
-| at least one citation parsed | 8,417 = 71.8% |
-| label + body (the article is usable) | 10,376 = 88.5% |
+| non-empty body | 11,088 = 94.6% |
+| at least one citation parsed | 8,422 = 71.8% |
+| label + body (the article is usable) | 10,384 = 88.6% |
 
 **Romanised headwords against OSBCT** (682,010 canonical words):
 
@@ -29,7 +29,7 @@
 | inside a canonical word | 5,452 = 46.5% |
 | neither | 4,201 = 35.8% |
 
-Labels, normalised: (တိ) 3,535 · (ပု) 2,467 · (န) 2,137 · (ထီ) 1,235 · (ကြိ) 371 · (ကြိ၊ဝိ) 358 · (ပု၊န) 75 · (န၊ထီ) 67 · (ကာ၊ကြိ) 54 · (ဗျ) 28 · (ကမ္မ၊ကြိ) 27 · (ပု၊ထီ) 15 · (အ-လိင်) 9 · (ထီ၊ပု) 3 · (န၊ပု) 3 · (ထီ၊န) 1
+Labels, normalised: (တိ) 3,538 · (ပု) 2,467 · (န) 2,138 · (ထီ) 1,236 · (ကြိ) 373 · (ကြိ၊ဝိ) 358 · (ပု၊န) 75 · (န၊ထီ) 67 · (ကာ၊ကြိ) 54 · (ဗျ) 29 · (ကမ္မ၊ကြိ) 27 · (ပု၊ထီ) 15 · (အ-လိင်) 9 · (ထီ၊ပု) 3 · (န၊ပု) 3 · (ထီ၊န) 1
 
 Readings left unnormalised: (၂) 11 · (ဝီ) 10 · (၅) 6 · (ခ) 6 · (ကြီး) 5 · (ိ) 4 · (ပ္ပ) 4 · (ဏှိ) 4 · (ဠ) 4 · (၁) 2 · (နူ) 2 · (တု) 2 · (ဇ္ဇီ) 2 · (လ္လံ) 2 · (ပီ) 2 · (ဈာ) 2 · (ဘ) 2 · (ဘု) 2 · (က္ခ) 2 · (သင်္ဂါ) 2 · (ဿ) 2 · (ဂ) 2 · (ဿာ) 2 · (ပိဏ္ဍိက) 2 · (ပေတ၊ဋ္ဌ။၁၅၅) 1 · (သံ) 1 · (တုံ ၂) 1 · (အာဘိသလ္လေခိကာ) 1 · (ဇာ၊ဋ္ဌ၊၄။၃၂၄) 1 · (အဘိဟသ(ဿ) 1 · (တာ ဝိဋ (တိ) 1 · (အ၊ဋီ၊ ို ဂ) 1 · (မောဂ်၊၃။၄။) 1 · (ထမ္ဘော) 1 · (မဟာနိ၊ဋ္ဌ၊၃၁) 1 · (က္ခု) 1 · (လ္လိ (ထီ) 1 · (ပုဗ) 1 · (လ္လုံ (ထိ) 1 · (သံ၊ ၁။၄၂၇) 1 · (၃၇) 1 · (တု ၂) 1 · (တို) 1 · (ရ) 1 · (ပလာ (၇) 1 · (ရဟတ္တသိဒ္ဓိ?) 1 · (တဘိ) 1 · (ဥဒါန။၁ဝ၇) 1 · (= သဒ္ဒါလင်္ကာရ) 1 · (= အတ္ထာလင်္ကာရ) 1 · (ဇ္ဇီ နိဂ္ဂဟ (ပ) 1 · (တ္တ) 1 · (ပြု၊) 1 · (နာမ၊ ကြို) 1 · (ယူ) 1 · (နု) 1 · (ကမ္မရုပ်) 1 · (ကြဝ်) 1 · (လေ) 1 · (အဝလေယှမာနာ) 1 · (ဝိဋ္ဌ၊၂။၁၀) 1 · (ဂ္ဂ္ဂဟဏ () 1 · (တ္ထ) 1 · (ဝတွာ (ကြိ၊ဝိ) 1 · (သံ၊ဋ္ဌ၊၃။၇) 1 · (ာ၊ကြိ၊ဝိ) 1 · (ရူဟန္တ (တိ) 1 · (ရူပဠ (တိ) 1 · (ရူဠိ(တိ) 1 · (ရူဠိဆန္ဒ (တိ) 1 · (ဟိ) 1 · (နု၊ ထီ) 1 · (ကို၊ ဝိ) 1 · (အဘိ၊ဋ္ဌ၊ ၁။၅) 1 · (မ၊ဋ္ဌ၊ ၁။၁၅၇) 1 · (နိယ (တိ) 1 · (ညိဘဝ (၇) 1 · (ဝိ) 1 · (ပနု) 1 · (ဝိ၊ ၁။၁၂) 1 · (မူလီ ၃။၁၉၇) 1 · (=သဘာ-+ဏျ) 1 · (သတ္တမျတ္ထ-ဗျ) 1 · (သံ၊ ၁။၉၉) 1 · (ဒီ၊ ၂။၂၀၉) 1 · (သုဿရသမာစာရ (တိ) 1 · (ဣတိဝုတ်။ ၂၅၀) 1 · (သံ၊ဋ္ဌ၊၁။၉၇) 1 · (ဝိဋ္ဌ၊ ၁။၃) 1 · (အဿတ္ထကေ၊ သီ) 1 · (သုဒ္ဓိယ (န) 1 · (ဒီ၊ဋ္ဌ၊ ၂။၃၅၅) 1 · (ရီရဂကဒဿန (တိ) 1 · (ထေရ။၃ ၂၄) 1 · (ဇာ၊ ၁။၁၃၀) 1
 
@@ -110,3 +110,11 @@ consonant followed by ါ, recall misses 17 of 142 in vol. 1, 26 of 174 in vol. 
 vol. 3; of those misses, 1, 6 and 26 are present verbatim once ါ is written ာ. Folding ါ/ာ after a
 stacked consonant when matching would recover them. It is not yet implemented, and it would not
 change the article layer much: the fuzzy pass already places most of these.
+
+## Re-run, 25 September 2026
+
+`abhidhana_articles.py` now reads a homonym's superscript numeral, which OCR turns into debris
+glued to the headword (အါ, အဝ်, အည”, အမူလကာါ), and places a one- or two-character headword on a
+line of its own. The pass runs last, only for headwords still unplaced and only inside the span
+their placed neighbours leave, so no earlier placement moved. 11,098 → 11,105 located (+7): homonyms whose superscript was read as ” (အဘိက္ခဏ, အဘိဟာရယိ, အရတိ, အရိတ္တ, အသယှ, အသာမည, အဿု). The tables above are
+the re-run's.

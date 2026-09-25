@@ -191,7 +191,7 @@ distribution, and IEBH will not treat the licence as a blocker. The project is n
 
 - Vol. 25 pilot is still whole-page. Re-run with `--columns` at its native resolution.
 - ~~Labels are not normalised; the unlocated 13% not recovered.~~ Done 24 Sep (§12, `docs/labels.md`).
-- The typed PCED copy of this dictionary (`docs/labels.md` §4) is not yet converted from Zawgyi or used.
+- ~~The typed PCED copy is not yet converted from Zawgyi.~~ Converted 25 Sep (§14, `docs/witness.md`); not yet joined to the articles.
 - ~~Vol. 3 is not yet spot-checked; the Reader does not show vols. 2–3.~~ Done 25 Sep (§13).
 - Citations are parsed but not resolved against OSBCT.
 - No Spanish exists beyond the drafted sample in `docs/spanish-method.md`.
@@ -280,3 +280,43 @@ the Mac, not the container, the place to run volumes. The full figures are in `o
   present verbatim with ာ. Folding the two when matching is not yet implemented. A stacked ဖ read as ဗ
   (အသမ္ဖ…) is the other cause on pp. 1007–1009.
 - **The Reader shows vols. 1–3** with a volume switch (25 Sep); `#v03p654` links to a page.
+
+## 14. 25 September 2026: the witness, short headwords, vol. 4/1
+
+**The typed witness is in Unicode** (`docs/witness.md`, `tools/abhidhana_witness.py`,
+`tools/zawgyi.py`; output `witness/pced_k.jsonl`, gitignored). python-myanmar's converter needed
+seven corrections, each found against the index. After them, **99.4%** of the witness's 153,529
+distinct headwords are index headwords letter for letter. It covers **99.8%** of the headwords of
+books 01–19 with 4a and 4b, and nothing of 4c, 14b, 14c or 20–25. The 94.5–96.0% per volume in §13
+matched on the romanised key and is superseded. On vol. 3 pp. 600 and 1008 its labels (25/25) and
+analyses (25/25) agree with the print, its definitions word for word in 24 of 25 (one typing
+omission in the source). It omits the Pāḷi quotations and glosses and lightly modernises (တစ် for
+တ). Its licence is not stated: nothing derived from it is published.
+
+**Short headwords and homonyms.** A homonym's superscript is read as debris glued to the headword
+(အါ, အဝ်, အည”, အမူလကာါ). A last pass in `abhidhana_articles.py` now places such heads, and a one-
+or two-character headword on a line of its own, only for headwords still unplaced and only
+between placed neighbours. It moved no earlier placement: located +11 / +1 / +7 in vols. 1–3
+(vol. 1 94.1% → 94.2%), including the five entries for အ on pp. 121–122. Tried inside the verbatim
+pass, it had let a homonym's first entry take the second's line; that version was discarded.
+`abhidhana_articles.py` also no longer overwrites the hand-written notes of `articles-report.md`
+(it did, and they were restored from GitHub).
+
+**Vol. 4/1 (book 4a)**, OCR'd natively by Angel at 96 dpi (native):
+
+| | vol. 4/1 | vol. 3 |
+|---|---:|---:|
+| PDF pages / index headwords | 863 / 7,524 | 1,177 / 11,726 |
+| headwords verbatim, either pass | 88.9% | 92.9% |
+| in printed order, column pass | 73.1% | 77.3% |
+| articles located | 92.1% | 94.6% |
+| normalised label + body | 83.8% | 88.5% |
+
+The shortfall is the last 160 pages, a scan of worn print (pp. 700–863: recall 79.2%, located 89.0%;
+pp. 1–699: 91.5%, 92.9%), and one glyph, the stacked ဆ of ဉ္ဆ, read as ဉ္စ. Spot check (pp. 300,
+478, 786): 36 of 40 at the right entry, none wrong, 4 unlocated; no label wrong, 5 not read.
+No page is out of order.
+
+**The Reader** covers vols. 1, 2, 3 and 4/1, and its search runs across all of them
+(`reader/search.json`, built by `abhidhana_reader_data.py`).
+

@@ -1,7 +1,11 @@
 #!/usr/bin/env python3
 """Build the Abhidhāna Reader's data file for one volume.
 
-    python3 tools/abhidhana_reader_data.py 01      ->  reader/vol01.json
+    python3 tools/abhidhana_reader_data.py 01      ->  reader/vol01.json, and reader/search.json
+
+search.json is rebuilt each time from every reader/vol*.json present: one row per headword,
+[book, i, p, h, r] (i is the record's position in vol<book>.json), so the Reader can search all
+volumes without loading them.
 
 Reads ocr/<book>/articles.jsonl and ocr/<book>/pali.jsonl (run abhidhana_articles.py and
 abhidhana_romanise.py first) and writes one compact record per headword, in index order:
@@ -49,6 +53,19 @@ def main(book):
     out.parent.mkdir(exist_ok=True)
     out.write_text(json.dumps(V, ensure_ascii=False, separators=(',', ':')))
     print(f'{out.relative_to(ROOT)}: {len(V):,} records, {out.stat().st_size / 1e6:.1f} MB')
+    search_index()
+
+
+def search_index():
+    S = []
+    for f in sorted((ROOT / 'reader').glob('vol*.json')):
+        book = f.stem[3:]
+        for i, d in enumerate(json.loads(f.read_text())):
+            S.append([book, i, d['p'], d['h'], d['r']])
+    out = ROOT / 'reader/search.json'
+    out.write_text(json.dumps(S, ensure_ascii=False, separators=(',', ':')))
+    print(f'{out.relative_to(ROOT)}: {len(S):,} headwords from {len({r[0] for r in S})} volumes, '
+          f'{out.stat().st_size / 1e6:.1f} MB')
 
 
 if __name__ == '__main__':

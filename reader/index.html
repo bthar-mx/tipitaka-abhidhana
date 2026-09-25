@@ -127,7 +127,7 @@ footer a{color:var(--accent)}
     </div>
     <label class="search" for="q">
       <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><circle cx="7" cy="7" r="5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M11 11l3.5 3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-      <input id="q" type="search" placeholder="Search a headword: အကုသလ or akusala" autocomplete="off" spellcheck="false">
+      <input id="q" type="search" placeholder="Search all volumes: အကုသလ or akusala" autocomplete="off" spellcheck="false">
     </label>
     <div class="pager">
       <button id="prev" aria-label="Previous page">‹ Prev</button>
@@ -164,11 +164,13 @@ footer a{color:var(--accent)}
     'ကာ၊ကြိ':'caus. v.','နာမ-ကြိ':'denom. v.','ပုံ-ဗဟု':'m. pl.'};
   const LOC={v:['c-v','located'],f:['c-f','fuzzy match'],u:['c-u','not located']};
   const OS={word:'in canon',inside:'inside a canon word',none:'not in canon'};
-  // One entry per volume in the Reader; the ranges are the index's own (books.name_info).
+  // One entry per book in the Reader; the ranges are the index's own (books.name_info). n is
+  // the volume as shown (4/1 is book 4a, vol. 4 part 1).
   const VOLS=[
     {id:'01',n:1,my:'အ – အနီဠက',ro:'a – anīḷaka',start:300},
     {id:'02',n:2,my:'အနု – အဗ္ဘောက္ကိရဏ',ro:'anu – abbhokkiraṇa',start:500},
     {id:'03',n:3,my:'အဗျဂ္ဂ – အဠာရပမှ',ro:'abyagga – aḷārapamha',start:600},
+    {id:'4a',n:'4/1',mt:'အတွဲ ၄ · အပိုင်း ၁',my:'အာ – ဥတြာသေယျုံ',ro:'ā – utrāseyyuṁ',start:300},
   ];
   const GH='https://github.com/bthar-mx/tipitaka-abhidhana/blob/main/ocr/';
   const cache=new Map();
@@ -216,26 +218,33 @@ footer a{color:var(--accent)}
     do{k+=dir}while(k>=0&&k<pages.length&&f!=='all'&&!(byPage.get(pages[k])||[]).some(i=>D[i].x===f));
     if(k>=0&&k<pages.length){hitIdx=-1;render(pages[k]);window.scrollTo({top:0})}
   }
+  // All volumes are searched through search.json ([book, i, p, h, r] per headword); the current
+  // volume's own records stand in until it has loaded.
+  let S=null;
   function search(q){
     const box=$('results'); q=q.trim();
     if(!q){box.hidden=true;return}
     const isMy=/[က-႟]/.test(q), fq=fold(q), out=[];
-    for(let i=0;i<D.length;i++){
-      const d=D[i]; const hay=isMy?d.h:fold(d.r);
+    const rows=S||D.map((d,i)=>[V.id,i,d.p,d.h,d.r]);
+    const ord=Object.fromEntries(VOLS.map((v,k)=>[v.id,k]));
+    for(const row of rows){
+      const hay=isMy?row[3]:fold(row[4]);
       const pos=hay.indexOf(isMy?q:fq); if(pos<0)continue;
-      out.push([pos===0?0:1,hay.length,i]);
+      out.push([pos===0?0:1,hay.length,ord[row[0]]??99,row[1],row]);
     }
-    out.sort((a,b)=>a[0]-b[0]||a[1]-b[1]||a[2]-b[2]);
-    const top=out.slice(0,60);
+    out.sort((a,b)=>a[0]-b[0]||a[1]-b[1]||a[2]-b[2]||a[3]-b[3]);
+    const top=out.slice(0,60), vn=id=>(VOLS.find(v=>v.id===id)||{n:id}).n;
+    const scope=S?`in vols. ${VOLS[0].n}–${VOLS[VOLS.length-1].n}`:`in vol. ${V.n} (the other volumes are still loading)`;
     box.hidden=false;
-    box.innerHTML=`<h3>${out.length.toLocaleString()} headword${out.length===1?'':'s'} match</h3>`+
-      top.map(([, ,i])=>`<button class="res" data-i="${i}"><span><span class="my" lang="my">${esc(D[i].h)}</span><span class="ro">${esc(D[i].r)}</span></span><span class="pg">p. ${D[i].p}</span></button>`).join('')+
+    box.innerHTML=`<h3>${out.length.toLocaleString()} headword${out.length===1?'':'s'} match ${scope}</h3>`+
+      top.map(x=>{const [b,i,p,h,r]=x[4];return `<button class="res" data-v="${esc(b)}" data-i="${i}" data-p="${p}"><span><span class="my" lang="my">${esc(h)}</span><span class="ro">${esc(r)}</span></span><span class="pg">vol. ${vn(b)} · p. ${p}</span></button>`}).join('')+
       (out.length>60?`<div class="more">Showing the first 60. Type more of the word to narrow it.</div>`:'')+
-      (out.length?'':`<div class="more">Nothing in vol. ${V.n} matches. This volume covers headwords from ${esc(V.my)} (${esc(V.ro)}). The Reader has ${VOLS.map(v=>`vol. ${v.n}, ${esc(v.ro)}`).join('; ')}.</div>`);
+      (out.length?'':`<div class="more">Nothing matches ${scope}. The Reader has ${VOLS.map(v=>`vol. ${v.n}, ${esc(v.my)} (${esc(v.ro)})`).join('; ')}, in Burmese alphabetical order.</div>`);
   }
   $('results').addEventListener('click',e=>{
     const b=e.target.closest('.res'); if(!b)return;
-    const i=+b.dataset.i; hitIdx=i; $('show').value='all'; render(D[i].p,i);
+    const i=+b.dataset.i, v=b.dataset.v; $('show').value='all';
+    if(v===V.id&&D.length){hitIdx=i;render(D[i].p,i)} else loadVol(v,+b.dataset.p,i);
   });
   let t; $('q').addEventListener('input',e=>{clearTimeout(t);t=setTimeout(()=>search(e.target.value),120)});
   $('rom').addEventListener('change',e=>{roman=e.target.checked;render(cur)});
@@ -249,32 +258,32 @@ footer a{color:var(--accent)}
     if(e.key==='/'){e.preventDefault();$('q').focus()}
   });
 
-  function show(data,page){
+  function show(data,page,hit){
     D=data; byPage=new Map();
     D.forEach((d,i)=>{if(!byPage.has(d.p))byPage.set(d.p,[]);byPage.get(d.p).push(i)});
     pages=[...byPage.keys()].sort((a,b)=>a-b);
     const n={v:0,f:0,u:0}; D.forEach(d=>n[d.x]++);
     const lab=D.filter(d=>d.l&&d.b).length;
     $('stats').innerHTML=`<span><b>${D.length.toLocaleString()}</b> headwords</span><span><b>${pages.length}</b> pages</span><span><b>${(100*(n.v+n.f)/D.length).toFixed(1)}%</b> located</span><span><b>${(100*lab/D.length).toFixed(1)}%</b> with label + definition</span>`;
-    hitIdx=-1; render(page||V.start);
-    if($('q').value.trim()) search($('q').value);
+    hitIdx=hit??-1; render(page||V.start,hit);
   }
-  function loadVol(id,page){
+  function loadVol(id,page,hit){
     V=VOLS.find(v=>v.id===id)||VOLS[0]; $('vol').value=V.id;
-    $('vmy').textContent='အတွဲ '+my2(V.n); $('vro').textContent=`vol. ${V.n} · ${V.ro}`;
+    $('vmy').textContent=V.mt||('အတွဲ '+my2(V.n)); $('vro').textContent=`vol. ${V.n} · ${V.ro}`;
     document.title=`Abhidhāna Reader · vol. ${V.n}`;
     $('fpdf').textContent=V.id+'.pdf';
     $('fdata').href=GH+V.id+'/articles.jsonl'; $('fdata').textContent=`ocr/${V.id}/articles.jsonl`;
     $('focr').href=GH+V.id+'/ocr-report.md'; $('fart').href=GH+V.id+'/articles-report.md';
     const seq=++loadSeq;
-    if(cache.has(V.id)){show(cache.get(V.id),page);return}
+    if(cache.has(V.id)){show(cache.get(V.id),page,hit);return}
     $('stats').innerHTML='<span>Loading…</span>'; $('pagehead').innerHTML='';
     $('list').innerHTML=`<div class="loading">Loading vol. ${V.n}…</div>`;
     ['prev','next'].forEach(k=>$(k).disabled=true);
     fetch(`vol${V.id}.json`).then(r=>{if(!r.ok)throw new Error(r.status);return r.json()}).then(data=>{
-      cache.set(V.id,data); if(seq===loadSeq) show(data,page);
+      cache.set(V.id,data); if(seq===loadSeq) show(data,page,hit);
     }).catch(err=>{if(seq===loadSeq)$('list').innerHTML=`<div class="loading">Vol. ${V.n}’s article data didn’t load (${esc(err.message)}). Reload the page to try again.</div>`});
   }
+  fetch('search.json').then(r=>{if(!r.ok)throw new Error(r.status);return r.json()}).then(x=>{S=x;if($('q').value.trim())search($('q').value)}).catch(()=>{});
   $('vol').innerHTML=VOLS.map(v=>`<option value="${v.id}">${v.n} · ${esc(v.ro)}</option>`).join('');
   $('vol').addEventListener('change',e=>{$('show').value='all';window.scrollTo({top:0});loadVol(e.target.value)});
   // #v02p500, or the older #p300 (vol. 1)

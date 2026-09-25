@@ -6,20 +6,20 @@
 
 | | |
 |---|---:|
-| located verbatim (line start or before ( / [ ) | 4,803 = 66.8% |
+| located verbatim (line start or before ( / [ ) | 4,804 = 66.8% |
 | located verbatim, inline only | 28 = 0.4% |
 | located by bounded fuzzy match | 1,892 = 26.3% |
-| **located, any** | **6,723 = 93.5%** |
-| unlocated | 466 = 6.5% |
-| label ( ) read | 6,344 = 88.2% |
-| label normalised to the closed set (docs/labels.md) | 6,262 = 87.1% |
-| of which read exactly as printed / mapped / inferred from the ending | 5,295 / 960 / 7 |
+| **located, any** | **6,724 = 93.5%** |
+| unlocated | 465 = 6.5% |
+| label ( ) read | 6,345 = 88.3% |
+| label normalised to the closed set (docs/labels.md) | 6,263 = 87.1% |
+| of which read exactly as printed / mapped / inferred from the ending | 5,296 / 960 / 7 |
 | label read but left unnormalised | 82 = 1.1% |
-| compound analysis [ ] recovered | 5,623 = 78.2% |
-| of which + signs repaired (normalise_analysis) | 1,296 = 18.0% |
-| non-empty body | 6,710 = 93.3% |
-| at least one citation parsed | 4,946 = 68.8% |
-| label + body (the article is usable) | 6,260 = 87.1% |
+| compound analysis [ ] recovered | 5,624 = 78.2% |
+| of which + signs repaired (normalise_analysis) | 1,297 = 18.0% |
+| non-empty body | 6,711 = 93.4% |
+| at least one citation parsed | 4,947 = 68.8% |
+| label + body (the article is usable) | 6,261 = 87.1% |
 
 **Romanised headwords against OSBCT** (682,010 canonical words):
 
@@ -29,7 +29,7 @@
 | inside a canonical word | 3,287 = 45.7% |
 | neither | 2,536 = 35.3% |
 
-Labels, normalised: (တိ) 2,620 · (န) 1,122 · (ပု) 1,119 · (ထီ) 689 · (ကြိ၊ဝိ) 337 · (ကြိ) 208 · (န၊ထီ) 57 · (ကာ၊ကြိ) 31 · (ပု၊န) 27 · (ဗျ) 22 · (ကမ္မ၊ကြိ) 11 · (ပု၊ထီ) 9 · (န၊တိ) 3 · (ထီ၊ပု) 3 · (တိ၊န) 2 · (ထီ၊န) 2
+Labels, normalised: (တိ) 2,621 · (န) 1,122 · (ပု) 1,119 · (ထီ) 689 · (ကြိ၊ဝိ) 337 · (ကြိ) 208 · (န၊ထီ) 57 · (ကာ၊ကြိ) 31 · (ပု၊န) 27 · (ဗျ) 22 · (ကမ္မ၊ကြိ) 11 · (ပု၊ထီ) 9 · (န၊တိ) 3 · (ထီ၊ပု) 3 · (တိ၊န) 2 · (ထီ၊န) 2
 
 Readings left unnormalised: (၂) 12 · (ဏ) 4 · (၃) 4 · (တံ) 3 · (၅) 3 · (ပ္ပ) 2 · (န္န) 2 · (န္နု) 2 · (နု) 2 · (ဒိ) 2 · (ဠာ) 2 · (ယိ) 2 · (ယာ) 2 · (မ္ပာ) 1 · (မွာ) 1 · (ဒ္ဒယမာန (တိ) 1 · (အနုပရိဝတ္တိတော) 1 · (ဂ) 1 · (န္နဂဂအာဟာရ (၇) 1 · (ဂ္ဂဟဏ (န) 1 · (ဒ) 1 · (မ၊ ဋ္ဌ၊ ၃။ ၆၇) 1 · (တုံ ၂) 1 · (ဠ) 1 · (ပန်း) 1 · (ဝီ) 1 · (နိပါတသမုဒါယ) 1 · (သတ္တမျန္တဗျ) 1 · (၇၂) 1 · (၁) 1 · (ယီ) 1 · (ဇာ၊ဋ္ဌ၊၇။၂၆၊၂၇) 1 · (မဟာနိ။ ၂၃၃) 1 · (ကြိဝ်) 1 · (အ၊ ၁။၅ ၂၁) 1 · (အံ၊ ၁။၅၂။) 1 · (.) 1 · (ဝိမာန၊ ၂၄။) 1 · (ဇာ၊ ၁။ ၂၀၇) 1 · (ပုဗ) 1 · (ဟိ) 1 · (နသိ) 1 · (ဝေဒိတဗ္ဗော) 1 · (ပကာ သိတံ ဟောတိ) 1 · (ဌိဂဿယ (တိ) 1 · (ဋိဂဿဝတာ (ထီ) 1 · (မ၊၁။၁၃၃) 1 · (မည်သော) 1 · (ယံ) 1 · (ဒီ၊ဋ္ဌ၊၁။၂ ဂ) 1 · (နိဒ န) 1 · (မဟာနိ။ ၃၂၂) 1 · (ခ) 1
 
@@ -100,3 +100,11 @@ Three pages, every article compared with `02.pdf`.
   headwords). Seven headwords are at the right entry. The first is placed on the running head,
   which carries the variant and debris, and is therefore wrong. Six are unlocated: the OCR broke the
   heads of those entries past a 0.70 match. This is the worst case, not the typical one.
+
+## Re-run, 25 September 2026
+
+`abhidhana_articles.py` now reads a homonym's superscript numeral, which OCR turns into debris
+glued to the headword (အါ, အဝ်, အည”, အမူလကာါ), and places a one- or two-character headword on a
+line of its own. The pass runs last, only for headwords still unplaced and only inside the span
+their placed neighbours leave, so no earlier placement moved. 6,723 → 6,724 located (+1): a homonym whose superscript was read as ”. The tables above are
+the re-run's.
