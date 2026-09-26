@@ -31,6 +31,9 @@ Record keys (as in the Reader, docs of tools/abhidhana_reader_data.py, plus i, s
     i id  p PDF page  q printed page  h headword  r IAST  o OSBCT  x v/f/u  l label  lo OCR label
     a analysis  ai analysis IAST  b body  sp Pāḷi spans  c citations  ci citations IAST
     s status (ocr / drafted / reviewed / corrected)  m 1 if the index files it on another page
+    as "pced" when the analysis comes from the typed PCED witness (tools/abhidhana_witness_analysis.py)
+    hi the index's spelling of a headword corrected by hand
+    cf the fields corrected by hand against the print (docs/corrections.tsv), e.g. ["analysis"]
 """
 import html, json, os, re, shutil, sys
 from pathlib import Path
@@ -69,6 +72,9 @@ def records(book):
             if p.get('pali'): d['sp'] = [[s['start'], s['end'], s['iast'], s.get('tokens', 1)] for s in p['pali']]
             d['s'] = r.get('status') or 'ocr'
             if r.get('index_misfiled'): d['m'] = 1
+            if r.get('headword_index'): d['hi'] = r['headword_index']   # the index's misspelling, kept (docs/corrections.tsv)
+            if r.get('analysis_source') == 'pced': d['as'] = 'pced'   # analysis from the typed PCED witness
+            if r.get('corrected'): d['cf'] = sorted(r['corrected'])   # fields corrected by hand (docs/corrections.tsv)
             if r['id'] in TR: d['t'] = TR[r['id']]
             V.append(d)
     return V
@@ -181,7 +187,7 @@ def main():
     from abhidhana_browse import build as browse_build   # the Browse page's data (nav, chunks, shards)
     browse_build(OUT, vols, book_records, dump)
     dump(OUT / 'data/search.json', search)
-    labels = [{k: d.get(k, '') for k in ('label', 'printed', 'pali', 'en', 'es', 'abbr_en', 'abbr_es',
+    labels = [{k: d.get(k, '') for k in ('label', 'roman', 'printed', 'pali', 'en', 'es', 'abbr_en', 'abbr_es',
                                          'status', 'es_status', 'source')}
               | {'n': lab_n.get(d['label'], 0)} for d in LABELS]
     dump(OUT / 'data/labels.json', labels)
@@ -192,8 +198,9 @@ def main():
             '<span class="prov" data-i18n="provisional">provisional</span>'
         st = {'confirmed': ('confirmed', 'confirmada'), 'printed': ('printed in the dictionary', 'impresa en el diccionario'),
               'provisional': ('provisional', 'provisional')}[d['status']]
+        lro = f'<div class="lro" lang="pi">{E(d["roman"])}</div>' if d.get('roman') else ''
         lrows.append(
-            f'<tr id="l{k}"><td class="my" lang="my">({E(d["label"])})</td><td class="my" lang="my">{E(d["printed"])}</td>'
+            f'<tr id="l{k}"><td class="my" lang="my">({E(d["label"])}){lro}</td><td class="my" lang="my">{E(d["printed"])}</td>'
             f'<td lang="pi"><i>{E(d["pali"])}</i></td>'
             f'<td><span class="tr" lang="en">{E(d["en"])} {prov("en")}</span><span class="tr" lang="es">{E(d["es"])} {prov("es")}</span></td>'
             f'<td><span class="tr" lang="en">{E(d["abbr_en"])}</span><span class="tr" lang="es">{E(d["abbr_es"])}</span></td>'

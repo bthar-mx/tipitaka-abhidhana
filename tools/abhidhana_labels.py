@@ -1,17 +1,18 @@
 #!/usr/bin/env python3
 """The grammatical labels: one table, in docs/labels.md §0, read by the pipeline and the site.
 
-    from abhidhana_labels import LABELS   # [{label, printed, pali, en, es, abbr_en, abbr_es, status, es_status, source, readings}]
+    from abhidhana_labels import LABELS   # [{label, roman, printed, pali, en, es, abbr_en, abbr_es, status, es_status, source, readings}]
     python3 tools/abhidhana_labels.py           # print the table as parsed, and check it
 
 The table sits between the markers <!-- labels:begin --> and <!-- labels:end --> in
 docs/labels.md. One row per printed label:
 
-    | label | printed | Pāḷi | English | Spanish | abbr. en | abbr. es | status | es | source | OCR readings |
+    | label | roman | printed | Pāḷi | English | Spanish | abbr. en | abbr. es | status | es | source | OCR readings |
 
 Columns are found by their header, so their order may change and new ones may be added.
 
 - label      the label as printed, without brackets
+- roman      the printed label romanised, with brackets: (ti), (pu, na); what the Pāḷi reader shows
 - printed    the dictionary's own expansion, from its tables of abbreviations (docs/abbreviations.md)
 - Pāḷi       its expansion (IAST); a trailing ? marks a term for Angel to confirm
 - English, Spanish   what it marks, in words, as the site's pop-up shows it
@@ -31,7 +32,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 DOC = ROOT / 'docs/labels.md'
-HEAD = {'label': 'label', 'printed': 'printed', 'pāḷi': 'pali', 'english': 'en', 'spanish': 'es',
+HEAD = {'label': 'label', 'roman': 'roman', 'printed': 'printed', 'pāḷi': 'pali', 'english': 'en', 'spanish': 'es',
         'abbr. en': 'abbr_en', 'abbr. es': 'abbr_es', 'status': 'status', 'es': 'es_status',
         'source': 'source', 'ocr readings': 'readings'}
 NEEDED = ('label', 'pali', 'en', 'es', 'status', 'es_status', 'readings')

@@ -89,7 +89,8 @@ def main(books):
             # first clause, to the first ။, with ours (ours cut the same way); the rest goes with the body.
             wfull = w.get('analysis') or ''
             whead, _, wtail = wfull.partition('။')
-            oa, wa = ana((r.get('analysis') or '').partition('။')[0]), ana(whead)
+            ours = r.get('analysis_read', '') if r.get('analysis_source') == 'pced' else r.get('analysis')   # our OCR, not the witness's own text
+            oa, wa = ana((ours or '').partition('။')[0]), ana(whead)
             if oa and wa:
                 x = round(SequenceMatcher(None, oa, wa).ratio(), 3); j['analysis_ratio'] = x
                 S['ana_both'] += 1; S['ana_hi'] += x >= .8

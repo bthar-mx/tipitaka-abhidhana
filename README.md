@@ -109,9 +109,10 @@ vol. 15's headwords, and book 21's index gives p. 962 for 692. All are listed, w
 checked, in [`docs/index-errata.md`](docs/index-errata.md). The pipeline corrects the page errors
 (`PAGE_FIX`, `ID_PAGE_FIX` in `tools/abhidhana_articles.py`); the index itself is never edited.
 
-## Typed witnesses: used for checking, not published
+## Typed witnesses
 
-Two typed copies of the dictionary exist, and both were used **only to check our reading**:
+Two typed copies of the dictionary exist. Both were first used only to check our reading; since
+26 September 2026 PCED's text is also used (Angel's decision), see below:
 
 - **PCED** (Pali Canon E-Dictionary 1.94, the data behind dictionary.sutta.org; `siongui/data`): its
   "Tipiṭaka Pāḷi-Myanmar Dictionary", typed in Zawgyi, covering vols. 1–19. Converted to Unicode
@@ -122,9 +123,14 @@ Two typed copies of the dictionary exist, and both were used **only to check our
   this dictionary's typed text by book and page, with two other dictionaries
   ([`docs/witness-pndaza.md`](docs/witness-pndaza.md)).
 
-Neither states a licence, so **nothing of their text is in this repository or on the website**:
-the joins are kept locally (`witness/`, gitignored) and only figures are published. Pn Daza's text
-may be added later, if he agrees.
+Neither states a licence. **Pn Daza's text is not in this repository or on the website**, and may be
+added later, if he agrees. **PCED's text is used, credited, in two places** (decided 26 Sep 2026):
+the compound analysis [ ] of vols. 1–19 is taken from it wherever it has one
+(`tools/abhidhana_witness_analysis.py`; the row keeps our OCR reading as `analysis_read` and
+carries `analysis_source: "pced"`), because our OCR's analysis differed from it in 50.9% of
+articles and spelled the headword worse in most of those; and the Meaning boxes are drafted from
+its definitions (`docs/translation/`, `source` on every row). The witness files themselves stay
+local (`witness/`, gitignored).
 
 ## Layout
 

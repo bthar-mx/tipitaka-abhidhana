@@ -8,7 +8,7 @@ if (!app) return;
 
 Object.assign(T.en, {
   b_mode: 'Reading mode', m_reader: 'Pāḷi reader', m_printed: 'As printed', m_custom: 'custom',
-  d_reader: 'Pāḷi in roman, labels abbreviated, Burmese definition folded away.',
+  d_reader: 'Pāḷi in roman, labels as printed, romanised; Burmese definition folded away.',
   d_printed: 'As the book has it: Burmese script, printed labels, the printed page.',
   settings: 'Settings', done: 'Done', page_on: 'Printed page: on', page_off: 'Printed page: off',
   s_script: 'Script for Pāḷi', s_defs: 'Burmese definition', s_labels: 'Grammatical labels', s_page: 'Printed page',
@@ -31,11 +31,14 @@ Object.assign(T.en, {
   not_found_w: w => `No headword “${w}” was found.`, results_none: 'No headword matches. Roman letters ignore diacritics (nana finds ñāṇa); Burmese is matched as typed.',
   results_more: 'Type more of the word to narrow the list.', report: 'Report an error', vol_short: 'vol.', pdf_p: 'PDF p.',
   label_unknown: 'label not yet identified', printed_as: 'printed', lab_prov: 'provisional',
-  homonym: 'homonym', misfiled: 'the index files this headword on another page',
+  hw_fixed: 'headword corrected; the index spells it', homonym: 'homonym', misfiled: 'the index files this headword on another page',
+  pced_t: 'From the typed text of this dictionary in the Pali Canon E-Dictionary (PCED), not from our OCR.',
+  corrected_f: 'corrected', corrected_t: 'Corrected by hand against the printed page; the rest of the article is unchecked OCR.',
+  panes_hide: 'Hide index', panes_show: 'Show index', panes_t: 'Hide or show the alphabet and the headword list',
 });
 Object.assign(T.es, {
   b_mode: 'Modo de lectura', m_reader: 'Lector de pāḷi', m_printed: 'Como está impreso', m_custom: 'personalizado',
-  d_reader: 'Pāḷi en caracteres latinos, categorías abreviadas, definición birmana plegada.',
+  d_reader: 'Pāḷi en caracteres latinos, categorías como se imprimen, romanizadas; definición birmana plegada.',
   d_printed: 'Como en el libro: escritura birmana, categorías impresas, página impresa.',
   settings: 'Ajustes', done: 'Listo', page_on: 'Página impresa: sí', page_off: 'Página impresa: no',
   s_script: 'Escritura del pāḷi', s_defs: 'Definición birmana', s_labels: 'Categorías gramaticales', s_page: 'Página impresa',
@@ -58,20 +61,27 @@ Object.assign(T.es, {
   not_found_w: w => `No se encontró la entrada «${w}».`, results_none: 'Ninguna entrada coincide. En letras latinas no cuentan los diacríticos (nana encuentra ñāṇa); el birmano se busca tal como se escribe.',
   results_more: 'Escriba más de la palabra para acotar la lista.', report: 'Informar de un error', vol_short: 'vol.', pdf_p: 'p. del PDF',
   label_unknown: 'categoría aún no identificada', printed_as: 'impreso', lab_prov: 'provisional',
-  homonym: 'homónimo', misfiled: 'el índice registra esta entrada en otra página',
+  hw_fixed: 'entrada corregida; el índice la escribe', homonym: 'homónimo', misfiled: 'el índice registra esta entrada en otra página',
+  pced_t: 'Del texto mecanografiado de este diccionario en el Pali Canon E-Dictionary (PCED), no de nuestro OCR.',
+  corrected_f: 'corregido', corrected_t: 'Corregido a mano sobre la página impresa; el resto del artículo es OCR sin revisar.',
+  panes_hide: 'Ocultar índice', panes_show: 'Mostrar índice', panes_t: 'Ocultar o mostrar el alfabeto y la lista de entradas',
 });
 
 // --- settings (per browser) ------------------------------------------------------------------------
-const MODES = { reader: { script: 'ro', defs: 'collapse', labels: 'abbr', scan: false },
+const MODES = { reader: { script: 'ro', defs: 'collapse', labels: 'printed', scan: false },
                 printed: { script: 'my', defs: 'show', labels: 'printed', scan: true } };
 let S = Object.assign({ mode: 'reader' }, MODES.reader);
-try { const s = JSON.parse(localStorage.getItem('browse') || 'null'); if (s && s.mode) S = Object.assign(S, s); } catch (e) {}
+try { const s = JSON.parse(localStorage.getItem('browse') || 'null');
+      if (s && s.mode) S = Object.assign(S, s, MODES[s.mode] || {}); } catch (e) {}   // a named mode takes its current defaults
 const phone = () => window.matchMedia('(max-width: 760px)').matches;
 if (phone()) S.scan = false;
 function save() { try { localStorage.setItem('browse', JSON.stringify(S)); } catch (e) {} document.documentElement.dataset.script = S.script; }
 function setMode(m) { S = Object.assign({ mode: m }, MODES[m]); if (phone()) S.scan = false; save(); renderAll(); }
 function setOne(k, v) { S[k] = v; S.mode = 'custom'; save(); renderAll(); }
 save();
+let PANES_OFF = false;   // alphabet + headword list hidden (desktop); a layout choice, kept apart from the reading mode
+try { PANES_OFF = localStorage.getItem('browse-panes') === 'off'; } catch (e) {}
+function setPanes(off) { PANES_OFF = off; try { localStorage.setItem('browse-panes', off ? 'off' : 'on'); } catch (e) {} modebar(); }
 
 // --- the alphabet, as tools/abhidhana_browse.py computes it ---------------------------------------
 const LETTERS = ['a', 'ā', 'i', 'ī', 'u', 'ū', 'e', 'o', 'k', 'kh', 'g', 'gh', 'ṅ', 'c', 'ch', 'j', 'jh', 'ñ', 'ṭ', 'ṭh', 'ḍ', 'ḍh', 'ṇ',
@@ -169,6 +179,8 @@ function modebar() {
   ].map(([l, h]) => `<div class="set"><div class="set-l">${esc(t(l))}</div><div class="set-o" role="group" aria-label="${esc(t(l))}">${h}</div></div>`).join('') +
     `<button type="button" class="done" data-done>${esc(t('done'))}</button>`;
   $('settings').hidden = !open.settings;
+  const pb = $('panesbtn'); pb.textContent = PANES_OFF ? t('panes_show') : t('panes_hide'); pb.title = t('panes_t');
+  pb.setAttribute('aria-pressed', PANES_OFF); app.classList.toggle('panes-off', PANES_OFF);
   document.documentElement.dataset.script = S.script;
 }
 
@@ -204,8 +216,11 @@ function words() {
 // labels: docs/labels.md §0 (published as /data/labels.json)
 function labelParts(l) { return (l || '').split(/[၊,]\s*/).filter(Boolean); }
 function labelShown(d) {
-  if (S.labels === 'printed') return `<span class="my" lang="my">(${esc(d.l)})</span>`;
   const L = LABS.get(d.l);
+  if (S.labels === 'printed') {   // the printed label, in the script chosen for Pāḷi: (ti) / (တိ)
+    const my = `<span class="my" lang="my">(${esc(d.l)})</span>`, ro = L && L.roman ? `<span lang="pi">${esc(L.roman)}</span>` : '';
+    return S.script === 'my' || !ro ? my : S.script === 'both' ? `${ro} ${my}` : ro;
+  }
   const txt = L ? (S.labels === 'full' ? (L[LANG] || L.en) : (L['abbr_' + LANG] || L[LANG] || L.en)) : `(${d.l})`;
   return `<span lang="${L ? LANG : 'my'}" class="${L ? '' : 'my'}">${esc(txt)}</span>`;
 }
@@ -250,7 +265,8 @@ function article() {
   H.push(`<div class="where"><span>${esc(t('vol_short'))} ${esc(vn(d.k))} · ${esc(t('pdf_p'))} ${d.p}</span>` +
     `<span class="chip">${esc(d.s === 'ocr' ? t('ocr_st') : t('st_' + d.s))}</span>` +
     (d.x === 'f' ? `<span class="chip c-warn">${esc(t('fuzzy'))}</span>` : '') +
-    (d.m ? `<span class="chip">${esc(t('misfiled'))}</span>` : '') + '</div>');
+    (d.m ? `<span class="chip">${esc(t('misfiled'))}</span>` : '') +
+    (d.hi ? `<span class="chip c-ok">${esc(t('hw_fixed'))} <span class="my" lang="my">${esc(d.hi)}</span></span>` : '') + '</div>');
   const ro = S.script !== 'my', my = S.script !== 'ro';
   H.push(`<div class="head">` +
     (ro ? `<h1 class="pl" lang="pi">${esc(d.r)}${d.hn ? `<sup>${d.hn}</sup>` : ''}</h1>` : '') +
@@ -262,7 +278,9 @@ function article() {
       (S.scan ? '' : `<button type="button" data-scan>${esc(t('see_page'))}</button>`) + '</div>');
   }
   if (d.a || d.ai) {
-    H.push(`<section><h2>${esc(t('analysis'))}</h2>` + (ro && d.ai ? `<div class="pl an" lang="pi">[${esc(d.ai)}]</div>` : '') +
+    const fixed = (d.cf || []).includes('analysis') ? ` <span class="chip c-ok" title="${esc(t('corrected_t'))}">${esc(t('corrected_f'))}</span>`
+      : d.as === 'pced' ? ` <span class="chip" title="${esc(t('pced_t'))}">PCED</span>` : '';
+    H.push(`<section><h2>${esc(t('analysis'))}${fixed}</h2>` + (ro && d.ai ? `<div class="pl an" lang="pi">[${esc(d.ai)}]</div>` : '') +
       (my && d.a ? `<div class="my an-my" lang="my">[${esc(d.a)}]</div>` : '') + '</section>');
   }
   if (d.see && d.see.length) H.push(`<div class="see"><span class="muted">${esc(t('see'))}</span> ` +
@@ -397,6 +415,7 @@ app.addEventListener('click', async e => {
   if (el.id === 'scanclose') { if (phone()) { S.scan = false; save(); return renderAll(); } return setOne('scan', false); }
   if (el.id === 'scanprev') { open.scanDelta--; return scan(); }
   if (el.id === 'scannext') { open.scanDelta++; return scan(); }
+  if (el.id === 'panesbtn') return setPanes(!PANES_OFF);
   if (el.id === 'alphabtn') { open.drawer = !open.drawer; return app.classList.toggle('drawer-open', open.drawer); }
   if (el.id === 'drawerclose') { open.drawer = false; return app.classList.remove('drawer-open'); }
   if (ds.li) { const li = +ds.li; await show(li, 0, 0, 'first'); open.drawer = phone(); app.classList.toggle('drawer-open', open.drawer); return route(); }
@@ -426,6 +445,7 @@ $('hq').closest('form').addEventListener('submit', e => e.preventDefault());
 document.addEventListener('keydown', e => {
   if (e.target.matches('input,select,textarea')) return;
   if (e.key === '/') { e.preventDefault(); $('hq').focus(); }
+  if (e.key === '\\' && !phone()) { e.preventDefault(); setPanes(!PANES_OFF); }
   if (e.key === 'ArrowDown' || e.key === 'j') { e.preventDefault(); step(1); }
   if (e.key === 'ArrowUp' || e.key === 'k') { e.preventDefault(); step(-1); }
 });

@@ -27,7 +27,12 @@ analysis in [ ], the rest as body, and the citations inside the body (abbreviati
 Burmese numerals separated by ၊, closed by ။) collected into a list. The body is kept
 whole; the citations are not removed from it.
 
-Nothing here is reviewed. Every row carries status "ocr" and the Burmese is raw OCR.
+Nothing here is reviewed. Every row carries status "ocr" and the Burmese is raw OCR, except
+the fields corrected by hand in docs/corrections.tsv (tools/abhidhana_corrections.py), which
+are applied last and marked on the row as `corrected`.
+Before them, the compound analysis is taken from the typed PCED witness wherever it has one
+(tools/abhidhana_witness_analysis.py, decided 26 Sep 2026); the OCR's reading stays as
+`analysis_read`, and the row carries `analysis_source: "pced"`.
 """
 import json, re, sqlite3, sys, unicodedata
 from difflib import SequenceMatcher
@@ -617,6 +622,20 @@ def main(book):
                 row['osbct'] = 'word' if k in vocab else ('inside' if k in blob else 'none')
             rows.append(row)
 
+    # the compound analysis from the typed PCED witness where it has one (tools/abhidhana_witness_analysis.py)
+    from abhidhana_witness_analysis import apply as apply_witness_analysis
+    for m in apply_witness_analysis(book, rows): print(m)
+    # hand corrections against the print (docs/corrections.tsv), last, so every re-run keeps them
+    from abhidhana_corrections import apply as apply_corrections
+    for m in apply_corrections(book, rows): print(m)
+    for row in rows:   # a corrected headword is romanised and checked against OSBCT afresh
+        if 'headword' in row.get('corrected', {}):
+            base = re.sub('[' + MY_DIGITS + r'\d\s]', '', row['headword'])
+            row['iast'] = transliterate.process('Burmese', 'IAST', base).replace('ṃ', 'ṁ')
+            if vocab is not None:
+                k = row['iast'].lower()
+                row['osbct'] = 'word' if k in vocab else ('inside' if k in blob else 'none')
+
     out = ROOT / f'ocr/{book}/articles.jsonl'
     out.write_text(''.join(json.dumps(r, ensure_ascii=False) + '\n' for r in rows))
 
@@ -638,7 +657,9 @@ def main(book):
            f'{cnt(lambda r: r.get("label_how") == "exact"):,} / {cnt(lambda r: r.get("label_how") == "mapped"):,} / '
            f'{cnt(lambda r: r.get("label_how") == "inferred"):,} |',
            f'| label read but left unnormalised | {pct(cnt(lambda r: r.get("label_ocr") and not r.get("label")))} |',
-           f'| compound analysis [ ] recovered | {pct(cnt(lambda r: r.get("analysis")))} |',
+           f'| compound analysis [ ] recovered by the OCR | {pct(cnt(lambda r: r.get("analysis_read") or (r.get("analysis") and r.get("analysis_source") != "pced")))} |',
+           f'| compound analysis taken from the typed PCED witness (tools/abhidhana_witness_analysis.py) | {pct(cnt(lambda r: r.get("analysis_source") == "pced"))} |',
+           f'| compound analysis, either | {pct(cnt(lambda r: r.get("analysis")))} |',
            f'| of which + signs repaired (normalise_analysis) | {pct(cnt(lambda r: r.get("analysis_ocr")))} |',
            f'| non-empty body | {pct(cnt(lambda r: r.get("body")))} |',
            f'| at least one citation parsed | {pct(cnt(lambda r: r.get("citations")))} |',

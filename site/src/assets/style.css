@@ -41,7 +41,7 @@ a{color:var(--accent)}
 .site .home .ro{font-family:var(--roman);font-size:15px;color:var(--muted)}
 .site nav{display:flex;align-items:center;gap:14px;font-size:14px}
 .site nav a{text-decoration:none}
-.lang{display:inline-flex;border:1px solid var(--rule);border-radius:6px;overflow:hidden}
+.lang{display:inline-flex;flex:none;border:1px solid var(--rule);border-radius:6px;overflow:hidden}
 .lang button{border:0;border-radius:0;padding:4px 9px;font:500 13px var(--ui);background:var(--surface);color:var(--muted);cursor:pointer}
 .lang button[aria-pressed="true"]{background:var(--accent);color:var(--surface)}
 .theme{display:inline-flex;align-items:center;justify-content:center;margin-left:8px;width:30px;height:28px;padding:0;border:1px solid var(--rule);border-radius:6px;background:var(--surface);color:var(--muted);cursor:pointer;vertical-align:middle}
@@ -161,6 +161,7 @@ article.hit{background:linear-gradient(var(--mark),var(--mark)) left/4px 100% no
 .prose.wide{max-width:100ch}
 table.labels{width:100%}
 table.labels td.my{white-space:nowrap}
+table.labels td .lro{font-family:var(--roman);font-size:14px;color:var(--muted)}
 table.labels td.st{font-size:13px}
 table.labels .src{font-size:11.5px;color:var(--muted)}
 table.labels td.num{text-align:right;font-family:var(--mono);font-size:13px}
@@ -244,7 +245,12 @@ table.abbr td.s-mycol{white-space:normal;min-width:16em}
 .site .hsearch{position:relative;flex:1 1 240px;max-width:420px;margin:0}
 .site .hsearch input{width:100%;font:15px var(--ui);color:var(--ink);background:var(--surface);border:1px solid var(--rule);border-radius:8px;padding:8px 12px;outline:none}
 .site .hsearch input:focus{border-color:var(--accent);box-shadow:0 0 0 2px var(--accent-soft)}
-.hres{position:absolute;left:0;right:0;top:100%;z-index:40;max-height:70vh;overflow:auto;margin-top:6px;box-shadow:0 8px 24px rgba(0,0,0,.14)}
+.hres{position:absolute;left:0;top:100%;z-index:40;width:max(100%,min(440px,calc(100vw - 32px)));max-height:70vh;overflow:auto;margin-top:6px;box-shadow:0 8px 24px rgba(0,0,0,.14)}
+/* header results: headword above, volume and page below, so a narrow box never overlaps them */
+.hres .res{grid-template-columns:minmax(0,1fr);gap:0}
+.hres .res > span:first-child{min-width:0;overflow-wrap:anywhere}
+.hres .res .pl{font-family:var(--roman);font-size:16px}
+.hres .res .pg{align-self:start;font-size:12px}
 .menu a{color:var(--muted);padding:4px 0;border-bottom:2px solid transparent}
 .menu a:hover{color:var(--ink)}
 .menu a[aria-current="page"]{color:var(--ink);border-bottom-color:var(--accent)}
@@ -356,8 +362,22 @@ body.browsepage > .wrap{flex:none}
 .scanbody{padding:10px}
 .scanbody img{display:block;width:100%;height:auto;filter:var(--page-filter);background:#fff;border:1px solid var(--rule)}
 
+/* index hidden (desktop): the article, and the printed page if on, take the width */
+@media (min-width: 821px){
+  .app.panes-off .browse{grid-template-columns:minmax(0,1fr)}
+  .app.panes-off.scan-on .browse{grid-template-columns:minmax(0,1fr) minmax(300px,45%)}
+  .app.panes-off .alpha,.app.panes-off .words{display:none}
+  .app.panes-off .art article{margin:0 auto}
+}
+.panesbtn[aria-pressed="true"]{background:var(--accent-soft);border-color:var(--accent);color:var(--accent-ink)}
+
 /* script choice: Burmese text only where chosen */
 html[data-script="my"] .res .ro{display:none}
+/* the alphabet in the left pane: roman letters in roman mode, Burmese in Burmese mode, both in both */
+html[data-script="ro"] .lt .my{display:none}
+html[data-script="my"] .lt .pl{display:none}
+html[data-script="ro"] .lt .pl,html[data-script="my"] .lt .my{font-size:17px;line-height:1.9;color:inherit}
+html[data-script="ro"] .lt.on .pl{color:var(--on-accent)}
 
 /* ---------- phone ---------- */
 @media (max-width: 820px){
@@ -365,6 +385,7 @@ html[data-script="my"] .res .ro{display:none}
   .site .hsearch{order:3;flex:1 1 100%;max-width:none}
   .menu{order:4;flex-wrap:wrap;gap:4px 14px}
   .alphabtn{display:inline-flex!important}
+  .panesbtn{display:none!important}
   .modebar .md{display:none}
   .browse,.app.scan-on .browse{display:block}
   .drawer{display:none;position:fixed;inset:0;z-index:60;background:var(--bg);overflow:auto;padding-bottom:30px}
@@ -377,9 +398,10 @@ html[data-script="my"] .res .ro{display:none}
   .scanpane{border-left:0;border-top:1px solid var(--rule)}
   .artnav .report{margin-left:0}
 }
-@media (min-width: 821px){
+@media (min-width: 1180px){   /* one header line only where it fits; below, the menu wraps (EN was clipped at ~1000 px) */
   .site{flex-wrap:nowrap}
   .site .home{flex:none}
   .site .menu{flex:none}
   .site .theme{margin-left:0;flex:none}
 }
+@media (max-width: 1179px){ .modebar .md{display:none} }   /* the mode description only where the bar has room */

@@ -115,7 +115,8 @@ def join(books):
                 if ol and wl:
                     S['lab_both'] += 1; ok = sp(ol) == wl; S['lab_agree'] += ok
                     j['label'] = 'agree' if ok else 'differs'
-                oa = ana((r.get('analysis') or '').partition('။')[0])
+                ours = r.get('analysis_read', '') if r.get('analysis_source') == 'pced' else r.get('analysis')   # our OCR
+                oa = ana((ours or '').partition('။')[0])
                 wa = ana((hit.get('analysis') or '').partition('။')[0])
                 if oa and wa:
                     x = round(SequenceMatcher(None, oa, wa).ratio(), 3); j['analysis_ratio'] = x
