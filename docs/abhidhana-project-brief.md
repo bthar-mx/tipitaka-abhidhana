@@ -1053,3 +1053,68 @@ the 100 stems cover 15.3% of stem occurrences. Also proposed: Spanish abbreviati
 drafts for the rest; where the doctrinal IEBH glossary is (only the grammatical one was found,
 `~/Tipitaka/nissaya/anchor/glosario-gramaticas.md`).
 
+
+## 38. The site redesign built: Browse is the home page (26 September 2026, early morning)
+
+Built from `docs/site-design.md` and the mockup artifact "Abhidhāna site mockup" (a reference, not
+code). **Browse** (`site/src/index.html`, `assets/browse.js`, data from `tools/abhidhana_browse.py`)
+is the home page:
+- a mode bar with two reading modes (Pāḷi reader / as printed), a settings panel (script,
+  definitions, labels, printed page) and the printed-page switch, off by default;
+- the alphabet in the dictionary's order with the two-level thumb index (group, syllable);
+- the headword list and the article: labels, analysis, "see" links, the **Meaning box**, the Burmese
+  definition, quoted passages and expandable citations;
+- the page image beside it on demand;
+- addresses `/w/<headword>` and `/browse/…`, and a header search with no diacritics, across all volumes;
+- a phone layout (the alphabet in a drawer).
+
+The old home page is now `/volumes/`. Labels and citation abbreviations are one page, `/abbreviations/`
+(`/labels` redirects there). Every page has the same header, with the warm palette from the mockup
+and the light/dark button.
+
+Tested with Playwright on a vol. 1 build (desktop and phone, light and dark, ES and EN): no script
+errors. The only failures were the external fonts and images, which the container cannot reach. The
+full build in the VM gives 950 files, 540 MB (largest chunk 1.5 MB), 221,154 entries in 385 groups
+and 820 chunks, 8,467 see-links and 84.7% of citations matched. **`site/src/labels/` is obsolete**:
+Angel removes it with `git rm -r`, and the build already drops it from `dist`.
+
+## 39. The Meaning box filled for vol. 1: drafts, not readings (26 September 2026, early morning)
+
+Angel's scope rule: **only the Burmese explanations are translated**, never the Pāḷi or the Pāḷi
+passages quoted as examples. He asked for the boxes to be filled while he was away. Nothing here
+is reviewed: every row is `drafted` in both languages, and the site says so in the box.
+
+**Source.** The PCED definition line for 8,148 articles, and our OCR for one. The PCED text is clean;
+its licence is unknown (§31), so the source is recorded per row (`source`).
+
+**Method** (`tools/abhidhana_meanings.py`, `docs/translation/drafting-brief.md`):
+1. `prep` replaces "X-ကြည့်", "X-လည်းကြည့်", "X-နှင့် အနက်တူ", "X,တူ" and "အထက်ပုဒ်နှင့် အနက်တူ"
+   with placeholders, rendered by rule: *Véase X.* / *Véase también X.* / *Mismo significado que X.*,
+   X romanised and linked to its headword.
+2. The rest was drafted from the Burmese in 16 parallel shards. Spanish was written directly from the
+   Burmese, and English alongside it, following the brief:
+   - hyphen alternatives kept apart as "a / b";
+   - ၊ → "; ";
+   - …သော၊ သူ၊ သည် → "(dicho de una persona o de una cosa)";
+   - the batch-1 renderings of `stems.tsv`, still *proposed*.
+3. Pāḷi was not translated. The drafts mark it and `merge` transliterates it (Aksharamukha, as
+   `abhidhana_romanise.py`). A doctrinal term missing from the table was kept in Pāḷi (*kusala*,
+   *jhāna*, *magga* …), because the IEBH doctrinal glossary was not found.
+
+**Counts.**
+- `docs/translation/meanings/01.jsonl` has 8,144 rows (5 have nothing to translate): 384 by formula
+  and 7,760 drafted.
+- 816 rows carry a flag: an unclear Burmese word, a likely misprint, or a "see X (n)" left inline.
+  They are listed in `meanings/01-flags.tsv`.
+- 555 Pāḷi terms were kept, in 1,636 articles. They are counted in `meanings/01-terms.tsv`, the
+  glossary proposals.
+- 1,523 links to other headwords resolve in the build.
+
+**Known weaknesses.**
+- Batch 1 is not approved. Two of its stems were rendered both ways: *akusala* (L067, "no saludable
+  (akusala)") and *anicca* (L071, "impermanente") sometimes appear rendered and sometimes kept in Pāḷi.
+  Once Angel approves or changes a stem, re-render the rows that use it and reset their status.
+- Proper names came out in lower case (*ajita*): the transliteration keeps the index's convention.
+- Sentences start in lower case, as dictionary glosses do.
+- The drafts are by article, constrained by the stem table, not composed stem by stem. The method's
+  "by stem" is kept at the level of the table, not of the sentence.

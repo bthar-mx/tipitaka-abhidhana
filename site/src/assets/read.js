@@ -136,7 +136,7 @@ function openPop(btn) {
   const meaning = L[LANG] || L.en;
   const prov = L.status === 'provisional' || (LANG === 'es' && L.es_status !== 'confirmed');
   pop = document.createElement('div'); pop.className = 'pop'; pop.setAttribute('role', 'dialog');
-  pop.innerHTML = `<div class="l1"><span class="my" lang="my">(${esc(btn.dataset.l)})</span><span>·</span>${L.printed ? `<span class="my" lang="my">${esc(L.printed)}</span><span>·</span>` : ''}${L.pali ? `<span class="pl" lang="pi">${esc(L.pali)}</span><span>·</span>` : ''}<span>${esc(meaning)}</span>${prov ? `<span class="prov">${esc(t('provisional'))}</span>` : ''}<a href="/labels/#l${L.k}" title="${esc(t('all_labels'))}" aria-label="${esc(t('all_labels'))}">↗</a></div>` +
+  pop.innerHTML = `<div class="l1"><span class="my" lang="my">(${esc(btn.dataset.l)})</span><span>·</span>${L.printed ? `<span class="my" lang="my">${esc(L.printed)}</span><span>·</span>` : ''}${L.pali ? `<span class="pl" lang="pi">${esc(L.pali)}</span><span>·</span>` : ''}<span>${esc(meaning)}</span>${prov ? `<span class="prov">${esc(t('provisional'))}</span>` : ''}<a href="/abbreviations/#l${L.k}" title="${esc(t('all_labels'))}" aria-label="${esc(t('all_labels'))}">↗</a></div>` +
     (btn.dataset.lo ? `<div class="l2">${esc(t('ocr_read'))}: <span class="my" lang="my">(${esc(btn.dataset.lo)})</span></div>` : '');
   document.body.appendChild(pop);
   const r = btn.getBoundingClientRect(), line = parseFloat(getComputedStyle(btn).lineHeight) || r.height;

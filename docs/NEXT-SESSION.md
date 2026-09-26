@@ -1,4 +1,4 @@
-# Abhidhāna — handover, 25 September 2026, afternoon (all 29 books done; page images next)
+# Abhidhāna — handover, 26 September 2026, early morning (site redesign built; vol. 1 Meaning boxes drafted)
 
 *All 29 books are digitised end to end, spot-checked and in the Reader: 221,154 index rows, 94.1%
 located, 88.1% with label + body (brief §30). Read
@@ -7,7 +7,7 @@ located, 88.1% with label + body (brief §30). Read
 vol. 6, §21 vol. 7, §22 vol. 8 and the gutter failures, §23 vol. 9, §24 the re-cut tool, §25 vol.
 14/2's text layer, §26 the batch (vols. 10–22), §27 vols. 23, 24, 14/2, the index's page errors,
 book 21 and the Reader in binary, §28 the website, the page images and the label table, §29 vol.
-21, vol. 25's resolution and the labels as the dictionary prints them, §30 vol. 25 and the total. Every figure is there.
+21, vol. 25's resolution and the labels as the dictionary prints them, §30 vol. 25 and the total, §31–37 the page images, the Introduction and the stem lexicon, §38 the site redesign, §39 the vol. 1 drafts. Every figure is there.
 `docs/labels.md` §0 holds the label table (the one source for the pipeline and the site),
 `docs/abbreviations.md` the dictionary's own abbreviations and its prose on the labels,
 `docs/index-errata.md` the index's errors, `docs/witness.md` and `docs/witness-join.md` the typed
@@ -53,11 +53,20 @@ vol. 25 runs.
    makes browsers revalidate `/data/*` and `/assets/*` on every load; with the old one-hour cache a
    visitor saw vol. 25 as "coming" after it was published.
 1. ~~Page images~~: all 29 books live, 25,700 pages, 2.5 GB; `check` clean (brief §35).
-1b. **Translation, batch 1** (brief §37): waiting for Angel's review of `docs/translation/batch01-review.md`
-   and his three decisions there (source text, composed drafts, the glossary). Then: fill the 390
-   formula articles of vol. 1, draft the rest in alphabetical runs, next batch of stems.
-2a. **Site redesign** per `docs/site-design.md` (agreed 25 Sep; the mockup is the artifact "Abhidhāna
-   site mockup"). Proposed changes to the spec sent to Angel before building; wait for his answer.
+1b. **Translation** (brief §37, §39). Vol. 1's Meaning boxes are filled with **drafts**: 8,144 rows in
+   `docs/translation/meanings/01.jsonl`, all `drafted`. Waiting for Angel:
+   - the batch 1 stems (`docs/translation/batch01-review.md`);
+   - the source decision (PCED or our OCR);
+   - where the IEBH doctrinal glossary is;
+   - a look at the flagged rows (`meanings/01-flags.tsv`, 816) and the kept Pāḷi terms
+     (`meanings/01-terms.tsv`, 555).
+
+   Once stems are approved, re-render the rows that use them. The next volumes follow the same path:
+   `python3 tools/abhidhana_meanings.py prep NN`, draft the shards per `docs/translation/drafting-brief.md`
+   (give each drafting agent its **own** scratch folder: shared helper scripts crossed shards in vol. 1),
+   then `merge NN`.
+2a. ~~Site redesign~~: built 26 Sep (brief §38). After Angel's push, check the live site. Browse is
+   the home page; `/volumes/` and `/abbreviations/` are new; run `git rm -r site/src/labels`.
 2. **The Introduction page** (brief §35) rebuilds itself from `docs/introduction/` on every push; keep the
    chapter files to the contract in `tools/abhidhana_intro.py`'s docstring. It shows drafts under a banner,
    while the About page's History waits for review (item 7c): decide whether ch. 4's names should wait too.
@@ -106,7 +115,7 @@ vol. 25 runs.
 10. **Vol. 13's sixteen pages of vol. 15 headwords** (`docs/index-errata.md` §2): their real
    headwords can only come from our OCR; a later task.
 
-Don't translate at scale. Flag uncertainty rather than guessing.
+Translate volume by volume only as drafts, never presented as readings. Flag uncertainty rather than guessing.
 
 ## Open questions
 

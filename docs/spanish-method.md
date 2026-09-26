@@ -36,6 +36,10 @@ The labels are a closed set and should be fixed once:
 | (၁)(၂)(၃) | | numbered senses | 1. 2. 3. |
 | (က)(ခ) | | lettered sub-senses | a. b. |
 
+**Only the Burmese explanation is translated** (Angel, 25 September 2026). The Pāḷi (the headword, the
+Pāḷi words inside a definition, and the Pāḷi passages quoted as examples) is romanised and never
+translated.
+
 **Do not carry Pāḷi gender onto the Spanish noun.** `hīnādisabhāva` is (ပု), masculine in
 Pāḷi; its Spanish rendering is *la naturaleza*, feminine, because Spanish gender follows
 Spanish. The label describes the Pāḷi word, not the translation.

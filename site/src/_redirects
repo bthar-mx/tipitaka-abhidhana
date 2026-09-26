@@ -1,3 +1,9 @@
 # The reader: /v/<book>/<pdf page> is served by read/index.html, which reads the path itself.
 /v/*  /read/  200
 /v    /       301
+# Browse (the home page) reads /w/<headword> and /browse/<letter>/<syllable> itself.
+/w/*       /  200
+/browse/*  /  200
+# Labels became part of Abbreviations (26 Sep 2026).
+/labels     /abbreviations/  301
+/labels/    /abbreviations/  301

@@ -6,7 +6,7 @@ const IMG = 'https://abhidhana-img.buddha-dhamma.net/';
 
 const T = {
   en: {
-    about: 'About', home: 'Volumes', intro: 'Introduction', v_tr: 'Translation', v_my: 'Burmese original', v_both: 'Side by side',
+    about: 'About', home: 'Volumes', intro: 'Introduction', browse: 'Browse', abbrs: 'Abbreviations', search_short: 'Search a Pāḷi word', v_tr: 'Translation', v_my: 'Burmese original', v_both: 'Side by side',
     abbr_ph: 'Search the abbreviations: ဒီ, dī, Dīgha…', abbr_n: (k, n) => k === n ? `${n} abbreviations` : `${k} of ${n} abbreviations`, to_dark: 'Switch to dark mode', to_light: 'Switch to light mode',
     search_ph: 'Search all volumes: အကုသလ or akusala',
     search_loading: 'Loading the headword list…',
@@ -38,7 +38,7 @@ const T = {
     notice: '<strong>Unproofed OCR.</strong> Each headword comes from the dictionary’s index and is spelled as the index spells it. Everything after it (label, analysis, definition, citations) is machine-read Burmese and contains errors. Check the page image before quoting an article.',
   },
   es: {
-    about: 'Acerca de', home: 'Volúmenes', intro: 'Introducción', v_tr: 'Traducción', v_my: 'Original birmano', v_both: 'En paralelo',
+    about: 'Acerca de', home: 'Volúmenes', intro: 'Introducción', browse: 'Consultar', abbrs: 'Abreviaturas', search_short: 'Buscar una palabra pāḷi', v_tr: 'Traducción', v_my: 'Original birmano', v_both: 'En paralelo',
     abbr_ph: 'Buscar en las abreviaturas: ဒီ, dī, Dīgha…', abbr_n: (k, n) => k === n ? `${n} abreviaturas` : `${k} de ${n} abreviaturas`, to_dark: 'Cambiar al modo oscuro', to_light: 'Cambiar al modo claro',
     search_ph: 'Buscar en todos los volúmenes: အကုသလ o akusala',
     search_loading: 'Cargando la lista de entradas…',
@@ -90,6 +90,8 @@ function applyLang() {
   document.querySelectorAll('[data-i18n-ph]').forEach(el => { el.placeholder = t(el.dataset.i18nPh); });
   document.querySelectorAll('.lang button').forEach(b => b.setAttribute('aria-pressed', b.dataset.lang === LANG));
   langHooks.forEach(f => f());
+  const path = location.pathname, home = !/^\/(volumes|introduction|abbreviations|about|v)\b/.test(path.slice(0));
+  document.querySelectorAll('.menu a[data-nav]').forEach(a => { const n = a.dataset.nav; const on = n === '/' ? home : path.startsWith(n); if (on) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current'); });
 }
 function setLang(l) { LANG = l; try { localStorage.setItem('lang', l); } catch (e) {} applyLang(); }
 document.addEventListener('click', e => { const b = e.target.closest('.lang button'); if (b) setLang(b.dataset.lang); });

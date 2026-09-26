@@ -13,7 +13,8 @@ A book is published when its articles.jsonl and pali.jsonl exist; the others are
 only our OCR and what the project adds (structure, labels, romanisation, attestation, status).
 
 Output, site/dist/ (gitignored):
-    everything in site/src/, with <!--VOLUMES--> in index.html filled in
+    everything in site/src/, with <!--VOLUMES--> in volumes/index.html filled in; index.html is Browse
+    (assets/browse.js, data from tools/abhidhana_browse.py)
     introduction/index.html   <!--INTRO--> filled from docs/introduction/ (tools/abhidhana_intro.py)
     about/index.html      <!--HISTORY-EN--> / <!--HISTORY-ES--> filled from docs/history.md, but only
                           when its first lines hold `<!-- site: publish -->` (the romanised names
@@ -23,7 +24,8 @@ Output, site/dist/ (gitignored):
     data/v<book>.json     one per published book: compact records, in index order
     data/search.json      [book, id, p, h, r] per headword, for search across all books
     data/labels.json      the label table (no OCR readings), with the number of articles per label
-    labels/index.html     the Labels page: <!--LABELS--> filled with the table
+    abbreviations/index.html  <!--LABELS--> (the label table) and <!--ABBR--> (the citation abbreviations)
+    data/v<book>.json records carry t = {es|en: {x: text, s: status}} from docs/translation/meanings/<book>.jsonl
 
 Record keys (as in the Reader, docs of tools/abhidhana_reader_data.py, plus i, s, m):
     i id  p PDF page  q printed page  h headword  r IAST  o OSBCT  x v/f/u  l label  lo OCR label
@@ -44,7 +46,7 @@ MAX_FILES = 20000                # and 20,000 files per site on the free plan
 
 
 def records(book):
-    P = {}
+    P = {}; TR = meanings(book)
     with (ROOT / f'ocr/{book}/pali.jsonl').open(encoding='utf-8') as f:
         for line in f:
             r = json.loads(line); P[r['id']] = r
@@ -64,11 +66,29 @@ def records(book):
             if r.get('citations'): d['c'] = r['citations']
             if p.get('analysis_iast'): d['ai'] = p['analysis_iast']
             if p.get('citations_iast'): d['ci'] = p['citations_iast']
-            if p.get('pali'): d['sp'] = [[s['start'], s['end'], s['iast']] for s in p['pali']]
+            if p.get('pali'): d['sp'] = [[s['start'], s['end'], s['iast'], s.get('tokens', 1)] for s in p['pali']]
             d['s'] = r.get('status') or 'ocr'
             if r.get('index_misfiled'): d['m'] = 1
+            if r['id'] in TR: d['t'] = TR[r['id']]
             V.append(d)
     return V
+
+
+def meanings(book):
+    """the Meaning box: docs/translation/meanings/<book>.jsonl, one row per article --
+    {id, es, en, status_es, status_en, source} -> {article id: {'es': {x, s}, 'en': {x, s}}}.
+    Only the Burmese explanation is translated; every row carries its status
+    (drafted / reviewed / corrected), which the site shows beside the text."""
+    f = ROOT / f'docs/translation/meanings/{book}.jsonl'
+    out = {}
+    if not f.exists(): return out
+    for line in f.open(encoding='utf-8'):
+        if not line.strip(): continue
+        r = json.loads(line); t = {}
+        for lang in ('es', 'en'):
+            if r.get(lang): t[lang] = {'x': r[lang], 's': r.get(f'status_{lang}') or 'drafted'}
+        if t: out[r['id']] = t
+    return out
 
 
 def dump(path, obj):
@@ -142,12 +162,12 @@ def main():
     ip = OUT / 'introduction/index.html'
     ip.write_text(intro_fill(ip.read_text(encoding='utf-8')), encoding='utf-8')
     (OUT / 'data').mkdir()
-    search = []; lab_n = {}
+    search = []; lab_n = {}; book_records = {}
     for v in vols:
         b = v['id']
         if not ((ROOT / f'ocr/{b}/articles.jsonl').exists() and (ROOT / f'ocr/{b}/pali.jsonl').exists()):
             v['status'] = 'coming'; continue
-        V = records(b)
+        V = records(b); book_records[b] = V
         dump(OUT / f'data/v{b}.json', V)
         n = len(V)
         v.update(status='done', records=n, pages=len({d['p'] for d in V}),
@@ -158,6 +178,8 @@ def main():
             if d.get('l'): lab_n[d['l']] = lab_n.get(d['l'], 0) + 1
         print(f'{b:>3}: {n:,} records, {(OUT / f"data/v{b}.json").stat().st_size / 1e6:.1f} MB')
     dump(OUT / 'data/volumes.json', vols)
+    from abhidhana_browse import build as browse_build   # the Browse page's data (nav, chunks, shards)
+    browse_build(OUT, vols, book_records, dump)
     dump(OUT / 'data/search.json', search)
     labels = [{k: d.get(k, '') for k in ('label', 'printed', 'pali', 'en', 'es', 'abbr_en', 'abbr_es',
                                          'status', 'es_status', 'source')}
@@ -178,8 +200,11 @@ def main():
             f'<td class="st"><span class="tr" lang="en">{st[0]}</span><span class="tr" lang="es">{st[1]}</span>'
             f'<div class="src">{E(d["source"])}</div></td>'
             f'<td class="num">{d["n"]:,}</td></tr>')
-    lp = OUT / 'labels/index.html'
-    lp.write_text(lp.read_text(encoding='utf-8').replace('<!--LABELS-->', '\n'.join(lrows)), encoding='utf-8')
+    from abhidhana_intro import abbreviations_html   # docs/introduction/citation-abbreviations.tsv
+    lp = OUT / 'abbreviations/index.html'
+    lp.write_text(lp.read_text(encoding='utf-8').replace('<!--LABELS-->', '\n'.join(lrows))
+                  .replace('<!--ABBR-->', abbreviations_html()[0]), encoding='utf-8')
+    if (OUT / 'labels').exists(): shutil.rmtree(OUT / 'labels')   # now part of /abbreviations/ (see _redirects)
 
     # the volume list, in the page itself (readable without JavaScript and by search engines)
     rows = []
@@ -194,7 +219,7 @@ def main():
                 f'<span class="state {"done" if done else "coming"}" data-i18n="{"st_done" if done else "st_coming"}">'
                 f'{"digitised" if done else "coming"}</span>')
         rows.append(f'<li class="vol{"" if done else " soon"}" data-id="{v["id"]}">{link}{stat}</li>')
-    ix = OUT / 'index.html'
+    ix = OUT / 'volumes/index.html'
     ix.write_text(ix.read_text(encoding='utf-8').replace('<!--VOLUMES-->', '\n'.join(rows)), encoding='utf-8')
 
     files = [f for f in OUT.rglob('*') if f.is_file()]
