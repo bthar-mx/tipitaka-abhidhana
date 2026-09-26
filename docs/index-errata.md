@@ -58,7 +58,7 @@ needs only one of its two; vol. 18 needs none.
 | 10 | 81979 | ဒသအကုလလကမ္မပထ | ဒသအကုသလ(ဒသာကုသလ)ကမ္မပထ | image, PDF 220 |
 | 23 | 188777 | အဟဿအဿာဇာနီယ | presumably သဟဿ… | **not checked** |
 | 4b | — | ဥဒယဗ္ဗကဉာကပဋိပါဋိ | ဥဒယဗ္ဗယညာဏပဋိပါဋိ | image (brief §15) |
-| 4c | — | ဩလမ္ဗတကုလာဝက, ဥဒါနိ, ဥပါဃာတဘူမိ, စကစတုက္ကာဒိကဆတ္တိက | printed forms not recorded in the brief | image (brief §16) |
+| 4c | — | ဩလမ္ဗတကုလာဝက, ဥဒါနိ, ဥပါဃာတဘူမိ, စကစတုက္ကာဒိကဆတ္တိက (printed ဧကစတုက္ကာဒိကဆတ္တိက, id 172639, PDF p. 85: Angel 26 Sep 2026, corrected via `docs/corrections.tsv`) | the other printed forms not recorded in the brief | image (brief §16) |
 | 4c | — | ဧဏိ / ဧဏီ as two bare headwords | one variant entry | image |
 | 4c | — | ဥပက္ကိလေသ | no printed entry found | image |
 | 05 | — | ကဉ္စိက | ကဉ္ဇိက | image (brief §17) |

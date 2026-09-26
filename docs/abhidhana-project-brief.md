@@ -1118,3 +1118,62 @@ its licence is unknown (§31), so the source is recorded per row (`source`).
 - Sentences start in lower case, as dictionary glosses do.
 - The drafts are by article, constrained by the stem table, not composed stem by stem. The method's
   "by stem" is kept at the level of the table, not of the sentence.
+
+## 40. After the redesign went live: site fixes, PCED analyses, sano / insano (26 September 2026, night)
+
+**The live site was checked after Angel's push** (in-app browser): Browse at `/`, `/w/<headword>`,
+`/volumes/` (29 of 29 books), `/abbreviations/` (labels and 100 citation abbreviations), `/labels`
+redirecting, the 404 page, the phone layout at 375 px (no horizontal scroll, the alphabet drawer).
+The vol. 1 Meaning boxes: 8,143 of 8,150 rows carry ES and EN, all `drafted`. **Six rows have none,
+not five as §39 says** (ids 21, 2190, 3938, 3988, 5435, 7881): no PCED line, and at least 21 and 3988
+have a translatable OCR definition. Row 2767 (the one drafted from OCR) keeps Burmese tree names and a
+Pāḷi quotation inside the Meaning. The Pāḷi-span finder reads Burmese words as Pāḷi (အစ "beginning"
+romanised *aca-* on `/w/a` and listed as a quoted passage); how often is not measured.
+
+**Fixes asked for by Angel, built and tested with Playwright on a full local build** (desktop 1,000 /
+1,440 px, phone 390 px; no script errors):
+- The header search list overlapped the headword and "vol. · p." in a narrow box: the list is now at
+  least 440 px wide and puts the page line under the headword. 0 overlaps in the first 15 results.
+- **Hide index / Mostrar índice** (modebar button, key `\`, desktop only): hides the alphabet and the
+  headword list; the article, and the printed page if on, take the width. Remembered per browser
+  (`localStorage['browse-panes']`), kept apart from the reading mode.
+- **The label as the dictionary prints it, romanised**: *akuppa* (ti). `docs/labels.md` §0 has a new
+  column `roman` (Aksharamukha, ၊ written ", "; mechanical, for Angel to confirm, e.g. (a-liṅ) for
+  (အ-လိင်)); the table is otherwise identical (checked field by field). The Pāḷi reader mode now shows
+  labels "as printed" in the chosen script: (ti) in roman, (တိ) in Burmese, both in both; the pop-up
+  still gives the meaning. A saved named mode takes its current defaults. `/abbreviations/` shows the
+  roman form under each label. Spanish abbreviations (`abbr. es`) are all still empty.
+- The ES/EN switch was clipped at ~1,000 px: the header keeps to one line only from 1,180 px, and the
+  switch no longer shrinks. The modebar's description is hidden below 1,180 px.
+- The alphabet in the left pane shows roman letters only in roman mode, Burmese only in Burmese mode.
+
+**Hand corrections** (`docs/corrections.tsv`, `tools/abhidhana_corrections.py`): one row per corrected
+field (label, analysis or body), with the OCR reading at the time, who and when. Applied last in
+`abhidhana_articles.py`, so re-runs keep them; the row keeps status `ocr` and gains `corrected`; the site
+marks the field "corrected". First entry: akusala (505) [န + ကုသလ], OCR ကုသလျ (Angel). A corrected **headword** (an index
+typo) is shown, romanised and filed under its printed spelling, with the index's kept as
+`headword_index` and shown on the page: 4c id 172639, index စကစတုက္ကာဒိကဆတ္တိက, printed
+ဧကစတုက္ကာဒိကဆတ္တိက [ဧကစတုက္ကာ + ဒ + ဆတ္တက] (Angel), now under *e*, not *c*. Re-run of vol. 1:
+exactly that row changed in `articles.jsonl` and `pali.jsonl`.
+
+**The compound analysis from PCED** (Angel's decision; `tools/abhidhana_witness_analysis.py`). Measured
+first, books 01–19 with 4a, 4b: of 119,627 articles where both have an analysis, **60,859 (50.9%)
+differ** after spaces and + are evened out; PCED's elements spell the headword more closely in 50,431,
+ours in 3,402, 7,026 tie; PCED has one for 35,445 articles where we read none. Angel's checks: akusala,
+akuppa [န + ကုပ္ပ] (OCR ကပ္ပါ), akusaladhātu [အကုသလ + ဓာတု] (OCR ဓာတျ): PCED right each time. So
+`abhidhana_articles.py` now takes PCED's analysis (whole, as its field runs past ။ like the print's
+bracket) wherever the join pairs a PCED entry that has one; the OCR reading stays as `analysis_read`,
+the row carries `analysis_source: "pced"`, hand corrections still win. The witness joins and the
+report's "recovered by the OCR" line measure `analysis_read`, not PCED's text. Re-run for all 21 books
+with a join: 155,072 rows take PCED's analysis; **no field other than the analysis changed in any row**
+(checked by a per-row digest). Romanisation re-run. The site marks such analyses "PCED". Books 4/3's
+own text, 14/2, 14/3 and 20–25 keep the OCR. README and About now credit PCED and say where its text
+is used (they had said nothing of it was published, which the vol. 1 drafts had already made untrue).
+
+**sano / insano** (Angel): kusala = *sano*, akusala = *insano* in Spanish. `docs/translation/glossary.tsv`
+records it (the first entries of the doctrinal glossary; English open); `stems.tsv` L067 is
+`confirmed-es`. In `meanings/01.jsonl` 134 rows changed, Spanish only: "no saludable (akusala)" and
+kept *kusala* / *akusala* became *sano/sana/sanos* agreeing with the noun, *lo sano / lo insano* as a
+noun or a hyphen alternative, "y" → "e" before *insano*; *akusala* kept where the word itself is meant
+(544, 587); compounds (*akusalavipāka* …) untouched. Status stays `drafted`. Batch 1's other stems are
+still not reviewed (Angel: "I don't know").

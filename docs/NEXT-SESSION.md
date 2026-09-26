@@ -1,4 +1,4 @@
-# Abhidhāna — handover, 26 September 2026, early morning (site redesign built; vol. 1 Meaning boxes drafted)
+# Abhidhāna — handover, 26 September 2026, night (site fixes; analyses from PCED; sano / insano)
 
 *All 29 books are digitised end to end, spot-checked and in the Reader: 221,154 index rows, 94.1%
 located, 88.1% with label + body (brief §30). Read
@@ -7,7 +7,7 @@ located, 88.1% with label + body (brief §30). Read
 vol. 6, §21 vol. 7, §22 vol. 8 and the gutter failures, §23 vol. 9, §24 the re-cut tool, §25 vol.
 14/2's text layer, §26 the batch (vols. 10–22), §27 vols. 23, 24, 14/2, the index's page errors,
 book 21 and the Reader in binary, §28 the website, the page images and the label table, §29 vol.
-21, vol. 25's resolution and the labels as the dictionary prints them, §30 vol. 25 and the total, §31–37 the page images, the Introduction and the stem lexicon, §38 the site redesign, §39 the vol. 1 drafts. Every figure is there.
+21, vol. 25's resolution and the labels as the dictionary prints them, §30 vol. 25 and the total, §31–37 the page images, the Introduction and the stem lexicon, §38 the site redesign, §39 the vol. 1 drafts, §40 the site fixes, the PCED analyses, hand corrections and sano / insano. Every figure is there.
 `docs/labels.md` §0 holds the label table (the one source for the pipeline and the site),
 `docs/abbreviations.md` the dictionary's own abbreviations and its prose on the labels,
 `docs/index-errata.md` the index's errors, `docs/witness.md` and `docs/witness-join.md` the typed
@@ -53,11 +53,21 @@ vol. 25 runs.
    makes browsers revalidate `/data/*` and `/assets/*` on every load; with the old one-hour cache a
    visitor saw vol. 25 as "coming" after it was published.
 1. ~~Page images~~: all 29 books live, 25,700 pages, 2.5 GB; `check` clean (brief §35).
-1b. **Translation** (brief §37, §39). Vol. 1's Meaning boxes are filled with **drafts**: 8,144 rows in
+0b. **Push the 26 Sep night work** (brief §40), then check the live site: the search list, Hide index
+   (`\`), (ti) labels, the ES/EN switch at ~1,000 px, the alphabet in roman mode, the "PCED" and
+   "corrected" marks on analyses, the About credits. `tmp/sitetest/` holds the test tarballs (gitignored;
+   delete by hand). The Reader artifact is not republished with the new analyses
+   (`abhidhana_reader_data.py` for all books, then republish).
+0c. **Hand corrections** go in `docs/corrections.tsv` (brief §40); re-run `abhidhana_articles.py NN` and
+   `abhidhana_romanise.py NN`. Confirm the `roman` column of `docs/labels.md` §0.
+1b. **Translation** (brief §37, §39, §40). Source: **PCED** (Angel, 26 Sep). kusala = *sano*, akusala =
+   *insano* (`docs/translation/glossary.tsv`); the other batch-1 stems are not yet reviewed. Six vol. 1
+   rows have no draft (ids 21, 2190, 3938, 3988, 5435, 7881); row 2767 needs its Burmese tree names. Vol. 1's Meaning boxes are filled with **drafts**: 8,144 rows in
    `docs/translation/meanings/01.jsonl`, all `drafted`. Waiting for Angel:
    - the batch 1 stems (`docs/translation/batch01-review.md`);
-   - the source decision (PCED or our OCR);
-   - where the IEBH doctrinal glossary is;
+   - further doctrinal terms for `glossary.tsv` (no IEBH doctrinal glossary was found; the one lead,
+     `~/Tipitaka/nissaya/anchor/glosario-data.json`, is grammatical and names `comun/glosario.md`
+     in another repo);
    - a look at the flagged rows (`meanings/01-flags.tsv`, 816) and the kept Pāḷi terms
      (`meanings/01-terms.tsv`, 555).
 
