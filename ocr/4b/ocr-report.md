@@ -1,7 +1,7 @@
 # Vol. 4b (ဥဒ – ဥဠုရာဇ) — OCR report
 
 *25 September 2026. `tools/abhidhana_ocr.py 4b --columns --dpi 72 --passes page.psm6 --workers 10`,
-run natively on Angel's Mac. Figures measured from `ocr/4b/pages/` with `--score`.*
+run natively on the editor's Mac. Figures measured from `ocr/4b/pages/` with `--score`.*
 
 Book 4b is vol. 4, part 2. 681 PDF pages: 16 of front matter, 631 carrying index entries, 33 inside
 the body that the index does not cover (a long article fills them), and 1 of back matter (p. 681).

@@ -8,7 +8,7 @@
 
 The database of Pn Daza's Android app **Pali-Myanmar Dictionary**,
 [github.com/pndaza/pali-myanmar-dictionary](https://github.com/pndaza/pali-myanmar-dictionary),
-downloaded by Angel from the Google Drive link in its README
+downloaded by the editor from the Google Drive link in its README
 (`drive.google.com/open?id=1xAAMVPrIBPpmb7VeI1k_Zl9WiTgwoVY8`). The README says the app combines the
 Tipiṭaka dictionary, U Hut Sein's dictionary and Merit Sharer's Pali Myanmar Dictionary, credits
 **ဆရာတော် ဦးဣန္ဒောဘာသ** for the iOS dictionary and **Merit Sharer** for theirs, and uses MDetect and

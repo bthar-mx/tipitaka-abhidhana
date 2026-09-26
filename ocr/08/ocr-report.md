@@ -1,7 +1,7 @@
 # Vol. 8 (ဆိဒ္ဒ – ဏျပစ္စယတ္ထ) — OCR report
 
 *25 September 2026. `ABHIDHANA_TESSDATA=~/Tipitaka/nissaya/tessdata python3 tools/abhidhana_ocr.py 08
---columns --dpi 72 --passes page.psm6 --workers 10 --budget 100000`, run natively on Angel's Mac.
+--columns --dpi 72 --passes page.psm6 --workers 10 --budget 100000`, run natively on the editor's Mac.
 Figures measured from `ocr/08/pages/` with `--score`.*
 
 849 PDF pages: 40 of front matter, 687 carrying index entries, 119 inside the body that the index

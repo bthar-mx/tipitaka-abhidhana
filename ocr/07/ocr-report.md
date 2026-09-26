@@ -1,7 +1,7 @@
 # Vol. 7 (စ – ဆိဒ္ဒေယျုံ) — OCR report
 
 *25 September 2026. `ABHIDHANA_TESSDATA=~/Tipitaka/nissaya/tessdata python3 tools/abhidhana_ocr.py 07
---columns --dpi 72 --passes page.psm6 --workers 10 --budget 100000`, run natively on Angel's Mac.
+--columns --dpi 72 --passes page.psm6 --workers 10 --budget 100000`, run natively on the editor's Mac.
 Figures measured from `ocr/07/pages/` with `--score`.*
 
 861 PDF pages: 60 of front matter, 714 carrying index entries, 74 inside the body that the index

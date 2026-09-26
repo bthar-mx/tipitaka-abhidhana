@@ -109,8 +109,8 @@ nipāta.
 
 The "Pāḷi" column gives the Pāḷi term behind each Burmese expansion; "kammavācaka-kriyā" and
 "sakkata/pākata" are our rendering of the Burmese (ကံဟော "expressing the object"; သက္ကတ,
-ပြာကြိုဋ်), for Angel to confirm. The "meaning" column is an English gloss only; the Spanish
-belongs in `docs/labels.md` after Angel's review.
+ပြာကြိုဋ်), for the editor to confirm. The "meaning" column is an English gloss only; the Spanish
+belongs in `docs/labels.md` after the editor's review.
 
 The two columns on this page are set with the expansion slightly above its abbreviation; pairs
 above follow the printed order. The abbreviation for the 5th case is a ligature not fully legible
@@ -119,10 +119,10 @@ at this resolution.
 ## What this settles in `docs/labels.md` (now applied there, §0)
 
 - (ကြိ၊ဝိ) = **kriyāvisesana**: the guess was right, now confirmed by the print.
-- (ကာ၊ကြိ) = **kārita-kriyā** and (ဗျ) = **abyaya(pada)**: printed, and confirmed by Angel.
+- (ကာ၊ကြိ) = **kārita-kriyā** and (ဗျ) = **abyaya(pada)**: printed, and confirmed by the editor.
 - (ကမ္မ၊ကြိ) = **kammavācaka kriyā** (passive), so (ကာ၊ကမ္မ၊ကြိ) is a **causative passive** verb.
 - (ပုံ-ဗဟု): ဗ/ဗဟု = **bahuvacana**, plural.
 - (စတုတ္ထန္တ), (တတိယန္တ-ဗျ): built on the case names စတုတ္ထီ, တတိယာ ("ending in the 4th/3rd case").
-- Not in either table: (နာမ-ကြိ), so "nāmadhātu (denominative)" stays a proposal for Angel.
+- Not in either table: (နာမ-ကြိ), so "nāmadhātu (denominative)" stays a proposal for the editor.
 - The case and number abbreviations (ဧ, ဗ, ပ, ဒု, တ, စ, ပဉ္စ, ဆ, သ) are not labels in the label slot;
   they appear inside analyses and definitions, and the Reader's tooltips can use this table for them too.

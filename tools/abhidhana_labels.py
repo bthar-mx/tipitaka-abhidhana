@@ -14,10 +14,10 @@ Columns are found by their header, so their order may change and new ones may be
 - label      the label as printed, without brackets
 - roman      the printed label romanised, with brackets: (ti), (pu, na); what the Pāḷi reader shows
 - printed    the dictionary's own expansion, from its tables of abbreviations (docs/abbreviations.md)
-- Pāḷi       its expansion (IAST); a trailing ? marks a term for Angel to confirm
+- Pāḷi       its expansion (IAST); a trailing ? marks a term for the editor to confirm
 - English, Spanish   what it marks, in words, as the site's pop-up shows it
 - abbr. en, abbr. es the short gloss shown beside the label; empty = none shown
-- status     confirmed (Angel has agreed it), printed (the dictionary itself gives the meaning),
+- status     confirmed (the editor has agreed it), printed (the dictionary itself gives the meaning),
              or provisional (our reading of the dictionary's usage)
 - es         confirmed or draft: whether the Spanish words are agreed
 - source     where the meaning is printed, or how it was inferred

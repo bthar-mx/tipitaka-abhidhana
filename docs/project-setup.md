@@ -43,7 +43,7 @@ Method:
   headword can be checked against OSBCT; about two thirds are attested whole or inside a
   canonical word. Say so; do not promise the nissaya's standard of proof.
 - **The Burmese side has no anchor.** Nothing validates a definition or its translation but
-  Angel. Carry a status — ocr / drafted / reviewed / corrected — on every row, and never
+  the editor. Carry a status — ocr / drafted / reviewed / corrected — on every row, and never
   present a drafted rendering as a reading.
 
 Spanish is translated **from the Burmese, never relayed through English**, and **by stem,

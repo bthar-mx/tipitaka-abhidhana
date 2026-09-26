@@ -1,6 +1,6 @@
 # Vol. 13 (ပ – ပဋိဗြူဟန) — OCR report
 
-*25 September 2026. `tools/run_volumes.sh` (Angel's batch, natively on the Mac):
+*25 September 2026. `tools/run_volumes.sh` (the editor's batch, natively on the Mac):
 `abhidhana_ocr.py 13 --columns --dpi 73 --passes page.psm6 --workers 10`, then the articles and
 romanisation steps. Figures measured from `ocr/13/pages/` with `--score` and from `logs/run-20260925-0920.log`.*
 

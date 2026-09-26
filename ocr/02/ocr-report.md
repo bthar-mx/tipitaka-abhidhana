@@ -1,7 +1,7 @@
 # Vol. 2 (အနု – အဗ္ဘောက္ကိရဏ) — OCR report
 
 *24 September 2026. `tools/abhidhana_ocr.py 02 --columns --dpi 72 --passes page.psm6 --workers 10`,
-run natively on Angel's Mac (Homebrew tesseract, `myap`), about 45 pages a minute. Figures
+run natively on the editor's Mac (Homebrew tesseract, `myap`), about 45 pages a minute. Figures
 measured from `ocr/02/pages/`.*
 
 898 PDF pages: 18 of front matter, 855 carrying index entries, 24 inside the body that the

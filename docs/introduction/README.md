@@ -12,7 +12,7 @@ into English and Spanish, each made from the Burmese.
 2. **Translate** the transcription into English and into Spanish separately. Spanish is translated
    from the Burmese, not relayed through English. Pāḷi technical terms are kept in Pāḷi, glossed at
    first use, and follow the IEBH glossary once it has them.
-3. **Status** per part: `drafted` (Claude) → `reviewed` (Angel) → `corrected`. Nothing drafted is a
+3. **Status** per part: `drafted` (Claude) → `reviewed` (the editor) → `corrected`. Nothing drafted is a
    reading until reviewed.
 
 One file per chapter, each with three sections: Burmese, English, Spanish, then notes for review.

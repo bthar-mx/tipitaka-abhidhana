@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-"""The compound analysis [ ] from the typed PCED witness, where it has one (Angel, 26 Sep 2026).
+"""The compound analysis [ ] from the typed PCED witness, where it has one (the editor, 26 Sep 2026).
 
 Measured before the decision, books 01-19 (4a, 4b included): of 119,627 articles where both our
 OCR and PCED have an analysis, 60,859 (50.9%) differed after spaces and + signs were evened out;
 in 50,431 of those PCED's elements spelled the headword more closely, in 3,402 ours did, 7,026
-tied. PCED also has an analysis for 35,445 articles where the OCR gave none. Spot checks by Angel:
+tied. PCED also has an analysis for 35,445 articles where the OCR gave none. Spot checks by the editor:
 akusala [န + ကုသလ] (OCR ကုသလျ), akuppa [န + ကုပ္ပ] (OCR ကပ္ပါ) -- PCED right both times.
 
 So abhidhana_articles.py calls apply() after reading the articles and before the hand corrections
@@ -18,7 +18,7 @@ and keeps analysis_ocr (the reading before the + signs were repaired) if it had 
 
 The witness is PCED, Pali Canon E-Dictionary 1.94's "Tipiṭaka Pāḷi-Myanmar Dictionary" (repo
 siongui/data), converted from Zawgyi by tools/abhidhana_witness.py. Its licence is not stated;
-Angel decided on 26 Sep 2026 to publish its analyses (and to draft the Meaning boxes from its
+The editor decided on 26 Sep 2026 to publish its analyses (and to draft the Meaning boxes from its
 definitions), credited on the site and in the README. Books it does not cover (4/3's own text,
 14/2, 14/3, 20-25) keep the OCR. witness/ is gitignored, so this runs only where it exists:
 without it the OCR stays, and the step says so.

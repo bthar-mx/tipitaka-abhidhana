@@ -1,7 +1,7 @@
 # Vol. 6 (ကိလေသ – ငကာရ) — OCR report
 
 *25 September 2026. `ABHIDHANA_TESSDATA=~/Tipitaka/nissaya/tessdata python3 tools/abhidhana_ocr.py 06
---columns --dpi 75 --passes page.psm6 …`, run natively on Angel's Mac (the dpi and passes are those
+--columns --dpi 75 --passes page.psm6 …`, run natively on the editor's Mac (the dpi and passes are those
 recorded in the page records; the worker count is not recorded). Figures measured from
 `ocr/06/pages/` with `--score`.*
 

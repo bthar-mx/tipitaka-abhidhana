@@ -1,7 +1,7 @@
 # Vol. 3 (အဗျဂ္ဂ – အဠာရပမှ) — OCR report
 
 *24 September 2026. `tools/abhidhana_ocr.py 03 --columns --dpi 75 --passes page.psm6 --workers 10`,
-run natively on Angel's Mac. Figures measured from `ocr/03/pages/`.*
+run natively on the editor's Mac. Figures measured from `ocr/03/pages/`.*
 
 1,177 PDF pages: 8 of front matter, 1,124 carrying index entries, 43 inside the body that the
 index does not cover (a long article fills them), and 2 of back matter (pp. 1176–1177). **11,726

@@ -4,7 +4,7 @@
 
 | | status |
 |---|---|
-| Burmese transcription | **drafted** — read by Claude from the page images (130 dpi), not yet checked by Angel |
+| Burmese transcription | **drafted** — read by Claude from the page images (130 dpi), not yet checked by the editor |
 | English | **drafted** — translated from the Burmese |
 | Spanish | **drafted** — translated from the Burmese, not from the English |
 

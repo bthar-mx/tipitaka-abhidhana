@@ -1,4 +1,4 @@
-# Abhidhāna — handover, 27 September 2026, later (vols. 4/1–4/2 drafted; footer, citations, links; v0.8.0)
+# Abhidhāna — handover, 26 September 2026, later still (vol. 5 drafted; 4/3 deferred; analysis split; printed pages; v0.9.0)
 
 *All 29 books are digitised end to end, spot-checked and in the Reader: 221,154 index rows, 94.1%
 located, 88.1% with label + body (brief §30). Read
@@ -7,7 +7,7 @@ located, 88.1% with label + body (brief §30). Read
 vol. 6, §21 vol. 7, §22 vol. 8 and the gutter failures, §23 vol. 9, §24 the re-cut tool, §25 vol.
 14/2's text layer, §26 the batch (vols. 10–22), §27 vols. 23, 24, 14/2, the index's page errors,
 book 21 and the Reader in binary, §28 the website, the page images and the label table, §29 vol.
-21, vol. 25's resolution and the labels as the dictionary prints them, §30 vol. 25 and the total, §31–37 the page images, the Introduction and the stem lexicon, §38 the site redesign, §39 the vol. 1 drafts, §40 the site fixes, the PCED analyses, hand corrections and sano / insano, §41 versioned assets and vol. 2's drafts, §42 the live check after `5db316f`, vol. 3's drafts and version numbers, §43 vols. 4/1–4/2, the IEBH footer, citation tooltips, cross-reference links and the labels Angel reviewed. Every figure is there.
+21, vol. 25's resolution and the labels as the dictionary prints them, §30 vol. 25 and the total, §31–37 the page images, the Introduction and the stem lexicon, §38 the site redesign, §39 the vol. 1 drafts, §40 the site fixes, the PCED analyses, hand corrections and sano / insano, §41 versioned assets and vol. 2's drafts, §42 the live check after `5db316f`, vol. 3's drafts and version numbers, §43 vols. 4/1–4/2, the IEBH footer, citation tooltips, cross-reference links and the labels the editor reviewed, §44 the live check after v0.8.0, vol. 4/3 deferred, vol. 5's drafts, the analysis split from its derivation and printed page numbers. Every figure is there.
 `docs/labels.md` §0 holds the label table (the one source for the pipeline and the site),
 `docs/abbreviations.md` the dictionary's own abbreviations and its prose on the labels,
 `docs/index-errata.md` the index's errors, `docs/witness.md` and `docs/witness-join.md` the typed
@@ -17,7 +17,7 @@ witness.*
 
 - Connect `~/Documents/abhidhana` (the git working copy of the public repo
   `bthar-mx/tipitaka-abhidhana`) and `~/Tipitaka/nissaya` (for `tessdata/`).
-- **Don't run `git` from the Cowork VM**: it leaves an `index.lock` it cannot delete. Angel runs
+- **Don't run `git` from the Cowork VM**: it leaves an `index.lock` it cannot delete. The editor runs
   git and `gh` in Terminal; the session has no GitHub credentials.
 - **Run OCR natively on the Mac** (about 45 pages a minute with `--workers 10`). Check the dpi per
   book with `pdfimages -list`, and **measure a sample before trusting "native"**: vol. 25 read far
@@ -47,16 +47,19 @@ vol. 25 runs.
 
 ## Next, in order
 
-00. ~~Versions~~: tags v0.1.0–v0.7.0 created by Angel; the footer shows `VERSION` (brief §43). Tag **v0.8.0** on the
-   push of §43. Each push that changes data or the site: bump `VERSION`, add a `CHANGELOG.md` section, tag.
-00c. **After the §43 push, check the live site**: the IEBH footer and ↑ button on every page (Browse: end of the
-   article), "Análisis" without PCED, About → Testigos mecanografiados, citation tooltips (hover a citation), the
-   Burmese definition's "see X" links, the mode bar wording, the Categorías page (*nombre*, confirmed rows).
-   **"Budistas" or "Buddhistas"**: the logo and the footer say Buddhistas, About and README say Budistas; Angel to decide.
-00b. ~~Check the live site after `5db316f`~~: done 27 Sep (brief §42).
+00. ~~Versions~~: tags v0.1.0–v0.8.0 created by the editor; the footer shows `VERSION` (brief §43). Tag **v0.9.0** on the
+   push of §44. Each push that changes data or the site: bump `VERSION`, add a `CHANGELOG.md` section, tag.
+00d. **After the §44 push, check the live site**: `/w/katvā` shows `[kara + tvā]` with the Burmese analysis on its own
+   line below; `/w/ulūka` the romanised derivation (`… dhān ṭī 638. ula + ṇūka. …`) and the Burmese line; the article
+   line and the page pane read "p. 620 · p. del PDF 662" (`/w/ehalokika`; page the pane with ‹ › and the printed page
+   follows); the search list; vol. 2 PDF 241 (p. 224) and vol. 22 PDF 920 (p. 881); `/volumes/` read page view (printed
+   p. on pages without records); vol. 5's Meaning boxes (`/w/kaṅkhā`); About: "vols. 1–3, 4/1, 4/2 and 5".
+00c. ~~After the §43 push, check the live site~~: done 26 Sep (brief §44).
+   **"Budistas" or "Buddhistas"**: the logo and the footer say Buddhistas, About and README say Budistas; the editor to decide.
+00b. ~~Check the live site after `5db316f`~~: done 26 Sep (brief §42).
 
 0. ~~Vol. 25 at 200 dpi~~, ~~the README~~, ~~the website~~: done 25–26 Sep. **The site is live** at
-   https://abhidhana.buddha-dhamma.net (Angel deployed it; checked 26 Sep in the browser: all 29 books,
+   https://abhidhana.buddha-dhamma.net (the editor deployed it; checked 26 Sep in the browser: all 29 books,
    221,154 headwords, search, label pop-ups, About and Labels pages, 404 page). `site/src/_headers` now
    makes browsers revalidate `/data/*` and `/assets/*` on every load; with the old one-hour cache a
    visitor saw vol. 25 as "coming" after it was published.
@@ -64,19 +67,21 @@ vol. 25 runs.
 0b. ~~**Push the 26 Sep night work** (brief §40)~~ (pushed as `5db316f`; the §42 check covered the Meaning box,
    (ti) labels, PCED and "corrected" marks, versioned assets). Still to look at on the live site: the search list, Hide index
    (`\`), the ES/EN switch at ~1,000 px, the alphabet in roman mode, the About credits. (`tmp/sitetest/`, the test tarballs,
-   was deleted by Angel on 26 Sep.) The Reader artifact is not republished with the new analyses
+   was deleted by the editor on 26 Sep.) The Reader artifact is not republished with the new analyses
    (`abhidhana_reader_data.py` for all books, then republish).
 0c. **Hand corrections** go in `docs/corrections.tsv` (brief §40); re-run `abhidhana_articles.py NN` and
    `abhidhana_romanise.py NN`. Confirm the `roman` column of `docs/labels.md` §0.
-1b. **Translation** (brief §37, §39–43). **Drafted: vols. 1, 2, 3, 4/1, 4/2** (flags in `meanings/NN-flags.tsv`). Next: vol. 4/3
-   (book 4c) has **no PCED** (brief §16): its Burmese would come from our OCR, which is too noisy to draft from (§37);
-   decide first. Then vol. 5: `prep('05', N)` from Python (N so that shards are ~450 lines), working files in
-   `tmp/meanings/` (move the previous set to `tmp/meanings/vNN/` first), one agent and scratch folder per shard (20 at
-   once), `merge 05`, `report 05`. Rules the agents raised for Angel: colloquial ကုသိုလ် ("meritorious") vs *sano*;
-   ဥတု, နတ်, ရဟန်း, ပယ် as stems; the (သျ) tag in 4/2. Source: **PCED** (Angel, 26 Sep). kusala = *sano*, akusala =
+1b. **Translation** (brief §37, §39–44). **Drafted: vols. 1, 2, 3, 4/1, 4/2, 5** (flags in `meanings/NN-flags.tsv`). **Vol. 4/3
+   deferred** (no PCED; the editor, 26 Sep; brief §44). Next: **vol. 6**: `prep('06', N)` from Python (N so that shards are
+   ~450 lines), working files in `tmp/meanings/` (vol. 5's are in `tmp/meanings/v05/`), one agent and scratch folder per
+   shard (20 at once), `merge 06`, `report 06`. Settled for vol. 5 on: ကုသိုလ် as merit → *mérito / meritorio*; stems
+   L101–L104 (နတ် ⟦=deva⟧, ရဟန်း *monje*, ပယ် *abandonar*, ဥတု ⟦=utu⟧ / *estación*). Raised by vol. 5's agents, for the
+   editor: ကံ as the Saṅgha's act or the grammatical object, and ကြိယာ as "verb" (both kept Pāḷi, flagged); ကမ္ဘာ *eón*
+   or *mundo*; ဘုံ, ဘီလူး, နတ်သား, နတ်သမီး; ပယ် where it means "reject"; the future (အံ့) in 1st or 3rd person; the
+   source tag ထောမ; (သျ) as in 4/2. Source: **PCED** (the editor, 26 Sep). kusala = *sano*, akusala =
    *insano* (`docs/translation/glossary.tsv`); the other batch-1 stems are not yet reviewed. Six vol. 1
    rows have no draft (ids 21, 2190, 3938, 3988, 5435, 7881); row 2767 needs its Burmese tree names. Vol. 1's Meaning boxes are filled with **drafts**: 8,144 rows in
-   `docs/translation/meanings/01.jsonl`, all `drafted`. Waiting for Angel:
+   `docs/translation/meanings/01.jsonl`, all `drafted`. Waiting for the editor:
    - the batch 1 stems (`docs/translation/batch01-review.md`);
    - further doctrinal terms for `glossary.tsv` (no IEBH doctrinal glossary was found; the one lead,
      `~/Tipitaka/nissaya/anchor/glosario-data.json`, is grammatical and names `comun/glosario.md`
@@ -88,12 +93,12 @@ vol. 25 runs.
    `python3 tools/abhidhana_meanings.py prep NN`, draft the shards per `docs/translation/drafting-brief.md`
    (give each drafting agent its **own** scratch folder: shared helper scripts crossed shards in vol. 1),
    then `merge NN`.
-2a. ~~Site redesign~~: built 26 Sep (brief §38). After Angel's push, check the live site. Browse is
+2a. ~~Site redesign~~: built 26 Sep (brief §38). After the editor's push, check the live site. Browse is
    the home page; `/volumes/` and `/abbreviations/` are new; run `git rm -r site/src/labels`.
 2. **The Introduction page** (brief §35) rebuilds itself from `docs/introduction/` on every push; keep the
    chapter files to the contract in `tools/abhidhana_intro.py`'s docstring. It shows drafts under a banner,
    while the About page's History waits for review (item 7c): decide whether ch. 4's names should wait too.
-3. **Labels, Angel's to confirm** (`docs/labels.md` §0; `python3 tools/abhidhana_labels.py` checks
+3. **Labels, the editor's to confirm** (`docs/labels.md` §0; `python3 tools/abhidhana_labels.py` checks
    the table after an edit): kammavācaka-kriyā for ကံဟောကြိယာ; sakkata, pākata (and ဗု၊သံ,
    ဗုဒ္ဓဘာသာသက္ကတ, "Buddhist Sanskrit", vol. 2 p. 14); (နာမ-ကြိ) nāmadhātu?; the provisional
    combinations (ပု၊ထီ) (န၊ပု) (န၊ထီ) (ပု၊တိ) (န၊တိ) (တိ၊န) and (ကာ၊ကြိ၊ဝိ), (စတုတ္ထန္တ),

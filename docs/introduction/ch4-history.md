@@ -12,7 +12,7 @@
 | 5 | 83–88 | — | — | — |
 
 *drafted* = transcribed by Claude from the page images (130 dpi) and translated from that
-transcription; not yet checked by Angel. Conventions as in `ch5-how-to-use.md`: `[p. 63]` marks
+transcription; not yet checked by the editor. Conventions as in `ch5-how-to-use.md`: `[p. 63]` marks
 the start of a PDF page, ⟨?⟩ an uncertain reading, superscript numerals the book's footnotes,
 which are given at the end of each page.
 

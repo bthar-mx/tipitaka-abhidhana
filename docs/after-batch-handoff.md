@@ -34,4 +34,4 @@ Latest commit 10852bd (reports 15–20, 22; Reader to vol. 22). Nothing edited s
 7. Brief §27 and NEXT-SESSION, in folder and Project. Commit commands in batches; close issues with the title-matching loop.
 8. Later: gutter re-cut natively (tools/abhidhana_recut.py --scan/--run/--report); vol 9 p823 re-read; label-disagreement image checks; vols 21, 25.
 
-Leave .gitignore to Angel (the other chat changed it).
+Leave .gitignore to the editor (the other chat changed it).

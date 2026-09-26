@@ -1,6 +1,6 @@
 # Translation, batch 1: formulas and the commonest stems of vol. 1
 
-*25 September 2026. For Angel to review. Every rendering below is **proposed**; nothing is applied
+*25 September 2026. For the editor to review. Every rendering below is **proposed**; nothing is applied
 until you approve it. Translated from the Burmese, English and Spanish each from the Burmese (the
 Pāḷi column is the word the Burmese glosses, for disambiguation, not the source). The machine-readable
 copy is `docs/translation/stems.tsv`; your decisions go in its `status` column (`approved`, or a

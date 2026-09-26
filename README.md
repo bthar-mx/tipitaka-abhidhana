@@ -24,8 +24,8 @@ libros están digitalizados: cada artículo se ancla en la entrada correcta (tom
 diccionario), se divide en sus campos (categoría gramatical, análisis, definición, citas) y la
 entrada se romaniza (IAST). **Nada está revisado**: el birmano es una lectura automática (OCR) y
 contiene errores; compare siempre con la imagen de la página. La traducción al español, hecha
-desde el birmano y nunca a través del inglés, aún no ha comenzado
-([`docs/spanish-method.md`](docs/spanish-method.md)). Consulta y búsqueda en
+desde el birmano y nunca a través del inglés, está en borrador para los vols. 1–3, 4/1, 4/2 y 5, sin revisar
+([`docs/spanish-method.md`](docs/spanish-method.md), `docs/translation/`). Consulta y búsqueda en
 **[abhidhana.buddha-dhamma.net](https://abhidhana.buddha-dhamma.net)**, en español e inglés. Proyecto del
 [Instituto de Estudios Budistas Hispano](https://iebh.org).
 
@@ -41,8 +41,8 @@ desde el birmano y nunca a través del inglés, aún no ha comenzado
    ([`docs/labels.md`](docs/labels.md), [`docs/abbreviations.md`](docs/abbreviations.md)).
 3. **Romanised Pāḷi** (Aksharamukha, Burmese → IAST), headwords and quoted Pāḷi, checked against the
    Sixth Council Tipiṭaka vocabulary of [OSBCT](https://github.com/bthar-mx/OSBCT).
-4. **Spanish**, translated **from the Burmese**, never through English. This part has not started;
-   see [`docs/spanish-method.md`](docs/spanish-method.md).
+4. **Spanish**, translated **from the Burmese**, never through English. Drafted, not reviewed, for vols. 1–3,
+   4/1, 4/2 and 5 (`docs/translation/meanings/`); see [`docs/spanish-method.md`](docs/spanish-method.md).
 
 ## Read this before using the data
 
@@ -112,7 +112,7 @@ checked, in [`docs/index-errata.md`](docs/index-errata.md). The pipeline correct
 ## Typed witnesses
 
 Two typed copies of the dictionary exist. Both were first used only to check our reading; since
-26 September 2026 PCED's text is also used (Angel's decision), see below:
+26 September 2026 PCED's text is also used (the editor's decision), see below:
 
 - **PCED** (Pali Canon E-Dictionary 1.94, the data behind dictionary.sutta.org; `siongui/data`): its
   "Tipiṭaka Pāḷi-Myanmar Dictionary", typed in Zawgyi, covering vols. 1–19. Converted to Unicode

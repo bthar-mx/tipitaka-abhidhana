@@ -1,7 +1,7 @@
 # Vol. 4a (အာ – ဥတြာသေယျုံ) — OCR report
 
 *25 September 2026. `ABHIDHANA_TESSDATA=~/Tipitaka/nissaya/tessdata python3 tools/abhidhana_ocr.py 4a
---columns --dpi 96 --passes page.psm6 --workers 10`, run natively on Angel's Mac. Figures measured
+--columns --dpi 96 --passes page.psm6 --workers 10`, run natively on the editor's Mac. Figures measured
 from `ocr/4a/pages/` with `--score`.*
 
 Book 4a is vol. 4, part 1. 863 PDF pages: 42 of front matter, 791 carrying index entries, 27 inside

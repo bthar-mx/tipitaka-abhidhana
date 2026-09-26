@@ -1,7 +1,7 @@
 # Vol. 1, citation abbreviations (ကျမ်းညွှန်းသင်္ကေတများ)
 
 *Tipiṭaka Pāḷi-Myanmā Abhidhāna, vol. 1 (1964), printed pp. 91–94 = PDF pp. 94–97.*
-Status: **drafted**. Transcribed by Claude from the page images; not yet checked by Angel.
+Status: **drafted**. Transcribed by Claude from the page images; not yet checked by the editor.
 The same data, with the Burmese entry exactly as printed, is in
 [`citation-abbreviations.tsv`](citation-abbreviations.tsv) for use by the pipeline.
 

@@ -412,7 +412,7 @@ def normalise_analysis(a):
 
     The analysis is printed as Pāḷi elements joined by +, e.g. [အတိ + အာ + ဝဒ + အ + တိ]. OCR
     reads + as ၂ and often drops it altogether: that article came out "အတိ ၂ အာ ဝဒ အ တိ"
-    (vol. 1 p. 300, reported by Angel). Two repairs, and only these:
+    (vol. 1 p. 300, reported by the editor). Two repairs, and only these:
 
     - a free-standing ၂ between elements becomes +  (a digit is never an element);
     - when every token is Pāḷi -- no asat, visarga or dot-below, none of the ။ ၊ that start a

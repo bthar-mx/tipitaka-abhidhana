@@ -1,7 +1,7 @@
 # Changelog
 
 Versions of the Tipiṭaka Pāḷi-Myanmā Abhidhāna project: the data, the tools and the site together.
-*Scheme proposed 27 September 2026; Angel created the tags v0.1.0–v0.7.0 the same day.*
+*Scheme proposed 26 September 2026; the editor created the tags v0.1.0–v0.7.0 the same day.*
 
 ## The scheme
 
@@ -15,7 +15,7 @@ Versions of the Tipiṭaka Pāḷi-Myanmā Abhidhāna project: the data, the too
   site section.
 - **PATCH** for fixes that change no published figure: typos, a page's layout, the docs.
 - **1.0.0** when the text layer is complete *and* reviewed work is published: proposed as the
-  first volume whose Meaning boxes Angel has reviewed (status `reviewed` or `corrected`), with the
+  first volume whose Meaning boxes the editor has reviewed (status `reviewed` or `corrected`), with the
   licence question settled (brief §10). Until then, a 0.x number says "drafts".
 - The source release `sources-v1` (PDFs and index) keeps its own name: it versions the inputs,
   not the project.
@@ -23,16 +23,30 @@ Versions of the Tipiṭaka Pāḷi-Myanmā Abhidhāna project: the data, the too
 A release note says, per version: what changed, the brief's sections, and the headline figures
 (located, label + body, Meaning rows drafted / reviewed).
 
-## v0.8.0 — 27 Sep 2026
+## v0.9.0 — 26 Sep 2026, later
+
+- **Vol. 5 Meaning boxes drafted** from PCED: 8,012 rows (every article with a definition but one), all
+  `drafted`; 1,275 flagged (`docs/translation/meanings/05-flags.tsv`). Vol. 4/3 deferred (no PCED text).
+  Glossary: ကုသိုလ် as merit → *mérito / meritorio*; stems L101–L104 (နတ်, ရဟန်း, ပယ်, ဥတု). Brief §44.
+- **The compound analysis split from its derivation** (`tools/abhidhana_romanise.py`): the romanised line
+  gives the analyses and, where it is wholly Pāḷi, the derivation (ulūka); a derivation in Burmese stays
+  on the Burmese line, shown below it (katvā: [kara + tvā]). 19,871 rows' `analysis_iast` changed, no
+  other field.
+- **Printed page numbers**: Browse, the page pane, the search list and the page view show the book's
+  own page beside the PDF page (`site/volumes.json` `offset`, with vol. 2's and vol. 22's exceptions).
+- Labels: (ကြိ၊ဝိ) Spanish without *-tuṁ*. Personal names removed from the repository's docs and data
+  (`IEBH` in data columns). Dates of v0.7.0–v0.8.0 and brief §42–43 corrected from 27 to 26 Sep.
+
+## v0.8.0 — 26 Sep 2026
 
 - **Vols. 4/1 and 4/2 Meaning boxes drafted** from PCED: 7,519 and 6,654 rows, all `drafted`; 409 and 872
   flagged. `prep` links more "see X" forms; a `report` step writes the flags and terms lists. Brief §43.
 - Site: the IEBH footer with logo, related sites, licences and the version on every page; a back-to-top
   button; "Análisis" without the PCED chip; PCED described as a typed witness on About; citation tooltips
   (work · volume, page); "see X" in the Burmese definition linked; mode bar wording.
-- Labels: *sustantivo* → *nombre*; (ကြိ၊ဝိ), (နာမ-ကြိ), (စတုတ္ထန္တ), (တတိယန္တ-ဗျ) corrected and confirmed (Angel).
+- Labels: *sustantivo* → *nombre*; (ကြိ၊ဝိ), (နာမ-ကြိ), (စတုတ္ထန္တ), (တတိယန္တ-ဗျ) corrected and confirmed (the editor).
 
-## v0.7.0 — 27 Sep 2026
+## v0.7.0 — 26 Sep 2026
 
 - **Vol. 3 Meaning boxes drafted** from PCED: 11,726 rows (372 by formula, 11,354 drafted in 24
   shards), all `drafted`; 1,076 flagged (`docs/translation/meanings/03-flags.tsv`). Brief §42.

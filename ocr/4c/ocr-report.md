@@ -1,7 +1,7 @@
 # Vol. 4c (ဦ – ဩဠုမ္ပိက) — OCR report
 
 *25 September 2026. `ABHIDHANA_TESSDATA=~/Tipitaka/nissaya/tessdata python3 tools/abhidhana_ocr.py 4c
---columns --dpi 72 --passes page.psm6 --workers 10 --budget 100000`, run natively on Angel's Mac.
+--columns --dpi 72 --passes page.psm6 --workers 10 --budget 100000`, run natively on the editor's Mac.
 Figures measured from `ocr/4c/pages/` with `--score`.*
 
 Book 4c is vol. 4, part 3. 736 PDF pages: 27 of front matter, 677 carrying index entries, 31 inside

@@ -1,6 +1,6 @@
 # Site design: consulting the dictionary
 
-*Agreed with Angel, 25 Sep 2026, from the clickable mockup "Abhidhāna site mockup"
+*Agreed with the editor, 25 Sep 2026, from the clickable mockup "Abhidhāna site mockup"
 (https://claude.ai/artifact/Saz4t8VTXkBzn5Hz9pMfGT, vol. 1 data). The mockup is a design
 reference, not code to copy. This spec is a first version: expect further changes.*
 
@@ -91,7 +91,7 @@ loads one small file.
 - **Labels** and **About** as now; About gains a History section from `docs/history.md`
   (correcting "compiled by the Masoeyein board" to the five teams of vol. 17 pp. 6–7).
 
-## Open, for Angel
+## Open, for the editor
 
 - Show drafted machine translations in the Meaning box (marked "drafted"), or only reviewed ones.
 - Spanish label abbreviations (`docs/labels.md` §0).
