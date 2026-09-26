@@ -36,7 +36,7 @@ mn = lambda t: (t or '').replace('့်', '့်')
 NOT_PALI = re.compile('[း့ဲ၌၍၎၏]|ို|်(?!္)')
 SEE = re.compile(r'^(?P<x>[^။()]+?)\s*-?\s*(?:\((?P<n>[၀-၉က-အ]{1,2}(?:-[၀-၉က-အ]{1,2})?)\)\s*-?\s*)?(?P<pl>တို့\s*)?(?P<also>လည်း\s*-?\s*)?ကြည့်(?:၍)?$')
 SAME = re.compile(r'^(?P<x>[^။()]+?)\s*-?\s*(?:\((?P<n>[၀-၉က-အ]{1,2}(?:-[၀-၉က-အ]{1,2})?)\)\s*-?\s*)?(?:နှင့်\s*အနက်တူ(?:၏)?|,\s*တူ)$')
-# from vol. 4/1 (27 Sep 2026): sense markers or a label before the formula, "(၂)" after X, the whole
+# from vol. 4/1 (26 Sep 2026): sense markers or a label before the formula, "(၂)" after X, the whole
 # formula in brackets, and "လည်း-ကြည့်", which prep 01–03 left for the drafts to render by hand
 PRE = re.compile(r'^((?:\([^()]{1,8}\)\s*)+)')
 SENSE = dict(zip('၀၁၂၃၄၅၆၇၈၉', '0123456789')) | dict(zip('ကခဂဃငစဆဇဈည', 'abcdefghij'))

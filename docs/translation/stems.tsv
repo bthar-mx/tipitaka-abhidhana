@@ -92,7 +92,7 @@ L063	lexical	အနက်အဓိပ္ပါယ်	attha	meaning	significado	p
 L064	lexical	တပ်မက်	rāga, rajjati	passion; to be attached	pasión; apegarse	proposed	glossary	42	32	rāga
 L065	lexical	သင့်	yutta, arahati	fitting; proper	conveniente; apropiado	proposed		42	38	
 L066	lexical	စွဲယူ	gāha, parāmasati	to cling to; to grasp	aferrarse a	proposed		42	28	
-L067	lexical	အကုသိုလ်	akusala	unwholesome	insano	confirmed-es	glossary	41	38	Spanish fixed by Angel 26 Sep 2026: akusala = insano (kusala = sano); see glossary.tsv. English still proposed
+L067	lexical	အကုသိုလ်	akusala	unwholesome	insano	confirmed-es	glossary	41	38	Spanish fixed by the editor 26 Sep 2026: akusala = insano (kusala = sano); see glossary.tsv. English still proposed
 L068	lexical	ဧကန်	ekanta	certainly; wholly	ciertamente; enteramente	proposed		41	38	
 L069	lexical	ကျင့်	carati, paṭipajjati	to practise	practicar	proposed		41	32	
 L070	lexical	အကျိုးမဲ့	anattha	harm; what is useless	daño; lo inútil	proposed		41	36	
@@ -126,3 +126,7 @@ L097	lexical	အတိုင်းအရှည်	pamāṇa	measure; extent	medi
 L098	lexical	ကျေးဇူး	upakāra	kindness done; favour	favor; beneficio recibido	proposed		11	11	
 L099	lexical	ဉာဏ်	ñāṇa	knowledge	conocimiento	proposed	glossary	27	27	ñāṇa: conocimiento / sabiduría
 L100	lexical	နေရာ	ṭhāna, āsana	place; seat	lugar; asiento	proposed		42	35	
+L101	lexical	နတ်	deva	deva (kept in Pāḷi)	deva (se mantiene en pāḷi)	proposed				The editor 26 Sep 2026: ⟦=deva⟧ in the drafts, from vol. 5 (4/1–4/2 mixed deidad and deva)
+L102	lexical	ရဟန်း	bhikkhu	monk	monje	proposed				The editor 26 Sep 2026, from vol. 5
+L103	lexical	ပယ်	pajahati, pahāna	abandon	abandonar	proposed				The editor 26 Sep 2026, from vol. 5 (vol. 2 shard 07 had rechazar / reject)
+L104	lexical	ဥတု	utu	utu (temperature, kept in Pāḷi); season	utu (temperatura, se mantiene en pāḷi); estación	proposed				The editor 26 Sep 2026, from vol. 5: ⟦=utu⟧ where it means temperature, estación / season where it means a season
