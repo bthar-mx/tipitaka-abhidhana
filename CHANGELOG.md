@@ -23,6 +23,13 @@ Versions of the Tipiṭaka Pāḷi-Myanmā Abhidhāna project: the data, the too
 A release note says, per version: what changed, the brief's sections, and the headline figures
 (located, label + body, Meaning rows drafted / reviewed).
 
+## v0.11.0 — 26 Sep 2026, later still
+
+- **Vols. 7, 8 and 9 Meaning boxes drafted** from PCED: 6,877 + 6,448 + 6,805 rows (every article with a definition),
+  all `drafted`; 683 + 636 + 798 flagged (`docs/translation/meanings/NN-flags.tsv`). Drafted so far: 80,798 rows in
+  vols. 1–3, 4/1, 4/2 and 5–9, none reviewed. About and README updated.
+- Stems L105 (ဂုဏ် *cualidad / virtud*) and L106 (လူ in the gihi- compounds, *laico*), the editor's. Brief §46.
+
 ## v0.10.0 — 26 Sep 2026, later still
 
 - **Vol. 6 Meaning boxes drafted** from PCED: 11,424 rows (every article with a definition but one), all

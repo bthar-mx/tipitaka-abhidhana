@@ -24,7 +24,7 @@ libros están digitalizados: cada artículo se ancla en la entrada correcta (tom
 diccionario), se divide en sus campos (categoría gramatical, análisis, definición, citas) y la
 entrada se romaniza (IAST). **Nada está revisado**: el birmano es una lectura automática (OCR) y
 contiene errores; compare siempre con la imagen de la página. La traducción al español, hecha
-desde el birmano y nunca a través del inglés, está en borrador para los vols. 1–3, 4/1, 4/2, 5 y 6, sin revisar
+desde el birmano y nunca a través del inglés, está en borrador para los vols. 1–3, 4/1, 4/2 y 5–9, sin revisar
 ([`docs/spanish-method.md`](docs/spanish-method.md), `docs/translation/`). Consulta y búsqueda en
 **[abhidhana.buddha-dhamma.net](https://abhidhana.buddha-dhamma.net)**, en español e inglés. Proyecto del
 [Instituto de Estudios Budistas Hispano](https://iebh.org).
@@ -42,7 +42,7 @@ desde el birmano y nunca a través del inglés, está en borrador para los vols.
 3. **Romanised Pāḷi** (Aksharamukha, Burmese → IAST), headwords and quoted Pāḷi, checked against the
    Sixth Council Tipiṭaka vocabulary of [OSBCT](https://github.com/bthar-mx/OSBCT).
 4. **Spanish**, translated **from the Burmese**, never through English. Drafted, not reviewed, for vols. 1–3,
-   4/1, 4/2, 5 and 6 (`docs/translation/meanings/`); see [`docs/spanish-method.md`](docs/spanish-method.md).
+   4/1, 4/2 and 5–9 (`docs/translation/meanings/`); see [`docs/spanish-method.md`](docs/spanish-method.md).
 
 ## Read this before using the data
 

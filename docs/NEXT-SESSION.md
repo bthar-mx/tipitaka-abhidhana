@@ -1,4 +1,4 @@
-# Abhidhāna — handover, 26 September 2026, later still (vol. 6 drafted; v0.9.0 checked live; v0.10.0)
+# Abhidhāna — handover, 26 September 2026, later still (vols. 7–9 drafted; v0.10.0 checked live; v0.11.0)
 
 *All 29 books are digitised end to end, spot-checked and in the Reader: 221,154 index rows, 94.1%
 located, 88.1% with label + body (brief §30). Read
@@ -7,7 +7,7 @@ located, 88.1% with label + body (brief §30). Read
 vol. 6, §21 vol. 7, §22 vol. 8 and the gutter failures, §23 vol. 9, §24 the re-cut tool, §25 vol.
 14/2's text layer, §26 the batch (vols. 10–22), §27 vols. 23, 24, 14/2, the index's page errors,
 book 21 and the Reader in binary, §28 the website, the page images and the label table, §29 vol.
-21, vol. 25's resolution and the labels as the dictionary prints them, §30 vol. 25 and the total, §31–37 the page images, the Introduction and the stem lexicon, §38 the site redesign, §39 the vol. 1 drafts, §40 the site fixes, the PCED analyses, hand corrections and sano / insano, §41 versioned assets and vol. 2's drafts, §42 the live check after `5db316f`, vol. 3's drafts and version numbers, §43 vols. 4/1–4/2, the IEBH footer, citation tooltips, cross-reference links and the labels the editor reviewed, §44 the live check after v0.8.0, vol. 4/3 deferred, vol. 5's drafts, the analysis split from its derivation and printed page numbers, §45 the live check after v0.9.0 and vol. 6's drafts. Every figure is there.
+21, vol. 25's resolution and the labels as the dictionary prints them, §30 vol. 25 and the total, §31–37 the page images, the Introduction and the stem lexicon, §38 the site redesign, §39 the vol. 1 drafts, §40 the site fixes, the PCED analyses, hand corrections and sano / insano, §41 versioned assets and vol. 2's drafts, §42 the live check after `5db316f`, vol. 3's drafts and version numbers, §43 vols. 4/1–4/2, the IEBH footer, citation tooltips, cross-reference links and the labels the editor reviewed, §44 the live check after v0.8.0, vol. 4/3 deferred, vol. 5's drafts, the analysis split from its derivation and printed page numbers, §45 the live check after v0.9.0 and vol. 6's drafts, §46 stems L105–L106 and vols. 7–9. Every figure is there.
 `docs/labels.md` §0 holds the label table (the one source for the pipeline and the site),
 `docs/abbreviations.md` the dictionary's own abbreviations and its prose on the labels,
 `docs/index-errata.md` the index's errors, `docs/witness.md` and `docs/witness-join.md` the typed
@@ -47,9 +47,11 @@ vol. 25 runs.
 
 ## Next, in order
 
-00. ~~Versions~~: tags v0.1.0–v0.9.0 created by the editor; the footer shows `VERSION` (brief §43). Tag **v0.10.0** on the
-   push of §45. Each push that changes data or the site: bump `VERSION`, add a `CHANGELOG.md` section, tag.
-00e. **After the §45 push, check the live site** (the Cloudflare build takes some minutes: fetch `/data/version.json`
+00. ~~Versions~~: tags v0.1.0–v0.10.0 created by the editor; the footer shows `VERSION` (brief §43). Tag **v0.11.0** on the
+   push of §46. Each push that changes data or the site: bump `VERSION`, add a `CHANGELOG.md` section, tag.
+00f. **After the §46 push, check the live site** (fetch `/data/version.json` first): 0.11.0; `/w/cakkavatti` (vol. 7),
+   `/w/jhāna` (vol. 8), `/w/taṇhā` (vol. 9) show a Meaning box, *borrador*; About: "vols. 1–3, 4/1, 4/2 y 5–9".
+00e. ~~After the §45 push, check the live site~~: done 26 Sep (brief §46). Was (the Cloudflare build takes some minutes: fetch `/data/version.json`
    first): `/w/kilesa` shows vol. 6's Meaning box, *borrador*; About: "vols. 1–3, 4/1, 4/2, 5 y 6"; version 0.10.0.
 00d. ~~After the §44 push, check the live site~~: done 26 Sep (brief §45). Was: `/w/katvā` shows `[kara + tvā]` with the Burmese analysis on its own
    line below; `/w/ulūka` the romanised derivation (`… dhān ṭī 638. ula + ṇūka. …`) and the Burmese line; the article
@@ -73,12 +75,14 @@ vol. 25 runs.
    (`abhidhana_reader_data.py` for all books, then republish).
 0c. **Hand corrections** go in `docs/corrections.tsv` (brief §40); re-run `abhidhana_articles.py NN` and
    `abhidhana_romanise.py NN`. Confirm the `roman` column of `docs/labels.md` §0.
-1b. **Translation** (brief §37, §39–45). **Drafted: vols. 1, 2, 3, 4/1, 4/2, 5, 6** (flags in `meanings/NN-flags.tsv`). **Vol. 4/3
-   deferred** (no PCED; the editor, 26 Sep; brief §44). Next: **vol. 7**: move vol. 6's working files (`tmp/meanings/work06.json`,
-   `shards/`, `out/`) to `tmp/meanings/v06/` first; `prep('07', N)` from Python (N so that shards are ~450 lines; vol. 7 has
-   6,877 index rows), one agent and scratch folder per shard (20 at once), `merge 07`, `report 07`. Give the agents vol. 6's
-   prompt note on the open choices (brief §45). Raised by vol. 6's agents: ဂုဏ် *cualidad* (204 rows) or *virtud* (86); ခေတ်
-   ⟦=khetta⟧; လူ *laico* in the gihi- run; ရှုတ်ချ *denigrar* vs ကဲ့ရဲ့ *censurar*. Settled for vol. 5 on: ကုသိုလ် as merit → *mérito / meritorio*; stems
+1b. **Translation** (brief §37, §39–46). **Drafted: vols. 1, 2, 3, 4/1, 4/2, 5, 6, 7, 8, 9** (80,798 rows, none reviewed; flags in
+   `meanings/NN-flags.tsv`). **Vol. 4/3 deferred** (no PCED; the editor, 26 Sep; brief §44). Next: **vols. 10–19** (PCED covers
+   them; 14/1 is book 14): `prep('NN', N)` from Python (N so that shards are ~450 lines), then move `workNN.json` and
+   `shards/` to `tmp/meanings/vNN/` before the next `prep`; one agent and scratch folder per shard (20 at once), with the
+   prompt of brief §45; for `merge NN` and `report NN` move that book's `workNN.json`, `shards/` and `out/` back up to
+   `tmp/meanings/` and down again after (brief §46). Decided 26 Sep: ဂုဏ် *cualidad / virtud* (L105), လူ as layperson *laico*
+   (L106). Open from vols. 6–9: ခေတ် ⟦=khetta⟧; ရှုတ်ချ *denigrar* vs ကဲ့ရဲ့ *censurar*; စောဒနာ *reprender*; ဥတု as menses.
+   Settled for vol. 5 on: ကုသိုလ် as merit → *mérito / meritorio*; stems
    L101–L104 (နတ် ⟦=deva⟧, ရဟန်း *monje*, ပယ် *abandonar*, ဥတု ⟦=utu⟧ / *estación*). Raised by vol. 5's agents, for the
    editor: ကံ as the Saṅgha's act or the grammatical object, and ကြိယာ as "verb" (both kept Pāḷi, flagged); ကမ္ဘာ *eón*
    or *mundo*; ဘုံ, ဘီလူး, နတ်သား, နတ်သမီး; ပယ် where it means "reject"; the future (အံ့) in 1st or 3rd person; the

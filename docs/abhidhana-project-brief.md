@@ -2,7 +2,7 @@
 
 *Written 21 September 2026, at the end of the volume-25 pilot; §10–12 revised 24 September
 2026, after volume 1 was done end to end and the repository was made public; §18–26 added
-25 September 2026 (spelling folds, the witness join, vols. 6–9, re-cutting gutters, vol. 14/2's text layer, the batch of vols. 10–22); §27 the same evening (vols. 23, 24 and 14/2 finished, the index's page errors applied, book 21 explained, the Reader in binary); §28 the public website, the page images and the label table; §29 vol. 21 finished, vol. 25's resolution, the dictionary's own account of its labels; §30 vol. 25 done, all 29 books; §31 (later on 25 Sep) the page-image tool's bitmap test; §32 the weak page corrections, image-checked; §33 the compound analysis with its [ lost; §34 the dictionary's history on the site; §35 all page images live, a light/dark switch, the Introduction page; §36 citations keep their whole abbreviation; §37 translation, batch 1; §38–41 (26 Sep) the redesign, vol. 1–2 drafts, PCED analyses, versioned assets; §42 (26 Sep) the live check, vol. 3's drafts, version numbers; §43 vols. 4/1–4/2 drafts, the IEBH footer, citation tooltips, cross-reference links, labels reviewed; §44 the live check after v0.8.0, vol. 4/3 deferred, vol. 5 drafted, the analysis split from its derivation, printed page numbers; §45 the live check after v0.9.0, vol. 6 drafted. Everything in
+25 September 2026 (spelling folds, the witness join, vols. 6–9, re-cutting gutters, vol. 14/2's text layer, the batch of vols. 10–22); §27 the same evening (vols. 23, 24 and 14/2 finished, the index's page errors applied, book 21 explained, the Reader in binary); §28 the public website, the page images and the label table; §29 vol. 21 finished, vol. 25's resolution, the dictionary's own account of its labels; §30 vol. 25 done, all 29 books; §31 (later on 25 Sep) the page-image tool's bitmap test; §32 the weak page corrections, image-checked; §33 the compound analysis with its [ lost; §34 the dictionary's history on the site; §35 all page images live, a light/dark switch, the Introduction page; §36 citations keep their whole abbreviation; §37 translation, batch 1; §38–41 (26 Sep) the redesign, vol. 1–2 drafts, PCED analyses, versioned assets; §42 (26 Sep) the live check, vol. 3's drafts, version numbers; §43 vols. 4/1–4/2 drafts, the IEBH footer, citation tooltips, cross-reference links, labels reviewed; §44 the live check after v0.8.0, vol. 4/3 deferred, vol. 5 drafted, the analysis split from its derivation, printed page numbers; §45 the live check after v0.9.0, vol. 6 drafted; §46 two stems from the editor, vols. 7–9 drafted. Everything in
 this file was measured. Do not re-derive a figure it carries; if a new one is needed,
 measure it rather than estimating.*
 
@@ -1507,3 +1507,61 @@ Not opened in a browser before the push.
   bdellium), ချွန်းတောင်း *aguijón de elefante* (56981); the month တပေါင်း written *Tabaung* (56979).
 - Seen in a sample, not flagged: 56968 gambhīrāsaya, နက်သောတည်ရာ, came out "que tiene un lugar de asiento profundo"
   (literal; āsaya is disposition); vol. 5's katvā has "(d) cuando hace (e)" without a stop.
+
+
+## 46. Two stems from the editor; vols. 7, 8 and 9 drafted (26 September 2026, later still)
+
+**The editor's decisions** on vol. 6's questions: ဂုဏ် *cualidad / virtud* (by context; vol. 6 already has both),
+and လူ in the gihi- compounds *laico*. Recorded as `stems.tsv` L105 (ဂုဏ်, *cualidad; virtud*) and L106 (လူ as the
+layperson, *laico* / *layman*; elsewhere *ser humano*), and in the drafting brief, rule 6. Vol. 6's rows needed no
+change for either.
+
+**The live site after the v0.10.0 push**: version 0.10.0; `/w/kilesa` shows vol. 6's Meaning box, *borrador*; About
+reads "vols. 1–3, 4/1, 4/2, 5 y 6".
+
+**Vols. 7, 8 and 9 drafted**, §45's method and prompt note, from PCED: `prep('07', 15)`, `prep('08', 14)`,
+`prep('09', 15)` (446–461 lines a shard), each book's working files kept apart in `tmp/meanings/vNN/` (`workNN.json`,
+`shards/`, `out/`); 44 agents in three waves of 20, 20 and 4, each with its own scratch folder. `merge` and `report`
+read `tmp/meanings/work<book>.json`, `shards/` and `out/` at the top level, so each book's three were moved up, merged
+and moved back. Checked after, over all shards: one line per input id in order, valid JSON, every «Sn» in both
+languages, ⟦ ⟧ and ‹ › balanced, no Burmese outside them. Tarballs `mean070809-in-0926f.tar.gz`,
+`mean070809-out-0926g.tar.gz` (md5 checked after each copy); `tmp/meanings/x0926g/` is an empty folder the VM could
+not delete.
+
+| | vol. 7 | vol. 8 | vol. 9 |
+|---|---:|---:|---:|
+| rows (every explanation) | 6,877 | 6,448 | 6,805 |
+| by formula / drafted | 3 / 6,874 | 1 / 6,447 | 117 / 6,688 |
+| from PCED / from our OCR | 6,874 / 3 | 6,447 / 1 | 6,804 / 1 |
+| flagged (`meanings/NN-flags.tsv`) | 683 | 636 | 798 |
+| terms kept in Pāḷi (`NN-terms.tsv`) | 717 | 469 | 731 |
+| "see X" links matching a romanised headword | 1,328 of 1,354 (98.1%) | 1,209 of 1,232 (98.1%) | 1,880 of 1,932 (97.3%) |
+| rows with *sano / insano*; *mérito*; "no saludable" | 29; 5; 0 | 15; 2; 0 | 36; 10; 0 |
+| ဂုဏ် as *virtud* / *cualidad* | 13 / 6 | 7 / 10 | 51 / 61 |
+
+Commonest kept terms: vol. 7 cakkhupasāda 94, thera 75, cetanā 74; vol. 8 jhāna 363, paṭisandhi 188, jīvitindriya 93;
+vol. 9 taṇhā 374, thera 162, deva 123. Vol. 7 ids 63769–63770 have only a "see X" (their Meaning is the formula alone).
+The site, built in the VM into `$HOME/sitebuild`: 953 files, 585 MB, version 0.11.0; every row of the three books
+carries a Meaning (`t`: 6,877, 6,448, 6,805). Not opened in a browser before the push.
+
+**The Meaning boxes so far**: books 01, 02, 03, 4a, 4b, 05–09, **80,798 rows, all `drafted`, none reviewed**, of
+80,818 index rows in those books and 221,154 in all (36.5%). PCED still covers vols. 10–19 (ten books, 14/1 among
+them); vols. 4/3, 14/2, 14/3 and 20–25 have no PCED text.
+
+**What the agents reported for the reviewer** (nothing reviewed):
+- **"See X" left in the Burmese** where `prep` found none (a variant or sense after X): rendered *Véase ⟦X⟧ (…)* and
+  flagged (vol. 7 63638–63642, 63700–63706; vol. 8 69141, 69288). အထက်ပုဒ်ကြည့် ("see the preceding headword", vol. 7
+  66417) was rendered with F005's wording, flagged.
+- **စောဒနာ** rendered *reprender / reprensión* rather than kept Pāḷi (vol. 7 66199, flagged once); the chain
+  စောဒနာ-အပြစ်တင်-စွပ်စွဲ-… *reprender / culpar / acusar / …*.
+- **ဥတု as menses** (vol. 9 80341, 80345), a third sense beside L104's temperature and season.
+- **ကံ as an act, a case or duties** (vol. 7 66317, 66477; the tajjanīyakamma rows of vol. 9); ပယ် / ငြင်းပယ် as reject
+  (vol. 7 66232, 66466; vol. 9 76257, 80308); ကြိယာ as verb (vol. 9 76203–76204, 78308): flagged as asked.
+- **sutta**: ⟦=sutta⟧ once, plain *sutta* (L055) elsewhere (vol. 7 shard 10); ⟦=kusala⟧ listed as a term only where
+  the word itself is meant.
+- **Tentative identifications**, flagged: ဟင်္သာ *cisne*, ကရဝေး cubeb, တည် Diospyros, ကျည်း / ကျည်းကုလား (Coḷa or
+  Tamil?), နီဖလံ (a kind of gold); many plant names left in ‹…›; Burmese months (သီတင်းကျွတ်) kept.
+- **Source**: vol. 9 76052 is romanised *kappakāsana* but by its place is probably *tappakāsana* (an index or print
+  question, for the image); many "see the original" notes (vol. 9 shard 13 alone has seven).
+- Agents corrected a few already-written lines of their own before the final check (vol. 9 76001, 76126, 78581,
+  79001, 79301), against the brief's "do not rewrite earlier blocks"; every change was inside their own file.
