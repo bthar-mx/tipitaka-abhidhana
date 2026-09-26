@@ -16,7 +16,9 @@
 | label normalised to the closed set (docs/labels.md) | 4,546 = 86.9% |
 | of which read exactly as printed / mapped / inferred from the ending | 3,317 / 1,228 / 1 |
 | label read but left unnormalised | 154 = 2.9% |
-| compound analysis [ ] recovered | 4,269 = 81.6% |
+| compound analysis [ ] recovered by the OCR | 4,269 = 81.6% |
+| compound analysis taken from the typed PCED witness (tools/abhidhana_witness_analysis.py) | 0 = 0.0% |
+| compound analysis, either | 4,269 = 81.6% |
 | of which + signs repaired (normalise_analysis) | 539 = 10.3% |
 | non-empty body | 4,830 = 92.4% |
 | at least one citation parsed | 3,189 = 61.0% |
@@ -27,8 +29,8 @@
 | | |
 |---|---:|
 | a canonical word | 1,190 = 22.8% |
-| inside a canonical word | 2,157 = 41.2% |
-| neither | 1,883 = 36.0% |
+| inside a canonical word | 2,158 = 41.3% |
+| neither | 1,882 = 36.0% |
 
 Labels, normalised: (တိ) 1,618 · (ပု) 889 · (န) 729 · (ကြိ) 415 · (ထီ) 367 · (ကြိ၊ဝိ) 135 · (ကာ၊ကြိ) 123 · (ပု၊န) 103 · (ဗျ) 88 · (ထီ၊န) 49 · (ကမ္မ၊ကြိ) 17 · (ထီ၊ပု) 12 · (ကာ၊ကမ္မ၊ကြိ) 1
 

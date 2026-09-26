@@ -16,7 +16,9 @@
 | label normalised to the closed set (docs/labels.md) | 9,871 = 86.4% |
 | of which read exactly as printed / mapped / inferred from the ending | 8,333 / 1,536 / 2 |
 | label read but left unnormalised | 177 = 1.5% |
-| compound analysis [ ] recovered | 8,812 = 77.1% |
+| compound analysis [ ] recovered by the OCR | 8,812 = 77.1% |
+| compound analysis taken from the typed PCED witness (tools/abhidhana_witness_analysis.py) | 11,363 = 99.4% |
+| compound analysis, either | 11,369 = 99.5% |
 | of which + signs repaired (normalise_analysis) | 2,339 = 20.5% |
 | non-empty body | 10,504 = 91.9% |
 | at least one citation parsed | 7,498 = 65.6% |
