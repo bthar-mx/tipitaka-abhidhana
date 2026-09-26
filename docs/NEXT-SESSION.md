@@ -1,4 +1,4 @@
-# Abhidhāna — handover, 26 September 2026, late night (assets versioned; vol. 2 Meaning boxes drafted)
+# Abhidhāna — handover, 27 September 2026 (vol. 3 Meaning boxes drafted; version numbers proposed)
 
 *All 29 books are digitised end to end, spot-checked and in the Reader: 221,154 index rows, 94.1%
 located, 88.1% with label + body (brief §30). Read
@@ -7,7 +7,7 @@ located, 88.1% with label + body (brief §30). Read
 vol. 6, §21 vol. 7, §22 vol. 8 and the gutter failures, §23 vol. 9, §24 the re-cut tool, §25 vol.
 14/2's text layer, §26 the batch (vols. 10–22), §27 vols. 23, 24, 14/2, the index's page errors,
 book 21 and the Reader in binary, §28 the website, the page images and the label table, §29 vol.
-21, vol. 25's resolution and the labels as the dictionary prints them, §30 vol. 25 and the total, §31–37 the page images, the Introduction and the stem lexicon, §38 the site redesign, §39 the vol. 1 drafts, §40 the site fixes, the PCED analyses, hand corrections and sano / insano, §41 versioned assets and vol. 2's drafts. Every figure is there.
+21, vol. 25's resolution and the labels as the dictionary prints them, §30 vol. 25 and the total, §31–37 the page images, the Introduction and the stem lexicon, §38 the site redesign, §39 the vol. 1 drafts, §40 the site fixes, the PCED analyses, hand corrections and sano / insano, §41 versioned assets and vol. 2's drafts, §42 the live check after `5db316f`, vol. 3's drafts and version numbers. Every figure is there.
 `docs/labels.md` §0 holds the label table (the one source for the pipeline and the site),
 `docs/abbreviations.md` the dictionary's own abbreviations and its prose on the labels,
 `docs/index-errata.md` the index's errors, `docs/witness.md` and `docs/witness-join.md` the typed
@@ -47,22 +47,28 @@ vol. 25 runs.
 
 ## Next, in order
 
+00. **Versions** (brief §42, `CHANGELOG.md`): confirm the scheme; if yes, Angel creates the tags v0.1.0–v0.6.0 on
+   the commits listed there and v0.7.0 on this push; `VERSION` holds the current number. Then show it in the site footer.
+00b. ~~Check the live site after `5db316f`~~: done 27 Sep (brief §42).
+
 0. ~~Vol. 25 at 200 dpi~~, ~~the README~~, ~~the website~~: done 25–26 Sep. **The site is live** at
    https://abhidhana.buddha-dhamma.net (Angel deployed it; checked 26 Sep in the browser: all 29 books,
    221,154 headwords, search, label pop-ups, About and Labels pages, 404 page). `site/src/_headers` now
    makes browsers revalidate `/data/*` and `/assets/*` on every load; with the old one-hour cache a
    visitor saw vol. 25 as "coming" after it was published.
 1. ~~Page images~~: all 29 books live, 25,700 pages, 2.5 GB; `check` clean (brief §35).
-0b. **Push the 26 Sep night work** (brief §40), then check the live site: the search list, Hide index
-   (`\`), (ti) labels, the ES/EN switch at ~1,000 px, the alphabet in roman mode, the "PCED" and
-   "corrected" marks on analyses, the About credits. (`tmp/sitetest/`, the test tarballs,
+0b. ~~**Push the 26 Sep night work** (brief §40)~~ (pushed as `5db316f`; the §42 check covered the Meaning box,
+   (ti) labels, PCED and "corrected" marks, versioned assets). Still to look at on the live site: the search list, Hide index
+   (`\`), the ES/EN switch at ~1,000 px, the alphabet in roman mode, the About credits. (`tmp/sitetest/`, the test tarballs,
    was deleted by Angel on 26 Sep.) The Reader artifact is not republished with the new analyses
    (`abhidhana_reader_data.py` for all books, then republish).
 0c. **Hand corrections** go in `docs/corrections.tsv` (brief §40); re-run `abhidhana_articles.py NN` and
    `abhidhana_romanise.py NN`. Confirm the `roman` column of `docs/labels.md` §0.
-1b. **Translation** (brief §37, §39–41). **Vol. 2 drafted** (7,189 rows, 517 flagged: `meanings/02-flags.tsv`). Next: vol. 3,
-   `python3 tools/abhidhana_meanings.py prep 03` (working files in `tmp/meanings/`, gitignored), 16 shards, one agent
-   and one scratch folder each, then `merge 03`. Source: **PCED** (Angel, 26 Sep). kusala = *sano*, akusala =
+1b. **Translation** (brief §37, §39–42). **Vols. 2 and 3 drafted** (7,189 rows, 517 flagged; 11,726 rows, 1,076 flagged:
+   `meanings/0N-flags.tsv`). Next: vol. 4/1 (book 4a), `prep 4a` (working files in `tmp/meanings/`, gitignored; move the
+   previous volume's `shards/`, `out/`, `workNN.json` to `tmp/meanings/vNN/` first, as for v02 and v03), ~24 shards of
+   ~470 lines (`prep('4a', 24)` from Python), one agent and one scratch folder each (at most 20 at once), then `merge 4a`
+   and the flags/terms TSVs (brief §42 says how they were made; the script is not in the tool yet). Source: **PCED** (Angel, 26 Sep). kusala = *sano*, akusala =
    *insano* (`docs/translation/glossary.tsv`); the other batch-1 stems are not yet reviewed. Six vol. 1
    rows have no draft (ids 21, 2190, 3938, 3988, 5435, 7881); row 2767 needs its Burmese tree names. Vol. 1's Meaning boxes are filled with **drafts**: 8,144 rows in
    `docs/translation/meanings/01.jsonl`, all `drafted`. Waiting for Angel:

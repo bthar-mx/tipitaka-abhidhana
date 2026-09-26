@@ -2,7 +2,7 @@
 
 *Written 21 September 2026, at the end of the volume-25 pilot; §10–12 revised 24 September
 2026, after volume 1 was done end to end and the repository was made public; §18–26 added
-25 September 2026 (spelling folds, the witness join, vols. 6–9, re-cutting gutters, vol. 14/2's text layer, the batch of vols. 10–22); §27 the same evening (vols. 23, 24 and 14/2 finished, the index's page errors applied, book 21 explained, the Reader in binary); §28 the public website, the page images and the label table; §29 vol. 21 finished, vol. 25's resolution, the dictionary's own account of its labels; §30 vol. 25 done, all 29 books; §31 (later on 25 Sep) the page-image tool's bitmap test; §32 the weak page corrections, image-checked; §33 the compound analysis with its [ lost; §34 the dictionary's history on the site; §35 all page images live, a light/dark switch, the Introduction page; §36 citations keep their whole abbreviation; §37 translation, batch 1. Everything in
+25 September 2026 (spelling folds, the witness join, vols. 6–9, re-cutting gutters, vol. 14/2's text layer, the batch of vols. 10–22); §27 the same evening (vols. 23, 24 and 14/2 finished, the index's page errors applied, book 21 explained, the Reader in binary); §28 the public website, the page images and the label table; §29 vol. 21 finished, vol. 25's resolution, the dictionary's own account of its labels; §30 vol. 25 done, all 29 books; §31 (later on 25 Sep) the page-image tool's bitmap test; §32 the weak page corrections, image-checked; §33 the compound analysis with its [ lost; §34 the dictionary's history on the site; §35 all page images live, a light/dark switch, the Introduction page; §36 citations keep their whole abbreviation; §37 translation, batch 1; §38–41 (26 Sep) the redesign, vol. 1–2 drafts, PCED analyses, versioned assets; §42 (27 Sep) the live check, vol. 3's drafts, version numbers. Everything in
 this file was measured. Do not re-derive a figure it carries; if a new one is needed,
 measure it rather than estimating.*
 
@@ -1209,3 +1209,63 @@ used 108 times; no "no saludable" left.
   *Tazaungmon* (11741).
 - Shard 15 flagged 37 rows only because their label is empty.
 - Doubtful glosses flagged, e.g. 8481 anuttama "not highest", 10217 anesamāna, 11548 apatthaddha.
+
+
+## 42. The live site after `5db316f`; vol. 3's Meaning boxes drafted; version numbers (27 September 2026)
+
+**The live site, checked in the in-app browser** (neither the cloud container nor the Cowork VM can reach
+it: both proxies refuse the host). `/w/anu` shows vol. 2's Meaning box (ES, marked *borrador*), the PCED
+analysis mark ("Análisis PCED", `[ana + u]`) and the label as printed, romanised: (bya). `/w/akuppa`:
+(ti), "Análisis PCED" `[na + kuppa]`, the Meaning box. `/w/akusala`: "Análisis corregido" `[na + kusala]`
+(the hand correction of §40) and *sano / insano* in its Meaning. The pages load `favicon.svg?v=28348bf395`,
+`style.css?v=b80a64a9cf`, `common.js?v=c79f868708`, `browse.js?v=7df226c490`, and these are the first ten hex
+of the SHA-256 of `site/src/assets/*` in the folder, all four. Cloudflare still sends
+`Cache-Control: public, max-age=14400` for `/assets/*`; with versioned URLs that no longer matters. The
+console shows three `ERR_BLOCKED_BY_CLIENT` loads, not identified (a blocker in the in-app browser, most
+likely; every request to the site itself returned 200). Seen on the page, not measured: vol. 2's anu has
+senses (11) and (12) both "lo menor" (the Burmese has အငယ် twice), and the quoted-passage finder still lists
+OCR debris as Pāḷi (§40).
+
+**Vol. 3 drafted**, by §41's method, from PCED, with glossary.tsv (kusala = *sano*, akusala = *insano*).
+`prep` was run with **24 shards, not 16** (`prep('03', 24)` from Python; the CLI has no shard argument),
+so that each shard (474 lines) is about the size of vol. 2's (430); vol. 2's working files were moved to
+`tmp/meanings/v02/`. 24 agents in the cloud container (at most 20 at once), each with its own scratch
+folder, told to translate every line itself and to copy Pāḷi already in Pāḷi form as ⟦Burmese⟧, keeping
+⟦=iast⟧ for Burmese loanword forms (ကိလေသာ, ဈာန်, မဂ်). Checked after, over all shards: one line per input
+id in order, valid JSON, every «Sn» in both languages, brackets balanced, no empty field; 16 rows keep
+Burmese words outside ⟦ ⟧ (plant and other names), all flagged. `merge 03`: **11,726 rows (every article of
+vol. 3), 372 by formula, 11,354 drafted, all `drafted`; 11,722 from PCED, 4 from our OCR; 1,076 flagged**
+(`meanings/03-flags.tsv`, with the Burmese). *sano/insano* in 65 rows' Spanish, no "no saludable". Links:
+2,001 of 2,157 "see X" targets (92.8%) match a romanised index headword (vol. 2: 94.0%), measured on
+`headword_iast`, not on the site's build.
+
+`meanings/03-terms.tsv` (933 terms) is **not comparable with 02's** (615): the agents listed in `terms`
+the Pāḷi-form terms they copied as well as the ⟦=iast⟧ ones, so vol. 3's list includes headword stems
+(avijjā 151, arahattaphala 149, ariyamagga 149, ariya 140, nāma 87, abhiññā 86). Shard 07 listed only ⟦=⟧
+terms in its first four blocks.
+
+**Known weaknesses the agents reported** (nothing reviewed):
+- "See X" sentences that `prep` left inline (a sense number after X, or a misprint such as ကြည် for
+  ကြည့်) were rendered by hand, "Véase ⟦X⟧", and flagged, in most shards.
+- "မူရင်းကြည့်ပါ" ("see the original") ends several PCED definitions (shards 00, 02, 09, 15, 18, 21): an
+  editor's note in the witness, translated literally; whether the print has it is not checked.
+- Definitions that look shifted by one row: 26094/26095 (asuddhahetu / asuddhāsaya), 19815
+  (arahattamaggadiṭṭhi repeats -paññā), 23043 and 24328 run on into the next headword. For the image.
+- Readings chosen through misprints and flagged: 17261 (မာန် for Māra?), 18641 (စေတနာ for စောဒနာ?), 21443
+  (သံ read သဲ), 16270 (ပရိသတ် read ပရိယတ်), and missing negations (22854, 24277, 24354).
+- ဟော rendered *expresar* / *express* where it means "denotes" (shard 02), against the stem's *enseñar*.
+- Counts of things are mostly written as words ("los tres géneros"): the brief's "numbers stay numbers"
+  is read differently by different shards.
+- Seen in a sample: 15392 abyākata (2)(a) "no declarado como sano, insano" for ကုသိုလ်,အကုသိုလ်: *o* is
+  wanted.
+
+**Version numbers** (Angel: "we should put version numbers to the different iterations"). Proposed in
+`CHANGELOG.md`: one `vMAJOR.MINOR.PATCH` for the repository, in `VERSION`, an annotated tag and the
+changelog; 0.x while nothing is reviewed; minor for a milestone (a volume's Meaning boxes, a data layer),
+patch for fixes; 1.0.0 at the first reviewed volume with the licence settled. Retroactive tags proposed:
+v0.1.0 `9d5203d`, v0.2.0 `e2e32b5`, v0.3.0 `493b459`, v0.4.0 `571f566`, v0.5.0 `b7881c4`, v0.6.0 `5db316f`;
+this push v0.7.0. None created: tags are Angel's (git runs in his Terminal). The site does not yet show
+the version.
+
+*This session ran one read-only `git log -1` in the Cowork VM by mistake (against the rule); no
+`index.lock` was left.*
