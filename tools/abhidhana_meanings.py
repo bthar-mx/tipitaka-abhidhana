@@ -3,10 +3,10 @@
 
 Two steps, around a drafting pass done outside this script:
 
-    prep  <book>   writes work/meanings/work<book>.json and work/meanings/shards/NN.jsonl:
+    prep  <book>   writes tmp/meanings/work<book>.json and tmp/meanings/shards/NN.jsonl:
                    the Burmese explanation of each article, with the "see X" / "same meaning
                    as X" sentences replaced by placeholders «S1» «S2» …
-    merge <book>   reads work/meanings/out/NN.jsonl (one {id, es, en, terms, flag} per line,
+    merge <book>   reads tmp/meanings/out/NN.jsonl (one {id, es, en, terms, flag} per line,
                    written by the drafting pass following docs/translation/drafting-brief.md) and
                    writes docs/translation/meanings/<book>.jsonl, which tools/abhidhana_site.py
                    reads into the records' `t` field.
@@ -30,7 +30,7 @@ import glob, gzip, json, re, sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-WORK = ROOT / 'work/meanings'
+WORK = ROOT / 'tmp/meanings'   # working files, gitignored (vol. 1's were in the VM)
 mn = lambda t: (t or '').replace('့်', '့်')
 NOT_PALI = re.compile('[း့ဲ၌၍၎၏]|ို|်(?!္)')
 SEE = re.compile(r'^(?P<x>[^။()]+?)\s*-?\s*(?P<pl>တို့\s*)?(?P<also>လည်း\s*)?ကြည့်(?:၍)?$')

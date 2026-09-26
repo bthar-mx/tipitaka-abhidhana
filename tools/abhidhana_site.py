@@ -155,6 +155,24 @@ def history_html(lang):
     return '\n  '.join(out)
 
 
+def version_assets():
+    """Give every /assets/ link in the built pages a ?v=<content hash>. Cloudflare serves /assets/*
+    with a 4-hour browser cache whatever site/src/_headers says (seen 26 Sep 2026: max-age=14400,
+    while /data/* kept no-cache), so a returning visitor could run an old script against new data.
+    A changed file now has a new URL; an unchanged one keeps its URL and stays cached."""
+    import hashlib
+    ver = {}
+    for f in (OUT / 'assets').iterdir():
+        if f.is_file(): ver[f.name] = hashlib.sha256(f.read_bytes()).hexdigest()[:10]
+    link = re.compile(r'(/assets/)([\w.-]+)(?=["\'])')
+    n = 0
+    for page in OUT.rglob('*.html'):
+        t = page.read_text(encoding='utf-8')
+        u = link.sub(lambda m: m.group(0) + (f'?v={ver[m.group(2)]}' if m.group(2) in ver else ''), t)
+        if u != t: page.write_text(u, encoding='utf-8'); n += 1
+    print(f'assets versioned in {n} pages: ' + ', '.join(f'{k}?v={v}' for k, v in sorted(ver.items())))
+
+
 def main():
     vols = json.loads((ROOT / 'site/volumes.json').read_text(encoding='utf-8'))
     if OUT.exists(): shutil.rmtree(OUT)
@@ -228,6 +246,8 @@ def main():
         rows.append(f'<li class="vol{"" if done else " soon"}" data-id="{v["id"]}">{link}{stat}</li>')
     ix = OUT / 'volumes/index.html'
     ix.write_text(ix.read_text(encoding='utf-8').replace('<!--VOLUMES-->', '\n'.join(rows)), encoding='utf-8')
+
+    version_assets()
 
     files = [f for f in OUT.rglob('*') if f.is_file()]
     big = [f for f in files if f.stat().st_size > MAX_FILE]
