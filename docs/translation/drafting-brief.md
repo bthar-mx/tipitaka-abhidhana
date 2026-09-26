@@ -1,4 +1,4 @@
-# Brief: drafting the Meaning box of the Tipiṭaka Pāḷi-Myanmā Abhidhāna, vol. 1
+# Brief: drafting the Meaning box of the Tipiṭaka Pāḷi-Myanmā Abhidhāna (vol. 1, 25 Sep 2026; from vol. 2, 26 Sep)
 
 You translate the **Burmese explanations** of a Pāḷi → Burmese dictionary into **Spanish and English**. Each draft is marked *drafted* and will be reviewed by a human reader of Burmese. Accuracy matters more than elegance. Consistency across thousands of articles matters more than variety.
 
@@ -55,6 +55,7 @@ Write one JSON line per input line, in the same order, to the output file you ar
    - Drop citation references such as `တိပိ၊၁၊၁` or `ဝိ၊၂။၃၄၅။`. They are shown elsewhere.
 6. **Buddhist technical terms and the glossary.**
    - Use the renderings in `stems.tsv` (columns `en`, `es`) **exactly**. When a row offers several renderings, choose the one that fits the context.
+   - **`glossary.tsv` is fixed by Angel and overrides everything else.** Now: ကုသိုလ် *kusala* → **sano**, အကုသိုလ် *akusala* → **insano** (Spanish; English stays *wholesome* / *unwholesome* until the glossary fixes it). The Spanish adjective agrees with its noun: *mente sana*, *estados insanos*, *cetanā insana*; as a noun, *lo sano* / *lo insano*; `y` becomes `e` before *insano*. Do not add *(kusala)* after it. Keep the Pāḷi only where the word itself is meant ("la palabra *akusala*") and inside a Pāḷi compound kept whole (*akusalavipāka*).
    - For a doctrinal term the table lacks, keep the Pāḷi, romanised by you as `⟦=iast⟧`. Examples: `ကုသိုလ်` → `⟦=kusala⟧`, `ဈာန်` → `⟦=jhāna⟧`, `ဝိပဿနာ` → `⟦=vipassanā⟧`, `ပစ္စေကဗုဒ္ဓါ` → `⟦=paccekabuddha⟧`.
    - Add a Spanish or English gloss after it only when the Burmese itself explains it.
    - List each such term in `terms`.

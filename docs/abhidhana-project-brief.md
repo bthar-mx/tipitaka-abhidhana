@@ -1177,3 +1177,35 @@ kept *kusala* / *akusala* became *sano/sana/sanos* agreeing with the noun, *lo s
 noun or a hyphen alternative, "y" → "e" before *insano*; *akusala* kept where the word itself is meant
 (544, 587); compounds (*akusalavipāka* …) untouched. Status stays `drafted`. Batch 1's other stems are
 still not reviewed (Angel: "I don't know").
+
+## 41. Assets versioned; vol. 2's Meaning boxes drafted (26 September 2026, night)
+
+**Assets.** Cloudflare served `/assets/*` with `Cache-Control: public, max-age=14400` (4 hours) although
+`site/src/_headers` says `no-cache`; `/data/*` did follow `_headers`. After the push of §40 the live
+`browse.js` was new but the in-app browser ran its cached old copy against the new label table. The
+cause is probably the zone's *Browser Cache TTL* (its default is 4 hours); not confirmed in the dashboard.
+`tools/abhidhana_site.py` now ends with `version_assets()`: every `/assets/` link in the built pages gets
+`?v=<first 10 hex of the file's SHA-256>`, so a changed file has a new URL (7 pages rewritten). Tested
+in a headless browser: pages load, no script errors.
+
+**Vol. 2 drafted** (the method of §39; `docs/translation/drafting-brief.md`, which now carries the
+glossary rule: kusala = *sano*, akusala = *insano*, agreeing with the noun). `abhidhana_meanings.py`'s
+working folder moved from `work/meanings` (not gitignored) to `tmp/meanings`. `prep 02`: 7,189
+explanations, 303 formula-only, 6,886 drafted in 16 shards by 16 agents, each with its own scratch
+folder, told to translate every line itself (no scripts or MT). Checked after: every shard one line per
+input id in order, valid JSON, every «Sn» in both languages. `merge 02`: **7,189 rows (every article of
+vol. 2), all `drafted`, all from PCED; 517 flagged** (`meanings/02-flags.tsv`, with the Burmese), 615 Pāḷi
+terms kept (`meanings/02-terms.tsv`; commonest apāya 87, kilesa 65, appanā 53, kamma 50). *sano/insano*
+used 108 times; no "no saludable" left.
+
+**Known weaknesses the agents reported** (nothing reviewed):
+- Pāḷi already in Pāḷi form was sometimes written ⟦=iast⟧ rather than copied (both romanise the same;
+  shards 00, 04 and 11 fixed their own; the brief's own vipassanā example invites it).
+- ပယ် rendered *rechazar* / *reject* up to id 11625, then mostly *abandonar* / *abandon* (shard 07): a stem
+  for the table.
+- "see X" sentences that `prep` did not turn into placeholders (a sense number or "(က) အနက်" after X) were
+  rendered by hand and flagged (shards 12, 14).
+- 11 rows keep Burmese plant or mineral names outside ⟦ ⟧ (flagged); a Burmese month romanised as
+  *Tazaungmon* (11741).
+- Shard 15 flagged 37 rows only because their label is empty.
+- Doubtful glosses flagged, e.g. 8481 anuttama "not highest", 10217 anesamāna, 11548 apatthaddha.
