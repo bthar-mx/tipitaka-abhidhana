@@ -2,7 +2,7 @@
 
 *Written 21 September 2026, at the end of the volume-25 pilot; §10–12 revised 24 September
 2026, after volume 1 was done end to end and the repository was made public; §18–26 added
-25 September 2026 (spelling folds, the witness join, vols. 6–9, re-cutting gutters, vol. 14/2's text layer, the batch of vols. 10–22); §27 the same evening (vols. 23, 24 and 14/2 finished, the index's page errors applied, book 21 explained, the Reader in binary); §28 the public website, the page images and the label table; §29 vol. 21 finished, vol. 25's resolution, the dictionary's own account of its labels; §30 vol. 25 done, all 29 books; §31 (later on 25 Sep) the page-image tool's bitmap test; §32 the weak page corrections, image-checked; §33 the compound analysis with its [ lost; §34 the dictionary's history on the site; §35 all page images live, a light/dark switch, the Introduction page; §36 citations keep their whole abbreviation; §37 translation, batch 1; §38–41 (26 Sep) the redesign, vol. 1–2 drafts, PCED analyses, versioned assets; §42 (26 Sep) the live check, vol. 3's drafts, version numbers; §43 vols. 4/1–4/2 drafts, the IEBH footer, citation tooltips, cross-reference links, labels reviewed; §44 the live check after v0.8.0, vol. 4/3 deferred, vol. 5 drafted, the analysis split from its derivation, printed page numbers. Everything in
+25 September 2026 (spelling folds, the witness join, vols. 6–9, re-cutting gutters, vol. 14/2's text layer, the batch of vols. 10–22); §27 the same evening (vols. 23, 24 and 14/2 finished, the index's page errors applied, book 21 explained, the Reader in binary); §28 the public website, the page images and the label table; §29 vol. 21 finished, vol. 25's resolution, the dictionary's own account of its labels; §30 vol. 25 done, all 29 books; §31 (later on 25 Sep) the page-image tool's bitmap test; §32 the weak page corrections, image-checked; §33 the compound analysis with its [ lost; §34 the dictionary's history on the site; §35 all page images live, a light/dark switch, the Introduction page; §36 citations keep their whole abbreviation; §37 translation, batch 1; §38–41 (26 Sep) the redesign, vol. 1–2 drafts, PCED analyses, versioned assets; §42 (26 Sep) the live check, vol. 3's drafts, version numbers; §43 vols. 4/1–4/2 drafts, the IEBH footer, citation tooltips, cross-reference links, labels reviewed; §44 the live check after v0.8.0, vol. 4/3 deferred, vol. 5 drafted, the analysis split from its derivation, printed page numbers; §45 the live check after v0.9.0, vol. 6 drafted. Everything in
 this file was measured. Do not re-derive a figure it carries; if a new one is needed,
 measure it rather than estimating.*
 
@@ -1448,3 +1448,62 @@ English still lists *infinitive … -tuṁ*.
 
 The site was built in the Cowork VM (13 s, 953 files, 571 MB) and the new fields checked in its data; the page
 changes were not opened in a browser before the push (the container cannot reach a VM build).
+
+
+## 45. The live check after v0.9.0; vol. 6's Meaning boxes drafted (26 September 2026, later still)
+
+**The live site after the v0.9.0 push** (in-app browser). At 11:53 UTC, six minutes after the push (`004e792`,
+`main` = `origin/main`), the site still served 0.8.0 (`/data/version.json` fetched with `no-store`); by about
+12:20 UTC it served 0.9.0: the Cloudflare build takes some minutes, so wait before a check. Then:
+- `/w/katvā`: vol. 5 · **p. 176** · PDF 230; the analysis `[kara + tvā]` with the Burmese analysis and derivation on
+  its own line below; vol. 5's Meaning box, *borrador*.
+- `/w/ulūka`: `[uddhaṁ + kaṇṇa. uca + ṇuka. … dhān ṭī 638. ula + ṇūka. … mog 7.26]` and the Burmese line.
+- `/w/ehalokika`: "vol. 4/1 · p. 620 · p. del PDF 662"; the page pane's › goes to p. 621 · PDF 663, then p. 622 ·
+  PDF 664, and loads `4a/0664.webp`.
+- The page view: vol. 2 PDF 241 → printed ၂၂၄ (224), vol. 22 PDF 920 → ၈၈၁ (881), PDF 919 → ၈၇၉ (879, the lost
+  page's headwords, unlocated). The page view shows only pages with index records: `/v/03/72` (an unindexed page
+  inside the body) opens PDF 73, and `/v/01/60` (front matter) opens PDF 121. This is `read.js`'s `render()` as
+  before, not new; so "printed p. on pages without records" cannot be seen there.
+- The header search list (`kilesa`): each result's page line under the headword, "vol. 6 · p. 1 · p. del PDF 23".
+- `/w/kaṅkhā`: vol. 5's Meaning box, *borrador*. About: "Los recuadros de Significado (vols. 1–3, 4/1, 4/2 y 5)
+  están en borrador".
+- Console: only `ERR_BLOCKED_BY_CLIENT` (as §42, §44).
+
+**Vol. 6 drafted**, §43's method, from PCED: `prep('06', 25)` (457 lines a shard), 25 agents in the cloud container
+(20, then 5), each with its own scratch folder, the drafting brief unchanged, plus a note in the prompt keeping vol.
+5's open choices as vol. 5 made them (ကံ ⟦=kamma⟧ with non-moral senses flagged; ကြိယာ kept Pāḷi, flagged as
+"verb"; ကမ္ဘာ *eón* / *mundo*; ဘုံ, ဘီလူး, နတ်သား, နတ်သမီး, မထေရ် as ⟦=bhūmi⟧ ⟦=yakkha⟧ ⟦=devaputta⟧ ⟦=devī⟧
+⟦=thera⟧; ပယ် *rechazar* where it means refute, flagged; the future in the 3rd person unless marked; unknown plant
+and animal names in ‹…› and flagged; "see the original" rendered and flagged). Checked after, over all shards: one
+line per input id in order, valid JSON, every «Sn» in both languages, ⟦ ⟧ balanced. One row (55213) kept a
+bracketed Burmese word outside ⟦ ⟧; it was put in ‹…› by hand. Working files in `tmp/meanings/` (`work06.json`,
+`shards/`, `out/`); the tarballs `mean06-in-0926c.tar.gz`, `mean06-out-0926d.tar.gz` (md5 checked after the copy).
+
+| | vol. 6 |
+|---|---:|
+| explanations / formula-only / drafted | 11,425 / 4 / 11,421 |
+| rows (`meanings/06.jsonl`) | 11,424 (57627 gahitapaṭala has only its analysis: no row) |
+| from PCED / from our OCR | 11,420 / 4 |
+| flagged (`meanings/06-flags.tsv`) | 1,154 |
+| terms kept in Pāḷi (`06-terms.tsv`) | 397 (kilesa 630, khandha 152, thera 97, deva 66, gāthā 58, kāmaguṇa 52, kamma 49, gati 42) |
+| "see X" links matching a romanised headword | 2,158 of 2,206 (97.8%) |
+| rows with *sano / insano*; with *mérito*; "no saludable" | 353; 18; 0 |
+
+The site, built in the Cowork VM into `$HOME/sitebuild` (`ABHIDHANA_SITE_OUT`; the VM may not delete files in
+`site/dist`): 953 files, 575 MB, version 0.10.0, and 11,424 of `v06.json`'s 11,429 records carry a Meaning (`t`).
+Not opened in a browser before the push.
+
+**What the agents reported for the reviewer** (nothing reviewed):
+- **ဂုဏ်** is *cualidad* in 204 rows and *virtud* in 86 (the guṇa run and elsewhere): a stem to fix. ဂုဏ်ကျေးဇူး
+  *cualidades y favores*.
+- **ခေတ်** kept ⟦=khetta⟧ (field of merit, Buddha-field) in 33 rows, **လယ်** *campo*; 55230 and 55254 (khettaja)
+  flagged as possibly other senses. Whether ခေတ် here is ever "era" is not checked.
+- **လူ** as *laico* / *layman* in the gihi- run (shard 20; flagged only at 58522), against the stem *ser humano*.
+- **ရှုတ်ချ** *denigrar* kept apart from **ကဲ့ရဲ့** *censurar* (shard 11).
+- ⟦=kamma⟧ as the Saṅgha's act or the grammatical object (55597, 58679), ကိရိယာ as "verb" (56677–56784), ပယ် as
+  "reject" (55211, 55263), 1st-person headwords rendered in the 3rd person (shards 13, 16, 20), "see the original"
+  (49260, 55348, 58415): flagged, as asked.
+- Tentative identifications, flagged: ဂုံ / နှမ်းကြပ် as linen (the khoma rows), ကြစု (58666 guggula, perhaps
+  bdellium), ချွန်းတောင်း *aguijón de elefante* (56981); the month တပေါင်း written *Tabaung* (56979).
+- Seen in a sample, not flagged: 56968 gambhīrāsaya, နက်သောတည်ရာ, came out "que tiene un lugar de asiento profundo"
+  (literal; āsaya is disposition); vol. 5's katvā has "(d) cuando hace (e)" without a stop.
