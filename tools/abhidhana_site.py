@@ -173,6 +173,23 @@ def version_assets():
     print(f'assets versioned in {n} pages: ' + ', '.join(f'{k}?v={v}' for k, v in sorted(ver.items())))
 
 
+def stamp_version():
+    """The project's version (the file VERSION, brief §42, CHANGELOG.md) on every built page: a
+    <meta name="version"> in the head, which common.js shows, linked to the changelog, in the IEBH footer
+    of every page (Browse: at the end of each article), and data/version.json for scripts."""
+    vf = ROOT / 'VERSION'
+    if not vf.exists(): return
+    v = vf.read_text(encoding='utf-8').strip()
+    n = 0
+    for page in OUT.rglob('*.html'):
+        t = page.read_text(encoding='utf-8')
+        u = t.replace('<head>', f'<head>\n<meta name="version" content="{html.escape(v)}">', 1)
+        if u != t: page.write_text(u, encoding='utf-8'); n += 1
+    (OUT / 'data').mkdir(exist_ok=True)
+    (OUT / 'data/version.json').write_text(json.dumps({'version': v}), encoding='utf-8')
+    print(f'version v{v} stamped in {n} pages')
+
+
 def main():
     vols = json.loads((ROOT / 'site/volumes.json').read_text(encoding='utf-8'))
     if OUT.exists(): shutil.rmtree(OUT)
@@ -247,6 +264,7 @@ def main():
     ix = OUT / 'volumes/index.html'
     ix.write_text(ix.read_text(encoding='utf-8').replace('<!--VOLUMES-->', '\n'.join(rows)), encoding='utf-8')
 
+    stamp_version()
     version_assets()
 
     files = [f for f in OUT.rglob('*') if f.is_file()]

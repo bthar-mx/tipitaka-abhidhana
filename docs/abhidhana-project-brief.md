@@ -2,7 +2,7 @@
 
 *Written 21 September 2026, at the end of the volume-25 pilot; §10–12 revised 24 September
 2026, after volume 1 was done end to end and the repository was made public; §18–26 added
-25 September 2026 (spelling folds, the witness join, vols. 6–9, re-cutting gutters, vol. 14/2's text layer, the batch of vols. 10–22); §27 the same evening (vols. 23, 24 and 14/2 finished, the index's page errors applied, book 21 explained, the Reader in binary); §28 the public website, the page images and the label table; §29 vol. 21 finished, vol. 25's resolution, the dictionary's own account of its labels; §30 vol. 25 done, all 29 books; §31 (later on 25 Sep) the page-image tool's bitmap test; §32 the weak page corrections, image-checked; §33 the compound analysis with its [ lost; §34 the dictionary's history on the site; §35 all page images live, a light/dark switch, the Introduction page; §36 citations keep their whole abbreviation; §37 translation, batch 1; §38–41 (26 Sep) the redesign, vol. 1–2 drafts, PCED analyses, versioned assets; §42 (27 Sep) the live check, vol. 3's drafts, version numbers. Everything in
+25 September 2026 (spelling folds, the witness join, vols. 6–9, re-cutting gutters, vol. 14/2's text layer, the batch of vols. 10–22); §27 the same evening (vols. 23, 24 and 14/2 finished, the index's page errors applied, book 21 explained, the Reader in binary); §28 the public website, the page images and the label table; §29 vol. 21 finished, vol. 25's resolution, the dictionary's own account of its labels; §30 vol. 25 done, all 29 books; §31 (later on 25 Sep) the page-image tool's bitmap test; §32 the weak page corrections, image-checked; §33 the compound analysis with its [ lost; §34 the dictionary's history on the site; §35 all page images live, a light/dark switch, the Introduction page; §36 citations keep their whole abbreviation; §37 translation, batch 1; §38–41 (26 Sep) the redesign, vol. 1–2 drafts, PCED analyses, versioned assets; §42 (27 Sep) the live check, vol. 3's drafts, version numbers; §43 vols. 4/1–4/2 drafts, the IEBH footer, citation tooltips, cross-reference links, labels reviewed. Everything in
 this file was measured. Do not re-derive a figure it carries; if a new one is needed,
 measure it rather than estimating.*
 
@@ -1269,3 +1269,91 @@ the version.
 
 *This session ran one read-only `git log -1` in the Cowork VM by mistake (against the rule); no
 `index.lock` was left.*
+
+
+## 43. Vols. 4/1 and 4/2 drafted; the site's footer, citations and cross-references; labels reviewed (27 September 2026, later)
+
+**Angel pushed §42 and created the tags v0.1.0–v0.7.0.** The scheme of `CHANGELOG.md` is in use; this
+work is v0.8.0 (`VERSION`). The live site showed vol. 3's Meaning boxes (`/w/abyākata`, checked in the
+in-app browser).
+
+**`abhidhana_meanings.py prep` catches more "see X".** From vol. 4/1 (`LEGACY = {'01', '02', '03'}` keeps
+the first pattern, so `prep 01–03` reproduce their working files byte for byte; checked on 03): a sense
+marker or label before the formula ("(စ) X-ကြည့်"), a sense after X ("X-(၂)-ကြည့်", "X-(၁-က)-ကြည့်",
+rendered *Véase X (2)*, *(1-a)*), the whole formula in brackets, and "လည်း-ကြည့်". In 4/1 the formulas rose
+from 1,180 to 1,290 and the residual "ကြည့်" rows fell from 218 to 126; in 4/2 from 942 to 1,232 and from
+464 to 217. What remains is mostly X with a variant in brackets ("X(ယ)-ကြည့်"), "see the preceding
+headword", and "see the original"; the drafts render those by hand, flagged. A `report` step now writes
+`<book>-flags.tsv` and `<book>-terms.tsv` (the code used by hand for vol. 3).
+
+**`drafting-brief.md` clarified**: rule 6 now says what the vol. 3 prompt said (Pāḷi already in Pāḷi form is
+copied as ⟦Burmese⟧; ⟦=iast⟧ only for a Burmese loanword form such as ဈာန်, မဂ်, ကိလေသာ, ကံ); `terms` lists
+both kinds (as vol. 3 did); a list "ကုသိုလ်,အကုသိုလ်" takes *o* (*sano o insano*).
+
+**Vols. 4/1 and 4/2 drafted**, from PCED, 16 + 14 shards of ~446 / ~474 lines, one agent and one scratch
+folder each (20 at once, then 10). Checked after: one line per id in order, valid JSON, every «Sn» in both
+languages, brackets balanced; 30 rows keep Burmese outside ⟦ ⟧ (plant and other names, and the source tag
+(သျ)), all flagged.
+
+| | vol. 4/1 (4a) | vol. 4/2 (4b) |
+|---|---:|---:|
+| rows (every article with a definition) | 7,519 | 6,654 |
+| by formula / drafted | 397 / 7,122 | 25 / 6,629 |
+| from PCED / from our OCR | 7,515 / 4 | 6,652 / 2 |
+| flagged (`meanings/NN-flags.tsv`) | 409 | 872 |
+| terms kept in Pāḷi | 751 | 575 |
+| "see X" links matching a romanised headword | 1,355 of 1,404 (96.5%) | 1,228 of 1,315 (93.4%) |
+| *sano/insano* rows; "no saludable" | 53; 0 | 47; 0 |
+
+One explanation per book has no row (both languages empty: a definition that is only citations, e.g. 27730
+ācayagāmisutta). 4/2 is flagged twice as often: its shards flagged every row whose verb person was taken from
+the Pāḷi ending, (သျ) tags (an abbreviation in neither table; dropped as a citation, a guess), and more
+"see the original" notes.
+
+**What the agents reported for the reviewer** (nothing reviewed):
+- **Colloquial ကုသိုလ်**: 27529 āgantukāgāra, "a guest house built as a work of merit", came out *sano*: the
+  glossary rule reads wrongly where ကုသိုလ်ဖြစ် means "meritorious". A rule for Angel. 28891
+  āpattikusalatā (kusala = skilled) was rendered by sense.
+- **Recurring choices to fix as stems**: ဥတု kept Pāḷi where it means temperature, *estación* for seasons
+  (shard 4a/14, ~60 rows); လုံ့လဝီရိယ *esfuerzo (vīriya)*; နတ် *deidad* in some shards, ⟦=deva⟧ in others;
+  ရဟန်း *monje*; ပယ် and သုံးသပ် (*palpar* / *considerar*); plant names identified tentatively (သျှစ်သျှား
+  *mirobálano*, အာလူး *patata* for āluva) or left in Burmese.
+- **Definitions that look shifted or wrong** (for the image): 35125/35127 (udayabbaya(ā)manasikāra glosses
+  swapped), 35655, 35672, 35780, 36386, 37845, 38313, 38337, 38638, 41050 ussāsa "excrement", 40165 (a missing
+  negation), 31346 āsava glossed as the deity Āsā, 33026 uggacchati "subsides".
+- **Truncated articles with "see the original"**: 29995 ārammaṇa, 35075 udaya, 39125 uposatha, 31730 āḷavaka.
+- **Verb person**: the Burmese does not mark it; 4/2's shards took it from the Pāḷi ending and are not all
+  consistent (အံ့ 1st vs 3rd person in 38094 / 38119).
+
+**The site** (asked by Angel; built on vols. 1 and 4/1 in the cloud container and tested with Playwright at
+1,440 and 390 px, light and dark, ES: no script errors, no horizontal scroll):
+- **IEBH footer on every page** (`common.js` `footHTML()`, appended to each `footer.site-foot`; Browse adds one
+  at the end of each article): the IEBH imagotype (the SVGs of gramaticas.buddha-dhamma.net, from
+  `bthar-mx/gramaticas-pali-es/site/assets`, granate and white for dark mode), related sites
+  (buddha-dhamma.net, gramaticas.buddha-dhamma.net), repository, licences (MIT; CC BY-SA 4.0 for the
+  additions; the dictionary's text not relicensed), and the version from `<meta name="version">`, linked to
+  the changelog. `stamp_version()` now writes only the meta and `data/version.json`. The old footers of
+  Volumes, About and Abbreviations are replaced; the reader keeps its own credit line above the block.
+  *The logo reads "Instituto de Estudios Buddhistas Hispano", as gramaticas does; the rest of this site
+  (About, README) writes "Budistas". The footer follows the logo; Angel to say which is right.*
+- **Back-to-top button** (↑, bottom right) on every page, shown after 400 px of scroll in the window or in
+  Browse's article pane.
+- **"Análisis"**, without the "PCED" chip: it is the dictionary's own analysis (Angel). PCED is now described
+  where it belongs, in a new **Typed witnesses / Testigos mecanografiados** section of About (what it is, how
+  it was joined and measured, what the site takes from it, its unstated licence), with Pn Daza's typed text.
+- **Cross-references in the Burmese definition are links**: a "see X" span links to X's article, in all three
+  scripts (vol. 4/1 test: iṭṭhamajjhattārammaṇa → iṭṭha).
+- **Citation tooltips**: hovering a citation shows the work and the location, *Abhidhamma Aṭṭhakathā · tomo 1,
+  página 314* (EN *vol. 1, p. 314*), the format of gramaticas' Kaccāyana pages (`generar_capitulo.py`,
+  "{obra} · tomo {tomo}, página {pag}"); the click note shows the same. The first number is taken as the
+  volume and the second as the page (brief §36); one number is shown as a page; other shapes as printed.
+  Abbreviations not in vol. 1's table get no tooltip (e.g. မဏိမဉ္စူ).
+- **Mode bar**: "Modo de lectura:" is a label (it was taken for a button); the page switch reads
+  *Mostrar / Ocultar la página impresa*. It is not redundant with "Como está impreso": that mode is a preset
+  (Burmese script, definition shown, page on); the switch shows the page in any mode.
+
+**Labels (Angel, 27 Sep)**: *sustantivo* → *nombre* in every Spanish label (and in the Introduction ch. 5
+and `batch01-review.md`); (ကြိ၊ဝိ) without "infinitivo"; (နာမ-ကြိ) *nāmadhātu*, *verbo denominativo, verbo
+nominal*; (စတုတ္ထန္တ) *voz terminada en la cuarta inflexión*; (တတိယန္တ-ဗျ) *tatiyanta abyaya*, *indeclinable
+terminado en la tercera inflexión*. Those rows (16) are `confirmed` with their Spanish; the others keep their
+status. The (ကြိ၊ဝိ) Spanish still lists *-tuṁ* among its forms: Angel removed only the word.

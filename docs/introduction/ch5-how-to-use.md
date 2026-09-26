@@ -350,7 +350,7 @@ palabras se encuentran en las ediciones citadas. Pues en los libros del Sexto Co
 sayadaws de la revisión final no dieron en las notas todas las variantes, sino solo las que
 juzgaron dignas de mención.
 
-En los sustantivos que admiten los tres géneros, solo se registra como entrada la forma base, sin
+En los nombres que admiten los tres géneros, solo se registra como entrada la forma base, sin
 sufijo de femenino; la forma femenina debe buscarse en esa base. Las formas que cambian al
 añadirse un sufijo de femenino se muestran en negrita entre corchetes [ ], como «fem. *akkamantī*».
 Por ejemplo: *akkamanta*, *akkosayanta*, *aggaupāsaka*, *acchodaka*, *athena*, *adhammavādī*.
@@ -390,7 +390,7 @@ significados que aparecen en los comentarios y subcomentarios, que damos con sus
 **( ) Paréntesis**
 
 Después de la entrada se indica entre paréntesis ( ) la clase de palabra. Si la entrada es un
-sustantivo, no se dice que lo es: solo se indica su género, como (*pu*, *thī*), etc.
+nombre, no se dice que lo es: solo se indica su género, como (*pu*, *thī*), etc.
 
 También hay paréntesis en los significados birmanos y en las citas. Allí se usan para una
 expresión de igual sentido (p. ej., en *a*², «*a* (con el sentido de) *paṭisedha* (prohibición)»);

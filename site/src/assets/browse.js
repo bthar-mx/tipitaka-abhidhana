@@ -7,10 +7,10 @@ const app = document.getElementById('app');
 if (!app) return;
 
 Object.assign(T.en, {
-  b_mode: 'Reading mode', m_reader: 'Pāḷi reader', m_printed: 'As printed', m_custom: 'custom',
+  b_mode: 'Reading mode:', m_reader: 'Pāḷi reader', m_printed: 'As printed', m_custom: 'custom',
   d_reader: 'Pāḷi in roman, labels as printed, romanised; Burmese definition folded away.',
   d_printed: 'As the book has it: Burmese script, printed labels, the printed page.',
-  settings: 'Settings', done: 'Done', page_on: 'Printed page: on', page_off: 'Printed page: off',
+  settings: 'Settings', done: 'Done', page_on: 'Hide the printed page', page_off: 'Show the printed page',
   s_script: 'Script for Pāḷi', s_defs: 'Burmese definition', s_labels: 'Grammatical labels', s_page: 'Printed page',
   o_ro: 'roman', o_my: 'Burmese', o_both: 'both', o_show: 'show', o_collapse: 'fold away', o_hide: 'hide',
   o_printed: 'as printed', o_abbr: 'abbreviated', o_full: 'spelled out', o_on: 'on', o_off: 'off',
@@ -22,7 +22,7 @@ Object.assign(T.en, {
   show_def: 'Show the Burmese definition', hide_def: 'Hide the Burmese definition', my_def: 'Burmese definition',
   ocrnote: 'Machine-read Burmese (OCR), unchecked. Compare the printed page before quoting.',
   quotes: 'Pāḷi passages quoted', quotes_note: 'Picked out of the definition by machine; their references are among the citations.',
-  cit: 'Citations', cit_unknown: 'abbreviation not yet identified', cit_list: 'in the list of works', cit_draft: 'table drafted, not reviewed',
+  cit_vp: (v, p) => `vol. ${v}, p. ${p}`, cit_p: p => `p. ${p}`, cit: 'Citations', cit_unknown: 'abbreviation not yet identified', cit_list: 'in the list of works', cit_draft: 'table drafted, not reviewed',
   scan: 'Printed page', see_page: 'See the printed page', page_view: 'Page view', close_scan: 'Close the printed page',
   prev_page: 'Previous page', next_page: 'Next page', img_none: 'This page image is not available.',
   fuzzy: 'located approximately', unlocated_h: 'Not found in the machine reading',
@@ -37,10 +37,10 @@ Object.assign(T.en, {
   panes_hide: 'Hide index', panes_show: 'Show index', panes_t: 'Hide or show the alphabet and the headword list',
 });
 Object.assign(T.es, {
-  b_mode: 'Modo de lectura', m_reader: 'Lector de pāḷi', m_printed: 'Como está impreso', m_custom: 'personalizado',
+  b_mode: 'Modo de lectura:', m_reader: 'Lector de pāḷi', m_printed: 'Como está impreso', m_custom: 'personalizado',
   d_reader: 'Pāḷi en caracteres latinos, categorías como se imprimen, romanizadas; definición birmana plegada.',
   d_printed: 'Como en el libro: escritura birmana, categorías impresas, página impresa.',
-  settings: 'Ajustes', done: 'Listo', page_on: 'Página impresa: sí', page_off: 'Página impresa: no',
+  settings: 'Ajustes', done: 'Listo', page_on: 'Ocultar la página impresa', page_off: 'Mostrar la página impresa',
   s_script: 'Escritura del pāḷi', s_defs: 'Definición birmana', s_labels: 'Categorías gramaticales', s_page: 'Página impresa',
   o_ro: 'latina', o_my: 'birmana', o_both: 'ambas', o_show: 'mostrar', o_collapse: 'plegar', o_hide: 'ocultar',
   o_printed: 'como se imprimen', o_abbr: 'abreviadas', o_full: 'completas', o_on: 'sí', o_off: 'no',
@@ -52,7 +52,7 @@ Object.assign(T.es, {
   show_def: 'Mostrar la definición birmana', hide_def: 'Ocultar la definición birmana', my_def: 'Definición birmana',
   ocrnote: 'Birmano leído por máquina (OCR), sin revisar. Compare con la página impresa antes de citar.',
   quotes: 'Pasajes pāḷi citados', quotes_note: 'Extraídos por máquina de la definición; sus referencias están entre las citas.',
-  cit: 'Citas', cit_unknown: 'abreviatura aún no identificada', cit_list: 'en la lista de obras', cit_draft: 'tabla en borrador, sin revisar',
+  cit_vp: (v, p) => `tomo ${v}, página ${p}`, cit_p: p => `página ${p}`, cit: 'Citas', cit_unknown: 'abreviatura aún no identificada', cit_list: 'en la lista de obras', cit_draft: 'tabla en borrador, sin revisar',
   scan: 'Página impresa', see_page: 'Ver la página impresa', page_view: 'Vista de página', close_scan: 'Cerrar la página impresa',
   prev_page: 'Página anterior', next_page: 'Página siguiente', img_none: 'La imagen de esta página no está disponible.',
   fuzzy: 'localizada aproximadamente', unlocated_h: 'No encontrada en la lectura automática',
@@ -234,15 +234,29 @@ function labelInfo(d) {
 }
 // the Burmese definition with its Pāḷi spans in the chosen script
 function defHTML(d) {
-  const b = d.b || ''; if (!d.sp || S.script === 'my') return esc(b);
+  // the Pāḷi spans in the definition, romanised; a "see X" span (d.see) links to X's article
+  const b = d.b || ''; if (!d.sp) return esc(b);
+  const SEE = new Map((d.see || []).map(([r, sl]) => [r, sl]));
+  const link = (r, inner) => SEE.has(r) ? `<a class="xref" href="/w/${encodeURIComponent(SEE.get(r))}">${inner}</a>` : inner;
   let out = '', k = 0;
   for (const [s, e, r] of d.sp) {
     out += esc(b.slice(k, s));
-    out += S.script === 'both' ? `<span class="pali-my" lang="my">${esc(b.slice(s, e))}</span> <span class="pali" lang="pi">(${esc(r)})</span>`
-                               : `<span class="pali" lang="pi" title="${esc(b.slice(s, e))}">${esc(r)}</span>`;
+    const my = esc(b.slice(s, e));
+    out += S.script === 'my' ? link(r, my)
+      : S.script === 'both' ? link(r, `<span class="pali-my" lang="my">${my}</span> <span class="pali" lang="pi">(${esc(r)})</span>`)
+      : link(r, `<span class="pali" lang="pi" title="${my}">${esc(r)}</span>`);
     k = e;
   }
   return out + esc(b.slice(k));
+}
+// a citation's expansion for its tooltip: the work (docs/introduction/citation-abbreviations.tsv) and,
+// read from the reference, volume and page (ဒီ၊ဋီ၊၂။၁၂။ -> Dīgha Ṭīkā · vol. 2, p. 12)
+function citeTip(d, j) {
+  const x = d.cx ? d.cx[j] : -1, A = x >= 0 ? ABBR[x] : null;
+  if (!A) return '';
+  const n = (d.c[j].replace(/[၀-၉]/g, c => '၀၁၂၃၄၅၆၇၈၉'.indexOf(c)).match(/\d+(?:\s*[-–]\s*\d+)?/g) || []).map(v => v.replace(/\s+/g, ''));
+  const loc = n.length === 2 ? t('cit_vp', n[0], n[1]) : n.length === 1 ? t('cit_p', n[0]) : n.join('.');
+  return A.work + (loc ? ' · ' + loc : '');
 }
 function reportURL(d) {
   const link = `${location.origin}/w/${encodeURIComponent(d.sl)}`;
@@ -279,7 +293,7 @@ function article() {
   }
   if (d.a || d.ai) {
     const fixed = (d.cf || []).includes('analysis') ? ` <span class="chip c-ok" title="${esc(t('corrected_t'))}">${esc(t('corrected_f'))}</span>`
-      : d.as === 'pced' ? ` <span class="chip" title="${esc(t('pced_t'))}">PCED</span>` : '';
+      : '';
     H.push(`<section><h2>${esc(t('analysis'))}${fixed}</h2>` + (ro && d.ai ? `<div class="pl an" lang="pi">[${esc(d.ai)}]</div>` : '') +
       (my && d.a ? `<div class="my an-my" lang="my">[${esc(d.a)}]</div>` : '') + '</section>');
   }
@@ -309,12 +323,13 @@ function article() {
   if (d.c && d.c.length) {
     H.push(`<section><h2>${esc(t('cit'))}</h2><div class="cits">` + d.c.map((c, j) => {
       const lab = S.script === 'my' || !d.ci ? `<span class="my" lang="my">${esc(c)}</span>` : `<span class="pl" lang="pi">${esc(d.ci[j])}</span>`;
-      return `<button type="button" class="cit${open.cit === j ? ' on' : ''}" data-cit="${j}" aria-expanded="${open.cit === j}">${lab}</button>`;
+      const tip = citeTip(d, j);
+      return `<button type="button" class="cit${open.cit === j ? ' on' : ''}" data-cit="${j}" aria-expanded="${open.cit === j}"${tip ? ` title="${esc(tip)}"` : ''}>${lab}</button>`;
     }).join('') + '</div>');
     if (open.cit >= 0 && open.cit < d.c.length) {
       const x = d.cx ? d.cx[open.cit] : -1, A = x >= 0 ? ABBR[x] : null;
       H.push('<div class="note">' + (A
-        ? `<strong class="pl" lang="pi">${esc(A.ro)}</strong> <span class="my" lang="my">(${esc(A.my)})</span> → ${esc(A.work)}` +
+        ? `<strong class="pl" lang="pi">${esc(A.ro)}</strong> <span class="my" lang="my">(${esc(A.my)})</span> → ${esc(citeTip(d, open.cit))}` +
           ` <span class="muted">· ${esc(t('cit_list'))}: ${esc(LANG === 'es' ? (A.list_es || A.list) : A.list)} ${esc(A.list_no)}${(LANG === 'es' ? A.note_es : A.note_en) ? ' · ' + esc(LANG === 'es' ? A.note_es : A.note_en) : ''}</span>` +
           ` <span class="chip c-warn">${esc(t('cit_draft'))}</span> <a href="/abbreviations/#abbreviations">↗</a>`
         : `<span class="my" lang="my">${esc(d.c[open.cit])}</span> — ${esc(t('cit_unknown'))}`) + '</div>');
@@ -328,7 +343,8 @@ function article() {
     (S.scan ? '' : `<button type="button" class="btn" data-scan>${esc(t('see_page'))}</button>`) +
     `<a href="/v/${d.k}/${d.p}#a${d.i}">${esc(t('page_view'))}</a>` +
     `<a class="report" href="${reportURL(d)}" target="_blank" rel="noopener">${esc(t('report'))}</a></div>`);
-  $('art').innerHTML = `<article>${H.join('')}</article>`;
+  $('art').innerHTML = `<article>${H.join('')}</article><footer class="site-foot"></footer>`;
+  fillFoot($('art'));
 }
 
 function scan() {

@@ -405,3 +405,19 @@ html[data-script="ro"] .lt.on .pl{color:var(--on-accent)}
   .site .theme{margin-left:0;flex:none}
 }
 @media (max-width: 1179px){ .modebar .md{display:none} }   /* the mode description only where the bar has room */
+
+/* the IEBH footer (common.js footHTML) and the back-to-top button */
+.iebh-foot{margin-top:14px}
+.iebh-foot p{margin:6px 0}
+.iebh-logo{display:block;width:160px;height:67px;margin:0 0 8px;background:url(/assets/iebh-imagotipo-granate.svg) left center/contain no-repeat}
+:root[data-theme="dark"] .iebh-logo{background-image:url(/assets/iebh-imagotipo-blanco.svg)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .iebh-logo{background-image:url(/assets/iebh-imagotipo-blanco.svg)}}
+.iebh-lic{font-size:12px}
+.art footer.site-foot{margin-top:48px}
+.totop{position:fixed;right:18px;bottom:18px;z-index:50;width:42px;height:42px;border-radius:50%;border:1px solid var(--rule);background:var(--surface);color:var(--ink);font-size:20px;line-height:1;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.14)}
+.totop:hover{background:var(--card)}
+.totop[hidden]{display:none}
+.ml{cursor:default}
+.def a.xref{color:inherit;text-decoration:underline;text-decoration-style:dotted;text-underline-offset:3px}
+.def a.xref:hover{color:var(--accent,inherit)}
+.cit[title]{cursor:help}

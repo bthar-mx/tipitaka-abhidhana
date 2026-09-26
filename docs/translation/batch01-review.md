@@ -183,9 +183,9 @@ Spanish word. They follow Spanish dictionary practice (the noun class first, the
 
 | label | Español | abbr. en | abbr. es (proposed) |
 |---|---|---|---|
-| (ပု) | sustantivo masculino | m. | m. |
-| (ထီ) | sustantivo femenino | f. | f. |
-| (န) | sustantivo neutro | n. | n. |
+| (ပု) | nombre masculino | m. | m. |
+| (ထီ) | nombre femenino | f. | f. |
+| (န) | nombre neutro | n. | n. |
 | (တိ) | adjetivo (los tres géneros) | adj. | adj. |
 | (ကြိ) | verbo | v. | v. |
 | (ကြိ၊ဝိ) | calificativo verbal: absolutivo, infinitivo | abs./inf. | abs./inf. |

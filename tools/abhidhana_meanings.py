@@ -6,6 +6,7 @@ Two steps, around a drafting pass done outside this script:
     prep  <book>   writes tmp/meanings/work<book>.json and tmp/meanings/shards/NN.jsonl:
                    the Burmese explanation of each article, with the "see X" / "same meaning
                    as X" sentences replaced by placeholders «S1» «S2» …
+    report <book>  writes meanings/<book>-flags.tsv and <book>-terms.tsv after merge
     merge <book>   reads tmp/meanings/out/NN.jsonl (one {id, es, en, terms, flag} per line,
                    written by the drafting pass following docs/translation/drafting-brief.md) and
                    writes docs/translation/meanings/<book>.jsonl, which tools/abhidhana_site.py
@@ -33,13 +34,37 @@ ROOT = Path(__file__).resolve().parent.parent
 WORK = ROOT / 'tmp/meanings'   # working files, gitignored (vol. 1's were in the VM)
 mn = lambda t: (t or '').replace('့်', '့်')
 NOT_PALI = re.compile('[း့ဲ၌၍၎၏]|ို|်(?!္)')
-SEE = re.compile(r'^(?P<x>[^။()]+?)\s*-?\s*(?P<pl>တို့\s*)?(?P<also>လည်း\s*)?ကြည့်(?:၍)?$')
-SAME = re.compile(r'^(?P<x>[^။()]+?)\s*-?\s*(?:နှင့်\s*အနက်တူ(?:၏)?|,\s*တူ)$')
+SEE = re.compile(r'^(?P<x>[^။()]+?)\s*-?\s*(?:\((?P<n>[၀-၉က-အ]{1,2}(?:-[၀-၉က-အ]{1,2})?)\)\s*-?\s*)?(?P<pl>တို့\s*)?(?P<also>လည်း\s*-?\s*)?ကြည့်(?:၍)?$')
+SAME = re.compile(r'^(?P<x>[^။()]+?)\s*-?\s*(?:\((?P<n>[၀-၉က-အ]{1,2}(?:-[၀-၉က-အ]{1,2})?)\)\s*-?\s*)?(?:နှင့်\s*အနက်တူ(?:၏)?|,\s*တူ)$')
+# from vol. 4/1 (27 Sep 2026): sense markers or a label before the formula, "(၂)" after X, the whole
+# formula in brackets, and "လည်း-ကြည့်", which prep 01–03 left for the drafts to render by hand
+PRE = re.compile(r'^((?:\([^()]{1,8}\)\s*)+)')
+SENSE = dict(zip('၀၁၂၃၄၅၆၇၈၉', '0123456789')) | dict(zip('ကခဂဃငစဆဇဈည', 'abcdefghij'))
+
+
+def formula_of(t):
+    """(prefix, form, bracketed) if t is a see / see-also / same-meaning sentence, else None"""
+    pre = ''; br = False
+    if t.startswith('(') and t.endswith(')') and t.count('(') == 1: t = t[1:-1].strip(); br = True
+    m = PRE.match(t)
+    if m: pre = m.group(1); t = t[m.end():].strip()
+    m = SEE.match(t)
+    if m and pali_list(m.group('x')):
+        f = {'kind': 'also' if m.group('also') else 'see', 'x': pali_list(m.group('x'))}
+    else:
+        m = SAME.match(t)
+        if not (m and pali_list(m.group('x'))): return None
+        f = {'kind': 'same', 'x': pali_list(m.group('x'))}
+    if m.group('n'): f['n'] = ''.join(SENSE.get(c, c) for c in m.group('n'))
+    return pre, f, br
 
 
 def pali_list(x):
     xs = [s.strip(' -') for s in re.split(r'[,၊]', x) if s.strip(' -')]
     if xs and all(not NOT_PALI.search(s) and ' ' not in s for s in xs): return xs
+
+
+LEGACY = {'01', '02', '03'}
 
 
 def prep(book, nshards=16):
@@ -63,16 +88,20 @@ def prep(book, nshards=16):
         if not d: continue
         F = {}; core = []
         for s in [s for s in re.split(r'(?<=။)\s*', d) if s.strip()]:
-            t = s.strip().rstrip('။').strip(); kind = None
-            m = SEE.match(t)
-            if m and pali_list(m.group('x')):
-                kind = 'also' if m.group('also') else 'see'; xs = pali_list(m.group('x'))
-            else:
-                m = SAME.match(t)
-                if m and pali_list(m.group('x')): kind = 'same'; xs = pali_list(m.group('x'))
-                elif re.sub(r'\s', '', t) == 'အထက်ပုဒ်နှင့်အနက်တူ': kind = 'prev'; xs = []
-            if kind:
-                k = f'«S{len(F) + 1}»'; F[k] = {'kind': kind, 'x': xs}; core.append(k)
+            t = s.strip().rstrip('။').strip()
+            r = formula_of(t) if book not in LEGACY else None
+            if book in LEGACY:   # vols. 1-3 were drafted with prep's first pattern; keep their placeholders
+                m = SEE.match(t)
+                if m and not m.group('n') and pali_list(m.group('x')) and '-' not in (m.group('also') or ''):
+                    r = ('', {'kind': 'also' if m.group('also') else 'see', 'x': pali_list(m.group('x'))}, False)
+                else:
+                    m = SAME.match(t)
+                    if m and not m.group('n') and pali_list(m.group('x')): r = ('', {'kind': 'same', 'x': pali_list(m.group('x'))}, False)
+            if not r and re.sub(r'\s', '', t) == 'အထက်ပုဒ်နှင့်အနက်တူ': r = ('', {'kind': 'prev', 'x': []}, False)
+            if r:
+                pre, f, br = r
+                k = f'«S{len(F) + 1}»'; F[k] = f
+                core.append((pre + ' ' if pre else '') + (f'({k})' if br else k))
             else:
                 core.append(s.strip())
         text = ' '.join(core)
@@ -108,6 +137,7 @@ def merge(book):
         F = FORM[lang]; k = f['kind']
         if k == 'prev': return F['prev']
         xs = ', '.join(f'[[{iast(x)}]]' for x in f['x'])
+        if f.get('n'): xs += f" ({f['n']})"
         return f"{F['same']} {xs}." if k == 'same' else f"{F[k][len(f['x']) > 1]} {xs}."
     W = {o['id']: o for o in json.load(open(WORK / f'work{book}.json', encoding='utf-8'))}
     R = {}
@@ -148,5 +178,25 @@ def merge(book):
           f'{len(W) - len(out)} explanations without a row')
 
 
+def report(book):
+    """docs/translation/meanings/<book>-flags.tsv (flagged rows with the Burmese) and <book>-terms.tsv
+    (Pāḷi terms kept, by number of articles). Vols. 1-3's were written by hand with the same code."""
+    import collections
+    W = {w['id']: w for w in json.load(open(WORK / f'work{book}.json', encoding='utf-8'))}
+    R = [json.loads(l) for l in open(ROOT / f'docs/translation/meanings/{book}.jsonl', encoding='utf-8')]
+    cl = lambda s: (s or '').replace('\t', ' ').replace('\n', ' ')
+    with open(ROOT / f'docs/translation/meanings/{book}-flags.tsv', 'w', encoding='utf-8') as f:
+        f.write('id\tiast\tburmese\tes\ten\tflag\n')
+        for r in R:
+            if r.get('flag'):
+                f.write('\t'.join([str(r['id']), r['iast'], cl(W[r['id']]['text']), cl(r['es']), cl(r['en']), cl(r['flag'])]) + '\n')
+    C = collections.Counter(t for r in R for t in set(r.get('terms', [])))
+    with open(ROOT / f'docs/translation/meanings/{book}-terms.tsv', 'w', encoding='utf-8') as f:
+        f.write('term\tarticles\tproposal\n')
+        for t, n in sorted(C.items(), key=lambda x: (-x[1], x[0])):
+            f.write(f'{t}\t{n}\tkeep in Pāḷi (drafts); IEBH to fix a rendering\n')
+    print(f'{book}: {sum(1 for r in R if r.get("flag"))} flagged, {len(C)} terms')
+
+
 if __name__ == '__main__':
-    {'prep': prep, 'merge': merge}[sys.argv[1]](sys.argv[2])
+    {'prep': prep, 'merge': merge, 'report': report}[sys.argv[1]](sys.argv[2])

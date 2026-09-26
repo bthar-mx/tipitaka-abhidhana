@@ -1,8 +1,7 @@
 # Changelog
 
 Versions of the Tipiṭaka Pāḷi-Myanmā Abhidhāna project: the data, the tools and the site together.
-*Scheme proposed 27 September 2026, for Angel to confirm; the retroactive tags below are proposals
-until he creates them.*
+*Scheme proposed 27 September 2026; Angel created the tags v0.1.0–v0.7.0 the same day.*
 
 ## The scheme
 
@@ -24,7 +23,16 @@ until he creates them.*
 A release note says, per version: what changed, the brief's sections, and the headline figures
 (located, label + body, Meaning rows drafted / reviewed).
 
-## Unreleased: v0.7.0 (proposed)
+## v0.8.0 — 27 Sep 2026
+
+- **Vols. 4/1 and 4/2 Meaning boxes drafted** from PCED: 7,519 and 6,654 rows, all `drafted`; 409 and 872
+  flagged. `prep` links more "see X" forms; a `report` step writes the flags and terms lists. Brief §43.
+- Site: the IEBH footer with logo, related sites, licences and the version on every page; a back-to-top
+  button; "Análisis" without the PCED chip; PCED described as a typed witness on About; citation tooltips
+  (work · volume, page); "see X" in the Burmese definition linked; mode bar wording.
+- Labels: *sustantivo* → *nombre*; (ကြိ၊ဝိ), (နာမ-ကြိ), (စတုတ္ထန္တ), (တတိယန္တ-ဗျ) corrected and confirmed (Angel).
+
+## v0.7.0 — 27 Sep 2026
 
 - **Vol. 3 Meaning boxes drafted** from PCED: 11,726 rows (372 by formula, 11,354 drafted in 24
   shards), all `drafted`; 1,076 flagged (`docs/translation/meanings/03-flags.tsv`). Brief §42.

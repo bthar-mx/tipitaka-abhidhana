@@ -166,3 +166,38 @@ function wireSearch(input, box) {
   });
   langHooks.push(() => { if (input.value.trim() && !box.hidden) runSearch(input.value, box); });
 }
+
+// --- the IEBH footer and the back-to-top button (every page). The footer block is appended to each
+// <footer class="site-foot">; Browse adds one at the end of every article. The version comes from the
+// <meta name="version"> that tools/abhidhana_site.py writes from VERSION (brief §42).
+Object.assign(T.en, { to_top: 'Back to the top' });
+Object.assign(T.es, { to_top: 'Volver arriba' });
+function footHTML() {
+  const m = document.querySelector('meta[name="version"]'), v = m ? m.content : '';
+  const ver = v ? ` · <a href="${REPO}/blob/main/CHANGELOG.md" title="CHANGELOG">v${esc(v)}</a>` : '';
+  return '<div class="iebh-foot"><a class="iebh-logo" href="https://iebh.org" aria-label="Instituto de Estudios Buddhistas Hispano (IEBH)"></a>' +
+    '<p><span class="tr" lang="es">Un proyecto del <a href="https://iebh.org">Instituto de Estudios Buddhistas Hispano</a> (IEBH). ' +
+    'Textos relacionados: el Tipiṭaka del Sexto Concilio en <a href="https://buddha-dhamma.net">buddha-dhamma.net</a>; las gramáticas pāḷi en <a href="https://gramaticas.buddha-dhamma.net">gramaticas.buddha-dhamma.net</a>. ' +
+    `Datos y código: <a href="${REPO}">github.com/bthar-mx/tipitaka-abhidhana</a>.</span>` +
+    '<span class="tr" lang="en">A project of the <a href="https://iebh.org">Instituto de Estudios Buddhistas Hispano</a> (IEBH). ' +
+    'Related texts: the Sixth Council Tipiṭaka at <a href="https://buddha-dhamma.net">buddha-dhamma.net</a>; the Pāḷi grammars at <a href="https://gramaticas.buddha-dhamma.net">gramaticas.buddha-dhamma.net</a>. ' +
+    `Data and code: <a href="${REPO}">github.com/bthar-mx/tipitaka-abhidhana</a>.</span></p>` +
+    '<p class="iebh-lic"><span class="tr" lang="es">© 2026 IEBH. Código bajo licencia <a href="' + REPO + '/blob/main/LICENSE">MIT</a>; lo que añade el proyecto (estructura, romanizaciones, traducciones), bajo <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.es">CC BY-SA 4.0</a>. El texto del diccionario pertenece a sus autores y editores y no se relicencia; créditos en <a href="/about/">Acerca de</a>.</span>' +
+    '<span class="tr" lang="en">© 2026 IEBH. Code under the <a href="' + REPO + '/blob/main/LICENSE">MIT</a> licence; what the project adds (structure, romanisations, translations) under <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>. The dictionary’s text belongs to its authors and publishers and is not relicensed; credits on the <a href="/about/">About</a> page.</span>' +
+    ver + '</p></div>';
+}
+function fillFoot(root) {
+  (root || document).querySelectorAll('footer.site-foot:not([data-iebh])').forEach(f => { f.dataset.iebh = '1'; f.insertAdjacentHTML('beforeend', footHTML()); });
+}
+fillFoot();
+(function () {
+  const b = document.createElement('button');
+  b.type = 'button'; b.className = 'totop'; b.hidden = true; b.innerHTML = '<span aria-hidden="true">↑</span>';
+  const label = () => { b.title = t('to_top'); b.setAttribute('aria-label', t('to_top')); };
+  label(); langHooks.push(label);
+  const scrollers = () => [document.scrollingElement, ...document.querySelectorAll('.art')].filter(Boolean);
+  const update = () => { b.hidden = !scrollers().some(e => e.scrollTop > 400); };
+  document.addEventListener('scroll', update, { capture: true, passive: true });
+  b.addEventListener('click', () => scrollers().forEach(e => { if (e.scrollTop > 0) e.scrollTo({ top: 0, behavior: 'smooth' }); }));
+  document.body.appendChild(b);
+})();
