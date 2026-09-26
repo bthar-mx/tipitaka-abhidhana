@@ -7,7 +7,8 @@
   "range_ro": "a – anīḷaka",
   "pdf_pages": 913,
   "headwords": 8150,
-  "start": 300
+  "start": 300,
+  "offset": 120
  },
  {
   "id": "02",
@@ -17,7 +18,12 @@
   "range_ro": "anu – abbhokkiraṇa",
   "pdf_pages": 898,
   "headwords": 7189,
-  "start": 500
+  "start": 500,
+  "offset": 18,
+  "page_fix": {
+   "241": 224,
+   "242": 223
+  }
  },
  {
   "id": "03",
@@ -27,7 +33,8 @@
   "range_ro": "abyagga – aḷārapamha",
   "pdf_pages": 1177,
   "headwords": 11726,
-  "start": 600
+  "start": 600,
+  "offset": 8
  },
  {
   "id": "4a",
@@ -37,7 +44,8 @@
   "range_ro": "ā – utrāseyyuṁ",
   "pdf_pages": 863,
   "headwords": 7524,
-  "start": 300
+  "start": 300,
+  "offset": 42
  },
  {
   "id": "4b",
@@ -47,7 +55,8 @@
   "range_ro": "uda – uḷurāja",
   "pdf_pages": 681,
   "headwords": 6655,
-  "start": 300
+  "start": 300,
+  "offset": 16
  },
  {
   "id": "4c",
@@ -59,7 +68,8 @@
   "headwords": 5230,
   "start": 300,
   "note_en": "with supplements to vols. 15, 4/2 and 16 (PDF pp. 713–735)",
-  "note_es": "con suplementos a los vols. 15, 4/2 y 16 (pp. 713–735 del PDF)"
+  "note_es": "con suplementos a los vols. 15, 4/2 y 16 (pp. 713–735 del PDF)",
+  "offset": 27
  },
  {
   "id": "05",
@@ -69,7 +79,8 @@
   "range_ro": "ka – kiledetvā",
   "pdf_pages": 883,
   "headwords": 8015,
-  "start": 500
+  "start": 500,
+  "offset": 54
  },
  {
   "id": "06",
@@ -79,7 +90,8 @@
   "range_ro": "kilesa – ṅakāra",
   "pdf_pages": 1039,
   "headwords": 11429,
-  "start": 500
+  "start": 500,
+  "offset": 22
  },
  {
   "id": "07",
@@ -89,7 +101,8 @@
   "range_ro": "ca – chiddeyyuṁ",
   "pdf_pages": 861,
   "headwords": 6877,
-  "start": 400
+  "start": 400,
+  "offset": 60
  },
  {
   "id": "08",
@@ -99,7 +112,8 @@
   "range_ro": "chidda – ṇyapaccayattha",
   "pdf_pages": 849,
   "headwords": 6448,
-  "start": 400
+  "start": 400,
+  "offset": 40
  },
  {
   "id": "09",
@@ -109,7 +123,8 @@
   "range_ro": "ta – thomessāmi",
   "pdf_pages": 893,
   "headwords": 6805,
-  "start": 500
+  "start": 500,
+  "offset": 52
  },
  {
   "id": "10",
@@ -119,7 +134,8 @@
   "range_ro": "da – dveḷhakapucchā",
   "pdf_pages": 981,
   "headwords": 7366,
-  "start": 578
+  "start": 578,
+  "offset": 48
  },
  {
   "id": "11",
@@ -129,7 +145,8 @@
   "range_ro": "dha – nikkhāmesuṁ",
   "pdf_pages": 769,
   "headwords": 5663,
-  "start": 444
+  "start": 444,
+  "offset": 80
  },
  {
   "id": "12",
@@ -139,7 +156,8 @@
   "range_ro": "nikkhitta – nhārusuttanibandhana",
   "pdf_pages": 1123,
   "headwords": 7022,
-  "start": 589
+  "start": 589,
+  "offset": 37
  },
  {
   "id": "13",
@@ -149,7 +167,8 @@
   "range_ro": "pa – paṭibrūhana",
   "pdf_pages": 896,
   "headwords": 7279,
-  "start": 447
+  "start": 447,
+  "offset": 30
  },
  {
   "id": "14",
@@ -159,7 +178,8 @@
   "range_ro": "paṭibhaṁsu – pamajjeyya",
   "pdf_pages": 821,
   "headwords": 5219,
-  "start": 337
+  "start": 337,
+  "offset": 21
  },
  {
   "id": "14b",
@@ -171,7 +191,8 @@
   "headwords": 6942,
   "start": 600,
   "note_en": "typeset text, not a scan",
-  "note_es": "texto tipográfico, no un escaneo"
+  "note_es": "texto tipográfico, no un escaneo",
+  "offset": 24
  },
  {
   "id": "14c",
@@ -181,7 +202,8 @@
   "range_ro": "pava – pluta",
   "pdf_pages": 1107,
   "headwords": 10390,
-  "start": 580
+  "start": 580,
+  "offset": 27
  },
  {
   "id": "15",
@@ -191,7 +213,8 @@
   "range_ro": "pha – bhovādī",
   "pdf_pages": 853,
   "headwords": 9342,
-  "start": 485
+  "start": 485,
+  "offset": 28
  },
  {
   "id": "16",
@@ -201,7 +224,8 @@
   "range_ro": "ma – mhitapubba",
   "pdf_pages": 890,
   "headwords": 10394,
-  "start": 471
+  "start": 471,
+  "offset": 26
  },
  {
   "id": "17",
@@ -211,7 +235,8 @@
   "range_ro": "ya – rohisa",
   "pdf_pages": 879,
   "headwords": 6520,
-  "start": 465
+  "start": 465,
+  "offset": 22
  },
  {
   "id": "18",
@@ -221,7 +246,8 @@
   "range_ro": "la – vaḷāvāratha",
   "pdf_pages": 890,
   "headwords": 7829,
-  "start": 476
+  "start": 476,
+  "offset": 18
  },
  {
   "id": "19",
@@ -231,7 +257,8 @@
   "range_ro": "vā – vivekodhimutti",
   "pdf_pages": 982,
   "headwords": 9251,
-  "start": 531
+  "start": 531,
+  "offset": 21
  },
  {
   "id": "20",
@@ -241,7 +268,8 @@
   "range_ro": "vivekānisaṁsa – saṁvohāra",
   "pdf_pages": 945,
   "headwords": 7366,
-  "start": 465
+  "start": 465,
+  "offset": 30
  },
  {
   "id": "21",
@@ -251,7 +279,8 @@
   "range_ro": "saṁsa – sannāhayāmase",
   "pdf_pages": 925,
   "headwords": 8129,
-  "start": 450
+  "start": 450,
+  "offset": 28
  },
  {
   "id": "22",
@@ -261,7 +290,12 @@
   "range_ro": "sannikaṭṭha – sambhonti",
   "pdf_pages": 933,
   "headwords": 8078,
-  "start": 419
+  "start": 419,
+  "offset": 40,
+  "page_gap": [
+   920,
+   1
+  ]
  },
  {
   "id": "23",
@@ -271,7 +305,8 @@
   "range_ro": "samma – sihala",
   "pdf_pages": 780,
   "headwords": 7182,
-  "start": 400
+  "start": 400,
+  "offset": 35
  },
  {
   "id": "24",
@@ -281,7 +316,8 @@
   "range_ro": "sīkati – sūsū",
   "pdf_pages": 718,
   "headwords": 7088,
-  "start": 360
+  "start": 360,
+  "offset": 34
  },
  {
   "id": "25",
@@ -291,6 +327,7 @@
   "range_ro": "so – ḷakāra",
   "pdf_pages": 466,
   "headwords": 4046,
-  "start": 240
+  "start": 240,
+  "offset": 34
  }
 ]

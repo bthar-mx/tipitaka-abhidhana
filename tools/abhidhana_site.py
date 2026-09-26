@@ -68,6 +68,7 @@ def records(book):
             if b: d['b'] = b
             if r.get('citations'): d['c'] = r['citations']
             if p.get('analysis_iast'): d['ai'] = p['analysis_iast']
+            if p.get('analysis_derivation'): d['ad'] = p['analysis_derivation']   # the analysis runs on into a derivation: roman mode shows the Burmese line too
             if p.get('citations_iast'): d['ci'] = p['citations_iast']
             if p.get('pali'): d['sp'] = [[s['start'], s['end'], s['iast'], s.get('tokens', 1)] for s in p['pali']]
             d['s'] = r.get('status') or 'ocr'

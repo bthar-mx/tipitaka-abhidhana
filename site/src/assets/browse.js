@@ -29,7 +29,7 @@ Object.assign(T.en, {
   unlocated_p: 'The index places this headword on this page, but the OCR text did not yield its article (it is often inside the article before). The printed page shows it.',
   ocr_st: 'ocr · unchecked', loading: 'Loading…', load_fail: 'This part of the dictionary did not load. Reload the page to try again.',
   not_found_w: w => `No headword “${w}” was found.`, results_none: 'No headword matches. Roman letters ignore diacritics (nana finds ñāṇa); Burmese is matched as typed.',
-  results_more: 'Type more of the word to narrow the list.', report: 'Report an error', vol_short: 'vol.', pdf_p: 'PDF p.',
+  results_more: 'Type more of the word to narrow the list.', report: 'Report an error', vol_short: 'vol.', pdf_p: 'PDF p.', print_p: 'p.',
   label_unknown: 'label not yet identified', printed_as: 'printed', lab_prov: 'provisional',
   hw_fixed: 'headword corrected; the index spells it', homonym: 'homonym', misfiled: 'the index files this headword on another page',
   pced_t: 'From the typed text of this dictionary in the Pali Canon E-Dictionary (PCED), not from our OCR.',
@@ -59,7 +59,7 @@ Object.assign(T.es, {
   unlocated_p: 'El índice sitúa esta entrada en esta página, pero el texto del OCR no dio su artículo (a menudo está dentro del anterior). La página impresa lo muestra.',
   ocr_st: 'ocr · sin revisar', loading: 'Cargando…', load_fail: 'Esta parte del diccionario no se cargó. Recargue la página para intentarlo de nuevo.',
   not_found_w: w => `No se encontró la entrada «${w}».`, results_none: 'Ninguna entrada coincide. En letras latinas no cuentan los diacríticos (nana encuentra ñāṇa); el birmano se busca tal como se escribe.',
-  results_more: 'Escriba más de la palabra para acotar la lista.', report: 'Informar de un error', vol_short: 'vol.', pdf_p: 'p. del PDF',
+  results_more: 'Escriba más de la palabra para acotar la lista.', report: 'Informar de un error', vol_short: 'vol.', pdf_p: 'p. del PDF', print_p: 'p.',
   label_unknown: 'categoría aún no identificada', printed_as: 'impreso', lab_prov: 'provisional',
   hw_fixed: 'entrada corregida; el índice la escribe', homonym: 'homónimo', misfiled: 'el índice registra esta entrada en otra página',
   pced_t: 'Del texto mecanografiado de este diccionario en el Pali Canon E-Dictionary (PCED), no de nuestro OCR.',
@@ -163,6 +163,7 @@ function route(replace) {
 
 // --- rendering ------------------------------------------------------------------------------------
 const vn = id => (volOf(id) || { n: id }).n;
+const pageStr = (id, p) => { const q = printedP(id, p); return (q ? `${t('print_p')} ${q} · ` : '') + `${t('pdf_p')} ${p}`; };
 const seg = (on, label, data) => `<button type="button" ${data} aria-pressed="${on}" class="${on ? 'on' : ''}">${esc(label)}</button>`;
 
 function modebar() {
@@ -276,7 +277,7 @@ function article() {
   const d = cur.recs[cur.k];
   if (!d) { $('art').innerHTML = ''; return; }
   const H = [];
-  H.push(`<div class="where"><span>${esc(t('vol_short'))} ${esc(vn(d.k))} · ${esc(t('pdf_p'))} ${d.p}</span>` +
+  H.push(`<div class="where"><span>${esc(t('vol_short'))} ${esc(vn(d.k))} · ${esc(pageStr(d.k, d.p))}</span>` +
     `<span class="chip">${esc(d.s === 'ocr' ? t('ocr_st') : t('st_' + d.s))}</span>` +
     (d.x === 'f' ? `<span class="chip c-warn">${esc(t('fuzzy'))}</span>` : '') +
     (d.m ? `<span class="chip">${esc(t('misfiled'))}</span>` : '') +
@@ -295,7 +296,7 @@ function article() {
     const fixed = (d.cf || []).includes('analysis') ? ` <span class="chip c-ok" title="${esc(t('corrected_t'))}">${esc(t('corrected_f'))}</span>`
       : '';
     H.push(`<section><h2>${esc(t('analysis'))}${fixed}</h2>` + (ro && d.ai ? `<div class="pl an" lang="pi">[${esc(d.ai)}]</div>` : '') +
-      (my && d.a ? `<div class="my an-my" lang="my">[${esc(d.a)}]</div>` : '') + '</section>');
+      ((my || (ro && d.ad)) && d.a ? `<div class="my an-my" lang="my">[${esc(d.a)}]</div>` : '') + '</section>');
   }
   if (d.see && d.see.length) H.push(`<div class="see"><span class="muted">${esc(t('see'))}</span> ` +
     d.see.map(([r, sl]) => `<a class="pl" lang="pi" href="/w/${encodeURIComponent(sl)}">${esc(r)}</a>`).join(', ') + '</div>');
@@ -354,7 +355,7 @@ function scan() {
   $('scanpane').hidden = !S.scan;
   if (!S.scan || !d) return;
   const p = d.p + open.scanDelta, V = volOf(d.k);
-  $('scanwhere').textContent = `${t('vol_short')} ${vn(d.k)} · ${t('pdf_p')} ${p}`;
+  $('scanwhere').textContent = `${t('vol_short')} ${vn(d.k)} · ${pageStr(d.k, p)}`;
   const url = `${IMG}${d.k}/${String(p).padStart(4, '0')}.webp`, img = $('scanimg');
   $('scanmiss').hidden = true; img.hidden = false;
   img.onerror = () => { img.hidden = true; $('scanmiss').hidden = false; };
@@ -414,7 +415,7 @@ async function search(q) {
     if ($('hq').value.trim() !== q) return;
     box.innerHTML = out.map(r => `<a class="res" href="/w/${encodeURIComponent(r[0])}"><span>` +
       (S.script === 'my' ? `<span class="my" lang="my">${esc(r[2])}</span>` : `<span class="pl" lang="pi">${esc(r[1])}</span>${S.script === 'both' ? ` <span class="my sub" lang="my">${esc(r[2])}</span>` : ''}`) +
-      `</span><span class="pg">${esc(t('vol_short'))} ${esc(vn(r[3]))} · ${esc(t('pdf_p'))} ${r[4]}</span></a>`).join('') +
+      `</span><span class="pg">${esc(t('vol_short'))} ${esc(vn(r[3]))} · ${esc(pageStr(r[3], r[4]))}</span></a>`).join('') +
       (out.length ? (pre.length + sub.length > 60 ? `<div class="more">${esc(t('results_more'))}</div>` : '') : `<div class="more">${esc(t('results_none'))}</div>`);
   } catch (e) { box.innerHTML = `<div class="more">${esc(t('load_fail'))}</div>`; }
 }

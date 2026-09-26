@@ -121,6 +121,14 @@ function volumes() {
     .then(v => (VOLS = v)));
 }
 const volOf = id => (VOLS || []).find(v => v.id === id);
+// the page as the book prints it: PDF page - the index's start_page (site/volumes.json `offset`), with
+// the known exceptions (vol. 2's two pages bound out of order; vol. 22's missing page before PDF 920)
+function printedP(id, p) {
+  const V = volOf(id); if (!V || V.offset == null) return null;
+  if (V.page_fix && V.page_fix[p]) return V.page_fix[p];
+  let q = p - V.offset; if (V.page_gap && p >= V.page_gap[0]) q += V.page_gap[1];
+  return q > 0 ? q : null;
+}
 
 let S = null, S_P = null;
 function searchIndex() {
