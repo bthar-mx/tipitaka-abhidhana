@@ -137,6 +137,79 @@ def romanise_segment(seg):
     return re.sub(r'\s+', ' ', ''.join(out)).strip()
 
 
+def split_analysis(an):
+    """The compound analysis as the print gives it runs on past its first ။ into the grammarians'
+    derivation (a Pāḷi rule, a sutta of Kaccāyana or Moggallāna, a reference), and may give two or
+    more analyses in turn (ulūka: ဥဒ္ဓံ + ကဏ္ဏ။ ဥစ + ဏုက။ … ဥလ + ဏူက။ …). Returns (formulas, notes):
+    formulas the sentences made of Pāḷi elements joined by +, notes [[i, burmese]] the text that
+    follows formula i, kept in Burmese. None when the analysis does not start with a formula
+    (then it is romanised whole, as before). Added 26 Sep 2026 (the editor: katvā is [kara + tvā])."""
+    def is_formula(s):
+        parts = [p.strip() for p in s.split('+')]
+        if len(parts) < 2 or not all(parts): return False
+        for p in parts:
+            q = re.sub(r'\([၀-၉]+\)', '', p)
+            q = re.sub(r'[()\s,၊\-]', '', q)
+            if not q or not pali_shaped(q) or re.search(r'[၀-၉"“”\'‘’]', q): return False
+        return True
+    F, N = [], []
+    for m in re.finditer(r'[^။]*(?:။|$)', an):
+        s = m.group()
+        if not s.strip(): continue
+        body = s.strip().rstrip('။').strip()
+        if is_formula(body): F.append(body)
+        elif F:
+            if N and N[-1][0] == len(F) - 1: N[-1][1] += s
+            else: N.append([len(F) - 1, s])
+        else: return None
+    if not F: return None
+    return F, [[i, re.sub(r'\s+', ' ', x).strip()] for i, x in N]
+
+
+NOTE_CITE = re.compile(r'((?:[က-ဿၐ-႟]{1,8}\s*[၊,]\s*){0,2}[က-ဿၐ-႟]{1,8}\s*[၊။]\s*)([၀-၉][၀-၉\s၊။,\-]*)')
+
+
+def note_roman(note):
+    """a derivation note in roman, if it is wholly Pāḷi and references (ulūka's); None if it has
+    Burmese prose (katvā's Burmese verse), which then stays out of the roman line"""
+    out, cites = [], []
+    def keep(m):
+        abbr = ' '.join(iast(x) for x in re.split(r'[၊။,.\s]+', m.group(1)) if x)
+        nums = re.sub(r'[၊။,.\s]+', '.', m.group(2).translate(MY_DIGITS)).strip('.')
+        cites.append(f'{abbr} {nums}'); return f' \x00{len(cites) - 1}\x00။ '
+    s = NOTE_CITE.sub(keep, note)
+    for sent in re.split(r'။', s):
+        sent = sent.strip()
+        if not sent: continue
+        if re.fullmatch(r'\x00\d+\x00', sent): out.append(cites[int(sent[1:-1])]); continue
+        toks = TOKEN.findall(sent)
+        if not toks or not all(pali_shaped(x) and not re.fullmatch(r'[၀-၉]+', x) for x in toks): return None
+        out.append(romanise_segment(sent.replace('“', '"').replace('”', '"')))
+    return '. '.join(out)
+
+
+def analysis_fields(an):
+    """analysis_iast: the formulas, and the derivation where it is wholly Pāḷi, in roman, joined by
+    '. ' as the print joins them by ။; analysis_derivation: 'roman' if every note is in that line,
+    'burmese' if a note has Burmese prose and is left to the Burmese line (katvā: [kara + tvā])"""
+    def rom(f):
+        parts = [p.strip() for p in f.split('+')]
+        return ' + '.join(romanise_segment(p) if pali_shaped(p.replace(' ', '')) else f'⟨{p}⟩' for p in parts if p)
+    sp = split_analysis(an)
+    if not sp: return {'analysis_iast': rom(an)}
+    F, N = sp
+    notes = {i: x for i, x in N}; out = []; kind = 'roman'
+    for i, f in enumerate(F):
+        out.append(rom(f))
+        if i in notes:
+            r = note_roman(notes[i])
+            if r: out.append(r)
+            else: kind = 'burmese'
+    d = {'analysis_iast': '. '.join(out)}
+    if N: d['analysis_derivation'] = kind
+    return d
+
+
 def cite(c):
     """ဝိ၊၂။၃၄၅။ -> vi 2.345 ; ပဋိသံ၊ဋ္ဌ၊ ၁။၉၇။ -> paṭisaṁ ṭṭha 1.97"""
     m = re.match(r'(.*?)([၀-၉].*)$', c)
@@ -164,9 +237,7 @@ def main(book):
         d = dict(id=r['id'], book=r['book'], pdf_page=r['pdf_page'], headword=r['headword'],
                  headword_iast=r.get('iast') or iast(re.sub('[၀-၉\\s]', '', r['headword'])))
         if r.get('analysis'):
-            parts = [p.strip() for p in r['analysis'].split('+')]
-            d['analysis_iast'] = ' + '.join(romanise_segment(p) if pali_shaped(p.replace(' ', '')) else f'⟨{p}⟩'
-                                            for p in parts if p)
+            d.update(analysis_fields(r['analysis']))
         if r.get('body'):
             sp = spans(r['body'], vocab)
             if sp:
