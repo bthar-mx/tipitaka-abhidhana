@@ -2,7 +2,7 @@
 
 *Written 21 September 2026, at the end of the volume-25 pilot; §10–12 revised 24 September
 2026, after volume 1 was done end to end and the repository was made public; §18–26 added
-25 September 2026 (spelling folds, the witness join, vols. 6–9, re-cutting gutters, vol. 14/2's text layer, the batch of vols. 10–22); §27 the same evening (vols. 23, 24 and 14/2 finished, the index's page errors applied, book 21 explained, the Reader in binary); §28 the public website, the page images and the label table; §29 vol. 21 finished, vol. 25's resolution, the dictionary's own account of its labels; §30 vol. 25 done, all 29 books; §31 (later on 25 Sep) the page-image tool's bitmap test; §32 the weak page corrections, image-checked; §33 the compound analysis with its [ lost; §34 the dictionary's history on the site; §35 all page images live, a light/dark switch, the Introduction page; §36 citations keep their whole abbreviation; §37 translation, batch 1; §38–41 (26 Sep) the redesign, vol. 1–2 drafts, PCED analyses, versioned assets; §42 (26 Sep) the live check, vol. 3's drafts, version numbers; §43 vols. 4/1–4/2 drafts, the IEBH footer, citation tooltips, cross-reference links, labels reviewed; §44 the live check after v0.8.0, vol. 4/3 deferred, vol. 5 drafted, the analysis split from its derivation, printed page numbers; §45 the live check after v0.9.0, vol. 6 drafted; §46 two stems from the editor, vols. 7–9 drafted. Everything in
+25 September 2026 (spelling folds, the witness join, vols. 6–9, re-cutting gutters, vol. 14/2's text layer, the batch of vols. 10–22); §27 the same evening (vols. 23, 24 and 14/2 finished, the index's page errors applied, book 21 explained, the Reader in binary); §28 the public website, the page images and the label table; §29 vol. 21 finished, vol. 25's resolution, the dictionary's own account of its labels; §30 vol. 25 done, all 29 books; §31 (later on 25 Sep) the page-image tool's bitmap test; §32 the weak page corrections, image-checked; §33 the compound analysis with its [ lost; §34 the dictionary's history on the site; §35 all page images live, a light/dark switch, the Introduction page; §36 citations keep their whole abbreviation; §37 translation, batch 1; §38–41 (26 Sep) the redesign, vol. 1–2 drafts, PCED analyses, versioned assets; §42 (26 Sep) the live check, vol. 3's drafts, version numbers; §43 vols. 4/1–4/2 drafts, the IEBH footer, citation tooltips, cross-reference links, labels reviewed; §44 the live check after v0.8.0, vol. 4/3 deferred, vol. 5 drafted, the analysis split from its derivation, printed page numbers; §45 the live check after v0.9.0, vol. 6 drafted; §46 two stems from the editor, vols. 7–9 drafted; §47 vols. 10–14/1 drafted. Everything in
 this file was measured. Do not re-derive a figure it carries; if a new one is needed,
 measure it rather than estimating.*
 
@@ -1565,3 +1565,55 @@ them); vols. 4/3, 14/2, 14/3 and 20–25 have no PCED text.
   question, for the image); many "see the original" notes (vol. 9 shard 13 alone has seven).
 - Agents corrected a few already-written lines of their own before the final check (vol. 9 76001, 76126, 78581,
   79001, 79301), against the brief's "do not rewrite earlier blocks"; every change was inside their own file.
+
+
+## 47. Vols. 10–14/1 drafted; half the dictionary has a draft (26 September 2026, later still)
+
+**The live site after the v0.11.0 push**: version 0.11.0; `/w/jhāna` (vol. 8 · p. 489 · PDF 529) shows vol. 8's Meaning box,
+*borrador*; About reads "vols. 1–3, 4/1, 4/2 y 5–9".
+
+**Vols. 10, 11, 12, 13 and 14/1 drafted**, §45–46's method, from PCED: `prep` with 16, 13, 16, 16 and 12 shards (422–455
+lines each), 73 agents. The third wave stopped midway when the account's usage limit was reached (resets 08:30 Mexico
+time); 20 shards were part-written, 13 not begun. Every part-written file was a clean prefix of its shard (the ids in
+order, every line valid), so the prompt gained a RESUMING note (keep the lines already written, start at the first id
+without one) and the 33 shards were finished after the reset. Several agents found a block drafted in their scratch
+folder but never appended; they checked it against the Burmese and appended it. Checked after, over all 73 shards: one line
+per input id in order, valid JSON, every «Sn» in both languages, ⟦ ⟧ and ‹ › balanced, no Burmese outside them. Tarballs
+`mean10-14-in-0926i.tar.gz`, `mean10-14-out-0926j.tar.gz` (md5 checked after each copy).
+
+| | vol. 10 | vol. 11 | vol. 12 | vol. 13 | vol. 14/1 |
+|---|---:|---:|---:|---:|---:|
+| rows | 7,353 | 5,662 | 7,020 | 7,279 | 5,219 |
+| explanations without a row | 7 | 1 | 1 | 0 | 0 |
+| by formula / drafted | 185 / 7,168 | 102 / 5,560 | 89 / 6,931 | 2 / 7,277 | 0 / 5,219 |
+| from our OCR | 2 | 0 | 1 | 0 | 4 |
+| flagged | 919 | 497 | 1,149 | 856 | 468 |
+| terms kept in Pāḷi | 793 | 570 | 589 | 546 | 422 |
+| "see X" links matching a romanised headword | 95.3% | 96.3% | 95.5% | 97.9% | 96.1% |
+| rows with *sano / insano*; *mérito* | 54; 14 | 37; 16 | 32; 11 | 12; 1 | 22; 8 |
+
+**PCED's text is `#NAME?` for seven vol. 10 rows** (80892 dakkhi, 81096 dakkhiti, 81105, 81108, 81112, 81117, 81167): a
+spreadsheet formula error in the typed witness, the definition lost. They have no Meaning; our OCR body would be the
+fallback. The other rows without one: 93740 (the definition is only ။) and 99248 nisanti (only grammarians' references).
+Vol. 13's 232 rows of vol. 15 ဗ headwords (§26) were drafted from PCED's definitions for those same headwords: right for
+the headword, filed on the wrong pages.
+
+**Totals**: 15 books (01, 02, 03, 4a, 4b, 05–13, 14), **113,331 Meaning rows, all `drafted`, none reviewed: 51.2%** of the
+index's 221,154 rows (113,367 index rows in those books). PCED still covers vols. 15–19. The site, built in the VM:
+953 files, 600 MB, version 0.12.0, every drafted row of vols. 10–14/1 in the data.
+
+**What the agents reported for the reviewer** (nothing reviewed):
+- **Verb person in the future.** The print distinguishes …လတ်အံ့ (the 1st person) from …လတ္တံ့ (the 2nd and 3rd) (vol. 13
+  shard 10, vol. 14 shards 06 and 11). Shards that noticed wrote the 1st person and flagged it; others kept the 3rd person
+  under the vol. 5 rule. The rule wants revising: this is the question raised by vol. 5.
+- **ပယ် as reject** in the paṭikkhepa and paṭisedha runs (vols. 12–14), ပယ်မြစ် *vetar*; flagged.
+- **ဘုံ as a storey** of a building (vol. 10 88070–88073, vol. 13 104938–104941), where ⟦=bhūmi⟧ is wrong.
+- **ဥတု, ကံ, ကြိယာ** as in §46: the Vinaya acts (tajjanīya-, paṭisāraṇīya-, vinayakamma), the grammatical verb; flagged.
+- **Grammar terms** (paṭhamāvibhatti, apādāna, pañcamī, niggahīta) kept in Pāḷi; ပစ္စည်း as a suffix (*sufijo*);
+  ပစ္စနိက် romanised both paccanīka and paccanīya in one shard (vol. 13 shard 04).
+- **Editors' notes in the source**: "see the original", and "ထောင့်ကွင်းကြည့်ပါ" ("see the square brackets", vol. 14
+  109763–109764, 111304–111305, 113126), rendered and flagged.
+- **Known errors left in**: vol. 14 111707 ခြင်ခွက် left in ‹…›, which later rows show is a measuring cup; vol. 10 85549
+  ကံမကောင်းသော *desafortunado* (a PTS gloss list); vol. 12 99747 in the 1st person. Vol. 10 shard 09 replaced 12 Pāḷi words
+  copied in Burmese spelling with ⟦=iast⟧ forms (74 occurrences), inside ⟦ ⟧ only.
+- Tentative identifications and Burmese months (Tagu, Thadingyut, Tabaung) as in §46.
