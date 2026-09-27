@@ -10,7 +10,8 @@ Two steps, around a drafting pass done outside this script:
     merge <book>   reads tmp/meanings/out/NN.jsonl (one {id, es, en, terms, flag} per line,
                    written by the drafting pass following docs/translation/drafting-brief.md) and
                    writes docs/translation/meanings/<book>.jsonl, which tools/abhidhana_site.py
-                   reads into the records' `t` field.
+                   reads into the records' `t` field. A draft's `omitted` (what a draft from our own
+                   text left out) is not put in the rows but in <book>-omitted.tsv.
 
 The source of the Burmese is the PCED witness (witness/pced_k.jsonl.gz, joined by
 witness/join-<book>.jsonl), whose definition line is the dictionary's text without our OCR
@@ -84,6 +85,29 @@ def quoted(s, J):
             and J[s['end']:s['end'] + 1] != '-' and (J[s['start'] - 1:s['start']] != '-' or J[s['start'] - 2:s['start']] == '(-'))
 
 
+# a list of inflected forms, each with its page numbers, joined by dashes: ပမုစ္စန္တိ — ပမုစ္စေ — ၂၄၈-၉။
+FORM_DASH = re.compile(r'(?:^|(?<=[\s။(—–-]))([^\s။၊()—–-]+(?:-[^\s။၊()—–-]+)?)(?:\s*\([^()]*\))?\s*(?:—+|–+|-{2,})\s*(?:[၀-၉][-၀-၉၊,.]*\s*။?)?')
+_WORKS = []
+# abbreviations with an asat, which abhidhana_articles.py's cite_trim takes for Burmese and drops
+WORKS_ASAT = {'ဣတိဝုတ်', 'ဣတိဝုတ်၊ဋ္ဌ', 'ကင်္ခါ၊ဋီ၊သစ်', 'ကင်္ခါ၊ဋီ၊ဟောင်း', 'ပါစိတ်၊ယော', 'ဓါန်', 'ဓါန်၊ဋီ', 'ဇာတ်၊ဋီ၊သစ်'}
+
+
+def works():
+    """the works' abbreviations as the citations print them (ဣတိဝုတ်၊ဋ္ဌ, ဝဇိရ): every one parsed in any
+    book (abhidhana_articles.py citations, CITE_WORK) at least five times. A sentence that is only
+    one of them is a citation that lost its numbers."""
+    if not _WORKS:
+        import collections
+        C = collections.Counter()
+        for f in sorted(glob.glob(str(ROOT / 'ocr/*/articles.jsonl'))):
+            for l in open(f, encoding='utf-8'):
+                a = json.loads(l)
+                for c in a.get('citations') or []: C[re.sub(r'[၊,.]?[၀-၉][-၀-၉၊။,.]*$', '', c).rstrip('၊။,.')] += 1
+                for m in CITE_WORK.finditer(a.get('body') or ''): C[re.sub(r'\s', '', m.group(1))] += 1
+        _WORKS.append({k for k, n in C.items() if n >= 5 and k and not re.search('[၀-၉]', k)} | WORKS_ASAT)
+    return _WORKS[0]
+
+
 def our_text(a, p):
     """The Burmese explanation from our own text (a book with no witness join): the article's
     body with its printer's line breaks undone, the Pāḷi quotations and the citations left out.
@@ -137,10 +161,17 @@ def our_text(a, p):
         t = re.sub(r'\s+', ' ', t).strip()
     # a sentence left holding only a one-word Pāḷi span (the lemma of a quoted gloss: ပမတ္တော။), or
     # only sense markers, quotation marks and brackets (a sense explained only by a quotation: (၂)။)
+    # then a sentence that is only a work's abbreviation, a citation without its
+    # numbers (ဝဇိရ။), and the lists of inflected forms joined by dashes
+    t = FORM_DASH.sub(lambda m: '' if not NOT_PALI.search(m.group(1)) else m.group(), t)
+    t = re.sub(r'\s+', ' ', re.sub(r'\s+([၊။])', r'\1', t)).strip()
     one = {s['my'] for s in sp if s['tokens'] == 1}
-    t = ' '.join(x for x in re.split(r'(?<=။)\s*', t)
-                 if x.rstrip('။').strip() not in one and not re.fullmatch(r'(?:\([^()]{1,4}\)|[“”()\[\]\s?။])*', x))
-    return t
+    W = works()
+    def keep(x):
+        y = x.rstrip('။').strip()
+        return (y not in one and re.sub(r'\s', '', re.sub(r'^(?:\([^()]{1,4}\)\s*)+', '', y)).rstrip('၊') not in W
+                and not re.fullmatch(r'(?:\([^()]{1,4}\)|[“”()\[\]\s?။])*', x))
+    return ' '.join(x for x in re.split(r'(?<=။)\s*', t) if keep(x))
 
 
 def prep(book, nshards=16):
@@ -230,9 +261,10 @@ def merge(book):
                 try: o = json.loads(l)
                 except ValueError: continue
                 if o['id'] in ids and o['id'] not in R: R[o['id']] = o
-    out = []
+    out = []; omitted = []
     for i, w in W.items():
         r = R.get(i)
+        if r and r.get('omitted'): omitted.append((i, w['iast'], r['omitted']))
         if w['only']: es = en = w['text']; flag = ''; terms = []; method = 'formula'
         elif r: es, en, flag, terms = r.get('es', ''), r.get('en', ''), r.get('flag', ''), r.get('terms', []); method = 'draft'
         else: continue
@@ -253,6 +285,10 @@ def merge(book):
     dest.parent.mkdir(parents=True, exist_ok=True)
     with open(dest, 'w', encoding='utf-8') as f:
         for r in out: f.write(json.dumps(r, ensure_ascii=False) + '\n')
+    if omitted:   # what a draft from our own text left out (quotation fragments, citations …): kept apart, not in the rows
+        with open(ROOT / f'docs/translation/meanings/{book}-omitted.tsv', 'w', encoding='utf-8') as f:
+            f.write('id\tiast\tomitted\n')
+            for i, x, o in omitted: f.write(f"{i}\t{x}\t{o.replace(chr(9), ' ').replace(chr(10), ' ')}\n")
     print(f'{book}: {len(out)} rows ({sum(r["method"] == "formula" for r in out)} formula, '
           f'{sum(r["method"] == "draft" for r in out)} drafted), {sum("flag" in r for r in out)} flagged; '
           f'{len(W) - len(out)} explanations without a row')

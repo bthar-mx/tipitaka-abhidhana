@@ -120,11 +120,12 @@ Project are for advice and for what needs the Mac. What the new chat should know
    (`abhidhana_reader_data.py` for all books, then republish).
 0c. **Hand corrections** go in `docs/corrections.tsv` (brief §40); re-run `abhidhana_articles.py NN` and
    `abhidhana_romanise.py NN`. Confirm the `roman` column of `docs/labels.md` §0.
-1a. **Vol. 14/2: the editor to check trial shard 00** (brief §49; `docs/translation/trial/14b-shard00-{in,out}.jsonl`; cost on
-   the Usage page: the agent used 208,033 tokens). If it is good: draft shards 01–14 (`prep('14b', 15)` in the cloud, the
-   drafting prompt with its section for books from our own text), then `merge 14b` and `report 14b`, VERSION and CHANGELOG.
-   Before that, on the Mac: re-run `prep 15` and compare with a copy made before this change (should be byte-identical).
-   **Don't draft more shards until the editor says so.** For review:
+1a. **Vol. 14/2: drafting approved by the editor (27 Sep)** after trial shard 00 (brief §49; `docs/translation/trial/`).
+   Shards 01–14 drafted in the cloud and merged with shard 00 (brief §49). Before, `prep` also strips citations
+   without numbers and dash-joined lists of inflected forms, and drafts put what they leave out in `omitted`
+   (`meanings/14b-omitted.tsv`), not in `flag`; shard 00 was kept as drafted (its omissions are in `flag`).
+   On the Mac: re-run `prep 15` and compare with a copy made before these changes (should be byte-identical).
+   For review:
    - run-on headwords with no body: 210255, 210257, 210262 (their text is inside 210254, 210256, 210261); left without a
      Meaning for now (the editor, 27 Sep);
    - 210324: starts with a grammarian's note (…ဝ-ပစ္စည်း); its analysis bracket is not flagged as damaged, so prep did not cut it;
