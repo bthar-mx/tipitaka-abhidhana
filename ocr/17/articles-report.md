@@ -20,9 +20,9 @@
 | compound analysis taken from the typed PCED witness (tools/abhidhana_witness_analysis.py) | 6,483 = 99.4% |
 | compound analysis, either | 6,491 = 99.6% |
 | of which + signs repaired (normalise_analysis) | 949 = 14.6% |
-| non-empty body | 6,078 = 93.2% |
+| non-empty body | 6,079 = 93.2% |
 | at least one citation parsed | 4,295 = 65.9% |
-| label + body (the article is usable) | 5,537 = 84.9% |
+| label + body (the article is usable) | 5,538 = 84.9% |
 
 **Romanised headwords against OSBCT** (682,010 canonical words):
 

@@ -462,6 +462,21 @@ def fields(raw, hw, iast=''):
     return fields_after(rest[k:], out_hw=None, iast=iast)
 
 
+# A token with the shape of a word: a sense marker "(၁)" "(က)", a hyphen, or a Burmese run that
+# starts with a consonant or independent vowel. Not a run of ဝ / ၀ (the dots between lines), not
+# ရျ (a misread ]), not a mark stacked on ့ or ်, not ၌ ၍ ၎ ၏ at the start, and not a lone
+# consonant or vowel other than မ (§50).
+HEAD_WORD = re.compile(r'^(?:\([\u1000-\u1049]{1,3}\)|-|[\u1000-\u102A\u103F\u104C-\u104F][\u1000-\u103E\u104F]*-?)$')
+
+
+def head_words(line):
+    t = line.split()
+    return (bool(t) and any(x != '-' for x in t)
+            and all(HEAD_WORD.match(x) and not re.fullmatch(r'[ဝ၀]+-?', x) and 'ရျ' not in x
+                    and not re.search(r'[့်][ျြွှ]', x) and not re.match(r'[\u104C-\u104F]', x)
+                    and not (re.fullmatch(r'[\u1000-\u102A]-?', x) and x.rstrip('-') != 'မ') for x in t))
+
+
 def fields_after(rest, out_hw, iast='', glued=False):
     out = {'label': None, 'label_ocr': None, 'label_how': None, 'analysis': None,
            'headword_ocr': out_hw}
@@ -518,10 +533,17 @@ def fields_after(rest, out_hw, iast='', glued=False):
     # tesseract turns the dots and marks between lines into short lines of debris
     # ("ဝ ချူ ဝ ။", "[ ကြု တး ဝ"). A line whose every token is three characters or fewer is
     # dropped from the body; `raw` keeps it.
-    keep = [ln for ln in rest.split('\n')
-            if ln.strip() and not all(len(t) <= 3 for t in ln.split())]
+    # ... except the rest of the line the analysis ends on: text printed after ] on the headword's
+    # line is the definition's first word(s), "[ပမတ္တ+ကရဏ+အတ္ထ] မေ့ / လျော့ခြင်း" (14/2), and was
+    # lost with the debris. It is kept when the ] was read (after a damaged bracket the rest of the
+# line is the analysis's own tail) and every token has the shape of a word (§50).
+    first = rest.split('\n')[0] if out.get('analysis') and not out.get('analysis_bracket_damaged') else ''
+    keep = [ln for i, ln in enumerate(rest.split('\n'))
+            if ln.strip() and (not all(len(t) <= 3 for t in ln.split()) or (i == 0 and head_words(first)))]
     out['noise_lines'] = pre_noise + sum(1 for ln in rest.split('\n') if ln.strip()) - len(keep)
     body = re.sub(r'[ \t]+', ' ', '\n'.join(keep)).strip()
+    if first.strip() and head_words(first) and all(len(t) <= 3 for t in first.split()):
+        out['body_head_restored'] = re.sub(r'[ \t]+', ' ', first).strip()
     if out.get('analysis'):
         norm, changed = normalise_analysis(out['analysis'])
         if changed:
@@ -625,6 +647,10 @@ def main(book):
     # the compound analysis from the typed PCED witness where it has one (tools/abhidhana_witness_analysis.py)
     from abhidhana_witness_analysis import apply as apply_witness_analysis
     for m in apply_witness_analysis(book, rows): print(m)
+    # the body's first words on the headword's line (§50): kept in books 01-19 only where PCED's
+    # definition begins with them, elsewhere by their shape alone
+    from abhidhana_witness_analysis import gate_head
+    for m in gate_head(book, rows): print(m)
     # hand corrections against the print (docs/corrections.tsv), last, so every re-run keeps them
     from abhidhana_corrections import apply as apply_corrections
     for m in apply_corrections(book, rows): print(m)

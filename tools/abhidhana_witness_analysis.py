@@ -69,3 +69,71 @@ def apply(book, rows):
         elif old.replace(' ', '') != new.replace(' ', ''): changed += 1
         r['analysis'] = new; r['analysis_source'] = 'pced'; n += 1
     return [f'witness analyses (PCED): {n:,} rows take it; {changed:,} differed from the OCR, {added:,} where the OCR had none']
+
+
+# --- The body's first words (brief §50) -----------------------------------------------------
+# abhidhana_articles.py keeps the rest of the line an analysis ends on, when its tokens have the
+# shape of words, and marks the row body_head_restored. By shape alone ~5% of such additions in
+# the OCR books were debris (ချူ, ချာ, ဦရူ; measured on books 01, 05, 10, 15). So in the books PCED
+# covers (the editor, 27 Sep 2026) the words are kept only where PCED's definition begins with
+# them: verbatim (spaces aside) within its first characters, or with a similarity of 0.6 or more
+# (OCR letter errors: ဂ- for ၈-). Elsewhere, or with no PCED line, they are taken out again. In
+# other books the shape rule stands (body_head_how "shape"). Without witness/ the PCED books keep
+# none of them, so a run without the witness cannot add debris.
+import difflib
+PCED_BOOKS = {'01', '02', '03', '4a', '4b', '05', '06', '07', '08', '09', '10', '11', '12', '13',
+              '14', '15', '16', '17', '18', '19'}
+_D = None
+
+
+def definitions():
+    global _D
+    if _D is None:
+        f = ROOT / 'witness/pced_k.jsonl'
+        _D = {}
+        if f.exists():
+            for line in f.open(encoding='utf-8'):
+                w = json.loads(line)
+                if w.get('definition'): _D[w['seq']] = nfc(w['definition'])
+    return _D
+
+
+def head_agrees(added, definition):
+    ns = lambda x: re.sub(r'\s', '', x or '')
+    a, p = ns(added), ns(definition)
+    if not a or not p: return None
+    if a in p[:len(a) + 8]: return 'verbatim'
+    if max(difflib.SequenceMatcher(None, a, p[k:k + len(a)]).ratio() for k in range(4)) >= 0.6:
+        return 'similar'
+    return None
+
+
+def gate_head(book, rows):
+    from abhidhana_articles import CITE, cite_trim
+    cand = [r for r in rows if r.get('body_head_restored')]
+    if book not in PCED_BOOKS:
+        for r in cand: r['body_head_how'] = 'shape'
+        return [f'first words on the headword line: {len(cand):,} bodies gained them (by shape; no PCED for book {book})']
+    jf = ROOT / f'witness/join-{book}.jsonl'
+    D = definitions() if jf.exists() else {}
+    seq = {}
+    if jf.exists():
+        for line in jf.open(encoding='utf-8'):
+            j = json.loads(line)
+            if j.get('seq') is not None: seq[j['id']] = j['seq']
+    kept = {'verbatim': 0, 'similar': 0}; out = 0
+    for r in cand:
+        how = head_agrees(r['body_head_restored'], D.get(seq.get(r['id'])))
+        if how:
+            r['body_head_how'] = 'pced'; kept[how] += 1; continue
+        # take the words out again: they are the body's first line
+        body = r['body']; h = r.pop('body_head_restored')
+        lines = body.split('\n')
+        assert re.sub(r'\s', '', lines[0]) == re.sub(r'\s', '', h), (r['id'], lines[0], h)
+        r['body'] = '\n'.join(lines[1:]).strip()
+        r['noise_lines'] = r.get('noise_lines', 0) + 1
+        r['citations'] = [re.sub(r'\s+', '', cite_trim(c)) for c in CITE.findall(r['body'])]
+        out += 1
+    note = '' if D else ' (no witness here: none kept)'
+    return [f'first words on the headword line: {len(cand):,} candidates; PCED agrees with {kept["verbatim"]:,} verbatim '
+            f'and {kept["similar"]:,} by similarity, kept; {out:,} taken out{note}']

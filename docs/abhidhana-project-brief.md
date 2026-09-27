@@ -2,7 +2,7 @@
 
 *Written 21 September 2026, at the end of the volume-25 pilot; §10–12 revised 24 September
 2026, after volume 1 was done end to end and the repository was made public; §18–26 added
-25 September 2026 (spelling folds, the witness join, vols. 6–9, re-cutting gutters, vol. 14/2's text layer, the batch of vols. 10–22); §27 the same evening (vols. 23, 24 and 14/2 finished, the index's page errors applied, book 21 explained, the Reader in binary); §28 the public website, the page images and the label table; §29 vol. 21 finished, vol. 25's resolution, the dictionary's own account of its labels; §30 vol. 25 done, all 29 books; §31 (later on 25 Sep) the page-image tool's bitmap test; §32 the weak page corrections, image-checked; §33 the compound analysis with its [ lost; §34 the dictionary's history on the site; §35 all page images live, a light/dark switch, the Introduction page; §36 citations keep their whole abbreviation; §37 translation, batch 1; §38–41 (26 Sep) the redesign, vol. 1–2 drafts, PCED analyses, versioned assets; §42 (26 Sep) the live check, vol. 3's drafts, version numbers; §43 vols. 4/1–4/2 drafts, the IEBH footer, citation tooltips, cross-reference links, labels reviewed; §44 the live check after v0.8.0, vol. 4/3 deferred, vol. 5 drafted, the analysis split from its derivation, printed page numbers; §45 the live check after v0.9.0, vol. 6 drafted; §46 two stems from the editor, vols. 7–9 drafted; §47 vols. 10–14/1 drafted; §48 (27 Sep) the live check after v0.12.0, vols. 15–19 drafted. Everything in
+25 September 2026 (spelling folds, the witness join, vols. 6–9, re-cutting gutters, vol. 14/2's text layer, the batch of vols. 10–22); §27 the same evening (vols. 23, 24 and 14/2 finished, the index's page errors applied, book 21 explained, the Reader in binary); §28 the public website, the page images and the label table; §29 vol. 21 finished, vol. 25's resolution, the dictionary's own account of its labels; §30 vol. 25 done, all 29 books; §31 (later on 25 Sep) the page-image tool's bitmap test; §32 the weak page corrections, image-checked; §33 the compound analysis with its [ lost; §34 the dictionary's history on the site; §35 all page images live, a light/dark switch, the Introduction page; §36 citations keep their whole abbreviation; §37 translation, batch 1; §38–41 (26 Sep) the redesign, vol. 1–2 drafts, PCED analyses, versioned assets; §42 (26 Sep) the live check, vol. 3's drafts, version numbers; §43 vols. 4/1–4/2 drafts, the IEBH footer, citation tooltips, cross-reference links, labels reviewed; §44 the live check after v0.8.0, vol. 4/3 deferred, vol. 5 drafted, the analysis split from its derivation, printed page numbers; §45 the live check after v0.9.0, vol. 6 drafted; §46 two stems from the editor, vols. 7–9 drafted; §47 vols. 10–14/1 drafted; §48 (27 Sep) the live check after v0.12.0, vols. 15–19 drafted; §49 vol. 14/2 drafted from its text layer; §50 the body's first words on the headword's line restored. Everything in
 this file was measured. Do not re-derive a figure it carries; if a new one is needed,
 measure it rather than estimating.*
 
@@ -1795,3 +1795,61 @@ tense for the optative ရာ၏, reported by its agent). Tokens (agents' own co
   nearly all encoding debris.
 - Agents changed a few of their own appended lines despite the append-only rule (00: 210582; 06: 213215; 07: 213442;
   13: 216422, 216591, 216600), each for a slip they found in their check.
+
+
+## 50. The body's first words on the headword's line, restored (27 Sep 2026)
+
+**The live check after v0.14.0**: done 27 Sep (the editor).
+
+**The loss** (§49): `abhidhana_articles.py` drops, as debris, a line of the body whose every token is three characters
+or fewer. When the definition begins on the headword's line after the analysis, "[ပမတ္တ+ကရဏ+အတ္ထ] မေ့ / လျော့ခြင်း…"
+(14/2, 210168), that remainder is such a line, and its words went with the debris.
+
+**First try, too wide.** Keeping the rest of the headword's line whatever it holds (and, with no analysis, the rest of the
+label's line) changed 566 bodies in vol. 1 and no other field; but against PCED about half of the added text was debris:
+the analysis's own tail after a damaged bracket (ရျူ, ရျ ၄ တံ), a lone ] or [, the ဝ dots. With no analysis read, 56 of 60
+additions were not in PCED. Dropped.
+
+**The rule** (`fields_after`, `head_words()`): only the rest of the line on which an analysis **ends with a ] that was read**
+(not `analysis_bracket_damaged`: after a damaged bracket the rest of the line is the analysis's tail; in 14/2 all 20 such
+cases were grammarians' roots), and only when every token has the shape of a word: a sense marker (၁) (က), a hyphen, or a
+run that starts with a consonant or independent vowel; not a run of ဝ / ၀, not ရျ (a misread ]), no mark stacked on ့ or ်,
+not ၌ ၍ ၎ ၏ at the start, not a lone consonant or vowel other than မ. The row gains `body_head_restored` (the words) and
+`body_head_how`, and its `noise_lines` falls by one. Measured on books 01, 05, 10 and 15 against PCED (the added text
+within PCED's definition start, or similar at ≥ 0.6): 94.6% genuine by shape alone; the rest mostly OCR debris (ချူ, ချာ,
+ဦရူ), some real words garbled (ရူ- for ရှု-, ဂ- for ၈-). A lexicon check (the added words found as words in 14/2's text or
+PCED) was tried and gained nothing over the shape rule.
+
+**Gated by PCED in books 01–19** (the editor's choice, 27 Sep; `gate_head()` in `tools/abhidhana_witness_analysis.py`): where
+PCED covers the book, the words are kept only where its definition begins with them (`body_head_how` `pced`), and taken out
+again otherwise or where the row has no PCED line; without `witness/`, none are kept in those books. PCED is therefore the
+filter there, no longer an independent check of the result. Elsewhere (4/3 with its supplements, 14/2, 14/3, 20–25) the
+shape rule stands (`shape`). 14/2 is the text layer and has no debris.
+
+Re-run: articles for all 29 books, then romanisation (one run of 24 books at once was killed for memory; the nine were re-run
+three at a time). Compared row by row with copies taken before (`tmp/pre-noisefix-0927/`): **no field other than `body`,
+`noise_lines` and the two new fields changed in any row of any book**; every changed body is the old one with words in front;
+citations unchanged.
+
+| | |
+|---|---:|
+| candidates in the PCED books (01–19, 4/1, 4/2, 14/1) | 4,866 |
+| kept: PCED verbatim / similar | 4,033 / 544 |
+| taken out (PCED disagrees or has no line) | 289 |
+| kept by shape: 14/2 / 4/3 / 14/3 / 20 / 21 / 22 / 23 / 24 / 25 | 497 / 429 / 82 / 33 / 17 / 165 / 30 / 99 / 74 |
+| **bodies that gained their first words, all books** | **6,003** |
+| bodies that were empty before | 2 (vols. 17, 24) |
+
+§49's 6,825 counted every short remainder on the headword's line, debris included; 494 in 14/2 against 497 here.
+Per book: vol. 1 159, 2 228, 3 336, 4/1 308, 4/2 287, 5 385, 6 350, 7 191, 8 171, 9 258, 10 294, 11 151, 12 289, 13 216,
+14/1 146, 15 217, 16 211, 17 127, 18 148, 19 105.
+
+**Downstream.** `pali.jsonl`: 5,655 rows changed in `body_joined` and the span offsets only; in **324 rows the restored words
+are themselves taken for a Pāḷi span** (မသံ, တလံ, "အနု ကရောတိ"), the span finder's weakness of §40. Label + body rose by one
+row in vols. 17 and 24. The article reports now show the analysis in three lines (by the OCR / from PCED / either), as the
+code already wrote them; the committed reports predated that. The witness joins were not re-run (their body ratios will move
+slightly); the Reader was not rebuilt.
+
+**Vol. 14/2's Meaning boxes**: all 497 changed rows are drafted, and in all 497 `prep`'s Burmese (`our_text()`) now begins
+with the restored words. Listed for a redraft in `docs/translation/meanings/14b-redraft.tsv` (id, headword, the words, the
+start of the Burmese before and now). Vols. 1–19 were drafted from PCED and are not affected.

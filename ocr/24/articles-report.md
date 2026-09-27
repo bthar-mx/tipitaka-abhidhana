@@ -16,11 +16,13 @@
 | label normalised to the closed set (docs/labels.md) | 6,386 = 90.1% |
 | of which read exactly as printed / mapped / inferred from the ending | 4,782 / 1,604 / 0 |
 | label read but left unnormalised | 195 = 2.8% |
-| compound analysis [ ] recovered | 5,758 = 81.2% |
+| compound analysis [ ] recovered by the OCR | 5,758 = 81.2% |
+| compound analysis taken from the typed PCED witness (tools/abhidhana_witness_analysis.py) | 0 = 0.0% |
+| compound analysis, either | 5,758 = 81.2% |
 | of which + signs repaired (normalise_analysis) | 654 = 9.2% |
-| non-empty body | 6,819 = 96.2% |
+| non-empty body | 6,820 = 96.2% |
 | at least one citation parsed | 5,189 = 73.2% |
-| label + body (the article is usable) | 6,377 = 90.0% |
+| label + body (the article is usable) | 6,378 = 90.0% |
 
 **Romanised headwords against OSBCT** (682,010 canonical words):
 

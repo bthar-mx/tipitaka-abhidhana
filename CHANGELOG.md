@@ -23,6 +23,15 @@ Versions of the Tipiṭaka Pāḷi-Myanmā Abhidhāna project: the data, the too
 A release note says, per version: what changed, the brief's sections, and the headline figures
 (located, label + body, Meaning rows drafted / reviewed).
 
+## v0.15.0 — 27 Sep 2026
+
+- **The body's first words restored** (brief §50): words printed on the headword's line after the analysis's ] were
+  dropped as debris by the article step's noise filter. **6,003 bodies** in 29 books gained them; in books 01–19 only
+  where the PCED definition begins with them (4,577 kept, 289 taken out), elsewhere by their shape (1,426; 497 in 14/2).
+  No placement, label or analysis changed in any row. Rows gain `body_head_restored` and `body_head_how`. Romanisation
+  re-run for all books. Vol. 14/2's 497 affected Meaning rows are listed for a redraft
+  (`docs/translation/meanings/14b-redraft.tsv`); their drafts are unchanged for now.
+
 ## v0.14.0 — 27 Sep 2026
 
 - **Vol. 14/2 Meaning boxes drafted** from the PDF's own text layer (no PCED): 6,795 rows, all `drafted`, `source` text
