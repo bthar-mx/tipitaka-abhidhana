@@ -23,6 +23,15 @@ Versions of the Tipiṭaka Pāḷi-Myanmā Abhidhāna project: the data, the too
 A release note says, per version: what changed, the brief's sections, and the headline figures
 (located, label + body, Meaning rows drafted / reviewed).
 
+## v0.14.0 — 27 Sep 2026
+
+- **Vol. 14/2 Meaning boxes drafted** from the PDF's own text layer (no PCED): 6,795 rows, all `drafted`, `source` text
+  layer; 1,406 flagged (`docs/translation/meanings/14b-flags.tsv`), what the drafts left out in `14b-omitted.tsv`. Drafted so
+  far: 163,445 rows in 21 books (73.9% of the index), none reviewed. About and README updated.
+- `prep` (books without a join) also strips citations without numbers and dash-joined lists of inflected forms (681 of
+  14/2's rows changed); drafts record omissions in a field `omitted`, which `merge` keeps out of the rows. Shard 00, the
+  trial, kept as drafted. Brief §49.
+
 ## v0.13.1 — 27 Sep 2026
 
 - **`abhidhana_meanings.py prep` for books without a witness join** (14/2, 14/3, 20–25, 4/3): the Burmese comes from our

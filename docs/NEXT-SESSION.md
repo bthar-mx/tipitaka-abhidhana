@@ -120,17 +120,19 @@ Project are for advice and for what needs the Mac. What the new chat should know
    (`abhidhana_reader_data.py` for all books, then republish).
 0c. **Hand corrections** go in `docs/corrections.tsv` (brief §40); re-run `abhidhana_articles.py NN` and
    `abhidhana_romanise.py NN`. Confirm the `roman` column of `docs/labels.md` §0.
-1a. **Vol. 14/2: drafting approved by the editor (27 Sep)** after trial shard 00 (brief §49; `docs/translation/trial/`).
-   Shards 01–14 drafted in the cloud and merged with shard 00 (brief §49). Before, `prep` also strips citations
-   without numbers and dash-joined lists of inflected forms, and drafts put what they leave out in `omitted`
-   (`meanings/14b-omitted.tsv`), not in `flag`; shard 00 was kept as drafted (its omissions are in `flag`).
-   On the Mac: re-run `prep 15` and compare with a copy made before these changes (should be byte-identical).
+1a. **Vol. 14/2 drafted** (approved by the editor, 27 Sep, after trial shard 00; brief §49): 6,795 rows from the text layer,
+   1,406 flagged, omissions in `meanings/14b-omitted.tsv`. After the push, check the live site (`/data/version.json` 0.14.0;
+   a vol. 14/2 article such as `/w/parinibbāna` shows *borrador*; About lists 14/2).
+   On the Mac: re-run `prep 15` and compare with a copy made before the §49 changes (should be byte-identical).
    For review:
    - run-on headwords with no body: 210255, 210257, 210262 (their text is inside 210254, 210256, 210261); left without a
-     Meaning for now (the editor, 27 Sep);
+     Meaning for now (the editor, 27 Sep). Across 14/2, 123 unlocated articles have no body; brief §49 lists the host rows,
+     which the agents handled two ways (left out, or translated inside the host);
    - 210324: starts with a grammarian's note (…ဝ-ပစ္စည်း); its analysis bracket is not flagged as damaged, so prep did not cut it;
-   - 210168: starts လျော့ခြင်း, possibly truncated.
-1b. **Translation** (brief §37, §39–49). **Drafted: vols. 1–3, 4/1, 4/2, 5–19** (156,650 rows, 70.8% of the index, none reviewed; flags in `meanings/NN-flags.tsv`). **Vol. 4/3 deferred** (no PCED; the editor, 26 Sep; brief §44). PCED's vols. 1–19 are all drafted (brief §48).
+   - 210168: starts လျော့ခြင်း: the first word lost (see below);
+   - **the first word(s) of a body lost** in `abhidhana_articles.py` (noise filter; 6,825 rows in all 29 books, 494 in 14/2;
+     brief §49): fix in the article step and re-run, the editor to decide.
+1b. **Translation** (brief §37, §39–49). **Drafted: vols. 1–3, 4/1, 4/2, 5–19 and 14/2** (163,445 rows, 73.9% of the index, none reviewed; flags in `meanings/NN-flags.tsv`). **Vol. 4/3 deferred** (no PCED; the editor, 26 Sep; brief §44). PCED's vols. 1–19 are all drafted (brief §48).
    **Next: the books with no PCED** — 14/2 (its text layer), 14/3, 20–25, and 4/3 (deferred) — could only be drafted from
    our OCR body: the editor to decide, as for 4/3 (brief §44 measured the OCR body against PCED on 4/1 and 4/2). If yes:
    `prep('NN', N)` from Python (N so that shards are ~450 lines), each book's `workNN.json` and `shards/` in
