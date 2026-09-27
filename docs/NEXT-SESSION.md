@@ -1,4 +1,4 @@
-# Abhidhāna — handover, 26 September 2026, later still (vols. 10–14/1 drafted; v0.11.0 checked live; v0.12.0)
+# Abhidhāna — handover, 27 September 2026 (vols. 15–19 drafted; v0.12.0 checked live; v0.13.0)
 
 *All 29 books are digitised end to end, spot-checked and in the Reader: 221,154 index rows, 94.1%
 located, 88.1% with label + body (brief §30). Read
@@ -7,7 +7,7 @@ located, 88.1% with label + body (brief §30). Read
 vol. 6, §21 vol. 7, §22 vol. 8 and the gutter failures, §23 vol. 9, §24 the re-cut tool, §25 vol.
 14/2's text layer, §26 the batch (vols. 10–22), §27 vols. 23, 24, 14/2, the index's page errors,
 book 21 and the Reader in binary, §28 the website, the page images and the label table, §29 vol.
-21, vol. 25's resolution and the labels as the dictionary prints them, §30 vol. 25 and the total, §31–37 the page images, the Introduction and the stem lexicon, §38 the site redesign, §39 the vol. 1 drafts, §40 the site fixes, the PCED analyses, hand corrections and sano / insano, §41 versioned assets and vol. 2's drafts, §42 the live check after `5db316f`, vol. 3's drafts and version numbers, §43 vols. 4/1–4/2, the IEBH footer, citation tooltips, cross-reference links and the labels the editor reviewed, §44 the live check after v0.8.0, vol. 4/3 deferred, vol. 5's drafts, the analysis split from its derivation and printed page numbers, §45 the live check after v0.9.0 and vol. 6's drafts, §46 stems L105–L106 and vols. 7–9, §47 vols. 10–14/1. Every figure is there.
+21, vol. 25's resolution and the labels as the dictionary prints them, §30 vol. 25 and the total, §31–37 the page images, the Introduction and the stem lexicon, §38 the site redesign, §39 the vol. 1 drafts, §40 the site fixes, the PCED analyses, hand corrections and sano / insano, §41 versioned assets and vol. 2's drafts, §42 the live check after `5db316f`, vol. 3's drafts and version numbers, §43 vols. 4/1–4/2, the IEBH footer, citation tooltips, cross-reference links and the labels the editor reviewed, §44 the live check after v0.8.0, vol. 4/3 deferred, vol. 5's drafts, the analysis split from its derivation and printed page numbers, §45 the live check after v0.9.0 and vol. 6's drafts, §46 stems L105–L106 and vols. 7–9, §47 vols. 10–14/1, §48 the live check after v0.12.0 and vols. 15–19. Every figure is there.
 `docs/labels.md` §0 holds the label table (the one source for the pipeline and the site),
 `docs/abbreviations.md` the dictionary's own abbreviations and its prose on the labels,
 `docs/index-errata.md` the index's errors, `docs/witness.md` and `docs/witness-join.md` the typed
@@ -47,9 +47,12 @@ vol. 25 runs.
 
 ## Next, in order
 
-00. ~~Versions~~: tags v0.1.0–v0.11.0 created by the editor; the footer shows `VERSION` (brief §43). Tag **v0.12.0** on the
-   push of §47. Each push that changes data or the site: bump `VERSION`, add a `CHANGELOG.md` section, tag.
-00g. **After the §47 push, check the live site** (fetch `/data/version.json` first): 0.12.0; `/w/dukkha` (vol. 10),
+00. ~~Versions~~: tags v0.1.0–v0.11.0 created by the editor; the footer shows `VERSION` (brief §43). Tag **v0.13.0** on the push of §48
+   (and v0.12.0 on §47's, if not yet made). Each push that changes data or the site: bump `VERSION`, add a `CHANGELOG.md` section, tag.
+00h. **After the §48 push, check the live site** (fetch `/data/version.json` first): 0.13.0; `/w/bhava` (vol. 15),
+   `/w/magga` (vol. 16), `/w/rūpa` (vol. 17), `/w/loka` (vol. 18), `/w/vipāka` (vol. 19) show a Meaning box, *borrador*;
+   About: "vols. 1–3, 4/1, 4/2, 5–13, 14/1 y 15–19".
+00g. ~~After the §47 push, check the live site~~: done 27 Sep (brief §48). Was (fetch `/data/version.json` first): 0.12.0; `/w/dukkha` (vol. 10),
    `/w/nibbāna` (vol. 12), `/w/paṭisandhi` (vol. 14/1) show a Meaning box, *borrador*; About: "vols. 1–3, 4/1, 4/2, 5–13 y 14/1".
 00f. ~~After the §46 push, check the live site~~: done 26 Sep (brief §47). Was (fetch `/data/version.json` first): 0.11.0; `/w/cakkavatti` (vol. 7),
    `/w/jhāna` (vol. 8), `/w/taṇhā` (vol. 9) show a Meaning box, *borrador*; About: "vols. 1–3, 4/1, 4/2 y 5–9".
@@ -77,16 +80,19 @@ vol. 25 runs.
    (`abhidhana_reader_data.py` for all books, then republish).
 0c. **Hand corrections** go in `docs/corrections.tsv` (brief §40); re-run `abhidhana_articles.py NN` and
    `abhidhana_romanise.py NN`. Confirm the `roman` column of `docs/labels.md` §0.
-1b. **Translation** (brief §37, §39–47). **Drafted: vols. 1–3, 4/1, 4/2, 5–13, 14/1** (113,331 rows, 51.2% of the index, none
-   reviewed; flags in `meanings/NN-flags.tsv`). **Vol. 4/3 deferred** (no PCED; the editor, 26 Sep; brief §44). Next: **vols. 15–19**
-   (PCED covers them; vol. 15 also has 4c's supplement, item 9): `prep('NN', N)` from Python (N so that shards are ~450 lines),
-   then move `workNN.json` and `shards/` to `tmp/meanings/vNN/` before the next `prep`; one agent and scratch folder per shard
-   (20 at once), with the prompt of brief §45 and §47's RESUMING note (a wave can stop at the usage limit); for `merge NN` and
-   `report NN` move that book's `workNN.json`, `shards/` and `out/` back up to `tmp/meanings/` and down again after (brief §46).
-   Then the books with no PCED: 14/2 (its text layer), 14/3, 20–25. Seven vol. 10 rows have `#NAME?` in PCED (brief §47): draft
+1b. **Translation** (brief §37, §39–48). **Drafted: vols. 1–3, 4/1, 4/2, 5–19** (156,650 rows, 70.8% of the index, none reviewed; flags in `meanings/NN-flags.tsv`). **Vol. 4/3 deferred** (no PCED; the editor, 26 Sep; brief §44). PCED's vols. 1–19 are all drafted (brief §48).
+   **Next: the books with no PCED** — 14/2 (its text layer), 14/3, 20–25, and 4/3 (deferred) — could only be drafted from
+   our OCR body: the editor to decide, as for 4/3 (brief §44 measured the OCR body against PCED on 4/1 and 4/2). If yes:
+   `prep('NN', N)` from Python (N so that shards are ~450 lines), each book's `workNN.json` and `shards/` in
+   `tmp/meanings/vNN/`; one agent and scratch folder per shard (20 at once) with `docs/translation/drafting-prompt.md`
+   (brief §48; a wave can stop at the usage limit: its RESUMING note covers that); for `merge NN` and `report NN` move the
+   book's three up to `tmp/meanings/` and back after (brief §46). Vol. 15's supplement in 4c (53 ဘိဇ္ဇ rows, item 9) is
+   not drafted. Seven vol. 10 rows have `#NAME?` in PCED (brief §47): draft
    them from our OCR. **The future's person**: the print writes …လတ်အံ့ for the 1st person and …လတ္တံ့ for the 3rd (brief §47);
-   the rule "3rd unless marked" should say so. Decided 26 Sep: ဂုဏ် *cualidad / virtud* (L105), လူ as layperson *laico*
-   (L106). Open from vols. 6–9: ခေတ် ⟦=khetta⟧; ရှုတ်ချ *denigrar* vs ကဲ့ရဲ့ *censurar*; စောဒနာ *reprender*; ဥတု as menses.
+   the rule "3rd unless marked" now says so (`drafting-prompt.md`, brief §48). Decided 26 Sep: ဂုဏ် *cualidad / virtud* (L105), လူ as layperson *laico*
+   (L106). Open from vols. 15–19 (brief §48): ပယ် for physical removal (*quitar* or *abandonar*); the three stacked future
+   endings (one rendering or three); ငရဲ *infierno* or ⟦=niraya⟧; ဖောက်ပြန်; အကျိုး in -attha (*beneficio* / *propósito*);
+   မင်္ဂလာ, ဝဋ်, ဝါ kept Pāḷi; ငရုတ် (marica) *ají* vs pepper. Open from vols. 6–9: ခေတ် ⟦=khetta⟧; ရှုတ်ချ *denigrar* vs ကဲ့ရဲ့ *censurar*; စောဒနာ *reprender*; ဥတု as menses.
    Settled for vol. 5 on: ကုသိုလ် as merit → *mérito / meritorio*; stems
    L101–L104 (နတ် ⟦=deva⟧, ရဟန်း *monje*, ပယ် *abandonar*, ဥတု ⟦=utu⟧ / *estación*). Raised by vol. 5's agents, for the
    editor: ကံ as the Saṅgha's act or the grammatical object, and ကြိယာ as "verb" (both kept Pāḷi, flagged); ကမ္ဘာ *eón*

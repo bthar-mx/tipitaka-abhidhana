@@ -2,7 +2,7 @@
 
 *Written 21 September 2026, at the end of the volume-25 pilot; §10–12 revised 24 September
 2026, after volume 1 was done end to end and the repository was made public; §18–26 added
-25 September 2026 (spelling folds, the witness join, vols. 6–9, re-cutting gutters, vol. 14/2's text layer, the batch of vols. 10–22); §27 the same evening (vols. 23, 24 and 14/2 finished, the index's page errors applied, book 21 explained, the Reader in binary); §28 the public website, the page images and the label table; §29 vol. 21 finished, vol. 25's resolution, the dictionary's own account of its labels; §30 vol. 25 done, all 29 books; §31 (later on 25 Sep) the page-image tool's bitmap test; §32 the weak page corrections, image-checked; §33 the compound analysis with its [ lost; §34 the dictionary's history on the site; §35 all page images live, a light/dark switch, the Introduction page; §36 citations keep their whole abbreviation; §37 translation, batch 1; §38–41 (26 Sep) the redesign, vol. 1–2 drafts, PCED analyses, versioned assets; §42 (26 Sep) the live check, vol. 3's drafts, version numbers; §43 vols. 4/1–4/2 drafts, the IEBH footer, citation tooltips, cross-reference links, labels reviewed; §44 the live check after v0.8.0, vol. 4/3 deferred, vol. 5 drafted, the analysis split from its derivation, printed page numbers; §45 the live check after v0.9.0, vol. 6 drafted; §46 two stems from the editor, vols. 7–9 drafted; §47 vols. 10–14/1 drafted. Everything in
+25 September 2026 (spelling folds, the witness join, vols. 6–9, re-cutting gutters, vol. 14/2's text layer, the batch of vols. 10–22); §27 the same evening (vols. 23, 24 and 14/2 finished, the index's page errors applied, book 21 explained, the Reader in binary); §28 the public website, the page images and the label table; §29 vol. 21 finished, vol. 25's resolution, the dictionary's own account of its labels; §30 vol. 25 done, all 29 books; §31 (later on 25 Sep) the page-image tool's bitmap test; §32 the weak page corrections, image-checked; §33 the compound analysis with its [ lost; §34 the dictionary's history on the site; §35 all page images live, a light/dark switch, the Introduction page; §36 citations keep their whole abbreviation; §37 translation, batch 1; §38–41 (26 Sep) the redesign, vol. 1–2 drafts, PCED analyses, versioned assets; §42 (26 Sep) the live check, vol. 3's drafts, version numbers; §43 vols. 4/1–4/2 drafts, the IEBH footer, citation tooltips, cross-reference links, labels reviewed; §44 the live check after v0.8.0, vol. 4/3 deferred, vol. 5 drafted, the analysis split from its derivation, printed page numbers; §45 the live check after v0.9.0, vol. 6 drafted; §46 two stems from the editor, vols. 7–9 drafted; §47 vols. 10–14/1 drafted; §48 (27 Sep) the live check after v0.12.0, vols. 15–19 drafted. Everything in
 this file was measured. Do not re-derive a figure it carries; if a new one is needed,
 measure it rather than estimating.*
 
@@ -1617,3 +1617,78 @@ index's 221,154 rows (113,367 index rows in those books). PCED still covers vols
   ကံမကောင်းသော *desafortunado* (a PTS gloss list); vol. 12 99747 in the 1st person. Vol. 10 shard 09 replaced 12 Pāḷi words
   copied in Burmese spelling with ⟦=iast⟧ forms (74 occurrences), inside ⟦ ⟧ only.
 - Tentative identifications and Burmese months (Tagu, Thadingyut, Tabaung) as in §46.
+
+
+## 48. The live check after v0.12.0; vols. 15–19 drafted: PCED's volumes are done (27 September 2026)
+
+**The live site after the v0.12.0 push** (in-app browser): `/data/version.json` 0.12.0 (fetched `no-store`); `/w/dukkha`
+(vol. 10 · p. 591 · PDF 639), `/w/nibbāna` (vol. 12 · p. 374 · PDF 411) and `/w/paṭisandhi` (vol. 14/1 · p. 138 · PDF 159)
+show the Meaning box, *borrador*; About reads "vols. 1–3, 4/1, 4/2, 5–13 y 14/1"; every page `<meta name="version">` 0.12.0.
+Seen, not measured: dukkha's Meaning ends with "Véase el original." (PCED's editorial note), and its quoted-passage list still
+carries OCR debris as Pāḷi (§40).
+
+**Vols. 15, 16, 17, 18 and 19 drafted**, §45–47's method, from PCED: `prep` with 21, 23, 15, 17 and 21 shards (406–452
+lines each; 97 in all), each book's working files in `tmp/meanings/vNN/`. One agent and scratch folder per shard, in the
+cloud container, 20 at a time. **The prompt is now in the repo** (`docs/translation/drafting-prompt.md`): the drafting brief,
+the choices of earlier volumes (§45), the RESUMING note (§47), and, new, the future's person as the print marks it (…လတ်အံ့
+1st, …လတ္တံ့ 2nd/3rd; a 1st-person headword may be rendered in the 1st person, flagged). From the second wave on it also
+fixes (ကြိ၊ဝိ) inside a definition as *(calificativo verbal)* (the label table's name; two vol. 15 shards had written
+*(adverbio)*: the 15 rows were changed by hand after), (မုချ)/(ဥပစာ) *sentido propio / figurado*, ဘုရား *el Buddha* plain
+and ဘုရားလောင်း ⟦=bodhisatta⟧, "X is a corrupt form of Y" notes keeping their citation, and …လော under an imperative
+headword as the imperative လော့ (flagged). **The third wave stopped at the account's weekly usage limit** (about 12:30
+Mexico time; reset 13:00): 20 shards part-written, every one a clean prefix; resumed with the same prompt, and four agents
+found a block drafted in scratch but never appended, checked it and appended it (16/19, 16/21, 17/02, 17/08). Checked
+after, over all 97 shards: one line per input id in order, valid JSON, every «Sn» in both languages, ⟦ ⟧ and ‹ › balanced,
+no Burmese outside them; two rows empty on purpose (17: 134307, whose text is only "၁"; 18: 141406, PCED `#NAME?`).
+One slip fixed by hand: 139513 used ⟨ ⟩ for ‹ ›. Tarballs `mean15-19-in-0927a.tar.gz`, `mean15-19-out-0927b.tar.gz` (md5
+checked after each copy); `tmp/meanings/x0927b/` holds the unpacked outputs and the agents' notes (`NOTES.md`).
+
+| | vol. 15 | vol. 16 | vol. 17 | vol. 18 | vol. 19 |
+|---|---:|---:|---:|---:|---:|
+| rows | 9,340 | 10,393 | 6,510 | 7,826 | 9,250 |
+| explanations without a row | 0 | 0 | 3 | 2 | 0 |
+| by formula / drafted | 2 / 9,338 | 11 / 10,382 | 435 / 6,075 | 445 / 7,381 | 629 / 8,621 |
+| from our OCR | 14 | 12 | 16 | 9 | 3 |
+| flagged | 1,290 | 1,930 | 1,660 | 1,995 | 1,820 |
+| terms kept in Pāḷi | 441 | 568 | 546 | 564 | 649 |
+| "see X" links matching a romanised headword | 95.3% | 94.8% | 91.8% | 93.6% | 95.6% |
+| rows with *sano / insano*; *mérito* | 19; 7 | 19; 8 | 29; 3 | 44; 7 | 24; 8 |
+
+The link figure is measured on the merged Spanish against every book's `headword_iast` (not on the site's build, and not
+necessarily the method of §47). Commonest kept terms: vol. 15 bhava 295, bhāvanā 146, brahmā 132; vol. 16 magga 281, māna 163,
+thera 148; vol. 17 rūpa 307, rāga 242; vol. 18 vaṭṭa 186, loka 174, lokuttara 137; vol. 19 vipassanā 205, viññāṇa 146,
+vinaya 141. Flag rates are higher than in §47 (14–25% of rows against 7–16%): many agents flagged every row with no label,
+every 1st-person rendering and every misprint read through. **The vol. 15 supplement bound in 4c** (53 ဘိဇ္ဇ headwords, §16,
+NEXT-SESSION item 9) was not drafted: 4c has no witness join.
+
+**Totals**: 20 books (01, 02, 03, 4a, 4b, 05–19), **156,650 Meaning rows, all `drafted`, none reviewed: 70.8%** of the
+index's 221,154 rows (156,703 index rows in those books). PCED's vols. 1–19 are all drafted; what remains has no PCED text:
+4/3 (deferred), 14/2 (text layer), 14/3, 20–25. The site, built in the VM into `/tmp/sitebuild` (the VM's `/sessions` disk was
+full): 953 files, 617 MB, version 0.13.0; `v15`–`v19.json` carry a Meaning on 9,340 / 10,393 / 6,510 / 7,826 / 9,250 records.
+Not opened in a browser before the push.
+
+**What the agents reported for the reviewer** (nothing reviewed):
+- **Inconsistent across shards, for a rule**: ပယ် for physical removal (hair, dirt, blood, plucking) — *quitar* (16/00, 16/08,
+  18/03 ~17 rows, 18/04) or *abandonar* kept and flagged (17/06, 18/06); three stacked future endings (-အံ့-လတ္တံ့-လိမ့်မည်)
+  rendered once (18/15, 18/16, 19/02, 19/09–11) or as three alternatives (18/11); the absolutive endings (-၍-ကာ-ပြီး…) merged
+  (18/00); ငရဲ *infierno* (vols. 16, 18/06) or ⟦=niraya⟧ (18/04); ရသေ့ *ermitaño* or *asceta* (127069, 128339); အာနုဘော်
+  *majestad* (15/08) or *poder* (v16); ဖောက်ပြန် *alteración / pervertido / perverso / distorsionado* (19/03, 19/13, 19/15, 19/18);
+  အကျိုး in -attha compounds *beneficio* (L014) or *propósito* (19/02, 19/07, 19/11, 19/19); သေဋ္ဌေး ⟦=seṭṭhi⟧ or *hombre rico*;
+  …လော under imperatives read as a question in 15/07 (116630), before the rule.
+- **New renderings, not in `stems.tsv`**: မင်္ဂလာ kept ⟦ ⟧ (~100 rows, 16/02); ဝဋ် ⟦=vaṭṭa⟧, ဝဋ်ဆင်းရဲ *el sufrimiento del vaṭṭa*
+  (~160 rows, 18/09); ဝါ ⟦=vassa⟧, ဝါဆို *asumir*, ဝါကပ် *iniciar* (18/16); လောကီ / လောကုတ္တရာ ⟦=lokiya⟧ / ⟦=lokuttara⟧;
+  ဗြဟ္မာ ⟦ ⟧, ဗြဟ္မာပြည် *mundo de Brahmā*; ပုဏ္ဏား *brahmán*; ဘဝင် ⟦=bhavaṅga⟧; ဖိုလ် ⟦=phala⟧ / *resultado* / *fruto*; ဗိုလ်
+  ⟦=bala⟧ or *tropas*; သာသနာ, ဝတ္ထု (technical), ဝိကပ္ပနာ, ဝါရ copied; အယူဝါဒ *doctrina*; ဆွမ်း *alimento de limosna*, ထမင်း
+  *arroz*; ပတ္တမြား *rubí*, မြ *esmeralda*; ငရုတ် (marica) *ají*, where the Pāḷi means black pepper (16/08: for the editor);
+  ဆန်းကြယ် *maravilloso* (19/06) / *extraordinario* (19/05).
+- **The Saṅgha's act and the grammar senses** flagged as asked: ကံ (pavāraṇā, mānatta, vinayakamma, yebhuyyasikā), ကြိယာ as
+  verb, ပစ္စည်း as suffix, မဂ် as the bodily orifice (123484, 123499).
+- **Source defects** (for the image): glosses that belong to a neighbour or do not fit the headword (e.g. 115662, 120719,
+  123125, 125406, 127378, 134818, 138640, 143477–78, 143554, 149937/38, 154057/58, 155390 a lost negation?); garbled or
+  truncated rows (118635, 124040, 125329, 131296, 133527, 136594, 141771 loka, whose senses run past (ယ) and were continued
+  (aa)–(af), 143204, 151437); 124884 mattacatukka, an explicit pārājika passage with a word apparently lost; headwords that look
+  misspelt in the index (156377 vittiya, 156412 vivavaraṇa, 156470 vidādakāraka, "gavirandha", "gaviravati"); 146885
+  ဘုရားသခင် a creator god (*el Señor*).
+- Known slips left in: 116926 EN "Dhamma talk" vs ES *Enseñanza*; 141771 *la rūpa*; 150589 and 150608 "vencido" for
+  *vencidos*; 153718 ခော်ဝော် read as "speak harshly" (later rows read it ခေါ်ဝေါ် "call"); 135555, 135560, 135562 *conducto
+  urinario* where later rows keep ⟦=passāvamagga⟧.

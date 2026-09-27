@@ -23,6 +23,13 @@ Versions of the Tipiṭaka Pāḷi-Myanmā Abhidhāna project: the data, the too
 A release note says, per version: what changed, the brief's sections, and the headline figures
 (located, label + body, Meaning rows drafted / reviewed).
 
+## v0.13.0 — 27 Sep 2026
+
+- **Vols. 15, 16, 17, 18 and 19 Meaning boxes drafted** from PCED: 9,340 + 10,393 + 6,510 + 7,826 + 9,250 rows, all
+  `drafted`; 8,695 flagged (`docs/translation/meanings/NN-flags.tsv`). Drafted so far: 156,650 rows in 20 books (70.8% of
+  the index), none reviewed. PCED's vols. 1–19 are now all drafted. About and README updated.
+- The drafting prompt is now kept in the repo, `docs/translation/drafting-prompt.md`. Brief §48.
+
 ## v0.12.0 — 26 Sep 2026, later still
 
 - **Vols. 10, 11, 12, 13 and 14/1 Meaning boxes drafted** from PCED: 7,353 + 5,662 + 7,020 + 7,279 + 5,219 rows, all
