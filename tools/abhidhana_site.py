@@ -98,6 +98,8 @@ def meanings(book):
         # "corregido en parte", with the corrected senses named, the rest still a draft (brief §51)
         cs = (r.get('corrected_es') or {}).get('senses')
         if cs and 'es' in t and t['es']['s'] == 'corrected': t['es']['s'] = 'partial'; t['es']['cs'] = cs
+        rs = (r.get('reviewed_es') or {}).get('senses')   # reviewed by sense in editor mode (brief §52)
+        if rs and 'es' in t and t['es']['s'] == 'reviewed': t['es']['s'] = 'rpartial'; t['es']['cs'] = rs
         if t: out[r['id']] = t
     return out
 

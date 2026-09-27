@@ -152,6 +152,8 @@ tools/abhidhana_ocr_stats.py   figures for an OCR report
 tools/abhidhana_reader_data.py data for the private Reader
 tools/abhidhana_site.py        builds the website from ocr/ and site/ (Cloudflare Pages)
 tools/abhidhana_pages_r2.py    page images: PDF → WebP → Cloudflare R2
+tools/abhidhana_edits_export.py  the editor's edits (editor mode, D1) → meanings, corrections.tsv
+functions/                     the site's editor API (Cloudflare Pages Functions; docs/editor-mode.md)
 tools/fetch_sources.sh         download and verify the source PDFs and index from the release
 site/                          the website's pages, scripts and volume list
 docs/                          project brief, labels, abbreviations, index errata, witnesses, Spanish method

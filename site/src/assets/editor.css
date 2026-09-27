@@ -1,0 +1,25 @@
+/* Editor mode only (assets/editor.js, /edit/); visitors never load this file. */
+.ed-badge{position:fixed;left:10px;bottom:10px;z-index:50;background:var(--surface);border:1px solid var(--line2);border-radius:6px;padding:4px 9px;font:500 12.5px var(--ui);color:var(--muted)}
+.ed-badge:empty{display:none}
+.where .ed-open{margin-left:auto}
+.ed-form{border:1px solid var(--accent);border-radius:8px;padding:12px 14px;margin:12px 0;background:var(--surface2)}
+.ed-form h2{margin-top:0}
+.ed-form h3{font:600 12.5px var(--ui);letter-spacing:.05em;text-transform:uppercase;color:var(--muted);margin:14px 0 6px}
+.ed-f{margin:8px 0}
+.ed-f label{display:block;font-weight:500;margin-bottom:3px}
+.ed-f input[type=text],.ed-f textarea{width:100%;box-sizing:border-box;background:var(--card);color:var(--ink);border:1px solid var(--line2);border-radius:5px;padding:6px 8px;font:15px var(--ui)}
+.ed-f .my,.ed-f textarea.my,.ed-f input.my{font-family:var(--my);font-size:17px;line-height:1.9}
+.ed-f input:focus,.ed-f textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 2px var(--accent-soft)}
+.ed-st label.ed-r{display:inline-flex;gap:4px;align-items:center;font-weight:400;margin-right:10px}
+.ed-st input[type=text]{width:11em}
+.ed-prev{min-height:1.4em;color:var(--muted);font-style:italic;margin-top:3px}
+.ed-link{border:0;background:none;padding:0;color:var(--accent);text-decoration:underline;cursor:pointer;font:inherit}
+.ed-bar{display:flex;gap:8px;align-items:center;margin-top:12px;flex-wrap:wrap}
+.ed-save{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
+.ed-msg{color:var(--muted)}
+.ed-table{width:100%;border-collapse:collapse;font-size:13.5px}
+.ed-table th,.ed-table td{border-top:1px solid var(--rule);padding:5px 6px;text-align:left;vertical-align:top}
+.ed-table td.v{max-width:28em;overflow-wrap:anywhere}
+.ed-table tr.rev td{color:var(--muted);text-decoration:line-through}
+.ed-filters{display:flex;gap:10px;flex-wrap:wrap;align-items:end;margin:10px 0}
+.ed-filters input{background:var(--card);color:var(--ink);border:1px solid var(--line2);border-radius:5px;padding:5px 7px;font:14px var(--ui);width:7em}

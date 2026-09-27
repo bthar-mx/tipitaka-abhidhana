@@ -1904,3 +1904,70 @@ with သ before a ဩ read right (သဩလီန), gets ဩ back (`analysis_o_r
 untouched: **393 rows** (the code comment says 394). Two hand corrections (`docs/corrections.tsv`): 176133 omakadassa
 [ဩမက + ဒိသ + အ], 176134 omakadesanā [ဩမကာ + ဒေသနာ] (PDF p. 574, the editor). Book 4c re-run (articles, romanisation); it
 carries §50's 429 restored first words too.
+
+## 52. Editor mode: corrections on the site, kept in D1, exported to the repo (27 Sep 2026, cloud session)
+
+**The live check of v0.16.0** (the editor, 27 Sep): version 0.16.0; `/w/omakadesanā` and `/w/omakadassa` show the analysis
+marked *corregido*; `/w/vātakuppa` shows *corregido*.
+
+**Asked** (the editor): an editor mode on the site for one user, behind Cloudflare Access, storing edits in D1, laid over the
+static data for every visitor, with an export into the repository. **Built, tested locally, not switched on**: the dashboard
+steps are the editor's (`docs/editor-mode.md` §2). No data changed.
+
+**What was built** (`docs/editor-mode.md` is the reference):
+- `functions/` (Pages Functions, at the repository root, where Pages looks for them): `GET /api/edits?book=NN` (public; the
+  latest saved edit per id + field + sense; `book=all`; 60 s edge cache, cleared by a save of that book),
+  `/api/admin/whoami`, `GET|POST /api/admin/edits` (history; save 1–20 rows at once, all or none). `_middleware.js` verifies
+  the Access token on every `/api/admin/` request (RS256 against `<team>/cdn-cgi/access/certs`, audience, issuer, expiry,
+  optional `EDITOR_EMAILS`), refuses a write whose `Origin` is not the site's or that lacks `X-Abhidhana-Editor: 1`, and
+  answers 503 while `ACCESS_TEAM_DOMAIN` / `ACCESS_AUD` are unset. Wrangler's generated routes: `/api/edits` and
+  `/api/admin/*` only, so the static pages are not Function calls.
+- `site/d1/schema.sql`: `edits(id, book, field, sense, value, old, status, date)` with an index on (book, id, field, sense).
+  **Decided without asking**: the `status` column is the row's own state (`saved` / `reverted`; a `reverted` row withdraws
+  the edit), the `status` *field* carries reviewed / corrected / drafted of the **Spanish** (English has none: an English
+  edit is *corrected*), and `sense` applies to the status field only (texts are edited whole). Order = insertion (`rowid`).
+- Browse (`browse.js`): `ov(d)` lays a book's edits over each record when it is shown (one request per book; the published
+  data if it fails): headword (romanised in the browser; the published spelling shown as "the index spells it"), label,
+  analysis (romanised in the browser), body (its Pāḷi spans dropped: they were offsets into the old text), ES/EN; the
+  Spanish status: the newest whole-Meaning status if not older than the text, then per-sense rows (→ *corregido en parte*
+  / new *revisado en parte*); an *Editado por el editor el …* line, and *corregido* chips on label and body. The build
+  (`abhidhana_site.py`) maps `reviewed_es.senses` to the same *revisado en parte*.
+- `editor.js` + `editor.css` (loaded only in a browser that `/edit/` marked, and silent until `/api/admin/whoami` answers):
+  the *Editar* button and form, per-field *retirar la edición*, a badge. `/edit/` (`edit.js`): sign-in state, switch editor
+  mode on/off in the browser, sign out, the history (filter by book, id; links to the page view). `_headers` and
+  `robots.txt`: `/edit/` no-store, noindex; `/api/` disallowed.
+- **The build's "véase" links**: `abhidhana_browse.py` turned `[[x]]` into `[[x|address]]`, or into `*x*` when x is not a
+  headword, so the form could not give back the source text. It now writes `[[x|]]` for the latter (3,300 of 65,523 links;
+  still shown in italics); the form turns both back into `[[x]]`.
+- `tools/abhidhana_edits_export.py` (`--d1` a `wrangler d1 export` .sql or a `--json` result, or `--api`): writes es / en /
+  status into `meanings/NN.jsonl` (drafts kept in `es_drafted` / `en_drafted`, `corrected_es` / `reviewed_es` with senses),
+  Spanish corrections also into `corrections-es.tsv` (**decided without asking**: that file is the record a re-`merge` must
+  re-apply), the article fields into `docs/corrections.tsv` (`ocr` from the articles, `by` IEBH), and lists the books to
+  re-run on the Mac. Round-trip of the 163,445 Meaning rows and both TSVs is byte-identical; a second run writes nothing.
+
+**The roman preview** (`site/src/assets/roman.js`, 98 lines, also used by the overlay): a port of what Aksharamukha does for
+Burmese → IAST (ṃ as ṁ), including its quirks on OCR text (အ + vowel sign, ့ as ˳, ှ as `_h` after a stop, ဥ for ဉ as ŭ).
+Measured against Aksharamukha token by token: **headword tokens 215,491 of 215,492 (100.00%)**, analysis tokens 93,457 of
+93,501 (99.95%), all tokens with a 5% sample of the bodies 348,112 of 348,384 (99.92%; the rest malformed OCR sequences).
+Whole analyses against `pali.jsonl` `analysis_iast`: 188,198 of the 188,214 without a derivation (99.99%); 200,607 of all
+206,113 (97.33%: the pipeline turns references in a derivation into "abbr 1.23", the preview leaves them).
+
+**Tests** (`site/test/editor/`, `sh site/test/editor/run.sh`): the site built into a temporary folder, `wrangler pages dev`
+(4.142.0) with an empty local D1, a stand-in for Access (own RSA key, tokens minted per request). `api-test.js` **28/28**:
+no token 401; forged signature, wrong audience, wrong issuer, expired, unknown key, malformed 403; foreign Origin and missing
+header 403; bad book, field, sense, status value, empty value 400; saves, history of every row, the latest per key in the
+public read, withdrawal, `book=all`; `functions/_lib` not served. A second server without the Access settings: 503.
+`ui-test.js` (Playwright, Chromium) **28/28**: a visitor sees an edit laid over vol. 18's `luñcana`, marked *corregido*, with
+no *Editar* and no request to `editor.js` or `/api/admin/`; with `/api/edits` blocked the published Meaning shows; `/edit/`
+signs in and lists the history; the form (prefilled, Burmese input, previews `[luñca + ana]`, `luñcana`), save, *revisado*,
+per-sense *corregido en parte (1)*, withdrawal, reload; a body without Burmese letters refused; `labhissati`'s form gives
+`[[labhati]]`; 390 px wide without sideways scroll; editor mode set but not signed in: no button, a badge. The export tool was
+run on the local D1's export (.sql and .json) and on the local API, writing into a scratch copy of the repository: 2
+corrections.tsv rows, 2 Meaning rows, 1 corrections-es.tsv line; the second run nothing; `abhidhana_corrections.load()`
+accepts the file.
+
+**Not tested here**: Cloudflare Access itself (its redirect of a signed-out fetch, the cookie covering both paths, path
+matching of `edit` and `api/admin`): `docs/editor-mode.md` §2 D gives the checks; the real D1 and the edge cache.
+
+**Not covered**: the page view `/v/…` and the Reader show the published data only; search and the alphabet keep the published
+headword; one editor.

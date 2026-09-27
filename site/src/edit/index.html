@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Editor mode — Tipiṭaka Pāḷi-Myanmā Abhidhāna</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gentium+Book+Plus:ital,wght@0,400;0,700;1,400&family=Padauk:wght@400;700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="/assets/style.css">
+<link rel="stylesheet" href="/assets/editor.css">
+<script>(function(){var d=document.documentElement;try{var m=localStorage.getItem("theme");if(m==="dark"||m==="light")d.dataset.theme=m}catch(e){}var s="ro";try{var b=JSON.parse(localStorage.getItem("browse")||"null");if(b&&b.script)s=b.script}catch(e){}d.dataset.script=s})()</script>
+</head>
+<body>
+<div class="wrap">
+  <header class="site">
+    <a class="home" href="/"><span class="my" lang="my">တိပိဋက ပါဠိ-မြန်မာ အဘိဓာန်</span><span class="ro">Tipiṭaka Pāḷi-Myanmā Abhidhāna</span></a>
+    <form class="hsearch" action="/" role="search"><label for="hq" class="vh" data-i18n="search_short">Search a Pāḷi word</label><input id="hq" name="q" type="search" autocomplete="off" spellcheck="false" data-i18n-ph="search_short"><div id="hresults" class="results hres" hidden></div></form>
+    <nav class="menu"><a href="/" data-nav="/" data-i18n="browse">Browse</a><a href="/volumes/" data-nav="/volumes/" data-i18n="home">Volumes</a><a href="/introduction/" data-nav="/introduction/" data-i18n="intro">Introduction</a><a href="/abbreviations/" data-nav="/abbreviations/" data-i18n="abbrs">Abbreviations</a><a href="/about/" data-nav="/about/" data-i18n="about">About</a></nav>
+    <span class="lang" role="group" aria-label="Language / Idioma"><button data-lang="es" aria-pressed="false">ES</button><button data-lang="en" aria-pressed="false">EN</button></span><button class="theme" type="button" aria-label="Light / dark"><svg class="i-moon" width="18" height="18" viewBox="0 0 18 18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14.5 11.2A6 6 0 0 1 6.8 3.5a6 6 0 1 0 7.7 7.7z"/></svg><svg class="i-sun" width="18" height="18" viewBox="0 0 18 18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="9" cy="9" r="3.4"/><path d="M9 1.5v2M9 14.5v2M1.5 9h2M14.5 9h2M3.7 3.7l1.4 1.4M12.9 12.9l1.4 1.4M3.7 14.3l1.4-1.4M12.9 5.1l1.4-1.4"/></svg></button>
+  </header>
+
+<!-- Editor mode (docs/editor-mode.md). This page and /api/admin/ are behind Cloudflare Access. -->
+<main class="prose">
+  <h1><span class="tr" lang="en">Editor mode</span><span class="tr" lang="es">Modo editor</span></h1>
+  <p id="who" class="note">…</p>
+  <p id="acts" hidden>
+    <a class="btn" href="/"><span class="tr" lang="en">Browse, with the Edit buttons</span><span class="tr" lang="es">Consultar, con los botones Editar</span></a>
+    <button id="leave" type="button" class="btn"><span class="tr" lang="en">Leave editor mode in this browser</span><span class="tr" lang="es">Salir del modo editor en este navegador</span></button>
+    <a class="btn" href="/cdn-cgi/access/logout"><span class="tr" lang="en">Sign out</span><span class="tr" lang="es">Cerrar sesión</span></a>
+  </p>
+  <p class="muted small"><span class="tr" lang="en">Every save is kept. The site shows the latest per article, field and sense; a withdrawn edit is struck through below. The edits reach the repository only through <code>tools/abhidhana_edits_export.py</code>.</span><span class="tr" lang="es">Se guarda cada edición. El sitio muestra la última por artículo, campo y sentido; una edición retirada aparece tachada abajo. Las ediciones llegan al repositorio solo mediante <code>tools/abhidhana_edits_export.py</code>.</span></p>
+  <h2><span class="tr" lang="en">History</span><span class="tr" lang="es">Historial</span></h2>
+  <form id="filt" class="ed-filters">
+    <label><span class="tr" lang="en">Book</span><span class="tr" lang="es">Libro</span><br><input name="book" placeholder="18"></label>
+    <label>id<br><input name="id" placeholder="140731"></label>
+    <label><span class="tr" lang="en">Rows</span><span class="tr" lang="es">Filas</span><br><input name="limit" value="200"></label>
+    <button class="btn" type="submit">OK</button>
+  </form>
+  <div id="hist"></div>
+</main>
+<footer class="site-foot"></footer>
+</div>
+<script src="/assets/common.js"></script>
+<script src="/assets/edit.js"></script>
+<script>applyLang();</script>
+</body>
+</html>

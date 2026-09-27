@@ -116,10 +116,11 @@ def build(OUT, vols, book_records, dump):
     first = {}
     for d in E:
         first.setdefault(unicodedata.normalize('NFC', d.get('r') or ''), d['sl'])
-    # the Meaning box: [[iast]] (a "see X" in a translation) linked when X is a headword
+    # the Meaning box: [[iast]] (a "see X" in a translation) linked when X is a headword; [[iast|]] when
+    # it is not (shown in italics), so that the editor's form can give back the source text (brief §52)
     def link(m):
         x = m.group(1); sl = first.get(unicodedata.normalize('NFC', x))
-        return f'[[{x}|{sl}]]' if sl else f'*{x}*'
+        return f'[[{x}|{sl or ""}]]'
     for d in E:
         for v in (d.get('t') or {}).values():
             if '[[' in v['x']: v['x'] = re.sub(r'\[\[([^\]|]+)\]\]', link, v['x'])
