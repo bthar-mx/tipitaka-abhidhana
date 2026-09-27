@@ -45,6 +45,45 @@ close #29 (vol. 25) and any volume issue still open.
 hand (`tmp/` is gitignored). `tmp/ocr-25-pilot-pages/` and `tmp/ocr-25-300dpi/` are the discarded
 vol. 25 runs.
 
+## Now: the editor moves the heavy work to Claude Code in the cloud (27 Sep)
+
+The editor has a **$250 credit for Claude Code cloud sessions** (expires 5 Nov 2026) and will use it, from the
+**Claude desktop app with Cloud selected** (or claude.ai/code), for the token-heavy work; Cowork chats in this
+Project are for advice and for what needs the Mac. What the new chat should know:
+
+- **Push first.** v0.13.0 (brief §48) is ready but not yet pushed; `CLAUDE.md` at the repo root is new (the
+  project's rules for Claude Code: read the brief and this file first, no personal names, VERSION + CHANGELOG
+  on every push, leave `.gitignore`, flag uncertainty) and goes into the same commit. A cloud session sees only
+  what is pushed to `bthar-mx/tipitaka-abhidhana`.
+- **How the loop works.** The cloud session clones the repo, works on a branch, the editor reviews its diff,
+  chooses **Create PR**, merges on github.com, then pulls into `~/Documents/abhidhana` (VS Code's Source
+  Control panel or Terminal) and tags the version. Git never runs in the Cowork VM. The cloud has no
+  `pdfs/`, `db/`, `witness/`, `tmp/` or OCR models: OCR, the witness joins and the Reader stay on the Mac.
+  Anything that runs locally (the VS Code Claude Code extension, a Local session, `claude` in a terminal)
+  uses the plan's normal limits, not the credit.
+- **First cloud job: vol. 14/2's Meaning boxes (option A), recommended, the editor to confirm.** 14/2 is the
+  PDF's typeset text layer, not OCR (brief §25, §27: label + body 97.6%); 6,319 of its 6,942 articles have a
+  body. Its body carries the Pāḷi quotations and citations that PCED lacks, so only the Burmese explanation
+  is drafted. Steps: change `abhidhana_meanings.py prep` so a book with no `witness/join-NN.jsonl` takes
+  `pali.jsonl` `body_joined` (source `text layer` for 14b, `ocr` otherwise); draft ONE shard with
+  `docs/translation/drafting-prompt.md` (add: leave out quoted Pāḷi passages and citations); check the cost
+  on the Usage page and the quality; then the rest (~16 shards). Option B was to wait and review first.
+  The scanned books without PCED (4/3, 14/3, 20–25) stay on hold until 14/2 has been seen (brief §44: the
+  OCR body recovers PCED's line almost whole in only 40–51% of rows on 4/1–4/2).
+- **Suggested first message to the cloud session:** "Read CLAUDE.md, then the brief's §44 and §48 and
+  NEXT-SESSION item 1b. First, change `tools/abhidhana_meanings.py prep` so that a book with no
+  `witness/join-NN.jsonl` takes its Burmese from our text (`pali.jsonl` `body_joined`), marked `source:
+  text layer` for 14b; show me the change and the counts for 14b before drafting. Then draft ONE shard of
+  14b with `docs/translation/drafting-prompt.md`, translating only the Burmese explanation (not the quoted
+  Pāḷi or the citations), and stop, so I can check the cost and quality."
+- **Cost.** The 97 shards of vols. 15–19 used about 19 million tokens (43,319 rows); how that maps onto the
+  $250 is not known: check after one shard. Cloud sessions also share the account's usage limits (Claude
+  Code docs); a free weekly reset ("Resets", Usage page) is available until 22 Oct — keep it for a limit hit.
+- **Cheaper models** (Sonnet, or Fable, which has its own weekly limit) were discussed but not tried: test
+  one shard against an Opus shard of vols. 15–19 before switching.
+- **When a cloud job is merged and pulled**, a Cowork chat reads the brief and this file from the folder,
+  checks the live site, and copies both into the Project (the cloud cannot reach the Project).
+
 ## Next, in order
 
 00. ~~Versions~~: tags v0.1.0–v0.11.0 created by the editor; the footer shows `VERSION` (brief §43). Tag **v0.13.0** on the push of §48
