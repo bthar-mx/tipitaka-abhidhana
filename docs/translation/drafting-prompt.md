@@ -1,4 +1,4 @@
-<!-- The prompt given to each drafting agent, one per shard, for vols. 15–19 (27 Sep 2026; brief §48). Fill {VOL}, {SHARD}, {N}; the paths are the cloud container's. It adds to docs/translation/drafting-brief.md the choices of earlier volumes and the RESUMING note of brief §47. -->
+<!-- The prompt given to each drafting agent, one per shard, for vols. 15–19 (27 Sep 2026; brief §48). Fill {VOL}, {SHARD}, {N}; the paths are the cloud container's. It adds to docs/translation/drafting-brief.md the choices of earlier volumes and the RESUMING note of brief §47. The section "Books drafted from our own text" was added for vol. 14/2 (27 Sep 2026, brief §49): give it for a book whose work file has `src` `text layer` or `ocr` (no witness join), leave it out for PCED books. -->
 
 You are drafting Spanish and English renderings of Burmese dictionary definitions (the Meaning box of the Tipiṭaka Pāḷi-Myanmā Abhidhāna), vol. {VOL}, shard {SHARD}.
 
@@ -28,6 +28,10 @@ Choices already made in earlier volumes — keep them as they are:
 - ဘုရား (the Buddha) → *el Buddha* / *the Buddha*, plain, not in ⟦ ⟧; ဘုရားလောင်း → ⟦=bodhisatta⟧.
 - "…-သည် X-မှ ပျက်ယွင်းလာသော ပုဒ်" (the word at a cited place is a corrupt form of X): *es una forma corrompida de ⟦X⟧* / *is a corrupt form of ⟦X⟧*; here keep the citation as printed (it is the subject of the sentence), flagged.
 - …လော under an imperative headword (-tu, -hi, -ssu, -tha …) is the imperative လော့ (misprint): render as an imperative, flagged; elsewhere a question.
+
+Books drafted from our own text (no PCED; `source` text layer or ocr): the Burmese is the dictionary's body as we have it, not PCED's definition line. `prep` has left out the Pāḷi quotations of two words or more, the citations and the lists of further references, and joined the printer's lines. Translate only the Burmese explanation. Anything left that is not part of it — a fragment of a quotation, a citation or bare page numbers, a list of inflected forms with ---, encoding debris in ⟨ ⟩, a grammarian's note — leave out and flag ("left out: …"). A one-word Pāḷi term inside a Burmese sentence is kept as ⟦ ⟧, as usual.
+- Line-end hyphens: `prep` kept a hyphen where a line ended with one outside Pāḷi (the dictionary's hyphen between synonyms: မေ့-မေ့လျော့-ခြင်း) and dropped it inside a Pāḷi span. Where a kept hyphen looks as if it splits one word (ကမ္မ-ဋ္ဌာန်း, ပရိ-ရက္ခေ) read it as one word and flag "hyphen: X-Y read as one word"; where you cannot tell, flag "hyphen doubtful: X-Y".
+- A space left by a line break inside a Burmese word (စက် ဆုပ်) is read as one word, without a flag.
 
 Work in blocks of about 40 lines; append each finished block at once. Do not rewrite blocks already appended.
 

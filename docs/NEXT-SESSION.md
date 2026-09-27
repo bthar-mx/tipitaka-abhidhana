@@ -88,7 +88,8 @@ Project are for advice and for what needs the Mac. What the new chat should know
 
 00. ~~Versions~~: tags v0.1.0–v0.11.0 created by the editor; the footer shows `VERSION` (brief §43). Tag **v0.13.0** on the push of §48
    (and v0.12.0 on §47's, if not yet made). Each push that changes data or the site: bump `VERSION`, add a `CHANGELOG.md` section, tag.
-00h. **After the §48 push, check the live site** (fetch `/data/version.json` first): 0.13.0; `/w/bhava` (vol. 15),
+00h. ~~After the §48 push, check the live site~~: done 27 Sep (the editor): 0.13.0 live, About lists vols. 15–19, the five
+   /w/ pages show *borrador*. Was (fetch `/data/version.json` first): 0.13.0; `/w/bhava` (vol. 15),
    `/w/magga` (vol. 16), `/w/rūpa` (vol. 17), `/w/loka` (vol. 18), `/w/vipāka` (vol. 19) show a Meaning box, *borrador*;
    About: "vols. 1–3, 4/1, 4/2, 5–13, 14/1 y 15–19".
 00g. ~~After the §47 push, check the live site~~: done 27 Sep (brief §48). Was (fetch `/data/version.json` first): 0.12.0; `/w/dukkha` (vol. 10),
