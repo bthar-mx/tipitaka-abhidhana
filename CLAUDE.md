@@ -17,6 +17,15 @@ Rules of the project:
   `docs/translation/stems.tsv` and `docs/translation/glossary.tsv` (the glossary overrides everything).
   Drafting agents get `docs/translation/drafting-prompt.md`, one agent and one scratch folder per shard.
 - `abhidhana_meanings.py merge` needs `pip install aksharamukha`.
+- End every session with a final message headed **Report for the Cowork chat**, in this order:
+  1. Branch, commit(s) pushed, VERSION.
+  2. What was done, with counts.
+  3. Checks run and their results (and any check that could not be run in the cloud and must be run on the Mac).
+  4. Tokens used (per agent and total), if known.
+  5. Decisions taken without asking, and anything left undone.
+  6. Questions for the editor, numbered.
+  7. Files to review, with paths.
+  Keep it under 60 lines; details go in the brief.
 
 What is not in this repository (gitignored or release assets): `pdfs/`, `db/`, `witness/` (the PCED
 typed witness and its joins), `tmp/`, the OCR models. Work that needs them (OCR, the witness joins)

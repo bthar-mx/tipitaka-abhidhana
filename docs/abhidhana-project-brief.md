@@ -1692,3 +1692,106 @@ Not opened in a browser before the push.
 - Known slips left in: 116926 EN "Dhamma talk" vs ES *Enseñanza*; 141771 *la rūpa*; 150589 and 150608 "vencido" for
   *vencidos*; 153718 ခော်ဝော် read as "speak harshly" (later rows read it ခေါ်ဝေါ် "call"); 135555, 135560, 135562 *conducto
   urinario* where later rows keep ⟦=passāvamagga⟧.
+
+
+## 49. Vol. 14/2's Burmese from our own text; one trial shard drafted (27 Sep 2026, cloud session)
+
+**The live check after v0.13.0** (the editor): 0.13.0 live, About lists vols. 15–19, the five /w/ pages show *borrador*.
+
+**`prep` without a witness join.** `tools/abhidhana_meanings.py prep` now takes a book with no `witness/join-NN.jsonl`
+(14/2, 14/3, 20–25, 4/3) from our text (`our_text()`), `source` *text layer* for 14b, *ocr* otherwise. It is built from
+`articles.jsonl` `body`, not `body_joined`: a line-end hyphen is kept outside Pāḷi (the dictionary's hyphen between
+synonyms) and dropped inside a `pali.jsonl` span. The spans' offsets are into `body_joined`; it is rebuilt from the body
+exactly as `abhidhana_romanise.py` builds it (equal to the stored one on all 6,319 14b rows that carry it), so the spans are
+placed by offset, not by searching their text. Removed: Pāḷi spans of two words or more, the citations `abhidhana_articles.py`
+parses (`CITE`, `cite_trim`) and the page numbers after them, and three things the editor's request did not name, added after
+looking at the output: (a) one-volume citations `CITE` does not parse (`CITE_WORK`: မိလိန္ဒ။၁၂၃။; 4,855 matches, 100
+abbreviations, all works), bracketed references (ဓမ္မ။ ၅၇) and the lists of further references (-ဝိ၊၁။၃၆။ …); (b) in the 214
+rows whose analysis bracket was damaged, the body's head up to `]` (the rest of the analysis and its derivation, which PCED
+keeps out of the definition line); (c) a sentence left holding only a one-word span, sense markers or quotation marks.
+**Burmese read as Pāḷi**: romanise's spans include Burmese (…-သော၊ သတိ / ကင်းလွတ်): a multi-word span joined by or touching
+the Burmese hyphen, ending in သော, or holding ရှိသော / စသော / အရာ is kept (`quoted()`). One-word spans are kept. Books with a
+join are unchanged: old and new `prep 15` gave byte-identical output (md5 of `work15.json` and every shard) on a synthetic join
+and PCED file exercising both paths (7,953 pced, 1,206 ocr rows); the cloud has no `witness/`, so **re-run `prep 15` on the
+Mac against the real witness to confirm**. `prep` does not clear `shards/`: a run with fewer shards leaves the old last file.
+
+| vol. 14/2 (`prep('14b', 15)`) | |
+|---|---:|
+| articles / with a body / explanations | 6,942 / 6,817 / 6,804 |
+| formula-only; rows with a «Sn» placeholder (placeholders) | 0; 1,062 (1,116) |
+| Burmese characters: `body_joined` → our text | 1,777,705 → 533,034 |
+| text length median / p90 / max (chars) | 49 / 116 / 9,846 |
+| line-end hyphens kept / dropped inside Pāḷi | 3,745 / 8,974 |
+| Pāḷi spans removed (2+ words) / multi-word kept as Burmese / one-word kept | 16,297 / 653 / 5,144 |
+| citations removed: `CITE` / `CITE_WORK` | 30,393 / 4,855 |
+| shards | 15 (414–454 lines) |
+
+**Trial shard 00 drafted** (454 lines, ids 210167–210629, one agent, the drafting prompt with its new section "Books drafted
+from our own text"): 208,033 agent tokens, 30 tool calls, 13 min (vols. 15–19: ~19 M tokens / 97 shards ≈ 196 k a shard).
+Checked after: one line per id in order, valid JSON, «Sn» in both languages, no Burmese outside ⟦ ⟧ / ‹ ›. 181 flagged (132
+"left out": residue the cleaning missed — quotation fragments, citations, lists of inflected forms with ---, encoding debris);
+3 empty on purpose (210290, 210357, 210361: nothing Burmese left); hyphens: 2 read as one word (ကိလေ-သာ 210298, မေ့-လျော့
+210324), 0 doubtful. Input and output are in `docs/translation/trial/14b-shard00-{in,out}.jsonl`, not merged. What the agent
+reported: long articles print their senses twice (pamatta, pamāṇa, pamāda, pamokkha, pamuñcati, payutta, payoga), translated
+once; unlocated headwords with no body run on inside a neighbour's text (210254 holds 210255 ပမာဏယုတ္တနေတ္တ; also 210256,
+210261), left out and flagged, so those articles have no Meaning; numbered homonyms run on (210207, 210289, 210345, 210422,
+210619), translated. Seen in the input: 210324 starts with a grammarian's note (…ဝ-ပစ္စည်း) whose bracket is not flagged as
+damaged; 210168 starts လျော့ခြင်း (truncated?). Not reviewed.
+
+**After the trial (the editor, 27 Sep: "reads well"; drafting approved).** Two changes first. (1) `our_text()` also removes
+a sentence that is only a work's abbreviation (a citation that lost its numbers: ဝဇိရ။, ဣတိဝုတ်၊ဋ္ဌ။) and the lists of
+inflected forms joined by dashes (ပမုစ္စန္တိ — ပမုစ္စေ — ၂၄၈-၉။). The abbreviations are every one parsed at least five
+times in any book (`works()`: 1,427, from `citations` and `CITE_WORK`), plus eight with an asat that `cite_trim` drops
+(`WORKS_ASAT`: ဣတိဝုတ်, ဓါန်, ပါစိတ်၊ယော, ကင်္ခါ၊ဋီ၊သစ် …). **681 of 6,804 rows changed** (Burmese 533,034 → 512,892
+characters), two became empty (210357, 210653), no «Sn» placeholder changed; `prep 15` still byte-identical on the synthetic
+witness. (2) Drafts from our own text put what they leave out in a field `omitted`, not in `flag`; `merge` keeps it out of
+the rows and writes `meanings/<book>-omitted.tsv`. Shard 00 was kept exactly as drafted (its omissions are in `flag`): the
+work file keeps shard 00's rows as they were prepared for it (`work14b-shard00-prep.json` kept in `tmp/`), shards 01–14
+were cut from the other ids (14 × 454 and 447 lines); the 15 shards cover the 6,803 rows to draft once each (checked).
+
+**Shards 01–14 drafted**, 14 agents at once, each with its own scratch folder, the drafting prompt with its section for
+books from our own text. Checked over all 15: one line per id in order, valid JSON, every field, «Sn» in both languages,
+⟦ ⟧ and ‹ › balanced, no Burmese in es / en outside them. One row fixed by hand after: 216654 (palambhesi) gained a flag (past
+tense for the optative ရာ၏, reported by its agent). Tokens (agents' own counts): shard 00 208,033; 01–14 from 194,327 to
+252,689, **3,050,120** in all; **3,258,153 for the book** (~479 a row); 12–17 min a shard.
+
+| vol. 14/2 | |
+|---|---:|
+| rows merged (`meanings/14b.jsonl`), all `drafted`, `source` text layer | 6,795 |
+| flagged (`14b-flags.tsv`) / with `omitted` (`14b-omitted.tsv`, shards 01–14) | 1,406 / 1,165 |
+| drafted empty, no row (nothing Burmese left) | 8 |
+| articles without a Meaning: no body (123 unlocated, 2 other) / nothing left after `prep` / empty | 125 / 14 / 8 |
+| terms kept in Pāḷi (`14b-terms.tsv`) | 571 (parinibbāna 83, nibbāna 76, payoga 69, parikamma 65, pariyāya 54) |
+| "see X" links matching a romanised headword | 1,011 of 1,191 (84.9%) |
+| rows with *sano / insano*; *mérito* | 14; 8 |
+
+**Totals**: 21 books, **163,445 Meaning rows, all `drafted`, none reviewed: 73.9%** of the index. About and README list
+14/2 (drafted from the text layer). The site was not built in the cloud.
+
+**What the agents reported** (nothing reviewed):
+- **Articles run into a neighbour** (the text layer's articles are cut at headwords our index places; an unlocated headword's
+  text stays in the one before). Agents did not treat them alike: most translated only the host's own gloss and put the rest
+  in `omitted` (00, 01, 03, 04, 07, 10, 11, 12, 13), others translated the run-in articles inside the host row under their
+  headwords (05, 06, 08, 09, 14; 02 once), and where the host's «Sn» belonged to the run-in article it was translated or
+  moved. Reported hosts: 210254, 210256, 210261, 210650, 210732, 210981, 211056, 211353, 211736–37, 211785, 211831, 211906,
+  211914, 211916, 211970, 212014, 212170, 212181, 212248, 212412, 212573, 212626, 212727, 212823, 212984, 213080, 213092,
+  213161, 213233, 213235, 213389, 213394–95, 213442, 213486, 213744, 213848, 214064, 214091, 214130, 214186, 214214, 214266
+  (five articles), 214361, 214479, 214682, 214688 (eight), 214747, 214856, 214921, 214929, 214932, 214952, 215043, 215166–67,
+  215269, 215311, 215321, 215404, 215434, 215533, 215922, 216205, 216313, 216540, 216573, 216586, 216659 (eight), 216712,
+  216844. How many of the 123 unlocated articles without a body sit inside these was not measured.
+- **Senses printed twice** in many long articles (a summary, then again with the quotations): translated once, flagged.
+- **A first word lost** (မေ့ of မေ့လျော့, ပရိ of ပရိသတ်, the marker (၁)): not `prep` but `abhidhana_articles.py`, whose
+  noise filter drops a line whose words are all ≤ 3 characters; when the body's first words share the headword's line after
+  `]`, they go. Measured on `raw`: 494 rows of 14b, and in every book (01 187, 03 395, 05 422, 4c 481 …; 6,825 in
+  all). For vols. 1–19 the drafts came from PCED and are not affected; the site's bodies are. Agents read the full word and
+  flagged it.
+- **Person**: shard 09 put 1st-person headwords in the 1st person even with …လတ္တံ့; shard 08 kept -mi forms in the 3rd
+  and put -iṁ, -eyyaṁ, -ssāmi in the 1st (all flagged).
+- **Renderings to decide**: ပယ် for physical removal *eliminar / suprimir* (14) and, for refuting, *rechazar* (13); အကျိုး
+  in -attha *propósito / beneficio / resultado* (14); ⟦=pariveṇa⟧, ⟦=parikamma⟧, ⟦=parikkhāra⟧ kept Pāḷi; ပရိသတ် *asamblea*;
+  ငြိမ်းအေး *extinguirse y enfriarse* (07); the သိမ်း- family in pariggaha (04); plants and weights left in ‹ ›.
+- **Long notes translated in full**: 210846 (Parakkamabāhu I), 211227 (paramattha), 211242 (paramatthajotikā, Burmese names
+  romanised), 213567, 213704, 213880, 214551 (paribhoga, ~9,000 chars), 215667 (parivāsa, ~9,800), 216899; 211534 is
+  nearly all encoding debris.
+- Agents changed a few of their own appended lines despite the append-only rule (00: 210582; 06: 213215; 07: 213442;
+  13: 216422, 216591, 216600), each for a slip they found in their check.

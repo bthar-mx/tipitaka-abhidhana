@@ -23,6 +23,25 @@ Versions of the Tipiṭaka Pāḷi-Myanmā Abhidhāna project: the data, the too
 A release note says, per version: what changed, the brief's sections, and the headline figures
 (located, label + body, Meaning rows drafted / reviewed).
 
+## v0.14.0 — 27 Sep 2026
+
+- **Vol. 14/2 Meaning boxes drafted** from the PDF's own text layer (no PCED): 6,795 rows, all `drafted`, `source` text
+  layer; 1,406 flagged (`docs/translation/meanings/14b-flags.tsv`), what the drafts left out in `14b-omitted.tsv`. Drafted so
+  far: 163,445 rows in 21 books (73.9% of the index), none reviewed. About and README updated.
+- `prep` (books without a join) also strips citations without numbers and dash-joined lists of inflected forms (681 of
+  14/2's rows changed); drafts record omissions in a field `omitted`, which `merge` keeps out of the rows. Shard 00, the
+  trial, kept as drafted. Brief §49.
+
+## v0.13.1 — 27 Sep 2026
+
+- **`abhidhana_meanings.py prep` for books without a witness join** (14/2, 14/3, 20–25, 4/3): the Burmese comes from our
+  text (`articles.jsonl` body), `source` *text layer* for 14/2, *ocr* otherwise; line-end hyphens kept outside Pāḷi and
+  dropped inside it; multi-word Pāḷi quotations, citations and reference lists removed; one-word Pāḷi kept. Books with a
+  join unchanged (`prep 15` byte-identical on a synthetic witness; to be confirmed on the Mac). Vol. 14/2: 6,804
+  explanations in 15 shards. The drafting prompt has a section for books drafted from our own text.
+- **Trial shard 00 of vol. 14/2 drafted** (454 rows, 181 flagged), kept apart in `docs/translation/trial/`, not merged.
+- **No published data changed**: `meanings/` and the site are as in v0.13.0. Brief §49.
+
 ## v0.13.0 — 27 Sep 2026
 
 - **Vols. 15, 16, 17, 18 and 19 Meaning boxes drafted** from PCED: 9,340 + 10,393 + 6,510 + 7,826 + 9,250 rows, all
