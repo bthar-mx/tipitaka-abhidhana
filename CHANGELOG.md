@@ -23,6 +23,18 @@ Versions of the Tipiṭaka Pāḷi-Myanmā Abhidhāna project: the data, the too
 A release note says, per version: what changed, the brief's sections, and the headline figures
 (located, label + body, Meaning rows drafted / reviewed).
 
+## v0.16.0 — 27 Sep 2026
+
+- **The editor's decisions of 27 Sep recorded** for new drafts (brief §51): person by the Pāḷi ending; ပယ်, ဖောက်ပြန် by sense;
+  -attha *el beneficio de X*; ပရိသတ် *asamblea*; ငရဲ *infierno*; pariveṇa, parikamma, parikkhāra, maṅgala translated; one
+  rendering for stacked futures; marica *pimienta negra*; လေ as element *aire* (`stems.tsv`, `glossary.tsv`, `drafting-prompt.md`).
+- **Nine Meaning rows corrected** by the editor (`docs/translation/corrections-es.tsv`); three corrected in part, shown on the
+  site as *corregido en parte* with the corrected sense named.
+- **No re-rendering**: the rows whose draft conflicts with a rule (3,382) are listed for the final revision in
+  `docs/translation/revision-queue.tsv`.
+- **Vol. 4/3**: ဩ restored at the start of 393 OCR analyses read as သ or သဩ (`analysis_o_restored`); two hand corrections
+  (176133, 176134).
+
 ## v0.15.0 — 27 Sep 2026
 
 - **The body's first words restored** (brief §50): words printed on the headword's line after the analysis's ] were

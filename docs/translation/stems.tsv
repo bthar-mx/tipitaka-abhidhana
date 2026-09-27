@@ -39,7 +39,7 @@ L010	lexical	စိတ်	citta	mind	mente	proposed	glossary	125	104	citta: ment
 L011	lexical	ပြု	karoti	to do; to make	hacer	proposed		122	110	
 L012	lexical	အနက်	attha	meaning	significado	proposed		117	98	
 L013	lexical	စကား	vacana, vācā, kathā	speech; words	palabras; habla	proposed		109	94	
-L014	lexical	အကျိုး	phala; attha	fruit, result; benefit	fruto, resultado; beneficio	proposed	review	98	77	two senses: phala (result) and attha (benefit); the Pāḷi of the headword decides
+L014	lexical	အကျိုး	phala; attha	fruit, result; benefit	fruto, resultado; beneficio	proposed	review	98	77	two senses: phala (result) and attha (benefit); the Pāḷi of the headword decides; -attha compounds (the editor 27 Sep 2026, brief §51): a noun is el beneficio de X (vāṇijjattha el beneficio del comercio, vāsattha el beneficio del morar); adverbial -atthaṁ / -atthāya para / con el propósito de X
 L015	lexical	ပြည့်စုံ	sampanna, samaṅgī	endowed with; complete	dotado de; completo	proposed		94	78	
 L016	lexical	မဟုတ်	na (… hoti)	not (being) …	no (ser) …	proposed		93	83	
 L017	lexical	အကျိုးစီးပွါး	attha, hita	welfare; benefit	bienestar; provecho	proposed		93	74	
@@ -128,7 +128,14 @@ L099	lexical	ဉာဏ်	ñāṇa	knowledge	conocimiento	proposed	glossary	27	2
 L100	lexical	နေရာ	ṭhāna, āsana	place; seat	lugar; asiento	proposed		42	35	
 L101	lexical	နတ်	deva	deva (kept in Pāḷi)	deva (se mantiene en pāḷi)	proposed				The editor 26 Sep 2026: ⟦=deva⟧ in the drafts, from vol. 5 (4/1–4/2 mixed deidad and deva)
 L102	lexical	ရဟန်း	bhikkhu	monk	monje	proposed				The editor 26 Sep 2026, from vol. 5
-L103	lexical	ပယ်	pajahati, pahāna	abandon	abandonar	proposed				The editor 26 Sep 2026, from vol. 5 (vol. 2 shard 07 had rechazar / reject)
+L103	lexical	ပယ်	pajahati, pahāna	abandon	by sense: physical removal quitar / arrancar; of blood remoción / expulsión / purga (de sangre), sangría; of defilements and states eliminación / erradicación / abandono; refuting rechazar	confirmed-es				The editor 26 Sep 2026 (abandonar), refined 27 Sep 2026 by sense (brief §51); English open
 L104	lexical	ဥတု	utu	utu (temperature, kept in Pāḷi); season	utu (temperatura, se mantiene en pāḷi); estación	proposed				The editor 26 Sep 2026, from vol. 5: ⟦=utu⟧ where it means temperature, estación / season where it means a season
 L105	lexical	ဂုဏ်	guṇa	quality; virtue	cualidad; virtud	proposed				The editor 26 Sep 2026, from vol. 7: cualidad or virtud by context (vol. 6 had cualidad 204 rows, virtud 86)
 L106	lexical	လူ (of the gihi- compounds)	gihin	layman	laico	proposed				The editor 26 Sep 2026, from vol. 7: လူ as the householder opposed to the monk is laico / layman; elsewhere ser humano
+F028	formula	-အံ့-လတ္တံ့-လိမ့်မည်	-ssati (future)		one rendering, not three alternatives (lajjissati se avergonzará; labhissati obtendrá)	confirmed-es				The editor 27 Sep 2026 (brief §51): the three stacked future endings are one future
+L107	lexical	ပရိသတ်	parisā		asamblea	confirmed-es				The editor 27 Sep 2026 (brief §51); English open
+L108	lexical	ငရဲ	niraya		infierno	confirmed-es				The editor 27 Sep 2026 (brief §51) (translated, not kept as ⟦=niraya⟧); English open
+L109	lexical	ဖောက်ပြန်	— (the editor's examples: vātakuppa, vikaṭa)		of the body and the elements alteración / alterado; of character, mind, views perverso / trastornado / alterado	confirmed-es				The editor 27 Sep 2026 (brief §51); English open
+L110	lexical	လေ (element, bodily humour)	vāta		aire (vātakuppa la alteración del [elemento] aire); viento for the weather	confirmed-es				The editor 27 Sep 2026 (brief §51): from the editor's correction of vātakuppa, confirmed 27 Sep
+L111	lexical	ငရုတ် (marica)	marica		pimienta negra	confirmed-es				The editor 27 Sep 2026 (brief §51) (the drafts of vol. 16 had ají)
+L112	lexical	ခြင်း	—		el + infinitive by default in the drafts; no general rule	confirmed-es				The editor 27 Sep 2026 (brief §51): the editor translates by context following the commentaries, and his corrections may use a noun (remoción, eliminación); no mass re-rendering

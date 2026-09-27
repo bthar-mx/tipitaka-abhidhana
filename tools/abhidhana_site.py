@@ -94,6 +94,10 @@ def meanings(book):
         r = json.loads(line); t = {}
         for lang in ('es', 'en'):
             if r.get(lang): t[lang] = {'x': r[lang], 's': r.get(f'status_{lang}') or 'drafted'}
+        # a correction of some senses only (docs/translation/corrections-es.tsv `senses`): shown as
+        # "corregido en parte", with the corrected senses named, the rest still a draft (brief §51)
+        cs = (r.get('corrected_es') or {}).get('senses')
+        if cs and 'es' in t and t['es']['s'] == 'corrected': t['es']['s'] = 'partial'; t['es']['cs'] = cs
         if t: out[r['id']] = t
     return out
 

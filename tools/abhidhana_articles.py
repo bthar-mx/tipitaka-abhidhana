@@ -654,6 +654,16 @@ def main(book):
     # hand corrections against the print (docs/corrections.tsv), last, so every re-run keeps them
     from abhidhana_corrections import apply as apply_corrections
     for m in apply_corrections(book, rows): print(m)
+    # ဩ read as သ (the vowel's mark missed): an OCR analysis of a headword that begins with ဩ always
+    # begins with ဩ too (vol. 4/3, 394 rows, 27 Sep 2026); PCED analyses and hand corrections untouched
+    n_o = 0
+    for row in rows:
+        a = row.get('analysis') or ''
+        if (row.get('headword', '').startswith('ဩ') and a.startswith('သ') and row.get('analysis_source') != 'pced'
+                and 'analysis' not in row.get('corrected', {})):
+            # read as သ (သမကာ), or as သ before a ဩ read right (သဩလီန): the first letter is ဩ
+            row['analysis_o_restored'] = a; row['analysis'] = 'ဩ' + a[2 if a.startswith('သဩ') else 1:]; n_o += 1
+    if n_o: print(f'ဩ restored at the start of {n_o} analyses (read as သ or သဩ)')
     for row in rows:   # a corrected headword is romanised and checked against OSBCT afresh
         if 'headword' in row.get('corrected', {}):
             base = re.sub('[' + MY_DIGITS + r'\d\s]', '', row['headword'])

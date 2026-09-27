@@ -19,6 +19,7 @@ Object.assign(T.en, {
   analysis: 'Analysis', see: 'See', meaning: 'Meaning', not_translated: 'not yet translated',
   trans_note: 'This definition has not been translated yet. The translation will appear here with its status (drafted, reviewed, corrected).',
   drafted_note: 'Drafted translation: not reviewed. Not a reading.',
+  partial_note: s => `Corrected by the editor: sense ${s}. The rest is a draft, not reviewed.`,
   show_def: 'Show the Burmese definition', hide_def: 'Hide the Burmese definition', my_def: 'Burmese definition',
   ocrnote: 'Machine-read Burmese (OCR), unchecked. Compare the printed page before quoting.',
   quotes: 'Pāḷi passages quoted', quotes_note: 'Picked out of the definition by machine; their references are among the citations.',
@@ -49,6 +50,7 @@ Object.assign(T.es, {
   analysis: 'Análisis', see: 'Véase', meaning: 'Significado', not_translated: 'sin traducir',
   trans_note: 'Esta definición aún no se ha traducido. La traducción aparecerá aquí con su estado (borrador, revisada, corregida).',
   drafted_note: 'Traducción en borrador: sin revisar. No es una lectura.',
+  partial_note: s => `Corregido por el editor: sentido ${s}. El resto es borrador, sin revisar.`,
   show_def: 'Mostrar la definición birmana', hide_def: 'Ocultar la definición birmana', my_def: 'Definición birmana',
   ocrnote: 'Birmano leído por máquina (OCR), sin revisar. Compare con la página impresa antes de citar.',
   quotes: 'Pasajes pāḷi citados', quotes_note: 'Extraídos por máquina de la definición; sus referencias están entre las citas.',
@@ -303,7 +305,7 @@ function article() {
   // Meaning: the translation with its status, or an honest "not yet translated"
   const tr = d.t && d.t[LANG];
   H.push(`<section><h2>${esc(t('meaning'))}</h2>` + (tr
-    ? `<div class="meaning"><span class="chip ${tr.s === 'drafted' ? 'c-warn' : 'c-ok'}">${esc(t('st_' + tr.s))}</span><div lang="${LANG}">${fmtTr(tr.x)}</div>${tr.s === 'drafted' ? `<div class="muted small">${esc(t('drafted_note'))}</div>` : ''}</div>`
+    ? `<div class="meaning"><span class="chip ${tr.s === 'drafted' || tr.s === 'partial' ? 'c-warn' : 'c-ok'}">${esc(t('st_' + tr.s))}</span><div lang="${LANG}">${fmtTr(tr.x)}</div>${tr.s === 'drafted' ? `<div class="muted small">${esc(t('drafted_note'))}</div>` : ''}${tr.s === 'partial' ? `<div class="muted small">${esc(t('partial_note', (tr.cs || []).map(n => `(${n})`).join(', ')))}</div>` : ''}</div>`
     : `<div class="meaning empty"><span class="chip">${esc(t('not_translated'))}</span><span>${esc(t('trans_note'))}</span></div>`));
   const showDef = d.b && (S.defs === 'show' || (S.defs === 'collapse' && open.def));
   if (d.b && S.defs === 'collapse' && !open.def) H.push(`<button type="button" class="btn" data-def="1" aria-expanded="false">${esc(t('show_def'))}</button>`);

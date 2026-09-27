@@ -2,7 +2,7 @@
 
 *Written 21 September 2026, at the end of the volume-25 pilot; §10–12 revised 24 September
 2026, after volume 1 was done end to end and the repository was made public; §18–26 added
-25 September 2026 (spelling folds, the witness join, vols. 6–9, re-cutting gutters, vol. 14/2's text layer, the batch of vols. 10–22); §27 the same evening (vols. 23, 24 and 14/2 finished, the index's page errors applied, book 21 explained, the Reader in binary); §28 the public website, the page images and the label table; §29 vol. 21 finished, vol. 25's resolution, the dictionary's own account of its labels; §30 vol. 25 done, all 29 books; §31 (later on 25 Sep) the page-image tool's bitmap test; §32 the weak page corrections, image-checked; §33 the compound analysis with its [ lost; §34 the dictionary's history on the site; §35 all page images live, a light/dark switch, the Introduction page; §36 citations keep their whole abbreviation; §37 translation, batch 1; §38–41 (26 Sep) the redesign, vol. 1–2 drafts, PCED analyses, versioned assets; §42 (26 Sep) the live check, vol. 3's drafts, version numbers; §43 vols. 4/1–4/2 drafts, the IEBH footer, citation tooltips, cross-reference links, labels reviewed; §44 the live check after v0.8.0, vol. 4/3 deferred, vol. 5 drafted, the analysis split from its derivation, printed page numbers; §45 the live check after v0.9.0, vol. 6 drafted; §46 two stems from the editor, vols. 7–9 drafted; §47 vols. 10–14/1 drafted; §48 (27 Sep) the live check after v0.12.0, vols. 15–19 drafted; §49 vol. 14/2 drafted from its text layer; §50 the body's first words on the headword's line restored. Everything in
+25 September 2026 (spelling folds, the witness join, vols. 6–9, re-cutting gutters, vol. 14/2's text layer, the batch of vols. 10–22); §27 the same evening (vols. 23, 24 and 14/2 finished, the index's page errors applied, book 21 explained, the Reader in binary); §28 the public website, the page images and the label table; §29 vol. 21 finished, vol. 25's resolution, the dictionary's own account of its labels; §30 vol. 25 done, all 29 books; §31 (later on 25 Sep) the page-image tool's bitmap test; §32 the weak page corrections, image-checked; §33 the compound analysis with its [ lost; §34 the dictionary's history on the site; §35 all page images live, a light/dark switch, the Introduction page; §36 citations keep their whole abbreviation; §37 translation, batch 1; §38–41 (26 Sep) the redesign, vol. 1–2 drafts, PCED analyses, versioned assets; §42 (26 Sep) the live check, vol. 3's drafts, version numbers; §43 vols. 4/1–4/2 drafts, the IEBH footer, citation tooltips, cross-reference links, labels reviewed; §44 the live check after v0.8.0, vol. 4/3 deferred, vol. 5 drafted, the analysis split from its derivation, printed page numbers; §45 the live check after v0.9.0, vol. 6 drafted; §46 two stems from the editor, vols. 7–9 drafted; §47 vols. 10–14/1 drafted; §48 (27 Sep) the live check after v0.12.0, vols. 15–19 drafted; §49 vol. 14/2 drafted from its text layer; §50 the body's first words on the headword's line restored; §51 the editor's decisions of 27 Sep, a revision queue, ဩ in vol. 4/3. Everything in
 this file was measured. Do not re-derive a figure it carries; if a new one is needed,
 measure it rather than estimating.*
 
@@ -1853,3 +1853,54 @@ slightly); the Reader was not rebuilt.
 **Vol. 14/2's Meaning boxes**: all 497 changed rows are drafted, and in all 497 `prep`'s Burmese (`our_text()`) now begins
 with the restored words. Listed for a redraft in `docs/translation/meanings/14b-redraft.tsv` (id, headword, the words, the
 start of the Burmese before and now). Vols. 1–19 were drafted from PCED and are not affected.
+
+
+## 51. The editor's decisions of 27 Sep 2026 recorded; nine rows corrected; a revision queue; ဩ in vol. 4/3 (27 Sep 2026)
+
+**The live check after v0.15.0** (in-app browser): `/data/version.json` and every page's meta 0.15.0; `/w/pamattakaraṇaṭṭha`'s
+Burmese begins မေ့ လျော့ခြင်းကို, `/w/akālacārī`'s (က). Pushed as `e79103b`, tagged v0.15.0 by the editor.
+
+**The decisions** (the Project's `claude/editor-decisions-2026-09-27.md`; Spanish only). Rules 2–13 are now in
+`docs/translation/stems.tsv` (L103 ပယ် by sense and L014 -attha revised; new F028 one future for -အံ့-လတ္တံ့-လိမ့်မည်, L107
+ပရိသတ် *asamblea*, L108 ငရဲ *infierno*, L109 ဖောက်ပြန် by sense, L110 လေ as element or humour *aire* (confirmed by the editor),
+L111 ငရုတ် (marica) *pimienta negra*, L112 ခြင်း *el* + infinitive by default, no rule), in `glossary.tsv` (pariveṇa *recinto
+monástico*, parikamma *trabajo preparatorio*, parikkhāra *requisitos*, maṅgala *bendición*, niraya, marica, parisā; vaṭṭa and
+vassa kept in Pāḷi) and in `drafting-prompt.md` (the person follows the Pāḷi ending: paṭhama 3rd, majjhima 2nd, uttama 1st;
+ပယ် by sense; the rest in one bullet). English is open for all of them. Rule 1 (splitting run-on articles) waits for the
+article-step job.
+
+**Nine rows corrected** (`docs/translation/corrections-es.tsv`, which a later `merge` must re-apply): status_es `corrected`,
+the draft kept in `es_drafted`, `corrected_es` {by IEBH, date, and `senses` where only some were corrected}. Three are partial:
+140146 lajjissati and 140731 labhissati (sense 1), 148867 vikaṭa (sense 1, keeping both readings, *perverso / trastornado /
+alterado; que no es de su naturaleza propia*, the editor). The site shows those three as *corregido en parte* / *partly
+corrected*, with a note naming the corrected sense and saying the rest is a draft (`abhidhana_site.py` `meanings()`,
+`common.js` `st_partial`, `browse.js` `partial_note`); a per-sense chip was more than a small change. Checked on the built
+data of vol. 18 only; not opened in a browser.
+
+**No re-rendering** (the editor, 27 Sep): he will revise the translations at the end, after the whole dictionary is drafted.
+Instead, `docs/translation/revision-queue.tsv` (id, book, rule, current Spanish) lists the rows whose current draft conflicts
+with a rule, **3,397 lines, 3,382 rows**:
+
+| rule | rows | how found |
+|---|---:|---|
+| R2 person | 1,684 | verb label; 1st-person ending (-mi, -ma, -ssāmi, -iṁ, -eyyaṁ …) and the Spanish verb not 1st; -hi/-ssu without ¡ or (tú); -ssasi/-eyyāsi/-āsi not in -s; -atha/-etha/-ssatha not 2nd plural. -si alone (present 2nd or aorist 3rd) not queued |
+| R3 ပယ် | 565 | ပယ် in the Burmese and none of the ruled words in the Spanish (ပယ် rendered *abandonar* where it means physical removal is not caught) |
+| R4 -attha | 182 | noun with အကျိုး (not အကျိုးရှိ) rendered *propósito / provecho / fin*; kimatthaṁ ×2 |
+| R5 ပရိသတ် | 24 | not *asamblea* (16270 abhidhamma is PCED's ပရိသတ် for ပရိယတ်: left out) |
+| R6 | 184 | *pariveṇa* 36, *parikamma* 93, *parikkhāra* 55 kept in Pāḷi |
+| R7 | 9 | the three futures rendered as alternatives (of 112 stacked; the other 16 flagged by a first count are lexical alternatives) |
+| R8 | 58 | ငရဲ as *niraya* |
+| R9 ဖောက်ပြန် | 437 | none of *alter- / pervers- / trastorn-* |
+| R10 maṅgala | 128 | *maṅgala* / *maṅgalā* not a proper name (the Buddha, a sutta, a person, place, palace or elephant kept) |
+| R11 | 7 | *ají* |
+| R12 လေ | 119 | *viento* where the Burmese has ဓာတ်, လေနာ, ပိတ်, သလိပ် or the headword begins vāta- |
+
+The mechanical rules (R4–R8, R10, R11) were also tried as a script (`tmp/dec0927/mech.py`, diff in `mech-diff.tsv`, gitignored);
+nothing was applied. Also for the revision, by count only: ပယ် in 3,042 rows (*abandon-* 1,704, *elimin-* 334, *rechaz-* 266,
+*quit-* 94 …), ဖောက်ပြန် in 908.
+
+**Vol. 4/3: ဩ restored** (another chat, in this commit): an OCR analysis of a headword beginning with ဩ that begins with သ, or
+with သ before a ဩ read right (သဩလီန), gets ဩ back (`analysis_o_restored` keeps the reading); PCED analyses and hand corrections
+untouched: **393 rows** (the code comment says 394). Two hand corrections (`docs/corrections.tsv`): 176133 omakadassa
+[ဩမက + ဒိသ + အ], 176134 omakadesanā [ဩမကာ + ဒေသနာ] (PDF p. 574, the editor). Book 4c re-run (articles, romanisation); it
+carries §50's 429 restored first words too.
