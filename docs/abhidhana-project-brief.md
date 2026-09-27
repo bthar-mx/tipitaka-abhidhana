@@ -1692,3 +1692,48 @@ Not opened in a browser before the push.
 - Known slips left in: 116926 EN "Dhamma talk" vs ES *Enseñanza*; 141771 *la rūpa*; 150589 and 150608 "vencido" for
   *vencidos*; 153718 ခော်ဝော် read as "speak harshly" (later rows read it ခေါ်ဝေါ် "call"); 135555, 135560, 135562 *conducto
   urinario* where later rows keep ⟦=passāvamagga⟧.
+
+
+## 49. Vol. 14/2's Burmese from our own text; one trial shard drafted (27 Sep 2026, cloud session)
+
+**The live check after v0.13.0** (the editor): 0.13.0 live, About lists vols. 15–19, the five /w/ pages show *borrador*.
+
+**`prep` without a witness join.** `tools/abhidhana_meanings.py prep` now takes a book with no `witness/join-NN.jsonl`
+(14/2, 14/3, 20–25, 4/3) from our text (`our_text()`), `source` *text layer* for 14b, *ocr* otherwise. It is built from
+`articles.jsonl` `body`, not `body_joined`: a line-end hyphen is kept outside Pāḷi (the dictionary's hyphen between
+synonyms) and dropped inside a `pali.jsonl` span. The spans' offsets are into `body_joined`; it is rebuilt from the body
+exactly as `abhidhana_romanise.py` builds it (equal to the stored one on all 6,319 14b rows that carry it), so the spans are
+placed by offset, not by searching their text. Removed: Pāḷi spans of two words or more, the citations `abhidhana_articles.py`
+parses (`CITE`, `cite_trim`) and the page numbers after them, and three things the editor's request did not name, added after
+looking at the output: (a) one-volume citations `CITE` does not parse (`CITE_WORK`: မိလိန္ဒ။၁၂၃။; 4,855 matches, 100
+abbreviations, all works), bracketed references (ဓမ္မ။ ၅၇) and the lists of further references (-ဝိ၊၁။၃၆။ …); (b) in the 214
+rows whose analysis bracket was damaged, the body's head up to `]` (the rest of the analysis and its derivation, which PCED
+keeps out of the definition line); (c) a sentence left holding only a one-word span, sense markers or quotation marks.
+**Burmese read as Pāḷi**: romanise's spans include Burmese (…-သော၊ သတိ / ကင်းလွတ်): a multi-word span joined by or touching
+the Burmese hyphen, ending in သော, or holding ရှိသော / စသော / အရာ is kept (`quoted()`). One-word spans are kept. Books with a
+join are unchanged: old and new `prep 15` gave byte-identical output (md5 of `work15.json` and every shard) on a synthetic join
+and PCED file exercising both paths (7,953 pced, 1,206 ocr rows); the cloud has no `witness/`, so **re-run `prep 15` on the
+Mac against the real witness to confirm**. `prep` does not clear `shards/`: a run with fewer shards leaves the old last file.
+
+| vol. 14/2 (`prep('14b', 15)`) | |
+|---|---:|
+| articles / with a body / explanations | 6,942 / 6,817 / 6,804 |
+| formula-only; rows with a «Sn» placeholder (placeholders) | 0; 1,062 (1,116) |
+| Burmese characters: `body_joined` → our text | 1,777,705 → 533,034 |
+| text length median / p90 / max (chars) | 49 / 116 / 9,846 |
+| line-end hyphens kept / dropped inside Pāḷi | 3,745 / 8,974 |
+| Pāḷi spans removed (2+ words) / multi-word kept as Burmese / one-word kept | 16,297 / 653 / 5,144 |
+| citations removed: `CITE` / `CITE_WORK` | 30,393 / 4,855 |
+| shards | 15 (414–454 lines) |
+
+**Trial shard 00 drafted** (454 lines, ids 210167–210629, one agent, the drafting prompt with its new section "Books drafted
+from our own text"): 208,033 agent tokens, 30 tool calls, 13 min (vols. 15–19: ~19 M tokens / 97 shards ≈ 196 k a shard).
+Checked after: one line per id in order, valid JSON, «Sn» in both languages, no Burmese outside ⟦ ⟧ / ‹ ›. 181 flagged (132
+"left out": residue the cleaning missed — quotation fragments, citations, lists of inflected forms with ---, encoding debris);
+3 empty on purpose (210290, 210357, 210361: nothing Burmese left); hyphens: 2 read as one word (ကိလေ-သာ 210298, မေ့-လျော့
+210324), 0 doubtful. Input and output are in `docs/translation/trial/14b-shard00-{in,out}.jsonl`, not merged. What the agent
+reported: long articles print their senses twice (pamatta, pamāṇa, pamāda, pamokkha, pamuñcati, payutta, payoga), translated
+once; unlocated headwords with no body run on inside a neighbour's text (210254 holds 210255 ပမာဏယုတ္တနေတ္တ; also 210256,
+210261), left out and flagged, so those articles have no Meaning; numbered homonyms run on (210207, 210289, 210345, 210422,
+210619), translated. Seen in the input: 210324 starts with a grammarian's note (…ဝ-ပစ္စည်း) whose bracket is not flagged as
+damaged; 210168 starts လျော့ခြင်း (truncated?). Not reviewed.

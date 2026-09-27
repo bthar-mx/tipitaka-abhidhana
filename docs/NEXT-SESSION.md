@@ -120,7 +120,12 @@ Project are for advice and for what needs the Mac. What the new chat should know
    (`abhidhana_reader_data.py` for all books, then republish).
 0c. **Hand corrections** go in `docs/corrections.tsv` (brief §40); re-run `abhidhana_articles.py NN` and
    `abhidhana_romanise.py NN`. Confirm the `roman` column of `docs/labels.md` §0.
-1b. **Translation** (brief §37, §39–48). **Drafted: vols. 1–3, 4/1, 4/2, 5–19** (156,650 rows, 70.8% of the index, none reviewed; flags in `meanings/NN-flags.tsv`). **Vol. 4/3 deferred** (no PCED; the editor, 26 Sep; brief §44). PCED's vols. 1–19 are all drafted (brief §48).
+1a. **Vol. 14/2: the editor to check trial shard 00** (brief §49; `docs/translation/trial/14b-shard00-{in,out}.jsonl`; cost on
+   the Usage page: the agent used 208,033 tokens). If it is good: draft shards 01–14 (`prep('14b', 15)` in the cloud, the
+   drafting prompt with its section for books from our own text), then `merge 14b` and `report 14b`, VERSION and CHANGELOG.
+   Before that, on the Mac: re-run `prep 15` and compare with a copy made before this change (should be byte-identical).
+   Open: the run-on headwords (210255, 210257, 210262 have no body; their text is inside 210254, 210256, 210261).
+1b. **Translation** (brief §37, §39–49). **Drafted: vols. 1–3, 4/1, 4/2, 5–19** (156,650 rows, 70.8% of the index, none reviewed; flags in `meanings/NN-flags.tsv`). **Vol. 4/3 deferred** (no PCED; the editor, 26 Sep; brief §44). PCED's vols. 1–19 are all drafted (brief §48).
    **Next: the books with no PCED** — 14/2 (its text layer), 14/3, 20–25, and 4/3 (deferred) — could only be drafted from
    our OCR body: the editor to decide, as for 4/3 (brief §44 measured the OCR body against PCED on 4/1 and 4/2). If yes:
    `prep('NN', N)` from Python (N so that shards are ~450 lines), each book's `workNN.json` and `shards/` in
