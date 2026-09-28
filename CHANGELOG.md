@@ -23,6 +23,15 @@ Versions of the Tipiṭaka Pāḷi-Myanmā Abhidhāna project: the data, the too
 A release note says, per version: what changed, the brief's sections, and the headline figures
 (located, label + body, Meaning rows drafted / reviewed).
 
+## v0.26.4 — 28 Sep 2026
+
+- **Site display only; no data change** (brief §68; the editor's decisions of 28 Sep on §66's questions). Passage lines are hidden
+  behind *show everything* only when they are one word or over 30% non-letters: 279 of 504,587 (was 172,598); on sīla 1 of 59 (was 24),
+  in vol. 24 1 of 13,640 (was 4,038). Citations: unchanged, only all-digit ones hidden (16,953); "vi 1", "ma 1" stay visible.
+  *Analysis not read* only where an analysis is likely printed (PCED books: where PCED has one; other books: `[` or `+` in the raw
+  head line): 7,878 articles (was 11,873; none now in books 01–19). *Label not read* unchanged (13,127). NEXT-SESSION: Phase 1 reduced
+  to the split pass in the nine books without PCED (~200 articles), per the editor.
+
 ## v0.26.3 — 28 Sep 2026
 
 - **Site display only; no data change** (brief §66). Phones (below 768 px): the five tabs and ES / EN fold behind a ☰ button, and

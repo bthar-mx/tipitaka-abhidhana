@@ -1399,3 +1399,46 @@ noisier (§62), may do worse.
 the ~2,000–3,500 the plan assumed for 1.4; the larger groups are elsewhere: 696 inside a farther body on the page, 311 homonyms
 placed on each other's line (item 5b), 4,601 unlocated headwords not in the page text at all (step 1.7's `page.psm6` fallback, or
 the index's page errors), and the 2,443 run-on flags, which this test mostly does not see.
+
+
+## 68. The folds and *analysis not read* refined; Phase 1 reduced (28 Sep 2026, cloud session)
+
+**Asked** (the editor, deciding §66's three questions; v0.26.4, display only, no data change): (1) citations that name a work but no
+page ("vi 1", "ma 1") stay visible, only all-digit ones fold away; (2) a passage line folds away only when it is one word or over 30%
+non-letters (*sīlayatīti sīlaṁ* stays); (3) *analysis not read* only where an analysis is likely printed: in the PCED books where PCED
+has an analysis for the row, elsewhere where the raw head line shows `[` or `+`; *label not read* unchanged. And, for the docs, the
+editor's decision on Phase 1 after §67 (NEXT-SESSION).
+
+**What changed.** `site/src/assets/browse.js`: `noiseQuote` hides a line with fewer than 2 words of two or more letters (was 3) or over
+30% non-letters; the tooltip (ES / EN) says so and calls the hidden citations "only numbers". `noiseCite` was already "no letter at
+all": left as it is. `tools/abhidhana_site.py`: a record key `ax: 1` on a located article with no analysis read where one is likely
+printed; the page shows *analysis not read* only with `ax`. A book counts as PCED's when any of its rows has `analysis_source: pced`
+(01–19 with 4/1, 4/2, 14/1). *Decided without asking*: the "head line" is the first line of `raw`; a word counts when it has two or more
+letters, as before.
+
+**Measured** (the built data, the same count as §66, which it reproduces before the change: 172,598 / 16,953 / 11,873):
+- **Passage lines hidden: 279 of 504,587** (was 172,598, 34.2%). sīla (24/203429): **1 of 59** (was 24; the one left is
+  *sīlesūti ----------- sāssa 2222 pakatīsu*), so *show all (58)*; **vol. 24: 1 of 13,640** (was 4,038). Per book 0–42 (19: 42, 13: 26,
+  18: 23). With the fold to 5 unchanged, 15,192 articles now have more than 5 lines to fold (vol. 24: 281; §66 had 146).
+- **Citations hidden: 16,953 of 530,971, unchanged**; 16,853 are digits and punctuation only, 100 carry ၌ or a stray vowel sign beside the
+  digits (OCR debris; kept hidden, as they name no work). 43,836 visible citations are a work and one number, like "vi 1".
+- ***Analysis not read*: 7,878 of 208,140 located articles** (was 11,873). **None now in books 01–19**: all 1,181 there lacked a PCED
+  analysis (by construction, `witness_analysis.apply` gives every row joined to a PCED analysis that analysis, so a PCED-book row without
+  one is a row PCED has none for, or a row the join did not pair; `witness/` is not in the cloud, so the two could not be told apart).
+  The nine others: 14/3 2,600 (was 3,314), 23 1,344 (1,693), 22 1,124 (1,465), 24 684 (1,072), 21 647 (990), 20 583 (848), 25 443 (681),
+  4/3 438 (569), 14/2 15 (60). Of the 7,878, the head line holds `[` only in 3,899, `+` only in 2,635, both in 1,344. Examples:
+  14/3's ပဝက္ခတိ, head line `… [ပ+ဝစ+အ+` (the closing `]` not read; item 7b); sīla, `သီလ + အ။` (the brackets lost).
+- *Label not read*: 13,127, unchanged.
+
+**Checks.** Playwright (Chromium), a full local build (958 files) served with the `_redirects` rewrites: 9 pages (Browse, `/w/sīla`,
+volumes, introduction, abbreviations, about, `/v/24/67`, `/edit/`, 404) × 375, 768, 1,024, 1,440 px × light, dark × ES, EN = **144
+loads, 0 failures** (no script error, no sideways scroll, the header on one line from 1,024 px). sīla at 375 px: 5 passages → *show all
+(58)* → 58 → *show everything (1 more)* → 59; citations *show all (29)*, *show everything (1 more)*; notes *label not read*, *analysis
+not read*. `/w/akusala` (PCED): no note. **Not run here**: `sh site/test/editor/run.sh` fails in this container with 12 API failures
+("bad signature": wrangler's worker cannot reach the local Access stand-in through the proxy, `NO_PROXY` notwithstanding), identically on
+the unchanged base commit; this change touches neither `functions/` nor the editor. Run it on the Mac. Not tested: Safari, Firefox, a phone.
+
+**Phase 1 reduced** (the editor, 28 Sep; written into NEXT-SESSION's plan after §67): the split pass (1.3) only in the nine books without
+PCED (14/2, 14/3, 20–25, 4/3), about 200 articles gaining a body (§67's 202), checked by B + C (1.4), then their redraft (1.6). No
+splitting in 01–19, where the Meaning comes from PCED per headword. The ~700 headwords inside a farther body, the 311 homonym swaps of
+item 5b and the 4,601 not in the text become optional later items (1.8). Phase 2 next after the reduced Phase 1.

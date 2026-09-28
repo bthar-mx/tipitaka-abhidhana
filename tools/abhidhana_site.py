@@ -34,6 +34,8 @@ Record keys (as in the Reader, docs of tools/abhidhana_reader_data.py, plus i, s
     as "pced" when the analysis comes from the typed PCED witness (tools/abhidhana_witness_analysis.py)
     hi the index's spelling of a headword corrected by hand
     cf the fields corrected by hand against the print (docs/corrections.tsv), e.g. ["analysis"]
+    ax 1 when no analysis was read but one is likely printed (the site's "analysis not read"): in the
+       books PCED covers, where PCED has one for the row; elsewhere, where the raw head line shows [ or +
 """
 import html, json, os, re, shutil, sys
 from pathlib import Path
@@ -54,30 +56,35 @@ def records(book):
         for line in f:
             r = json.loads(line); P[r['id']] = r
     V = []
-    with (ROOT / f'ocr/{book}/articles.jsonl').open(encoding='utf-8') as f:
-        for line in f:
-            r = json.loads(line); p = P.get(r['id'], {})
-            d = {'i': r['id'], 'p': r['pdf_page'], 'q': r['index_page'], 'h': r['headword'],
-                 'r': r.get('iast') or p.get('headword_iast') or ''}
-            if r.get('osbct'): d['o'] = r['osbct']
-            d['x'] = X[r['located']]
-            if r.get('label'): d['l'] = r['label']
-            if r.get('label_ocr') and r['label_ocr'] != r.get('label'): d['lo'] = r['label_ocr']
-            if r.get('analysis'): d['a'] = r['analysis']
-            b = p.get('body_joined') or re.sub(r'-\s*\n\s*', '', r.get('body') or '').replace('\n', ' ')
-            if b: d['b'] = b
-            if r.get('citations'): d['c'] = r['citations']
-            if p.get('analysis_iast'): d['ai'] = p['analysis_iast']
-            if p.get('analysis_derivation'): d['ad'] = p['analysis_derivation']   # the analysis runs on into a derivation: roman mode shows the Burmese line too
-            if p.get('citations_iast'): d['ci'] = p['citations_iast']
-            if p.get('pali'): d['sp'] = [[s['start'], s['end'], s['iast'], s.get('tokens', 1)] for s in p['pali']]
-            d['s'] = r.get('status') or 'ocr'
-            if r.get('index_misfiled'): d['m'] = 1
-            if r.get('headword_index'): d['hi'] = r['headword_index']   # the index's misspelling, kept (docs/corrections.tsv)
-            if r.get('analysis_source') == 'pced': d['as'] = 'pced'   # analysis from the typed PCED witness
-            if r.get('corrected'): d['cf'] = sorted(r['corrected'])   # fields corrected by hand (docs/corrections.tsv)
-            if r['id'] in TR: d['t'] = TR[r['id']]
-            V.append(d)
+    rows = [json.loads(line) for line in (ROOT / f'ocr/{book}/articles.jsonl').open(encoding='utf-8')]
+    pced = any(r.get('analysis_source') == 'pced' for r in rows)   # a book PCED covers (01-19, 4/1, 4/2, 14/1)
+    for r in rows:
+        p = P.get(r['id'], {})
+        d = {'i': r['id'], 'p': r['pdf_page'], 'q': r['index_page'], 'h': r['headword'],
+             'r': r.get('iast') or p.get('headword_iast') or ''}
+        if r.get('osbct'): d['o'] = r['osbct']
+        d['x'] = X[r['located']]
+        if r.get('label'): d['l'] = r['label']
+        if r.get('label_ocr') and r['label_ocr'] != r.get('label'): d['lo'] = r['label_ocr']
+        if r.get('analysis'): d['a'] = r['analysis']
+        b = p.get('body_joined') or re.sub(r'-\s*\n\s*', '', r.get('body') or '').replace('\n', ' ')
+        if b: d['b'] = b
+        if r.get('citations'): d['c'] = r['citations']
+        if p.get('analysis_iast'): d['ai'] = p['analysis_iast']
+        if p.get('analysis_derivation'): d['ad'] = p['analysis_derivation']   # the analysis runs on into a derivation: roman mode shows the Burmese line too
+        if p.get('citations_iast'): d['ci'] = p['citations_iast']
+        if p.get('pali'): d['sp'] = [[s['start'], s['end'], s['iast'], s.get('tokens', 1)] for s in p['pali']]
+        d['s'] = r.get('status') or 'ocr'
+        if r.get('index_misfiled'): d['m'] = 1
+        if r.get('headword_index'): d['hi'] = r['headword_index']   # the index's misspelling, kept (docs/corrections.tsv)
+        if r.get('analysis_source') == 'pced': d['as'] = 'pced'   # analysis from the typed PCED witness
+        if r.get('corrected'): d['cf'] = sorted(r['corrected'])   # fields corrected by hand (docs/corrections.tsv)
+        if r['id'] in TR: d['t'] = TR[r['id']]
+        # "analysis not read" only where an analysis is likely printed (the editor, 28 Sep 2026)
+        if d['x'] != 'u' and 'a' not in d and 'ai' not in d and (
+                r.get('analysis_source') == 'pced' if pced else re.search(r'[\[+]', (r.get('raw') or '').split('\n', 1)[0])):
+            d['ax'] = 1
+        V.append(d)
     return V
 
 
