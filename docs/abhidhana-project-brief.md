@@ -2,7 +2,7 @@
 
 *Written 21 September 2026, at the end of the volume-25 pilot; §10–12 revised 24 September
 2026, after volume 1 was done end to end and the repository was made public; §18–26 added
-25 September 2026 (spelling folds, the witness join, vols. 6–9, re-cutting gutters, vol. 14/2's text layer, the batch of vols. 10–22); §27 the same evening (vols. 23, 24 and 14/2 finished, the index's page errors applied, book 21 explained, the Reader in binary); §28 the public website, the page images and the label table; §29 vol. 21 finished, vol. 25's resolution, the dictionary's own account of its labels; §30 vol. 25 done, all 29 books; §31 (later on 25 Sep) the page-image tool's bitmap test; §32 the weak page corrections, image-checked; §33 the compound analysis with its [ lost; §34 the dictionary's history on the site; §35 all page images live, a light/dark switch, the Introduction page; §36 citations keep their whole abbreviation; §37 translation, batch 1; §38–41 (26 Sep) the redesign, vol. 1–2 drafts, PCED analyses, versioned assets; §42 (26 Sep) the live check, vol. 3's drafts, version numbers; §43 vols. 4/1–4/2 drafts, the IEBH footer, citation tooltips, cross-reference links, labels reviewed; §44 the live check after v0.8.0, vol. 4/3 deferred, vol. 5 drafted, the analysis split from its derivation, printed page numbers; §45 the live check after v0.9.0, vol. 6 drafted; §46 two stems from the editor, vols. 7–9 drafted; §47 vols. 10–14/1 drafted; §48 (27 Sep) the live check after v0.12.0, vols. 15–19 drafted; §49 vol. 14/2 drafted from its text layer; §50 the body's first words on the headword's line restored; §51 the editor's decisions of 27 Sep, a revision queue, ဩ in vol. 4/3; §52 (cloud) editor mode; §53 (28 Sep, cloud) roman input in the editor's form; §54–56 (28 Sep) 14/2's redraft, the OCR pilot, vol. 23 drafted; §57 (28 Sep, Cowork) vol. 22 drafted; §58 vol. 24 drafted; §59 vol. 21 drafted; §60 vol. 20 drafted; §61 vol. 25 drafted. Everything in
+25 September 2026 (spelling folds, the witness join, vols. 6–9, re-cutting gutters, vol. 14/2's text layer, the batch of vols. 10–22); §27 the same evening (vols. 23, 24 and 14/2 finished, the index's page errors applied, book 21 explained, the Reader in binary); §28 the public website, the page images and the label table; §29 vol. 21 finished, vol. 25's resolution, the dictionary's own account of its labels; §30 vol. 25 done, all 29 books; §31 (later on 25 Sep) the page-image tool's bitmap test; §32 the weak page corrections, image-checked; §33 the compound analysis with its [ lost; §34 the dictionary's history on the site; §35 all page images live, a light/dark switch, the Introduction page; §36 citations keep their whole abbreviation; §37 translation, batch 1; §38–41 (26 Sep) the redesign, vol. 1–2 drafts, PCED analyses, versioned assets; §42 (26 Sep) the live check, vol. 3's drafts, version numbers; §43 vols. 4/1–4/2 drafts, the IEBH footer, citation tooltips, cross-reference links, labels reviewed; §44 the live check after v0.8.0, vol. 4/3 deferred, vol. 5 drafted, the analysis split from its derivation, printed page numbers; §45 the live check after v0.9.0, vol. 6 drafted; §46 two stems from the editor, vols. 7–9 drafted; §47 vols. 10–14/1 drafted; §48 (27 Sep) the live check after v0.12.0, vols. 15–19 drafted; §49 vol. 14/2 drafted from its text layer; §50 the body's first words on the headword's line restored; §51 the editor's decisions of 27 Sep, a revision queue, ဩ in vol. 4/3; §52 (cloud) editor mode; §53 (28 Sep, cloud) roman input in the editor's form; §54–56 (28 Sep) 14/2's redraft, the OCR pilot, vol. 23 drafted; §57 (28 Sep, Cowork) vol. 22 drafted; §58 vol. 24 drafted; §59 vol. 21 drafted; §60 vol. 20 drafted; §61 vol. 25 drafted; §62 vols. 14/3 and 4/3 prepared, the clean-row signal measured. Everything in
 this file was measured. Do not re-derive a figure it carries; if a new one is needed,
 measure it rather than estimating.*
 
@@ -2689,3 +2689,62 @@ clean-row signal was not run on vol. 25. Every agent called the OCR "heavy" or "
   221140); အမွန် read as အမြစ် (220870, 220888); 221148 (the letter ḷa) "30th of 41 letters", probably ၄၀ misread.
 - **Slips left in** (append-only rule): 219091's flag ("read မှီ as မှီ") says nothing; 217865 lists ñāṇa in `terms` though it is
   translated; 217114 lost a «Sn», found and fixed by its agent before the end.
+
+
+## 62. Vols. 14/3 and 4/3 prepared; the clean-row signal on the OCR books (28 Sep 2026, Cowork)
+
+**The live check after v0.24.0** (the editor): 0.24.0 served; `/w/hetu` shows vol. 25's Meaning box, *borrador*; About lists 15–25.
+
+**Asked** (the editor): measurement only, no drafting: `prep` for 14c and 4c into `tmp/meanings/v14c` and `v4c`, and §55's clean-row
+signal on them and, for comparison, on vols. 20–25.
+
+**Prep** (Cowork VM, `tools/abhidhana_meanings.py` md5 `b2e0988…`, unchanged; shards of about 445 lines):
+
+| | vol. 14/3 (14c) | vol. 4/3 with its supplements (4c) |
+|---|---:|---:|
+| explanations / formula-only / to draft | 9,477 / 12 / 9,465 | 4,812 / 9 / 4,803 |
+| of them: 4/3 itself / the three supplements | | 4,596 / 207 (of their 223 index rows) |
+| shards | 21 (20 × 451, one of 445) | 11 (10 × 437, one of 433) |
+
+The supplements (§16) were split by id order, 53 / 114 / 56 index rows, checked by the headwords at the boundaries (ဘိဇ္ဇ …
+ဘိဇ္ဇေယျုံ | ဥဒဝါ … ဥဠုဂ္ဂဟယုဒ္ဓ | မံသကာရဏ … မောဟိတဗ္ဗ); to draft: 50 (to vol. 15), 107 (to 4/2), 50 (to 16).
+
+**4c's join file pairs nothing, and `prep` took it for a join.** `witness/join-4c.jsonl` exists (5,230 rows, 25 Sep) with no `seq` in
+any row: PCED has no 4/3. `prep` tests only that the file exists, so for 4c it took `pali.jsonl`'s `body_joined` whole, quotations and
+citations included, as it does for the few OCR rows of a PCED book: 4,282 explanations, **2.6% clean** by the signal below. That run is
+kept in `tmp/meanings/v4c-rawbody/`, **not to be drafted from**. `tmp/meanings/v4c/` holds `prep` run as for a book without a join
+(`tmp/meanings/_measure/prep_nojoin.py`: hides that one join file from `Path.exists`; the tool is unchanged), i.e. `our_text()`, as for
+14/3 and 20–25. It has more rows because `our_text` reads `articles.jsonl`'s `body` (4,830 bodies), while `abhidhana_romanise.py` writes
+`body_joined` only for rows with a Pāḷi span (checked: none of the 548 bodies without it has a span; likewise 451 in 14c, 175 in 25).
+§44's "4,281 of its 5,230 rows have an OCR body" counted `body_joined`. **For the editor**: in `prep`, treat a join with no paired row
+as no join (one line), before 4c is drafted. No other book is affected: join files exist for 01–19, 4a and 4b only.
+
+**The clean-row signal, re-implemented.** §55's code was not kept. `tmp/meanings/_measure/clean_signal.py` follows §55's description,
+over the rows to draft (formula-only left out): a row fails if its Burmese (placeholders removed) holds `[`, `]` or `+` (analysis
+residue); a quotation mark or `/`; a Latin digit or two Burmese digits outside a short bracket (page numbers); a token of one or two code
+points not among 33 common short words (၏ ၍ ၌ သူ ရာ ဟု …; sense markers (၁) (က) excepted) (scrap); or a sentence of at least two words of
+three or more code points, more than half of them Pāḷi-shaped (no `NOT_PALI` mark, not ending in သော သူ တူ ရာ) (Pāḷi left).
+**Calibration against §55**: analysis residue identical (14/2 1.5%, 23 24.8%, 22 32.6%); Pāḷi left 6.9 / 22.4 / 26.9% against §55's
+5.4 / 24.2 / 31.6%; clean **84.6 / 50.8 / 37.8%** against 82.6 / 52.9 / 40.8%. Within 2–3 points and in the same order; the short-word
+list was chosen to fit those three books, so treat the figures as a ranking, not a measurement of cleanliness. Vol. 23's work file was
+made again for this (`tmp/meanings/v23/`, `prep 23 --shards 15`: 6,967 / 6,761 as §55) and 14/2's in `tmp/meanings/_measure/v14b/`.
+
+| book | rows | clean | analysis | Pāḷi left | scrap | quote or / | page nos. | drafted lines clean (§56–61) |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| 14/2 (text layer) | 6,802 | 84.6% | 1.5% | 6.9% | 7.3% | 5.5% | 2.9% | |
+| **14/3** | 9,465 | **49.1%** | 28.1% | 12.9% | 24.9% | 5.0% | 10.0% | |
+| **4/3 with supplements** | 4,803 | **40.5%** | 32.9% | 19.0% | 44.1% | 13.3% | 14.7% | |
+| — 4/3 itself | 4,596 | 40.1% | 33.5% | 18.8% | 44.4% | 13.4% | 14.8% | |
+| — the supplements (to 15 / 4/2 / 16) | 207 | 48.3% (48.0 / 53.3 / 38.0) | 19.3% | 24.2% | 37.7% | 10.6% | 13.0% | |
+| 4c as `prep` ran it (raw body) | 4,281 | 2.6% | 41.7% | 94.1% | 80.2% | 16.8% | 90.3% | |
+| 20 | 6,778 | 48.2% | 18.4% | 26.5% | 31.9% | 11.1% | 9.7% | 32.7% |
+| 21 | 7,609 | 47.9% | 18.1% | 26.0% | 31.1% | 8.5% | 9.1% | 32.1% |
+| 22 | 7,555 | 37.8% | 32.6% | 26.9% | 44.9% | 8.0% | 12.8% | 25.0% |
+| 23 | 6,761 | 50.8% | 24.8% | 22.4% | 24.8% | 6.5% | 6.7% | 32.4% |
+| 24 | 6,572 | 56.1% | 17.3% | 20.5% | 24.8% | 5.2% | 8.0% | 31.0% |
+| 25 | 3,765 | 23.0% | 57.1% | 28.2% | 63.9% | 4.8% | 12.1% | 10.4% |
+
+For vols. 20–25 the signal ranks the books as their drafts came out, except vol. 24 (highest signal, middling drafts); drafted-clean ran
+at 0.45–0.68 of the signal. **Vol. 25's low draft share (§61) shows here before drafting**: analysis residue in 57.1% of its rows and
+scraps in 63.9%, the most of any book; why its bodies carry so much is not measured. By the signal, 14/3 sits with vols. 20, 21 and 23
+and 4/3 with vol. 22; its supplements a little cleaner than 4/3 itself. Nothing was drafted.
