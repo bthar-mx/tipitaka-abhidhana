@@ -1,4 +1,4 @@
-# Abhidhāna — handover, 28 September 2026 (editor mode built, not yet switched on, v0.17.0; roman input in its form, v0.18.0; 14/2's 497 rows redrafted, v0.18.3; the OCR pilot, v0.18.5; vol. 23 drafted from our OCR, v0.19.0; vol. 22 drafted from our OCR, v0.20.0; vol. 24, v0.21.0; vol. 21, v0.22.0; vol. 20, v0.23.0; vol. 25, v0.24.0; 14/3 and 4/3 prepared, §62; `prep`'s no-join fix, v0.24.1; vol. 14/3 drafted from our OCR, v0.25.0, and 4/3's shards drafted, not merged, §63; vol. 4/3 merged, v0.26.0: every book drafted, §64; the next phase planned and decided, the brief shrunk, v0.26.1; `merge` keeps the corrections, 4/3's "see X" targets restored, v0.26.2, §65; site display fixes, v0.26.3, §66, checked live; run-on headwords measured (plan step 1.1), §67)
+# Abhidhāna — handover, 28 September 2026 (editor mode built, not yet switched on, v0.17.0; roman input in its form, v0.18.0; 14/2's 497 rows redrafted, v0.18.3; the OCR pilot, v0.18.5; vol. 23 drafted from our OCR, v0.19.0; vol. 22 drafted from our OCR, v0.20.0; vol. 24, v0.21.0; vol. 21, v0.22.0; vol. 20, v0.23.0; vol. 25, v0.24.0; 14/3 and 4/3 prepared, §62; `prep`'s no-join fix, v0.24.1; vol. 14/3 drafted from our OCR, v0.25.0, and 4/3's shards drafted, not merged, §63; vol. 4/3 merged, v0.26.0: every book drafted, §64; the next phase planned and decided, the brief shrunk, v0.26.1; `merge` keeps the corrections, 4/3's "see X" targets restored, v0.26.2, §65; site display fixes, v0.26.3, §66, checked live; run-on headwords measured (plan step 1.1), §67; Phase 1 reduced (the editor), and the folds and "analysis not read" refined, v0.26.4, §68)
 
 *All 29 books are digitised end to end, spot-checked and in the Reader: 221,154 index rows, 94.1%
 located, 88.1% with label + body (brief §30). Read
@@ -8,7 +8,7 @@ numbers unchanged, so every "brief §N" below N = 50 is read there): §12 covers
 vol. 6, §21 vol. 7, §22 vol. 8 and the gutter failures, §23 vol. 9, §24 the re-cut tool, §25 vol.
 14/2's text layer, §26 the batch (vols. 10–22), §27 vols. 23, 24, 14/2, the index's page errors,
 book 21 and the Reader in binary, §28 the website, the page images and the label table, §29 vol.
-21, vol. 25's resolution and the labels as the dictionary prints them, §30 vol. 25 and the total, §31–37 the page images, the Introduction and the stem lexicon, §38 the site redesign, §39 the vol. 1 drafts, §40 the site fixes, the PCED analyses, hand corrections and sano / insano, §41 versioned assets and vol. 2's drafts, §42 the live check after `5db316f`, vol. 3's drafts and version numbers, §43 vols. 4/1–4/2, the IEBH footer, citation tooltips, cross-reference links and the labels the editor reviewed, §44 the live check after v0.8.0, vol. 4/3 deferred, vol. 5's drafts, the analysis split from its derivation and printed page numbers, §45 the live check after v0.9.0 and vol. 6's drafts, §46 stems L105–L106 and vols. 7–9, §47 vols. 10–14/1, §48 the live check after v0.12.0 and vols. 15–19, §49 vol. 14/2 from its text layer, §50 the body's first words restored, §51 the editor's decisions of 27 Sep and the revision queue, §52 editor mode, §53 roman input in the editor's form, §54 the redraft of 14/2's 497 rows with restored first words, §55 the OCR pilot (vols. 23 and 22 prepared, `prep`'s gloss fix for OCR books, vol. 23 shard 00 drafted), §56 vol. 23 drafted and merged, §57 vol. 22 drafted and merged (in Cowork), §58 vol. 24 likewise, §59 vol. 21 likewise, §60 vol. 20 likewise, §61 vol. 25 likewise, §62 14/3 and 4/3 prepared and the clean-row signal measured, §63 vol. 14/3 drafted and merged, §64 vol. 4/3 merged, §65 `merge` re-applies the corrections and 4/3's "see X" targets restored, §66 the site's display fixes (phone header, folded passages and citations), §67 run-on headwords measured (plan step 1.1) and the VM's disk (step 0.4). Every figure is there.
+21, vol. 25's resolution and the labels as the dictionary prints them, §30 vol. 25 and the total, §31–37 the page images, the Introduction and the stem lexicon, §38 the site redesign, §39 the vol. 1 drafts, §40 the site fixes, the PCED analyses, hand corrections and sano / insano, §41 versioned assets and vol. 2's drafts, §42 the live check after `5db316f`, vol. 3's drafts and version numbers, §43 vols. 4/1–4/2, the IEBH footer, citation tooltips, cross-reference links and the labels the editor reviewed, §44 the live check after v0.8.0, vol. 4/3 deferred, vol. 5's drafts, the analysis split from its derivation and printed page numbers, §45 the live check after v0.9.0 and vol. 6's drafts, §46 stems L105–L106 and vols. 7–9, §47 vols. 10–14/1, §48 the live check after v0.12.0 and vols. 15–19, §49 vol. 14/2 from its text layer, §50 the body's first words restored, §51 the editor's decisions of 27 Sep and the revision queue, §52 editor mode, §53 roman input in the editor's form, §54 the redraft of 14/2's 497 rows with restored first words, §55 the OCR pilot (vols. 23 and 22 prepared, `prep`'s gloss fix for OCR books, vol. 23 shard 00 drafted), §56 vol. 23 drafted and merged, §57 vol. 22 drafted and merged (in Cowork), §58 vol. 24 likewise, §59 vol. 21 likewise, §60 vol. 20 likewise, §61 vol. 25 likewise, §62 14/3 and 4/3 prepared and the clean-row signal measured, §63 vol. 14/3 drafted and merged, §64 vol. 4/3 merged, §65 `merge` re-applies the corrections and 4/3's "see X" targets restored, §66 the site's display fixes (phone header, folded passages and citations), §67 run-on headwords measured (plan step 1.1) and the VM's disk (step 0.4), §68 the folds and *analysis not read* refined, and Phase 1 reduced. Every figure is there.
 `docs/labels.md` §0 holds the label table (the one source for the pipeline and the site),
 `docs/abbreviations.md` the dictionary's own abbreviations and its prose on the labels,
 `docs/index-errata.md` the index's errors, `docs/witness.md` and `docs/witness-join.md` the typed
@@ -92,8 +92,15 @@ Project are for advice and for what needs the Mac. What the new chat should know
 - ~~**Live check after the push**~~: done 28 Sep (the editor). Was: (`/data/version.json` 0.26.3): on a phone, `/w/sīla` shows the headword and the Meaning box without
   scrolling; ☰ opens the tabs and ES / EN; *Ajustes* opens the modes; sīla's passages fold to 5 with *mostrar todo (35)* and
   *mostrarlo todo (24 más)*; at 1,024 px the header is one line in ES and EN. Real Safari and Firefox were not tested (Chromium only).
-- **Open questions** (§66): whether "vi 1" / "ma 1" (a work, no page) should count as noise; whether the under-3-words rule is too
-  strict (it hides real short quotations); whether *analysis not read* should be limited to articles where a bracket is expected.
+- ~~**Open questions** (§66)~~: decided by the editor, 28 Sep, and done in v0.26.4 (§68): "vi 1" / "ma 1" stay visible; a passage is
+  hidden only when it is one word or over 30% non-letters; *analysis not read* only where an analysis is likely printed.
+
+## After v0.26.4 (the folds and *analysis not read* refined, brief §68): for the editor's review
+
+- **The editor**: review the branch `claude/kind-lovelace-ngk69s` (Playwright figures in §68; the editor tests), merge, pull, tag v0.26.4.
+- **Live check after the push** (`/data/version.json` 0.26.4): `/w/sīla` shows *mostrar todo (58)* and *mostrarlo todo (1 más)* (was 35 and
+  24); no *análisis no leído* on any article of books 01–19 (4/1, 4/2, 14/1 included); in 14/3 `/w/pavakkhati` still shows it (its head
+  line prints `[ပ+ဝစ+အ+`).
 
 ## Next phase: the plan (28 Sep; decided by the editor the same day)
 
@@ -134,6 +141,13 @@ fixes testable on committed data (decided: **code fixes only**, on the credit). 
   freed. Keep running romanisation and `merge` / `report` in Terminal or the cloud container, as since §57.
 
 ### Phase 1 — (a) + (b): the article step (Cowork develops, the Mac runs, the cloud redrafts)
+**Reduced (the editor, 28 Sep, after §67).** Phase 1 is now: **1.3** the split pass **only in the books without PCED** (14/2, 14/3,
+20–25, 4/3): about **200 articles gaining a body** (202 of the 2,899 no-body articles, §67: 14/2 64, 20 49, 24 24, 22 23, 23 21, 14/3 8,
+21 5, 4/3 5, 25 3); **1.4** those splits checked by **B + C**; **1.6** their redraft. **No splitting in books 01–19** (4/1, 4/2, 14/1
+included): there the Meaning comes from PCED per headword, so a split changes no Meaning box. The larger groups become **optional later
+items** (1.8 below): the ~700 headwords inside a farther body on the page, the 311 homonym swaps of item 5b, the 4,601 headwords not in
+the page text. **Phase 2 comes next after the reduced Phase 1.** 1.5 (the Mac re-run) and 1.7 stand as written, 1.5 for the nine books
+only (no witness join needed, as none is a PCED book). The text of 1.1–1.7 below is kept as planned; where it differs, this paragraph wins.
 (a) and (b) are mostly one problem: an unlocated article with no body usually has its text run on inside the article before
 it (brief §49, §56–64). Measure first, then one new pass. **Measured (1.1, brief §67): true of 14/2 only.** Elsewhere the rule
 reaches few rows; the plan below needs re-sizing before 1.3 (see 1.1).
@@ -155,17 +169,18 @@ reaches few rows; the plan below needs re-sizing before 1.3 (see 1.1).
   run-on flags of the OCR books are mostly not reached by any rule measured so far.
 - **1.2** ~~The gutter re-cut before the split~~: **not now** (the editor, 28 Sep); item 6 stays an optional later job, and the
   article step will then run again.
-- **1.3** Cowork, ~400–700 k: the split pass in `abhidhana_articles.py` (rule 1), with item 5b's homonym runs (177) in the same
+- **1.3** *(Reduced: the nine books without PCED only, ~200 articles; item 5b's homonyms moved to 1.8.)* Cowork, ~400–700 k: the split pass in `abhidhana_articles.py` (rule 1), with item 5b's homonym runs (177) in the same
   pass; each split row carries `split_from` / `split_rule`; tested as always (per-row digest: no field changes outside the
   split rows), measured against PCED in 01–19.
-- **1.4** The image check of the splits. **Decided: B + C** (the editor, 28 Sep). The options were: (A) every split on the image by Claude, ~2,000–3,500 splits × ~3 k ≈
+- **1.4** The image check of the splits. **Decided: B + C** (the editor, 28 Sep; confirmed for the reduced 1.3: the ~200 splits of the nine
+  books; B's PCED half has no splits left to measure, §67's 67.2% stands as the indication). The options were: (A) every split on the image by Claude, ~2,000–3,500 splits × ~3 k ≈
   6–10 M tokens, several days of Cowork usage; (B, recommended) PCED's precision for 01–19 plus a stratified image sample in
   the OCR books (~150 splits, ~0.5 M); if ≥ 97–98% right, the rest kept by rule, marked `split_checked: sample`, with the page
   pane showing the image beside each on the site; (C) a review page (one line a split, the page image from R2) for the editor
   to tick, ~150 k to build plus the editor's hours; can go with (B).
 - **1.5** The Mac, minutes: articles + romanisation for the books changed, witness joins (01–19); push v0.27.0;
   live check.
-- **1.6** Cowork (plan's limits; the reset as backup), ~2.5–3 M: redraft the rows that gain their own text (OCR books; `prep NN --ids`,
+- **1.6** *(Reduced: the ~200 split articles and their hosts; size to be re-estimated after 1.3.)* Cowork (plan's limits; the reset as backup), ~2.5–3 M: redraft the rows that gain their own text (OCR books; `prep NN --ids`,
   `merge NN --ids`) and the host rows whose drafts translated run-on text (the departures in 1c: 14/2 shards 05, 06, 08, 09,
   14; vol. 23 shard 04; vol. 24 shards 02, 06, 10, 13, 14; vol. 21 shards 04, 12, 14; vol. 20 shards 00, 03, 06, 14; 14/3
   shards 10, 11). Hosts that put the run-on text in `omitted` keep their Meaning; only their `omitted` line shrinks. PCED books
@@ -175,7 +190,12 @@ reaches few rows; the plan below needs re-sizing before 1.3 (see 1.1).
   with no Meaning row, is one to look at.) **Sized by 1.1** (brief §67): 4,601 unlocated headwords are not in their page's text
   (13: 462, 06: 298, 16: 292, 4/1: 246, 10: 244, 15: 240, 03: 225, 18: 221, 14/3: 213, 09: 213); 6,779 are there only as a substring.
 
-### Phase 2 — (c) the final revision (1c)
+- **1.8** *Optional, later* (the editor, 28 Sep): the larger groups of §67 — the ~700 headwords at a line start inside a farther body on the
+  page (the host taken from the page, not the neighbour; precision not measured), the 311 homonym swaps of item 5b (a homonym placed on
+  the other's line), the 4,601 unlocated headwords not in their page's text (1.7's `page.psm6` fallback or the index's page errors).
+  Not before Phase 2.
+
+### Phase 2 — (c) the final revision (1c)  — next after the reduced Phase 1
 - **2.1** Cowork, ~200–300 k: **one decision sheet** (a Claude Docs doc) with every open question, grouped by kind, not by
   volume: verb person (-si / -esi aorists, -tha, -ttha, -etha, -ittha, -aṁ, future headwords with a past); "see the original";
   senses printed twice (kept once: confirm); ~60 renderings (soka, sāsana, saṁsāra, cakkavāḷa, sikkhāpada, ပြာသာဒ်, ကမ္ဘာ, ကံ as
@@ -214,8 +234,9 @@ rate above, 1.6 alone is on the order of 5% of a week.
 **Decided (the editor, 28 Sep):** (1) the order above; (2) shrink the brief now (done, 0.2); (3) no gutter re-cut before the splits
 (item 6 optional, later); (4) splits: B + C; (5) retire the Reader (done in the docs; the artifact stays); (6) code fixes in Claude Code
 on the credit; redrafts and rule changes in Cowork. ~~**Next**: the editor runs `git gc` and pushes v0.26.1; then 0.3 in a cloud session
-and 1.1 in a Cowork chat~~: done (0.3 v0.26.2, 1.1 §67). **Next**: the editor reads §67 and decides 1.3's scope (the split rule alone,
-or with the farther-body host and 5b's homonyms), then 1.3 in a Cowork chat.
+and 1.1 in a Cowork chat~~: done (0.3 v0.26.2, 1.1 §67). ~~**Next**: the editor reads §67 and decides 1.3's scope~~: decided 28 Sep
+(§68): the split rule alone, in the nine books without PCED; the rest optional (1.8). **Next**: the editor reviews and tags v0.26.4; then
+1.3 (reduced) in a Cowork chat, 1.4 (B + C), 1.5, 1.6; then Phase 2.
 
 ## Next, in order
 

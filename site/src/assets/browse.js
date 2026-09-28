@@ -43,7 +43,7 @@ Object.assign(T.en, {
   homs: 'homonyms', homs_t: (n, N) => `homonym ${n} of ${N}`,
   cits_note: 'Picked out of the definition by machine; tap one to see the work.',
   show_all_n: n => `show all (${n})`, show_fewer: 'show fewer', show_every: m => `show everything (${m} more)`, hide_noise: 'hide the fragments again',
-  noise_t: 'Hidden by default: lines that are mostly dashes, digits or fragments (under 3 Pāḷi words, or over 30% non-letters), and citations with no work abbreviation.',
+  noise_t: 'Hidden by default: lines of one word, or mostly dashes, digits or symbols (over 30% non-letters), and citations that are only numbers.',
 });
 Object.assign(T.es, {
   b_mode: 'Modo de lectura:', m_reader: 'Lector de pāḷi', m_printed: 'Como está impreso', m_custom: 'personalizado',
@@ -82,7 +82,7 @@ Object.assign(T.es, {
   homs: 'homónimos', homs_t: (n, N) => `homónimo ${n} de ${N}`,
   cits_note: 'Extraídas por máquina de la definición; toque una para ver la obra.',
   show_all_n: n => `mostrar todo (${n})`, show_fewer: 'mostrar menos', show_every: m => `mostrarlo todo (${m} más)`, hide_noise: 'volver a ocultar los fragmentos',
-  noise_t: 'Ocultas de entrada: las líneas que son sobre todo guiones, cifras o fragmentos (menos de 3 palabras pāḷi, o más de un 30% de caracteres que no son letras) y las citas sin abreviatura de obra.',
+  noise_t: 'Ocultas de entrada: las líneas de una sola palabra, o que son sobre todo guiones, cifras o símbolos (más de un 30% de caracteres que no son letras), y las citas que son solo números.',
 });
 
 // --- settings (per browser) ------------------------------------------------------------------------
@@ -353,15 +353,15 @@ function fmtTr(x) {
     .replace(/\*([^*]+)\*/g, '<i class="pl" lang="pi">$1</i>')
     .replace(/‹([^›]+)›/g, '<span class="my" lang="my">$1</span>');
 }
-// display only: a quoted line that is mostly dashes, digits or fragments (under 3 Pāḷi words, or over
-// 30% of its characters not letters), and a citation with no work abbreviation (only digits: "2.50"),
-// are hidden behind "show everything". Nothing in the data changes.
+// display only: a quoted line of one word, or mostly dashes, digits or symbols (over 30% of its
+// characters not letters), and a citation that is only numbers ("2.50"; "vi 1" names a work and stays),
+// are hidden behind "show everything" (the editor, 28 Sep 2026). Nothing in the data changes.
 const FOLD = 5;
 function noiseQuote(r) {
   const x = (r || '').replace(/\s+/g, ''); if (!x) return true;
   const L = (x.match(/[\p{L}\p{M}]/gu) || []).length;
   const words = (r.match(/[\p{L}\p{M}]+/gu) || []).filter(w => w.length > 1);
-  return words.length < 3 || (x.length - L) / x.length > 0.3;
+  return words.length < 2 || (x.length - L) / x.length > 0.3;
 }
 const noiseCite = c => !/[\p{L}]/u.test((c || '').replace(/[၀-၉]/g, ''));
 // the citations shown as chips wrap into rows: keep the first FOLD rows, the rest behind "show all"
@@ -411,7 +411,7 @@ function article() {
     ((d.cf || []).includes('label') ? ` <span class="chip c-ok" title="${esc(t('corrected_t'))}">${esc(t('corrected_f'))}</span>` : '') +
     homsHTML(d) +
     (d.x !== 'u' && !d.l ? `<span class="notread" title="${esc(t('nr_t'))}">${esc(t('label_nr'))}</span>` : '') +
-    (d.x !== 'u' && !d.a && !d.ai ? `<span class="notread" title="${esc(t('nr_t'))}">${esc(t('analysis_nr'))}</span>` : '') + '</div>');
+    (d.ax && !d.a && !d.ai ? `<span class="notread" title="${esc(t('nr_t'))}">${esc(t('analysis_nr'))}</span>` : '') + '</div>');
   if (open.label && d.l) H.push(labelInfo(d));
   if (d.x === 'u') {
     H.push(`<div class="note warn"><strong>${esc(t('unlocated_h'))}</strong><p>${esc(t('unlocated_p'))}</p>` +
