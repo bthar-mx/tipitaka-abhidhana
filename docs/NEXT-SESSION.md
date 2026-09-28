@@ -88,7 +88,11 @@ Project are for advice and for what needs the Mac. What the new chat should know
 
 00. ~~Versions~~: tags v0.1.0–v0.11.0 created by the editor; the footer shows `VERSION` (brief §43). Tag **v0.13.0** on the push of §48
    (and v0.12.0 on §47's, if not yet made). Each push that changes data or the site: bump `VERSION`, add a `CHANGELOG.md` section, tag.
-00o. **After the §54 push (v0.18.3)**: `/data/version.json` 0.18.3; `/w/pamattakaraṇaṭṭha` (210168) shows the new draft
+00p. **v0.18.4** (28 Sep, no brief section): vol. 4/3's article step re-run (`abhidhana_articles.py 4c`, `abhidhana_romanise.py 4c`)
+   with the three analyses corrected in editor mode and exported in v0.18.2 (176136 omakapatta, 176140 omakasatta, 176144
+   omakkhi). Checked live 28 Sep (the editor): `/w/omakasatta` shows *Análisis corregido*.
+00o. ~~After the §54 push (v0.18.3)~~: done, checked 28 Sep (the editor): 0.18.3 live, `/w/pamattakaraṇaṭṭha` shows the new
+   draft. Was: `/data/version.json` 0.18.3; `/w/pamattakaraṇaṭṭha` (210168) shows the new draft
    (*el significado / sentido que es el hacer / producir el descuido*), *borrador*. Tag v0.18.3.
 00n. ~~The weekly export workflow~~: done. Added in v0.18.1; its first run opened PR #33 (v0.18.2, three analyses of 4/3),
    merged 28 Sep (brief §53, corrected). Was: **The weekly export workflow** (v0.18.1): `.github/workflows/export-edits.yml`, Monday 10:00 UTC and on demand

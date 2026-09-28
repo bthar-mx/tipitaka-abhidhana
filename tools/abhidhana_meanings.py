@@ -86,6 +86,10 @@ def quoted(s, J):
             and J[s['end']:s['end'] + 1] != '-' and (J[s['start'] - 1:s['start']] != '-' or J[s['start'] - 2:s['start']] == '(-'))
 
 
+# a damaged analysis bracket in an OCR book (our_text): Burmese words that mark a gloss (သော at a word's
+# end, not the Pāḷi သောမ), and an analysis formula, elements joined by + (သံ + နိ+ ရုဓိ + အ)
+GLOSS_WORD = re.compile(r'ခြင်း|၏|သည်|ကုန်|ကို|တို့|၍|၌|သော(?![\u1000-\u1021\u102B-\u103E])')
+FORMULA = re.compile(r'[^\s\[\]()။၊+]+(?:\s*\+\s*[^\s\[\]()။၊+]+)+')
 # a list of inflected forms, each with its page numbers, joined by dashes: ပမုစ္စန္တိ — ပမုစ္စေ — ၂၄၈-၉။
 FORM_DASH = re.compile(r'(?:^|(?<=[\s။(—–-]))([^\s။၊()—–-]+(?:-[^\s။၊()—–-]+)?)(?:\s*\([^()]*\))?\s*(?:—+|–+|-{2,})\s*(?:[၀-၉][-၀-၉၊,.]*\s*။?)?')
 _WORKS = []
@@ -109,7 +113,7 @@ def works():
     return _WORKS[0]
 
 
-def our_text(a, p):
+def our_text(a, p, ocr=False):
     """The Burmese explanation from our own text (a book with no witness join): the article's
     body with its printer's line breaks undone, the Pāḷi quotations and the citations left out.
 
@@ -121,7 +125,12 @@ def our_text(a, p):
     removed as abhidhana_articles.py parses them (CITE, cite_trim), with any page numbers left
     after; so are bracketed references, (ဓမ္မ။ ၅၇), and the lists of further ones, (-ဝိ၊၁။၃၆။ …).
     Where the analysis bracket was damaged, the body starts with the rest of the analysis and its
-    derivation, up to ]: that part is left out too (PCED keeps it out of the definition line)."""
+    derivation, up to ]: that part is left out too (PCED keeps it out of the definition line).
+    In an OCR book (ocr=True) that ] is often scan noise or a later bracket, and the part up to it
+    holds the gloss (sannipatita's senses (၁)-(၂), 179555): where a Burmese sentence in it holds a
+    gloss word (GLOSS_WORD), only the analysis formulas in it (FORMULA: Pāḷi elements joined by +)
+    are left out, and the ] becomes ။. The grammarians' Burmese notes then stay (ဒါ-၏ အာ-ကို ဣယ-ပြု): no test
+    tried told them from a gloss without losing glosses, and a draft leaves them in `omitted`."""
     sys.path.insert(0, str(ROOT / 'tools')); from abhidhana_articles import CITE, cite_trim
     body = a.get('body') or ''
     J = []; out = []   # J: body_joined as rebuilt; out: (character, its index in J, kind)
@@ -134,9 +143,14 @@ def our_text(a, p):
     J = ''.join(J)
     if p.get('body_joined') and p['body_joined'] != J: raise ValueError(f"{a['id']}: body_joined does not match the body")
     sp = p.get('pali') or []
-    cut = set()
+    cut = set(); brk = None
     i = J.find(']')
-    if a.get('analysis_bracket_damaged') and i >= 0 and '[' not in J[:i]: cut.update(range(i + 1))
+    if a.get('analysis_bracket_damaged') and i >= 0 and '[' not in J[:i]:
+        if ocr and any(GLOSS_WORD.search(x) and NOT_PALI.search(x) for x in re.split(r'(?<=[။၊])\s*', J[:i])):
+            brk = i   # the ] becomes a sentence break: a "see X" after it stays a sentence
+            for m in FORMULA.finditer(J[:i]):
+                if all(not NOT_PALI.search(e) for e in re.split(r'\s*\+\s*', m.group())): cut.update(range(m.start(), m.end()))
+        else: cut.update(range(i + 1))
     for s in sp:
         if quoted(s, J): cut.update(range(s['start'], s['end']))
     for m in CITE.finditer(J):
@@ -148,7 +162,7 @@ def our_text(a, p):
         x = m.group()[1:-1]
         if (x.lstrip().startswith('-') and '။' in x) or (re.search('[၀-၉]', x) and re.search('[၊။]', x) and not re.search('[\u103A\u1037\u1038]', x)):
             cut.update(range(m.start(), m.end()))
-    t = ''.join('' if j in cut else c if k != 'hy' else '' if any(s['start'] < j < s['end'] for s in sp) else '-'
+    t = ''.join('' if j in cut else '\x00' if j == brk else c if k != 'hy' else '' if any(s['start'] < j < s['end'] for s in sp) else '-'
                 for c, j, k in out)
     t = re.sub(r'\s+', ' ', t)
     for _ in range(3):   # what the cuts leave behind: page numbers of a citation CITE does not parse
@@ -164,6 +178,7 @@ def our_text(a, p):
     # only sense markers, quotation marks and brackets (a sense explained only by a quotation: (၂)။)
     # then a sentence that is only a work's abbreviation, a citation without its
     # numbers (ဝဇိရ။), and the lists of inflected forms joined by dashes
+    if brk is not None: t = re.sub(r'^[\s\x00]+', '', re.sub(r'[\s၊။]*\x00[\s၊။]*', '။ ', t))
     t = FORM_DASH.sub(lambda m: '' if not NOT_PALI.search(m.group(1)) else m.group(), t)
     t = re.sub(r'\s+', ' ', re.sub(r'\s+([၊။])', r'\1', t)).strip()
     one = {s['my'] for s in sp if s['tokens'] == 1}
@@ -197,7 +212,7 @@ def prep(book, nshards=16, ids=None):
         elif jp.exists():
             d = mn(P.get(a['id'], {}).get('body_joined') or '').strip(); src = 'ocr'
         else:   # no witness join: our own text, the quotations and citations left out
-            d = mn(our_text(a, P.get(a['id'], {}))).strip(); src = 'text layer' if book == '14b' else 'ocr'
+            d = mn(our_text(a, P.get(a['id'], {}), ocr=book != '14b')).strip(); src = 'text layer' if book == '14b' else 'ocr'
         if not d: continue
         F = {}; core = []
         for s in [s for s in re.split(r'(?<=။)\s*', d) if s.strip()]:

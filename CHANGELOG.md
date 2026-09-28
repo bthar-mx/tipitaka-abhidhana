@@ -23,6 +23,15 @@ Versions of the Tipiṭaka Pāḷi-Myanmā Abhidhāna project: the data, the too
 A release note says, per version: what changed, the brief's sections, and the headline figures
 (located, label + body, Meaning rows drafted / reviewed).
 
+## v0.18.5 — 28 Sep 2026
+
+- `tools/abhidhana_meanings.py prep`, books drafted from our OCR (`source: ocr`: 14/3, 20–25, 4/3): where a damaged analysis
+  bracket's part up to the first `]` holds Burmese gloss words, only the analysis formulas in it (Pāḷi elements joined by +)
+  are left out and the `]` becomes ။; before, the whole part went, and with it the gloss where the `]` was scan noise or a
+  later bracket (vol. 23: 64 rows' text changed, vol. 22: 241). 14/2 and the PCED books unchanged (byte-identical `prep`
+  output). No published data changed.
+- NEXT-SESSION: 00o done (0.18.3 checked live), v0.18.4 noted (00p).
+
 ## v0.18.4 — 28 Sep 2026
 
 - **Vol. 4/3: article step re-run** (`abhidhana_articles.py 4c`, `abhidhana_romanise.py 4c`) with the three analyses corrected
