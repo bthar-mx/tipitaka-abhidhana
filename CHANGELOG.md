@@ -23,6 +23,16 @@ Versions of the Tipiṭaka Pāḷi-Myanmā Abhidhāna project: the data, the too
 A release note says, per version: what changed, the brief's sections, and the headline figures
 (located, label + body, Meaning rows drafted / reviewed).
 
+## v0.18.3 — 28 Sep 2026
+
+- **Vol. 14/2: 497 Meaning rows redrafted** (brief §54): the rows whose Burmese now begins with the body's restored first
+  words (brief §50, `docs/translation/meanings/14b-redraft.tsv`), drafted again in two shards and merged over the old rows;
+  all still `drafted`. No other row changed. Flags 1,406 → 1,128 (the old ones mostly noted the lost first word), omitted
+  lines 1,165 → 1,172, terms 571 → 572. Meaning rows in all: 163,445, none reviewed.
+- `tools/abhidhana_meanings.py`: `prep` / `merge` take `--ids FILE` (draft and merge only those ids over the existing rows),
+  `--shards N` and `--work DIR`.
+- Brief §53 corrected: the weekly export workflow was added in v0.18.1 and its first run opened PR #33 (v0.18.2).
+
 ## v0.18.2 — 2026-09-28
 
 - **Edits from editor mode exported** (weekly workflow): 0 Meaning row(s), 3 correction(s) to `docs/corrections.tsv`, 0 line(s) to `corrections-es.tsv`. Books and fields: 4c: analysis. Article step still to re-run on the Mac for: 4c.

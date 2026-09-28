@@ -1,4 +1,4 @@
-# Abhidhāna — handover, 28 September 2026 (editor mode built, not yet switched on, v0.17.0; roman input in its form, v0.18.0)
+# Abhidhāna — handover, 28 September 2026 (editor mode built, not yet switched on, v0.17.0; roman input in its form, v0.18.0; 14/2's 497 rows redrafted, v0.18.3)
 
 *All 29 books are digitised end to end, spot-checked and in the Reader: 221,154 index rows, 94.1%
 located, 88.1% with label + body (brief §30). Read
@@ -7,7 +7,7 @@ located, 88.1% with label + body (brief §30). Read
 vol. 6, §21 vol. 7, §22 vol. 8 and the gutter failures, §23 vol. 9, §24 the re-cut tool, §25 vol.
 14/2's text layer, §26 the batch (vols. 10–22), §27 vols. 23, 24, 14/2, the index's page errors,
 book 21 and the Reader in binary, §28 the website, the page images and the label table, §29 vol.
-21, vol. 25's resolution and the labels as the dictionary prints them, §30 vol. 25 and the total, §31–37 the page images, the Introduction and the stem lexicon, §38 the site redesign, §39 the vol. 1 drafts, §40 the site fixes, the PCED analyses, hand corrections and sano / insano, §41 versioned assets and vol. 2's drafts, §42 the live check after `5db316f`, vol. 3's drafts and version numbers, §43 vols. 4/1–4/2, the IEBH footer, citation tooltips, cross-reference links and the labels the editor reviewed, §44 the live check after v0.8.0, vol. 4/3 deferred, vol. 5's drafts, the analysis split from its derivation and printed page numbers, §45 the live check after v0.9.0 and vol. 6's drafts, §46 stems L105–L106 and vols. 7–9, §47 vols. 10–14/1, §48 the live check after v0.12.0 and vols. 15–19, §49 vol. 14/2 from its text layer, §50 the body's first words restored, §51 the editor's decisions of 27 Sep and the revision queue, §52 editor mode, §53 roman input in the editor's form. Every figure is there.
+21, vol. 25's resolution and the labels as the dictionary prints them, §30 vol. 25 and the total, §31–37 the page images, the Introduction and the stem lexicon, §38 the site redesign, §39 the vol. 1 drafts, §40 the site fixes, the PCED analyses, hand corrections and sano / insano, §41 versioned assets and vol. 2's drafts, §42 the live check after `5db316f`, vol. 3's drafts and version numbers, §43 vols. 4/1–4/2, the IEBH footer, citation tooltips, cross-reference links and the labels the editor reviewed, §44 the live check after v0.8.0, vol. 4/3 deferred, vol. 5's drafts, the analysis split from its derivation and printed page numbers, §45 the live check after v0.9.0 and vol. 6's drafts, §46 stems L105–L106 and vols. 7–9, §47 vols. 10–14/1, §48 the live check after v0.12.0 and vols. 15–19, §49 vol. 14/2 from its text layer, §50 the body's first words restored, §51 the editor's decisions of 27 Sep and the revision queue, §52 editor mode, §53 roman input in the editor's form, §54 the redraft of 14/2's 497 rows with restored first words. Every figure is there.
 `docs/labels.md` §0 holds the label table (the one source for the pipeline and the site),
 `docs/abbreviations.md` the dictionary's own abbreviations and its prose on the labels,
 `docs/index-errata.md` the index's errors, `docs/witness.md` and `docs/witness-join.md` the typed
@@ -88,7 +88,10 @@ Project are for advice and for what needs the Mac. What the new chat should know
 
 00. ~~Versions~~: tags v0.1.0–v0.11.0 created by the editor; the footer shows `VERSION` (brief §43). Tag **v0.13.0** on the push of §48
    (and v0.12.0 on §47's, if not yet made). Each push that changes data or the site: bump `VERSION`, add a `CHANGELOG.md` section, tag.
-00n. **The weekly export workflow** (v0.18.1): `.github/workflows/export-edits.yml`, Monday 10:00 UTC and on demand
+00o. **After the §54 push (v0.18.3)**: `/data/version.json` 0.18.3; `/w/pamattakaraṇaṭṭha` (210168) shows the new draft
+   (*el significado / sentido que es el hacer / producir el descuido*), *borrador*. Tag v0.18.3.
+00n. ~~The weekly export workflow~~: done. Added in v0.18.1; its first run opened PR #33 (v0.18.2, three analyses of 4/3),
+   merged 28 Sep (brief §53, corrected). Was: **The weekly export workflow** (v0.18.1): `.github/workflows/export-edits.yml`, Monday 10:00 UTC and on demand
    (Actions → Export edits → Run workflow). The repository and the organisation allow Actions to open pull requests
    (the editor, 28 Sep); the workflow asks for `contents: write` and `pull-requests: write` itself, so the default
    permission can stay read-only. First manual run: to do after the push; with no edits it ends "No new edits", with edits
@@ -98,7 +101,7 @@ Project are for advice and for what needs the Mac. What the new chat should know
    (00l): open an article's *Editar*, switch *Análisis* to *Latín*, type `omaka + patta`: *se guarda* ဩမက + ပတ္တ, *relectura*
    ✓; type a capital: *Guardar* disabled. Check the Burmese in the Mac's font (the cloud's Chromium lacks a Myanmar shaper).
    For the editor: (a) the tall ā ါ / ာ is invisible in roman; the converter writes Aksharamukha's form (သမ္ပာ, while most
-   volumes print သမ္ပါ): keep, or follow the print for ္ပ (brief §53)? (b) **the weekly export workflow**
+   volumes print သမ္ပါ): keep, or follow the print for ္ပ (brief §53)? (b) ~~the weekly export workflow~~: done in v0.18.1 (00n). Was: the weekly export workflow
    (`.github/workflows/export-edits.yml`, cron `0 10 * * 1` + manual; export via `--api`, patch bump, CHANGELOG line, PR on
    `edits/YYYY-MM-DD`) was not written: the cloud session's permission check refused the file. The export tool's new
    `--summary FILE` gives the books, fields and books to re-run for it. Allow it in a new session, or add it by hand; it
@@ -152,10 +155,13 @@ Project are for advice and for what needs the Mac. What the new chat should know
    (`abhidhana_reader_data.py` for all books, then republish).
 0c. **Hand corrections** go in `docs/corrections.tsv` (brief §40); re-run `abhidhana_articles.py NN` and
    `abhidhana_romanise.py NN`. Confirm the `roman` column of `docs/labels.md` §0.
-1a. **Vol. 14/2 drafted** (approved by the editor, 27 Sep, after trial shard 00; brief §49): 6,795 rows from the text layer,
+1a. ~~**Vol. 14/2 drafted**~~: done, with the redraft of 28 Sep (brief §54); what follows is for review and the Mac. (Approved by the editor, 27 Sep, after trial shard 00; brief §49): 6,795 rows from the text layer,
    1,406 flagged, omissions in `meanings/14b-omitted.tsv`. Live check of v0.14.0 done 27 Sep (the editor).
-   **Redraft 497 rows in the cloud** whose Burmese now begins with the restored first words (brief §50):
-   `docs/translation/meanings/14b-redraft.tsv` (210168 among them); `prep` them as one or two shards and merge over the old rows.
+   ~~Redraft 497 rows~~ whose Burmese now begins with the restored first words: done 28 Sep (brief §54, v0.18.3), two shards,
+   339,035 agent tokens; flags 1,406 → 1,128. For the editor: aorists in -esi were put in the 2nd person by one agent (213807,
+   213826, 214262) and the 3rd by the other (215427, 215433, 215546), all flagged: which person for -esi? 211785 runs on into
+   six headwords (ပရသက္ကာရ … ပရသတ္တ), only the first translated. 213590 and 215011: `prep` still drops the restored ပရိ with a
+   Pāḷi span (the drafts read it back, flagged).
    On the Mac: re-run `prep 15` and compare with a copy made before the §49 changes (should be byte-identical).
    For review:
    - run-on headwords with no body: 210255, 210257, 210262 (their text is inside 210254, 210256, 210261); left without a

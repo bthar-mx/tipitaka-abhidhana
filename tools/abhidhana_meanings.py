@@ -3,7 +3,8 @@
 
 Two steps, around a drafting pass done outside this script:
 
-    prep  <book>   writes tmp/meanings/work<book>.json and tmp/meanings/shards/NN.jsonl:
+    prep  <book> [--shards N] [--ids FILE] [--work DIR]
+                   writes tmp/meanings/work<book>.json and tmp/meanings/shards/NN.jsonl:
                    the Burmese explanation of each article, with the "see X" / "same meaning
                    as X" sentences replaced by placeholders «S1» «S2» …
     report <book>  writes meanings/<book>-flags.tsv and <book>-terms.tsv after merge
@@ -174,7 +175,8 @@ def our_text(a, p):
     return ' '.join(x for x in re.split(r'(?<=။)\s*', t) if keep(x))
 
 
-def prep(book, nshards=16):
+def prep(book, nshards=16, ids=None):
+    """ids: draft only these (a redraft); the work file still holds every explanation, for report."""
     jp = ROOT / f'witness/join-{book}.jsonl'
     J, W = {}, {}
     if jp.exists():
@@ -221,7 +223,7 @@ def prep(book, nshards=16):
                     'only': not re.sub(r'«S\d+»|\s', '', text)})
     (WORK / 'shards').mkdir(parents=True, exist_ok=True)
     json.dump(out, open(WORK / f'work{book}.json', 'w', encoding='utf-8'), ensure_ascii=False)
-    todo = [o for o in out if not o['only']]; size = -(-len(todo) // nshards)
+    todo = [o for o in out if not o['only'] and (ids is None or o['id'] in ids)]; size = -(-len(todo) // nshards)
     for k in range(nshards):
         with open(WORK / f'shards/{k:02d}.jsonl', 'w', encoding='utf-8') as f:
             for o in todo[k * size:(k + 1) * size]:
@@ -235,7 +237,9 @@ FORM = {'es': {'see': ('Véase', 'Véanse'), 'also': ('Véase también', 'Véans
                'prev': 'Same meaning as the preceding headword.'}}
 
 
-def merge(book):
+def merge(book, ids=None):
+    """ids: a redraft; the new drafts of these ids replace their rows (and omitted lines) in the existing
+    files, every other row is kept as it is."""
     from aksharamukha import transliterate
     cache = {}
     def iast(s):
@@ -253,14 +257,14 @@ def merge(book):
     W = {o['id']: o for o in json.load(open(WORK / f'work{book}.json', encoding='utf-8'))}
     R = {}
     for f in sorted(glob.glob(str(WORK / 'shards/[0-9][0-9].jsonl'))):
-        ids = {json.loads(l)['id'] for l in open(f, encoding='utf-8')}
+        sid = {json.loads(l)['id'] for l in open(f, encoding='utf-8')}
         own = WORK / 'out' / Path(f).name
         for g in [own] + [Path(x) for x in sorted(glob.glob(str(WORK / 'out/[0-9][0-9].jsonl'))) if Path(x) != own]:
             if not g.exists(): continue
             for l in open(g, encoding='utf-8'):
                 try: o = json.loads(l)
                 except ValueError: continue
-                if o['id'] in ids and o['id'] not in R: R[o['id']] = o
+                if o['id'] in sid and o['id'] not in R: R[o['id']] = o
     out = []; omitted = []
     for i, w in W.items():
         r = R.get(i)
@@ -283,6 +287,17 @@ def merge(book):
         if row['es'] or row['en']: out.append(row)
     dest = ROOT / f'docs/translation/meanings/{book}.jsonl'
     dest.parent.mkdir(parents=True, exist_ok=True)
+    if ids is not None:
+        new = {r['id']: r for r in out if r['id'] in ids}
+        old = [json.loads(l) for l in open(dest, encoding='utf-8')]
+        kept = [i for i in ids if i not in new and i in {r['id'] for r in old}]
+        if kept: print(f'{book}: no new draft for {len(kept)} ids, old rows kept: {kept[:10]}')
+        out = [new.pop(r['id'], r) for r in old] + list(new.values())
+        out.sort(key=lambda r: r['id'])
+        op = ROOT / f'docs/translation/meanings/{book}-omitted.tsv'
+        if op.exists():
+            prev = [l.rstrip('\n').split('\t', 2) for l in open(op, encoding='utf-8')][1:]
+            omitted = sorted([(int(i), x, o) for i, x, o in prev if int(i) not in ids] + [o for o in omitted if o[0] in ids])
     with open(dest, 'w', encoding='utf-8') as f:
         for r in out: f.write(json.dumps(r, ensure_ascii=False) + '\n')
     if omitted:   # what a draft from our own text left out (quotation fragments, citations …): kept apart, not in the rows
@@ -315,4 +330,15 @@ def report(book):
 
 
 if __name__ == '__main__':
-    {'prep': prep, 'merge': merge, 'report': report}[sys.argv[1]](sys.argv[2])
+    import argparse
+    ap = argparse.ArgumentParser()
+    ap.add_argument('step', choices=['prep', 'merge', 'report']); ap.add_argument('book')
+    ap.add_argument('--shards', type=int, default=16, help='prep: number of shards')
+    ap.add_argument('--ids', help='prep / merge: a file whose first column holds the ids to (re)draft; header lines skipped')
+    ap.add_argument('--work', help='working folder (default tmp/meanings)')
+    a = ap.parse_args()
+    if a.work: WORK = Path(a.work).resolve()
+    ids = {int(l.split('\t')[0]) for l in open(a.ids, encoding='utf-8') if l[:1].isdigit()} if a.ids else None
+    if a.step == 'prep': prep(a.book, a.shards, ids)
+    elif a.step == 'merge': merge(a.book, ids)
+    else: report(a.book)
