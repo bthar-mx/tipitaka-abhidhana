@@ -2,7 +2,7 @@
 
 *Written 21 September 2026, at the end of the volume-25 pilot; §10–12 revised 24 September
 2026, after volume 1 was done end to end and the repository was made public; §18–26 added
-25 September 2026 (spelling folds, the witness join, vols. 6–9, re-cutting gutters, vol. 14/2's text layer, the batch of vols. 10–22); §27 the same evening (vols. 23, 24 and 14/2 finished, the index's page errors applied, book 21 explained, the Reader in binary); §28 the public website, the page images and the label table; §29 vol. 21 finished, vol. 25's resolution, the dictionary's own account of its labels; §30 vol. 25 done, all 29 books; §31 (later on 25 Sep) the page-image tool's bitmap test; §32 the weak page corrections, image-checked; §33 the compound analysis with its [ lost; §34 the dictionary's history on the site; §35 all page images live, a light/dark switch, the Introduction page; §36 citations keep their whole abbreviation; §37 translation, batch 1; §38–41 (26 Sep) the redesign, vol. 1–2 drafts, PCED analyses, versioned assets; §42 (26 Sep) the live check, vol. 3's drafts, version numbers; §43 vols. 4/1–4/2 drafts, the IEBH footer, citation tooltips, cross-reference links, labels reviewed; §44 the live check after v0.8.0, vol. 4/3 deferred, vol. 5 drafted, the analysis split from its derivation, printed page numbers; §45 the live check after v0.9.0, vol. 6 drafted; §46 two stems from the editor, vols. 7–9 drafted; §47 vols. 10–14/1 drafted; §48 (27 Sep) the live check after v0.12.0, vols. 15–19 drafted; §49 vol. 14/2 drafted from its text layer; §50 the body's first words on the headword's line restored; §51 the editor's decisions of 27 Sep, a revision queue, ဩ in vol. 4/3; §52 (cloud) editor mode; §53 (28 Sep, cloud) roman input in the editor's form. Everything in
+25 September 2026 (spelling folds, the witness join, vols. 6–9, re-cutting gutters, vol. 14/2's text layer, the batch of vols. 10–22); §27 the same evening (vols. 23, 24 and 14/2 finished, the index's page errors applied, book 21 explained, the Reader in binary); §28 the public website, the page images and the label table; §29 vol. 21 finished, vol. 25's resolution, the dictionary's own account of its labels; §30 vol. 25 done, all 29 books; §31 (later on 25 Sep) the page-image tool's bitmap test; §32 the weak page corrections, image-checked; §33 the compound analysis with its [ lost; §34 the dictionary's history on the site; §35 all page images live, a light/dark switch, the Introduction page; §36 citations keep their whole abbreviation; §37 translation, batch 1; §38–41 (26 Sep) the redesign, vol. 1–2 drafts, PCED analyses, versioned assets; §42 (26 Sep) the live check, vol. 3's drafts, version numbers; §43 vols. 4/1–4/2 drafts, the IEBH footer, citation tooltips, cross-reference links, labels reviewed; §44 the live check after v0.8.0, vol. 4/3 deferred, vol. 5 drafted, the analysis split from its derivation, printed page numbers; §45 the live check after v0.9.0, vol. 6 drafted; §46 two stems from the editor, vols. 7–9 drafted; §47 vols. 10–14/1 drafted; §48 (27 Sep) the live check after v0.12.0, vols. 15–19 drafted; §49 vol. 14/2 drafted from its text layer; §50 the body's first words on the headword's line restored; §51 the editor's decisions of 27 Sep, a revision queue, ဩ in vol. 4/3; §52 (cloud) editor mode; §53 (28 Sep, cloud) roman input in the editor's form; §54–56 (28 Sep) 14/2's redraft, the OCR pilot, vol. 23 drafted; §57 (28 Sep, Cowork) vol. 22 drafted. Everything in
 this file was measured. Do not re-derive a figure it carries; if a new one is needed,
 measure it rather than estimating.*
 
@@ -2263,3 +2263,84 @@ vol. 23 (drafted from our OCR). The site was not built in the cloud.
 - **To check on the page**: 188909 တစ်သောင်း in a sahassa- row; 189171 ‹မဒရပ်› (Madra?); 189075 sahetha (-etha: 3rd singular
   optative, not the 2nd person of "-tha"); 191505 -ssu with ကုန်လော့ rendered plural; sāyassu 2nd person though the Burmese
   reads "(I) will"; 190081 a word read as "sleep" to fit the Sāmaka sutta.
+
+
+## 57. Vol. 22 drafted from our OCR and merged (28 Sep 2026, Cowork)
+
+**Asked** (the editor): vol. 22's Meaning boxes, as vol. 23 was done (§56): `prep` for book 22 in 17 shards (§55), one agent and
+scratch folder per shard, at most 20 at once, with `docs/translation/drafting-prompt.md` and §55's paragraph for OCR books; run in
+Cowork, on the plan's limits, not the cloud credit; stop if a wave hits the usage limit. The review questions wait for the final
+revision (NEXT-SESSION 1c).
+
+**Prep** on the Mac (Cowork VM), `prep 22 --shards 17 --work tmp/meanings/v22`: 7,715 explanations, 160 formula-only, **7,555 to
+draft**, as §55. Shards 00–15 of 445 lines and 16 of **435** (§55's "437–445" was not right for the last). The VM's `/sessions`
+disk was full (9.8 GB, 46 MB free), so `pip install` failed there; `prep` needs no Aksharamukha and ran, and `merge` / `report` were
+run in the Cowork cloud container on a copy of `tools/abhidhana_meanings.py` and `work22.json`, the four output files committed
+back to `docs/translation/meanings/` (md5 checked in the folder). Tarballs `tmp/meanings/mean22-in-0928a.tar.gz` (shards, brief,
+stems, glossary, prompts), `mean22-out-0928b.tar.gz` (the 17 output files; unpacked into `tmp/meanings/v22/out/`).
+
+**Drafted**: 17 agents in one wave, each with its own scratch folder, the prompt of §55–56 (`docs/translation/trial/23-shard00-prompt.md`
+with vol., shard, line count and paths changed). **No wave stopped at the usage limit.**
+
+| shard | agent tokens | tool calls | min | | shard | agent tokens | tool calls | min |
+|---|---:|---:|---:|---|---|---:|---:|---:|
+| 00 | 289,484 | 31 | 19 | | 09 | 252,169 | 30 | 17 |
+| 01 | 268,644 | 30 | 18 | | 10 | 284,561 | 30 | 21 |
+| 02 | 248,992 | 29 | 17 | | 11 | 301,173 | 29 | 19 |
+| 03 | 264,027 | 31 | 19 | | 12 | 257,563 | 22 | 16 |
+| 04 | 282,784 | 30 | 21 | | 13 | 295,656 | 30 | 20 |
+| 05 | 259,357 | 18 | 18 | | 14 | 334,868 | 38 | 24 |
+| 06 | 268,841 | 29 | 19 | | 15 | 278,505 | 33 | 18 |
+| 07 | 242,341 | 29 | 16 | | 16 | 343,871 | 41 | 25 |
+| 08 | 257,925 | 30 | 17 | | **all** | **4,730,761** | **510** | |
+
+~626 tokens a drafted line (vol. 23: ~555, 14/2: ~479). The shard numbers are the order the agents were launched and reported; the
+counts are the harness's per-agent figures. **Checked** (every shard): one line per id, in order; valid JSON with id, es, en, terms,
+flag, omitted; every «Sn» in es and en; ⟦ ⟧ and ‹ › balanced; no Burmese outside them; es and en empty together: 0 errors. 101 empty
+lines are flagged "nothing to translate", one (185063) "garbled … nothing translated".
+
+| vol. 22 | vol. 22 | vol. 23 (§56) |
+|---|---:|---:|
+| lines drafted / flagged / with `omitted` / empty | 7,555 / 2,901 (38.4%) / 5,073 (67.1%) / 102 | 6,761 / 31.0% / 57.3% / 61 |
+| flagged, omitted or empty; clean | 5,664 (75.0%); 1,891 (25.0%) | 67.6%; 32.4% |
+| flags: "OCR: read X as Y" / run-on article / senses printed twice / person / hyphen / aorist | 1,179 / 368 / 68 / 64 / 109 / 39 | 793 / 244 / 47 / 38 / 37 / 12 |
+| rows merged (`meanings/22.jsonl`), all `drafted`, `source` ocr: formula / drafted | 7,613: 160 / 7,453 | 6,906 |
+| flagged (`22-flags.tsv`) / lines in `22-omitted.tsv` | 2,799 / 5,073 | 2,033 / 3,873 |
+| articles without a Meaning: no body / nothing left after `prep` / drafted empty | 301 / 62 / 102 (465 of 8,078) | 276 of 7,182 |
+| terms kept in Pāḷi (`22-terms.tsv`) | 773 (samādhi 234, kilesa 111, samāpatti 93, sabbaññutaññāṇa 69, jhāna 66, samatha 65) | 595 |
+| "see X" links matching a romanised headword (occurrences, every book's `headword_iast`) | 714 of 902 (79.2%) | 614 of 800 (76.8%) |
+| rows with *sano / insano*; *mérito*; "no saludable" | 60; 10; 0 | 25; 9 |
+| rows with Burmese left in ‹ › | 41 | |
+
+(The flag counts are substring counts over the flag text, as for §56.) As §55's clean-row signal predicted (40.8% against 52.9%),
+vol. 22 is the noisier book: more `omitted`, more OCR readings flagged. After merge: ids sorted and unique, no ⟦ ⟧ left, no Burmese
+outside ‹ ›. No vol. 22 row is in `corrections-es.tsv`. **Totals: 23 books, 177,964 Meaning rows, all `drafted`, none reviewed:
+80.5%** of the index (221,154). About and README list vol. 22 (drafted from our OCR). The site was not built here.
+
+**What the agents reported** (nothing reviewed; the questions for the final revision are in NEXT-SESSION 1c):
+- **Aorists in -si / -esi, and -tha, were not handled alike.** Most shards put -si / -esi aorists in the 3rd person, flagged (08 181305;
+  11 samuṭṭhāsi, samuṭṭhāpesi, samuttejesi; 13 183623, 183730, 183785, 183790, 183813, 183942, 183980; 15; 16 sambodhesi,
+  sambhāvesi); shards 00 (177619, 177654), 07 (180994) and 08 (181408) followed the -si / -tha = 2nd-person rule, flagged. -tha read
+  as a 3rd-person aorist where the grammar note says so: 180237, 180549, 180993.
+- **Run-on articles** throughout (368 flags): a headword's definition inside its neighbour's line, the headword's own line empty or a
+  fragment (e.g. 180232 inside 180229; 181567 holds samādhāna's senses, 181566 empty; 183392's senses in 183391; 181859 holds five
+  other articles; 179638/179639 carry 13 run-on articles). Only the line's own text translated. Shard 14 departed from this in 184524
+  (the end of the previous article plus a short entry, both translated, flagged); shard 12 translated the "cleaner second copy" of
+  articles printed twice (183148, 183239, 183446).
+- **Senses printed twice** (two OCR passes run together, 68 flags): samāpatti, samāpanna, samāyoga, samiddha, samiddhi, samuggama,
+  samanta, samaya, sampatti, sampadā, sampadāna, sampanna, sampayutta, samparāyika and others: translated once.
+- **Renderings the agents chose themselves**, for the editor: ဝါဒ kept ⟦ဝါဒ⟧ (07); သဗ္ဗညု kept Pāḷi, ပူပန် *angustia*, ငြိမ်းအေး
+  *aquietamiento*, ဂုဏ်ကျေးဇူး *virtudes* (02); ရဟန်းတရား ⟦=dhamma⟧ in the samaṇadhamma rows, ကောင်းစွာ (sam-) *completamente* (06);
+  ပယ်နုတ်-ပယ်ဖျက်-ပယ်သတ်-ပယ်ခွါ *erradicar / eliminar / extirpar / abandonar*, အကြွင်းမဲ့ *sin residuo* (11); ကျမ်းတက် *nexo textual*
+  (185002, 15); ဒြဗ် *cosa*, the grammar gloss သံ, သာမီ read as the sa-sāmī relation (16); ကုသိုလ် *mérito* in merit contexts (05, 16).
+- **To check on the page**: 177881 saparivāra (45 sub-senses lettered (aa), (ab) … past (z)); 179237 (gloss reads pārihāriya);
+  headword and text disagree: 179917, 180019, 180038–39, 180097, 180139, 180454, 180587, 181000; rows rebuilt from context or
+  pattern: 180247 samajjadāna, 180732, 182545 (a sutta biography); 183326 (a sīmā article that probably lost a negation); garbled
+  stretches 181312–181320, 181336–181345; 184409 sampayuttapaccaya (gaps marked […]); six rows that stop after "all …" (179224, 179236,
+  179240, 179302, 179307, 179310). Long notes translated in full: 185288 sambhava, 185289, 185370 sambhāvana, 185466 sambhūta, 185342
+  sambhāra. Plant and other names left in ‹ ›: ‹မှန်ကင်း›, ‹ဘီလူးပါပပ်›, ‹ဖန်ခါး›, ‹ဆီးဖြူ›, ‹ငြုပ်›, ‹ဝံလို›, ‹ထောက်ကြံ့›, ‹ဆတ္တာ›.
+- Slips left in by the append-only rule: 177981 lokiya, lokuttara joined by a comma (not *o*); the flags of 178844 and 179696 repeat
+  the word they claim to correct ("read X as X").
+
+*This session ran one `git status` in the Cowork VM by mistake (against the rule); it refreshed `.git/index`, and no
+`index.lock` was left (checked).*
