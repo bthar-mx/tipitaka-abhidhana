@@ -23,3 +23,14 @@
 .ed-table tr.rev td{color:var(--muted);text-decoration:line-through}
 .ed-filters{display:flex;gap:10px;flex-wrap:wrap;align-items:end;margin:10px 0}
 .ed-filters input{background:var(--card);color:var(--ink);border:1px solid var(--line2);border-radius:5px;padding:5px 7px;font:14px var(--ui);width:7em}
+.ed-mode{display:inline-flex;margin:0 0 4px;border:1px solid var(--line2);border-radius:5px;overflow:hidden}
+.ed-mode button{border:0;background:var(--card);color:var(--muted);font:500 12.5px var(--ui);padding:2px 9px;cursor:pointer}
+.ed-mode button[aria-pressed=true]{background:var(--accent);color:var(--on-accent)}
+.ed-f .ed-rom{font:16px var(--ui)}
+.ed-prev .ed-k{font:500 11.5px var(--ui);letter-spacing:.04em;text-transform:uppercase;color:var(--muted);font-style:normal;margin-right:4px}
+.ed-prev .my{font-style:normal;color:var(--ink)}
+.ed-prev .ed-chk{font-style:normal;font-size:12.5px}
+.ed-prev .ed-chk[data-ok=true]{color:var(--muted)}
+.ed-prev.ed-bad .ed-chk{color:#b3261e;font-weight:600}
+.ed-prev.ed-bad{border-left:3px solid #b3261e;padding-left:6px}
+.ed-save:disabled{opacity:.5;cursor:not-allowed}

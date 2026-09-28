@@ -102,6 +102,20 @@ If step 14 says the API is not set up: 503 means a variable of step 9 is missing
   a Myanmar **Unicode** keyboard; the form refuses these fields without Burmese letters. The headword, label
   and analysis show a **live roman preview** (`site/src/assets/roman.js`, a port of the Aksharamukha
   transliteration `tools/abhidhana_romanise.py` uses; the body has none, being Burmese prose with Pāḷi in it).
+- **Roman input** (brief §53). The headword, label and analysis each have a switch *Birmano / Latín*. In
+  *Latín* the field is typed in IAST (`omaka + patta`, `ti`, `pu,thī`, `na + kataludda. akata + ludda`) and the
+  form converts it to Burmese script (`ROMAN.burmese` in `roman.js`, a port of Aksharamukha's IAST → Burmese).
+  `+`, spaces, brackets and `-` stay; `.` becomes ။, `,` ၊, digits Burmese digits; `ṃ` is read as `ṁ`, `ḷ` as
+  `l̤`. Under each field, in both modes: **se guarda** (the Burmese that will be stored) and **relectura** (its
+  roman read-back through `roman.js`). In *Latín*, *Guardar* is disabled, and a save refused, while the read-back
+  differs from what was typed (a capital, a letter it does not know such as `ṛ`, a letter left Latin): fix the
+  roman or switch the field to *Birmano*. What is stored is always the Burmese. A field switched to *Latín* and
+  not changed is not an edit, even when its Burmese would not come back identical (malformed OCR). The mode is
+  kept per field in this browser (`localStorage` `abh-ed-mode-headword`, `-label`, `-analysis`).
+  **Not visible in the read-back** (two Burmese spellings read the same in roman): the tall or round ā (ါ / ာ;
+  the converter writes Aksharamukha's choice, e.g. သမ္ပာ where most volumes print သမ္ပါ), ဿ / သ္သ, ည / ဉ္ဉ,
+  kinzi (င်္) / င္. And roman input is for Pāḷi: a Burmese word typed in roman is written as Pāḷi (stacked
+  consonants, no ်), which the read-back does not show. Check the *se guarda* line, or use *Birmano*, for those.
 - *retirar la edición* beside a field withdraws its edit (a new row, status `reverted`): the published text
   shows again. Nothing is ever deleted from the database.
 - Until the export and the article step (§5), an edited analysis is romanised in the browser, an edited body
@@ -137,7 +151,7 @@ python3 tools/abhidhana_edits_export.py --d1 ~/Downloads/edits.sql            # 
 python3 tools/abhidhana_edits_export.py --d1 ~/Downloads/edits.sql --write
 ```
 
-(`--api` reads the live site's `/api/edits?book=all` instead; the export file is better, as it holds the
+(`--summary FILE` also writes what changed as JSON: books, fields, the books to re-run. `--api` reads the live site's `/api/edits?book=all` instead; the export file is better, as it holds the
 whole history, and the tool then checks each field against what the page showed before its *first* save.)
 
 The tool writes `es` / `en` / status into `docs/translation/meanings/NN.jsonl` (the draft kept in
@@ -154,7 +168,10 @@ exported before is reported, not removed: take its line out by hand.
 `sh site/test/editor/run.sh` builds the site into a temporary folder, serves it with `wrangler pages dev` and
 an empty local D1, stands in for Access (`access-mock.js`: its own signing key, a token minted per request),
 and runs `api-test.js` (the token checks, validation, history, latest per key, withdrawal) and `ui-test.js`
-(a visitor, the API down, the editor's form, `/edit/`, a phone width). Needs node, `npx` and Playwright.
+(a visitor, the API down, the editor's form, `/edit/`, a phone width, the roman input). Needs node, `npx` and
+Playwright (in a cloud session: `PLAYWRIGHT=/opt/node22/lib/node_modules/playwright CHROME=/opt/pw-browsers/chromium`).
+`node site/test/roman/roundtrip.js` checks the roman input's round trip on every headword and every PCED analysis
+without a derivation (`--tsv FILE` writes the failures, `--list KIND` prints one kind).
 
 ## 7. Not covered
 

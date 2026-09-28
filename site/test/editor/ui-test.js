@@ -56,9 +56,10 @@ async function seed(token) {
   ok(await page.inputValue('[data-f="analysis"]') === 'လုဉ္စ + ယု။ (တိ) လုဉ္စန-သံ။', 'form: analysis prefilled');
   // Burmese input with the live roman preview
   await page.fill('[data-f="analysis"]', 'လုဉ္စ + အန');
-  ok((await page.textContent('[data-prev="analysis"]')) === '[luñca + ana]', 'preview: ' + await page.textContent('[data-prev="analysis"]'));
+  ok((await page.textContent('[data-prev="analysis"] [data-back]')) === '[luñca + ana]', 'preview: ' + await page.textContent('[data-prev="analysis"] [data-back]'));
+  ok((await page.textContent('[data-prev="analysis"] [data-store]')) === 'လုဉ္စ + အန', 'preview: the Burmese to be stored shown');
   await page.fill('[data-f="headword"]', 'လုဉ္စန');
-  ok((await page.textContent('[data-prev="headword"]')) === 'luñcana', 'headword preview');
+  ok((await page.textContent('[data-prev="headword"] [data-back]')) === 'luñcana', 'headword preview');
   await page.fill('[data-f="es"]', 'quitar / arrancar.');
   await page.check('input[name="ed-st"][value="reviewed"]');
   await page.screenshot({ path: `${shots}/form.png`, fullPage: true });
@@ -101,6 +102,56 @@ async function seed(token) {
   ok(src.includes('[[labhati]]') && !src.includes('|'), 'form: links in the source markup: ' + src.slice(0, 100));
   ok(await page.evaluate(() => document.documentElement.scrollWidth) <= 390, 'phone width: no sideways scroll');
   await page.screenshot({ path: `${shots}/phone.png` });
+  await ctx.close();
+
+  // 6. roman input (brief §53): headword, label and analysis typed in IAST, converted to Burmese; the Burmese
+  //    and its read-back shown; Save refused while the read-back differs; the mode remembered per field
+  ctx = await browser.newContext({ locale: 'es-ES' }); page = await ctx.newPage();
+  await ctx.route('**/api/admin/**', r => r.continue({ headers: Object.assign({}, r.request().headers(), { 'cf-access-jwt-assertion': token }) }));
+  await page.addInitScript(() => localStorage.setItem('abhidhana-editor', '1'));
+  await page.goto(B + '/w/luñcana'); await page.waitForSelector('[data-edit]', { timeout: 8000 });
+  await page.click('[data-edit]'); await page.waitForSelector('.ed-form');
+  const an0 = await page.inputValue('[data-f="analysis"]');
+  await page.click('[data-mf="analysis"][data-mode="rom"]');
+  ok(await page.inputValue('[data-f="analysis"]') === 'luñca + yu. (ti) luñcana-saṁ.', 'roman: the analysis shown in roman: ' + await page.inputValue('[data-f="analysis"]'));
+  ok(await page.evaluate(() => localStorage.getItem('abh-ed-mode-analysis')) === 'rom', 'roman: the mode kept in this browser');
+  await page.click('[data-save]'); await page.waitForTimeout(400);
+  ok((await page.textContent('.ed-msg')).includes('No ha cambiado'), 'roman: an untouched field is not an edit');
+  await page.fill('[data-f="analysis"]', 'omaka + patta');
+  ok(await page.textContent('[data-prev="analysis"] [data-store]') === 'ဩမက + ပတ္တ', 'roman: omaka + patta → ' + await page.textContent('[data-prev="analysis"] [data-store]'));
+  ok(await page.textContent('[data-prev="analysis"] [data-back]') === 'omaka + patta', 'roman: read-back shown');
+  ok(await page.getAttribute('[data-prev="analysis"] .ed-chk', 'data-ok') === 'true' && !(await page.isDisabled('[data-save]')), 'roman: read-back matches, Save enabled');
+  await page.fill('[data-f="analysis"]', 'kṛta + ti');
+  ok(await page.getAttribute('[data-prev="analysis"] .ed-chk', 'data-ok') === 'false' && await page.isDisabled('[data-save]'), 'roman: a letter it cannot convert (ṛ) → ✗, Save disabled');
+  ok(await page.evaluate(() => document.querySelector('.ed-form').classList.length > 0 && !!document.querySelector('[data-prev="analysis"].ed-bad')), 'roman: the failing field marked');
+  await page.fill('[data-f="analysis"]', 'Omaka + patta');
+  ok(await page.isDisabled('[data-save]'), 'roman: a capital letter → Save disabled');
+  await page.fill('[data-f="analysis"]', 'saṃ + gha');
+  ok(await page.textContent('[data-prev="analysis"] [data-store]') === 'သံ + ဃ' && !(await page.isDisabled('[data-save]')), 'roman: ṃ read as ṁ');
+  await page.fill('[data-f="analysis"]', 'na + kataludda. akata + ludda');
+  ok(await page.textContent('[data-prev="analysis"] [data-store]') === 'န + ကတလုဒ္ဒ။ အကတ + လုဒ္ဒ', 'roman: . → ။ in the analysis');
+  await page.click('[data-mf="label"][data-mode="rom"]');
+  await page.fill('[data-f="label"]', 'ti');
+  ok(await page.textContent('[data-prev="label"] [data-store]') === 'တိ', 'roman: label ti → တိ');
+  await page.click('[data-mf="headword"][data-mode="rom"]');
+  await page.fill('[data-f="headword"]', 'saṅkhāra');
+  ok(await page.textContent('[data-prev="headword"] [data-store]') === 'သင်္ခါရ', 'roman: headword saṅkhāra → သင်္ခါရ (kinzi, tall ā)');
+  await page.fill('[data-f="headword"]', 'luñcana');
+  await page.fill('[data-f="analysis"]', 'omaka + patta');
+  await page.screenshot({ path: `${shots}/roman.png`, fullPage: true });
+  await page.click('[data-save]'); await page.waitForTimeout(900);
+  ok((await page.textContent('.ed-msg')).includes('Guardado'), 'roman: saved: ' + await page.textContent('.ed-msg'));
+  ok((await page.textContent('.an')).includes('omaka + patta'), 'roman: the saved analysis shows');
+  const hist2 = await (await fetch(B + '/api/edits?book=18')).json();
+  const rows2 = JSON.stringify(hist2);
+  ok(rows2.includes('ဩမက + ပတ္တ') && !rows2.includes('omaka + patta'), 'roman: the Burmese is what is stored');
+  await page.reload(); await page.waitForSelector('[data-edit]', { timeout: 8000 });
+  await page.click('[data-edit]'); await page.waitForSelector('.ed-form');
+  ok(await page.getAttribute('[data-mf="analysis"][data-mode="rom"]', 'aria-pressed') === 'true' && await page.inputValue('[data-f="analysis"]') === 'omaka + patta', 'reload: the roman mode remembered');
+  await page.click('[data-mf="analysis"][data-mode="my"]');
+  ok(await page.inputValue('[data-f="analysis"]') === 'ဩမက + ပတ္တ', 'back to Burmese: the field in Burmese');
+  await page.click('[data-withdraw="analysis"]'); await page.waitForTimeout(800);
+  ok((await page.textContent('.an')).includes('luñca + yu'), 'withdraw: the published analysis again (' + an0 + ')');
   await ctx.close();
 
   // 4. editor mode set in this browser, but not signed in: no Editar buttons

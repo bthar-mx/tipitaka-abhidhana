@@ -23,6 +23,9 @@ Input, one of:
     python3 tools/abhidhana_edits_export.py --d1 edits.sql            # what would change (nothing written)
     python3 tools/abhidhana_edits_export.py --d1 edits.sql --write    # write it
 
+--summary FILE writes what changed as JSON ({"books": {book: [fields]}, "rerun": [books], "counts": {…},
+"written": bool}); the weekly workflow .github/workflows/export-edits.yml uses it for its CHANGELOG line and PR.
+
 The Spanish status follows what the site shows (site/src/assets/browse.js ov()): a new Spanish text is
 `corrected`; a status saved at the same time or later replaces that, for the whole Meaning or by sense.
 Every row is written `by` IEBH. Running it twice changes nothing the second time. An edit whose `old`
@@ -41,7 +44,8 @@ nfc = lambda s: unicodedata.normalize('NFC', s or '')
 
 # --- reading ----------------------------------------------------------------------------------------
 def rows_from_api(url):
-    with urllib.request.urlopen(url, timeout=60) as r:
+    req = urllib.request.Request(url, headers={'User-Agent': 'abhidhana-edits-export (+https://github.com/bthar-mx/tipitaka-abhidhana)'})
+    with urllib.request.urlopen(req, timeout=60) as r:
         j = json.load(r)
     return j['edits'], 'latest'
 
@@ -167,6 +171,7 @@ def main():
     src.add_argument('--d1', help='a D1 export (.sql or .json)')
     ap.add_argument('--write', action='store_true', help='write the files (default: only report)')
     ap.add_argument('--root', help='the repository to write into (default: this one); for tests')
+    ap.add_argument('--summary', help='write what changed (books, fields, books to re-run) to this JSON file')
     a = ap.parse_args()
     if a.root: ROOT = Path(a.root).resolve()
     rows, kind = rows_from_api(a.api) if a.api else rows_from_d1(a.d1)
@@ -183,6 +188,7 @@ def main():
     head, crows = tsv_rows(cf)
     at = {(int(c['id']), c['field']): c for c in crows}
     rerun, n_art = set(), 0
+    fields = {}   # book -> the fields that change the repository
     for book, E_by_id in sorted(books.items()):
         arts = None
         for i, E in sorted(E_by_id.items()):
@@ -203,7 +209,7 @@ def main():
                     c = {'id': str(i), 'book': book, 'field': e['field'], 'value': e['value'], 'ocr': ocr,
                          'by': 'IEBH', 'date': e['date'][:10], 'note': note}
                     crows.append(c); at[(i, e['field'])] = c
-                rerun.add(book); n_art += 1
+                rerun.add(book); n_art += 1; fields.setdefault(book, set()).add(e['field'])
                 print(f'  corrections.tsv  {book} {i} {e["field"]}: {now!r} -> {e["value"]!r}')
 
     # the Meaning -> docs/translation/meanings/<book>.jsonl and corrections-es.tsv
@@ -215,6 +221,7 @@ def main():
         text, changed, es_corr = meanings(book, E_by_id, report)
         if changed:
             out[book] = text; n_mean += len(changed)
+            fields.setdefault(book, set()).update(e['field'] for i in changed for e in E_by_id.get(i, []) if e['field'] in ('es', 'en', 'status'))
             print(f'  meanings/{book}.jsonl: {len(changed)} row(s): {", ".join(map(str, changed[:20]))}{" …" if len(changed) > 20 else ""}')
         for i, r, senses, date in es_corr:
             want = {'id': str(i), 'book': book, 'iast': r.get('iast', ''), 'es': r['es'],
@@ -235,6 +242,11 @@ def main():
         for b in sorted(rerun): print(f'  python3 tools/abhidhana_articles.py {b} && python3 tools/abhidhana_romanise.py {b}')
     else:
         print('No article step to re-run.')
+    if a.summary:
+        Path(a.summary).write_text(json.dumps({
+            'books': {b: sorted(f) for b, f in sorted(fields.items())}, 'rerun': sorted(rerun),
+            'counts': {'corrections': n_art, 'meanings': n_mean, 'corrections_es': n_es},
+            'written': bool(a.write and (n_art or n_es or out))}, ensure_ascii=False, indent=1) + '\n', encoding='utf-8')
     if not a.write:
         print('(nothing written: add --write)'); return
     if not (n_art or n_es or out):

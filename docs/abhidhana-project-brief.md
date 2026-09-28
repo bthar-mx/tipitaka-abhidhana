@@ -2,7 +2,7 @@
 
 *Written 21 September 2026, at the end of the volume-25 pilot; §10–12 revised 24 September
 2026, after volume 1 was done end to end and the repository was made public; §18–26 added
-25 September 2026 (spelling folds, the witness join, vols. 6–9, re-cutting gutters, vol. 14/2's text layer, the batch of vols. 10–22); §27 the same evening (vols. 23, 24 and 14/2 finished, the index's page errors applied, book 21 explained, the Reader in binary); §28 the public website, the page images and the label table; §29 vol. 21 finished, vol. 25's resolution, the dictionary's own account of its labels; §30 vol. 25 done, all 29 books; §31 (later on 25 Sep) the page-image tool's bitmap test; §32 the weak page corrections, image-checked; §33 the compound analysis with its [ lost; §34 the dictionary's history on the site; §35 all page images live, a light/dark switch, the Introduction page; §36 citations keep their whole abbreviation; §37 translation, batch 1; §38–41 (26 Sep) the redesign, vol. 1–2 drafts, PCED analyses, versioned assets; §42 (26 Sep) the live check, vol. 3's drafts, version numbers; §43 vols. 4/1–4/2 drafts, the IEBH footer, citation tooltips, cross-reference links, labels reviewed; §44 the live check after v0.8.0, vol. 4/3 deferred, vol. 5 drafted, the analysis split from its derivation, printed page numbers; §45 the live check after v0.9.0, vol. 6 drafted; §46 two stems from the editor, vols. 7–9 drafted; §47 vols. 10–14/1 drafted; §48 (27 Sep) the live check after v0.12.0, vols. 15–19 drafted; §49 vol. 14/2 drafted from its text layer; §50 the body's first words on the headword's line restored; §51 the editor's decisions of 27 Sep, a revision queue, ဩ in vol. 4/3. Everything in
+25 September 2026 (spelling folds, the witness join, vols. 6–9, re-cutting gutters, vol. 14/2's text layer, the batch of vols. 10–22); §27 the same evening (vols. 23, 24 and 14/2 finished, the index's page errors applied, book 21 explained, the Reader in binary); §28 the public website, the page images and the label table; §29 vol. 21 finished, vol. 25's resolution, the dictionary's own account of its labels; §30 vol. 25 done, all 29 books; §31 (later on 25 Sep) the page-image tool's bitmap test; §32 the weak page corrections, image-checked; §33 the compound analysis with its [ lost; §34 the dictionary's history on the site; §35 all page images live, a light/dark switch, the Introduction page; §36 citations keep their whole abbreviation; §37 translation, batch 1; §38–41 (26 Sep) the redesign, vol. 1–2 drafts, PCED analyses, versioned assets; §42 (26 Sep) the live check, vol. 3's drafts, version numbers; §43 vols. 4/1–4/2 drafts, the IEBH footer, citation tooltips, cross-reference links, labels reviewed; §44 the live check after v0.8.0, vol. 4/3 deferred, vol. 5 drafted, the analysis split from its derivation, printed page numbers; §45 the live check after v0.9.0, vol. 6 drafted; §46 two stems from the editor, vols. 7–9 drafted; §47 vols. 10–14/1 drafted; §48 (27 Sep) the live check after v0.12.0, vols. 15–19 drafted; §49 vol. 14/2 drafted from its text layer; §50 the body's first words on the headword's line restored; §51 the editor's decisions of 27 Sep, a revision queue, ဩ in vol. 4/3; §52 (cloud) editor mode; §53 (28 Sep, cloud) roman input in the editor's form. Everything in
 this file was measured. Do not re-derive a figure it carries; if a new one is needed,
 measure it rather than estimating.*
 
@@ -1971,3 +1971,75 @@ matching of `edit` and `api/admin`): `docs/editor-mode.md` §2 D gives the check
 
 **Not covered**: the page view `/v/…` and the Reader show the published data only; search and the alphabet keep the published
 headword; one editor.
+
+## 53. Roman input in the editor's form (28 Sep 2026, cloud session)
+
+**Asked** (the editor): in the editor's form, a switch Burmese / Roman for the headword, label and analysis; in Roman the
+editor types IAST and the form converts it to Burmese with a port of Aksharamukha's IAST → Burmese; both the Burmese to be
+stored and its roman read-back shown before saving, a save allowed only when the read-back equals what was typed; the
+Burmese stored, as before; the mode remembered per browser; the round trip measured on every headword and every PCED
+analysis without a derivation. **Built and tested locally; the form is live only once editor mode is switched on (§52).**
+
+**The converter** (`ROMAN.burmese` in `site/src/assets/roman.js`, +60 lines): the IAST letters with an explicit virama
+between consonants, then Aksharamukha's `FixBurmese` rules in its order (`aksharamukha/ConvertFix.py`): subjoined
+consonants, kinzi (ṅ before a consonant → င်္), repha (ရ်္), the tall ā after ခ ဂ င ဒ ပ ဝ (and after a stack whose upper
+letter is one of them, or after kinzi), y r v h after a consonant as the medials ျ ြ ွ ှ, ျ/ြ + ā short, ss → ဿ, ññ → ည,
+the medials' order. It also reads what `roman.js` writes for the OCR's quirks (`_h` for ှ after a stop, `_` + vowel after
+်, ˳, ï ü ŭ, `oṁ` → ဥုံ), `ṃ` as `ṁ`, `ḷ` as `l̤`; in the text around the words `,` → ၊, `.` → ။, digits → Burmese digits;
+`+`, spaces, brackets, `-` kept. **Decided without asking**: Aksharamukha writes a tall ā after ဂြ (ဂြေါ, ဂြါ); the
+dictionary never does (ဂြော / ဂြာ 128 times in headwords and PCED analyses, the tall form none), so the port writes it short.
+**Against Aksharamukha** (the Python package, on the same romanised strings): 256,123 of 256,203 distinct words (every
+headword, every word of the PCED analyses) identical; the 80 others are that ဂြ.
+
+**The round trip** (`node site/test/roman/roundtrip.js`): the Burmese → `ROMAN.segment` → `ROMAN.burmese` → compared with
+the original (NFC, runs of spaces as one).
+
+| | rows | identical | distinct strings |
+|---|---|---|---|
+| headwords (all 29 books) | 221,154 | 220,623 (99.76%) | 214,920 of 215,447 (99.76%) |
+| PCED analyses without a derivation | 140,281 | 139,759 (99.63%) | 133,889 of 134,387 (99.63%) |
+
+Failures by kind (the first rule in the script that explains the difference):
+
+| kind | headwords | analyses | the save check sees it |
+|---|---|---|---|
+| tall ā ါ / ာ (the print differs from Aksharamukha): ္ပါ written ္ပာ 299 (မ္ပါ: most volumes print it tall, 14/2, 23–25 short; across all fields မ္ပာ 4,920, မ္ပါ 514), ္ဖာ / ္ဖါ 42, ဝှာ 7, other 4 | 354 | 0 | no |
+| malformed OCR: a doubled or stray vowel sign (ဝိိ, ေော, ဥေ, ုု) | 164 | 10 | no |
+| Burmese prose, not Pāḷi (်, း, ့, ဲ, ို): nipātpud → နိပါတ္ပုဒ် for နိပါတ်ပုဒ် | 7 | 254 | 3 analyses; the rest no |
+| characters outside Burmese: Latin digits (ပေါသေတဗ္ဗ721), ASCII comma (read back as ၊), ¿, quotes, `_` | 4 | 256 | 12 analyses; the rest no |
+| ရှ read as rh and written with a repha, Aksharamukha's rule (ရှု, a Burmese word in an analysis) | 0 | 1 | no |
+| stacked for a medial (ဘတ္ဝ) | 1 | 0 | no |
+| ṁ (သန္ဓေုတုံ, ကိြ: malformed) | 1 | 1 | no |
+
+Of the 1,053 failing rows, **1,038 read back exactly as their roman**: the save check cannot see them. They matter only
+when such a field is edited in *Latín* (an untouched one keeps its Burmese): the stored Burmese is then the converter's
+spelling (the malformed OCR mended, the tall ā Aksharamukha's), shown on the *se guarda* line.
+
+No failure from **stacked consonants in general, ṁ/ṃ, ññ, ss, or ṅ before stacked letters (kinzi)**: every headword and
+analysis with them comes back identical, apart from the malformed rows above. So in Pāḷi the only real ambiguity is the
+tall ā, which the read-back cannot show (ā either way): 354 of 221,154 headwords (0.16%). A first run found six
+headwords with ှ after a stop (သီတှဏှ, romanised `sīt_haṇha`) left with a stray ်; fixed before the figures above, and a new word typed in roman
+gets Aksharamukha's form (see the *se guarda* line). **Not guarded** (documented in `docs/editor-mode.md` §3): a Burmese
+word typed in roman is written as Pāḷi (stacked, no ်) and reads back the same; the ါ / ာ choice.
+
+**The form** (`site/src/assets/editor.js`, `editor.css`): a switch *Birmano / Latín* above each of the three fields
+(`aria-pressed`); switching converts what is in the field. Under each, in both modes, *se guarda* (the Burmese) and
+*relectura* (in *Birmano*, the preview as before: the analysis through `ROMAN.analysis` in [ ], the label in ( ); in
+*Latín*, `ROMAN.segment` of the Burmese) with ✓ / ✗. While a *Latín* field's read-back differs from what was typed (compared
+after NFC, ṃ → ṁ, ḷ → l̤, spaces), or its Burmese still holds a Latin letter (`kṛta` would otherwise read back as typed),
+*Guardar* is disabled and a save refused (*… no coincide con lo escrito*). A field switched to *Latín* and not changed keeps
+its Burmese exactly (it is not an edit), so a row that does not round-trip cannot be changed by opening it in roman. The mode
+is stored per field in `localStorage` (`abh-ed-mode-headword`, `-label`, `-analysis`; a blocked storage keeps it for the page).
+
+**Tests.** `sh site/test/editor/run.sh` (wrangler 4, local D1, the Access stand-in; Playwright 1.56 with the container's
+Chromium): `api-test.js` **28/28**, `ui-test.js` **48/48** (20 new: analysis shown in roman, mode kept, an untouched roman
+field is not an edit, `omaka + patta` → ဩမက + ပတ္တ with ✓, `kṛta + ti` and a capital → ✗ and Save disabled, `saṃ + gha`
+→ သံ + ဃ, `.` → ။, label `ti` → တိ, headword `saṅkhāra` → သင်္ခါရ, saved and shown, the D1 row holds the Burmese, the mode
+remembered after a reload, back to Burmese, withdrawal). Two existing checks now read the preview's read-back line.
+
+**Also**: `tools/abhidhana_edits_export.py --summary FILE` writes what changed as JSON (books → fields, the books to re-run,
+counts), tested on a local .json export without `--write`; `--api` now sends a User-Agent (Cloudflare can refuse Python's).
+
+**Not done: the weekly export workflow** (`.github/workflows/export-edits.yml`, asked in the same session): writing it was
+refused by the cloud session's permission check (auto mode), and not retried. It is for the editor to allow or to add.
+

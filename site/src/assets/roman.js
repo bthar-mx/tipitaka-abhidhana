@@ -93,6 +93,66 @@ const ROMAN = (function () {
     });
     return out.join('. ');
   }
-  return { token, segment, headword, analysis };
+  // IAST -> Burmese script, the reverse of segment(), for the editor's roman input. A port of
+  // Aksharamukha's IAST -> Burmese: letters with an explicit virama between consonants, then its
+  // FixBurmese rules (subjoined consonants, kinzi, repha, tall ā, y r v h as medials, ဿ, ည, medial
+  // order). Also reads what segment() writes for OCR quirks: ṁ or ṃ, l̤ or ḷ, _h (ှ after a stop),
+  // _ before a vowel (်), ˳ (့), ï ü ŭ; , . and digits as ၊ ။ and Burmese digits (brief §53).
+  const RC = {}, RI = {}, RV = {};
+  for (const [b, r] of Object.entries(C)) if (b !== 'အ' && b !== 'ည' && b !== 'ဿ') RC[r] = b;
+  RC['ḷ'] = 'ဠ';
+  Object.assign(RI, { a: 'အ', 'ā': 'အာ', i: 'ဣ', 'ī': 'ဤ', u: 'ဥ', 'ū': 'ဦ', e: 'ဧ', o: 'ဩ', ai: 'အဲ', au: 'ဪ', 'ï': 'ဣ', 'ü': 'ဥ' });
+  Object.assign(RV, { a: '', 'ā': 'ာ', i: 'ိ', 'ī': 'ီ', u: 'ု', 'ū': 'ူ', e: 'ေ', o: 'ော', ai: 'ဲ', au: 'ော်' });
+  const LET = Object.keys(RC).concat(Object.keys(RI), ['ṁ', 'ḥ', '˳', '_', 'ŭ']).sort((a, b) => b.length - a.length);
+  const CONS = 'ကခဂဃငစဆဇဈဉညဋဌဍဎဏတထဒဓနပဖဗဘမယရလဝသဟဠ', LC = `[${CONS}]`, TALL = '[ခဂငဒပဝ]';
+  const WORD = /((?:l̤|[a-zāīūṅñṭḍṇḷṁḥ˳_ïüŭ])+)/;
+  function word(w) {
+    if (w === 'oṁ') return 'ဥုံ';
+    const L = [];
+    for (let i = 0; i < w.length;) {
+      const m = LET.find(x => w.startsWith(x, i));
+      if (!m) { L.push(w[i]); i++; } else { L.push(m); i += m.length; }
+    }
+    let out = '', vowelless = false;   // vowelless: the last letter out is a consonant with ် after it
+    for (let i = 0; i < L.length; i++) {
+      const x = L[i], nx = L[i + 1];
+      if (x in RC) { out += RC[x] + '်'; vowelless = true; }
+      else if (x === '_') { if (vowelless && nx === 'h') { out = out.slice(0, -1) + 'ှ်'; i++; } else if (vowelless && nx in RV) { out += RV[nx]; vowelless = false; i++; } }
+      else if (x in RI) {
+        if (vowelless && x in RV) { out = out.slice(0, -1) + RV[x]; vowelless = false; } else out += RI[x];
+      }
+      else if (x === 'ṁ') { out += 'ံ'; vowelless = false; }
+      else if (x === 'ḥ') { out += 'း'; vowelless = false; }
+      else if (x === '˳') { out += '့'; }
+      else if (x === 'ŭ') {   // ဥ written for ဉ: ŭh is ဥှ (its vowel follows), ŭ + consonant ဥ္, else ဥ်
+        if (nx === 'h') { out += 'ဥှ်'; vowelless = true; i++; } else { out += nx in RC ? 'ဥ္' : 'ဥ်'; vowelless = false; } }
+      else { out += x; vowelless = false; }
+    }
+    return fix(out);
+  }
+  function fix(s) {
+    const re = (p, f) => new RegExp(p, f || 'g');
+    s = s.replace(re(`(?<!ာ)်(${LC})`), '္$1');                  // explicit virama + consonant -> subjoined
+    s = s.replace(/င္/g, 'င်္').replace(/ရ္/g, 'ရ်္');             // kinzi, repha
+    s = s.replace(re(`(?<!္)(${TALL})(ေ?)ာ`), '$1$2ါ');             // tall ā
+    s = s.replace(re(`(${TALL})(္)(${LC})(ေ?)ာ`), '$1$2$3$4ါ');
+    s = s.replace(re(`(${TALL})(္)(${LC})(္)(${LC})(ေ?)ာ`), '$1$2$3$4$5$6ါ');
+    s = s.replace(re(`(?<=်္)(${TALL})(ေ?)ာ`), '$1$2ါ');
+    [['ယ', 'ျ'], ['ရ', 'ြ'], ['ဝ', 'ွ'], ['ဟ', 'ှ']].forEach(([c, m]) => { s = s.replace(re(`(?<!်)္${c}`), m); });
+    // Aksharamukha keeps a tall ā after ဂြ; the dictionary never writes it (ဂြော 128 times, ဂြေါ none): short here
+    s = s.replace(/ျါ/g, 'ျာ').replace(/ြါ/g, 'ြာ').replace(/ျေါ/g, 'ျော').replace(/ြေါ/g, 'ြော');
+    s = s.replace(/သ္သ/g, 'ဿ').replace(/ဉ္ဉ/g, 'ည').replace(/ာ္/g, 'ာ်');
+    s = s.replace(re(`(ရ်္င်္)(${LC})`), 'ရ်္င္$2').replace(/ါ္/g, 'ါ်');
+    s = s.replace(/်္ယ/g, 'ျ').replace(/ြ်္ဝ/g, 'ြွ');
+    s = s.replace(/(ှ)([ျြွ])/g, '$2$1').replace(/ြျ/g, 'ျြ').replace(/ွျ/g, 'ျွ').replace(/ွြ/g, 'ြွ');
+    return s.replace(/ရျ/g, 'ရ်္ယ').replace(/ငျ/g, 'င်္ယ');
+  }
+  // what the editor types -> the Burmese stored; ṃ and ḷ read as ṁ and l̤ (canon() gives the typed text as segment() would write it)
+  const canon = s => (s || '').normalize('NFC').replace(/ṃ/g, 'ṁ').replace(/ḷ/g, 'l̤').replace(/\s+/g, ' ').trim();
+  function burmese(s) {
+    return canon(s).split(WORD).map((p, k) => k % 2 ? word(p)
+      : p.replace(/,/g, '၊').replace(/\./g, '။').replace(/[0-9]/g, d => DIG[d])).join('');
+  }
+  return { token, segment, headword, analysis, burmese, canon };
 })();
 if (typeof module !== 'undefined') module.exports = ROMAN;

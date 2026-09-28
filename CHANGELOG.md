@@ -23,6 +23,19 @@ Versions of the Tipiṭaka Pāḷi-Myanmā Abhidhāna project: the data, the too
 A release note says, per version: what changed, the brief's sections, and the headline figures
 (located, label + body, Meaning rows drafted / reviewed).
 
+## v0.18.0 — 28 Sep 2026
+
+- **Roman input in the editor's form** (brief §53, `docs/editor-mode.md` §3): the headword, label and analysis each have a
+  switch *Birmano / Latín*; in *Latín* they are typed in IAST and converted to Burmese script by `ROMAN.burmese`
+  (`site/src/assets/roman.js`, a port of Aksharamukha's IAST → Burmese; it agrees with Aksharamukha on 256,123 of 256,203
+  distinct words, the 80 others being ဂြ + ā, written short as the dictionary prints it). The form shows, for each of the
+  three fields, the Burmese to be stored and its roman read-back; a save needs the read-back to equal what was typed. The
+  Burmese is stored, as before. The mode is remembered per field in the browser.
+- **Round trip measured** (`site/test/roman/roundtrip.js`): headwords 220,623 of 221,154 (99.76%), PCED analyses without
+  a derivation 139,759 of 140,281 (99.63%); the failures are malformed OCR, Burmese prose, stray characters and the tall ā.
+  Browser tests `ui-test.js` 48/48 (20 new), `api-test.js` 28/28.
+- `tools/abhidhana_edits_export.py`: `--summary FILE` (what changed, as JSON) and a User-Agent on `--api`. No data changed.
+
 ## v0.17.0 — 27 Sep 2026
 
 - **Editor mode** (brief §52, `docs/editor-mode.md`): in Browse, when the editor is signed in, each article has an

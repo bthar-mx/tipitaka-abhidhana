@@ -16,6 +16,10 @@ Object.assign(T.en, {
   ed_err: m => `Not saved: ${m}`, ed_signin: 'Editor mode: not signed in.', ed_signin_a: 'Sign in', ed_as: e => `Editor mode · ${e}`,
   ed_text_corr: 'A new Spanish text counts as corrected unless a status is chosen here.',
   ed_sense_drafted: 'A status by sense must be reviewed or corrected.', ed_not_my: f => `${f}: no Burmese letters. Is the keyboard set to Myanmar (Unicode)?`,
+  ed_m_my: 'Burmese', ed_m_rom: 'Roman', ed_m_title: 'Type this field in Burmese script or in roman (IAST)',
+  ed_store: 'stored', ed_back: 'read back', ed_back_ok: 'matches what was typed',
+  ed_back_bad: 'differs from what was typed: correct it, or type this field in Burmese',
+  ed_rt: f => `${f}: the Burmese read back in roman differs from what was typed.`,
 });
 Object.assign(T.es, {
   ed_edit: 'Editar', ed_close: 'Cerrar', ed_save: 'Guardar', ed_saving: 'Guardando…', ed_saved: 'Guardado.', ed_nochange: 'No ha cambiado nada.',
@@ -28,6 +32,10 @@ Object.assign(T.es, {
   ed_err: m => `No se guardó: ${m}`, ed_signin: 'Modo editor: no ha iniciado sesión.', ed_signin_a: 'Iniciar sesión', ed_as: e => `Modo editor · ${e}`,
   ed_text_corr: 'Un texto español nuevo cuenta como corregido salvo que se elija aquí un estado.',
   ed_sense_drafted: 'Un estado por sentidos ha de ser revisado o corregido.', ed_not_my: f => `${f}: no hay letras birmanas. ¿Está el teclado en birmano (Unicode)?`,
+  ed_m_my: 'Birmano', ed_m_rom: 'Latín', ed_m_title: 'Escribir este campo en letra birmana o en caracteres latinos (IAST)',
+  ed_store: 'se guarda', ed_back: 'relectura', ed_back_ok: 'coincide con lo escrito',
+  ed_back_bad: 'no coincide con lo escrito: corríjalo, o escriba este campo en birmano',
+  ed_rt: f => `${f}: el birmano releído en caracteres latinos no coincide con lo escrito.`,
 });
 
 const css = document.createElement('link'); css.rel = 'stylesheet'; css.href = window.EDITOR_CSS || '/assets/editor.css';
@@ -36,6 +44,27 @@ const badge = document.createElement('div'); badge.className = 'ed-badge'; docum
 let who = null, openId = null, form = null, msg = '', stash = null;   // stash: what was typed, kept across a re-render
 
 const nfc = s => (s || '').normalize('NFC').trim();
+
+// Roman input (brief §53): headword, label and analysis can be typed in IAST; the form converts to Burmese
+// (ROMAN.burmese) and shows the Burmese to be stored and its roman read-back (ROMAN.segment); a save needs
+// the read-back to equal what was typed. The mode is kept per field in this browser.
+const ROM_FIELDS = ['headword', 'label', 'analysis'];
+const modeKey = k => 'abh-ed-mode-' + k;
+function modeOf(k) { try { return localStorage.getItem(modeKey(k)) === 'rom' ? 'rom' : 'my'; } catch (e) { return 'my'; } }
+function setMode(k, m) { try { localStorage.setItem(modeKey(k), m); } catch (e) { /* the mode is then kept for this page only */ } memMode[k] = m; }
+const memMode = {};
+const mode = k => memMode[k] || modeOf(k);
+let base = {};   // per field: the roman shown when the field went roman and the Burmese it came from
+function baseFor(k, b) { base[k] = { r: ROMAN.segment(b), b }; return base[k].r; }
+// the Burmese a field would store, and whether its read-back matches what was typed
+function reading(k) {
+  const el = form.querySelector(`[data-f="${k}"]`), v = el ? el.value : '';
+  if (!ROM_FIELDS.includes(k) || mode(k) !== 'rom') { const b = nfc(v); return { b, back: b ? ROMAN.segment(b) : '', ok: true, rom: false }; }
+  const typed = ROMAN.canon(v), bs = base[k];
+  const b = bs && typed === ROMAN.canon(bs.r) ? nfc(bs.b) : ROMAN.burmese(typed), back = b ? ROMAN.segment(b) : '';
+  // a letter the conversion does not know stays Latin in the Burmese and can read back unchanged: refused too
+  return { b, back, typed, ok: back === typed && !/[A-Za-z\u00C0-\u024F\u1E00-\u1EFF]/.test(b), rom: true };
+}
 const hasMy = s => /[က-႟]/.test(s);
 const sensesOf = s => [...new Set(nfc(s).split(/[\s,;]+/).filter(Boolean).map(Number).filter(n => n > 0 && n < 100))].sort((a, b) => a - b).join(',');
 
@@ -63,14 +92,19 @@ function current(d) {
   };
 }
 
+const langAttr = (key, v) => ROM_FIELDS.includes(key) && mode(key) === 'rom' ? 'lang="pi" class="ed-rom"'
+  : hasMy(v) || ['headword', 'label', 'analysis', 'body'].includes(key) ? 'lang="my" class="my"' : `lang="${key}"`;
 function field(d, key, label, kind, preview) {
-  const v = current(d)[key], e = d.ed && d.ed[key];
+  let v = current(d)[key]; const e = d.ed && d.ed[key];
+  if (ROM_FIELDS.includes(key) && mode(key) === 'rom') v = baseFor(key, v);
   const input = kind === 'area'
-    ? `<textarea data-f="${key}" rows="${key === 'body' ? 8 : 3}" ${hasMy(v) || ['headword', 'label', 'analysis', 'body'].includes(key) ? 'lang="my" class="my"' : `lang="${key}"`} spellcheck="${key === 'es' || key === 'en'}">${esc(v)}</textarea>`
-    : `<input data-f="${key}" type="text" lang="my" class="my" spellcheck="false" value="${esc(v)}">`;
+    ? `<textarea data-f="${key}" rows="${key === 'body' ? 8 : 3}" ${langAttr(key, v)} spellcheck="${key === 'es' || key === 'en'}">${esc(v)}</textarea>`
+    : `<input data-f="${key}" type="text" ${langAttr(key, v)} spellcheck="false" value="${esc(v)}">`;
+  const sw = ROM_FIELDS.includes(key) ? ` <span class="ed-mode" role="group" title="${esc(t('ed_m_title'))}">` +
+    ['my', 'rom'].map(m => `<button type="button" data-mode="${m}" data-mf="${key}" aria-pressed="${mode(key) === m}">${esc(t('ed_m_' + m))}</button>`).join('') + '</span>' : '';
   return `<div class="ed-f"><label><span>${esc(t(label))}</span>` +
     (e ? ` <span class="muted small">${esc(t('ed_edited', e.date.slice(0, 10)))} · <button type="button" class="ed-link" data-withdraw="${key}">${esc(t('ed_withdraw'))}</button></span>` : '') +
-    `</label>${input}` + (preview ? `<div class="ed-prev pl" lang="pi" data-prev="${key}"></div>` : '') + '</div>';
+    `</label>${sw}${input}` + (preview ? `<div class="ed-prev" data-prev="${key}"></div>` : '') + '</div>';
 }
 
 function formHTML(d) {
@@ -95,13 +129,33 @@ function formHTML(d) {
 const statusRows = d => (ABH.rows(d.k, d.i) || []).filter(e => e.field === 'status');
 const hasStatusEdits = d => statusRows(d).length > 0;
 
+// under each of headword, label, analysis: the Burmese to be stored and its roman read-back; in roman
+// mode, whether the read-back equals what was typed (Save is disabled while one does not)
 function preview() {
   if (!form) return;
+  let bad = false;
   form.querySelectorAll('[data-prev]').forEach(p => {
-    const v = form.querySelector(`[data-f="${p.dataset.prev}"]`).value;
-    p.textContent = !nfc(v) ? '' : p.dataset.prev === 'analysis' ? '[' + ROMAN.analysis(nfc(v)) + ']'
-      : p.dataset.prev === 'label' ? '(' + ROMAN.segment(nfc(v)) + ')' : ROMAN.headword(nfc(v));
+    const k = p.dataset.prev, r = reading(k);
+    p.classList.toggle('ed-bad', r.rom && !r.ok);
+    if (!r.b) { p.innerHTML = ''; return; }
+    if (r.rom && !r.ok) bad = true;
+    const show = !r.rom ? (k === 'analysis' ? '[' + ROMAN.analysis(r.b) + ']' : k === 'label' ? '(' + ROMAN.segment(r.b) + ')' : ROMAN.headword(r.b)) : r.back;
+    p.innerHTML = `<div><span class="ed-k">${esc(t('ed_store'))}</span> <span class="my" lang="my" data-store>${esc(r.b)}</span></div>` +
+      `<div><span class="ed-k">${esc(t('ed_back'))}</span> <span class="pl" lang="pi" data-back>${esc(show)}</span>` +
+      (r.rom ? ` <span class="ed-chk" data-ok="${r.ok}">${r.ok ? '✓ ' + esc(t('ed_back_ok')) : '✗ ' + esc(t('ed_back_bad'))}</span>` : '') + '</div>';
   });
+  const sv = form.querySelector('[data-save]'); if (sv) sv.disabled = bad;
+}
+// switch a field between Burmese and roman input, converting what is in it
+function switchMode(k, m) {
+  if (mode(k) === m) return;
+  const el = form.querySelector(`[data-f="${k}"]`);
+  if (m === 'rom') el.value = baseFor(k, nfc(el.value));
+  else el.value = reading(k).b;
+  setMode(k, m);
+  el.lang = m === 'rom' ? 'pi' : 'my'; el.className = m === 'rom' ? 'ed-rom' : 'my';
+  form.querySelectorAll(`[data-mf="${k}"]`).forEach(b => b.setAttribute('aria-pressed', String(b.dataset.mode === m)));
+  el.dispatchEvent(new Event('input', { bubbles: true }));
 }
 
 async function post(d, edits) {
@@ -112,12 +166,13 @@ async function post(d, edits) {
 }
 
 async function save(d) {
-  const c = current(d), edits = [], val = k => nfc(form.querySelector(`[data-f="${k}"]`).value);
+  const c = current(d), edits = [], val = k => ROM_FIELDS.includes(k) ? reading(k).b : nfc(form.querySelector(`[data-f="${k}"]`).value);
   const names = { es: t('ed_es'), en: t('ed_en'), headword: t('ed_hw'), label: t('ed_label'), analysis: t('ed_an'), body: t('ed_body') };
   for (const k of ['es', 'en', 'headword', 'label', 'analysis', 'body']) {
     const v = val(k);
     if (v === nfc(c[k])) continue;
     if (!v) throw new Error(t('ed_empty', names[k]));
+    if (ROM_FIELDS.includes(k) && !reading(k).ok) throw new Error(t('ed_rt', names[k]));
     if (['headword', 'label', 'analysis', 'body'].includes(k) && !hasMy(v)) throw new Error(t('ed_not_my', names[k]));
     edits.push({ field: k, value: v, old: c[k] });
   }
@@ -147,23 +202,27 @@ window.EDITOR = {
     const art = document.querySelector('#art article'); if (!art) return;
     const where = art.querySelector('.where');
     if (where) where.insertAdjacentHTML('beforeend', `<button type="button" class="btn ed-open" data-edit aria-expanded="${openId === d.i}">${esc(t('ed_edit'))}</button>`);
-    if (openId !== d.i) { form = null; return; }
+    if (openId !== d.i) { form = null; base = {}; return; }
     art.querySelector('.head').insertAdjacentHTML('afterend', formHTML(d));
     form = art.querySelector('.ed-form');
-    if (stash && stash.id === d.i) for (const [k, v] of Object.entries(stash.v)) {
-      const el = form.querySelector(k); if (el) { if (el.type === 'radio') el.checked = v; else el.value = v; }
+    if (stash && stash.id === d.i) {
+      for (const [k, v] of Object.entries(stash.v)) {
+        const el = form.querySelector(k); if (el) { if (el.type === 'radio') el.checked = v; else el.value = v; }
+      }
+      Object.assign(base, stash.base || {});
     }
     preview();
     form.addEventListener('input', () => {
       const v = {};
       form.querySelectorAll('[data-f]').forEach(el => { v[`[data-f="${el.dataset.f}"]`] = el.value; });
       form.querySelectorAll('input[name="ed-st"]').forEach(el => { v[`input[name="ed-st"][value="${el.value}"]`] = el.checked; });
-      stash = { id: d.i, v }; preview();
+      stash = { id: d.i, v, base: Object.assign({}, base) }; preview();
     });
     form.addEventListener('click', async e => {
       const b = e.target.closest('button'); if (!b) return;
       e.stopPropagation();
       if ('close' in b.dataset) { openId = null; msg = ''; stash = null; return ABH.rerender(); }
+      if (b.dataset.mf) return switchMode(b.dataset.mf, b.dataset.mode);
       const bar = form.querySelector('.ed-msg');
       try {
         if ('save' in b.dataset) { b.disabled = true; bar.textContent = t('ed_saving'); await save(d); stash = null; }
