@@ -2,7 +2,7 @@
 
 *Written 21 September 2026, at the end of the volume-25 pilot; §10–12 revised 24 September
 2026, after volume 1 was done end to end and the repository was made public; §18–26 added
-25 September 2026 (spelling folds, the witness join, vols. 6–9, re-cutting gutters, vol. 14/2's text layer, the batch of vols. 10–22); §27 the same evening (vols. 23, 24 and 14/2 finished, the index's page errors applied, book 21 explained, the Reader in binary); §28 the public website, the page images and the label table; §29 vol. 21 finished, vol. 25's resolution, the dictionary's own account of its labels; §30 vol. 25 done, all 29 books; §31 (later on 25 Sep) the page-image tool's bitmap test; §32 the weak page corrections, image-checked; §33 the compound analysis with its [ lost; §34 the dictionary's history on the site; §35 all page images live, a light/dark switch, the Introduction page; §36 citations keep their whole abbreviation; §37 translation, batch 1; §38–41 (26 Sep) the redesign, vol. 1–2 drafts, PCED analyses, versioned assets; §42 (26 Sep) the live check, vol. 3's drafts, version numbers; §43 vols. 4/1–4/2 drafts, the IEBH footer, citation tooltips, cross-reference links, labels reviewed; §44 the live check after v0.8.0, vol. 4/3 deferred, vol. 5 drafted, the analysis split from its derivation, printed page numbers; §45 the live check after v0.9.0, vol. 6 drafted; §46 two stems from the editor, vols. 7–9 drafted; §47 vols. 10–14/1 drafted; §48 (27 Sep) the live check after v0.12.0, vols. 15–19 drafted; §49 vol. 14/2 drafted from its text layer; §50 the body's first words on the headword's line restored; §51 the editor's decisions of 27 Sep, a revision queue, ဩ in vol. 4/3; §52 (cloud) editor mode; §53 (28 Sep, cloud) roman input in the editor's form; §54–56 (28 Sep) 14/2's redraft, the OCR pilot, vol. 23 drafted; §57 (28 Sep, Cowork) vol. 22 drafted; §58 vol. 24 drafted; §59 vol. 21 drafted; §60 vol. 20 drafted; §61 vol. 25 drafted; §62 vols. 14/3 and 4/3 prepared, the clean-row signal measured, `prep`'s no-join fix; §63 vol. 14/3 drafted (and 4/3's shards, not merged). Everything in
+25 September 2026 (spelling folds, the witness join, vols. 6–9, re-cutting gutters, vol. 14/2's text layer, the batch of vols. 10–22); §27 the same evening (vols. 23, 24 and 14/2 finished, the index's page errors applied, book 21 explained, the Reader in binary); §28 the public website, the page images and the label table; §29 vol. 21 finished, vol. 25's resolution, the dictionary's own account of its labels; §30 vol. 25 done, all 29 books; §31 (later on 25 Sep) the page-image tool's bitmap test; §32 the weak page corrections, image-checked; §33 the compound analysis with its [ lost; §34 the dictionary's history on the site; §35 all page images live, a light/dark switch, the Introduction page; §36 citations keep their whole abbreviation; §37 translation, batch 1; §38–41 (26 Sep) the redesign, vol. 1–2 drafts, PCED analyses, versioned assets; §42 (26 Sep) the live check, vol. 3's drafts, version numbers; §43 vols. 4/1–4/2 drafts, the IEBH footer, citation tooltips, cross-reference links, labels reviewed; §44 the live check after v0.8.0, vol. 4/3 deferred, vol. 5 drafted, the analysis split from its derivation, printed page numbers; §45 the live check after v0.9.0, vol. 6 drafted; §46 two stems from the editor, vols. 7–9 drafted; §47 vols. 10–14/1 drafted; §48 (27 Sep) the live check after v0.12.0, vols. 15–19 drafted; §49 vol. 14/2 drafted from its text layer; §50 the body's first words on the headword's line restored; §51 the editor's decisions of 27 Sep, a revision queue, ဩ in vol. 4/3; §52 (cloud) editor mode; §53 (28 Sep, cloud) roman input in the editor's form; §54–56 (28 Sep) 14/2's redraft, the OCR pilot, vol. 23 drafted; §57 (28 Sep, Cowork) vol. 22 drafted; §58 vol. 24 drafted; §59 vol. 21 drafted; §60 vol. 20 drafted; §61 vol. 25 drafted; §62 vols. 14/3 and 4/3 prepared, the clean-row signal measured, `prep`'s no-join fix; §63 vol. 14/3 drafted (and 4/3's shards, not merged); §64 vol. 4/3 merged, every book drafted. Everything in
 this file was measured. Do not re-derive a figure it carries; if a new one is needed,
 measure it rather than estimating.*
 
@@ -377,6 +377,9 @@ none wrong; no label wrong, 1 not read.
 ids 176418–176427), four typos (ဩလမ္ဗတကုလာဝက, ဥဒါနိ, ဥပါဃာတဘူမိ, စကစတုက္ကာဒိကဆတ္တိက), a variant
 entry split into bare ဧဏိ / ဧဏီ, and one headword (ဥပက္ကိလေသ) with no printed entry. The index is
 still the authority for *which* headwords there are, but not for their spelling or their page.
+
+*Added 28 Sep 2026 (§64):* the Meaning boxes of 4c hold **207 rows that are these supplements** (50 to vol. 15, 107 to vol. 4/2,
+50 to vol. 16; ids 177206–177428), filed under book 4c as the index files them, not beside the volumes they belong to.
 
 ## 17. Vol. 5 (25 September 2026, late)
 
@@ -2867,3 +2870,62 @@ tmp/meanings/v4c`) rather than draft again.
   look misromanised or misprinted: pāpatara (pāparata?), pāparāgī (pāparogī?), pāpabhikkhamānā (pāpasikkhamānā?), pāpintave, pāvikatara (08).
 - **Lines changed after appending**, against the append-only rule, each for a slip found in the agent's check: shard 08 (197004 ⟦ထန်း⟧ →
   *palmera de palmira*, 196979 ⟦အဓိဋ္ဌာန်⟧ → ⟦=adhiṭṭhāna⟧, 196575 a typo in `omitted`). Shard 07 reported its three slips (above) and left them.
+
+
+## 64. Vol. 4/3 merged from the drafts of §63: every book has its Meaning boxes (28 Sep 2026, Cowork)
+
+**The live check after v0.25.0** (the editor): 0.25.0 served; `/w/puthujjana` shows vol. 14/3's Meaning box, *borrador*; About lists 14/1–25.
+
+**Asked** (the editor): merge vol. 4/3 from the drafts already made (§63), without drafting again: check the outputs' tarball, unpack it
+into `tmp/meanings/v4c/`, re-run the usual checks, then `merge 4c` and `report 4c` with `--work tmp/meanings/v4c`.
+
+**The drafts.** `tmp/meanings/mean4c-out-0928u.tar.gz`: md5 `1c050a808440c59617b7adea82d9a7f9`, as §63 recorded (`1c050a8…`). Unpacked in
+the folder into `tmp/meanings/v4c/out/` (11 files, 433–437 lines, beside §62's `work4c.json` and `shards/`). The VM's `/sessions` disk was
+still full (43 MB free), so the checks, `merge` and `report` ran in the Cowork cloud container on staged copies of
+`tools/abhidhana_meanings.py` (md5 `587335c…`, the tool of v0.24.1), `work4c.json`, the 11 shards and the tarball (md5 checked again
+after staging), with Aksharamukha installed there; the four output files were committed back to `docs/translation/meanings/` and their md5
+checked in the folder.
+
+**Checked** (every shard, as §56–63): one line per input id, in order; valid JSON with id, es, en, terms, flag, omitted; every «Sn» in es
+and en; ⟦ ⟧ and ‹ › balanced; no Burmese outside them; es and en empty together, and every empty line flagged "nothing to translate":
+**0 errors**. 4,803 lines, 2,260 flagged, 3,015 with `omitted`, 28 empty: the figures of §63.
+
+| | vol. 4/3 with supplements | 4/3 itself | the supplements (to 15 / 4/2 / 16) | vol. 14/3 (§63) |
+|---|---:|---:|---:|---:|
+| lines drafted / flagged / with `omitted` / empty | 4,803 / 2,260 (47.1%) / 3,015 (62.8%) / 28 | 4,596 / 2,168 / 2,893 / 28 | 207 / 92 / 122 / 0 (50 / 107 / 50) | 9,465 / 32.6% / 62.5% / 129 |
+| flagged, omitted or empty; clean | 3,644 (75.9%); **1,159 (24.1%)** | 76.0%; 24.0% | 73.4%; 26.6% (18.0 / 33.6 / 20.0%) | 71.7%; 28.3% |
+| clean-row signal before drafting (§62) | 40.5% | 40.1% | 48.3% | 49.1% |
+| flags: "OCR: read X as Y" / run-on article / senses printed twice / hyphen / person / aorist | 1,155 / 309 / 35 / 77 / 87 / 16 | | | 1,248 / 338 / 29 / 75 / 96 / 39 |
+| rows merged (`meanings/4c.jsonl`), all `drafted`, `source` ocr: formula / drafted | 4,784: 9 / 4,775 | 4,577 | 207 (50 / 107 / 50) | 9,348 |
+| flagged (`4c-flags.tsv`) / lines in `4c-omitted.tsv` | 2,232 / 3,015 | | | 2,956 / 5,920 |
+| articles without a Meaning: no body / nothing left after `prep` / drafted empty | 400 / 18 / 28 (446 of 5,230) | | | 1,042 of 10,390 |
+| terms kept in Pāḷi (`4c-terms.tsv`) | 468 (thera 45, ovāda 33, deva 31, arahant 29, jhāna 26, ogha 26, samādhi 22, kamma 22) | | | 737 |
+| "see X" links matching a romanised headword (occurrences in the Spanish, every book's `headword_iast`) | **652 of 1,136 (57.4%)** | | | 82.5% |
+| rows with *sano / insano*; *mérito / meritorio*; "no saludable" | 20; 21; 0 | | | 130; 198; 0 |
+| rows with Burmese left in ‹ › | 109 | | | 236 |
+
+(Flag counts are case-insensitive substring counts over the flag text of the drafted lines.) Drafted-clean ran at 0.60 of §62's signal
+(vols. 20–25 and 14/3: 0.45–0.68). The agents' tokens are §63's: 3,260,576, 343 tool calls, **~679 a drafted line**, the most of any OCR
+book after vol. 20 (~717). After merge: ids sorted and unique, no ⟦ ⟧ left, `status_es` / `status_en` `drafted` on every row. No vol. 4/3 row
+is in `corrections-es.tsv`, so nothing to re-apply.
+
+**The supplements** (§16) were drafted and merged with the book: **207 rows**, ids 177206–177428, split at the headwords that open each
+supplement in print (bhijja 177206, udavā 177259, maṁsakāraṇa 177373): **50 to vol. 15, 107 to vol. 4/2, 50 to vol. 16**, every one with a
+row. They stay under book 4c, as the index files them, so the site shows them in 4/3's pages; joining them to their volumes is NEXT-SESSION
+item 9.
+
+**Two things found in the merged rows, not fixed:**
+- **"See X" targets carry the ဩ misreading.** `prep` romanises X from the OCR, and 4/3's ဩ is often read as သြ or သ (§51 restored it
+  in the analyses only): *Véase [[sravādattha]]* (176688) for ovādattha, *sratarati*, *sradahati*, *srapilāpeti*. Of the 484 unmatched
+  targets, 164 (in 155 rows) match a headword once `sra-` / `s-` is read as `o-` or a stray `[` / `”` is dropped. A fix belongs in `prep`'s
+  formula targets (the same restoration as §51), then a re-`merge` of 4c; the drafts need not change.
+- **A Burmese sense letter after "see X"**: 174722 *Véase [[eti]] (ရ)*, 176231 *Véase [[oramaṇa]] (န)*; one row of 14/3 likewise. `merge`
+  writes the formula's sense marker as printed; the Latin letter (as *(1-a)* elsewhere) is wanted.
+
+**Totals: all 29 books drafted, 217,212 Meaning rows, all `drafted`, none reviewed: 98.2%** of the index (221,154). About and README now
+say every volume is drafted, and name 4/3 among the books drafted from our OCR; README notes that the supplements' Meaning boxes are
+kept under 4c. The site was not built here.
+
+**What the agents reported for 4/3** was not carried into this session (the drafting chat's reports were not written to the folder or the
+Project); `4c-flags.tsv` holds every flag with its Burmese. NEXT-SESSION 1c (af).
+

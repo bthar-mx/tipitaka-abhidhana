@@ -24,7 +24,7 @@ libros están digitalizados: cada artículo se ancla en la entrada correcta (tom
 diccionario), se divide en sus campos (categoría gramatical, análisis, definición, citas) y la
 entrada se romaniza (IAST). **Nada está revisado**: el birmano es una lectura automática (OCR) y
 contiene errores; compare siempre con la imagen de la página. La traducción al español, hecha
-desde el birmano y nunca a través del inglés, está en borrador para los vols. 1–3, 4/1, 4/2, 5–13 y 14/1–25, sin revisar
+desde el birmano y nunca a través del inglés, está en borrador para los 25 volúmenes (29 libros), sin revisar
 ([`docs/spanish-method.md`](docs/spanish-method.md), `docs/translation/`). Consulta y búsqueda en
 **[abhidhana.buddha-dhamma.net](https://abhidhana.buddha-dhamma.net)**, en español e inglés. Proyecto del
 [Instituto de Estudios Budistas Hispano](https://iebh.org).
@@ -41,8 +41,8 @@ desde el birmano y nunca a través del inglés, está en borrador para los vols.
    ([`docs/labels.md`](docs/labels.md), [`docs/abbreviations.md`](docs/abbreviations.md)).
 3. **Romanised Pāḷi** (Aksharamukha, Burmese → IAST), headwords and quoted Pāḷi, checked against the
    Sixth Council Tipiṭaka vocabulary of [OSBCT](https://github.com/bthar-mx/OSBCT).
-4. **Spanish**, translated **from the Burmese**, never through English. Drafted, not reviewed, for vols. 1–3,
-   4/1, 4/2, 5–13 and 14/1–25 (`docs/translation/meanings/`); see [`docs/spanish-method.md`](docs/spanish-method.md).
+4. **Spanish**, translated **from the Burmese**, never through English. Drafted, not reviewed, for all 25
+   volumes (29 books) (`docs/translation/meanings/`); see [`docs/spanish-method.md`](docs/spanish-method.md).
 
 ## Read this before using the data
 
@@ -98,7 +98,8 @@ with a spot check against the page images.
 | **all** | | **25,700** | **221,154** | | **94.1%** | **88.1%** | |
 
 Vol. 14/2 is typeset text, not a scan: it was converted from its legacy WinInnwa fonts, not OCR'd.
-Vol. 4/3 includes supplements to vols. 15, 4/2 and 16 (PDF pp. 713–735).
+Vol. 4/3 includes supplements to vols. 15, 4/2 and 16 (PDF pp. 713–735). Their Meaning boxes are drafted with
+4/3's and kept under book 4c (`docs/translation/meanings/4c.jsonl`), as the index files them.
 
 ## The index, and its errors
 

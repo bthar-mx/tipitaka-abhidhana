@@ -23,6 +23,17 @@ Versions of the Tipiṭaka Pāḷi-Myanmā Abhidhāna project: the data, the too
 A release note says, per version: what changed, the brief's sections, and the headline figures
 (located, label + body, Meaning rows drafted / reviewed).
 
+## v0.26.0 — 28 Sep 2026
+
+- **Vol. 4/3's Meaning boxes, with the supplements to vols. 15, 4/2 and 16 bound after it, merged from the drafts of §63** (brief §64;
+  not drafted again): 4,784 rows in `docs/translation/meanings/4c.jsonl` (9 formula, 4,775 drafted), all `drafted`, `source: ocr`;
+  2,232 rows flagged (`4c-flags.tsv`), 3,015 lines of what the drafts left out (`4c-omitted.tsv`), 468 terms kept in Pāḷi
+  (`4c-terms.tsv`). 207 of the rows are the supplements (50 to vol. 15, 107 to 4/2, 50 to 16), kept under book 4c as the index files
+  them. 446 of the book's 5,230 articles have no Meaning (400 have no body). About and README: every volume drafted. Meaning rows in
+  all: **217,212, 98.2% of the index, none reviewed**; every one of the 29 books has its drafts.
+- "See X" links in 4/3 match a headword in 57.4% of cases (other OCR books 77–84%): ဩ read as သြ / သ in the target (brief §51) and
+  stray `[` / `”`; not fixed. NEXT-SESSION: 00x, 1b, 1c (af).
+
 ## v0.25.0 — 28 Sep 2026
 
 - **Vol. 14/3's Meaning boxes drafted from our OCR** (brief §63): 9,348 rows in `docs/translation/meanings/14c.jsonl` (12 formula,

@@ -1,4 +1,4 @@
-# Abhidhāna — handover, 28 September 2026 (editor mode built, not yet switched on, v0.17.0; roman input in its form, v0.18.0; 14/2's 497 rows redrafted, v0.18.3; the OCR pilot, v0.18.5; vol. 23 drafted from our OCR, v0.19.0; vol. 22 drafted from our OCR, v0.20.0; vol. 24, v0.21.0; vol. 21, v0.22.0; vol. 20, v0.23.0; vol. 25, v0.24.0; 14/3 and 4/3 prepared, §62; `prep`'s no-join fix, v0.24.1; vol. 14/3 drafted from our OCR, v0.25.0, and 4/3's shards drafted, not merged, §63)
+# Abhidhāna — handover, 28 September 2026 (editor mode built, not yet switched on, v0.17.0; roman input in its form, v0.18.0; 14/2's 497 rows redrafted, v0.18.3; the OCR pilot, v0.18.5; vol. 23 drafted from our OCR, v0.19.0; vol. 22 drafted from our OCR, v0.20.0; vol. 24, v0.21.0; vol. 21, v0.22.0; vol. 20, v0.23.0; vol. 25, v0.24.0; 14/3 and 4/3 prepared, §62; `prep`'s no-join fix, v0.24.1; vol. 14/3 drafted from our OCR, v0.25.0, and 4/3's shards drafted, not merged, §63; vol. 4/3 merged, v0.26.0: every book drafted, §64)
 
 *All 29 books are digitised end to end, spot-checked and in the Reader: 221,154 index rows, 94.1%
 located, 88.1% with label + body (brief §30). Read
@@ -7,7 +7,7 @@ located, 88.1% with label + body (brief §30). Read
 vol. 6, §21 vol. 7, §22 vol. 8 and the gutter failures, §23 vol. 9, §24 the re-cut tool, §25 vol.
 14/2's text layer, §26 the batch (vols. 10–22), §27 vols. 23, 24, 14/2, the index's page errors,
 book 21 and the Reader in binary, §28 the website, the page images and the label table, §29 vol.
-21, vol. 25's resolution and the labels as the dictionary prints them, §30 vol. 25 and the total, §31–37 the page images, the Introduction and the stem lexicon, §38 the site redesign, §39 the vol. 1 drafts, §40 the site fixes, the PCED analyses, hand corrections and sano / insano, §41 versioned assets and vol. 2's drafts, §42 the live check after `5db316f`, vol. 3's drafts and version numbers, §43 vols. 4/1–4/2, the IEBH footer, citation tooltips, cross-reference links and the labels the editor reviewed, §44 the live check after v0.8.0, vol. 4/3 deferred, vol. 5's drafts, the analysis split from its derivation and printed page numbers, §45 the live check after v0.9.0 and vol. 6's drafts, §46 stems L105–L106 and vols. 7–9, §47 vols. 10–14/1, §48 the live check after v0.12.0 and vols. 15–19, §49 vol. 14/2 from its text layer, §50 the body's first words restored, §51 the editor's decisions of 27 Sep and the revision queue, §52 editor mode, §53 roman input in the editor's form, §54 the redraft of 14/2's 497 rows with restored first words, §55 the OCR pilot (vols. 23 and 22 prepared, `prep`'s gloss fix for OCR books, vol. 23 shard 00 drafted), §56 vol. 23 drafted and merged, §57 vol. 22 drafted and merged (in Cowork), §58 vol. 24 likewise, §59 vol. 21 likewise, §60 vol. 20 likewise, §61 vol. 25 likewise, §62 14/3 and 4/3 prepared and the clean-row signal measured. Every figure is there.
+21, vol. 25's resolution and the labels as the dictionary prints them, §30 vol. 25 and the total, §31–37 the page images, the Introduction and the stem lexicon, §38 the site redesign, §39 the vol. 1 drafts, §40 the site fixes, the PCED analyses, hand corrections and sano / insano, §41 versioned assets and vol. 2's drafts, §42 the live check after `5db316f`, vol. 3's drafts and version numbers, §43 vols. 4/1–4/2, the IEBH footer, citation tooltips, cross-reference links and the labels the editor reviewed, §44 the live check after v0.8.0, vol. 4/3 deferred, vol. 5's drafts, the analysis split from its derivation and printed page numbers, §45 the live check after v0.9.0 and vol. 6's drafts, §46 stems L105–L106 and vols. 7–9, §47 vols. 10–14/1, §48 the live check after v0.12.0 and vols. 15–19, §49 vol. 14/2 from its text layer, §50 the body's first words restored, §51 the editor's decisions of 27 Sep and the revision queue, §52 editor mode, §53 roman input in the editor's form, §54 the redraft of 14/2's 497 rows with restored first words, §55 the OCR pilot (vols. 23 and 22 prepared, `prep`'s gloss fix for OCR books, vol. 23 shard 00 drafted), §56 vol. 23 drafted and merged, §57 vol. 22 drafted and merged (in Cowork), §58 vol. 24 likewise, §59 vol. 21 likewise, §60 vol. 20 likewise, §61 vol. 25 likewise, §62 14/3 and 4/3 prepared and the clean-row signal measured, §63 vol. 14/3 drafted and merged, §64 vol. 4/3 merged. Every figure is there.
 `docs/labels.md` §0 holds the label table (the one source for the pipeline and the site),
 `docs/abbreviations.md` the dictionary's own abbreviations and its prose on the labels,
 `docs/index-errata.md` the index's errors, `docs/witness.md` and `docs/witness-join.md` the typed
@@ -88,7 +88,11 @@ Project are for advice and for what needs the Mac. What the new chat should know
 
 00. ~~Versions~~: tags v0.1.0–v0.11.0 created by the editor; the footer shows `VERSION` (brief §43). Tag **v0.13.0** on the push of §48
    (and v0.12.0 on §47's, if not yet made). Each push that changes data or the site: bump `VERSION`, add a `CHANGELOG.md` section, tag.
-00w. **After the §63 push (v0.25.0)**: `/data/version.json` 0.25.0; `/w/pīti` and `/w/puthujjana` (vol. 14/3) show a Meaning box,
+00x. **After the §64 push (v0.26.0)**: `/data/version.json` 0.26.0; `/w/ogha` (vol. 4/3) and `/w/bhijja` (the supplement to vol. 15, filed
+   under 4/3) show a Meaning box, *borrador*; `/w/omakadesanā` keeps *Análisis corregido* and now has a Meaning; About: "los 25 volúmenes,
+   29 libros" and "vols. 4/3, 14/3 y 20–25" from our OCR. Tag v0.26.0.
+00w. ~~After the §63 push (v0.25.0)~~: done 28 Sep (the editor): 0.25.0 served, `/w/puthujjana` shows vol. 14/3's Meaning box (*borrador*),
+   About lists 14/1–25. Was: `/data/version.json` 0.25.0; `/w/pīti` and `/w/puthujjana` (vol. 14/3) show a Meaning box,
    *borrador*; About: "vols. 1–3, 4/1, 4/2, 5–13 y 14/1–25". Tag v0.25.0.
 00v. ~~After the §61 push (v0.24.0)~~: done 28 Sep (the editor): 0.24.0 served, `/w/hetu` shows vol. 25's Meaning box (*borrador*), About
    lists 15–25. Was: `/data/version.json` 0.24.0; `/w/hetu` and `/w/soka` (vol. 25) show a Meaning box, *borrador*;
@@ -264,7 +268,11 @@ Project are for advice and for what needs the Mac. What the new chat should know
    *texto ⟦pāḷi⟧*, ဆွမ်း *comida de limosna*, ပဟိုရ် *vigilia*, ⟦=vibhatti⟧ ⟦=bahuvacana⟧ ⟦=puthujjana⟧, ကောင်းမှုကုသိုလ် *buena acción
    meritoria*; (ae) to fix: 196223 ⟦=kappa⟧ for ကမ္ဘာ, 196519/20/33 Spanish plural agreement, 192761 / 192811 `terms`, 202742 poṭalikā (see
    202745), 201993; headwords pāpatara, pāparāgī, pāpabhikkhamānā, pāpintave, pāvikatara; the rest in brief §63 and `14c-flags.tsv`.
-1b. **Translation** (brief §37, §39–63). **Drafted: vols. 1–3, 4/1, 4/2, 5–13 and 14/1–25** (212,428 rows, 96.1% of the index, none reviewed; flags in `meanings/NN-flags.tsv`). **Vol. 4/3 drafted, not merged** (brief §63; the editor decided 28 Sep to draft it; it was deferred on 26 Sep, brief §44). PCED's vols. 1–19 are all drafted (brief §48).
+   From vol. 4/3 (brief §64): (af) the drafting agents' reports for 4/3 were not kept (brief §64): read `4c-flags.tsv` (2,232 rows) and
+   `4c-omitted.tsv`; the 207 supplement rows (177206–177428) are kept under 4c until item 9; "see X" targets with ဩ read as သြ / သ
+   (*sravādattha* in 176688, *sratarati*, *sradahati* …: 164 targets in 155 rows would link once restored) want a fix in `prep`'s formula
+   targets and a re-`merge 4c`, not a redraft; a Burmese sense letter after "see X" in 174722 (ရ), 176231 (န) and one 14/3 row.
+1b. **Translation** (brief §37, §39–64). **Drafted: all 25 volumes, 29 books** (217,212 rows, 98.2% of the index, none reviewed; flags in `meanings/NN-flags.tsv`). **Vol. 4/3 merged** (v0.26.0, brief §64, from §63's drafts; the editor decided 28 Sep to draft it; it was deferred on 26 Sep, brief §44). **Next is the final revision (1c).** PCED's vols. 1–19 are all drafted (brief §48).
    **The OCR books** (brief §55–56): **vol. 23 drafted and merged** (v0.19.0; 6,906 rows, 67.6% of drafted lines flagged,
    with `omitted` or empty; 3.75 M agent tokens). **Vol. 22 drafted and merged** (v0.20.0, brief §57; in Cowork, one wave of 17
    agents, no usage-limit stop; 7,613 rows; 75.0% of drafted lines flagged, with `omitted` or empty; 4.73 M agent tokens, ~626 a
@@ -281,23 +289,23 @@ Project are for advice and for what needs the Mac. What the new chat should know
    lines flagged, with `omitted` or empty, only 10.4% clean, the noisiest book; 2.26 M agent tokens, ~599 a line; merge / report in the cloud).
    **Vol. 14/3 drafted and merged** (v0.25.0, brief §63; two waves, 20 agents then 1, no usage-limit stop; 9,348 rows; 71.7% of drafted
    lines flagged, with `omitted` or empty; 5.59 M agent tokens, ~590 a line; merge / report in the cloud container). **Vol. 4/3 with its
-   supplements drafted, NOT merged** (brief §63): its 11 shards ran in 14/3's second wave; 4,803 lines, checked, 0 errors; the outputs are
-   in `tmp/meanings/mean4c-out-0928u.tar.gz`. **For the new chat**: unpack into `tmp/meanings/v4c/`, `merge 4c` / `report 4c --work
-   tmp/meanings/v4c` (in the cloud container: the VM's disk is full), its own version (v0.26.0) and brief section, noting that its 207
-   supplement rows belong to vols. 15, 4/2 and 16 (brief §16, §62); no need to draft again.
+   supplements merged** (v0.26.0, brief §64): drafted in §63 (11 shards in 14/3's second wave), unpacked from
+   `tmp/meanings/mean4c-out-0928u.tar.gz` (md5 `1c050a8…`) into `tmp/meanings/v4c/out/`, checked again (4,803 lines, 0 errors), merged and
+   reported in the cloud container (the VM's disk still full); 4,784 rows, 75.9% of drafted lines flagged, with `omitted` or empty, 24.1%
+   clean; 207 rows are the supplements to vols. 15 (50), 4/2 (107) and 16 (50), kept under 4c (brief §16, item 9).
    **14/3 and 4/3 prepared** (brief §62, measurement only): `tmp/meanings/v14c` (9,465 to draft, 21 shards) and
    `tmp/meanings/v4c` (4,803 to draft with the three supplements, 11 shards). `witness/join-4c.jsonl` pairs nothing;
    since v0.24.1 `prep` counts such a join as none, and `prep 4c --shards 11` gives `v4c` byte for byte (`prep_nojoin.py` is no
    longer needed; never draft from `v4c-rawbody`). Clean-row signal: 14/3 49.1%, 4/3 40.5% (vols. 20–25: 23.0–56.1%).
    **Decided (the editor, 28 Sep): draft both 14/3 and 4/3, drafts only, reviewed at the final revision (1c).** Same path: `prep NN --shards N --work
    tmp/meanings/vNN` (~445 lines a shard), agents with `23-shard00-prompt.md` (vol., shard, line count and paths changed).
-   ~~**Next: the books with no PCED**~~: 14/3 done (§63), 4/3 drafted, to merge. Was: could only be drafted from
+   ~~**Next: the books with no PCED**~~: 14/3 done (§63), 4/3 merged (§64). Was: could only be drafted from
    our OCR body: the editor to decide, as for 4/3 (brief §44 measured the OCR body against PCED on 4/1 and 4/2). If yes:
    `prep('NN', N)` from Python (N so that shards are ~450 lines), each book's `workNN.json` and `shards/` in
    `tmp/meanings/vNN/`; one agent and scratch folder per shard (20 at once) with `docs/translation/drafting-prompt.md`
    (brief §48; a wave can stop at the usage limit: its RESUMING note covers that); for `merge NN` and `report NN` move the
-   book's three up to `tmp/meanings/` and back after (brief §46). Vol. 15's supplement in 4c (53 ဘိဇ္ဇ rows, item 9) is
-   not drafted. Seven vol. 10 rows have `#NAME?` in PCED (brief §47): draft
+   book's three up to `tmp/meanings/` and back after (brief §46). Vol. 15's supplement in 4c (53 ဘိဇ္ဇ rows, item 9) was
+   drafted with 4/3 (§64: 50 rows with a Meaning), still under 4c. Seven vol. 10 rows have `#NAME?` in PCED (brief §47): draft
    them from our OCR. **The future's person**: the print writes …လတ်အံ့ for the 1st person and …လတ္တံ့ for the 3rd (brief §47);
    the rule "3rd unless marked" now says so (`drafting-prompt.md`, brief §48). Decided 26 Sep: ဂုဏ် *cualidad / virtud* (L105), လူ as layperson *laico*
    (L106). Open from vols. 15–19 (brief §48): ပယ် for physical removal (*quitar* or *abandonar*); the three stacked future
@@ -368,7 +376,8 @@ Project are for advice and for what needs the Mac. What the new chat should know
 8. **Image-check the label disagreements** with the witness (`docs/witness-join.md` §3): a sample
    of (တိ)/(gender), (ပု)/(ပု၊န), (ကြိ)/(တိ). And (ထိန), (ထီ၊၇), (ထိ၊န) (`docs/labels.md` §7; ids
    51227, 51941, 54340; vol. 24 has (ထီ၊ ၇) 17 and (ထိ၊ န) 11 unnormalised) before mapping them.
-9. **Vol. 15** must be joined with 4c's supplement to it (53 ဘိဇ္ဇ headwords indexed only there).
+9. **Vol. 15** must be joined with 4c's supplement to it (53 ဘိဇ္ဇ headwords indexed only there). The supplements' Meaning rows
+   (brief §64: 50 to vol. 15, 107 to 4/2, 50 to 16, ids 177206–177428) are in `meanings/4c.jsonl` and move with them.
 10. **Vol. 13's sixteen pages of vol. 15 headwords** (`docs/index-errata.md` §2): their real
    headwords can only come from our OCR; a later task.
 
