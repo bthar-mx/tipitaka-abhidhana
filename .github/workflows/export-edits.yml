@@ -1,0 +1,82 @@
+# Weekly export of the editor's edits (docs/editor-mode.md §5) into the repository, as a pull request.
+# Runs every Monday at 10:00 UTC (04:00 in Mexico City) and on demand (Actions → Export edits → Run workflow).
+# It reads the public API /api/edits?book=all, runs tools/abhidhana_edits_export.py --write, and if any file
+# changed: bumps the patch in VERSION, adds a CHANGELOG section, and opens a PR on a branch edits/YYYY-MM-DD.
+# No change → no PR. The article step for corrected headwords, labels, analyses and bodies is not run here
+# (it needs the OCR pages on the Mac); the PR lists the books to re-run.
+# Needs: Settings → Actions → General → "Allow GitHub Actions to create and approve pull requests".
+name: Export edits
+
+on:
+  schedule:
+    - cron: '0 10 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: export-edits
+  cancel-in-progress: false
+
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Export the edits
+        run: python3 tools/abhidhana_edits_export.py --api --write --summary "$RUNNER_TEMP/summary.json"
+
+      - name: Anything changed?
+        id: diff
+        run: |
+          if git diff --quiet; then echo "changed=false" >> "$GITHUB_OUTPUT"; echo "No new edits."; else echo "changed=true" >> "$GITHUB_OUTPUT"; git diff --stat; fi
+
+      - name: Version, changelog, pull request
+        if: steps.diff.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -e
+          DAY=$(date -u +%Y-%m-%d)
+          BRANCH="edits/$DAY"
+          python3 - "$RUNNER_TEMP/summary.json" "$DAY" > "$RUNNER_TEMP/pr.md" <<'PY'
+          import json, re, sys
+          from pathlib import Path
+          s = json.load(open(sys.argv[1], encoding='utf-8')); day = sys.argv[2]
+          v = Path('VERSION').read_text().strip()
+          a, b, c = map(int, v.split('.')); new = f'{a}.{b}.{c + 1}'
+          Path('VERSION').write_text(new + '\n')
+          books = s.get('books', {}); n = s.get('counts', {}); rerun = s.get('rerun', [])
+          what = '; '.join(f'{k}: {", ".join(f)}' for k, f in books.items()) or 'none'
+          line = (f'## v{new} — {day}\n\n- **Edits from editor mode exported** (weekly workflow): '
+                  f'{n.get("meanings", 0)} Meaning row(s), {n.get("corrections", 0)} correction(s) to `docs/corrections.tsv`, '
+                  f'{n.get("corrections_es", 0)} line(s) to `corrections-es.tsv`. Books and fields: {what}.'
+                  + (f' Article step still to re-run on the Mac for: {", ".join(rerun)}.' if rerun else '') + '\n\n')
+          ch = Path('CHANGELOG.md'); t = ch.read_text(encoding='utf-8')
+          m = re.search(r'^## v', t, re.M)
+          ch.write_text(t[:m.start()] + line + t[m.start():] if m else t + '\n' + line, encoding='utf-8')
+          print(f'v{new}: the edits saved in editor mode, exported by the weekly workflow.\n')
+          print(f'- Books and fields: {what}')
+          print(f'- Meaning rows: {n.get("meanings", 0)}; corrections.tsv: {n.get("corrections", 0)}; corrections-es.tsv: {n.get("corrections_es", 0)}')
+          if rerun:
+              print('\n**On the Mac, after merging** (the article step needs the OCR pages):\n')
+              for x in rerun: print(f'    python3 tools/abhidhana_articles.py {x} && python3 tools/abhidhana_romanise.py {x}')
+          print(f'\nAfter merging, the editor tags v{new}.')
+          PY
+          NEW=$(cat VERSION)
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -b "$BRANCH"
+          git add -A
+          git commit -m "v$NEW: export the edits saved in editor mode ($DAY)"
+          git push -u origin "$BRANCH"
+          gh pr create --base main --head "$BRANCH" --title "v$NEW: edits from editor mode ($DAY)" --body-file "$RUNNER_TEMP/pr.md"

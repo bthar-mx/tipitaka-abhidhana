@@ -23,6 +23,15 @@ Versions of the Tipiṭaka Pāḷi-Myanmā Abhidhāna project: the data, the too
 A release note says, per version: what changed, the brief's sections, and the headline figures
 (located, label + body, Meaning rows drafted / reviewed).
 
+## v0.18.1 — 28 Sep 2026
+
+- **Weekly export of the editor's edits** (`.github/workflows/export-edits.yml`, `docs/editor-mode.md` §5): every Monday
+  at 10:00 UTC (04:00 in Mexico City), and on demand from the Actions tab, GitHub reads `/api/edits?book=all`, runs
+  `tools/abhidhana_edits_export.py --api --write --summary`, and if any file changed bumps the patch, adds a CHANGELOG
+  section and opens a pull request on `edits/YYYY-MM-DD` listing the books whose article step must be re-run on the Mac.
+  No change, no PR. Written in a Cowork chat (the cloud session's permission check had refused the file); its version
+  and changelog step tested on a scratch copy, the export itself not yet run on GitHub. No data changed.
+
 ## v0.18.0 — 28 Sep 2026
 
 - **Roman input in the editor's form** (brief §53, `docs/editor-mode.md` §3): the headword, label and analysis each have a

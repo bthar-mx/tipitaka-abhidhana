@@ -88,6 +88,12 @@ Project are for advice and for what needs the Mac. What the new chat should know
 
 00. ~~Versions~~: tags v0.1.0–v0.11.0 created by the editor; the footer shows `VERSION` (brief §43). Tag **v0.13.0** on the push of §48
    (and v0.12.0 on §47's, if not yet made). Each push that changes data or the site: bump `VERSION`, add a `CHANGELOG.md` section, tag.
+00n. **The weekly export workflow** (v0.18.1): `.github/workflows/export-edits.yml`, Monday 10:00 UTC and on demand
+   (Actions → Export edits → Run workflow). The repository and the organisation allow Actions to open pull requests
+   (the editor, 28 Sep); the workflow asks for `contents: write` and `pull-requests: write` itself, so the default
+   permission can stay read-only. First manual run: to do after the push; with no edits it ends "No new edits", with edits
+   it opens a PR `vX.Y.Z: edits from editor mode (date)`. After merging such a PR: tag it, and on the Mac re-run the
+   article step for the books the PR lists. This settles 00m (b).
 00m. **After the §53 push (v0.18.0)**: `/data/version.json` 0.18.0; Browse unchanged for a visitor. Once editor mode is on
    (00l): open an article's *Editar*, switch *Análisis* to *Latín*, type `omaka + patta`: *se guarda* ဩမက + ပတ္တ, *relectura*
    ✓; type a capital: *Guardar* disabled. Check the Burmese in the Mac's font (the cloud's Chromium lacks a Myanmar shaper).
