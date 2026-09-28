@@ -218,3 +218,19 @@ fillFoot();
   b.addEventListener('click', () => scrollers().forEach(e => { if (e.scrollTop > 0) e.scrollTo({ top: 0, behavior: 'smooth' }); }));
   document.body.appendChild(b);
 })();
+
+// --- the phone header (below 768 px): the five tabs and ES / EN fold behind the ☰ button (style.css)
+Object.assign(T.en, { menu_open: 'Menu', menu_close: 'Close the menu' });
+Object.assign(T.es, { menu_open: 'Menú', menu_close: 'Cerrar el menú' });
+(function () {
+  const hdr = document.querySelector('header.site'), b = hdr && hdr.querySelector('.menubtn');
+  if (!b) return;
+  const set = on => {
+    hdr.classList.toggle('menu-open', on); b.setAttribute('aria-expanded', on);
+    const l = t(on ? 'menu_close' : 'menu_open'); b.title = l; b.setAttribute('aria-label', l);
+  };
+  set(false); langHooks.push(() => set(hdr.classList.contains('menu-open')));
+  b.addEventListener('click', () => set(!hdr.classList.contains('menu-open')));
+  document.addEventListener('click', e => { if (!e.target.closest('header.site')) set(false); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && hdr.classList.contains('menu-open')) { set(false); b.focus(); } });
+})();

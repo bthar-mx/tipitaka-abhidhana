@@ -1230,3 +1230,53 @@ only a non-headword one with a stray mark would change.
 No other "see X" sense marker in 4c, 14c, 16, 18 or 19's work files holds a Burmese letter.
 
 **Totals unchanged**: 217,212 Meaning rows, all `drafted` except the 9 corrected. The site was not built here.
+
+## 66. Site display fixes: the phone header, folded passages and citations, quiet notes (28 Sep 2026, cloud session)
+
+**Asked** (the editor; v0.26.3, display only, no data change): (1) below 768 px, the tabs behind ☰ and the mode bar behind one
+*Ajustes* button, so that `/w/sīla` at 375×812 shows the headword and the top of the Meaning box; (2) passages and citations folded
+to 5 lines with "show all (N)", fragment lines and citations without a work abbreviation hidden behind "show everything", the
+"extracted by machine" note at the top of each list, and the counts it hides; (3) the header on one line from 1,024 px; (4) long
+headwords wrapped in the list; (5) "label not read" / "analysis not read"; (6) the homonyms on the headword, previous / next at the
+foot on phones, a tooltip on *borrador*. Tested with Playwright (Chromium) on a full local build (958 files, `abhidhana_site.py` into
+a scratch folder, served with the `_redirects` rewrites).
+
+**What changed** (`site/src/assets/browse.js`, `common.js`, `style.css`; a ☰ button in the header of all 8 pages):
+- **Phone header** (< 768 px): one line with the title, light/dark and ☰; the search below; the five tabs and ES / EN in the ☰ panel
+  (closes on Escape or a click outside). The mode bar shows *Alfabeto* and *Ajustes* only; *Ajustes* opens the reading modes,
+  *personalizado*, the printed-page button and the settings panel together. 768–1,023 px is unchanged (two header lines).
+- **Header ≥ 1,024 px on one line** (was ≥ 1,180): the search box gives way first (min. 120 px), and at 1,024–1,279 px the title and
+  tabs are a little smaller. Found on the way: on Browse the header had shrunk to its content (the page is a flex column and `.wrap`
+  has auto margins), so the search box never grew; it now takes the width (420 px at 1,440).
+- **Passages and citations**: the first 5 passages, and the first 5 rows of citation chips (counted on the screen, again on resize);
+  "show all (N)" / "show fewer"; "show everything (M more)" (tooltip gives the rule), the hidden lines then shown dimmed. The filter
+  (display only): a passage is hidden when its romanised text has fewer than 3 words of two or more letters, or more than 30% of its
+  non-space characters are not letters; a citation when it has no letter at all (only digits: "2.50"). **"vi 1" is not hidden**: ဝိ is
+  matched to the Vinaya Piṭaka (vol. 1, the page missing), so it has a work abbreviation; likewise "ma 1", "ma 2" (question 1).
+- Long headwords wrap (list, article heading, the neighbours at the foot), the list with the full word as a tooltip.
+- *label not read* / *analysis not read* (ES *etiqueta no leída* / *análisis no leído*), small and italic beside the headword, for a
+  located article with no label or no analysis; not shown on an unlocated one (its note already says the text was not found).
+- Homonyms: *homónimos 1 **2** 3 4* beside the headword, the others linked (those in the syllable shown; the build numbers homonyms
+  across all books).
+- Previous / next side by side at the foot on phones, labelled *anterior* / *siguiente* when the neighbour is in another syllable.
+- *borrador* chips carry a tooltip: "borrador automático, sin revisar" / "machine-drafted, not reviewed".
+- The label table on `/abbreviations/` pushed the page sideways at 375 and 768 px (before this change too): it now scrolls in its box.
+
+**Measured on `/w/sīla` (vol. 24), real fonts** (Google Fonts downloaded and served locally): at 375×812 the header 253 → 102 px and
+the Meaning box's top 533 → 304 px; at 1,024 px the header 120 → 77 px, one line in ES and EN, nothing clipped.
+
+**What the filter hides** (the built data, every article's passages as the site lists them, i.e. spans of ≥ 2 tokens not a "see" target):
+- **sīla**: 24 of 59 passage lines (35 shown under "show all"), 1 of 30 citations ("2.50").
+- **Vol. 24**: 4,038 of 13,640 passage lines (29.6%) in 6,386 articles; 139 of 10,697 citations (1.3%). Of the 4,038, 4,037 are hidden
+  for having under 3 words and 1 for the non-letters alone: the 30% rule adds almost nothing, the word rule does the work, and it also
+  hides real short quotations (*sīlayatīti sīlaṁ*; question 2). 146 of vol. 24's articles have more than 5 lines left to fold.
+- **All 29 books**: 172,598 of 504,587 passage lines (34.2%); 16,953 of 530,971 citations (3.2%; most in 14b 2,002, 14 1,542, 8 1,421).
+- **"Not read" notes**: of 208,140 located articles, 13,127 show *label not read* and 11,873 *analysis not read* (3,314 of them in 14/3,
+  1,693 in 23, 1,465 in 22; 1–6 in each of vols. 10–14 and 19). The site cannot tell "not read" from "not printed": a word printed without
+  brackets also gets *analysis not read* (question 3).
+
+**Checks**: Playwright, 9 pages (Browse, `/w/sīla`, volumes, introduction, abbreviations, about, `/v/24/67`, `/edit/`, 404) × 375,
+768, 1,024, 1,440 px × light, dark × ES, EN = 144 loads: **no script errors, no sideways scroll, the header on one line from 1,024 px,
+no tab clipped**; again with the real fonts (5 pages × 375, 768, 1,024, 1,100, 1,440 × both themes × both languages): 0 failures. The
+folds clicked through on sīla at 375 px (5 → 35 → 59 passages; 14 → 29 → 30 citations; "show fewer" folds back); ☰ and *Ajustes* open
+and close; a 33-letter headword at 375 px: no sideways scroll. `sh site/test/editor/run.sh` (wrangler 4, local D1, the Access stand-in): exits 0, the UI test **48 pass, 0 fail**. Not tested: Safari and Firefox, a real phone.
