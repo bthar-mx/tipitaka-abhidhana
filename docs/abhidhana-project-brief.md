@@ -2040,6 +2040,7 @@ remembered after a reload, back to Burmese, withdrawal). Two existing checks now
 **Also**: `tools/abhidhana_edits_export.py --summary FILE` writes what changed as JSON (books → fields, the books to re-run,
 counts), tested on a local .json export without `--write`; `--api` now sends a User-Agent (Cloudflare can refuse Python's).
 
-**Not done: the weekly export workflow** (`.github/workflows/export-edits.yml`, asked in the same session): writing it was
-refused by the cloud session's permission check (auto mode), and not retried. It is for the editor to allow or to add.
+**The weekly export workflow** (`.github/workflows/export-edits.yml`, asked in the same session): writing it was refused by
+the cloud session's permission check (auto mode). *Corrected 28 Sep:* it was added afterwards in a Cowork chat, in v0.18.1,
+and its first run opened PR #33 (v0.18.2: three corrections to vol. 4/3's analyses), merged.
 
