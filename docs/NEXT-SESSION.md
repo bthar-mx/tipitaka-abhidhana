@@ -1,8 +1,9 @@
-# Abhidhāna — handover, 28 September 2026 (editor mode built, not yet switched on, v0.17.0; roman input in its form, v0.18.0; 14/2's 497 rows redrafted, v0.18.3; the OCR pilot, v0.18.5; vol. 23 drafted from our OCR, v0.19.0; vol. 22 drafted from our OCR, v0.20.0; vol. 24, v0.21.0; vol. 21, v0.22.0; vol. 20, v0.23.0; vol. 25, v0.24.0; 14/3 and 4/3 prepared, §62; `prep`'s no-join fix, v0.24.1; vol. 14/3 drafted from our OCR, v0.25.0, and 4/3's shards drafted, not merged, §63; vol. 4/3 merged, v0.26.0: every book drafted, §64)
+# Abhidhāna — handover, 28 September 2026 (editor mode built, not yet switched on, v0.17.0; roman input in its form, v0.18.0; 14/2's 497 rows redrafted, v0.18.3; the OCR pilot, v0.18.5; vol. 23 drafted from our OCR, v0.19.0; vol. 22 drafted from our OCR, v0.20.0; vol. 24, v0.21.0; vol. 21, v0.22.0; vol. 20, v0.23.0; vol. 25, v0.24.0; 14/3 and 4/3 prepared, §62; `prep`'s no-join fix, v0.24.1; vol. 14/3 drafted from our OCR, v0.25.0, and 4/3's shards drafted, not merged, §63; vol. 4/3 merged, v0.26.0: every book drafted, §64; the next phase planned and decided, the brief shrunk, v0.26.1)
 
 *All 29 books are digitised end to end, spot-checked and in the Reader: 221,154 index rows, 94.1%
 located, 88.1% with label + body (brief §30). Read
-`abhidhana-project-brief.md` first: §12 covers vol. 1, §13 vols. 2–3, §14–17 the witness and vols.
+`abhidhana-project-brief.md` first (since 28 Sep it holds §1 and §50 onward; **§2–49 are in `docs/abhidhana-brief-archive.md`**,
+numbers unchanged, so every "brief §N" below N = 50 is read there): §12 covers vol. 1, §13 vols. 2–3, §14–17 the witness and vols.
 4/1–5, §18 the spelling folds and the homonym and misfiled-headword fixes, §19 the witness join, §20
 vol. 6, §21 vol. 7, §22 vol. 8 and the gutter failures, §23 vol. 9, §24 the re-cut tool, §25 vol.
 14/2's text layer, §26 the batch (vols. 10–22), §27 vols. 23, 24, 14/2, the index's page errors,
@@ -23,13 +24,14 @@ witness.*
   book with `pdfimages -list`, and **measure a sample before trusting "native"**: vol. 25 read far
   worse at its native 300 than at 200 (brief §29). After the OCR: `abhidhana_articles.py NN`, then
   `abhidhana_romanise.py NN`, always in that order; then `abhidhana_ocr_stats.py NN` for the OCR
-  report, `abhidhana_reader_data.py NN [NN ...]`, and the witness joins for books 01–19.
+  report, and the witness joins for books 01–19. (`abhidhana_reader_data.py` no longer: the Reader is retired.)
 - **In the Cowork VM, a background job dies when the call returns**, and `pkill -f` with a pattern
   that appears in the command line kills the calling shell (the cloud container too). Run the
   article step for up to five books in parallel inside one call (about 45–65 s for five). In a
   fresh VM, `pip install --user aksharamukha python-myanmar pymupdf` first.
-- **The Reader's data are `reader/*.wasm`** (gzip bytes, served as application/wasm; gitignored):
-  republish them with `reader/index.html` to https://claude.ai/artifact/RjuFxtkh4FASRkhBeYhVS3.
+- **The Reader is retired** (the editor, 28 Sep): the website replaces it. The artifact
+  (https://claude.ai/artifact/RjuFxtkh4FASRkhBeYhVS3) stays where it is, with its last data, and is no longer republished;
+  `tools/abhidhana_reader_data.py` and `reader/` stay in the repo, unused.
 - **Docs in the folder and in the Project must match.** On 25 Sep night the folder's brief and
   NEXT-SESSION twice went back to an older version. The cause was this session: `device_commit_files`
   sent a stale copy when the same staged path under `/mnt/user-data/outputs/` was reused. Give each
@@ -84,11 +86,118 @@ Project are for advice and for what needs the Mac. What the new chat should know
 - **When a cloud job is merged and pulled**, a Cowork chat reads the brief and this file from the folder,
   checks the live site, and copies both into the Project (the cloud cannot reach the Project).
 
+## Next phase: the plan (28 Sep; decided by the editor the same day)
+
+*Written in a Cowork planning chat; no data changed. Token figures are estimates, not measurements: drafting has run at
+~555–717 agent tokens a line (brief §56–64); an image check is guessed at ~3 k tokens a page crop (not measured). Usage:
+47% of the week at the time of writing, reset Sun 4 Oct 13:00 (Mexico). The Cowork drafting of 28 Sep (vols. 22, 24, 21,
+20, 25, 14/3 + 4/3, ~29 M agent tokens) fell in this week, so very roughly 0.6 M tokens per 1% of the weekly limit — an
+inference, not a measurement. A one-off reset of both limits is available until 22 Oct; the $250 cloud credit until 5 Nov
+(whether cloud sessions also draw on the weekly limit is not verified: look at the Usage page after the first cloud job).*
+
+**Where things run.** *Mac* (the editor in Terminal, or the Cowork VM for Python on the folder): git, tags, `git gc`, OCR and
+re-cuts, the article step, witness joins, Reader data, wrangler. *Cowork*: anything needing `db/`, `witness/`, `tmp/` or the
+PDFs (image checks: stage the PDF, render a crop in the cloud container, look at it), article-step development, decision
+sheets, Project sync, **redrafts and rule changes** (decided: on the plan's limits, the one-off reset as backup). *Claude Code
+cloud* (credit): only what is pushed (`articles.jsonl`, `pali.jsonl`,
+`meanings/`, tools): `prep` / `merge` for books without a join (14/2, 14/3, 4/3, 20–25), redrafts, rule application, code
+fixes testable on committed data (decided: **code fixes only**, on the credit). It cannot reach the page images (§55) and has no witness: nothing that re-preps a PCED book.
+
+**Counted now** (28 Sep, light counts): flag rows in `meanings/*-flags.tsv` **41,060**; those mentioning "run-on" **2,443**
+(14/3 330, 20 378, 21 306, 22 389, 23 240, 24 311, 25 180, 4/3 307, 14/2 2; none in the PCED books); `revision-queue.tsv`
+3,397 lines; articles with no body in the books drafted from our text (brief §49, §56–64): 14/2 125, 14/3 845, 4/3 400,
+20 352, 21 238, 22 301, 23 174, 24 268, 25 196 = **2,899**.
+
+### Phase 0 — unblock (this week; cheap)
+- **0.1** The editor, no tokens: `git count-objects -vH` and `git gc` (item 4) before the article step rewrites 29 books; delete
+  `tmp/_to_delete/`; close the volume issues. (v0.26.0 is tagged, and editor mode is on: PR #33 came from it.)
+- **0.2** ~~Slim the brief~~: done 28 Sep (v0.26.1): §2–49 moved unchanged into `docs/abhidhana-brief-archive.md` (Project:
+  `claude/abhidhana-brief-archive.md`), a summary of the facts still in use in their place. The brief went from 248,594 to 114,880 bytes
+  (the archive 137,481); §50–64 are most of what is left. Moving §50–61 too is possible later.
+- **0.3** Claude Code cloud (credit), ~300–500 k, code fixes on committed data (v0.26.2): `merge` re-applies `corrections-es.tsv`
+  (needed before any re-merge in phases 1–2); 4/3's "see X" targets with ဩ read as သြ / သ (164 targets, 155 rows, 1c (af))
+  restored in `prep`'s formula targets, then re-`merge 4c` (no redraft); a Burmese sense letter after "see X" written as the
+  Latin one (174722, 176231, one 14/3 row).
+- **0.4** Cowork, ~20 k: find what fills the VM's `/sessions` disk (43 MB free). If it cannot be freed, keep running
+  romanisation and `merge` / `report` in Terminal or the cloud container, as since §57.
+
+### Phase 1 — (a) + (b): the article step (Cowork develops, the Mac runs, the cloud redrafts)
+(a) and (b) are mostly one problem: an unlocated article with no body usually has its text run on inside the article before
+it (brief §49, §56–64). Measure first, then one new pass.
+- **1.1** Cowork, ~200–300 k, measurement only: for every unlocated headword, and every located one whose own line is a stub
+  while the line before holds its headword + label, is the headword found at a line start inside a neighbour's body, followed
+  by a label or `[`? Counts per book: run on / elsewhere in the page text / not in the text. In books 01–19 PCED says whether
+  the text after each split is that headword's definition: **a precision figure without images**; in the OCR books only the
+  image can say.
+- **1.2** ~~The gutter re-cut before the split~~: **not now** (the editor, 28 Sep); item 6 stays an optional later job, and the
+  article step will then run again.
+- **1.3** Cowork, ~400–700 k: the split pass in `abhidhana_articles.py` (rule 1), with item 5b's homonym runs (177) in the same
+  pass; each split row carries `split_from` / `split_rule`; tested as always (per-row digest: no field changes outside the
+  split rows), measured against PCED in 01–19.
+- **1.4** The image check of the splits. **Decided: B + C** (the editor, 28 Sep). The options were: (A) every split on the image by Claude, ~2,000–3,500 splits × ~3 k ≈
+  6–10 M tokens, several days of Cowork usage; (B, recommended) PCED's precision for 01–19 plus a stratified image sample in
+  the OCR books (~150 splits, ~0.5 M); if ≥ 97–98% right, the rest kept by rule, marked `split_checked: sample`, with the page
+  pane showing the image beside each on the site; (C) a review page (one line a split, the page image from R2) for the editor
+  to tick, ~150 k to build plus the editor's hours; can go with (B).
+- **1.5** The Mac, minutes: articles + romanisation for the books changed, witness joins (01–19); push v0.27.0;
+  live check.
+- **1.6** Cowork (plan's limits; the reset as backup), ~2.5–3 M: redraft the rows that gain their own text (OCR books; `prep NN --ids`,
+  `merge NN --ids`) and the host rows whose drafts translated run-on text (the departures in 1c: 14/2 shards 05, 06, 08, 09,
+  14; vol. 23 shard 04; vol. 24 shards 02, 06, 10, 13, 14; vol. 21 shards 04, 12, 14; vol. 20 shards 00, 03, 06, 14; 14/3
+  shards 10, 11). Hosts that put the run-on text in `omitted` keep their Meaning; only their `omitted` line shrinks. PCED books
+  need no redraft (their Meaning is PCED's, per headword). v0.28.0.
+- **1.7** (b)'s remainder after 1.3 — still unplaced and bodiless: the `page.psm6` fallback (item 6's last step; Cowork ~300 k
+  plus Mac OCR), or accept "not yet translated" with the page image. Sized by 1.1; **decide then.** (`/w/ogha`'s ogha¹, 175181,
+  with no Meaning row, is one to look at.)
+
+### Phase 2 — (c) the final revision (1c)
+- **2.1** Cowork, ~200–300 k: **one decision sheet** (a Claude Docs doc) with every open question, grouped by kind, not by
+  volume: verb person (-si / -esi aorists, -tha, -ttha, -etha, -ittha, -aṁ, future headwords with a past); "see the original";
+  senses printed twice (kept once: confirm); ~60 renderings (soka, sāsana, saṁsāra, cakkavāḷa, sikkhāpada, ပြာသာဒ်, ကမ္ဘာ, ကံ as
+  act / object, ကြိယာ as verb, ဘုံ as storey, ဥတု as menses, ဟင်္သာ, စောင်း for vīṇā …); a policy for plant, animal and mineral
+  names (‹Burmese› plus a tentative name in a note, or a name only when sure); Burmese months and places (romanised or ‹ ›); the
+  open items of 1b. Each with its count, two example ids and the drafts' current choices. Labels (item 3) and the History (7c)
+  can go in too. The editor decides in one or two sittings; decisions go to `stems.tsv`, `glossary.tsv`, `drafting-prompt.md`,
+  as on 27 Sep.
+- **2.2** Cowork, ~150 k, a script: triage of the 41,060 flag rows by kind (OCR read-through, run-on — mostly gone after
+  phase 1 —, person, see-X, nothing to translate, truncated / garbled, check on the page, tentative identification …), counts
+  per book and kind, and a proposed action per kind: accept, re-render by rule (2.3), image (2.4), the editor (2.5).
+- **2.3** Applying settled rules. **By script** where the change is lexical and the Spanish word unambiguous (R4–R8, R10, R11
+  of the queue — `tmp/dec0927/mech.py` exists, uncommitted — and 2.1's lexical decisions): Cowork, ~300–600 k, a diff TSV for
+  the editor to skim before merging. **By agents** where it needs the sense or the person (R2 person 1,684, R3 ပယ် 565, R9
+  ဖောက်ပြန် 437, R12 လေ 119, the aorists across the OCR books, ကမ္ဘာ, ကံ, ဘုံ …): a short per-row prompt (rule, Burmese,
+  current Spanish; the answer only the changed Spanish), ~300–450 tokens a row; 5,000–10,000 rows ≈ 2–4 M in Cowork.
+  Every changed row stays `drafted` and records the rule (`revised: Rn`); `corrections-es.tsv` wins over both (0.3 first).
+- **2.4** Rows to check on the page (the lists of §55–64 and flags naming the page; a few hundred ids): mechanical ones
+  (numbers, headword / text disagreement, run-on residue) by Claude in Cowork, ~3 k a row; doctrinal or garbled ones by the
+  editor in the page pane (no tokens).
+- **2.5** The editor's own review, in editor mode (the weekly export brings it in): by stem first (the top 1,000 stems carry
+  59% of stem occurrences, brief §37; an approved stem is carried everywhere by 2.3), then one volume through to `reviewed` for
+  v1.0.0 (`CHANGELOG.md`). 217,212 rows will not all be reviewed by hand; the status says which are.
+
+### Phase 3 — (d) housekeeping, alongside
+- ~~**The Reader**~~: **retired** (the editor, 28 Sep): noted in "Every session" and the README; the artifact left as it is.
+- **Labels (item 3) and the History (7c)**: the editor's; can go into 2.1's sheet.
+- **Item 9** (the 207 supplement rows beside vols. 15, 4/2, 16): after phase 1 (the same article step); Cowork ~200 k + Mac re-run.
+- **Later**: 7b (14/3's analysis), 8 (label disagreements on the image), 10 (vol. 13's sixteen pages), 3b (case and citation
+  abbreviations), page records to `sources-v1` (the editor), the title-page counts (open questions), Budistas / Buddhistas (00c).
+
+**Budget.** Phases 0–2 with B + C: ~10–15 M tokens in all, now mostly in Cowork on the plan's limits (1.6 ~2.5–3 M, 2.3 ~2.5–4.5 M),
+spread over more than one week, with the one-off reset (until 22 Oct) as backup; only 0.3 runs on the cloud credit. At the rough
+rate above, 1.6 alone is on the order of 5% of a week.
+
+**Decided (the editor, 28 Sep):** (1) the order above; (2) shrink the brief now (done, 0.2); (3) no gutter re-cut before the splits
+(item 6 optional, later); (4) splits: B + C; (5) retire the Reader (done in the docs; the artifact stays); (6) code fixes in Claude Code
+on the credit; redrafts and rule changes in Cowork. **Next**: the editor runs `git gc` and pushes v0.26.1; then 0.3 in a cloud session
+and 1.1 in a Cowork chat (they touch different files and can run in either order).
+
 ## Next, in order
 
 00. ~~Versions~~: tags v0.1.0–v0.11.0 created by the editor; the footer shows `VERSION` (brief §43). Tag **v0.13.0** on the push of §48
    (and v0.12.0 on §47's, if not yet made). Each push that changes data or the site: bump `VERSION`, add a `CHANGELOG.md` section, tag.
-00x. **After the §64 push (v0.26.0)**: `/data/version.json` 0.26.0; `/w/ogha` (vol. 4/3) and `/w/bhijja` (the supplement to vol. 15, filed
+00x. ~~After the §64 push (v0.26.0)~~: done 28 Sep (the editor): 0.26.0 served; About reads "25 volumes, bound as 29 books";
+   `/w/omakadesanā` keeps *Análisis corregido* and has its Meaning. `/w/ogha` opens ogha¹ (175181), which has no Meaning row; ogha²
+   (175182) has one (not looked into; see plan step 1.7). Tag v0.26.0 (the editor). Was: `/data/version.json` 0.26.0; `/w/ogha` (vol. 4/3) and `/w/bhijja` (the supplement to vol. 15, filed
    under 4/3) show a Meaning box, *borrador*; `/w/omakadesanā` keeps *Análisis corregido* and now has a Meaning; About: "los 25 volúmenes,
    29 libros" and "vols. 4/3, 14/3 y 20–25" from our OCR. Tag v0.26.0.
 00w. ~~After the §63 push (v0.25.0)~~: done 28 Sep (the editor): 0.25.0 served, `/w/puthujjana` shows vol. 14/3's Meaning box (*borrador*),
@@ -178,8 +287,7 @@ Project are for advice and for what needs the Mac. What the new chat should know
 0b. ~~**Push the 26 Sep night work** (brief §40)~~ (pushed as `5db316f`; the §42 check covered the Meaning box,
    (ti) labels, PCED and "corrected" marks, versioned assets). Still to look at on the live site: the search list, Hide index
    (`\`), the ES/EN switch at ~1,000 px, the alphabet in roman mode, the About credits. (`tmp/sitetest/`, the test tarballs,
-   was deleted by the editor on 26 Sep.) The Reader artifact is not republished with the new analyses
-   (`abhidhana_reader_data.py` for all books, then republish).
+   was deleted by the editor on 26 Sep.) (The Reader was not republished; it is retired, 28 Sep.)
 0c. **Hand corrections** go in `docs/corrections.tsv` (brief §40); re-run `abhidhana_articles.py NN` and
    `abhidhana_romanise.py NN`. Confirm the `roman` column of `docs/labels.md` §0.
 1a. ~~**Vol. 14/2 drafted**~~: done, with the redraft of 28 Sep (brief §54); what follows is for review and the Mac. (Approved by the editor, 27 Sep, after trial shard 00; brief §49): 6,795 rows from the text layer,
@@ -351,8 +459,7 @@ Project are for advice and for what needs the Mac. What the new chat should know
    only past ~1 GB move `articles.jsonl` / `pali.jsonl` to release assets, with the site build
    downloading them.
 5. ~~Weak `ID_PAGE_FIX` candidates~~: done 25 Sep (brief §32): four 14/3 runs and vol. 10's ဒသ² applied,
-   vol. 18's rejected (the index is right). The Reader artifact is **not yet republished** with vols. 10
-   and 14/3's new data (`reader/vol10.wasm`, `vol14c.wasm`, `search.wasm`); the website follows on push.
+   vol. 18's rejected (the index is right). (The Reader was not republished; retired 28 Sep.)
 5b. **Homonyms paired one entry late, the converse of §18** (brief §32): 177 runs where an earlier
    identical headword is unplaced and a later one placed on the same page (vol. 10 p. 220: 81977–81978
    hold ဒသ³⁻⁴). Sort them with the witness joins for books 01–19 (a placed row whose body ratio
@@ -360,7 +467,7 @@ Project are for advice and for what needs the Mac. What the new chat should know
    a rule in `abhidhana_articles.py`, tested so that it moves nothing already right.
 6. **Re-cut the gutters** with `tools/abhidhana_recut.py` (brief §24), natively, book by book, when
    no OCR is running: `python3 tools/abhidhana_recut.py NN --scan --workers 10`, then `--run
-   --workers 10`. Then re-run articles, romanisation, the witness joins and the Reader for every
+   --workers 10`. Then re-run articles, romanisation and the witness joins for every
    book, and compare. Vol. 24 has 15 pages with a gutter ≥ 0.54 (column recall 80.8%). **Vol. 9
    p. 823** (brief §23): move `ocr/09/pages/p0823.json` aside and re-run it before that. Afterwards
    try the `page.psm6` fallback for headwords still unlocated.
@@ -392,4 +499,4 @@ Translate volume by volume only as drafts, never presented as readings. Flag unc
 - **Body text of a head placed by its superscript** starts with the debris (ာါ, ဝ်): cosmetic, not yet stripped.
 - **The last 160 pages of 4a** are worn print. `pdfs-drive/` has another copy of vol. 4/1; compare a page before re-OCRing.
 - **`myap` redistribution**: check Pn Daza's licence before attaching the model to the release.
-- **The Reader needs `DecompressionStream`** (Safari 16.4+, Chrome 80+, Firefox 113+). Say so if someone reports a blank page.
+- (Retired 28 Sep, kept for anyone using the old artifact.) **The Reader needs `DecompressionStream`** (Safari 16.4+, Chrome 80+, Firefox 113+). Say so if someone reports a blank page.

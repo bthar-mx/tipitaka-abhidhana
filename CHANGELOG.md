@@ -23,6 +23,14 @@ Versions of the Tipiṭaka Pāḷi-Myanmā Abhidhāna project: the data, the too
 A release note says, per version: what changed, the brief's sections, and the headline figures
 (located, label + body, Meaning rows drafted / reviewed).
 
+## v0.26.1 — 28 Sep 2026
+
+- **Docs only; no data or site change.** The brief's §2–49 moved unchanged into `docs/abhidhana-brief-archive.md` (the numbering
+  kept); the brief keeps §1, a summary of the facts still in use, and §50–64 (248,594 → 114,880 bytes).
+- The Reader is retired (the editor): the website replaces it; the artifact is left as it is. Noted in the README and NEXT-SESSION.
+- NEXT-SESSION: the plan for the next phase (run-on splits, unplaced articles, the final revision, housekeeping), with the editor's
+  decisions of 28 Sep; 00x (the v0.26.0 live check) marked done.
+
 ## v0.26.0 — 28 Sep 2026
 
 - **Vol. 4/3's Meaning boxes, with the supplements to vols. 15, 4/2 and 16 bound after it, merged from the drafts of §63** (brief §64;
