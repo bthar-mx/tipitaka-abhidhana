@@ -180,6 +180,12 @@ Project are for advice and for what needs the Mac. What the new chat should know
    new drafts follow the rules through `drafting-prompt.md`. Corrections go in `docs/translation/corrections-es.tsv` (a re-`merge`
    of a book must re-apply them: `merge` does not yet). Rule 1 (split run-on articles, e.g. 210255 inside 210254) is for the
    article step on the Mac, each split checked on the page image.
+   **Added 28 Sep (the editor: review questions wait for this revision, not asked before):** (a) the 20 ids of vol. 23 shard 00
+   listed in brief §55, against the page image; (b) aorists in -si / -esi, drafted in the 3rd person and flagged as the prompt
+   says (vol. 23: 185770, 185942 and the rest of the book's "aorist" flags; 14/2: brief §54); (c) run-on articles in the
+   OCR books: only the headword's own text translated, the run-on text in `omitted`, flagged "run-on article: X" (vol. 23:
+   185509/10, 185571/72, 185646–48, 185791/92, 185844/45, 185852/54 and the rest in `23-flags.tsv`; 177547 sannipatita inside
+   177546 in vol. 22), to be split by rule 1; the «Sn» of a run-on article kept in its host row (185509, 185874).
 1b. **Translation** (brief §37, §39–49). **Drafted: vols. 1–3, 4/1, 4/2, 5–19 and 14/2** (163,445 rows, 73.9% of the index, none reviewed; flags in `meanings/NN-flags.tsv`). **Vol. 4/3 deferred** (no PCED; the editor, 26 Sep; brief §44). PCED's vols. 1–19 are all drafted (brief §48).
    **The OCR pilot (brief §55, v0.18.5)**: vols. 23 and 22 prepared (`tmp/meanings/v23`, `v22`: 15 and 17 shards; the cloud's
    `tmp/` is gone, re-run `prep 23 --shards 15` and `prep 22 --shards 17`); vol. 23 shard 00 drafted, not merged
