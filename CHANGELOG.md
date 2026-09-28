@@ -23,6 +23,12 @@ Versions of the Tipiṭaka Pāḷi-Myanmā Abhidhāna project: the data, the too
 A release note says, per version: what changed, the brief's sections, and the headline figures
 (located, label + body, Meaning rows drafted / reviewed).
 
+## v0.18.4 — 28 Sep 2026
+
+- **Vol. 4/3: article step re-run** (`abhidhana_articles.py 4c`, `abhidhana_romanise.py 4c`) with the three analyses corrected
+  in editor mode and exported in v0.18.2 (176136 omakapatta, 176140 omakasatta, 176144 omakkhi): each now carries the corrected
+  analysis and is marked `corrected`. No other data changed by intent.
+
 ## v0.18.3 — 28 Sep 2026
 
 - **Vol. 14/2: 497 Meaning rows redrafted** (brief §54): the rows whose Burmese now begins with the body's restored first
