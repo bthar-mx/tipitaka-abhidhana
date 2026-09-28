@@ -38,6 +38,12 @@ Object.assign(T.en, {
   pced_t: 'From the typed text of this dictionary in the Pali Canon E-Dictionary (PCED), not from our OCR.',
   corrected_f: 'corrected', corrected_t: 'Corrected by hand against the printed page; the rest of the article is unchecked OCR.',
   panes_hide: 'Hide index', panes_show: 'Show index', panes_t: 'Hide or show the alphabet and the headword list',
+  step_prev: 'previous', step_next: 'next', drafted_t: 'machine-drafted, not reviewed', label_nr: 'label not read', analysis_nr: 'analysis not read',
+  nr_t: 'The machine reading did not yield this field. Check the printed page: the book may have it, or may not.',
+  homs: 'homonyms', homs_t: (n, N) => `homonym ${n} of ${N}`,
+  cits_note: 'Picked out of the definition by machine; tap one to see the work.',
+  show_all_n: n => `show all (${n})`, show_fewer: 'show fewer', show_every: m => `show everything (${m} more)`, hide_noise: 'hide the fragments again',
+  noise_t: 'Hidden by default: lines that are mostly dashes, digits or fragments (under 3 Pāḷi words, or over 30% non-letters), and citations with no work abbreviation.',
 });
 Object.assign(T.es, {
   b_mode: 'Modo de lectura:', m_reader: 'Lector de pāḷi', m_printed: 'Como está impreso', m_custom: 'personalizado',
@@ -71,6 +77,12 @@ Object.assign(T.es, {
   pced_t: 'Del texto mecanografiado de este diccionario en el Pali Canon E-Dictionary (PCED), no de nuestro OCR.',
   corrected_f: 'corregido', corrected_t: 'Corregido a mano sobre la página impresa; el resto del artículo es OCR sin revisar.',
   panes_hide: 'Ocultar índice', panes_show: 'Mostrar índice', panes_t: 'Ocultar o mostrar el alfabeto y la lista de entradas',
+  step_prev: 'anterior', step_next: 'siguiente', drafted_t: 'borrador automático, sin revisar', label_nr: 'etiqueta no leída', analysis_nr: 'análisis no leído',
+  nr_t: 'La lectura automática no dio este campo. Consulte la página impresa: puede que el libro lo tenga o que no.',
+  homs: 'homónimos', homs_t: (n, N) => `homónimo ${n} de ${N}`,
+  cits_note: 'Extraídas por máquina de la definición; toque una para ver la obra.',
+  show_all_n: n => `mostrar todo (${n})`, show_fewer: 'mostrar menos', show_every: m => `mostrarlo todo (${m} más)`, hide_noise: 'volver a ocultar los fragmentos',
+  noise_t: 'Ocultas de entrada: las líneas que son sobre todo guiones, cifras o fragmentos (menos de 3 palabras pāḷi, o más de un 30% de caracteres que no son letras) y las citas sin abreviatura de obra.',
 });
 
 // --- settings (per browser) ------------------------------------------------------------------------
@@ -181,7 +193,8 @@ window.ABH = { ov, setEdits, current: () => cur.recs[cur.k], rows: (book, id) =>
 
 // --- state ----------------------------------------------------------------------------------------
 let cur = { li: 0, gi: 0, si: 0, recs: [], k: 0, off: 0 };   // the syllable shown and the entry in it
-let open = { label: false, def: false, cit: -1, scanDelta: 0, drawer: false, settings: false };
+const FRESH = { label: false, def: false, cit: -1, scanDelta: 0, qall: false, qevery: false, call: false, cevery: false };   // per article
+let open = Object.assign({ drawer: false, settings: false }, FRESH);
 const W = 160;
 
 async function subRecords(li, gi, si) {
@@ -200,7 +213,7 @@ async function show(li, gi, si, pick) {
     if (typeof pick === 'string') k = Math.max(0, recs.findIndex(d => d.sl === pick));
     else if (pick === 'last') k = recs.length - 1;
     cur = { li, gi, si, recs, k, off: Math.max(0, Math.floor(k / W) * W) };
-    open = Object.assign(open, { label: false, def: false, cit: -1, scanDelta: 0, drawer: false });
+    open = Object.assign(open, FRESH, { drawer: false });
     await renderAll(true);
   } catch (e) { $('art').innerHTML = `<p class="muted">${esc(t('load_fail'))}</p>`; }
 }
@@ -245,7 +258,7 @@ function modebar() {
     ['s_page', [[true, 'o_on'], [false, 'o_off']].map(([v, l]) => seg(S.scan === v, t(l), `data-set="scan" data-val="${v}"`)).join('')],
   ].map(([l, h]) => `<div class="set"><div class="set-l">${esc(t(l))}</div><div class="set-o" role="group" aria-label="${esc(t(l))}">${h}</div></div>`).join('') +
     `<button type="button" class="done" data-done>${esc(t('done'))}</button>`;
-  $('settings').hidden = !open.settings;
+  $('settings').hidden = !open.settings; app.classList.toggle('set-open', open.settings);   // phones: the mode bar folds behind Ajustes
   const pb = $('panesbtn'); pb.textContent = PANES_OFF ? t('panes_show') : t('panes_hide'); pb.title = t('panes_t');
   pb.setAttribute('aria-pressed', PANES_OFF); app.classList.toggle('panes-off', PANES_OFF);
   document.documentElement.dataset.script = S.script;
@@ -275,7 +288,7 @@ function words() {
   $('wearlier').hidden = a <= 0; $('wlater').hidden = b >= recs.length;
   $('wlist').innerHTML = recs.slice(a, b).map((d0, j) => {
     const k = a + j, d = ov(d0);
-    return `<a class="w${k === cur.k ? ' on' : ''}" href="/w/${encodeURIComponent(d.sl)}" data-k="${k}"${k === cur.k ? ' aria-current="true"' : ''}>${hwLabel(d)}${d.hn ? `<sup>${d.hn}</sup>` : ''}</a>`;
+    return `<a class="w${k === cur.k ? ' on' : ''}" href="/w/${encodeURIComponent(d.sl)}" data-k="${k}" title="${esc(d.r || d.h)}"${k === cur.k ? ' aria-current="true"' : ''}>${hwLabel(d)}${d.hn ? `<sup>${d.hn}</sup>` : ''}</a>`;
   }).join('');
   const on = $('wlist').querySelector('.on'); if (on) on.scrollIntoView({ block: 'nearest' });
 }
@@ -340,12 +353,53 @@ function fmtTr(x) {
     .replace(/\*([^*]+)\*/g, '<i class="pl" lang="pi">$1</i>')
     .replace(/‹([^›]+)›/g, '<span class="my" lang="my">$1</span>');
 }
+// display only: a quoted line that is mostly dashes, digits or fragments (under 3 Pāḷi words, or over
+// 30% of its characters not letters), and a citation with no work abbreviation (only digits: "2.50"),
+// are hidden behind "show everything". Nothing in the data changes.
+const FOLD = 5;
+function noiseQuote(r) {
+  const x = (r || '').replace(/\s+/g, ''); if (!x) return true;
+  const L = (x.match(/[\p{L}\p{M}]/gu) || []).length;
+  const words = (r.match(/[\p{L}\p{M}]+/gu) || []).filter(w => w.length > 1);
+  return words.length < 3 || (x.length - L) / x.length > 0.3;
+}
+const noiseCite = c => !/[\p{L}]/u.test((c || '').replace(/[၀-၉]/g, ''));
+// the citations shown as chips wrap into rows: keep the first FOLD rows, the rest behind "show all"
+function foldCits() {
+  const box = document.querySelector('#art .cits'); if (!box) return;
+  const btn = document.querySelector('#art [data-fold="call"]');
+  const chips = [...box.children]; chips.forEach(c => c.classList.remove('cut'));
+  if (open.call) return;
+  const tops = []; let cut = 0;
+  for (const c of chips) {
+    if (c.offsetParent === null) continue;
+    if (!tops.includes(c.offsetTop)) tops.push(c.offsetTop);
+    if (tops.length > FOLD) { c.classList.add('cut'); cut++; }
+  }
+  if (btn) btn.hidden = !cut;
+}
+let foldTm; window.addEventListener('resize', () => { clearTimeout(foldTm); foldTm = setTimeout(foldCits, 120); });
+// "show all (N)" / "show fewer", and "show everything (M more)" when lines were hidden as noise
+function foldBar(k, nGood, nNoise) {
+  const all = open[k + 'all'] || open[k + 'every'], every = open[k + 'every'], B = [];
+  if (k === 'c' || nGood > FOLD) B.push(`<button type="button" data-fold="${k}all"${k === 'c' && !all ? ' hidden' : ''}>${esc(all ? t('show_fewer') : t('show_all_n', nGood))}</button>`);
+  if (nNoise) B.push(`<button type="button" data-fold="${k}every" title="${esc(t('noise_t'))}">${esc(every ? t('hide_noise') : t('show_every', nNoise))}</button>`);
+  return B.length ? `<div class="fold">${B.join('')}</div>` : '';
+}
+// the homonyms of this headword (same address but its -n), all in the syllable shown: "homonyms 1 2 3 4"
+function homsHTML(d) {
+  if (!d.hn) return '';
+  const base = d.sl.replace(/-\d+$/, ''), H = cur.recs.filter(x => x.hn && x.sl.replace(/-\d+$/, '') === base);
+  if (H.length < 2) return '';
+  return `<span class="homs" title="${esc(t('homs_t', d.hn, H.length))}">${esc(t('homs'))}` +
+    H.map(x => x.hn === d.hn ? `<b aria-current="true">${x.hn}</b>` : `<a href="/w/${encodeURIComponent(x.sl)}">${x.hn}</a>`).join('') + '</span>';
+}
 function article() {
   const d = ov(cur.recs[cur.k]);
   if (!d) { $('art').innerHTML = ''; return; }
   const H = [];
   H.push(`<div class="where"><span>${esc(t('vol_short'))} ${esc(vn(d.k))} · ${esc(pageStr(d.k, d.p))}</span>` +
-    `<span class="chip">${esc(d.s === 'ocr' ? t('ocr_st') : t('st_' + d.s))}</span>` +
+    `<span class="chip"${d.s === 'drafted' ? ` title="${esc(t('drafted_t'))}"` : ''}>${esc(d.s === 'ocr' ? t('ocr_st') : t('st_' + d.s))}</span>` +
     (d.x === 'f' ? `<span class="chip c-warn">${esc(t('fuzzy'))}</span>` : '') +
     (d.m ? `<span class="chip">${esc(t('misfiled'))}</span>` : '') +
     (d.hi ? `<span class="chip c-ok">${esc(t('hw_fixed'))} <span class="my" lang="my">${esc(d.hi)}</span></span>` : '') + '</div>');
@@ -354,7 +408,10 @@ function article() {
     (ro ? `<h1 class="pl" lang="pi">${esc(d.r)}${d.hn ? `<sup>${d.hn}</sup>` : ''}</h1>` : '') +
     (my ? `<div class="my hw-my${ro ? ' second' : ''}" lang="my">${esc(d.h)}${!ro && d.hn ? `<sup>${d.hn}</sup>` : ''}</div>` : '') +
     (d.l ? `<button type="button" class="lab" data-label aria-expanded="${open.label}">${labelShown(d)}</button>` : '') +
-    ((d.cf || []).includes('label') ? ` <span class="chip c-ok" title="${esc(t('corrected_t'))}">${esc(t('corrected_f'))}</span>` : '') + '</div>');
+    ((d.cf || []).includes('label') ? ` <span class="chip c-ok" title="${esc(t('corrected_t'))}">${esc(t('corrected_f'))}</span>` : '') +
+    homsHTML(d) +
+    (d.x !== 'u' && !d.l ? `<span class="notread" title="${esc(t('nr_t'))}">${esc(t('label_nr'))}</span>` : '') +
+    (d.x !== 'u' && !d.a && !d.ai ? `<span class="notread" title="${esc(t('nr_t'))}">${esc(t('analysis_nr'))}</span>` : '') + '</div>');
   if (open.label && d.l) H.push(labelInfo(d));
   if (d.x === 'u') {
     H.push(`<div class="note warn"><strong>${esc(t('unlocated_h'))}</strong><p>${esc(t('unlocated_p'))}</p>` +
@@ -371,7 +428,7 @@ function article() {
   // Meaning: the translation with its status, or an honest "not yet translated"
   const tr = d.t && d.t[LANG];
   H.push(`<section><h2>${esc(t('meaning'))}</h2>` + (tr
-    ? `<div class="meaning"><span class="chip ${tr.s === 'drafted' || tr.s === 'partial' || tr.s === 'rpartial' ? 'c-warn' : 'c-ok'}">${esc(t('st_' + tr.s))}</span><div lang="${LANG}">${fmtTr(tr.x)}</div>${tr.s === 'drafted' ? `<div class="muted small">${esc(t('drafted_note'))}</div>` : ''}${tr.s === 'partial' || tr.s === 'rpartial' ? `<div class="muted small">${esc(t(tr.s === 'partial' ? 'partial_note' : 'rpartial_note', (tr.cs || []).map(n => `(${n})`).join(', ')))}</div>` : ''}${tr.date ? `<div class="muted small">${esc(t('edited_on', tr.date.slice(0, 10)))}</div>` : ''}</div>`
+    ? `<div class="meaning"><span class="chip ${tr.s === 'drafted' || tr.s === 'partial' || tr.s === 'rpartial' ? 'c-warn' : 'c-ok'}"${tr.s === 'drafted' ? ` title="${esc(t('drafted_t'))}"` : ''}>${esc(t('st_' + tr.s))}</span><div lang="${LANG}">${fmtTr(tr.x)}</div>${tr.s === 'drafted' ? `<div class="muted small">${esc(t('drafted_note'))}</div>` : ''}${tr.s === 'partial' || tr.s === 'rpartial' ? `<div class="muted small">${esc(t(tr.s === 'partial' ? 'partial_note' : 'rpartial_note', (tr.cs || []).map(n => `(${n})`).join(', ')))}</div>` : ''}${tr.date ? `<div class="muted small">${esc(t('edited_on', tr.date.slice(0, 10)))}</div>` : ''}</div>`
     : `<div class="meaning empty"><span class="chip">${esc(t('not_translated'))}</span><span>${esc(t('trans_note'))}</span></div>`));
   const showDef = d.b && (S.defs === 'show' || (S.defs === 'collapse' && open.def));
   if (d.b && S.defs === 'collapse' && !open.def) H.push(`<button type="button" class="btn" data-def="1" aria-expanded="false">${esc(t('show_def'))}</button>`);
@@ -386,17 +443,22 @@ function article() {
   const seeR = new Set((d.see || []).map(x => x[0]));
   const quotes = (d.sp || []).filter(s => (s[3] || 1) >= 2 && !seeR.has(s[2]));
   if (!showDef && quotes.length) {
-    H.push(`<section><h2>${esc(t('quotes'))}</h2><ol class="quotes">` +
-      quotes.map(s => S.script === 'my' ? `<li class="my" lang="my">${esc((d.b || '').slice(s[0], s[1]))}</li>` : `<li class="pl" lang="pi">${esc(s[2])}</li>`).join('') +
-      `</ol><div class="muted small">${esc(t('quotes_note'))}</div></section>`);
+    const good = quotes.filter(s => !noiseQuote(s[2])), noise = quotes.length - good.length;
+    const shown = open.qevery ? quotes : open.qall ? good : good.slice(0, FOLD);
+    H.push(`<section><h2>${esc(t('quotes'))}</h2><div class="muted small listnote">${esc(t('quotes_note'))}</div><ol class="quotes">` +
+      shown.map(s => { const n = noiseQuote(s[2]) ? ' noise' : '';
+        return S.script === 'my' ? `<li class="my${n}" lang="my">${esc((d.b || '').slice(s[0], s[1]))}</li>` : `<li class="pl${n}" lang="pi">${esc(s[2])}</li>`; }).join('') +
+      '</ol>' + foldBar('q', good.length, noise) + '</section>');
   }
   // citations: tap expands the abbreviation to the work (docs/introduction/citation-abbreviations.tsv)
   if (d.c && d.c.length) {
-    H.push(`<section><h2>${esc(t('cit'))}</h2><div class="cits">` + d.c.map((c, j) => {
+    const cn = d.c.map((c, j) => noiseCite(d.ci ? d.ci[j] : c)), noise = cn.filter(Boolean).length;
+    H.push(`<section><h2>${esc(t('cit'))}</h2><div class="muted small listnote">${esc(t('cits_note'))}</div><div class="cits">` + d.c.map((c, j) => {
+      if (cn[j] && !open.cevery) return '';
       const lab = S.script === 'my' || !d.ci ? `<span class="my" lang="my">${esc(c)}</span>` : `<span class="pl" lang="pi">${esc(d.ci[j])}</span>`;
       const tip = citeTip(d, j);
-      return `<button type="button" class="cit${open.cit === j ? ' on' : ''}" data-cit="${j}" aria-expanded="${open.cit === j}"${tip ? ` title="${esc(tip)}"` : ''}>${lab}</button>`;
-    }).join('') + '</div>');
+      return `<button type="button" class="cit${open.cit === j ? ' on' : ''}${cn[j] ? ' noise' : ''}" data-cit="${j}" aria-expanded="${open.cit === j}"${tip ? ` title="${esc(tip)}"` : ''}>${lab}</button>`;
+    }).join('') + '</div>' + foldBar('c', d.c.length - noise, noise));
     if (open.cit >= 0 && open.cit < d.c.length) {
       const x = d.cx ? d.cx[open.cit] : -1, A = x >= 0 ? ABBR[x] : null;
       H.push('<div class="note">' + (A
@@ -409,13 +471,13 @@ function article() {
   }
   // previous / next, printed page, report
   const P = cur.k > 0 ? cur.recs[cur.k - 1] : null, N = cur.k < cur.recs.length - 1 ? cur.recs[cur.k + 1] : null;
-  H.push(`<div class="artnav"><button type="button" class="btn" data-step="-1">‹ ${P ? hwLabel(P) : ''}</button>` +
-    `<button type="button" class="btn" data-step="1">${N ? hwLabel(N) : ''} ›</button>` +
+  H.push(`<div class="artnav"><button type="button" class="btn step" data-step="-1">‹ ${P ? hwLabel(P) : esc(t('step_prev'))}</button>` +
+    `<button type="button" class="btn step" data-step="1">${N ? hwLabel(N) : esc(t('step_next'))} ›</button>` +
     (S.scan ? '' : `<button type="button" class="btn" data-scan>${esc(t('see_page'))}</button>`) +
     `<a href="/v/${d.k}/${d.p}#a${d.i}">${esc(t('page_view'))}</a>` +
     `<a class="report" href="${reportURL(d)}" target="_blank" rel="noopener">${esc(t('report'))}</a></div>`);
   $('art').innerHTML = `<article>${H.join('')}</article><footer class="site-foot"></footer>`;
-  fillFoot($('art'));
+  fillFoot($('art')); foldCits();
   if (window.EDITOR) EDITOR.decorate(d);   // editor mode (assets/editor.js), only when the editor is signed in
 }
 
@@ -445,7 +507,7 @@ async function renderAll(routeIt) {
 
 async function step(dir) {
   const k = cur.k + dir;
-  if (k >= 0 && k < cur.recs.length) { cur.k = k; if (k < cur.off || k >= cur.off + W) cur.off = Math.floor(k / W) * W; open = Object.assign(open, { label: false, def: false, cit: -1, scanDelta: 0 }); await renderAll(); route(); return; }
+  if (k >= 0 && k < cur.recs.length) { cur.k = k; if (k < cur.off || k >= cur.off + W) cur.off = Math.floor(k / W) * W; open = Object.assign(open, FRESH); await renderAll(); route(); return; }
   // across syllables, groups and letters
   let { li, gi, si } = cur, nav = await navL(li);
   si += dir;
@@ -513,11 +575,17 @@ app.addEventListener('click', async e => {
   if (ds.li) { const li = +ds.li; await show(li, 0, 0, 'first'); open.drawer = phone(); app.classList.toggle('drawer-open', open.drawer); return route(); }
   if (ds.gi) { await show(cur.li, +ds.gi, 0, 'first'); open.drawer = phone(); app.classList.toggle('drawer-open', open.drawer); return route(); }
   if (ds.si) { await show(cur.li, cur.gi, +ds.si, 'first'); open.drawer = phone(); app.classList.toggle('drawer-open', open.drawer); return route(); }
-  if (ds.k) { e.preventDefault(); cur.k = +ds.k; open = Object.assign(open, { label: false, def: false, cit: -1, scanDelta: 0, drawer: false }); await renderAll(); $('art').scrollTop = 0; return route(); }
+  if (ds.k) { e.preventDefault(); cur.k = +ds.k; open = Object.assign(open, FRESH, { drawer: false }); await renderAll(); $('art').scrollTop = 0; return route(); }
   if (el.id === 'wearlier') { cur.off = Math.max(0, cur.off - W); return words(); }
   if (el.id === 'wlater') { cur.off += W; return words(); }
   if ('label' in ds) { open.label = !open.label; return article(); }
   if (ds.def) { open.def = ds.def === '1'; return article(); }
+  if (ds.fold) {   // qall / qevery / call / cevery; "show fewer" folds both back
+    const k = ds.fold[0], w = ds.fold.slice(1);
+    if (w === 'all') { const was = open[k + 'all'] || open[k + 'every']; open[k + 'all'] = !was; if (was) open[k + 'every'] = false; }
+    else { open[k + 'every'] = !open[k + 'every']; if (open[k + 'every']) open[k + 'all'] = true; }
+    return article();
+  }
   if (ds.cit) { const j = +ds.cit; open.cit = open.cit === j ? -1 : j; return article(); }
   if (ds.step) return step(+ds.step);
   if (el.matches('a[href^="/w/"]')) { e.preventDefault(); $('hresults').hidden = true; await gotoSlug(el.getAttribute('href').slice(3), true); route(); window.scrollTo({ top: 0 }); }

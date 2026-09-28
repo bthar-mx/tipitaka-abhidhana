@@ -263,7 +263,7 @@ table.abbr td.s-mycol{white-space:normal;min-width:16em}
 /* ---------- Browse (the home page) ---------- */
 .wrap.wide{max-width:none;padding-bottom:0}
 body.browsepage{overflow:hidden;height:100vh;height:100dvh;display:flex;flex-direction:column}
-body.browsepage > .wrap{flex:none}
+body.browsepage > .wrap{flex:none;width:100%}
 .app{flex:1;min-height:0;display:flex;flex-direction:column}
 .modebar{flex:none;display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;padding:8px 16px;border-bottom:1px solid var(--rule);background:var(--surface2);font:13.5px var(--ui)}
 .modebar .ml{color:var(--muted)}
@@ -398,11 +398,18 @@ html[data-script="ro"] .lt.on .pl{color:var(--on-accent)}
   .scanpane{border-left:0;border-top:1px solid var(--rule)}
   .artnav .report{margin-left:0}
 }
-@media (min-width: 1180px){   /* one header line only where it fits; below, the menu wraps (EN was clipped at ~1000 px) */
-  .site{flex-wrap:nowrap}
+@media (min-width: 1024px){   /* one header line from 1,024 px up: the search box gives way first (v0.26.3; was 1,180 px) */
+  .site{flex-wrap:nowrap;gap:10px 16px}
   .site .home{flex:none}
+  .site .hsearch{flex:1 1 240px;min-width:120px}
   .site .menu{flex:none}
   .site .theme{margin-left:0;flex:none}
+}
+@media (min-width: 1024px) and (max-width: 1279px){
+  .site .home .my{font-size:17px}
+  .site .home .ro{font-size:14px}
+  .site nav{gap:10px;font-size:13.5px}
+  .site nav a + a{margin-left:4px}
 }
 @media (max-width: 1179px){ .modebar .md{display:none} }   /* the mode description only where the bar has room */
 
@@ -421,3 +428,53 @@ html[data-script="ro"] .lt.on .pl{color:var(--on-accent)}
 .def a.xref{color:inherit;text-decoration:underline;text-decoration-style:dotted;text-underline-offset:3px}
 .def a.xref:hover{color:var(--accent,inherit)}
 .cit[title]{cursor:help}
+
+/* ---------- v0.26.3: the phone header, the folded lists, quiet notes ---------- */
+.menubtn{display:none;align-items:center;justify-content:center;width:36px;height:32px;padding:0;flex:none;color:var(--ink2)}
+.menubtn[aria-expanded="true"]{background:var(--accent-soft);border-color:var(--accent);color:var(--accent-ink)}
+@media (max-width: 767px){
+  /* one line: the title, light/dark, ☰; the search below; the tabs and ES / EN behind ☰ */
+  .site{flex-wrap:wrap;gap:8px 8px;padding:8px 0}
+  .site .home{order:1;flex:1 1 0;min-width:0}
+  .site .home .my{font-size:16px;line-height:1.5}
+  .site .home .ro{font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .site .theme{order:2;margin-left:0;flex:none;width:36px;height:32px}
+  .menubtn{display:inline-flex;order:3}
+  .site .hsearch{order:4;flex:1 1 100%}
+  .site .hsearch input{padding:6px 10px}
+  .site .menu,.site .lang{display:none}
+  .site.menu-open .menu{display:flex;order:5;flex:1 1 100%;flex-direction:column;align-items:stretch;gap:0;border-top:1px solid var(--rule)}
+  .site.menu-open .menu a{margin:0;padding:10px 4px;border-bottom:1px solid var(--rule);font-size:15px}
+  .site.menu-open .menu a[aria-current="page"]{border-bottom-color:var(--rule);border-left:3px solid var(--accent);padding-left:8px}
+  .site.menu-open .lang{display:inline-flex;order:6}
+  /* the mode bar: the alphabet and one Ajustes button; the reading modes and the printed page behind it */
+  .app:not(.set-open) .modebar > :not(#alphabtn):not(#setbtn){display:none!important}
+  .modebar{padding:6px 16px;gap:6px 10px}
+  .modebar #setbtn{margin-left:auto}
+  .app.set-open .modebar #setbtn{order:-1;margin-left:0}
+  .app.set-open .modebar #alphabtn{order:-2}
+  .app.set-open .modebar .ml{flex:1 1 100%}
+  .settings{gap:10px 20px}
+}
+/* long headwords wrap rather than overflow (the list, the article, the neighbours at the foot) */
+.words .w{overflow-wrap:anywhere;padding-left:14px;text-indent:0}
+.art h1.pl,.hw-my{overflow-wrap:anywhere;min-width:0}
+.artnav .btn{max-width:100%;min-width:0;overflow-wrap:anywhere;text-align:left}
+/* homonyms of the headword */
+.homs{font:12.5px var(--ui);color:var(--muted);align-self:center}
+.homs a,.homs b{font-family:var(--mono);margin-left:4px}
+.homs b{color:var(--ink)}
+/* a field the machine reading did not yield */
+.notread{font:italic 12.5px var(--ui);color:var(--muted);align-self:center}
+/* passages and citations: folded to five lines; noise hidden behind "show everything" */
+.listnote{margin:-2px 0 8px}
+.fold{display:flex;flex-wrap:wrap;gap:6px 10px;margin-top:8px}
+.fold button{padding:3px 10px;font-size:12.5px;color:var(--muted);background:transparent;border-style:dashed}
+.quotes li.noise,.cit.noise{opacity:.62}
+.cit.cut{display:none}
+@media (max-width: 767px){   /* previous / next side by side at the foot of the article, full width */
+  .artnav .btn.step{flex:1 1 40%;justify-content:center;text-align:center}
+  .artnav .btn.step + .btn.step{justify-content:center}
+}
+/* the label table on /abbreviations/ scrolls inside its own box on narrow screens, not the page */
+@media (max-width: 860px){ table.labels{display:block;overflow-x:auto;max-width:100%} }

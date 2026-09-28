@@ -23,6 +23,19 @@ Versions of the Tipiṭaka Pāḷi-Myanmā Abhidhāna project: the data, the too
 A release note says, per version: what changed, the brief's sections, and the headline figures
 (located, label + body, Meaning rows drafted / reviewed).
 
+## v0.26.3 — 28 Sep 2026
+
+- **Site display only; no data change** (brief §66). Phones (below 768 px): the five tabs and ES / EN fold behind a ☰ button, and
+  the mode bar (reading modes, *personalizado*, printed page, settings) behind one *Ajustes* button: on `/w/sīla` at 375×812 the header
+  goes from 252 to 101 px and the Meaning box starts at 299 px (was 524). The header keeps to one line from 1,024 px up (was 1,180).
+- Pāḷi passages and citations fold to their first 5 lines, with *show all (N)*; lines of under 3 Pāḷi words or over 30% non-letters,
+  and citations with no work abbreviation (digits only, "2.50"), are hidden behind *show everything*: 172,598 of 504,587 passage lines
+  (34.2%) and 16,953 of 530,971 citations (3.2%); on sīla 24 of 59 and 1 of 30. The "extracted by machine" note moved to the top of
+  each list.
+- Long headwords wrap in the list (full word in a tooltip) and in the article; *label not read* / *analysis not read* where the
+  reading yielded none; the homonyms beside the headword (*homónimos 1 2 3 4*); previous / next side by side at the foot on phones;
+  a tooltip on *borrador*. The label table on `/abbreviations/` scrolls in its own box on phones (it pushed the page sideways).
+
 ## v0.26.2 — 28 Sep 2026
 
 - **`merge` re-applies `docs/translation/corrections-es.tsv`** (brief §65): a re-merge no longer drops the editor's corrections;
