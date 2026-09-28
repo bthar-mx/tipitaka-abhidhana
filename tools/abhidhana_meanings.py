@@ -257,14 +257,14 @@ def merge(book, ids=None):
     W = {o['id']: o for o in json.load(open(WORK / f'work{book}.json', encoding='utf-8'))}
     R = {}
     for f in sorted(glob.glob(str(WORK / 'shards/[0-9][0-9].jsonl'))):
-        ids = {json.loads(l)['id'] for l in open(f, encoding='utf-8')}
+        sid = {json.loads(l)['id'] for l in open(f, encoding='utf-8')}
         own = WORK / 'out' / Path(f).name
         for g in [own] + [Path(x) for x in sorted(glob.glob(str(WORK / 'out/[0-9][0-9].jsonl'))) if Path(x) != own]:
             if not g.exists(): continue
             for l in open(g, encoding='utf-8'):
                 try: o = json.loads(l)
                 except ValueError: continue
-                if o['id'] in ids and o['id'] not in R: R[o['id']] = o
+                if o['id'] in sid and o['id'] not in R: R[o['id']] = o
     out = []; omitted = []
     for i, w in W.items():
         r = R.get(i)
