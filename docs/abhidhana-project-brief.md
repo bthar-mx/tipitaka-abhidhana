@@ -1280,3 +1280,122 @@ the Meaning box's top 533 → 304 px; at 1,024 px the header 120 → 77 px, one 
 no tab clipped**; again with the real fonts (5 pages × 375, 768, 1,024, 1,100, 1,440 × both themes × both languages): 0 failures. The
 folds clicked through on sīla at 375 px (5 → 35 → 59 passages; 14 → 29 → 30 citations; "show fewer" folds back); ☰ and *Ajustes* open
 and close; a 33-letter headword at 375 px: no sideways scroll. `sh site/test/editor/run.sh` (wrangler 4, local D1, the Access stand-in): exits 0, the UI test **48 pass, 0 fail**. Not tested: Safari and Firefox, a real phone.
+
+
+## 67. Run-on headwords measured (plan step 1.1); the VM's disk (step 0.4) (28 Sep 2026, Cowork)
+
+**The live check after v0.26.3** (the editor): done, 0.26.3 served. `tmp/_to_delete/` was deleted and the volume issues closed
+(the editor).
+
+**Step 0.4, the VM's `/sessions` disk** (9.8 GB, 9.2 GB used, 42 MB free): not this session's. This session's home holds 716 KB
+(the two connected folders are FUSE mounts, not on that disk). `/sessions` holds **180 other session folders**, dated 15 Jun – 28
+Sep 2026, each readable only by its own session's user: `du` is refused on them, so what they hold is not known, and nothing
+could be freed from here. Keep running romanisation and `merge` / `report` in Terminal or the cloud container, as since §57.
+Freeing it is for the desktop app (whether it clears old Cowork sessions' folders was not checked).
+
+**Asked** (the editor; plan step 1.1, measurement only, no data changed): for every unlocated headword, and every located one whose
+own line is a stub, is the headword found at a line start inside a neighbour's body, followed by a label or `[`? Counts per book:
+run on / elsewhere in the page text / not in the text; in books 01–19 a PCED precision for the text after each split; and how many
+of the 2,899 no-body articles this would give a body. Scripts in `tmp/split11/` (gitignored): `measure.py` (writes
+`cand-NN.jsonl`), `pced.py`, `where_line.py`, `table.md`.
+
+**The test, as run.**
+- *Candidates*: `located` `unlocated` (13,014, the 5.9% of §30), and **stubs**: located rows whose `body` is empty or holds fewer
+  than 8 base letters (U+1000–U+102A) and no ကြည့် (980). *Decided without asking*: that threshold, and leaving a bare "X-ကြည့်"
+  out (a cross-reference is a whole article).
+- *Neighbour*: the nearest article with a body before the candidate and the nearest after it, in id order, walking over bodiless
+  candidates (so a run of several headwords reaches its host). Only those two bodies.
+- *At a line start*: a body line (a line ending in `-` with no `(` or `[` joined to the next: a headword broken by the printer)
+  whose text before the first `(` or `[`, less a homonym's superscript debris, is the headword **exactly**, or equal after `fold()`
+  (§18), or an **OCR misreading** of it: same length ±1, same last letter, ≥ 0.8 alike, and not itself a headword of the index (the
+  dictionary's stem families differ by a syllable: without that guard အကပ္ပိယသညီ was taken for အကပ္ပိယသညာ). *Decided without
+  asking*: the fuzzy tier (with exact only, 23's sammata, read သမ္ဗတ (တိ) inside 185571, is missed).
+- *Followed by a label or `[`*: `[`, or `( … )` whose content is a label read at least 5 times in the 29 books' `label` field
+  (so a citation `(ဇာ၊ ၂။ ၁၄)` does not count).
+- One body line goes to one article (exact > fold > fuzzy, then the article before). The split text runs from that line to the next
+  split line in the same host, or the host's end.
+- *Elsewhere in the page text*: not run on, but found on the index's PDF page or the next (`page_text()`, the column text of
+  `abhidhana_articles.py`), a located row's own head line left out: **at a line start + label / `[`**, or **only as a substring**
+  (weak: a short headword is found inside compounds and quotations). *Not in the text*: neither.
+
+| book | unlocated | run on | elsewhere: line start + label | elsewhere: substring only | not in the text | stubs | run on | elsewhere | not | no body: n / run on |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| 01 | 458 | 14 | 52 | 229 | 163 | 154 | 3 | 106 | 45 | — |
+| 02 | 462 | 3 | 26 | 267 | 166 | 26 | 0 | 23 | 3 | — |
+| 03 | 612 | 10 | 41 | 336 | 225 | 58 | 2 | 38 | 18 | — |
+| 4/1 | 584 | 7 | 41 | 290 | 246 | 81 | 2 | 38 | 41 | — |
+| 4/2 | 218 | 0 | 39 | 121 | 58 | 13 | 0 | 8 | 5 | — |
+| 05 | 515 | 7 | 35 | 279 | 194 | 28 | 2 | 17 | 9 | — |
+| 06 | 915 | 26 | 90 | 501 | 298 | 35 | 1 | 20 | 14 | — |
+| 07 | 477 | 7 | 44 | 263 | 163 | 11 | 1 | 7 | 3 | — |
+| 08 | 511 | 19 | 50 | 285 | 157 | 9 | 1 | 5 | 3 | — |
+| 09 | 510 | 17 | 22 | 258 | 213 | 25 | 1 | 20 | 4 | — |
+| 10 | 677 | 20 | 47 | 366 | 244 | 25 | 0 | 12 | 13 | — |
+| 11 | 399 | 4 | 29 | 213 | 153 | 17 | 1 | 7 | 9 | — |
+| 12 | 220 | 3 | 11 | 112 | 94 | 30 | 5 | 16 | 9 | — |
+| 13 | 767 | 10 | 44 | 251 | 462 | 14 | 0 | 10 | 4 | — |
+| 14/1 | 175 | 11 | 23 | 93 | 48 | 10 | 0 | 7 | 3 | — |
+| 14/2 | 123 | 64 | 14 | 26 | 19 | 4 | 1 | 3 | 0 | 125 / 64 |
+| 14/3 | 839 | 8 | 81 | 537 | 213 | 40 | 0 | 27 | 13 | 845 / 8 |
+| 15 | 616 | 22 | 54 | 300 | 240 | 29 | 1 | 19 | 9 | — |
+| 16 | 745 | 23 | 54 | 376 | 292 | 35 | 2 | 17 | 16 | — |
+| 17 | 428 | 13 | 54 | 243 | 118 | 56 | 2 | 33 | 21 | — |
+| 18 | 598 | 8 | 67 | 302 | 221 | 41 | 1 | 30 | 10 | — |
+| 19 | 344 | 10 | 59 | 193 | 82 | 50 | 3 | 41 | 6 | — |
+| 20 | 315 | 48 | 41 | 138 | 88 | 44 | 1 | 41 | 2 | 352 / 49 |
+| 21 | 210 | 5 | 44 | 95 | 66 | 43 | 1 | 31 | 11 | 238 / 5 |
+| 22 | 287 | 20 | 23 | 150 | 94 | 24 | 3 | 13 | 8 | 301 / 23 |
+| 23 | 168 | 21 | 34 | 62 | 51 | 17 | 2 | 10 | 5 | 174 / 21 |
+| 24 | 258 | 24 | 20 | 161 | 53 | 34 | 2 | 24 | 8 | 268 / 24 |
+| 25 | 191 | 3 | 44 | 86 | 58 | 11 | 1 | 8 | 2 | 196 / 3 |
+| 4/3 | 392 | 3 | 21 | 246 | 122 | 16 | 2 | 9 | 5 | 400 / 5 |
+| **all** | **13,014** | **430** | **1,204** | **6,779** | **4,601** | **980** | **41** | **640** | **299** | **2,899 / 202** |
+
+(Stubs' "elsewhere": 79 at a line start + label, 561 as a substring only. "No body" is counted over the nine books drafted from our
+text, as in the plan: the same **2,899**.)
+
+**What this says.** The plan's premise, that an unlocated article with no body usually has its text run on inside the article before
+it ("(a) and (b) are mostly one problem"), **holds in 14/2 and not elsewhere**: 64 of 14/2's 123 unlocated headwords run on (52%;
+the text layer, clean), against **430 of 13,014 in all books (3.3%)** and 366 of 12,891 outside 14/2 (2.8%); vol. 20 is next (48 of
+315). **Of the 2,899 no-body articles, 202 would gain a body** (14/2 64, 20 49, 24 24, 22 23, 23 21, 14/3 8, 21 5, 4/3 5, 25 3).
+Stubs: 41 of 980.
+
+**Where the 1,204 "line start + label" headwords sit** (`where_line.py`; the pages ±1 of the index's page): 696 inside the body of an
+article that is not the nearest neighbour (the other column, or further back); 311 as the head line of a located article with the
+**same** headword (a homonym placed on this one's line: item 5b's kind); 154 as the head line of an article with another headword
+(one of the two placed wrongly); 43 in no article (dropped as noise or between articles). So a rule that takes the host from the page
+rather than the neighbour would reach up to ~700 more; not measured further, nor its precision.
+
+**The run-on flags of the drafts are mostly something else.** Of the 2,443 rows flagged "run-on" in the nine books, **102** host a
+split this test finds (246 counting the no-label rows below). The flagged text is mostly an article whose headword line the test
+does not see: OCR-garbled beyond the fuzzy tier, not at a line start, without a readable label, or a *located* article placed on
+the wrong line. Not measured which.
+
+**Located rows with neither label nor analysis** (not in the asked set; counted because they are where a mislocated article shows:
+23's 185572 sammata is placed on a quotation, သမ္မတာယာ (ဇာ၊ …), its own line inside 185571): 3,486 in all, 185 run on (14/2 18,
+20–25 and 14/3 154, 4/3 8, PCED books 5), 252 elsewhere at a line start, 2,222 as a substring only, 827 not in the text. 2,918 of the
+3,486 are in the OCR books 14/3 and 20–25.
+
+**PCED precision, books 01–19 (with 4/1, 4/2, 14/1).** For each split there, the text after it (the head, label and a `[ … ]` up to
+300 characters cut off) against PCED's definition for that headword (the analysis's tail after its first ။ + definition, as the join's
+`body_ratio`, both capped at 600 characters, `SequenceMatcher`). 267 splits (262 of the asked set + 5 no-label rows), 265 with a PCED
+definition. Baseline: a 5% sample of located rows with label + body in the same books, the same measure (6,884 rows).
+
+| | n | ≥ 0.8 | ≥ 0.6 | < 0.4 |
+|---|---:|---:|---:|---:|
+| **the text after each split** | 265 | 112 (42.3%) | **178 (67.2%)** | 44 (16.6%) |
+| — headword read exactly / fuzzy / folded | 68 / 194 / 3 | | 41 (60.3%) / 137 (70.6%) / 0 | |
+| — host before / after the headword | 220 / 45 | | 153 (69.5%) / 25 (55.6%) | |
+| baseline: located rows with label + body | 6,884 | 4,650 (67.5%) | 5,943 (86.3%) | 342 (5.0%) |
+
+The split text is closer to its own headword's PCED definition than to the host's in 213 of 264 (80.7%). **As a precision: about two
+thirds of the splits give a text that is recognisably that headword's definition (≥ 0.6), against 86% for articles located the usual
+way; one in six is not (< 0.4).** Fuzzy matches are not worse than exact ones (in the PCED books the index spelling and the OCR differ
+most). Hosts after the headword (the article *after* it) are weaker. How the ratio maps onto "right on the image" is not measured;
+in the OCR books only the image can say (step 1.4). The figures are for books 01–19, where the OCR is PCED-checked; the OCR books,
+noisier (§62), may do worse.
+
+**For step 1.3 and the plan** (see NEXT-SESSION): the split rule by itself reaches ~470 articles (656 with the no-label rows), not
+the ~2,000–3,500 the plan assumed for 1.4; the larger groups are elsewhere: 696 inside a farther body on the page, 311 homonyms
+placed on each other's line (item 5b), 4,601 unlocated headwords not in the page text at all (step 1.7's `page.psm6` fallback, or
+the index's page errors), and the 2,443 run-on flags, which this test mostly does not see.
