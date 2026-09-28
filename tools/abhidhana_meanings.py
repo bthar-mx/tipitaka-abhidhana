@@ -17,8 +17,9 @@ Two steps, around a drafting pass done outside this script:
 The source of the Burmese is the PCED witness (witness/pced_k.jsonl.gz, joined by
 witness/join-<book>.jsonl), whose definition line is the dictionary's text without our OCR
 errors. Its licence is unresolved (brief §31). Where no witness row is joined, our OCR is used.
-A book with no witness join at all (14/2, 14/3, 20-25, 4/3) takes its Burmese from our text,
-without the Pāḷi quotations and the citations (our_text). Each row records which one:
+A book with no witness join at all (14/2, 14/3, 20-25, 4/3; a join file that pairs no row, as
+4c's, counts as none) takes its Burmese from our text, without the Pāḷi quotations and the
+citations (our_text). Each row records which one:
 `source`: pced | ocr | text layer (14/2, from the PDF's typeset text, brief §25).
 
 Only the Burmese is translated. Pāḷi in the definition (words, compounds and quoted passages) is
@@ -197,9 +198,11 @@ def prep(book, nshards=16, ids=None):
     if jp.exists():
         J = {j['id']: j for j in map(json.loads, open(jp, encoding='utf-8'))}
         need = {int(j['seq']) for j in J.values() if j.get('seq')}
-        for l in gzip.open(ROOT / 'witness/pced_k.jsonl.gz', 'rt', encoding='utf-8'):
+        if not need: J = {}   # a join that pairs no row (4c: PCED has no vol. 4/3) is no join (brief §62)
+        for l in gzip.open(ROOT / 'witness/pced_k.jsonl.gz', 'rt', encoding='utf-8') if need else ():
             w = json.loads(l)
             if w['seq'] in need: W[w['seq']] = w
+    joined = bool(J)
     P = {}
     for l in open(ROOT / f'ocr/{book}/pali.jsonl', encoding='utf-8'):
         p = json.loads(l); P[p['id']] = p
@@ -209,7 +212,7 @@ def prep(book, nshards=16, ids=None):
         j = J.get(a['id']); w = W.get(int(j['seq'])) if j and j.get('seq') else None
         if w and w.get('definition'):
             d = mn(w['definition'].split('\n')[0]).strip(); src = 'pced'
-        elif jp.exists():
+        elif joined:
             d = mn(P.get(a['id'], {}).get('body_joined') or '').strip(); src = 'ocr'
         else:   # no witness join: our own text, the quotations and citations left out
             d = mn(our_text(a, P.get(a['id'], {}), ocr=book != '14b')).strip(); src = 'text layer' if book == '14b' else 'ocr'

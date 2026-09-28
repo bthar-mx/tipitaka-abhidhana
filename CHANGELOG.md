@@ -23,6 +23,15 @@ Versions of the Tipiṭaka Pāḷi-Myanmā Abhidhāna project: the data, the too
 A release note says, per version: what changed, the brief's sections, and the headline figures
 (located, label + body, Meaning rows drafted / reviewed).
 
+## v0.24.1 — 28 Sep 2026
+
+- **`abhidhana_meanings.py prep`: a witness join that pairs no row counts as no join** (brief §62). `witness/join-4c.jsonl` exists but
+  pairs nothing (PCED has no vol. 4/3), and `prep` took the raw `body_joined` for 4c. Books with a real join, and books with none, are
+  unchanged: `prep` for 14b, 15 and 23 byte-identical before and after; `prep 15` against the real witness byte-identical to the files
+  vol. 15 was drafted from; `prep 4c` now gives the work file and shards of §62.
+- Brief §62: vols. 14/3 and 4/3 prepared (not drafted), and the clean-row signal measured on the OCR books. NEXT-SESSION: 00v done
+  (0.24.0 checked live); the editor's decision to draft 14/3 and 4/3; the `prep 15` checks done. No data or site change.
+
 ## v0.24.0 — 28 Sep 2026
 
 - **Vol. 25's Meaning boxes drafted from our OCR** (brief §61): 3,732 rows in `docs/translation/meanings/25.jsonl` (57 formula,

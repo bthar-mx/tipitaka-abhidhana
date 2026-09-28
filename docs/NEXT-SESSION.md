@@ -1,4 +1,4 @@
-# Abhidhāna — handover, 28 September 2026 (editor mode built, not yet switched on, v0.17.0; roman input in its form, v0.18.0; 14/2's 497 rows redrafted, v0.18.3; the OCR pilot, v0.18.5; vol. 23 drafted from our OCR, v0.19.0; vol. 22 drafted from our OCR, v0.20.0; vol. 24, v0.21.0; vol. 21, v0.22.0; vol. 20, v0.23.0; vol. 25, v0.24.0; 14/3 and 4/3 prepared, §62)
+# Abhidhāna — handover, 28 September 2026 (editor mode built, not yet switched on, v0.17.0; roman input in its form, v0.18.0; 14/2's 497 rows redrafted, v0.18.3; the OCR pilot, v0.18.5; vol. 23 drafted from our OCR, v0.19.0; vol. 22 drafted from our OCR, v0.20.0; vol. 24, v0.21.0; vol. 21, v0.22.0; vol. 20, v0.23.0; vol. 25, v0.24.0; 14/3 and 4/3 prepared, §62; `prep`'s no-join fix, v0.24.1)
 
 *All 29 books are digitised end to end, spot-checked and in the Reader: 221,154 index rows, 94.1%
 located, 88.1% with label + body (brief §30). Read
@@ -183,7 +183,8 @@ Project are for advice and for what needs the Mac. What the new chat should know
    213826, 214262) and the 3rd by the other (215427, 215433, 215546), all flagged: which person for -esi? 211785 runs on into
    six headwords (ပရသက္ကာရ … ပရသတ္တ), only the first translated. 213590 and 215011: `prep` still drops the restored ပရိ with a
    Pāḷi span (the drafts read it back, flagged).
-   On the Mac: re-run `prep 15` and compare with a copy made before the §49 changes (should be byte-identical).
+   ~~On the Mac: re-run `prep 15` and compare with a copy made before the §49 changes~~: done 28 Sep, byte-identical to
+   `tmp/meanings/v15/` (brief §62, v0.24.1).
    For review:
    - run-on headwords with no body: 210255, 210257, 210262 (their text is inside 210254, 210256, 210261); left without a
      Meaning for now (the editor, 27 Sep). Across 14/2, 123 unlocated articles have no body; brief §49 lists the host rows,
@@ -258,7 +259,7 @@ Project are for advice and for what needs the Mac. What the new chat should know
    with `omitted` or empty; 3.75 M agent tokens). **Vol. 22 drafted and merged** (v0.20.0, brief §57; in Cowork, one wave of 17
    agents, no usage-limit stop; 7,613 rows; 75.0% of drafted lines flagged, with `omitted` or empty; 4.73 M agent tokens, ~626 a
    line). The Cowork VM's `/sessions` disk is full (pip fails there): run `merge` / `report` in the cloud container, or free space
-   first. On the Mac: re-run `prep 15` against the real witness (byte-identical expected, §55).
+   first. ~~On the Mac: re-run `prep 15` against the real witness~~: done 28 Sep, byte-identical (brief §62, v0.24.1).
    **Vol. 24 drafted and merged** (v0.21.0, brief §58; one wave of 15 agents, no usage-limit stop; 6,685 rows; 69.0% of drafted
    lines flagged, with `omitted` or empty; 3.94 M agent tokens, ~600 a line; the VM's disk still full, merge / report in the cloud).
    **Vol. 21 drafted and merged** (v0.22.0, brief §59; one wave of 17 agents, no usage-limit stop; 7,752 rows; 67.9% of drafted
@@ -269,10 +270,10 @@ Project are for advice and for what needs the Mac. What the new chat should know
    **Vol. 25 drafted and merged** (v0.24.0, brief §61; one wave of 8 agents, no usage-limit stop; 3,732 rows; 89.6% of drafted
    lines flagged, with `omitted` or empty, only 10.4% clean, the noisiest book; 2.26 M agent tokens, ~599 a line; merge / report in the cloud).
    **14/3 and 4/3 prepared, not drafted** (brief §62, measurement only): `tmp/meanings/v14c` (9,465 to draft, 21 shards) and
-   `tmp/meanings/v4c` (4,803 to draft with the three supplements, 11 shards; made with `tmp/meanings/_measure/prep_nojoin.py`,
-   because `witness/join-4c.jsonl` pairs nothing and `prep` would otherwise take the raw body: fix `prep` before drafting 4c, or
-   draft from `v4c`, never from `v4c-rawbody`). Clean-row signal: 14/3 49.1%, 4/3 40.5% (vols. 20–25: 23.0–56.1%).
-   **Next OCR book, the editor to decide**: 14/3 (and 4/3, deferred). Same path: `prep NN --shards N --work
+   `tmp/meanings/v4c` (4,803 to draft with the three supplements, 11 shards). `witness/join-4c.jsonl` pairs nothing;
+   since v0.24.1 `prep` counts such a join as none, and `prep 4c --shards 11` gives `v4c` byte for byte (`prep_nojoin.py` is no
+   longer needed; never draft from `v4c-rawbody`). Clean-row signal: 14/3 49.1%, 4/3 40.5% (vols. 20–25: 23.0–56.1%).
+   **Decided (the editor, 28 Sep): draft both 14/3 and 4/3, drafts only, reviewed at the final revision (1c).** Same path: `prep NN --shards N --work
    tmp/meanings/vNN` (~445 lines a shard), agents with `23-shard00-prompt.md` (vol., shard, line count and paths changed).
    **Next: the books with no PCED** — 14/3 (20–25 done), and 4/3 (deferred) — could only be drafted from
    our OCR body: the editor to decide, as for 4/3 (brief §44 measured the OCR body against PCED on 4/1 and 4/2). If yes:
