@@ -20,6 +20,8 @@ Object.assign(T.en, {
   trans_note: 'This definition has not been translated yet. The translation will appear here with its status (drafted, reviewed, corrected).',
   drafted_note: 'Drafted translation: not reviewed. Not a reading.',
   partial_note: s => `Corrected by the editor: sense ${s}. The rest is a draft, not reviewed.`,
+  rpartial_note: s => `Reviewed by the editor: sense ${s}. The rest is a draft, not reviewed.`,
+  edited_on: d => `Edited by the editor on ${d}.`,
   show_def: 'Show the Burmese definition', hide_def: 'Hide the Burmese definition', my_def: 'Burmese definition',
   ocrnote: 'Machine-read Burmese (OCR), unchecked. Compare the printed page before quoting.',
   quotes: 'Pāḷi passages quoted', quotes_note: 'Picked out of the definition by machine; their references are among the citations.',
@@ -51,6 +53,8 @@ Object.assign(T.es, {
   trans_note: 'Esta definición aún no se ha traducido. La traducción aparecerá aquí con su estado (borrador, revisada, corregida).',
   drafted_note: 'Traducción en borrador: sin revisar. No es una lectura.',
   partial_note: s => `Corregido por el editor: sentido ${s}. El resto es borrador, sin revisar.`,
+  rpartial_note: s => `Revisado por el editor: sentido ${s}. El resto es borrador, sin revisar.`,
+  edited_on: d => `Editado por el editor el ${d}.`,
   show_def: 'Mostrar la definición birmana', hide_def: 'Ocultar la definición birmana', my_def: 'Definición birmana',
   ocrnote: 'Birmano leído por máquina (OCR), sin revisar. Compare con la página impresa antes de citar.',
   quotes: 'Pasajes pāḷi citados', quotes_note: 'Extraídos por máquina de la definición; sus referencias están entre las citas.',
@@ -114,6 +118,66 @@ let NAV = null, LABS = new Map(), ABBR = [];
 const navL = li => get(`/data/nav/${li}.json`);
 const chunk = c => get(`/data/c/${c}.json`);
 const shard = li => get(`/data/s/${li}.json`);
+
+// --- the editor's edits, laid over the static data (docs/editor-mode.md) ----------------------------
+// /api/edits?book=NN gives the latest saved edit per id + field + sense (functions/api/edits.js). Each
+// book is asked for once, when one of its articles is first shown; until the answer comes, or if the
+// request fails (no API, network), the static data are shown as they are.
+const EDX = new Map();   // book -> Map(id -> [edit rows]) once loaded; null while loading or failed
+function editsOf(book) {
+  if (EDX.has(book)) return EDX.get(book);
+  EDX.set(book, null);
+  fetch(`/api/edits?book=${encodeURIComponent(book)}`).then(r => r.ok ? r.json() : null).then(j => {
+    if (!j || !Array.isArray(j.edits)) return;
+    setEdits(book, j.edits);
+    if (NAV && cur.recs.some(d => d.k === book)) { words(); article(); }
+  }).catch(() => {});
+  return null;
+}
+function setEdits(book, rows, id) {   // all of a book's rows, or (id given) the rows of one article
+  const M = EDX.get(book) || new Map();
+  if (id != null) M.delete(id);
+  for (const e of rows) { if (!M.has(e.id)) M.set(e.id, []); M.get(e.id).push(e); }
+  EDX.set(book, M);
+}
+// a record with its edits applied (a copy; the static record is left as it was)
+function ov(d) {
+  if (!d) return d;
+  const M = editsOf(d.k), E = M && M.get(d.i);
+  if (!E || !E.length) return d;
+  const o = Object.assign({}, d), cf = new Set(d.cf || []), last = {};
+  o.static = d; o.ed = {};
+  for (const e of E) {
+    if (e.field === 'status') continue;
+    o.ed[e.field] = e; cf.add(e.field);
+    if (e.field === 'headword') { if (!d.hi) o.hi = d.h; o.h = e.value; if (typeof ROMAN !== 'undefined') o.r = ROMAN.headword(e.value); }
+    else if (e.field === 'label') { o.l = e.value; delete o.lo; }
+    else if (e.field === 'analysis') { o.a = e.value; delete o.ad; delete o.as; o.ai = typeof ROMAN !== 'undefined' ? ROMAN.analysis(e.value) : ''; }
+    else if (e.field === 'body') { o.b = e.value; delete o.sp; }   // the Pāḷi spans were offsets into the old text
+    else if (e.field === 'es' || e.field === 'en') {
+      o.t = Object.assign({}, o.t); o.t[e.field] = { x: e.value, s: 'corrected', date: e.date }; last[e.field] = e.date;
+    }
+  }
+  o.cf = [...cf].filter(f => !['es', 'en'].includes(f));
+  // the status of the Spanish: the newest whole-Meaning row, then any per-sense rows newer than it
+  const st = E.filter(e => e.field === 'status');
+  if (st.length && o.t && o.t.es) {
+    const whole = st.filter(e => !e.sense).sort((a, b) => a.date < b.date ? 1 : -1)[0];
+    const base = whole && (!last.es || whole.date >= last.es) ? whole : null;
+    const es = Object.assign({}, o.t.es);
+    if (base) { es.s = base.value; es.date = base.date; delete es.cs; }
+    const since = base ? base.date : (last.es || '');
+    const per = st.filter(e => e.sense && e.date >= since);
+    const corr = per.filter(e => e.value === 'corrected').flatMap(e => e.sense.split(',').map(Number));
+    const rev = per.filter(e => e.value === 'reviewed').flatMap(e => e.sense.split(',').map(Number));
+    if (corr.length) { es.s = 'partial'; es.cs = [...new Set(corr)].sort((a, b) => a - b); es.date = per[per.length - 1].date; }
+    else if (rev.length && es.s === 'drafted') { es.s = 'rpartial'; es.cs = [...new Set(rev)].sort((a, b) => a - b); es.date = per[per.length - 1].date; }
+    o.t = Object.assign({}, o.t, { es });
+  }
+  return o;
+}
+window.ABH = { ov, setEdits, current: () => cur.recs[cur.k], rows: (book, id) => (EDX.get(book) || new Map()).get(id),
+  rerender: () => { words(); article(); } };   // for assets/editor.js
 
 // --- state ----------------------------------------------------------------------------------------
 let cur = { li: 0, gi: 0, si: 0, recs: [], k: 0, off: 0 };   // the syllable shown and the entry in it
@@ -209,8 +273,8 @@ function hwLabel(d) {
 function words() {
   const recs = cur.recs, a = cur.off, b = Math.min(recs.length, a + W);
   $('wearlier').hidden = a <= 0; $('wlater').hidden = b >= recs.length;
-  $('wlist').innerHTML = recs.slice(a, b).map((d, j) => {
-    const k = a + j;
+  $('wlist').innerHTML = recs.slice(a, b).map((d0, j) => {
+    const k = a + j, d = ov(d0);
     return `<a class="w${k === cur.k ? ' on' : ''}" href="/w/${encodeURIComponent(d.sl)}" data-k="${k}"${k === cur.k ? ' aria-current="true"' : ''}>${hwLabel(d)}${d.hn ? `<sup>${d.hn}</sup>` : ''}</a>`;
   }).join('');
   const on = $('wlist').querySelector('.on'); if (on) on.scrollIntoView({ block: 'nearest' });
@@ -267,16 +331,17 @@ function reportURL(d) {
   const body = `**Volume:** ${vn(d.k)} (book \`${d.k}\`)\n**PDF page:** ${d.p} · **printed page:** ${d.q}\n**Headword:** ${d.h} (${d.r})\n**Article id:** ${d.i}\n**Link:** ${link}\n\n**What is wrong** (and, if you can, what the printed page says):\n\n`;
   return `${REPO}/issues/new?labels=error-report&title=${encodeURIComponent(title)}&body=${encodeURIComponent(body)}`;
 }
-// the Meaning box's small markup: *pāḷi* in italics, [[iast|address]] a link to another headword,
+// the Meaning box's small markup: *pāḷi* in italics, [[iast|address]] a link to another headword
+// ([[iast|]] and [[iast]] in italics),
 // ‹…› a Burmese word the draft left untranslated
 function fmtTr(x) {
   return esc(x).replace(/\[\[([^\]|]+)\|([^\]]+)\]\]/g, (m, r, sl) => `<a class="pl" lang="pi" href="/w/${encodeURIComponent(sl)}">${r}</a>`)
-    .replace(/\[\[([^\]]+)\]\]/g, '<i class="pl" lang="pi">$1</i>')
+    .replace(/\[\[([^\]|]+)\|?\]\]/g, '<i class="pl" lang="pi">$1</i>')   // [[x|]]: not a headword; [[x]]: from an edit
     .replace(/\*([^*]+)\*/g, '<i class="pl" lang="pi">$1</i>')
     .replace(/‹([^›]+)›/g, '<span class="my" lang="my">$1</span>');
 }
 function article() {
-  const d = cur.recs[cur.k];
+  const d = ov(cur.recs[cur.k]);
   if (!d) { $('art').innerHTML = ''; return; }
   const H = [];
   H.push(`<div class="where"><span>${esc(t('vol_short'))} ${esc(vn(d.k))} · ${esc(pageStr(d.k, d.p))}</span>` +
@@ -288,7 +353,8 @@ function article() {
   H.push(`<div class="head">` +
     (ro ? `<h1 class="pl" lang="pi">${esc(d.r)}${d.hn ? `<sup>${d.hn}</sup>` : ''}</h1>` : '') +
     (my ? `<div class="my hw-my${ro ? ' second' : ''}" lang="my">${esc(d.h)}${!ro && d.hn ? `<sup>${d.hn}</sup>` : ''}</div>` : '') +
-    (d.l ? `<button type="button" class="lab" data-label aria-expanded="${open.label}">${labelShown(d)}</button>` : '') + '</div>');
+    (d.l ? `<button type="button" class="lab" data-label aria-expanded="${open.label}">${labelShown(d)}</button>` : '') +
+    ((d.cf || []).includes('label') ? ` <span class="chip c-ok" title="${esc(t('corrected_t'))}">${esc(t('corrected_f'))}</span>` : '') + '</div>');
   if (open.label && d.l) H.push(labelInfo(d));
   if (d.x === 'u') {
     H.push(`<div class="note warn"><strong>${esc(t('unlocated_h'))}</strong><p>${esc(t('unlocated_p'))}</p>` +
@@ -305,13 +371,15 @@ function article() {
   // Meaning: the translation with its status, or an honest "not yet translated"
   const tr = d.t && d.t[LANG];
   H.push(`<section><h2>${esc(t('meaning'))}</h2>` + (tr
-    ? `<div class="meaning"><span class="chip ${tr.s === 'drafted' || tr.s === 'partial' ? 'c-warn' : 'c-ok'}">${esc(t('st_' + tr.s))}</span><div lang="${LANG}">${fmtTr(tr.x)}</div>${tr.s === 'drafted' ? `<div class="muted small">${esc(t('drafted_note'))}</div>` : ''}${tr.s === 'partial' ? `<div class="muted small">${esc(t('partial_note', (tr.cs || []).map(n => `(${n})`).join(', ')))}</div>` : ''}</div>`
+    ? `<div class="meaning"><span class="chip ${tr.s === 'drafted' || tr.s === 'partial' || tr.s === 'rpartial' ? 'c-warn' : 'c-ok'}">${esc(t('st_' + tr.s))}</span><div lang="${LANG}">${fmtTr(tr.x)}</div>${tr.s === 'drafted' ? `<div class="muted small">${esc(t('drafted_note'))}</div>` : ''}${tr.s === 'partial' || tr.s === 'rpartial' ? `<div class="muted small">${esc(t(tr.s === 'partial' ? 'partial_note' : 'rpartial_note', (tr.cs || []).map(n => `(${n})`).join(', ')))}</div>` : ''}${tr.date ? `<div class="muted small">${esc(t('edited_on', tr.date.slice(0, 10)))}</div>` : ''}</div>`
     : `<div class="meaning empty"><span class="chip">${esc(t('not_translated'))}</span><span>${esc(t('trans_note'))}</span></div>`));
   const showDef = d.b && (S.defs === 'show' || (S.defs === 'collapse' && open.def));
   if (d.b && S.defs === 'collapse' && !open.def) H.push(`<button type="button" class="btn" data-def="1" aria-expanded="false">${esc(t('show_def'))}</button>`);
   if (showDef) {
     H.push((S.defs === 'collapse' ? `<button type="button" class="btn small" data-def="0" aria-expanded="true">${esc(t('hide_def'))}</button>` : '') +
-      `<div class="def my" lang="my">${defHTML(d)}</div><div class="muted small">${esc(t('ocrnote'))}</div>`);
+      `<div class="def my" lang="my">${defHTML(d)}</div>` + ((d.cf || []).includes('body')
+        ? `<div class="muted small"><span class="chip c-ok">${esc(t('corrected_f'))}</span> ${esc(t('corrected_t'))}</div>`
+        : `<div class="muted small">${esc(t('ocrnote'))}</div>`));
   }
   H.push('</section>');
   // Pāḷi passages quoted (when the definition is not shown)
@@ -348,6 +416,7 @@ function article() {
     `<a class="report" href="${reportURL(d)}" target="_blank" rel="noopener">${esc(t('report'))}</a></div>`);
   $('art').innerHTML = `<article>${H.join('')}</article><footer class="site-foot"></footer>`;
   fillFoot($('art'));
+  if (window.EDITOR) EDITOR.decorate(d);   // editor mode (assets/editor.js), only when the editor is signed in
 }
 
 function scan() {
@@ -488,6 +557,13 @@ async function start() {
   await show(0, 0, 0, 'first');
   if (q) { $('hq').value = q; search(q); }
 }
+// editor mode: /edit/ (behind Cloudflare Access) marks this browser; the editor's script is loaded only
+// then, and shows nothing unless the signed-in check (/api/admin/whoami) passes
+try {
+  if (localStorage.getItem('abhidhana-editor') === '1' && window.EDITOR_JS) {
+    const sc = document.createElement('script'); sc.src = window.EDITOR_JS; document.body.appendChild(sc);
+  }
+} catch (e) {}
 Promise.all([volumes(), get('/data/nav.json'), get('/data/labels.json').catch(() => []), get('/data/abbr.json').catch(() => [])])
   .then(([, nav, labs, abbr]) => { NAV = nav; LABS = new Map(labs.map((d, k) => [d.label, { ...d, k }])); ABBR = abbr; return start(); })
   .catch(() => { $('art').innerHTML = `<p class="muted">${esc(t('load_fail'))}</p>`; });

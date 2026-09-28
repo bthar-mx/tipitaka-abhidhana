@@ -1,4 +1,4 @@
-# Abhidhāna — handover, 27 September 2026 (v0.15.0 checked live; the editor's decisions recorded, revision queue, v0.16.0)
+# Abhidhāna — handover, 27 September 2026 (v0.16.0 checked live; editor mode built, not yet switched on, v0.17.0)
 
 *All 29 books are digitised end to end, spot-checked and in the Reader: 221,154 index rows, 94.1%
 located, 88.1% with label + body (brief §30). Read
@@ -7,7 +7,7 @@ located, 88.1% with label + body (brief §30). Read
 vol. 6, §21 vol. 7, §22 vol. 8 and the gutter failures, §23 vol. 9, §24 the re-cut tool, §25 vol.
 14/2's text layer, §26 the batch (vols. 10–22), §27 vols. 23, 24, 14/2, the index's page errors,
 book 21 and the Reader in binary, §28 the website, the page images and the label table, §29 vol.
-21, vol. 25's resolution and the labels as the dictionary prints them, §30 vol. 25 and the total, §31–37 the page images, the Introduction and the stem lexicon, §38 the site redesign, §39 the vol. 1 drafts, §40 the site fixes, the PCED analyses, hand corrections and sano / insano, §41 versioned assets and vol. 2's drafts, §42 the live check after `5db316f`, vol. 3's drafts and version numbers, §43 vols. 4/1–4/2, the IEBH footer, citation tooltips, cross-reference links and the labels the editor reviewed, §44 the live check after v0.8.0, vol. 4/3 deferred, vol. 5's drafts, the analysis split from its derivation and printed page numbers, §45 the live check after v0.9.0 and vol. 6's drafts, §46 stems L105–L106 and vols. 7–9, §47 vols. 10–14/1, §48 the live check after v0.12.0 and vols. 15–19, §49 vol. 14/2 from its text layer, §50 the body's first words restored, §51 the editor's decisions of 27 Sep and the revision queue. Every figure is there.
+21, vol. 25's resolution and the labels as the dictionary prints them, §30 vol. 25 and the total, §31–37 the page images, the Introduction and the stem lexicon, §38 the site redesign, §39 the vol. 1 drafts, §40 the site fixes, the PCED analyses, hand corrections and sano / insano, §41 versioned assets and vol. 2's drafts, §42 the live check after `5db316f`, vol. 3's drafts and version numbers, §43 vols. 4/1–4/2, the IEBH footer, citation tooltips, cross-reference links and the labels the editor reviewed, §44 the live check after v0.8.0, vol. 4/3 deferred, vol. 5's drafts, the analysis split from its derivation and printed page numbers, §45 the live check after v0.9.0 and vol. 6's drafts, §46 stems L105–L106 and vols. 7–9, §47 vols. 10–14/1, §48 the live check after v0.12.0 and vols. 15–19, §49 vol. 14/2 from its text layer, §50 the body's first words restored, §51 the editor's decisions of 27 Sep and the revision queue, §52 editor mode. Every figure is there.
 `docs/labels.md` §0 holds the label table (the one source for the pipeline and the site),
 `docs/abbreviations.md` the dictionary's own abbreviations and its prose on the labels,
 `docs/index-errata.md` the index's errors, `docs/witness.md` and `docs/witness-join.md` the typed
@@ -88,9 +88,18 @@ Project are for advice and for what needs the Mac. What the new chat should know
 
 00. ~~Versions~~: tags v0.1.0–v0.11.0 created by the editor; the footer shows `VERSION` (brief §43). Tag **v0.13.0** on the push of §48
    (and v0.12.0 on §47's, if not yet made). Each push that changes data or the site: bump `VERSION`, add a `CHANGELOG.md` section, tag.
-00k. **After the §51 push, check the live site** (fetch `/data/version.json` first): 0.16.0; `/w/luñcana` shows *quitar / arrancar.*
-   marked *corregido*; `/w/labhissati` and `/w/vikaṭa` *corregido en parte* with the note naming sense (1); `/w/omakadesanā`
-   the analysis [ဩမကာ + ဒေသနာ], marked corrected. Tag v0.16.0.
+00l. **After the §52 push (v0.17.0)**: check the live site (fetch `/data/version.json` first): 0.17.0; Browse unchanged for a
+   visitor (`/w/luñcana`: *corregido*, no *Editar* button); `/api/edits?book=18` answers 503 "no database bound" until step C
+   below (the page ignores it and shows the published data). Tag v0.17.0.
+   **Then switch editor mode on** (the editor, Cloudflare dashboard; `docs/editor-mode.md` §2, steps 1–15): create the D1
+   database `abhidhana-edits` and run `site/d1/schema.sql`; an Access application (self-hosted) on `abhidhana.buddha-dhamma.net`
+   paths `edit` and `api/admin`, policy *Allow* the editor's e-mail; in the Pages project check the root directory is the repo
+   root, bind D1 as `DB`, set `ACCESS_TEAM_DOMAIN`, `ACCESS_AUD`, `EDITOR_EMAILS`; redeploy; run the checks of §2 D.
+   To bring edits into the repo (on the Mac): `npx wrangler d1 export abhidhana-edits --remote --output …/edits.sql`, then
+   `python3 tools/abhidhana_edits_export.py --d1 …/edits.sql` (report) and `--write`; re-run the article step for the books it
+   lists (`abhidhana_articles.py NN && abhidhana_romanise.py NN`); VERSION, CHANGELOG, push, tag.
+00k. ~~After the §51 push, check the live site~~: done 27 Sep: version 0.16.0; `/w/omakadesanā` and `/w/omakadassa` show the
+   analysis marked *corregido* (Análisis corregido); `/w/vātakuppa` shows *corregido*. Tag v0.16.0 (the editor).
 00j. ~~After the §50 push, check the live site~~: done 27 Sep (in-app browser): `/data/version.json` and every page's meta 0.15.0;
    `/w/pamattakaraṇaṭṭha` (vol. 14/2): the Burmese definition begins မေ့ လျော့ခြင်းကို; `/w/akālacārī` (id 356) begins (က).
    Pushed as `e79103b`, tagged v0.15.0 by the editor.

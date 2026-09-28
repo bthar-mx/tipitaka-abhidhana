@@ -23,6 +23,20 @@ Versions of the Tipiṭaka Pāḷi-Myanmā Abhidhāna project: the data, the too
 A release note says, per version: what changed, the brief's sections, and the headline figures
 (located, label + body, Meaning rows drafted / reviewed).
 
+## v0.17.0 — 27 Sep 2026
+
+- **Editor mode** (brief §52, `docs/editor-mode.md`): in Browse, when the editor is signed in, each article has an
+  **Editar** button with a form for the Meaning (ES/EN, the status of the Spanish, whole or by sense) and the article's
+  fields (headword, label, analysis, body, in Burmese, with a live roman preview). Saves go to a Cloudflare D1 database
+  through Pages Functions (`functions/`); `/edit/` and `/api/admin/` are for Cloudflare Access, and the write API checks
+  the Access token itself. Every edit is kept; the latest per id + field + sense counts.
+- **Every visitor's Browse lays the saved edits over the published data** (`/api/edits?book=NN`), marked *corregido* /
+  *revisado* (or *en parte*, by sense), with the date; if the API fails, the page shows the published data.
+- `tools/abhidhana_edits_export.py` writes the edits into `docs/translation/meanings/NN.jsonl`, `corrections-es.tsv` and
+  `docs/corrections.tsv`, and lists the books whose article step must be re-run on the Mac.
+- The build now writes a "véase" link to a word that is not a headword as `[[x|]]` (still shown in italics), so the form
+  can give back the source text. No data changed. **Not yet switched on**: the dashboard steps of `docs/editor-mode.md` §2.
+
 ## v0.16.0 — 27 Sep 2026
 
 - **The editor's decisions of 27 Sep recorded** for new drafts (brief §51): person by the Pāḷi ending; ပယ်, ဖောက်ပြန် by sense;
