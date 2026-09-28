@@ -2103,3 +2103,163 @@ editor (R2 of §51 already leaves -si out of the revision queue). …လော u
 *abandonar* (216242), flagged. 216840's headword *paligijcyeyya* looks garbled. 215884 (parisapārivāsiya): ကံ as the Saṅgha's
 act, flagged. Shard 01's agent changed one appended line (215805: pariveṇa out of `terms`, since it was translated).
 The site was not built in the cloud.
+
+
+## 55. The OCR books: vols. 23 and 22 prepared, one trial shard of vol. 23 drafted (28 Sep 2026, cloud session)
+
+**Asked** (the editor): a pilot to see whether our OCR text is clean enough to draft the Meaning boxes of the books with no PCED:
+`prep` for vols. 23 and 22 (no witness join, `source: ocr`), shards of ~450 lines; one shard drafted and checked, not merged.
+Also: 00o done (0.18.3 checked live 28 Sep) and v0.18.4 noted in NEXT-SESSION (00p).
+
+**Prep as it was** (`prep 23 --shards 15`, `prep 22 --shards 17`, `tmp/meanings/v23`, `v22`):
+
+| | vol. 23 | vol. 22 |
+|---|---:|---:|
+| articles / with a body | 7,182 / 7,008 | 8,078 / 7,777 |
+| explanations / formula-only | 6,962 / 208 | 7,676 / 166 |
+| rows with a «Sn» (placeholders) | 612 (630) | 631 (662) |
+| Burmese characters: `body_joined` → our text | 1,104,185 → 455,031 | 1,400,000 → 585,842 |
+| text length median / p90 / max | 50 / 128 / 12,159 | 58 / 152 / 10,539 |
+| `analysis_bracket_damaged` / of them cut up to `]` | 3,102 / 167 | 2,503 / 543 |
+
+(14/2 had 214 damaged brackets.) **How clean.** No page image could be opened: the container's network policy denies
+`abhidhana.buddha-dhamma.net` and `abhidhana-img.buddha-dhamma.net`. 24 random rows (12 a book, seeds 23 and 22) were read
+against the article's `raw`: in vol. 23, 10 of 12 hold a readable, whole gloss (spaces left inside words by line breaks); in
+vol. 22, 7 of 12 (scan noise kept, 177636 `[ ဖီ့] ့စ`; a gloss lost to the OCR, 183172). A rough signal over every row (no
+`[ ] +`, no quotation marks or `/`, no sentence of mostly Pāḷi-shaped words, no 1–2-letter scrap, no page numbers):
+**clean rows 14/2 82.6%, vol. 23 53.1%, vol. 22 41.1%**; analysis residue in 24.8% / 32.6% (14/2 1.5%), Pāḷi left (quotations
+the OCR spelling hid from `pali.jsonl`) in 24.2% / 31.6% (14/2 5.4%). A proxy that over-counts (short Burmese words look like
+scraps), but it ranks the books.
+
+**`prep` changed for OCR books** (`our_text(ocr=True)`, `source: ocr` only). Where the analysis bracket is damaged, `our_text`
+removed the body's head up to the first `]`. In the OCR books that `]` is often scan noise or a later bracket, and the head held
+the gloss: in 69 of vol. 23's 167 cut rows and 236 of vol. 22's 543 it held Burmese gloss words (177529 lost its whole gloss;
+179555 all but debris). Now, where a Burmese-marked sentence of the head (one with `NOT_PALI`) holds a gloss word
+(`GLOSS_WORD`: ခြင်း ၏ သည် ကုန် ကို တို့ ၍ ၌, သော at a word's end), only the analysis formulas in it (`FORMULA`: Pāḷi elements
+joined by +) are removed and the `]` becomes ။ (so a "see X" after it is still a formula: without that, four placeholders
+were lost). **Decided without asking**: the grammarians' Burmese notes in such heads (ဒါ-၏ အာ-ကို ဣယ-ပြု, X-သံ, X-ပါကတ) stay
+for the draft to put in `omitted`: four tests meant to tell them from a gloss each dropped real glosses (186186, 188930,
+191043, 192201). **Byte-identical**: `prep 14b --shards 15` (work file and 15 shards, md5, against the unchanged code in this
+container: the Mac's work file was not available) and `prep 15 --shards 18` on a synthetic witness (join for 8 of 9
+articles, every 8th joined row with no definition: 7,266 pced, 1,782 ocr rows; 19 files). **Re-run `prep 15` on the Mac
+against the real witness to confirm.**
+
+| after the change | vol. 23 | vol. 22 |
+|---|---:|---:|
+| explanations (new) / text changed | 6,967 (+5) / 64 | 7,715 (+39) / 241 |
+| formula-only; rows with «Sn» (placeholders) | 206; 618 (636) | 160; 638 (670) |
+| Burmese characters | 460,154 | 603,894 |
+| to draft / shards (lines) | 6,761 / 15 (447–451) | 7,555 / 17 (437–445) |
+| clean rows (the signal above) | 52.9% | 40.8% |
+
+The clean share did not move: the change restores glosses, it does not clean. Of the rows still holding `[ ] +` (1,675 in 23,
+2,461 in 22), most are **not** flagged damaged (23: 701 with no `]` in the body, 491 with one; 22: 806 and 720, 411 with `[`
+before the first `]`): brackets of run-on articles and derivations inside the body. Not touched. Of the 24 sample rows only
+179555 changed (its gloss is back). **177547 sannipatita** (reported to the editor earlier in the session as "senses (၁)–(၂) lost to the cut") was misdiagnosed: its own headword
+line (OCR သန္နပတိတ (တိ) [ … ] (၁) … (၂) …) sits inside 177546 sannipatanta's body (the index places the article too late), a
+run-on for the article step, not `prep`.
+
+**Trial shard drafted: vol. 23 shard 00** (451 lines, ids 185507–185991, samma – sammāpayutta, PDF 36–91), one agent, its own
+scratch folder, `docs/translation/drafting-prompt.md` with its section for books from our own text and the rules of 27 Sep,
+plus one paragraph for OCR books (debris it cannot read to `omitted`, never guessed into a meaning; a certain misreading read and
+flagged "OCR: read X as Y"; a run-on article's text to `omitted`, flagged "run-on article: X", only the headword's own text
+translated). **Decided without asking**: that run-on rule (the majority practice of 14/2 and of §54). The prompt as given is
+`docs/translation/trial/23-shard00-prompt.md`; input and output `23-shard00-{in,out}.jsonl`. Not merged.
+
+| vol. 23 shard 00 | 14/2 shard 00 (§49) |
+|---|---|
+| 451 lines; 270,909 agent tokens (~601 a row), 38 tool calls, 19 min | 454; 208,033 (~458), 30, 13 min |
+| flagged 137 (30.4%); with `omitted` 270 (59.9%); empty 10 (2.2%) | flagged 181 (omissions then in `flag`) |
+| flagged, omitted or empty: 306 (67.8%); clean 145 (32.2%) | — |
+| flags: "OCR: read X as Y" 68, run-on article 29, nothing to translate 10, see-X 10 | |
+| terms kept in Pāḷi: 64 distinct (sammādiṭṭhi 40, sammappadhāna 34, vipassanā 33, magga 14, viriya 11) | |
+
+(§54's 14/2 redraft: 22.5% flagged, 24.3% with `omitted`.) **Checked**: one line per id, in order; valid JSON with id, es, en,
+terms, flag, omitted; every «Sn» in es and en; ⟦ ⟧ and ‹ › balanced; no Burmese outside them: 0 errors. Six rows read against
+the Burmese (185846, 185648, 185912, 185704, 185942, 185886): faithful; misreadings the agent corrected are flagged (ဆီးမီး →
+ဆီမီး, ခြင်၏ → ခြင်း၏).
+
+**What the agent reported** (nothing reviewed): articles printed in the wrong line — an article's definition inside the line
+before, its own line only "ကြည့်" or a fragment: sammakkhaṇa (185509/10), sammata (185571/72), sammā ဗျ (185791/92),
+sammāñāṇa (185844/45), sammādassana (185852/54), sammannati (185646–48); in 185509 and 185874 a «Sn» that belongs to the run-on
+article was kept (the check requires it), flagged. 185509 translates the samma (ဗျ) article printed after the previous one's
+quotations. Instruments ‹ခွက်ခွင်း› ‹လင်းကွင်း› ‹သံလွင်› ‹ရှား› (cutch?) left in Burmese. Aorists in -si / -esi (185770,
+185942) in the 3rd person, flagged (the -si = 2nd person rule read as for the present). လုံ့လဝီရိယ *esfuerzo (⟦ဝီရိယ⟧)*;
+သမုတ် *designar / considerar* by context.
+
+**For the editor to check on the page image** (every 22nd line from the 11th; printed page = PDF − 35):
+185520 sammajjatha p. 3; 185544 sammajjanīsalākā p. 5; 185568 sammaṭṭhaṭṭhāna p. 8; 185593 sammatta p. 11; 185615
+sammadakkhāta p. 14; 185637 sammantayamāna p. 16; 185661 sammanne p. 19; 185684 sammappadhānapucchā p. 22; 185707
+sammavaṇṇita p. 24; 185730 sammasanapayoga p. 28; 185752 sammasanābhāva p. 30; 185775 sammasitajjhāna p. 32; 185798
+sammāājīvatāsāmañña p. 35; 185822 sammākammantaniddesa p. 38; 185846 sammāñāṇa p. 41; 185870 sammādiṭṭhiādidhammasāmaggī
+p. 43; 185895 sammādiṭṭhimatta p. 46; 185917 sammādhārā p. 48; 185939 sammānenta p. 51; 185966 sammāpaṭipattipucchā p. 54.
+Vol. 22 not drafted (the editor: after 23 has been seen). The site was not built in the cloud.
+
+
+## 56. Vol. 23 drafted from our OCR and merged (28 Sep 2026, cloud session)
+
+**Asked** (the editor, after §55): draft the remaining 14 shards of vol. 23 and merge the book, shard 00 included; report the
+tokens and stop; vol. 22 after, as a separate step. The review questions of §55 (the 20 ids, -si / -esi, run-on headwords) wait
+for the final revision (NEXT-SESSION 1c), not asked now; aorists in -si / -esi stay in the 3rd person, flagged, as the prompt says.
+
+**Drafted**: shards 01–14 (450–451 lines; 14: 447), 14 agents at once, each with its own scratch folder, the prompt of §55
+(`docs/translation/trial/23-shard00-prompt.md`, shard number and paths changed); shard 00 is §55's trial, unchanged. `prep`'s
+shards were the same as §55's (shard 00 byte-identical to the trial input).
+
+| shard | agent tokens | tool calls | min | | shard | agent tokens | tool calls | min |
+|---|---:|---:|---:|---|---|---:|---:|---:|
+| 00 | 270,909 | 38 | 19 | | 08 | 249,259 | 31 | 18 |
+| 01 | 244,866 | 34 | 16 | | 09 | 265,586 | 21 | 22 |
+| 02 | 212,076 | 31 | 17 | | 10 | 290,919 | 24 | 22 |
+| 03 | 211,540 | 32 | 15 | | 11 | 268,085 | 32 | 19 |
+| 04 | 269,919 | 21 | 19 | | 12 | 252,388 | 19 | 18 |
+| 05 | 234,947 | 32 | 17 | | 13 | 304,523 | 32 | 22 |
+| 06 | 241,089 | 27 | 17 | | 14 | 209,194 | 19 | 14 |
+| 07 | 225,840 | 31 | 17 | | **all** | **3,751,140** | **424** | |
+
+~555 tokens a drafted line (14/2: ~479, brief §49). **Checked** (every shard): one line per id, in order; valid JSON with id, es,
+en, terms, flag, omitted; every «Sn» in es and en; ⟦ ⟧ and ‹ › balanced; no Burmese outside them: 0 errors. Every empty line is
+empty in both languages and flagged "nothing to translate". Agents changed some of their own appended lines despite the
+append-only rule, each for a slip found in their check: 05 (188020 `terms`), 10 (four Spanish typos), 14 (192681, 192683–85
+plural, 192476 `terms`).
+
+| vol. 23 | |
+|---|---:|
+| lines drafted / flagged / with `omitted` / empty | 6,761 / 2,094 (31.0%) / 3,873 (57.3%) / 61 |
+| flagged, omitted or empty; clean | 4,568 (67.6%); 2,193 (32.4%) |
+| flags: "OCR: read X as Y" / run-on article / see-X / senses printed twice / person / hyphen / aorist | 793 / 244 / 141 / 47 / 38 / 37 / 12 |
+| rows merged (`meanings/23.jsonl`), all `drafted`, `source` ocr: formula / drafted | 6,906: 206 / 6,700 |
+| flagged (`23-flags.tsv`) / lines in `23-omitted.tsv` | 2,033 / 3,873 |
+| articles without a Meaning: no body / nothing left after `prep` / drafted empty | 174 / 41 / 61 (276 of 7,182) |
+| terms kept in Pāḷi (`23-terms.tsv`) | 595 (sāsana 123, thera 95, sikkhāpada 84, sikkhā 81, sāvaka 66) |
+| "see X" links matching a romanised headword | 614 of 800 (76.8%; 14/2 84.9%) |
+| rows with *sano / insano*; *mérito* | 25; 9 |
+| Burmese left in ‹ › (rows) | 207 |
+
+After merge: ids all in the book, sorted, no ⟦ ⟧ left, no Burmese outside ‹ ›. No vol. 23 row is in `corrections-es.tsv`.
+**Totals: 22 books, 170,351 Meaning rows, all `drafted`, none reviewed: 77.0%** of the index (221,154). About and README list
+vol. 23 (drafted from our OCR). The site was not built in the cloud.
+
+**What the agents reported** (nothing reviewed; the ones for the final revision are in NEXT-SESSION 1c):
+- **Run-on articles everywhere**: an article's text inside its neighbour's line, the neighbour's own line holding "ကြည့်" or a
+  fragment; sometimes whole runs (189593 holds ~14 articles, 189594–189607; 191813 holds 191814–191821 siṅgālakakumāra …
+  siṅgālajātaka; 188628 holds sahatā … sahattha; 187927 savipāka with seven senses; 192476 sirimā inside sirimantu). Translated
+  only the line's own text, the rest in `omitted`, flagged. **Shard 04 departed from this** in 187500, 187501, 187506, 187608,
+  187609, 187611: it translated the headword's definition from the previous line's run-on text (flagged). A «Sn» that belongs to
+  the run-on text was kept in its host line (185509, 185874, 186074, 187414, 187505, 187599, 187607, 187788, 189593, 190617,
+  190673 and others), flagged.
+- **Senses printed twice** (the OCR's layout): 186468, 186519, 186688, 186794, 189328, 189479, 189689, 191459, 191487, 191506,
+  192224, 192268, 192522, 192613, 192642, 192670 …: translated once.
+- **Headword and text disagree**: 187816, 187894, 187911, 188977 (and 188978 has no line), 189429, 189773, 189797, 189804–05,
+  189814, 190033, 190151, 190186, 190213, 190663.
+- **Renderings that differ between shards**: sikkhāpada *regla de entrenamiento* (08) vs ⟦=sikkhāpada⟧ (11, 12); သဘောလက္ခဏာ
+  *⟦lakkhaṇa⟧ intrínseca* vs *naturaleza y ⟦lakkhaṇa⟧* (03); ဦးချို *copete* in 191722, 191731, *cuerno* after (13); သူငယ်ချင်း
+  *amigo* / *camarada* (07). Kept Pāḷi without a stem: ⟦=sarūpa⟧ (သရုပ်), ⟦=saraṇagamana⟧ (သရဏဂုံ), ⟦=sāsana⟧, ⟦=kahāpaṇa⟧
+  (အသပြာ), ⟦=meru⟧ (မြင့်မိုရ်), ⟦=Sakka⟧, ⟦=Sākiya⟧; သမုတ် *convención* (conventional designation) / *autorizar* (Vinaya).
+- **Burmese month names** romanised in some shards (02, 09, 14), left in ‹ › in others (11, 13).
+- **Long encyclopaedic articles translated in full**: 190322 Sāmāvatī, 190720 Sāriputta, 191138 sāvitti (the Sanskrit verses
+  copied garbled), 191782 sikhīsambuddha, 192037 siddhatthadasabala, 192123 sineru (~12,000 characters; two damaged fractions
+  read 1312 ½ and 656 ¼, flagged).
+- **To check on the page**: 188909 တစ်သောင်း in a sahassa- row; 189171 ‹မဒရပ်› (Madra?); 189075 sahetha (-etha: 3rd singular
+  optative, not the 2nd person of "-tha"); 191505 -ssu with ကုန်လော့ rendered plural; sāyassu 2nd person though the Burmese
+  reads "(I) will"; 190081 a word read as "sleep" to fit the Sāmaka sutta.
