@@ -23,6 +23,10 @@ Versions of the Tipiṭaka Pāḷi-Myanmā Abhidhāna project: the data, the too
 A release note says, per version: what changed, the brief's sections, and the headline figures
 (located, label + body, Meaning rows drafted / reviewed).
 
+## v0.18.2 — 2026-09-28
+
+- **Edits from editor mode exported** (weekly workflow): 0 Meaning row(s), 3 correction(s) to `docs/corrections.tsv`, 0 line(s) to `corrections-es.tsv`. Books and fields: 4c: analysis. Article step still to re-run on the Mac for: 4c.
+
 ## v0.18.1 — 28 Sep 2026
 
 - **Weekly export of the editor's edits** (`.github/workflows/export-edits.yml`, `docs/editor-mode.md` §5): every Monday
