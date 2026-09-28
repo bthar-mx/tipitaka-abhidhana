@@ -234,3 +234,55 @@ Object.assign(T.es, { menu_open: 'Menú', menu_close: 'Cerrar el menú' });
   document.addEventListener('click', e => { if (!e.target.closest('header.site')) set(false); });
   document.addEventListener('keydown', e => { if (e.key === 'Escape' && hdr.classList.contains('menu-open')) { set(false); b.focus(); } });
 })();
+
+// --- tooltips: the site's own, larger and in the theme's colours, in place of the browser's small `title` ones.
+// Any element with a `title` gets it moved to `data-tip` on first hover or focus (titles set later by code are
+// moved the same way); the tip shows after a short delay below the element, or above it near the bottom edge.
+// On touch screens a tap on a non-interactive element with a tip (a chip, a note, a Pāḷi word) shows it for 4 s.
+(function () {
+  const tip = document.createElement('div');
+  tip.id = 'tip'; tip.setAttribute('role', 'tooltip'); tip.hidden = true;
+  document.body.appendChild(tip);
+  let timer = 0, cur = null, hideT = 0;
+  const take = el => {
+    if (el.hasAttribute('title')) {
+      const s = el.getAttribute('title');
+      el.removeAttribute('title');
+      if (s) { el.dataset.tip = s; if (!el.getAttribute('aria-label') && !el.textContent.trim()) el.setAttribute('aria-label', s); }
+    }
+    return el.dataset.tip || '';
+  };
+  const place = el => {
+    const r = el.getBoundingClientRect(), m = 8;
+    tip.style.left = '0px'; tip.style.top = '0px';
+    const w = tip.offsetWidth, h = tip.offsetHeight;
+    const x = Math.min(Math.max(m, r.left + r.width / 2 - w / 2), innerWidth - w - m);
+    let y = r.bottom + m;
+    if (y + h > innerHeight - m && r.top - h - m > m) y = r.top - h - m;
+    tip.style.left = x + 'px'; tip.style.top = y + 'px';
+  };
+  const show = el => {
+    const s = take(el); if (!s) return;
+    cur = el; tip.textContent = s;
+    tip.classList.toggle('my', /[က-႟]/.test(s));
+    tip.hidden = false; place(el); tip.classList.add('on');
+  };
+  const hide = () => { clearTimeout(timer); clearTimeout(hideT); cur = null; tip.classList.remove('on'); tip.hidden = true; };
+  const target = e => e.target && e.target.closest && e.target.closest('[title],[data-tip]');
+  document.addEventListener('mouseover', e => {
+    const el = target(e);
+    if (el === cur) return;
+    hide();
+    if (el && take(el)) timer = setTimeout(() => show(el), 250);
+  });
+  document.addEventListener('mouseout', e => { const el = target(e); if (el && !el.contains(e.relatedTarget)) hide(); });
+  document.addEventListener('focusin', e => { const el = target(e); hide(); if (el && take(el)) timer = setTimeout(() => show(el), 250); });
+  document.addEventListener('focusout', hide);
+  document.addEventListener('scroll', hide, { capture: true, passive: true });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') hide(); });
+  document.addEventListener('click', e => {
+    const el = target(e);
+    if (!el || el.closest('a, button, input, select, textarea, label')) { if (!el || el !== cur) hide(); return; }
+    if (matchMedia('(hover: none)').matches) { show(el); clearTimeout(hideT); hideT = setTimeout(hide, 4000); }
+  });
+})();

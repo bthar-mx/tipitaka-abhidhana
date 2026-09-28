@@ -478,3 +478,11 @@ html[data-script="ro"] .lt.on .pl{color:var(--on-accent)}
 }
 /* the label table on /abbreviations/ scrolls inside its own box on narrow screens, not the page */
 @media (max-width: 860px){ table.labels{display:block;overflow-x:auto;max-width:100%} }
+
+/* tooltips (common.js): the site's own, in place of the browser's small title tooltips */
+#tip{position:fixed;z-index:1000;max-width:min(380px,calc(100vw - 16px));padding:8px 12px;border-radius:8px;
+  background:var(--ink);color:var(--bg);font:500 15px/1.45 var(--ui);box-shadow:0 4px 14px rgba(0,0,0,.28);
+  pointer-events:none;opacity:0;transition:opacity .12s ease;white-space:pre-line}
+#tip.on{opacity:1}
+#tip.my{font-family:var(--my);font-size:17px;line-height:1.7}
+@media (prefers-reduced-motion: reduce){#tip{transition:none}}

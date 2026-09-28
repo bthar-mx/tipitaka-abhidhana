@@ -23,6 +23,13 @@ Versions of the Tipiṭaka Pāḷi-Myanmā Abhidhāna project: the data, the too
 A release note says, per version: what changed, the brief's sections, and the headline figures
 (located, label + body, Meaning rows drafted / reviewed).
 
+## v0.26.5 — 28 Sep 2026
+
+- **Tooltips larger and easier to see** (the editor asked): the browser's small `title` tooltips are replaced by the site's own, in the
+  theme's colours, 15 px (17 px for Burmese), shown after a short delay below the element or above it near the bottom edge; on touch
+  screens a tap on a chip, note or Pāḷi word shows its tip for 4 s (`common.js`, `style.css`). Display only; no data change. Tested
+  in Chrome on the live page (injected) before the push, not yet in Safari or Firefox.
+
 ## v0.26.4 — 28 Sep 2026
 
 - **Site display only; no data change** (brief §68; the editor's decisions of 28 Sep on §66's questions). Passage lines are hidden
