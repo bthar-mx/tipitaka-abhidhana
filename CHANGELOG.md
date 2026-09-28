@@ -30,6 +30,9 @@ A release note says, per version: what changed, the brief's sections, and the he
   are left out and the `]` becomes ။; before, the whole part went, and with it the gloss where the `]` was scan noise or a
   later bracket (vol. 23: 64 rows' text changed, vol. 22: 241). 14/2 and the PCED books unchanged (byte-identical `prep`
   output). No published data changed.
+- **The OCR pilot** (brief §55): vols. 23 and 22 prepared from our OCR; vol. 23 shard 00 (451 rows) drafted as a trial, not
+  merged (`docs/translation/trial/23-shard00-{in,out}.jsonl`, the prompt as given in `23-shard00-prompt.md`): 137 flagged,
+  270 with `omitted`, 10 empty. Meaning rows in all unchanged: 163,445, none reviewed.
 - NEXT-SESSION: 00o done (0.18.3 checked live), v0.18.4 noted (00p).
 
 ## v0.18.4 — 28 Sep 2026

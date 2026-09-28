@@ -1,4 +1,4 @@
-# Abhidhāna — handover, 28 September 2026 (editor mode built, not yet switched on, v0.17.0; roman input in its form, v0.18.0; 14/2's 497 rows redrafted, v0.18.3)
+# Abhidhāna — handover, 28 September 2026 (editor mode built, not yet switched on, v0.17.0; roman input in its form, v0.18.0; 14/2's 497 rows redrafted, v0.18.3; the OCR pilot, vol. 23 shard 00, v0.18.5)
 
 *All 29 books are digitised end to end, spot-checked and in the Reader: 221,154 index rows, 94.1%
 located, 88.1% with label + body (brief §30). Read
@@ -7,7 +7,7 @@ located, 88.1% with label + body (brief §30). Read
 vol. 6, §21 vol. 7, §22 vol. 8 and the gutter failures, §23 vol. 9, §24 the re-cut tool, §25 vol.
 14/2's text layer, §26 the batch (vols. 10–22), §27 vols. 23, 24, 14/2, the index's page errors,
 book 21 and the Reader in binary, §28 the website, the page images and the label table, §29 vol.
-21, vol. 25's resolution and the labels as the dictionary prints them, §30 vol. 25 and the total, §31–37 the page images, the Introduction and the stem lexicon, §38 the site redesign, §39 the vol. 1 drafts, §40 the site fixes, the PCED analyses, hand corrections and sano / insano, §41 versioned assets and vol. 2's drafts, §42 the live check after `5db316f`, vol. 3's drafts and version numbers, §43 vols. 4/1–4/2, the IEBH footer, citation tooltips, cross-reference links and the labels the editor reviewed, §44 the live check after v0.8.0, vol. 4/3 deferred, vol. 5's drafts, the analysis split from its derivation and printed page numbers, §45 the live check after v0.9.0 and vol. 6's drafts, §46 stems L105–L106 and vols. 7–9, §47 vols. 10–14/1, §48 the live check after v0.12.0 and vols. 15–19, §49 vol. 14/2 from its text layer, §50 the body's first words restored, §51 the editor's decisions of 27 Sep and the revision queue, §52 editor mode, §53 roman input in the editor's form, §54 the redraft of 14/2's 497 rows with restored first words. Every figure is there.
+21, vol. 25's resolution and the labels as the dictionary prints them, §30 vol. 25 and the total, §31–37 the page images, the Introduction and the stem lexicon, §38 the site redesign, §39 the vol. 1 drafts, §40 the site fixes, the PCED analyses, hand corrections and sano / insano, §41 versioned assets and vol. 2's drafts, §42 the live check after `5db316f`, vol. 3's drafts and version numbers, §43 vols. 4/1–4/2, the IEBH footer, citation tooltips, cross-reference links and the labels the editor reviewed, §44 the live check after v0.8.0, vol. 4/3 deferred, vol. 5's drafts, the analysis split from its derivation and printed page numbers, §45 the live check after v0.9.0 and vol. 6's drafts, §46 stems L105–L106 and vols. 7–9, §47 vols. 10–14/1, §48 the live check after v0.12.0 and vols. 15–19, §49 vol. 14/2 from its text layer, §50 the body's first words restored, §51 the editor's decisions of 27 Sep and the revision queue, §52 editor mode, §53 roman input in the editor's form, §54 the redraft of 14/2's 497 rows with restored first words, §55 the OCR pilot (vols. 23 and 22 prepared, `prep`'s gloss fix for OCR books, vol. 23 shard 00 drafted). Every figure is there.
 `docs/labels.md` §0 holds the label table (the one source for the pipeline and the site),
 `docs/abbreviations.md` the dictionary's own abbreviations and its prose on the labels,
 `docs/index-errata.md` the index's errors, `docs/witness.md` and `docs/witness-join.md` the typed
@@ -181,7 +181,13 @@ Project are for advice and for what needs the Mac. What the new chat should know
    of a book must re-apply them: `merge` does not yet). Rule 1 (split run-on articles, e.g. 210255 inside 210254) is for the
    article step on the Mac, each split checked on the page image.
 1b. **Translation** (brief §37, §39–49). **Drafted: vols. 1–3, 4/1, 4/2, 5–19 and 14/2** (163,445 rows, 73.9% of the index, none reviewed; flags in `meanings/NN-flags.tsv`). **Vol. 4/3 deferred** (no PCED; the editor, 26 Sep; brief §44). PCED's vols. 1–19 are all drafted (brief §48).
-   **Next: the books with no PCED** — 14/2 (its text layer), 14/3, 20–25, and 4/3 (deferred) — could only be drafted from
+   **The OCR pilot (brief §55, v0.18.5)**: vols. 23 and 22 prepared (`tmp/meanings/v23`, `v22`: 15 and 17 shards; the cloud's
+   `tmp/` is gone, re-run `prep 23 --shards 15` and `prep 22 --shards 17`); vol. 23 shard 00 drafted, not merged
+   (`docs/translation/trial/23-shard00-{in,out,prompt}`): 67.8% of rows flagged, with `omitted` or empty. **The editor**: check
+   the 20 ids of §55 on the page images, then decide: draft the rest of 23, try a shard of 22 (40.8% clean rows against 23's
+   52.9%), or clean `prep` further first (analysis residue of run-on articles and body derivations, Pāḷi left in 24–32% of
+   rows). On the Mac: re-run `prep 15` against the real witness (byte-identical expected, §55).
+   **Next: the books with no PCED** — 14/3, 20–25, and 4/3 (deferred) — could only be drafted from
    our OCR body: the editor to decide, as for 4/3 (brief §44 measured the OCR body against PCED on 4/1 and 4/2). If yes:
    `prep('NN', N)` from Python (N so that shards are ~450 lines), each book's `workNN.json` and `shards/` in
    `tmp/meanings/vNN/`; one agent and scratch folder per shard (20 at once) with `docs/translation/drafting-prompt.md`
