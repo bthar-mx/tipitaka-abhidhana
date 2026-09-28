@@ -1,4 +1,4 @@
-# Abhidhāna — handover, 27 September 2026 (v0.16.0 checked live; editor mode built, not yet switched on, v0.17.0)
+# Abhidhāna — handover, 28 September 2026 (editor mode built, not yet switched on, v0.17.0; roman input in its form, v0.18.0)
 
 *All 29 books are digitised end to end, spot-checked and in the Reader: 221,154 index rows, 94.1%
 located, 88.1% with label + body (brief §30). Read
@@ -7,7 +7,7 @@ located, 88.1% with label + body (brief §30). Read
 vol. 6, §21 vol. 7, §22 vol. 8 and the gutter failures, §23 vol. 9, §24 the re-cut tool, §25 vol.
 14/2's text layer, §26 the batch (vols. 10–22), §27 vols. 23, 24, 14/2, the index's page errors,
 book 21 and the Reader in binary, §28 the website, the page images and the label table, §29 vol.
-21, vol. 25's resolution and the labels as the dictionary prints them, §30 vol. 25 and the total, §31–37 the page images, the Introduction and the stem lexicon, §38 the site redesign, §39 the vol. 1 drafts, §40 the site fixes, the PCED analyses, hand corrections and sano / insano, §41 versioned assets and vol. 2's drafts, §42 the live check after `5db316f`, vol. 3's drafts and version numbers, §43 vols. 4/1–4/2, the IEBH footer, citation tooltips, cross-reference links and the labels the editor reviewed, §44 the live check after v0.8.0, vol. 4/3 deferred, vol. 5's drafts, the analysis split from its derivation and printed page numbers, §45 the live check after v0.9.0 and vol. 6's drafts, §46 stems L105–L106 and vols. 7–9, §47 vols. 10–14/1, §48 the live check after v0.12.0 and vols. 15–19, §49 vol. 14/2 from its text layer, §50 the body's first words restored, §51 the editor's decisions of 27 Sep and the revision queue, §52 editor mode. Every figure is there.
+21, vol. 25's resolution and the labels as the dictionary prints them, §30 vol. 25 and the total, §31–37 the page images, the Introduction and the stem lexicon, §38 the site redesign, §39 the vol. 1 drafts, §40 the site fixes, the PCED analyses, hand corrections and sano / insano, §41 versioned assets and vol. 2's drafts, §42 the live check after `5db316f`, vol. 3's drafts and version numbers, §43 vols. 4/1–4/2, the IEBH footer, citation tooltips, cross-reference links and the labels the editor reviewed, §44 the live check after v0.8.0, vol. 4/3 deferred, vol. 5's drafts, the analysis split from its derivation and printed page numbers, §45 the live check after v0.9.0 and vol. 6's drafts, §46 stems L105–L106 and vols. 7–9, §47 vols. 10–14/1, §48 the live check after v0.12.0 and vols. 15–19, §49 vol. 14/2 from its text layer, §50 the body's first words restored, §51 the editor's decisions of 27 Sep and the revision queue, §52 editor mode, §53 roman input in the editor's form. Every figure is there.
 `docs/labels.md` §0 holds the label table (the one source for the pipeline and the site),
 `docs/abbreviations.md` the dictionary's own abbreviations and its prose on the labels,
 `docs/index-errata.md` the index's errors, `docs/witness.md` and `docs/witness-join.md` the typed
@@ -88,6 +88,16 @@ Project are for advice and for what needs the Mac. What the new chat should know
 
 00. ~~Versions~~: tags v0.1.0–v0.11.0 created by the editor; the footer shows `VERSION` (brief §43). Tag **v0.13.0** on the push of §48
    (and v0.12.0 on §47's, if not yet made). Each push that changes data or the site: bump `VERSION`, add a `CHANGELOG.md` section, tag.
+00m. **After the §53 push (v0.18.0)**: `/data/version.json` 0.18.0; Browse unchanged for a visitor. Once editor mode is on
+   (00l): open an article's *Editar*, switch *Análisis* to *Latín*, type `omaka + patta`: *se guarda* ဩမက + ပတ္တ, *relectura*
+   ✓; type a capital: *Guardar* disabled. Check the Burmese in the Mac's font (the cloud's Chromium lacks a Myanmar shaper).
+   For the editor: (a) the tall ā ါ / ာ is invisible in roman; the converter writes Aksharamukha's form (သမ္ပာ, while most
+   volumes print သမ္ပါ): keep, or follow the print for ္ပ (brief §53)? (b) **the weekly export workflow**
+   (`.github/workflows/export-edits.yml`, cron `0 10 * * 1` + manual; export via `--api`, patch bump, CHANGELOG line, PR on
+   `edits/YYYY-MM-DD`) was not written: the cloud session's permission check refused the file. The export tool's new
+   `--summary FILE` gives the books, fields and books to re-run for it. Allow it in a new session, or add it by hand; it
+   needs Settings → Actions → General → Workflow permissions: *Read and write* and *Allow GitHub Actions to create and
+   approve pull requests*.
 00l. **After the §52 push (v0.17.0)**: check the live site (fetch `/data/version.json` first): 0.17.0; Browse unchanged for a
    visitor (`/w/luñcana`: *corregido*, no *Editar* button); `/api/edits?book=18` answers 503 "no database bound" until step C
    below (the page ignores it and shows the published data). Tag v0.17.0.
