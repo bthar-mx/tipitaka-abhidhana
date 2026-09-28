@@ -1182,3 +1182,51 @@ kept under 4c. The site was not built here.
 **What the agents reported for 4/3** was not carried into this session (the drafting chat's reports were not written to the folder or the
 Project); `4c-flags.tsv` holds every flag with its Burmese. NEXT-SESSION 1c (af).
 
+
+
+## 65. `merge` keeps the corrections; 4/3's "see X" targets restored; a sense marker read from the page (28 Sep 2026, Cowork)
+
+**Asked** (the editor; NEXT-SESSION plan step 0.3, code fixes on committed data, v0.26.2): (1) `merge` re-applies
+`docs/translation/corrections-es.tsv`, tested by re-merging vol. 18; (2) in `prep`'s formula targets, restore ဩ where 4/3's OCR has
+သြ / သ, then re-`merge 4c` without redrafting; (3) a Burmese sense letter after "see X" (174722, 176231, one 14/3 row) written as the
+Latin one. Run in the Cowork cloud container on a clone of v0.26.1 (branch `v0.26.2-merge-fixes`); the gitignored work files and drafts
+(`tmp/meanings/v4c`, `v14c`, `v16`, `v18`, `v19`) were staged from the folder (tarballs `tmp/meanings/w-0928x.tgz`, md5 `3601f33…`, and
+`w16-19-0928y.tgz`, `a586c08…`). Baseline: the tool of v0.26.1 (md5 `587335c…`) re-merges 4c and 14c byte-identically to the committed
+files, and `prep 4c --shards 11` gives `v4c`'s work file and shards byte for byte.
+
+**(1) Corrections re-applied.** Before: re-merging vol. 18 dropped all four of its corrections (the rows went back to `drafted`, the
+draft's Spanish). `merge` now ends with `corrected()`: every `corrections-es.tsv` line of the book sets `es`, `status_es: corrected`,
+`es_drafted` (the draft, where it differs) and `corrected_es` {by, date, `senses` when not `whole`}, the shape `abhidhana_edits_export.py`
+writes; a correction whose id has no row is reported, not added. `merge --ids` also sorted the book by id; it now keeps the work file's
+order, as a whole merge does (vol. 18's file is not in id order: 147119 before 147118). **Test** `tools/test_meanings_merge.py`: unit
+tests with no working files, and `python3 tools/test_meanings_merge.py NN tmp/meanings/vNN` re-merges a book whole and with `--ids` (the
+corrected ids and one other) into a scratch copy: **vols. 18, 16 and 19 byte-identical to the committed files, all 9 corrections kept**;
+the same test fails on the tool of v0.26.1. Not covered: `corrections-es.tsv` carries the Spanish only; an English correction or a
+`reviewed` status made in editor mode and exported into a `meanings/` file (none so far) would still be lost on a re-merge.
+
+**(2) 4/3's targets.** `prep`'s formula targets go through `target()`: a target that is not a headword (any book's `headword`, Burmese)
+loses a stray `[ ] “ ” " '` at either end, and in book 4c only, ဩ read as သြ, သ, or သ before a right ဩ (သဩ) is restored, each only when
+the result is a headword; in 4c a သြ target is restored even when it is not (Pāḷi has no sr-: *ovādattha*, 176688). Bare သ is not
+restored outside 4c: in vol. 21 it turned 167984's သစ္ဆိန္ဒတိ (sañchindati) into occhindati. `prep 4c` again: **the 11 shards
+byte-identical** (the drafts stay valid); the work file differs only in 276 target spellings in 249 rows (သြ→ဩ 156, of them 36 not
+headwords; သ→ဩ 48, checked by eye; သဩ→ဩ 20; stray mark only 52) and 174722's sense marker. Re-`merge 4c` and `report 4c`, no redraft:
+**250 rows changed** (those 249 and 174722), every change inside a `[[…]]` link or the (ရ)→(7) below (checked by script); `4c-flags.tsv`
+138 lines; `4c-omitted.tsv` and `4c-terms.tsv` unchanged. **"See X" links matching a romanised headword** (occurrences in the Spanish,
+every book's `headword_iast`, as §64): **652 → 884 of 1,136 (57.4 → 77.8%)**; 252 unmatched in 234 rows. Of those: 103 hold a hyphen
+(*ekakamma-nibbatta*, *eka-piṇḍita*: printer's line breaks kept inside the target, not handled here), 27 still begin sa- / sra- with no
+headword behind them (*srakañcaha*, *saopattā*), 4 a stray mark, 74 other formula targets, 44 written by the drafts themselves (not
+touched). The stray-mark rule also changes 14 targets in other OCR books (14/3 3, 21 6, 22 1, 23 2, 24 2: *sakula”*, *sacca”* …);
+`prep 14b, 14c, 20–25` give byte-identical shards, and those books were **not** re-merged, so their rows keep the broken links until a
+re-merge (`merge NN --ids` on those 14 rows). PCED books (01–19) could not be re-prepped here (no witness); a PCED target is typed, and
+only a non-headword one with a stray mark would change.
+
+**(3) The three sense markers, read on the page** (PDF pages rendered on the Mac with `pdftoppm`, 200 dpi): none is a sense letter.
+- **174722 essati** (4/3, PDF p. 364): the page prints ဧတိ(၁) … ဧတိ(၄) … ဧတိ(၆) … **ဧတိ(၇)**: the digit 7, which OCR reads as ရ.
+  `SENSE` now maps ရ to 7 (ရ, the 27th letter, is never a sense letter), in `prep` and again in `merge`: the row now reads *Véase [[eti]] (7)*.
+- **176231 oramana** (4/3, PDF p. 590): **ဩရမဏ(န) -ကြည့်**, and the next headword ဩရမနဘာဝ has ဩရမဏ(န)ဘာဝ-ကြည့်: the (န) marks the
+  spelling with န beside ဏ (see oramaṇa, also written oramana), not a sense. **Left as it is** (*Véase [[oramaṇa]] (န)*): its rendering
+  is for the editor.
+- **193595 pavāla** (14/3, PDF p. 136): **ပဝါဠ(လ)² ကြည့်**: likewise ဠ / လ, and a homonym number ² that OCR lost. **Left as it is.**
+No other "see X" sense marker in 4c, 14c, 16, 18 or 19's work files holds a Burmese letter.
+
+**Totals unchanged**: 217,212 Meaning rows, all `drafted` except the 9 corrected. The site was not built here.

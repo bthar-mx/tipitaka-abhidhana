@@ -12,7 +12,8 @@ Two steps, around a drafting pass done outside this script:
                    written by the drafting pass following docs/translation/drafting-brief.md) and
                    writes docs/translation/meanings/<book>.jsonl, which tools/abhidhana_site.py
                    reads into the records' `t` field. A draft's `omitted` (what a draft from our own
-                   text left out) is not put in the rows but in <book>-omitted.tsv.
+                   text left out) is not put in the rows but in <book>-omitted.tsv. The editor's
+                   corrections (docs/translation/corrections-es.tsv) are re-applied after every merge.
 
 The source of the Burmese is the PCED witness (witness/pced_k.jsonl.gz, joined by
 witness/join-<book>.jsonl), whose definition line is the dictionary's text without our OCR
@@ -45,6 +46,38 @@ SAME = re.compile(r'^(?P<x>[^။()]+?)\s*-?\s*(?:\((?P<n>[၀-၉က-အ]{1,2}(?
 # formula in brackets, and "လည်း-ကြည့်", which prep 01–03 left for the drafts to render by hand
 PRE = re.compile(r'^((?:\([^()]{1,8}\)\s*)+)')
 SENSE = dict(zip('၀၁၂၃၄၅၆၇၈၉', '0123456789')) | dict(zip('ကခဂဃငစဆဇဈည', 'abcdefghij'))
+# OCR reads the digit ၇ as ရ (the glyphs differ by a stroke); ရ, the 27th letter, is never a sense letter.
+# 174722 essati: ဧတိ(၁) (၄) (၆) (ရ) on the page (4/3, PDF p. 364) is (၇) (brief §65).
+SENSE['ရ'] = '7'
+
+
+# "see X" targets as OCR read them (brief §64, §65): a stray bracket or quotation mark at either end, and
+# in vol. 4/3 (4c) only, ဩ read as သြ, as သ, or as သ before a ဩ read right (သဩ), as §51 restored in the analyses
+# (elsewhere a သ target is a sa- word: 167984's သစ္ဆိန္ဒတိ is sañchindati, not occhindati). A target is changed only
+# when it is not a headword and the changed form is one (any book's headword); in 4c a သြ target also when not.
+STRAY = '[]“”"\''
+O_READ = (('သဩ', 'ဩ'), ('သြ', 'ဩ'), ('သ', 'ဩ'))
+_HEADS = []
+
+
+def headwords():
+    if not _HEADS:
+        _HEADS.append({mn(json.loads(l)['headword']) for f in sorted(glob.glob(str(ROOT / 'ocr/*/articles.jsonl')))
+                       for l in open(f, encoding='utf-8')})
+    return _HEADS[0]
+
+
+def target(x, book):
+    """a "see X" target as the dictionary prints it, where OCR misread it and the fix is a headword"""
+    H = headwords()
+    if mn(x) in H: return x
+    ys = [x, x.strip(STRAY)]
+    for y in list(ys):
+        ys += [b + y[len(a):] for a, b in O_READ if y.startswith(a) and book == '4c']
+    y = next((y for y in ys[1:] if y and mn(y) in H), None)
+    if y: return y
+    y = x.strip(STRAY)   # 4c: သြ is ဩ even where the target is not a headword (ovādattha, 176688): Pāḷi has no sr-
+    return 'ဩ' + y[2:] if book == '4c' and y.startswith('သြ') else x
 
 
 def formula_of(t):
@@ -231,6 +264,7 @@ def prep(book, nshards=16, ids=None):
             if not r and re.sub(r'\s', '', t) == 'အထက်ပုဒ်နှင့်အနက်တူ': r = ('', {'kind': 'prev', 'x': []}, False)
             if r:
                 pre, f, br = r
+                f['x'] = [target(x, book) for x in f['x']]
                 k = f'«S{len(F) + 1}»'; F[k] = f
                 core.append((pre + ' ' if pre else '') + (f'({k})' if br else k))
             else:
@@ -255,6 +289,30 @@ FORM = {'es': {'see': ('Véase', 'Véanse'), 'also': ('Véase también', 'Véans
                'prev': 'Same meaning as the preceding headword.'}}
 
 
+def corrected(book, rows):
+    """docs/translation/corrections-es.tsv re-applied to a book's merged rows, so that a re-merge never drops
+    a correction (brief §51, §65). A corrected row gets the corrected Spanish, status_es `corrected`, the
+    draft in es_drafted where it differs, and corrected_es {by, date, senses where only some were corrected},
+    as abhidhana_edits_export.py writes them. A correction whose id has no row is reported, not added."""
+    import csv
+    cf = ROOT / 'docs/translation/corrections-es.tsv'
+    if not cf.exists(): return rows
+    with cf.open(encoding='utf-8', newline='') as h:
+        C = {int(c['id']): c for c in csv.DictReader(h, delimiter='\t', quoting=csv.QUOTE_NONE) if c['book'] == book}
+    by = {r['id']: r for r in rows}
+    for i, c in sorted(C.items()):
+        r = by.get(i)
+        if r is None: print(f'{book}: correction for {i} ({c["iast"]}) has no row; not applied'); continue
+        draft = r.get('es_drafted', r['es']) if r.get('status_es') == 'corrected' else r['es']
+        for k in ('es_drafted', 'corrected_es', 'reviewed_es'): r.pop(k, None)
+        r['es'] = c['es']; r['status_es'] = 'corrected'
+        if draft != c['es']: r['es_drafted'] = draft
+        senses = [int(x) for x in re.split(r'[,\s]+', c.get('senses') or '') if x.isdigit()]
+        r['corrected_es'] = {'by': c['by'], 'date': c['date']} | ({'senses': senses} if senses else {})
+    if C: print(f'{book}: {sum(i in by for i in C)} of {len(C)} corrections re-applied (corrections-es.tsv)')
+    return rows
+
+
 def merge(book, ids=None):
     """ids: a redraft; the new drafts of these ids replace their rows (and omitted lines) in the existing
     files, every other row is kept as it is."""
@@ -270,7 +328,7 @@ def merge(book, ids=None):
         F = FORM[lang]; k = f['kind']
         if k == 'prev': return F['prev']
         xs = ', '.join(f'[[{iast(x)}]]' for x in f['x'])
-        if f.get('n'): xs += f" ({f['n']})"
+        if f.get('n'): xs += f" ({''.join(SENSE.get(c, c) for c in f['n'])})"
         return f"{F['same']} {xs}." if k == 'same' else f"{F[k][len(f['x']) > 1]} {xs}."
     W = {o['id']: o for o in json.load(open(WORK / f'work{book}.json', encoding='utf-8'))}
     R = {}
@@ -311,11 +369,13 @@ def merge(book, ids=None):
         kept = [i for i in ids if i not in new and i in {r['id'] for r in old}]
         if kept: print(f'{book}: no new draft for {len(kept)} ids, old rows kept: {kept[:10]}')
         out = [new.pop(r['id'], r) for r in old] + list(new.values())
-        out.sort(key=lambda r: r['id'])
+        order = {i: k for k, i in enumerate(W)}   # the work file's order, as a whole merge writes (vol. 18: not id order)
+        out.sort(key=lambda r: (order.get(r['id'], len(order)), r['id']))
         op = ROOT / f'docs/translation/meanings/{book}-omitted.tsv'
         if op.exists():
             prev = [l.rstrip('\n').split('\t', 2) for l in open(op, encoding='utf-8')][1:]
             omitted = sorted([(int(i), x, o) for i, x, o in prev if int(i) not in ids] + [o for o in omitted if o[0] in ids])
+    out = corrected(book, out)
     with open(dest, 'w', encoding='utf-8') as f:
         for r in out: f.write(json.dumps(r, ensure_ascii=False) + '\n')
     if omitted:   # what a draft from our own text left out (quotation fragments, citations …): kept apart, not in the rows

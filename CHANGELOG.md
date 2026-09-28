@@ -23,6 +23,16 @@ Versions of the Tipiṭaka Pāḷi-Myanmā Abhidhāna project: the data, the too
 A release note says, per version: what changed, the brief's sections, and the headline figures
 (located, label + body, Meaning rows drafted / reviewed).
 
+## v0.26.2 — 28 Sep 2026
+
+- **`merge` re-applies `docs/translation/corrections-es.tsv`** (brief §65): a re-merge no longer drops the editor's corrections;
+  `merge --ids` keeps the work file's order instead of sorting by id. New `tools/test_meanings_merge.py`: re-merging vols. 18, 16 and 19
+  is byte-identical to the committed files, all 9 corrections kept.
+- **Vol. 4/3's "see X" targets restored in `prep`** (ဩ read as သြ / သ / သဩ, stray brackets and quotation marks) and 4c re-merged
+  without redrafting: 250 rows' links changed; links matching a headword 652 → 884 of 1,136 (57.4 → 77.8%).
+- A sense marker (ရ) after "see X" is OCR's reading of the digit ၇ (174722, checked on the page): now *(7)*. 176231 and 193595's
+  (န) / (လ) are spelling marks, not senses (checked on the page): left for the editor.
+
 ## v0.26.1 — 28 Sep 2026
 
 - **Docs only; no data or site change.** The brief's §2–49 moved unchanged into `docs/abhidhana-brief-archive.md` (the numbering
