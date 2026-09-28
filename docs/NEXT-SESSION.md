@@ -1,4 +1,4 @@
-# Abhidhāna — handover, 28 September 2026 (editor mode built, not yet switched on, v0.17.0; roman input in its form, v0.18.0; 14/2's 497 rows redrafted, v0.18.3; the OCR pilot, v0.18.5; vol. 23 drafted from our OCR, v0.19.0; vol. 22 drafted from our OCR, v0.20.0; vol. 24, v0.21.0)
+# Abhidhāna — handover, 28 September 2026 (editor mode built, not yet switched on, v0.17.0; roman input in its form, v0.18.0; 14/2's 497 rows redrafted, v0.18.3; the OCR pilot, v0.18.5; vol. 23 drafted from our OCR, v0.19.0; vol. 22 drafted from our OCR, v0.20.0; vol. 24, v0.21.0; vol. 21, v0.22.0)
 
 *All 29 books are digitised end to end, spot-checked and in the Reader: 221,154 index rows, 94.1%
 located, 88.1% with label + body (brief §30). Read
@@ -7,7 +7,7 @@ located, 88.1% with label + body (brief §30). Read
 vol. 6, §21 vol. 7, §22 vol. 8 and the gutter failures, §23 vol. 9, §24 the re-cut tool, §25 vol.
 14/2's text layer, §26 the batch (vols. 10–22), §27 vols. 23, 24, 14/2, the index's page errors,
 book 21 and the Reader in binary, §28 the website, the page images and the label table, §29 vol.
-21, vol. 25's resolution and the labels as the dictionary prints them, §30 vol. 25 and the total, §31–37 the page images, the Introduction and the stem lexicon, §38 the site redesign, §39 the vol. 1 drafts, §40 the site fixes, the PCED analyses, hand corrections and sano / insano, §41 versioned assets and vol. 2's drafts, §42 the live check after `5db316f`, vol. 3's drafts and version numbers, §43 vols. 4/1–4/2, the IEBH footer, citation tooltips, cross-reference links and the labels the editor reviewed, §44 the live check after v0.8.0, vol. 4/3 deferred, vol. 5's drafts, the analysis split from its derivation and printed page numbers, §45 the live check after v0.9.0 and vol. 6's drafts, §46 stems L105–L106 and vols. 7–9, §47 vols. 10–14/1, §48 the live check after v0.12.0 and vols. 15–19, §49 vol. 14/2 from its text layer, §50 the body's first words restored, §51 the editor's decisions of 27 Sep and the revision queue, §52 editor mode, §53 roman input in the editor's form, §54 the redraft of 14/2's 497 rows with restored first words, §55 the OCR pilot (vols. 23 and 22 prepared, `prep`'s gloss fix for OCR books, vol. 23 shard 00 drafted), §56 vol. 23 drafted and merged, §57 vol. 22 drafted and merged (in Cowork), §58 vol. 24 likewise. Every figure is there.
+21, vol. 25's resolution and the labels as the dictionary prints them, §30 vol. 25 and the total, §31–37 the page images, the Introduction and the stem lexicon, §38 the site redesign, §39 the vol. 1 drafts, §40 the site fixes, the PCED analyses, hand corrections and sano / insano, §41 versioned assets and vol. 2's drafts, §42 the live check after `5db316f`, vol. 3's drafts and version numbers, §43 vols. 4/1–4/2, the IEBH footer, citation tooltips, cross-reference links and the labels the editor reviewed, §44 the live check after v0.8.0, vol. 4/3 deferred, vol. 5's drafts, the analysis split from its derivation and printed page numbers, §45 the live check after v0.9.0 and vol. 6's drafts, §46 stems L105–L106 and vols. 7–9, §47 vols. 10–14/1, §48 the live check after v0.12.0 and vols. 15–19, §49 vol. 14/2 from its text layer, §50 the body's first words restored, §51 the editor's decisions of 27 Sep and the revision queue, §52 editor mode, §53 roman input in the editor's form, §54 the redraft of 14/2's 497 rows with restored first words, §55 the OCR pilot (vols. 23 and 22 prepared, `prep`'s gloss fix for OCR books, vol. 23 shard 00 drafted), §56 vol. 23 drafted and merged, §57 vol. 22 drafted and merged (in Cowork), §58 vol. 24 likewise, §59 vol. 21 likewise. Every figure is there.
 `docs/labels.md` §0 holds the label table (the one source for the pipeline and the site),
 `docs/abbreviations.md` the dictionary's own abbreviations and its prose on the labels,
 `docs/index-errata.md` the index's errors, `docs/witness.md` and `docs/witness-join.md` the typed
@@ -88,7 +88,10 @@ Project are for advice and for what needs the Mac. What the new chat should know
 
 00. ~~Versions~~: tags v0.1.0–v0.11.0 created by the editor; the footer shows `VERSION` (brief §43). Tag **v0.13.0** on the push of §48
    (and v0.12.0 on §47's, if not yet made). Each push that changes data or the site: bump `VERSION`, add a `CHANGELOG.md` section, tag.
-00s. **After the §58 push (v0.21.0)**: `/data/version.json` 0.21.0; `/w/sīla` and `/w/sukha` (vol. 24) show a Meaning box, *borrador*;
+00t. **After the §59 push (v0.22.0)**: `/data/version.json` 0.22.0; `/w/saddhā` and `/w/sati` (vol. 21) show a Meaning box, *borrador*;
+   About: "vols. 1–3, 4/1, 4/2, 5–13, 14/1, 14/2, 15–19 y 21–24". Tag v0.22.0.
+00s. ~~After the §58 push (v0.21.0)~~: done 28 Sep (the editor): 0.21.0 served, `/w/sīla` shows vol. 24's Meaning box (*borrador*), About
+   lists 22–24. Was: `/data/version.json` 0.21.0; `/w/sīla` and `/w/sukha` (vol. 24) show a Meaning box, *borrador*;
    About: "vols. 1–3, 4/1, 4/2, 5–13, 14/1, 14/2, 15–19 y 22–24". Tag v0.21.0.
 00r. ~~After the §57 push (v0.20.0)~~: done 28 Sep (the editor): 0.20.0 live, `/w/samādhi` *borrador*, About lists 22 and 23, search
    ranks na before ṅa / ña (v0.19.1). Was: `/data/version.json` 0.20.0; `/w/samādhi` and `/w/samatha` (vol. 22) show a Meaning box,
@@ -211,7 +214,18 @@ Project are for advice and for what needs the Mac. What the new chat should know
    209511/12, 209059/60); (m) renderings: ချမ်းသာ *felicidad*, သိမ်မွေ့ *sutil*, အဆောက်အဦ *equipamiento*, သုသာန် *osario*, အင်ကြင်း
    ⟦=sāla⟧, ‹ကညစ်› (209855 vs 209881–84); 134 rows keep Burmese names in ‹ ›; (n) headword / text disagreements and rows to check on
    the page: the lists in brief §58; shard 05 corrected မွှေး (fragrant) without flagging it.
-1b. **Translation** (brief §37, §39–56). **Drafted: vols. 1–3, 4/1, 4/2, 5–19, 14/2 and 22–24** (184,649 rows, 83.5% of the index, none reviewed; flags in `meanings/NN-flags.tsv`). **Vol. 4/3 deferred** (no PCED; the editor, 26 Sep; brief §44). PCED's vols. 1–19 are all drafted (brief §48).
+   From vol. 21 (brief §59): (o) run-on articles and senses printed twice handled apart from the prompt: shard 04 translated five sagga
+   homographs together (166028); shard 12 translated both printed copies of satti 170052, sattha 170159, satthaka 170167, satthu 170259;
+   shard 01 moved «S» placeholders out of run-on text (6 lines); saddhā 171012–15 and saddhādhimutta 171074–75 spread over several ids;
+   saṅkhāra 166574's two copies disagree on vitakka / vicāra (kāya- or vacīsaṅkhāra); (p) renderings the agents chose: saṁsāra kept Pāḷi,
+   ဆုတ်နစ် *hundirse*, cakkavāḷa / lokadhātu / sāsana kept Pāḷi, သံဂါယနာတင် *llevar a la saṅgāyanā*, the robe names (ဒုကုဋ်, သင်းပိုင်,
+   ကိုယ်ရုံ), သစ္စာ kept ⟦ ⟧ also as truthfulness or vow, ထာဝရဘုရား *Dios*, ပြာသာဒ် ⟦=pāsāda⟧ vs *palacio* (shard 11), သီတင်းတစ်ပတ်
+   *semana de observancia*, သဒ္ဒါ *palabra*, grammatical သုတ် *regla*, သူတော်ကောင်းတရား *la Enseñanza de los buenos*, သပြေ *jambolán*;
+   (q) person: 170811, 170829 follow the Burmese pronoun against the Pāḷi ending; 164276 saṁsariṁ 1st person against "they"; -si / -ttha
+   aorists in the 3rd (saṅkhobhesi, saṅgamesi, 167879); (r) to fix or check: 166145 left ‹ရွဲရှာ› (ရွံရှာ, *recelar*); lost numbers in
+   167097, 167190, 167285–88, 167293–94, 170013, 170259; garbled sense numbers in 171365–66, 171730–31; 169835's headword
+   (sattavidhabojjhaṅga?); the rest in brief §59 and `21-flags.tsv`.
+1b. **Translation** (brief §37, §39–56). **Drafted: vols. 1–3, 4/1, 4/2, 5–19, 14/2 and 21–24** (192,401 rows, 87.0% of the index, none reviewed; flags in `meanings/NN-flags.tsv`). **Vol. 4/3 deferred** (no PCED; the editor, 26 Sep; brief §44). PCED's vols. 1–19 are all drafted (brief §48).
    **The OCR books** (brief §55–56): **vol. 23 drafted and merged** (v0.19.0; 6,906 rows, 67.6% of drafted lines flagged,
    with `omitted` or empty; 3.75 M agent tokens). **Vol. 22 drafted and merged** (v0.20.0, brief §57; in Cowork, one wave of 17
    agents, no usage-limit stop; 7,613 rows; 75.0% of drafted lines flagged, with `omitted` or empty; 4.73 M agent tokens, ~626 a
@@ -219,7 +233,9 @@ Project are for advice and for what needs the Mac. What the new chat should know
    first. On the Mac: re-run `prep 15` against the real witness (byte-identical expected, §55).
    **Vol. 24 drafted and merged** (v0.21.0, brief §58; one wave of 15 agents, no usage-limit stop; 6,685 rows; 69.0% of drafted
    lines flagged, with `omitted` or empty; 3.94 M agent tokens, ~600 a line; the VM's disk still full, merge / report in the cloud).
-   **Next OCR books, the editor to decide**: 14/3, 20, 21, 25 (and 4/3, deferred). Same path: `prep NN --shards N --work
+   **Vol. 21 drafted and merged** (v0.22.0, brief §59; one wave of 17 agents, no usage-limit stop; 7,752 rows; 67.9% of drafted
+   lines flagged, with `omitted` or empty; 4.77 M agent tokens, ~627 a line; the VM's disk still full, merge / report in the cloud).
+   **Next OCR books, the editor to decide**: 14/3, 20, 25 (and 4/3, deferred). Same path: `prep NN --shards N --work
    tmp/meanings/vNN` (~445 lines a shard), agents with `23-shard00-prompt.md` (vol., shard, line count and paths changed).
    **Next: the books with no PCED** — 14/3, 20–25, and 4/3 (deferred) — could only be drafted from
    our OCR body: the editor to decide, as for 4/3 (brief §44 measured the OCR body against PCED on 4/1 and 4/2). If yes:
