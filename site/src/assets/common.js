@@ -81,6 +81,15 @@ const $ = id => document.getElementById(id);
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 const my2 = n => String(n).replace(/\d/g, d => '၀၁၂၃၄၅၆၇၈၉'[d]);
 const fold = s => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+// How far a headword's start is from what was typed, for ranking matches that fold alike: 0 = the
+// same letters; a long vowel typed short costs 1, a consonant typed without its mark (ṅ ñ ṭ ḍ ṇ ḷ ṁ)
+// costs 2, so for "na" the order is na, nā, then ṅa, ña.
+function dmiss(h, q) {
+  const a = [...h.normalize('NFC').toLowerCase()], b = [...q.normalize('NFC').toLowerCase()];
+  let m = 0;
+  for (let i = 0; i < b.length && i < a.length; i++) if (a[i] !== b[i]) m += /[āīū]/.test(a[i]) ? 1 : 2;
+  return m;
+}
 const langHooks = [];
 
 function applyLang() {
@@ -149,13 +158,13 @@ function runSearch(q, box) {
   for (const row of S) {
     const hay = isMy ? row[3] : row[5];
     const pos = hay.indexOf(isMy ? q : fq); if (pos < 0) continue;
-    out.push([pos === 0 ? 0 : 1, hay.length, ord[row[0]] ?? 99, row[1], row]);
+    out.push([pos === 0 ? 0 : 1, pos === 0 && !isMy ? dmiss(row[4], q) : 0, hay.length, ord[row[0]] ?? 99, row[1], row]);
   }
-  out.sort((a, b) => a[0] - b[0] || a[1] - b[1] || a[2] - b[2] || a[3] - b[3]);
+  out.sort((a, b) => a[0] - b[0] || a[1] - b[1] || a[2] - b[2] || a[3] - b[3] || a[4] - b[4]);
   const vn = id => (volOf(id) || { n: id }).n;
   box.innerHTML = `<h3>${esc(t('matches', out.length))}</h3>` +
     out.slice(0, 60).map(x => {
-      const [b, i, p, h, r] = x[4];
+      const [b, i, p, h, r] = x[5];
       return `<a class="res" href="/v/${b}/${p}#a${i}"><span><span class="my" lang="my">${esc(h)}</span><span class="ro" lang="pi">${esc(r)}</span></span><span class="pg">${t('vol')} ${esc(vn(b))} · ${t('page')} ${p}</span></a>`;
     }).join('') +
     (out.length > 60 ? `<div class="more">${esc(t('first60'))}</div>` : '') +

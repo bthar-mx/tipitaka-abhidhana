@@ -482,6 +482,10 @@ async function search(q) {
       const seen = new Set(pre.map(r => r[0]));
       sub = [...s2, ...p2].filter(r => !seen.has(r[0]));
     }
+    if (!isMy) {   // among the prefix matches: the typed word itself first, then by closeness to what was typed
+      const key = r => [fold(r[1]) === fq ? 0 : 1, dmiss(r[1], q)];
+      pre = pre.map((r, n) => [key(r), n, r]).sort((a, b) => a[0][0] - b[0][0] || a[0][1] - b[0][1] || a[1] - b[1]).map(x => x[2]);
+    }
     const out = [...pre, ...sub].slice(0, 60);
     if ($('hq').value.trim() !== q) return;
     box.innerHTML = out.map(r => `<a class="res" href="/w/${encodeURIComponent(r[0])}"><span>` +

@@ -23,6 +23,14 @@ Versions of the Tipiṭaka Pāḷi-Myanmā Abhidhāna project: the data, the too
 A release note says, per version: what changed, the brief's sections, and the headline figures
 (located, label + body, Meaning rows drafted / reviewed).
 
+## v0.19.1 — 28 Sep 2026
+
+- **Search: the typed word first.** In Browse's header search and the Volumes page search, matches that begin with a roman
+  query are ordered by closeness to what was typed: the word itself (ignoring diacritics) first, then long vowels typed
+  short (cost 1), then consonants typed without their mark, ṅ ñ ṭ ḍ ṇ ḷ ṁ (cost 2); dictionary order within each. So "na"
+  gives na, nā, then ṅa, ña, ṇa, where ṅ and ñ used to come first. Burmese queries unchanged (`common.js` `dmiss()`,
+  `browse.js` `search()`). No data changed.
+
 ## v0.19.0 — 28 Sep 2026
 
 - **Vol. 23's Meaning boxes drafted from our OCR** (brief §56): 6,906 rows in `docs/translation/meanings/23.jsonl` (206 formula,
