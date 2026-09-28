@@ -2,7 +2,7 @@
 
 *Written 21 September 2026, at the end of the volume-25 pilot; §10–12 revised 24 September
 2026, after volume 1 was done end to end and the repository was made public; §18–26 added
-25 September 2026 (spelling folds, the witness join, vols. 6–9, re-cutting gutters, vol. 14/2's text layer, the batch of vols. 10–22); §27 the same evening (vols. 23, 24 and 14/2 finished, the index's page errors applied, book 21 explained, the Reader in binary); §28 the public website, the page images and the label table; §29 vol. 21 finished, vol. 25's resolution, the dictionary's own account of its labels; §30 vol. 25 done, all 29 books; §31 (later on 25 Sep) the page-image tool's bitmap test; §32 the weak page corrections, image-checked; §33 the compound analysis with its [ lost; §34 the dictionary's history on the site; §35 all page images live, a light/dark switch, the Introduction page; §36 citations keep their whole abbreviation; §37 translation, batch 1; §38–41 (26 Sep) the redesign, vol. 1–2 drafts, PCED analyses, versioned assets; §42 (26 Sep) the live check, vol. 3's drafts, version numbers; §43 vols. 4/1–4/2 drafts, the IEBH footer, citation tooltips, cross-reference links, labels reviewed; §44 the live check after v0.8.0, vol. 4/3 deferred, vol. 5 drafted, the analysis split from its derivation, printed page numbers; §45 the live check after v0.9.0, vol. 6 drafted; §46 two stems from the editor, vols. 7–9 drafted; §47 vols. 10–14/1 drafted; §48 (27 Sep) the live check after v0.12.0, vols. 15–19 drafted; §49 vol. 14/2 drafted from its text layer; §50 the body's first words on the headword's line restored; §51 the editor's decisions of 27 Sep, a revision queue, ဩ in vol. 4/3; §52 (cloud) editor mode; §53 (28 Sep, cloud) roman input in the editor's form; §54–56 (28 Sep) 14/2's redraft, the OCR pilot, vol. 23 drafted; §57 (28 Sep, Cowork) vol. 22 drafted; §58 vol. 24 drafted; §59 vol. 21 drafted; §60 vol. 20 drafted; §61 vol. 25 drafted; §62 vols. 14/3 and 4/3 prepared, the clean-row signal measured, `prep`'s no-join fix. Everything in
+25 September 2026 (spelling folds, the witness join, vols. 6–9, re-cutting gutters, vol. 14/2's text layer, the batch of vols. 10–22); §27 the same evening (vols. 23, 24 and 14/2 finished, the index's page errors applied, book 21 explained, the Reader in binary); §28 the public website, the page images and the label table; §29 vol. 21 finished, vol. 25's resolution, the dictionary's own account of its labels; §30 vol. 25 done, all 29 books; §31 (later on 25 Sep) the page-image tool's bitmap test; §32 the weak page corrections, image-checked; §33 the compound analysis with its [ lost; §34 the dictionary's history on the site; §35 all page images live, a light/dark switch, the Introduction page; §36 citations keep their whole abbreviation; §37 translation, batch 1; §38–41 (26 Sep) the redesign, vol. 1–2 drafts, PCED analyses, versioned assets; §42 (26 Sep) the live check, vol. 3's drafts, version numbers; §43 vols. 4/1–4/2 drafts, the IEBH footer, citation tooltips, cross-reference links, labels reviewed; §44 the live check after v0.8.0, vol. 4/3 deferred, vol. 5 drafted, the analysis split from its derivation, printed page numbers; §45 the live check after v0.9.0, vol. 6 drafted; §46 two stems from the editor, vols. 7–9 drafted; §47 vols. 10–14/1 drafted; §48 (27 Sep) the live check after v0.12.0, vols. 15–19 drafted; §49 vol. 14/2 drafted from its text layer; §50 the body's first words on the headword's line restored; §51 the editor's decisions of 27 Sep, a revision queue, ဩ in vol. 4/3; §52 (cloud) editor mode; §53 (28 Sep, cloud) roman input in the editor's form; §54–56 (28 Sep) 14/2's redraft, the OCR pilot, vol. 23 drafted; §57 (28 Sep, Cowork) vol. 22 drafted; §58 vol. 24 drafted; §59 vol. 21 drafted; §60 vol. 20 drafted; §61 vol. 25 drafted; §62 vols. 14/3 and 4/3 prepared, the clean-row signal measured, `prep`'s no-join fix; §63 vol. 14/3 drafted (and 4/3's shards, not merged). Everything in
 this file was measured. Do not re-derive a figure it carries; if a new one is needed,
 measure it rather than estimating.*
 
@@ -2757,3 +2757,113 @@ and 4/3 with vol. 22; its supplements a little cleaner than 4/3 itself. Nothing 
 witness is also byte-identical to `tmp/meanings/v15/`** (27 Sep, the files vol. 15 was drafted from): the check asked for since §49 and
 §55 is done. `_measure/prep_nojoin.py` is no longer needed. **Decided (the editor, 28 Sep): draft both 14/3 and 4/3, drafts only, reviewed
 at the final revision.**
+
+
+## 63. Vol. 14/3 drafted from our OCR and merged (28 Sep 2026, Cowork)
+
+**Asked** (the editor): draft both 14/3 and 4/3, drafts only, reviewed at the final revision; first `prep`'s fix (v0.24.1, §62), then 14/3 the
+same way as vols. 20–25 (§57–61): the 21 shards in `tmp/meanings/v14c` (§62), one agent and scratch folder per shard, at most 20 at once,
+the OCR-book prompt; stop if a wave hits the usage limit.
+
+**Prep**: the shards of §62, unchanged (9,477 explanations, 12 formula-only, **9,465 to draft**; 20 shards of 451 lines and one of 445;
+`tools/abhidhana_meanings.py` md5 `587335c…`, the fixed tool, which gives the same files for 14c). `drafting-brief.md`, `stems.tsv`,
+`glossary.tsv`, `drafting-prompt.md` and `23-shard00-prompt.md` md5-identical to the copies in vol. 25's input tarball. Tarballs
+`tmp/meanings/mean14c4c-in-0928s.tar.gz` (the shards and work files of 14c and 4c, brief, stems, glossary, prompts, tool) and
+`mean14c-out-0928t.tar.gz` (the 21 output files; unpacked into `tmp/meanings/v14c/out/`). The VM's `/sessions` disk was still full (45 MB
+free), so `merge` and `report` ran in the cloud container on the same tool and `work14c.json`; the four output files were committed back
+and their md5 checked in the folder.
+
+**Drafted**: two waves, 20 agents (shards 00–19), then shard 20, each with its own scratch folder. Each prompt was `23-shard00-prompt.md`
+with vol., shard, line count and paths changed, written to a file (`/home/claude/tr/prompts/14c-NN.md` in the container, checked by `diff`
+against the template: four lines differ) and given to the agent as "read this file and follow it exactly". **No wave stopped at the usage
+limit.** The second wave also carried 4/3's eleven shards (below).
+
+| shard | agent tokens | tool calls | min | | shard | agent tokens | tool calls | min |
+|---|---:|---:|---:|---|---|---:|---:|---:|
+| 00 | 231,857 | 31 | 15 | | 11 | 298,406 | 46 | 21 |
+| 01 | 313,576 | 38 | 23 | | 12 | 249,483 | 30 | 18 |
+| 02 | 228,591 | 32 | 16 | | 13 | 237,011 | 27 | 16 |
+| 03 | 224,469 | 30 | 15 | | 14 | 264,617 | 25 | 17 |
+| 04 | 288,286 | 33 | 20 | | 15 | 271,999 | 29 | 20 |
+| 05 | 240,935 | 30 | 17 | | 16 | 258,709 | 34 | 18 |
+| 06 | 273,696 | 29 | 19 | | 17 | 237,534 | 29 | 15 |
+| 07 | 287,115 | 43 | 20 | | 18 | 308,085 | 34 | 23 |
+| 08 | 305,926 | 28 | 24 | | 19 | 231,147 | 32 | 16 |
+| 09 | 272,423 | 31 | 20 | | 20 | 271,363 | 31 | 17 |
+| 10 | 290,081 | 24 | 20 | | **all** | **5,585,309** | **666** | |
+
+~590 tokens a drafted line (vol. 25: ~599, vol. 20: ~717, vol. 21: ~627, vol. 24: ~600, vol. 22: ~626, vol. 23: ~555). **Checked** (every
+shard): one line per id, in order; valid JSON with id, es, en, terms, flag, omitted; every «Sn» in es and en; ⟦ ⟧ and ‹ › balanced; no
+Burmese outside them; es and en empty together: 0 errors. Of the 129 empty lines, 128 are flagged "nothing to translate"; one (195760) is
+flagged as too garbled to translate (as vol. 20's 159779).
+
+| | vol. 14/3 | vol. 25 (§61) | vol. 20 (§60) | vol. 21 (§59) |
+|---|---:|---:|---:|---:|
+| lines drafted / flagged / with `omitted` / empty | 9,465 / 3,085 (32.6%) / 5,920 (62.5%) / 129 | 3,765 / 50.2% / 83.5% / 90 | 6,778 / 33.7% / 58.2% / 30 | 7,609 / 33.9% / 57.9% / 78 |
+| flagged, omitted or empty; clean | 6,785 (71.7%); 2,680 (28.3%) | 89.6%; 10.4% | 67.3%; 32.7% | 67.9%; 32.1% |
+| flags: "OCR: read X as Y" / run-on article / senses printed twice / hyphen / person / aorist | 1,248 / 338 / 29 / 75 / 96 / 39 | 940 / 177 / 11 / 73 / 34 / 13 | 817 / 369 / 44 / 66 / 37 / 21 | 1,068 / 305 / 49 / 57 / 22 / 15 |
+| rows merged (`meanings/14c.jsonl`), all `drafted`, `source` ocr: formula / drafted | 9,348: 12 / 9,336 | 3,732 | 6,947 | 7,752 |
+| flagged (`14c-flags.tsv`) / lines in `14c-omitted.tsv` | 2,956 / 5,920 | 1,801 / 3,144 | 2,253 / 3,945 | 2,499 / 4,402 |
+| articles without a Meaning: no body / nothing left after `prep` / drafted empty | 845 / 68 / 129 (1,042 of 10,390) | 314 of 4,046 | 419 of 7,366 | 377 of 8,129 |
+| terms kept in Pāḷi (`14c-terms.tsv`) | 737 (kamma 154, pāḷi 113, pīti 84, puthujjana 68, thera 67, āpatti 65, pavāraṇā 62, peta 62) | 330 | 946 | 736 |
+| "see X" links matching a romanised headword (occurrences in the Spanish, every book's `headword_iast`) | 948 of 1,149 (82.5%) | 84.4% | 81.7% | 82.3% |
+| rows with *sano / insano*; *mérito / meritorio*; "no saludable" | 130; 198; 0 | 15; 2; 0 | 40; 7; 0 | 25; 14; 0 |
+| rows with Burmese left in ‹ › | 236 | 140 | 96 | 130 |
+
+(Flag counts are case-insensitive substring counts over the flag text of the drafted lines. The *mérito / meritorio* count includes
+*meritorio*, which earlier sections may not have counted: shard 14 renders ကောင်းမှုကုသိုလ် *buena acción meritoria* throughout the puñña
+articles.) §62's clean-row signal put 14/3 at 49.1%, beside vols. 20, 21 and 23; its drafts came out a little noisier than theirs (28.3%
+clean against 32–33%), at 0.58 of the signal (vols. 20–25: 0.45–0.68). **845 of its 10,390 articles have no body** (8.1%, the unlocated
+articles of §32), the most of any book. After merge: ids sorted and unique, no ⟦ ⟧ left, no Burmese outside ‹ ›. No vol. 14/3 row is in
+`corrections-es.tsv`. **Totals: 28 books, 212,428 Meaning rows, all `drafted`, none reviewed: 96.1%** of the index (221,154). What remains:
+4/3 with its supplements (drafted, not merged: below). About and README now say "vols. 1–3, 4/1, 4/2, 5–13 and 14/1–25" and name 14/3 among
+the books drafted from our OCR. The site was not built here.
+
+**4/3 drafted, not merged.** Its eleven shards (`tmp/meanings/v4c`, §62) were drafted in the second wave, alongside 14/3's shard 20, before
+the editor asked for 4/3 to be left to a new chat. The same prompt (vol. named "4/3 (with the supplements to vols. 15, 4/2 and 16 bound
+after it)"); 11 agents, 3,260,576 agent tokens, 343 tool calls, 15–25 min a shard; checked as above: 4,803 lines, 0 errors, 2,260 flagged,
+3,015 with `omitted`, 28 empty. The outputs are in `tmp/meanings/mean4c-out-0928u.tar.gz` (md5 `1c050a8…`); nothing of 4/3 was merged or
+written to `docs/`. A new chat can merge from that tarball (unpack into `tmp/meanings/v4c/`, then `merge 4c` / `report 4c` with `--work
+tmp/meanings/v4c`) rather than draft again.
+
+**What the agents reported** (nothing reviewed; the questions for the final revision are in NEXT-SESSION 1c):
+- **Run-on and split articles** (338 flags): most shards translated the line's own text only, as the prompt says; «Sn» placeholders that
+  stood in run-on text were kept in their host line, flagged (e.g. 193419, 193441, 193472, 193848, 193865, 193983, 197654, 197875, 198081,
+  198331, 198411, 199358, 199417, 199579, 199581, 199662, 200455, 202360, 202363, 202405, 202420, 202749, 202825, 203013, 203076); lines
+  holding only a «S1»: 194777, 203063 posentī. The largest: **199993** makulārāmavihāra holds ~13,500 characters of the puṇṇa article's stories
+  (persons (a)–(i)): only its opening translated, the rest in `omitted`; whether they belong under puṇṇa (199989) is for the reviewer;
+  **194629** pasūrasuttaniddesa holds a long article on King Pasenadi, left untranslated; paharati (194966) translated from its opening
+  summary, its body in 194982–194991 ("nothing to translate"); pahaṭṭha split over 194903/04; pīti over 199028/29; purisa over 201723/24;
+  197761 holds the pāḷibhāsā essay, 198054 the fifteen kinds of meals, 198046 the start of piṇḍapāta. **Departures**: shard 11 translated in
+  198085 the article of the -sutta that sits there, not its own headword's (flagged); shard 10 translated both passes
+  of 197689 pāḷi (a short and a fuller one), flagged for the reviewer to cut one.
+- **Senses printed twice** (29 flags): pavatta, pavattati, pavattana, pavattanaka, pavattanattha, pavattamāna (00), paviṭṭha 193699, pavesana
+  194018, pubba 200797, pubbanta 200920, pubbenāpara, pura, purakkhata, puratthā, purā, pesana, pesi, pesita, pokkhara, porisa, 197341,
+  197402, 197474, 197523: translated once.
+- **Verb person**: -si / -esi aorists in the 3rd person against the -si rule in most shards, flagged (pavaṭṭesi, pavattayittha 00; 193165,
+  193586 01; pācesi 195574, pājesi 195595 05; pātesi 196067 06; pāyāsi, pāyesi 08; pārupesi, pālesi, pāvisi, pāresi 09; pisuṇesi 198780 12;
+  pucchesi 199649 13; 200667, 200726, 200744 16); in the 2nd by the rule in shard 10 (pāhāsi, pāhesi) and for -ttha in 01 (*llovisteis*,
+  193484); the two pasādesi articles 194465/66 split 3rd and 2nd (03); -aṁ forms pāpataṁ 196508, pāpattaṁ 196512, pāpatthaṁ 196513 as 1st
+  singular, flagged uncertain (07); pahāyetha 195210 glossed plural (ကုန်ရာ၏); pīyataṁ 199144 as a 3rd-person imperative (12).
+- **Renderings the agents chose**, for the editor: ကြည်ညို *devoción*, လျဉ်းပါး (pasaṅga) *venir al caso*, တားမြစ် *negar* in
+  pasajjapaṭisedha (03); တရား *norma* in the paveṇi- group (02), *estado* in the pucchita- compounds (13); ပုဂ္ဂိုလ် *persona*, ပုစ္ဆာ kept
+  ⟦ပုစ္ဆာ⟧, သုံးသပ် *tocar* in āmasana / parāmāsa (13); ပူဇော် *venerar*, of robes and goods *ofrecido en veneración* (19); ပြာသာဒ် *palacio*
+  and ပါဠိ(တော်) *texto ⟦pāḷi⟧* throughout (10: pāḷi 113 rows); ဆွမ်း *comida de limosna*, သည်းခြေ *bilis* (11); ပဟိုရ် *vigilia* (05);
+  ဝိဘတ် ⟦=vibhatti⟧, ဗဟုဝုစ် ⟦=bahuvacana⟧, ပုထုဇဉ် ⟦=puthujjana⟧ (15); ကောင်းမှုကုသိုလ် *buena acción meritoria*, ကုသိုလ် alone *mérito*,
+  *sano* where kusala pairs with akusala or is a state of mind (14); ဖြစ်စေ *hacer ocurrir* in shard 01's first block, *producir* after;
+  ပဝါရိတ်သင့် *quedar ⟦=pavārita⟧* (01); ကြိယာ as the grammatical verb kept ⟦ကြိယာ⟧, flagged (17). Burmese month names romanised (Thadingyut,
+  Tazaungmon, Kason, Waso, Nayon: 01, 06, 10, 16), coins (pya, mat, mu: 10). Plant, animal, fish, mineral and instrument names in ‹ › in
+  236 rows (‹ဖယား› perhaps topaz, ‹ညောင်ကြတ်› pilakkha, ‹လွန်› piyāla, ‹ဆတ်› ‹ဒရယ်› ‹စိုင်› ‹ပဲနောက်›, ‹ပလလဲ›, ‹ကသစ်›, ‹ယမင်း›, ‹ညဲမင်း› …).
+- **Long articles translated as far as legible**, gaps marked … or […]: 193504 pavāraṇa (~8,700 characters; one sentence on who may receive
+  the pavāraṇāsaṅgaha looks inverted as printed), 193699 paviṭṭha, 195698 pāṭihāriya, 195830 pāṇabala, 195861 pāṇasutta, 195865 pāṇātipāta,
+  195995–97 pātimokkha, 196091 pāda, 196095 pādakajjhāna, 196320 pādukā (the eleven sandal materials rebuilt with help from the Vinaya
+  list: doubtful), 196361, 196391 pānīyajātaka, 196914 pāra, 196979 pāramī, 197004 pārājika, 198737 pisāca, 201239 purāṇa, 201352
+  purābhedasutta, 201724 purisa, 201767 purisatta, 201917 pure, 201944 purejātapaccaya, 202002, 202007, 202009 (the sand-cetiya stories).
+- **To fix or check**: 196223 has ⟦=kappa⟧ for ကမ္ဘာ (the rule: *eón*); 196519, 196520, 196533 Spanish plural agreement (*estados vil / bajo /
+  malos*); 192761, 192811 list kusala / akusala in `terms` though rendered *sano / insano*; the lost မ of မကောင်းမှု read back as "evil deed"
+  and flagged on many lines (07); ~30 glosses beginning mid-word restored from the headword, flagged (05); truncated glosses 201399–201411,
+  201516–201555 left as (…) (17); the Cūḷaniddesa page of one reading given as 1009 (195154) and 109 (195247); 202742 poṭalikā left empty,
+  though 202745 shows its garbled သန်လျှင် is the Bhāsāṭīkā's rendering; 201993 pulina's gloss seems to belong to pulinadāna; headwords that
+  look misromanised or misprinted: pāpatara (pāparata?), pāparāgī (pāparogī?), pāpabhikkhamānā (pāpasikkhamānā?), pāpintave, pāvikatara (08).
+- **Lines changed after appending**, against the append-only rule, each for a slip found in the agent's check: shard 08 (197004 ⟦ထန်း⟧ →
+  *palmera de palmira*, 196979 ⟦အဓိဋ္ဌာန်⟧ → ⟦=adhiṭṭhāna⟧, 196575 a typo in `omitted`). Shard 07 reported its three slips (above) and left them.

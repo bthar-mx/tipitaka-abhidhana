@@ -23,6 +23,15 @@ Versions of the Tipiṭaka Pāḷi-Myanmā Abhidhāna project: the data, the too
 A release note says, per version: what changed, the brief's sections, and the headline figures
 (located, label + body, Meaning rows drafted / reviewed).
 
+## v0.25.0 — 28 Sep 2026
+
+- **Vol. 14/3's Meaning boxes drafted from our OCR** (brief §63): 9,348 rows in `docs/translation/meanings/14c.jsonl` (12 formula,
+  9,336 drafted), all `drafted`, `source: ocr`; 21 shards, one agent each, the OCR-book prompt of vols. 20–25. 2,956 rows flagged
+  (`14c-flags.tsv`), 5,920 lines of what the drafts left out (`14c-omitted.tsv`), 737 terms kept in Pāḷi (`14c-terms.tsv`); 1,042 of the
+  book's 10,390 articles have no Meaning (845 have no body). About and README: "vols. 1–3, 4/1, 4/2, 5–13 and 14/1–25". Meaning rows in
+  all: **212,428, 96.1% of the index, none reviewed**.
+- Vol. 4/3's shards were drafted too, not merged (brief §63; outputs kept in `tmp/`, gitignored). NEXT-SESSION: 1b, 1c (ab)–(ae), 00w.
+
 ## v0.24.1 — 28 Sep 2026
 
 - **`abhidhana_meanings.py prep`: a witness join that pairs no row counts as no join** (brief §62). `witness/join-4c.jsonl` exists but

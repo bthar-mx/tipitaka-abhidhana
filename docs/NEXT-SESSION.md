@@ -1,4 +1,4 @@
-# Abhidhāna — handover, 28 September 2026 (editor mode built, not yet switched on, v0.17.0; roman input in its form, v0.18.0; 14/2's 497 rows redrafted, v0.18.3; the OCR pilot, v0.18.5; vol. 23 drafted from our OCR, v0.19.0; vol. 22 drafted from our OCR, v0.20.0; vol. 24, v0.21.0; vol. 21, v0.22.0; vol. 20, v0.23.0; vol. 25, v0.24.0; 14/3 and 4/3 prepared, §62; `prep`'s no-join fix, v0.24.1)
+# Abhidhāna — handover, 28 September 2026 (editor mode built, not yet switched on, v0.17.0; roman input in its form, v0.18.0; 14/2's 497 rows redrafted, v0.18.3; the OCR pilot, v0.18.5; vol. 23 drafted from our OCR, v0.19.0; vol. 22 drafted from our OCR, v0.20.0; vol. 24, v0.21.0; vol. 21, v0.22.0; vol. 20, v0.23.0; vol. 25, v0.24.0; 14/3 and 4/3 prepared, §62; `prep`'s no-join fix, v0.24.1; vol. 14/3 drafted from our OCR, v0.25.0, and 4/3's shards drafted, not merged, §63)
 
 *All 29 books are digitised end to end, spot-checked and in the Reader: 221,154 index rows, 94.1%
 located, 88.1% with label + body (brief §30). Read
@@ -88,6 +88,8 @@ Project are for advice and for what needs the Mac. What the new chat should know
 
 00. ~~Versions~~: tags v0.1.0–v0.11.0 created by the editor; the footer shows `VERSION` (brief §43). Tag **v0.13.0** on the push of §48
    (and v0.12.0 on §47's, if not yet made). Each push that changes data or the site: bump `VERSION`, add a `CHANGELOG.md` section, tag.
+00w. **After the §63 push (v0.25.0)**: `/data/version.json` 0.25.0; `/w/pīti` and `/w/puthujjana` (vol. 14/3) show a Meaning box,
+   *borrador*; About: "vols. 1–3, 4/1, 4/2, 5–13 y 14/1–25". Tag v0.25.0.
 00v. ~~After the §61 push (v0.24.0)~~: done 28 Sep (the editor): 0.24.0 served, `/w/hetu` shows vol. 25's Meaning box (*borrador*), About
    lists 15–25. Was: `/data/version.json` 0.24.0; `/w/hetu` and `/w/soka` (vol. 25) show a Meaning box, *borrador*;
    About: "vols. 1–3, 4/1, 4/2, 5–13, 14/1, 14/2 y 15–25". Tag v0.24.0.
@@ -254,7 +256,15 @@ Project are for advice and for what needs the Mac. What the new chat should know
    fistula, myrobalan, orpiment, *cúrcuma*, chickpea, asafoetida, ginger), 140 rows with Burmese in ‹ ›; (aa) to check on the page: 218795,
    218819, 218937/38, 218962, 219080, 220960, 220963, 221043 (garbled), 220741, 221016, 221101 (rebuilt from context), 220291, 221136–40
    (ဟမ်း), 220870, 220888 (အမွန်), 221148 (ḷa "30th of 41 letters"); the rest in brief §61 and `25-flags.tsv`.
-1b. **Translation** (brief §37, §39–60). **Drafted: vols. 1–3, 4/1, 4/2, 5–19, 14/2 and 20–25** (203,080 rows, 91.8% of the index, none reviewed; flags in `meanings/NN-flags.tsv`). **Vol. 4/3 deferred** (no PCED; the editor, 26 Sep; brief §44). PCED's vols. 1–19 are all drafted (brief §48).
+   From vol. 14/3 (brief §63): (ab) run-on articles: 199993 makulārāmavihāra holds ~13,500 characters of puṇṇa's stories (199989?), 194629
+   pasūrasuttaniddesa a Pasenadi article (untranslated), paharati 194966 / 194982–91, 197689 pāḷi translated in both passes (cut one), 198085
+   holds the -sutta's article (translated); (ac) person: -si / -esi aorists in the 3rd against the rule in most shards, in the 2nd in shard 10
+   (pāhāsi, pāhesi), -ttha 2nd in 193484 (*llovisteis*), pasādesi 194465/66 split, -aṁ forms as 1st (196508, 196512, 196513); (ad) renderings:
+   ကြည်ညို *devoción*, တရား *norma* / *estado*, ပုဂ္ဂိုလ် *persona*, ပုစ္ဆာ kept, သုံးသပ် *tocar*, ပူဇော် *venerar*, ပြာသာဒ် *palacio*, ပါဠိ
+   *texto ⟦pāḷi⟧*, ဆွမ်း *comida de limosna*, ပဟိုရ် *vigilia*, ⟦=vibhatti⟧ ⟦=bahuvacana⟧ ⟦=puthujjana⟧, ကောင်းမှုကုသိုလ် *buena acción
+   meritoria*; (ae) to fix: 196223 ⟦=kappa⟧ for ကမ္ဘာ, 196519/20/33 Spanish plural agreement, 192761 / 192811 `terms`, 202742 poṭalikā (see
+   202745), 201993; headwords pāpatara, pāparāgī, pāpabhikkhamānā, pāpintave, pāvikatara; the rest in brief §63 and `14c-flags.tsv`.
+1b. **Translation** (brief §37, §39–63). **Drafted: vols. 1–3, 4/1, 4/2, 5–13 and 14/1–25** (212,428 rows, 96.1% of the index, none reviewed; flags in `meanings/NN-flags.tsv`). **Vol. 4/3 drafted, not merged** (brief §63; the editor decided 28 Sep to draft it; it was deferred on 26 Sep, brief §44). PCED's vols. 1–19 are all drafted (brief §48).
    **The OCR books** (brief §55–56): **vol. 23 drafted and merged** (v0.19.0; 6,906 rows, 67.6% of drafted lines flagged,
    with `omitted` or empty; 3.75 M agent tokens). **Vol. 22 drafted and merged** (v0.20.0, brief §57; in Cowork, one wave of 17
    agents, no usage-limit stop; 7,613 rows; 75.0% of drafted lines flagged, with `omitted` or empty; 4.73 M agent tokens, ~626 a
@@ -269,13 +279,19 @@ Project are for advice and for what needs the Mac. What the new chat should know
    disk still full, merge / report in the cloud).
    **Vol. 25 drafted and merged** (v0.24.0, brief §61; one wave of 8 agents, no usage-limit stop; 3,732 rows; 89.6% of drafted
    lines flagged, with `omitted` or empty, only 10.4% clean, the noisiest book; 2.26 M agent tokens, ~599 a line; merge / report in the cloud).
-   **14/3 and 4/3 prepared, not drafted** (brief §62, measurement only): `tmp/meanings/v14c` (9,465 to draft, 21 shards) and
+   **Vol. 14/3 drafted and merged** (v0.25.0, brief §63; two waves, 20 agents then 1, no usage-limit stop; 9,348 rows; 71.7% of drafted
+   lines flagged, with `omitted` or empty; 5.59 M agent tokens, ~590 a line; merge / report in the cloud container). **Vol. 4/3 with its
+   supplements drafted, NOT merged** (brief §63): its 11 shards ran in 14/3's second wave; 4,803 lines, checked, 0 errors; the outputs are
+   in `tmp/meanings/mean4c-out-0928u.tar.gz`. **For the new chat**: unpack into `tmp/meanings/v4c/`, `merge 4c` / `report 4c --work
+   tmp/meanings/v4c` (in the cloud container: the VM's disk is full), its own version (v0.26.0) and brief section, noting that its 207
+   supplement rows belong to vols. 15, 4/2 and 16 (brief §16, §62); no need to draft again.
+   **14/3 and 4/3 prepared** (brief §62, measurement only): `tmp/meanings/v14c` (9,465 to draft, 21 shards) and
    `tmp/meanings/v4c` (4,803 to draft with the three supplements, 11 shards). `witness/join-4c.jsonl` pairs nothing;
    since v0.24.1 `prep` counts such a join as none, and `prep 4c --shards 11` gives `v4c` byte for byte (`prep_nojoin.py` is no
    longer needed; never draft from `v4c-rawbody`). Clean-row signal: 14/3 49.1%, 4/3 40.5% (vols. 20–25: 23.0–56.1%).
    **Decided (the editor, 28 Sep): draft both 14/3 and 4/3, drafts only, reviewed at the final revision (1c).** Same path: `prep NN --shards N --work
    tmp/meanings/vNN` (~445 lines a shard), agents with `23-shard00-prompt.md` (vol., shard, line count and paths changed).
-   **Next: the books with no PCED** — 14/3 (20–25 done), and 4/3 (deferred) — could only be drafted from
+   ~~**Next: the books with no PCED**~~: 14/3 done (§63), 4/3 drafted, to merge. Was: could only be drafted from
    our OCR body: the editor to decide, as for 4/3 (brief §44 measured the OCR body against PCED on 4/1 and 4/2). If yes:
    `prep('NN', N)` from Python (N so that shards are ~450 lines), each book's `workNN.json` and `shards/` in
    `tmp/meanings/vNN/`; one agent and scratch folder per shard (20 at once) with `docs/translation/drafting-prompt.md`
