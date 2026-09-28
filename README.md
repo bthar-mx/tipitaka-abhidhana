@@ -24,7 +24,7 @@ libros están digitalizados: cada artículo se ancla en la entrada correcta (tom
 diccionario), se divide en sus campos (categoría gramatical, análisis, definición, citas) y la
 entrada se romaniza (IAST). **Nada está revisado**: el birmano es una lectura automática (OCR) y
 contiene errores; compare siempre con la imagen de la página. La traducción al español, hecha
-desde el birmano y nunca a través del inglés, está en borrador para los vols. 1–3, 4/1, 4/2, 5–13, 14/1, 14/2, 15–19, 22 y 23, sin revisar
+desde el birmano y nunca a través del inglés, está en borrador para los vols. 1–3, 4/1, 4/2, 5–13, 14/1, 14/2, 15–19 y 22–24, sin revisar
 ([`docs/spanish-method.md`](docs/spanish-method.md), `docs/translation/`). Consulta y búsqueda en
 **[abhidhana.buddha-dhamma.net](https://abhidhana.buddha-dhamma.net)**, en español e inglés. Proyecto del
 [Instituto de Estudios Budistas Hispano](https://iebh.org).
@@ -130,7 +130,7 @@ the compound analysis [ ] of vols. 1–19 is taken from it wherever it has one
 carries `analysis_source: "pced"`), because our OCR's analysis differed from it in 50.9% of
 articles and spelled the headword worse in most of those; and the Meaning boxes are drafted from
 its definitions (`docs/translation/`, `source` on every row). Vol. 14/2, which PCED lacks, is drafted
-from the PDF's own text layer without its Pāḷi quotations and citations (`source: text layer`), and vols. 22 and 23 likewise from our OCR of the page (`source: ocr`). The witness files themselves stay
+from the PDF's own text layer without its Pāḷi quotations and citations (`source: text layer`), and vols. 22–24 likewise from our OCR of the page (`source: ocr`). The witness files themselves stay
 local (`witness/`, gitignored).
 
 ## Layout
