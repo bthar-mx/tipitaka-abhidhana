@@ -23,6 +23,15 @@ Versions of the Tipiṭaka Pāḷi-Myanmā Abhidhāna project: the data, the too
 A release note says, per version: what changed, the brief's sections, and the headline figures
 (located, label + body, Meaning rows drafted / reviewed).
 
+## v0.23.0 — 28 Sep 2026
+
+- **Vol. 20's Meaning boxes drafted from our OCR** (brief §60): 6,947 rows in `docs/translation/meanings/20.jsonl` (199 formula,
+  6,748 drafted), all `drafted`, `source: ocr`; 15 shards, one agent each, the OCR-book prompt of vols. 21–24. 2,253 rows flagged
+  (`20-flags.tsv`), 3,945 lines of what the drafts left out (`20-omitted.tsv`), 946 terms kept in Pāḷi (`20-terms.tsv`); 419 of the
+  book's 7,366 articles have no Meaning. About and README list vol. 20. Meaning rows in all: **199,348, 90.1% of the index, none
+  reviewed**.
+- NEXT-SESSION: 00t done (0.22.0 checked live); 1b and 1c updated for vol. 20.
+
 ## v0.22.0 — 28 Sep 2026
 
 - **Vol. 21's Meaning boxes drafted from our OCR** (brief §59): 7,752 rows in `docs/translation/meanings/21.jsonl` (221 formula,

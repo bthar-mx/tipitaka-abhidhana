@@ -2,7 +2,7 @@
 
 *Written 21 September 2026, at the end of the volume-25 pilot; §10–12 revised 24 September
 2026, after volume 1 was done end to end and the repository was made public; §18–26 added
-25 September 2026 (spelling folds, the witness join, vols. 6–9, re-cutting gutters, vol. 14/2's text layer, the batch of vols. 10–22); §27 the same evening (vols. 23, 24 and 14/2 finished, the index's page errors applied, book 21 explained, the Reader in binary); §28 the public website, the page images and the label table; §29 vol. 21 finished, vol. 25's resolution, the dictionary's own account of its labels; §30 vol. 25 done, all 29 books; §31 (later on 25 Sep) the page-image tool's bitmap test; §32 the weak page corrections, image-checked; §33 the compound analysis with its [ lost; §34 the dictionary's history on the site; §35 all page images live, a light/dark switch, the Introduction page; §36 citations keep their whole abbreviation; §37 translation, batch 1; §38–41 (26 Sep) the redesign, vol. 1–2 drafts, PCED analyses, versioned assets; §42 (26 Sep) the live check, vol. 3's drafts, version numbers; §43 vols. 4/1–4/2 drafts, the IEBH footer, citation tooltips, cross-reference links, labels reviewed; §44 the live check after v0.8.0, vol. 4/3 deferred, vol. 5 drafted, the analysis split from its derivation, printed page numbers; §45 the live check after v0.9.0, vol. 6 drafted; §46 two stems from the editor, vols. 7–9 drafted; §47 vols. 10–14/1 drafted; §48 (27 Sep) the live check after v0.12.0, vols. 15–19 drafted; §49 vol. 14/2 drafted from its text layer; §50 the body's first words on the headword's line restored; §51 the editor's decisions of 27 Sep, a revision queue, ဩ in vol. 4/3; §52 (cloud) editor mode; §53 (28 Sep, cloud) roman input in the editor's form; §54–56 (28 Sep) 14/2's redraft, the OCR pilot, vol. 23 drafted; §57 (28 Sep, Cowork) vol. 22 drafted; §58 vol. 24 drafted; §59 vol. 21 drafted. Everything in
+25 September 2026 (spelling folds, the witness join, vols. 6–9, re-cutting gutters, vol. 14/2's text layer, the batch of vols. 10–22); §27 the same evening (vols. 23, 24 and 14/2 finished, the index's page errors applied, book 21 explained, the Reader in binary); §28 the public website, the page images and the label table; §29 vol. 21 finished, vol. 25's resolution, the dictionary's own account of its labels; §30 vol. 25 done, all 29 books; §31 (later on 25 Sep) the page-image tool's bitmap test; §32 the weak page corrections, image-checked; §33 the compound analysis with its [ lost; §34 the dictionary's history on the site; §35 all page images live, a light/dark switch, the Introduction page; §36 citations keep their whole abbreviation; §37 translation, batch 1; §38–41 (26 Sep) the redesign, vol. 1–2 drafts, PCED analyses, versioned assets; §42 (26 Sep) the live check, vol. 3's drafts, version numbers; §43 vols. 4/1–4/2 drafts, the IEBH footer, citation tooltips, cross-reference links, labels reviewed; §44 the live check after v0.8.0, vol. 4/3 deferred, vol. 5 drafted, the analysis split from its derivation, printed page numbers; §45 the live check after v0.9.0, vol. 6 drafted; §46 two stems from the editor, vols. 7–9 drafted; §47 vols. 10–14/1 drafted; §48 (27 Sep) the live check after v0.12.0, vols. 15–19 drafted; §49 vol. 14/2 drafted from its text layer; §50 the body's first words on the headword's line restored; §51 the editor's decisions of 27 Sep, a revision queue, ဩ in vol. 4/3; §52 (cloud) editor mode; §53 (28 Sep, cloud) roman input in the editor's form; §54–56 (28 Sep) 14/2's redraft, the OCR pilot, vol. 23 drafted; §57 (28 Sep, Cowork) vol. 22 drafted; §58 vol. 24 drafted; §59 vol. 21 drafted; §60 vol. 20 drafted. Everything in
 this file was measured. Do not re-derive a figure it carries; if a new one is needed,
 measure it rather than estimating.*
 
@@ -2508,3 +2508,98 @@ reviewed: 87.0%** of the index (221,154). About and README list vol. 21 (drafted
   168252 (the Sañjīva hell), 169631 sattabbhantarasīmā, 169636 (the sevenfold Jain doctrine).
 - **Lines changed after appending**, against the append-only rule: shard 09 rewrote the English of its first 80 lines (romanised Pāḷi
   put back into ⟦ ⟧ as in the Spanish); shard 10 restored a dropped «S1» in 169022.
+
+
+## 60. Vol. 20 drafted from our OCR and merged (28 Sep 2026, Cowork)
+
+**The live check after v0.22.0** (the editor): 0.22.0 served; `/w/saddhā` shows vol. 21's Meaning box, *borrador*; About lists 21–24.
+
+**Asked** (the editor): vol. 20 the same way as vols. 21, 22 and 24 (§57–59): shards of about 445 lines in `tmp/meanings/v20`, one agent
+and scratch folder per shard, at most 20 at once, the OCR-book prompt; `merge` / `report` in the cloud container if the VM's disk is
+still full; stop if a wave hits the usage limit.
+
+**Prep** on the Mac (Cowork VM): 7,366 articles, 7,014 with a body; 6,977 explanations, 199 formula-only, **6,778 to draft**;
+`--shards 15`: 14 shards of 452 lines and one of 450 (15 shards is the nearest to ~445; 16 would give ~424). (A first `prep 20 --shards
+1` into `tmp/meanings/v20probe`, to count the lines, was moved to `tmp/_to_delete/`.) The last line of shard 14 is back matter (a donors'
+list); its agent left it out. The VM's `/sessions` disk was still full (47 MB free), so `merge` and `report` ran in the cloud container on
+the same `tools/abhidhana_meanings.py` (md5 `b2e0988…`, as for vols. 21 and 24) and `work20.json`; the four output files were committed
+back and their md5 checked in the folder. `drafting-brief.md`, `stems.tsv`, `glossary.tsv` and `23-shard00-prompt.md` were the files
+used for vol. 21 (md5 unchanged). Tarballs `tmp/meanings/mean20-in-0928k.tar.gz` (shards, work file, brief, stems, glossary, prompts,
+tool), `mean20-out-0928l.tar.gz` (the 15 output files; unpacked into `tmp/meanings/v20/out/`).
+
+**Drafted**: 15 agents in one wave, each with its own scratch folder. Each prompt was `23-shard00-prompt.md` with vol., shard, line
+count and paths changed, written to a file (`/home/claude/tr/prompts/20-NN.md` in the container, checked by `diff` against the
+template: four lines differ) and given to the agent as "read this file and follow it exactly". **No wave stopped at the usage limit.**
+
+| shard | agent tokens | tool calls | min | | shard | agent tokens | tool calls | min |
+|---|---:|---:|---:|---|---|---:|---:|---:|
+| 00 | 285,241 | 30 | 23 | | 08 | 355,251 | 42 | 26 |
+| 01 | 380,761 | 38 | 28 | | 09 | 267,196 | 29 | 18 |
+| 02 | 308,669 | 39 | 26 | | 10 | 393,862 | 37 | 29 |
+| 03 | 252,942 | 30 | 18 | | 11 | 319,631 | 34 | 21 |
+| 04 | 278,865 | 34 | 23 | | 12 | 405,434 | 41 | 32 |
+| 05 | 443,155 | 51 | 33 | | 13 | 357,046 | 40 | 27 |
+| 06 | 306,885 | 31 | 26 | | 14 | 248,345 | 28 | 15 |
+| 07 | 253,765 | 31 | 17 | | **all** | **4,857,048** | **535** | |
+
+**~717 tokens a drafted line**, the most of any OCR book (vol. 21: ~627, vol. 24: ~600, vol. 22: ~626, vol. 23: ~555): vol. 20 holds
+many long encyclopaedic articles translated in full (vīriya, vīthi, vedanā, veda, saṅgha, saṅghakamma, saṁyuttanikāya, Visākhā,
+Vessantara, Vesālī …; see below), and shards 05 and 12, with most of them, used the most. **Checked** (every shard): one line per id, in
+order; valid JSON with id, es, en, terms, flag, omitted; every «Sn» in es and en; ⟦ ⟧ and ‹ › balanced; no Burmese outside them; es
+and en empty together: 0 errors. Of the 30 empty lines, 29 are flagged "nothing to translate" and one (159779) "garbled … nothing
+translated".
+
+| | vol. 20 | vol. 21 (§59) | vol. 24 (§58) |
+|---|---:|---:|---:|
+| lines drafted / flagged / with `omitted` / empty | 6,778 / 2,283 (33.7%) / 3,945 (58.2%) / 30 | 7,609 / 33.9% / 57.9% / 78 | 6,572 / 39.7% / 54.9% / 67 |
+| flagged, omitted or empty; clean | 4,562 (67.3%); 2,216 (32.7%) | 67.9%; 32.1% | 69.0%; 31.0% |
+| flags: "OCR: read X as Y" / run-on article / senses printed twice / hyphen / person / aorist | 817 / 369 / 44 / 66 / 37 / 21 | 1,068 / 305 / 49 / 57 / 22 / 15 | 1,403 / 308 / 59 / 57 / 7 / 3 |
+| rows merged (`meanings/20.jsonl`), all `drafted`, `source` ocr: formula / drafted | 6,947: 199 / 6,748 | 7,752 | 6,685 |
+| flagged (`20-flags.tsv`) / lines in `20-omitted.tsv` | 2,253 / 3,945 | 2,499 / 4,402 | 2,539 / 3,611 |
+| articles without a Meaning: no body / nothing left after `prep` / drafted empty | 352 / 37 / 30 (419 of 7,366) | 377 of 8,129 | 403 of 7,088 |
+| terms kept in Pāḷi (`20-terms.tsv`) | 946 (vedanā 193, saṅgha 168, vīriya 162, kilesa 85, kamma 66, āpatti 66, nibbāna 65) | 736 | 520 |
+| "see X" links matching a romanised headword (occurrences in the Spanish, every book's `headword_iast`) | 884 of 1,082 (81.7%) | 82.3% | 79.9% |
+| rows with *sano / insano*; *mérito*; "no saludable" | 40; 7; 0 | 25; 14; 0 | 21; 6; 0 |
+| rows with Burmese left in ‹ › | 96 | 130 | 134 |
+
+(Flag counts are substring counts over the flag text of the drafted lines; the "person" count includes flags that only mention it.) The
+946 distinct terms, more than any OCR book, are mostly compounds listed once (vedanā-, saṅgha-, vīriya- compounds), not a new kind of
+term. After merge: ids sorted and unique, no ⟦ ⟧ left, no Burmese outside ‹ ›. No vol. 20 row is in `corrections-es.tsv`. **Totals: 26
+books, 199,348 Meaning rows, all `drafted`, none reviewed: 90.1%** of the index (221,154). About and README list vol. 20 (drafted from
+our OCR); README's line "Drafted, not reviewed, for vols. …" had not been updated since vol. 19 and now reads "…, 14/2 and 15–24". The
+site was not built here.
+
+**What the agents reported** (nothing reviewed; the questions for the final revision are in NEXT-SESSION 1c):
+- **Run-on articles and senses printed twice**, as in vols. 21–24 (369 and 44 flags); most shards translated the line's own text only.
+  **Departures**: shard 14 translated text that had run on into the line before under its own headword (163650 sense 1, 163859 whole);
+  shard 00 likewise for 156817 visakkiyadūta and 157106 visama (1)–(3); shard 06 translated each fragment where it sits in articles split
+  over several ids (vuṭṭhāna 159659–159661, vuḍḍha 159786/159788); shard 03 translated one run of a doubled sense list and filled gaps
+  from the other (158148, 158155, 158164, 158227, 158436, 158575 vihāra). Split articles also in 156801–156802 visa, 160483–160485 vutti
+  (sense 1 untranslated inside 160483), 157747 visuddhimagga, 158072 vissa, 158098–158100 vissajjanā, 161612–13 vera, 161992–93 veḷuriya.
+  «Sn» placeholders that stood in run-on text were kept in their host line, flagged (e.g. 159788, 159862, 160622, 160630, 160632, 160878,
+  162073, 162100, 162102, 162320, 162332, 162478, 162505, 162525, 163229, 163238, 163250, 163272, 163475, 163511, 163522, 163576, 163727,
+  163738, 163766, 163816). Lines that hold only «S1»: 159226, 159353, 159532, 159547, 161193, 161369, 161414 and nine in shard 07.
+- **Verb person, not applied alike**: -si / -esi aorists in the 2nd person by the rule, flagged (156791 -ssi; 161357 vedesi; 163593,
+  164032, 164046; 162064, 162072, 162218, 162238, 162313 where the context suggests the 3rd) and in the 3rd against it (156880 visajjesi;
+  158718, 158720, 159105); -ttha as 3rd singular (162185, 162354); -etha optatives in the 3rd (163759, 163911, 163935/36), 163912 (-etha
+  with …လော) a 2nd-person imperative; future headwords whose Burmese has a past (158190, 158221) or ပြီ (162215, 162216, 162219).
+- **Renderings the agents chose**, for the editor: စောင်း (the Burmese saung, an arched harp) *arpa* throughout the vīṇā entries, though
+  vīṇā is a lute (04); …သဒ္ဒါ *regla gramatical* (156898, 156978–79) vs *palabra* (157055) in one shard (00; vol. 21 had *palabra*); ဆို /
+  ဟော / မိန့် / ပြော *dicho / enseñado / declarado / expresado*, -ပြီး *ya …*, အပြားရှိသော *de la clase ya dicha* (07); vagga, saṁyutta,
+  peyyāla plain like sutta (L055), *la* before ⟦သံဃာ⟧ (13); ဥပုသ်ကံ *el ⟦=kamma⟧ del ⟦=uposatha⟧* flagged as the Saṅgha's act, ပယတ်
+  (163952) read ⟦=payatana⟧ (14); Burmese names romanised (Kason, Bihar, Muzaffarpur, Basarh, Minbu; 10); တင်လဲ tentatively *raw cane
+  sugar* (156801, 156806). Left in ‹ ›: ‹စရည်းပင်›, ‹ရင်းနာ›, ‹အသားမြတ်›, ‹မယ်န› (157770–73), ‹ဆိပ်› (157966), ‹ပစ္စယံ› (161289, 161303;
+  pagoda terraces?), loom parts ‹ရက်မ› ‹ရက်သွား›, ‹သခွပ်› (pāṭalī?), ‹ရေသကျည်း›, ‹ဒေါင်းရွေ›, ‹ယင်းရဲ› (vetasa), ‹ဗေဒင်›, ‹မှုတ်›, ‹အင်းပျဉ်›,
+  ‹ကုက္ကို›, ‹အင်ကြင်း›, ‹ဝံပိုင့်› and others (96 rows).
+- **Long articles translated in full**, with gaps marked "…" or […] and flagged: 157387 visākha (biography and nakkhatta), 157186,
+  157201, 157315 visayha, 157589, 157592 visukamma (a note on variant readings left out), 157748 Visuddhimagga, 157753 its ṭīkā, 158001
+  (the Vaiśeṣika categories), 158386 (vissāsaggāha; its second list garbled), 159115 vīthi, 159242 vīriya, 159359 vīriyasambojjhaṅga,
+  160781 vejayanta, 160928 vetaraṇī, 160965 veda, 160999 vedanā, 161005, Verañjā, Velāma, Vesālī, Vessantara, Vessabhū (161886: cause (3)
+  read "did not lay down" the āṇāpātimokkha against the scan's "did"), Vessavaṇa, the vevacana-hāra entries, 162028 Veḷuvana, 162484
+  Saṅkicca, 163323 saṁyuttanikāya (its totals do not add up as printed), and the saṅgha run (saṁghakamma, saṁghaguṇa, saṁgha,
+  saṁghapavāraṇā twice, saṁghabheda, saṁghamittā, saṁgharakkhita, saṅghāṭi, saṅghāta, saṅghānussati).
+- **To check on the page**: headword and text disagree: 157122 visamacakkala (defines eyes), 158447 (text for vihaññasi), 159535, 159536,
+  159779 (ပိုးစား under a rain headword; left empty), 160369 vuttavisa (text of an article ending ဂန္ဓဝါယနဝစန); 159512 120 for 20?;
+  duplicated headwords with identical text 163670/71, 163925/26; 162424–162427 (the letter sa: framing sentences only). Misread labels
+  (ပ, ၇) left out, flagged (09).
+- **Lines changed after appending**: none reported.
