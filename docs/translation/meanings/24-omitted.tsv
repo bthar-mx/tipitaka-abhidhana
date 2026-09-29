@@ -22,8 +22,7 @@ id	iast	omitted
 203129	sītacchāya	quotation fragment '… ရိတရုက္ခော ဝီယာ”တိ' and citation '၃၅၀'
 203130	sītacchāyatarupeta	headword repeated
 203135	sītaṭṭhāna	run-on headword 'သီတတာဘိမာန'
-203136	sītatābhimāna	debris ']'; citation Visuddhi-ṭīkā 2; run-on article 'ဿီတတာသင်္ကာ (ထီ) ချမ်း-ချမ်းအေး-အေးမြ-သည်၏အဖြစ်ကို ယုံမှားခြင်း'
-203137	sītatāsaṅkā	quotation fragment 'သိယာ'
+203136	sītatābhimāna	debris ']'; citation Visuddhi-ṭīkā 2
 203140	sītanaraka	quotation fragment 'အပရေ "'; '----'
 203141	sītanarakupapanna	analysis 'သီတနရက + ဥပပန္န'
 203142	sītanarakūpapanna	analysis 'သီတနရက + ဥပပန္န'
@@ -367,7 +366,8 @@ id	iast	omitted
 203780	sīlasamādhipaññādivibhāga	fragment 'သီ-လာဒိဘေဒန'
 203788	sīlasamādhipaññāvimuttivimuttiñāṇadassanakkhandha	debris '] ]'
 203789	sīlasamādhipaññāvimuttivimuttiñāṇadassanaguṇa	debris ']'
-203790	sīlasamādhipaññāvimuttivimuttiñāṇadassanaparibhāvita	'တ (တိ) [ [,'; '----'; '၁ဝ၆'; run-on article 'သီလသမာဓိပညာဝိမုတ္တိဝိမုတ္တိဉာဏဒဿနသမ္ပတ္တိ-သမုဒါဂမ (၇) , ဝိမုတ္တိဉာဏ် အမြင်၏ ပြည့်စုံခြင်းဖြင့် ကောင်းစွာဖြစ်ပေါ် လာခြင်း' with its quotation 'ယထာဓမ္မဝိဟာရိနောတိအာဒိနာ … သမ္ပတ္တိသမုဒါဂမံ' and citation 'ထေရ၊ ၁ဝ'
+203790	sīlasamādhipaññāvimuttivimuttiñāṇadassanaparibhāvita	'တ (တိ) [ [,'; '----'; '၁ဝ၆'
+203791	sīlasamādhipaññāvimuttivimuttiñāṇadassanasampattisamudāgama	quotation 'ယထာဓမ္မဝိဟာရိနောတိအာဒိနာ …'; citation ထေရ ၁၀
 203792	sīlasamādhipaññāvimuttivimuttiñāṇadassanasampanna	quotation '--သီလသမာဓိပညာဝိမုတ္တိဝိမုတ္တိဉာဏဒဿနသမ္ပန္နာ တရမာနာ သန္နိပတိံသု'; next headword 'သီလသမာဓိပညာဝိပုတ္တိဝိမုတ္တိဉာဏပ္ပဘုတိ ၆'
 203793	sīlasamādhipaññāvimuttivimuttiñāṇappabhuti	quotation '“ “ဝိမုတ္တိဉာဏပ္ပဘူတီဟီ”'
 203794	sīlasamādhipaññāvimuttisaṅkhātakāraṇa	quotation 'သီလ (ပ) သမတ္ထန္တိ သီလသမာဓိပညာဝိမုတ္တိသင်ါတကာရဏာနံ ဇာနနသမတ္ထံ'
@@ -667,7 +667,8 @@ id	iast	omitted
 204383	sīhopamasuttantapāl̤i	stray '‘'
 204384	suṁsumāra	grammarian's notes (derivation 'သုသုံ မာရယတီတိ သုံသုမာရော', Kappadduma; the niggahīta moved forward; Sanskrit and Prakrit forms)
 204387	su	root entries 'သု ဂတိယံ။ သု သဝနေ။ သု ပေရဏော။ သုတိ' with sense numbers; stray '၅'
-204388	su	root entries '(၁) (၂) သု။ (၃) (၄) သု အဘိသဝေ'; Sanskrit forms 'သွဒ်-သံ', 'သု-သံ၊ ပြာ'; citations 'သု၊ (သုဥ (ခ)၊ ၃၆၈-နာ။ အ နှာ'
+204388	su	root glosses '(၁) (၂) သု။ (၃) (၄) သု အဘိသဝေ'
+204389	su	references 'သု၊ (သုဥ (ခ)၊ ၃၆၈-နာ၊ အ နှာ'; Sanskrit / Prakrit forms; run-on article su (adjective) 'beautiful / excellent; happy'
 204390	suaŭjita	quotation 'ပါရမီပူရကာလေ သုအဉ္ဇိတာနိ အက္ခီနိ ဥပ္ပါဋေတွာ'; citation (Dī 9, 2); run-on article 'သုဘဗက (တိ) [ + က ]' 'very much / at ease / wealthy'
 204395	suāgamana	word 'သွာဂတ'; quotation 'သုအာစိက္ခိတ န္တိ သုအာဂမနံ'; stray '၆'
 204399	suucchinna	analysis 'သု. ဥ + ဆိဒိ တ]'; quotation fragment 'အပရော “"'; citation (Visuddhi 2, 209)
@@ -827,7 +828,7 @@ id	iast	omitted
 204692	sukkhita	stray '----'; variant-reading tag '(သီ၊ ဣ၊ က-မူ)'
 204693	sukkhitvā	next headword '၅ သုက္ခေယျုံ'
 204696	sukha	analysis notes (ကပ္ပဒ္ဒုမ, Sanskrit and Prakrit forms, 'see the Itivuttaka' note); second copy of senses (1)–(19) with quotations and citations (ဣတိဝုတ်, မ ၁, ဝိ၊ ဋ္ဌ ၁, သာရတ္ထ, ဒီ၊ ဋ္ဌ ၂, ပဋိသံ)
-204697	sukha	tail of the previous article '(၂၀) … (၂၆) …', debris 'ာဿာ သဿဿ', page number '၂၆၇'; label and analysis '(တိ) [ သုခ + အ။ ]'; run-on article 'သုခအဝိပါကီ (တိ) […] ချမ်းသာ-ပျော်ရွင်-ခြင်းဟူသော အကျိုးမရှိသော'
+204697	sukha	tail of the previous article '(၂၀) … (၂၆) …', debris 'ာဿာ သဿဿ', page number '၂၆၇'; label and analysis '(တိ) [ သုခ + အ။ ]'
 204699	sukhakathā	stray '--- "'
 204701	sukhakaraṇa	stray '၁'
 204703	sukhakāma	stray ']'; source and quotation 'ဥဒါန၊ သုခကာမာ'
@@ -857,7 +858,7 @@ id	iast	omitted
 204769	sukhadukkhādidhammāyatana	quotations 'ဝိညာတ န္တိ သုခဒုက္ခာ- …', 'ဝိညာတ “သုခဒုက္ခာဒိဓမ္မာယတနန္တိ'
 204770	sukhadukkhādidhammārammaṇa	stray ']'; quotation fragment 'ဝိညာတ'; citation '(ဣတိဝုတ်။ ၁၆၈)'
 204774	sukhadukkhānubhavana	run-on text 'ဒုက္ခီ (တိ) [ သုခဒုက္ခ + ဤ ] သုခဝေဒနာ ဒုက္ခဝေဒနာ-ချမ်းသာဆင်းရဲ-ရှိ-ပြည့်စုံ-သည်'
-204776	sukhadukkhīsutta	quotation 'သုခဒုက္ခီ ပဉ္စဝီသတိမံ'; run-on text '၅ခဒုက္ခုပ္ပါဒက (ပု၊ န) [။ ထီ-၌ ဥပ္ပါဒိကာ။ ] ကောင်းသောဣဋ္ဌအကျုး, မကောင်းသောအနိဋအကျုးကို-ဖြစ်-စေ-နိုင်-တတ်သော၊'
+204776	sukhadukkhīsutta	quotation 'သုခဒုက္ခီ ပဉ္စဝီသတိမံ'
 204779	sukhadhamma	quotation markers '(၁)၊ (၂)'
 204780	sukhadhātu	quotation fragment 'သုခဓာတူ'
 204782	sukhana	analysis '] သုခ + ယု။ ]'
@@ -919,7 +920,8 @@ id	iast	omitted
 204901	sukhabhāga	stray '] ]'
 204902	sukhabhāgiya	analysis 'သုခဘာဂ +ဣယ'; stray '၁'
 204905	sukhabhūmi	quotation fragment '(၁) (၂) သုခဘူမိယ'
-204906	sukhamadamatta	source tag 'အဘိ'; headword 'ခမာမတ္တ (တိ) [ း]'; stray '"'; run-on text '၂ ခမဟတ္တ (န) ] ချမ်းသာ အားဖြင့်-၏-ကြီး-မြတ်-သည်၏အဖြစ်'
+204906	sukhamadamatta	source tag 'အဘိ'; headword 'ခမာမတ္တ (တိ) [ း]'; stray '"'
+204907	sukhamahatta	stray ']'
 204910	sukhayati	form 'သုခါပယတိ'
 204914	sukhayāpanīya	opposite term 'ကသိရ'
 204916	sukharasa	quotation fragment 'ပဝိဝေကသုခရသဿာ'; citation 'ဝိသုဒ္ဓိ၊ ဋီ၊ ၁ဝ'
@@ -944,7 +946,7 @@ id	iast	omitted
 204958	sukhavipākavipaccana	stray '---'
 204961	sukhavipākasadda	analysis 'သုခဝိပါက + သဒ္ဒ'
 204963	sukhavipākasabhāva	quotation 'အနဝဇ္ဇလက္ခဏမေဝါ'
-204968	sukhavisesa	tail of the preceding article 'ဘာနာ ] သုခကို စက်ဆတ် မန် န သောဘာဝနာ။ ----။'; stray '၅'; run-on article sukhavisesadāyaka with its analysis and definition ('apt to give special happiness, said of a person')
+204968	sukhavisesa	tail of the preceding article 'ဘာနာ ] သုခကို စက်ဆတ် မန် န သောဘာဝနာ။ ----။'
 204970	sukhavisesanipphādaka	citation '(ပေတ။ ၁၆၂'
 204973	sukhavisesasaññā	citation 'ဣတိဝုတ်၊ ဌ။ ( မ'
 204974	sukhavisesahetu	analysis fragment '[ သုခဝိ'; citation 'ဝိ ၁'
@@ -1027,7 +1029,8 @@ id	iast	omitted
 205109	sukhādivedanā	'---'
 205112	sukhādivedanāvisesa	quotation 'တေတိ “ဝေဒနေကဒေသော”'
 205114	sukhādisaṅkhāta	quotation 'သုခါဒိသင်ါတာနံ တိဿန္နံ'
-205116	sukhādisannissayabhūta	quotation fragment 'သုခါဒိသဘာ'; stray '၅'; run-on heading 'ခါဒိသဘာဝ (ပ) ]'
+205116	sukhādisannissayabhūta	quotation fragment 'သုခါဒိသဘာ'
+205117	sukhādisabhāva	label / bracket fragment 'ပ) ]။'
 205122	sukhādhimutta	'--'; quotation 'သုခါဓိမုတ္တော စီဝရာဓိမုတ္တော … သေနာသနာဓိမုတ္တော -၁၊'
 205125	sukhānisaṁsa	quotation 'သုခသမုဒ္ဒယေ'; citation '(ဣတိဝုတ်။ ၂၀၆)'
 205126	sukhānugama	stray ']'; quotation fragment 'တိအာဒိမာဟ'; stray '၇' and heading of the next article 'သုခါနုဂမနဝစန'; '၁၀၁'
@@ -1099,7 +1102,7 @@ id	iast	omitted
 205240	sukhumañeyyagahaṇasamattha	citation 'ဒီ၊ ဋိ၊ [၆] ၁၃၃'
 205241	sukhumaṭṭha	intruding '၏ သုခုမဌာန'
 205242	sukhumaṭṭhāna	'---'
-205243	sukhumatama	citation 'ဝိသုဒ္ဓိ၊ ဋီ၊ ၁ဝ'; stray '၂' and run-on article 'ခုမတမနိကန္တိဝတ္ထု (န)' with its gloss ('the most subtle object, the base of clinging taṇhā')
+205243	sukhumatama	citation 'ဝိသုဒ္ဓိ၊ ဋီ၊ ၁ဝ'
 205245	sukhumatara	grammarian's note on the comparative suffixes tara, iya and the superlative tama, iṭṭha (sutta numbers, Pāṇini, the commentator's usage) with quotations 'ဒွိဝစနဝိဘဇ္ဇောပပဒေ တရ-ဣယာ', 'ဟိနုက္ကဋ္ဌုက္ကဌ-တရတမာနုက္ကမေန'; quotation 'အံ၊ အလာဗုလော-မသာနီ'
 205246	sukhumatarakilesa	stray ']'
 205248	sukhumataradhammupādāna	fragments '၁ သသ၂ ဝုတ္တာ'
@@ -1192,7 +1195,7 @@ id	iast	omitted
 205409	sugatacīvarappamāṇa	number '၂၂၅'
 205410	sugatacīvarabhāṇavāra	quotation '"ဣဓ . နယေန ဝုတ္တ သတ္တကာ'; run-on article 'သုတ (' with its gloss ('the Dhamma of the Buddha; the Dhamma taught by the Buddha'); citation 'သံ၊ မြ ၁'
 205413	sugatanvayaajjhupagamana	heading '(သုဂတာနွယဘဇ္ဈုပဂန'
-205414	sugatapatta	fragment '၌[။'; run-on article 'သဂတပဒ (န)' with its gloss ('the word sugata')
+205414	sugatapatta	fragment '၌[။'
 205419	sugatapasattha	quotation 'သုဂတပသတ္ထ'; citation 'ဇာ၊ ၆၊'
 205421	sugatalakkhaṇa	intruding '၀ သုဂတဝရ' (heading of the next article); quotations 'သုဂတာပဒါနေသူ', '“သုဂတာ” "သုဂတလက္ခဏေသူ”'
 205423	sugatavidatthi	quotation 'နိသီဒနသန္ထတံ ပန … ဒုဗ္ဗဏ္ဏကရဏာယ'
@@ -1318,8 +1321,8 @@ id	iast	omitted
 205677	sucimaṁsūpasecana	']'
 205679	sucimāladhārī	tail of another article 'ဖြူစင် -မွေးကြိုင်- ခြင်းရှိသော။ (၃) (မင်္ဂလ ဘုရားလောင်း၏) သုစိမာမည်သောပြာသာဒ်'; headword echo and grammarian's bracket 'မာလဓာရီ (တိ) [ + ဏီ။ ထီ-၌ --ဓာရိနီ။ ]'; run-on article 'ီမိတ္တ (တိ) ဖြူစင်-သစ္စာရှိ-သော မိတ်ဆွေရှိသော'
 205681	sucimukhī	'('
-205682	sucimukhīsutta	reference 'သံယုတ္တနိကာယ၊ ခန္ဓဝဂ္ဂသံယုတ္တပါဠိ၊ ၇-သံယုတ်၊ ၁၀-သုတ်'; run-on article 'ုစိမုခီသုတ္တဝဏ္ဏနာ (ထီ) [ သုစိမုခီသုတ်-ကို-ဖွင့် ရကြောင်း ဖြစ်သော-သံဝဏ္ဏနာ-အဋ္ဌကထာ-ဋီကာ'
-205683	sucimukhīsuttavaṇṇanā	page number '၂၅၁'
+205682	sucimukhīsutta	reference 'သံယုတ္တနိကာယ၊ ခန္ဓဝဂ္ဂသံယုတ္တပါဠိ၊ ၇-သံယုတ်၊ ၁၀-သုတ်'
+205683	sucimukhīsuttavaṇṇanā	stray '['
 205684	sucimhita	citation 'ဝိမာန၊ [ သ ၆'
 205685	sucira	grammarian's note 'ကပ္ပဒ္ဒါမ၌-မူ " တို့ကို ပရိယာယ်အဗျယပုဒ်ဟု ပြသည်။ ဤအလို "သုစိရံ (ဗျ) ဟု" ဆိုရာ၏။'; 'သုစိရမ-သက္ကတပိဋက။ သုခိရ-ဝီလျံး]'
 205686	sucirakāla	garbled see-reference 'သုစိ) ကြည်'
@@ -1806,7 +1809,8 @@ id	iast	omitted
 206647	suddhaüdaka	stray 'ဦ'
 206648	suddhaka	bracket ']' in (b)
 206649	suddhakaṭhala	headword echo and label 'ုဒ္ဓကဌလ (ထီ၊ န)'
-206651	suddhakattuattha	quotation '“အတိပါတာပယတော”'; run-on article '၃ဒ္ဓကတ္တုတ္ထ (၇) သုဒ္ဓကတ္တုအတ္ထ-ကြည့်'; citation 'သီ၊ ရီ၊ သစ်၊ ၂ ၃၆။'
+206651	suddhakattuattha	quotation '“အတိပါတာပယတော”'
+206652	suddhakatthuttha	citation 'သီ၊ ရီ၊ သစ်၊ ၂ ၃၆'
 206653	suddhakadiṭṭhi	page number '၁၇၃'
 206654	suddhakappiyabhaṇḍa	bracket '['; debris '“ ၏။'
 206655	suddhakappiyasuttamaya	page number '၃ဝ၃။'
@@ -1943,7 +1947,6 @@ id	iast	omitted
 206924	suddhodakasambhinna	quotation fragment 'ဥစ္ဆရသ'; citation '(ကင်္ခါ။ ၁၈၁)'
 206925	suddhodana	grammarian's notes 'ပါစိတ် (ဓာန်၊ ဋီ။ ၄)။ ရုဒ္ဒေါဒန-သက္ကတပိဋက။ သုဒ္ဓေါအဏ၊ သုဒ္ဓေါဒဏ-ပြာ။ ]'; '--'; citation '(မဟာဝံသ ၂။ ၁၇၊ ၁၉၊ ၂၀)'; running head '၃ သုဒ္ဓေါဒန'; debris 'သ', '၁', ']', 'သူ/'
 206927	suddhodanaputta	next headword run in inside the bracket 'သု လိ သုဒ္ဓေါဒနပ္ပမုခ'
-206929	suddhodanamahārāja	run-on article '၃ုဒ္ဓေါဒနမဟီပတိ (ပု) မြေအပြင်ကိုအစိုးရသောသုဒ္ဓေါဒနမင်း'
 206931	suddhodanarāja	citation 'အပ၊ ဌ၊'; run-on article 'ဒ္ဓေါဒနဝတ္ထု(န) သုဒ္ဓေါဒန မင်း၏-အကြောင်းအရာ-ဝတ္ထု-အဋုပ္ပတ်'
 206933	suddhodani	citation 'ဓာန်'; run-on article 'ခံသု (ပု) [။ ကပ္ပဒ္ဒုမ။ သုဓာဂု-သံ။ ] လ (လဝိမာန်)။ ဟိမံသု, ကုမုဒပန္ဓု, ဝိဓု, သုဓံသု, သုဗ္ဘံသု'
 206936	sudhaja	analysis 'သု + ဓဇ'
@@ -2230,7 +2233,8 @@ id	iast	omitted
 207480	supariniṭṭhitabhūmiparikamma	quotation 'မဏိ-ကောဋိမတလဂ္ဂဟဏံ ... ဒဋ္ဌဗ္ဗံ'
 207481	supariniṭṭhitamaṇikuṭṭimasadisabhūmitala	stray '့'
 207482	supariniṭṭhitamālākammalatākamma	run-on 'ုရနိတသုာကဗူိတ္တတမ(ူ)[ သုပရန်ိတ + သုဓာကမ္မ + စိတ္တကမ္မ ] ကောင်းစွာ ပြီးဆုံး ခြင်းသို့ရောက်သော-အင်္ဂတေမှု-ပန်းချီဆေး ရေးအမှု'
-207487	suparipakkatālaphala	'တာလပက္က ('; run-on '၃ုပရိပက္ကယဝသမုဒါယ (ပု) [ ကောင်းစွာ-ကျက်-ပြုတ်-ဖြော-ပြီးသော-မုယော-ဂျုံ- အပေါင်း။ သုပရိပက္က-ကြည်'
+207487	suparipakkatālaphala	'တာလပက္က ('
+207488	suparipakkayavasamudāya	unread 'ဖြော'
 207489	suparipakkindriya	quotation 'သုပရိပက္ကိန္ဒြိယတ္တာ -အစိရာဂမနဒဿနတော စ'
 207493	suparipūra	Sanskrit form 'ပရိပူရ-သံ၊ ပြား]'
 207494	suparipūrita	'ဧဝံ]။'
@@ -2544,7 +2548,7 @@ id	iast	omitted
 208078	subhānupassana	list dash and number
 208079	subhānupassī	citation 'စီ'; grammar note 'သုဘာနုပဿိနော အနုပဿ-၏နဿ'
 208080	subhānurūpa	fragment '/ သုဘာရမ္မဏ ၂၂၂၂၂' (next headword and debris); citation 'ထေရ ၃၈၇'
-208081	subhārammaṇa	citation 'ဒီ၊'; run-on article '၃ုအရမ္မဏပစ္စယ (တိ) တင့်တယ်သောအာရုံလျှင် အကြောင်းရှိသော' (having a beautiful object as cause)
+208081	subhārammaṇa	citation 'ဒီ၊'
 208083	subhārammaṇabahula	stray ']'
 208084	subhāvanā	run-on article 'ဘာဝိတ (တိ)] သု + + ဏေ တ။ သုဘာဝိတ-သံ။ ] (၁) … (၂) …' with analysis and Sanskrit form
 208085	subhāvita	fragment 'မ သုဘာဝိတ'
@@ -2810,7 +2814,7 @@ id	iast	omitted
 208559	surucimahārāja	debris 'သု သု'
 208560	surucira	citation 'အပ၊'; next headword 'သုရုစိမနောဟရဂုဏဂဏဝိပုလ ၂'
 208561	surucimanoharaguṇagaṇavipula	citation '၁၉၂၊'
-208562	surutta	run-on articles: သုရုတ္တဝါစာ (ထီ) 'see the preceding headword'; သုရုဒ (တိ) with analysis, 'should be surudda', 'exceedingly cruel / harsh'; သုရုန္ဒန (န) with analysis, 'the city of Surundana (ancient name of Bārāṇasī)'; သုရုန္ဒနနဂရ (န) 'the city of Surundana'; (…)မတ္တက (တိ) 'mad on account of liquor'
+208563	suruttavācā	run-on articles: suruda 'exceedingly cruel / harsh' (with note that it should be surudda), surundana 'the city Surundana (ancient name of Bārāṇasī)', surundananagara, surāmattaka 'maddened by liquor'
 208570	surusuruvagga	debris ']'
 208571	surusuruvaggavaṇṇanā	headword repeated 'သုရုသုရုဝဂ္ဂဝဏ္ဏနာ'; debris 'ခ၃ု၄၈'
 208572	surūpa	analysis 'သု သုန္ဒရံ (သောဘဏံ)'; source 'ကပ္ပဒ္ဒုမ'; Sanskrit, Prakrit and Ardhamāgadhī forms
@@ -2824,7 +2828,9 @@ id	iast	omitted
 208585	sulabha	quotation fragment 'သုလဘာနီ'
 208587	sulabhajjhācāra	quotation fragment '“ ဝေသိယာ'
 208588	sulabhaṭṭhāna	'---- ----'; citation '(-အံ၊ ဌ၊'
-208589	sulabhatādassana	run-on articles with their glosses ('having grass and water easy to obtain', 'having firewood easy to obtain', 'having grain easy to obtain', 'see sulabhannapāna', 'the time when food and drink are easy to obtain', 'having the four requisites easy to obtain', 'see below', 'having almsfood easy to obtain', 'having fruits great and small easy to obtain', 'see sulabhapiṇḍapāta', 'having roots and fruits great and small easy to obtain', 'having a nature easy to obtain'), analyses, citations and the quotation 'သိဒ္ဓတ္ထ တွံ သုလဘန္နပါနေ ကုလေ … နိဗ္ဗတ္တိတွာပိ'
+208593	sulabhannapāna	quotation 'သိဒ္ဓတ္ထ တွံ သုလဘန္နပါနေ ကုလေ …'
+208595	sulabhapaccaya	citation 'ဒီ၊ ဌ'; running head 'သုလဘပိဏ္ဍ ၂'
+208600	sulabhamūlaphalāphala	citation 'ပြု ၅'
 208602	sulabhasampannabhikkha	citation 'ဝိသုဒ္ဓိ၊ ၁ဝ'
 208604	sulabhānavajja	'----'
 208605	sulabhāhāra	quotation 'တေနာဟ “ခဇ္ဇဘောဇ္ဇသမ္ပန္နာတိ'
@@ -3050,7 +3056,7 @@ id	iast	omitted
 209092	suvaṇṇasama	stray '၂'
 209094	suvaṇṇasampanna	citation 'အပ၊ ဠ၊ ၁ ၂၉၁'
 209095	suvaṇṇasaraka	debris ']] သု'; next headword 'သုဝဏ္ဏသရကဘတ္တ'
-209097	suvaṇṇasarabhamiga	run-on article '၃ုဝဏ္ဏသလာကာ (တိ) (က) ရွှေ့တံ၊ ရွှေ့ချောင်း၊ ရွှေ့ဖြင့်-ပြီး-ပြုလုပ်အပ်-သောအတံ။ (ခ) မြတ်သောတံမြက်စီး … မြတ်သောစာရေးတံ' (golden stick / rod; excellent broom; excellent pen) with citations and quotation
+209098	suvaṇṇasalākā	unread bracket '(နေရင်း'; source သျ; quotation fragment '(ခ) သုဝဏ္ဏသလာက'
 209099	suvaṇṇasāma	quotation '“သုဝဏ္ဏသာမော”'; next headword fragment '၅ဏ္ဏသာမကာလ (၇) ['
 209100	suvaṇṇasāmakāla	quotation 'သုဝဏ္ဏသာမကာလေ- န မံ ကောစိ ဥတ္တသတိ၊ န ပိဟံ ဘာယာမိ ကဿစိ'
 209104	suvaṇṇasāmapaṇḍita	quotation 'သုဝဏ္ဏသာမပဏ္ဍိတော ပန ဝိဒ္ဓေါပိ မမ ဝေရီ နာမ နတ္ထိ'
@@ -3075,7 +3081,8 @@ id	iast	omitted
 209145	suvaṇṇāliṅgasadisa	analysis bracket '[ သုဝဏ္ဏာလိင်္ဂ န သဒိသံ'; run-on article 'ဝဋ္ဋ (၇) ရွှေခွက်၌ ာခြာလည်သောရေဝဲ' (whirlpool of water turning in a golden bowl) with quotation 'အစ္ဆရိယံ ဘန္တေတိ …'; run-on article 'ှာဝိနာသ (ပု) ျဲ၏ မပျက်စီးခြင်း' (the not perishing of gold)
 209148	suvaṇṇāl̤iṅgasadisa	commentary quotation 'ဝဏ္ဏာဠိင်္ဂသဒိသောတိ …'; run-on article 'ဌကပန္တိ (ထံ) [ + ရွှေအုတ်အစဉ်။ ဣဋ္ဌကပန္တီ' (row of golden bricks); run-on article 'ဌကာ(ထီ) ရွေ့အတ်' (golden brick) with quotation 'ဝိပဿိဿ ပန ဘဂဝတော … ကိဏိံသု'
 209152	suvaṇṇiṭṭhakāsanthāra	analysis 'သုဝဏ္ဏိဋ္ဌကာ + သန္ထာရါ'
-209155	suvattha	displaced 'သုဝတ္တဝသန'; quotation '(၁) အလက်'; run-on article '၃ုဝတ္ထဝသန (တိ) ကောင်းသော-အဝတ်-အထည်-အရုံ-ကိုဝတ်ရုံသော' (wearing a good garment); run-on article 'ဝတ္ထိံ (ဗျ) … (၁) ချမ်းသာ-တင့်တယ်-အနာရောဂါကင်း-ဘေးဥပါဒ်မရှိ-ခြင်း။ (၂) …သည်၏အဖြစ်။ (၃) သုဝတ္ထိသဒ္ဒါ' (suvatthi: well-being, freedom from disease and danger) with grammarian's notes and page references
+209155	suvattha	running-head debris 'သု', 'သုဝတ္တဝသန' inside the text; fragment '(၁) အလက်'
+209156	suvatthavasana	run-on article suvatthi: analysis, Uṇādi and Sanskrit notes, senses 'well-being / free from illness / free from danger', 'the state of …', 'the word suvatthi', page numbers
 209157	suvatthi	quotation 'ဧတေန သစ္စေန ယညဒတ္တ ကုမာရဿ သောတ္ထိဘာဝေါ ဟောတု'
 209158	suvatthi	page number '၉ဝ'; bracket '['
 209159	suvatthika	grammarian's notes 'သု +။ သုဝတ္ထိ + က။ သွသ္တိက-သံ။ သောတ္ထိအ-ပြာ။ သောတ္ထိယ-အဒ္ဓမာဂဓီ' and brackets
@@ -3085,7 +3092,6 @@ id	iast	omitted
 209164	suvada	analysis '[သု. ဝဒ+ အ ဟ'
 209165	suvanta	next headword '/ သုဝပဏ္ဍိတ'
 209166	suvapaṇḍita	brackets '] ]'
-209167	suvapota	run-on article '၃ုဝပေါတက (ပ) ကျေးသား ကြက်တူရွေး-ငယ်-ပေါက်စ' (young parrot / chick)
 209170	suvammavammika	quotation 'တသ္မိဉ္စ ပန သုဝမ္မဝမ္မိကာ ဝိယ … ပရိဝါရယိံသု'
 209171	suvammita	quotation 'ဘိက္ခူပိ ခေါ -သုဝမ္မိတာ ဝိယ … ဓမ္မာ သုဏန္တိ'; stray 'ကြည့်'; citations 'ပြု] ပြု ၇။ ခ၃ု၈၅'
 209173	suvaya	analysis 'ဝယ + ဏ။ သုဝယသ်-သံ'; quotation '(၁) သုဇယာ'; debris '(၇) ( ၁'

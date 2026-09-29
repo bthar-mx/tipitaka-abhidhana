@@ -254,7 +254,8 @@ id	iast	omitted
 217450	sotapatita	stray '(၂)'; OCR debris
 217451	sotapatitatta	Pāḷi fragment 'ဝေဒိတဗ္ဗာ'; echo of the next headword 'သောတပထ'; OCR debris
 217452	sotapatha	quotation block '(၃) … (၄) ----'; OCR debris
-217453	sotapathagamana	citation 'ဣတိဝုတ်'; run-on 'သောတပထာဂမန (န) [ + ယု ] သောတပထဂမန-ကြည့်'; OCR debris
+217453	sotapathagamana	citation 'ဣတိဝုတ်'; OCR debris
+217454	sotapathāgamana	fragment 'သောတ-ဟို'
 217455	sotapada	'ဦ ၂'
 217457	sotapa(ppa)desa	quotation fragment 'သောတပ္ပဒေသဿာ'; OCR debris
 217461	sotapasādavatthuka	echo of the next headword 'သောတဗိလ'
@@ -523,7 +524,8 @@ id	iast	omitted
 217817	sobhitabuddhavaṁsavaṇṇanā	stray '+ ]'; OCR debris 'ပြ နို]'
 217818	sobhitabba	grammarian's note 'သောဘေတိ-မှ'; 'နို'; OCR debris
 217819	sobhitaratanasopāna	OCR debris 'အဘိဓာန် (အ-ဝဂ်) ၆ ပ-မ-သ-စ'; next headword 'သောဘိတဝဂ္ဂ'
-217821	sobhitavatthu	quotation 'အဟံ အာဝုသော … ပဉ္စ ကပ္ပသတာနံ အာဟ'; run-on article sobhitaṁ (ဗျ) 'တင့်တယ်လှပခြင်းငှာ'; OCR debris
+217821	sobhitavatthu	quotation 'အဟံ အာဝုသော … ပဉ္စ ကပ္ပသတာနံ အာဟ'; OCR debris
+217822	sobhituṁ	scan debris 'ီ့]] ီ့] စ'
 217823	sobhitukāma	OCR debris
 217824	sobhiya	grammarian's notes 'ကို ယ-ပြု', 'သောဘ + ဏိက=သောဘိယ'; Sanskrit note; garbled parenthesis '(ပြု တန်ဆာမ၊ ရှပ် သူ)'
 217825	sobhissati	OCR debris
@@ -1515,7 +1517,8 @@ id	iast	omitted
 219055	hatthisammadda	scan debris; quotations 'ဟတို့သမ္ပုဒ္ဒံ ...', '“ဟတို့သမူဒ္ဒေါ အတ္ထီတိ', 'ဟတ္ထသမ္မဒ္ဒန္တ ... အတ္ထော'; citations
 219056	hatthisarīra	page numbers
 219057	hatthisahassa	stray '[ နို'
-219058	hatthisāriputta	citation; scan debris; quotation fragment 'ပုတ္တော'; run-on article 'ဟတ္ထိသာရီ (တိ) [ + ဏီ ...] ဆင်ဆရာ၊ ဆင်ကိုဆုံးမ ... တတ်သော၊ သူ' with quotations 'စိတ္တော စ တေနုပသင်္ကမိံသု', 'ဟတ္ထိံ သာရေ-တီတိ ဟတ္ထိသာရီ'
+219058	hatthisāriputta	citation; scan debris; quotation fragment 'ပုတ္တော'
+219059	hatthisārī	feminine-form note and analysis fragment 'ထီ.၌ တ္ထသာရ တ္ထ ရ ခြံ'; quotations 'ဟတ္ထိသာရိနံ', 'စိတ္တော စ တေနုပသင်္ကမိံသု', 'ဟတ္ထိံ သာရေတီတိ ဟတ္ထိသာရီ'; scan debris inside the definition
 219060	hatthisālatoraṇa	rest of analysis '+ တောရဏံ'; stray 'နို'; list marker '----'
 219061	hatthisālā	quotation fragment 'ဟတ္ထိံ ဟတို'
 219062	hatthisālānissita	damaged analysis 'နိဿိတ'; stray 'နို'; scan debris
@@ -1551,7 +1554,7 @@ id	iast	omitted
 219095	hatthekadesa	scan debris; quotation fragment 'ဝတ္တ'
 219096	hatthotāpaka	garbled rest of the bracket; quotation 'သုရာဒိဘေဒေ အာဟာရေ ဟတ္ထောတာပ တမ္ပိ ခါဒတိ'
 219097	hadati	scan debris; Sanskrit note 'ဟဒတေ-သ'; grammatical note '(က) အ+ အန် ကင်က ကုန်၏'; quotation fragment 'ယံ ဘဒန္နေ ဟဒန္န ယံ အညေ'
-219098	hadanti	run-on article hadaya: headword and label 'ဟဒယ (န) [ ဟရ + ယ'; sources 'ဓာန်၊ ကပ္ပဒ္ဒုမ'; Sanskrit and Prakrit forms; senses (1)–(5) (see flag) and the reference list repeating them with quotations and citations; scan debris
+219099	hadaya	scan debris throughout; page references ၁၉, ၂၅၁; fragment 'သုတ္တ'
 219102	hadayakoṭi	scan debris
 219104	hadayakheda	stray 'နို'; scan debris; citation
 219105	hadayagata	scan debris

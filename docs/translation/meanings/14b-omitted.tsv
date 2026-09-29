@@ -22,7 +22,6 @@ id	iast	omitted
 210719	payojanattha	second '(၂) ဣဒမတ္ထိက' (a synonym or reference)
 210722	payojanadassanavacana	quotation fragment 'သွာ-က္ခာတောတိအာဒိ “ဧဟီ”'
 210723	payojananānatta	trailing 'ပယောဇနပရိဂ္ဂဟ' (a headword run in)
-210732	payojanaparicchedaka	run-in article 'ပယောဇနပရိစ္ဆေဒ၀၀တ္ထာပန (တိ) အကျိုး၏ အပိုင်းအခြား ကို- ပိုင်းခြား- မှတ်သားကြောင်း- (စကား)' (words that delimit / fix the limit of the benefit)
 210736	payojanavācaka	quotation fragment '“ခယဉာဏနိဗ္ဗတ္တနတ္ထာယာ” တိ'
 210739	payojanāsampatti	trailing 'ပယောဇနသမ္ဗန္ဓာဘိဓါနပုဗ္ဗင်္ဂမ၈၃' (next headword with a page number)
 210740	payojanasambandhābhidhānapubbaṅgama	quotation fragment 'ဓမ္မသံဝဏ္ဏနာယ'
@@ -71,7 +70,6 @@ id	iast	omitted
 210969	paradattavutta	grammarian's note 'အာဒီသု (ဝုတ္တ-သဒ္ဒေါ) ဇီဝိတဝုတ္တိယံ'
 210973	paradattūpajīvī	quotation fragment 'ပရဒတ္တူပဇီဝီ'
 210980	paradāragū	stray 'ပရဒါရသေဝီ' inside the definition
-210981	paradāracāritta	run-in articles 'ပရဒါရဝီတိက္ကမ (ပု)', 'ပရဒါရသေဝန (န၊ထီ)', 'ပရဒါရသေဝိနီ (ထီ) [ပရဒါရသေဝီ+ဣနီ]', 'ပရဒါရသေဝီ (တိ) [+ဏေ+ဏီ]' (transgressing / resorting to another's wife; the woman / person who does so) and the closing 'အထက်ပုဒ်ကြည့်'
 210991	paradārūpasevī	trailing 'ပရဒီပနိဝါသီ ၅၇' (a headword with a page number)
 211001	paradukkhapaṭikāra	leading 'ကာရ (ပု) [ပရဒုက္ခ+ပတိကာရ]' (end of the headword, label and analysis)
 211002	paradukkhapatikāra	leading 'ကာရာရမ (ပု) [ပရဒုက္ခပဋိ(တိ)]'; stray 'ပရဒုက္ခာပနယနာကာရပ္ပဝတ္တိ' inside the definition; trailing '(တိ)ကာရာရမ္ဘော'
@@ -196,10 +194,11 @@ id	iast	omitted
 211730	paravādavidhaṁsana	stray word 'ပရဝါဒီ' inside 'တတ် … သော'; quotation 'ပရဝါဒဝိဓံသနဿ မဇ္ဈိမနိကာယ-သေဋ္ဌဿ'
 211735	paravādī	quotation fragment “ပရဝါဒီ”
 211736	paravādikathā	Pāḷi quotation 'တတ္ထ ပရဝါဒီကထာ … ပဘေဒေါတိ'; the run-in headwords ပရဝါ(ဒိ)ဒီစောဒနာ, ပရဝါ(ဒိ)ဒီဒိဋ္ဌိ, ပရဝါ(ဒိ)ဒီပက္ခ, ပရဝါဒီပက္ခမူလက [+က], ပရဝါဒီပဋိက္ခေပမုခ, ပရဝါဒီပဋိညာ, ပရဝါဒီပရိကပ္ပိတ with their labels and definitions; quotation fragment 'အာဒိမာဟ'; page number '၁၁၃'
-211737	paravādīkathā	Pāḷi quotation 'တတ္ထ ပရဝါဒီကထာ … ပဘေဒေါတိ'; the run-in headwords ပရဝါ(ဒိ)ဒီစောဒနာ, ပရဝါ(ဒိ)ဒီဒိဋ္ဌိ, ပရဝါ(ဒိ)ဒီပက္ခ, ပရဝါဒီပက္ခမူလက [+က], ပရဝါဒီပဋိက္ခေပမုခ, ပရဝါဒီပဋိညာ, ပရဝါဒီပရိကပ္ပိတ with their labels and definitions; quotation fragment 'အာဒိမာဟ'; page number '၁၁၃'
+211737	paravādīkathā	Pāḷi quotation 'တတ္ထ ပရဝါဒီကထာ … ပဘေဒေါတိ'; the run-in headwords ပရဝါ(ဒိ)ဒီစောဒနာ, ပရဝါ(ဒိ)ဒီဒိဋ္ဌိ, ပရဝါ(ဒိ)ဒီပက္ခ with their labels and definitions; quotation fragment 'အာဒိမာဟ'; page number '၁၁၃'
 211753	paravādisantika	quotation fragment 'ဝါဒိက္ခိတ္တောတိ'; the next headword 'ပရဝိတ္တူပကရဏ'
 211781	paravetanabhata	Pāḷi quotation 'ဘတကောတိ ပရ-ဝေတနဘတော'
-211785	parasaṁharaṇa	Pāḷi commentary note '“ပရသံဟရဏံ”တိပိ ပါဌော ... ဝုတ္တံ ဟောတိ'; run-on headwords and definitions from ပရသက္ကာရ to ပရသတ္တ; citation '၇၅- ပဋိသံ'
+211785	parasaṁharaṇa	Pāḷi commentary note '“ပရသံဟရဏံ”တိပိ ပါဌော ... ဝုတ္တံ ဟောတိ'
+211792	parasatta	citation '၇၅- ပဋိသံ'
 211798	parasadda	stray word 'ပရသန္တက' (a later headword) inside the first gloss
 211799	parasaddayoga	quotation fragment “ပရသဒ္ဒယောဂေ”
 211803	parasantakaggahaṇa	'(၁)' with quotation fragments 'သုဝဏ္ဏ', 'ကဟာပဏော'
@@ -227,7 +226,7 @@ id	iast	omitted
 211906	parāpara	grammatical quotation '“ပရာပရာနီ” တိ ဝတ္တဗ္ဗေ … “ပရောပရာနီ”'; the run-in headword ပရာပရာဓ(ပု) with its definition
 211909	parāparādhavikappapariccāga	stray word 'ပရာဗဒ္ဓ' (a later headword) inside the gloss
 211913	parāpekkha	encoding debris ⟨....⟩
-211914	parābaddha	the run-in headword ပရာဘတ(တိ) with its definition; the headword 'ပရာဘ၀၁ (ပု)' with a grammatical note '[+အ။ အ-ဝမာနံ တိရက္ကာရော၊ ပရိဘဝေါပျနာဒရော။' and page number 'နှာ-၁၂၇'
+211915	parābhata	run-on article ပရာဘဝ၁ (ပု) with its analysis bracket, Pāḷi quotation and citation 'နှာ-၁၂၇'
 211916	parābhava	the repeated senses (1)–(5); commentary quotation 'ပရာဘဝါယာတိ အဝဍ္ဎိုယာ ဝိနာသာယ။ အဝုဍ္ဎို။'; the run-in headword 'ပရာဘ၀၂(ပု) [။ နောက်ပုဒ် ကျေ။ ]' with its definition
 211924	parābhavasutta	quotation “ပရာဘဝသုတ္တ”
 211928	parābhibhavana	quotation fragment 'တထာ “'
@@ -243,7 +242,6 @@ id	iast	omitted
 211961	parāmāsa	a long block of encoding debris in ⟨ ⟩ with the stray word 'ပရာမာသ' and a stray ']'
 211963	parāmāsakilesa	quotation “ပရာမာသ-ကိလေသာန”န္တိအာဒိ
 211966	parāmāsaggāha	quotation “နိစ္စ”န္တိအာဒိနာ
-211970	parāmāsarahita	the run-in headwords ပရာမာသဝိပ္ပယုတ္တ(တိ), ပရာမာသသမ္ပယုတ္တ(တိ), ပရာမာသသီသ(န) with their definitions
 211976	parāyaṇa	a long block of encoding debris in ⟨ ⟩ with a stray ']'; the repeated senses; 'ပရာယဏ(န) ၃၂၃'; variant 'ပရာယဏော (ပရာယနော။ ဗုဒ္ဓဝံ)'; quotation fragments “မာ ”, '(အာရမ္မဏံ)', 'တေနာဟ “ပရာယဏ”န္တိ'
 211983	parāvattita	quotation fragment 'တေနာဟ န္တိ'
 211985	pari	the repeated senses (1)–(13) with commentary quotations ('ပလ္လင်္ကန္တိ ဧတ္ထ …', 'ပရိကေဠနာ-တိ …', 'မဟာနိ၊ ပရိကဍ္ဎုတိ', 'ပရိမုခန္တိ …', 'သမီပတ္ထော …', “ပရိဏာယိကာ”, 'ပရိဂ္ဂဟဏတ္ထာယာတိ …')
@@ -294,7 +292,7 @@ id	iast	omitted
 212165	parikilamittha	debris / source fragment 'မာ}(က္ကိ)'
 212168	parikkilesa	grammarian's note in Burmese (the ṭīkās on Saraṇagamanakathā 17 explain 'duggatiparikilesaṁ' as a compound; the reading at 163 is corrupt; the doubled 'parikkileso' is a metrical doubling for the upendavajirā metre, so 'parikkilesa' at 176 is a scribal slip), with its citations
 212169	parikilesa	grammarian's note in Burmese (the ṭīkās on Saraṇagamanakathā 17 explain 'duggatiparikilesaṁ' as a compound; the reading at 163 is corrupt; the doubled 'parikkileso' is a metrical doubling for the upendavajirā metre, so 'parikkilesa' at 176 is a scribal slip), with its citations
-212170	parikkilesavimutti	the run-on articles: '(ကြိ၊ဝိ) … ပူပန်စေ-၍', 'ပရိကိလေသောပစာရ (ပု) … ကိလေသာ၏ ဖြစ်ခြင်း', 'ပရိကိဿတိ (ကြိ) ထက်ဝန်းကျင် ပင်ပန်း၏', 'ပရိကီဠနာ (ထီ) [+ယု+အာ] … ကစား-ခြင်း' with Pāḷi gloss 'ပရိကေ-ဠနာတိ ပရိကီဠနာ', 'ပရိကုပိတ (တိ) [+တ] (က) … စိတ်ဆိုး-သော၊ သူ။ (ခ) … ပျက်စီး-သော'
+212175	parikīl̤inā	Pāḷi etymology 'ပရိကေဠနာတိ ပရိကီဠနာ'
 212181	parikuppiṁsu	the run-on article 'ပရိကေဠနာ၁ (ထီ)[+ယု+အာ။ ကီဠတိ … ကီဠော ကီဠေ။ ] ထက်ဝန်းကျင်-မြူးတူး-ပျော် ပါး-ကစား-ခြင်း'
 212182	parikel̤anā	Pāḷi fragment 'တိ ပရိကီဠနာ' (end of a gloss); stray headword 'ပရိက္ကမန'
 212185	parikkanta	repeated fragment 'ဘာသိတပရိက္ကန္တ' (twice); textual note that the Paṇ nissaya emends to 'ပရက္ကန္တံ' (from parā + kamu)
@@ -310,7 +308,6 @@ id	iast	omitted
 212220	parikkhārajāta	grammarian's note '(ဇာတ-သဒ္ဒါ တဗ္ဘော)'; quotation '“အတ္တ-ပရိက္ခာရတ္ထ နော ပရိက္ခာရဇာတ”န္တိ'
 212235	parikkhārabhaṇḍaka	Pāḷi fragment 'ပရိက္ခာရဘဏ္ဍကေနာ'
 212241	parikkhāramattā	Pāḷi gloss 'ပရိက္ခာရ-ပရိက္ခာရဝိနာသ မတ္တာတိ ပရိက္ခာရဂဟဏံ'
-212248	parikkhāravisaya	the run-on article 'ပရိက္ခာရ၀ေ၀ဏ္ဏိယ(န) အသုံးအဆောင်-ပရိက္ခရာ-၏ အဆင်းဖောက် ပြန်-အိုမင်းဟောင်းနွမ်း-ခြင်း'
 212256	parikkhitta	fragment 'ပါစိတ်ယော' (source or quotation)
 212271	parikkhipanaka	Pāḷi gloss 'ပရိက္ခိပနကန္တိ ကဋိယံ ပရိက္ခိပနာရဟံ'
 212272	parikkhipanta	stray headword 'ပရိက္ခိပါပေတိ' inside sense (3) of the first copy
@@ -339,7 +336,6 @@ id	iast	omitted
 212398	pariggahakaraṇa	trailing '(၂) “မယှ”' (sense reference with a quotation fragment)
 212404	pariggahalakkhaṇa	quotation fragments '“ပရိဂ္ဂဟလက္ခဏာ”' (twice), 'သမ္မာပရိဂ္ဂဟဏလက္ခ-ပရိဂ္ဂဟ(ဏ)'; the editor's note in Burmese (there are two readings, pariggahalakkhaṇa and pariggahaṇalakkhaṇa, of the same meaning; the ṭīkās explaining it are quoted in full, the oldest, the Mūlaṭīkā, first, for students to weigh)
 212405	pariggahaṇalakkhaṇa	quotation fragments '“ပရိဂ္ဂဟလက္ခဏာ”' (twice), 'သမ္မာပရိဂ္ဂဟဏလက္ခ-ပရိဂ္ဂဟ(ဏ)'; the editor's note in Burmese (there are two readings, pariggahalakkhaṇa and pariggahaṇalakkhaṇa, of the same meaning; the ṭīkās explaining it are quoted in full, the oldest, the Mūlaṭīkā, first, for students to weigh)
-212412	pariggahaparijana	the run-on article '(န) သိမ်းပိုက်-သိမ်းဆည်း-အပ်သည် ၏ အဖြစ်နှင့်- မယှဥ်-ကင်းကွာ- ခြင်း'
 212419	pariggahavatthu	trailing '(-'
 212431	pariggahita	stray headword 'ပရိဂ္ဂဟိတ' inside (2)(b) of the first copy; the second printing of the senses
 212437	pariggahitadassanamukha	quotation fragment '“ဗဟုဿုတော”'
@@ -401,6 +397,7 @@ id	iast	omitted
 212716	pariccāgasīla	stray word 'ပရိစ္စာဂာဒိလက္ခဏ' (a later headword)
 212723	paricchada	encoding debris in ⟨ ⟩ (the grammatical analysis); source tags 'အမရကောသဋီကာ။ ဝိ၊ဓါန်၊သျ'; quotation fragment '(၄) “ကောသော”'; quotation 'အယံ ဟေတ္ထ မဟာနာမ ... ပရိဟာယတိ'
 212725	paricchadādijāta	fragment '-န္တိ'
+212728	paricchijja	run-on article ပရိစ္ဆိဇ္ဇ၂ (ကြိ၊ဝိ) 'ပိုင်းခြား၍။ (က) ဝေဖန်-သိမြင်-၍။ (ခ) စူးစမ်း-ဆင်ခြင်-၍။'
 212733	paricchijjati	grammatical analysis '[။ ဆိဒိ ဒွိ-ဓါကရဏေ။ ]'
 212740	paricchijjamāna	fragment '(ဝုတ္တော)'
 212748	paricchindati	second copy of the senses with the headword 'ပရိစ္ဆိန္ဒတိ'
@@ -459,7 +456,7 @@ id	iast	omitted
 213083	pariṇata	second copy of senses (1)-(5); quotation fragment '(အတ္တနော) ပရိဏာမေယျ'
 213085	pariṇatakāla	stray repeat of the headword 'ပရိဏတကာလ' at the end
 213090	pariṇatadvaya	quotation fragment 'ပရိဏတဒွယေ “အတ္တနော”'
-213092	pariṇatapaduma	Pāḷi quotation 'တရုဏပလ္လ၀၀ဏ္ဏကာလေ ပဝတ္တံ ပရိဏတ-ပလ္လ၀၀ဏ္ဏကာလံ'
+213094	pariṇatapallavavaṇṇakāla	Pāḷi quotation 'တရုဏပလ္လဝဝဏ္ဏကာလေ ပဝတ္တံ ပရိဏတပလ္လဝဝဏ္ဏကာလံ'
 213101	pariṇamati	second copy of senses (1)-(7); stray headword 'ပရိဏမနသီလ' splitting the fragment 'ပရိ-...ဏမတီ'
 213108	pariṇāma	repetition of senses (1)-(5)
 213110	pariṇāmakāla	Pāḷi quotations 'ဝဍ္ဎိုတကာ-လော ဂဗ္ဘဂ္ဂဟဏကာလော။ ပရိဏာမကာ-လောတိ ဗလ၀၀dပဿနာကာလော' (with encoding debris 'd')
@@ -505,7 +502,6 @@ id	iast	omitted
 213374	parittodaka	commentary quotation '(၂) ပရိတ္တောဒကေတိ လုဠိ-တောဒကေ'
 213383	paridameti	variant form 'ပရိ-ဒမေတီ'
 213394	paridassati	grammatical note '[+ဤ]'
-213395	paridassi	grammatical notes '[+ယု]' (twice)
 213406	paridahanti	stray fragment 'ပရိဒဟသိ=' (a later headword)
 213412	paridahita	commentary quotation 'ပရိပုဗ္ဗော ဒဟိတ-သဒ္ဒေါ ဝတ္ထနိဝါသနံ ဝဒတီတိ အာဟ'
 213433	paridīpeti	quotation 'ဇိနသာသနဿ သေဋ္ဌဘာဝံယေဝ ပရိဒီပေန္တိ'
@@ -638,7 +634,7 @@ id	iast	omitted
 214113	paripūretuṁ	quotation fragments '“ဧကူနပဉ္စ-သတာန”', '(ခ) “ဝိညူဟီ”'; trailing 'ပရိပူရေန္တ' (the next headword)
 214116	paripūretukāma	citation 'ဣတိ-ဝုတ်၊ဋ္ဌ'
 214120	paripūrenti	stray headword 'ပရိပူရေသုံ၂' inside the text
-214130	paripūresuṁ	leading fragment '(၂) (က) ကြည့်' (tail of a cross-reference belonging to the preceding article); grammatical analyses '[+ဏေ+ဥံ]' and '[ပရိ+ပူရ+ဏေ+ဥံ၊ သ-အာဂုံ]'
+214130	paripūresuṁ	dangling fragment '(၂) (က) ကြည့်။'; headword ပရိပူရေသုံ၂ with label (ကာ၊ကြိ) and analysis bracket
 214143	paripphanda	quotation 'ပရိပ္ဖန္ဒနံ ပရိပ္ဖန္ဒော'
 214145	paripphandana	quotation '“ဖန္ဒာပေတီ”တိ'
 214155	paripphandita	quotation '(ခ) ပရိဖန္ဒိတာနီ'
@@ -664,7 +660,8 @@ id	iast	omitted
 214239	paribbājakavacana	'ပါဠိယံ “ဩဠာရိကံ ခေါ”' (quotation from the canonical text)
 214247	paribbājakasamāpanna	running head 'ပရိဗ္ဗာဇကာရာမာဘိမုခ'
 214258	paribbājikā	citation 'ဝိ၊ဋ္ဌ၁'
-214266	paribbhamatu	grammatical analyses '[+ယု]', '[ပရိဗ္ဘမန+က]'; running head 'ပရိဗ္ဘမနကသတ္တ ၅၉'; variant '(ကဏ္ဋက)' in the heading ပရိဗ္ဘမန(ကဏ္ဋက)ကဏ္ဍက
+214267	paribbhamana	cross-reference 'ပရိဗ္ဘမနကသတ္တ ၅၉'
+214268	paribbhamanaka	run-on article ပရိဗ္ဘမန(ကဏ္ဋက)ကဏ္ဍက (ပု) 'ချာချာလည်-ပတ်ချာလည်-သော-ဆူး-ငြောင့်-စူးရိုးတန်။'
 214274	paribbhamanacakka	quotation '“ပရိဗ္ဘမနစက္က”'
 214277	paribbhamanākāra	trailing Pāḷi word 'ပရိဗ္ဘမန္တ' (next headword)
 214278	paribbhamanta	second printing of senses (1)-(4)
@@ -736,7 +733,7 @@ id	iast	omitted
 214675	parimaddanadhamma	stray 'ပရိမဒ္ဒန္တ ၃၅' (headword and page number)
 214682	parimaddāpeyya	grammar note '[+ဥံ]'
 214685	parimaddita	stray '(၃)' before «S1»
-214688	parimadditabbadhamma	grammar notes '[၊ အ-ပစ္စည်းကို ဧ-ပြု]' and '[။ (⟨y&drÂ$wd⟩-သံ)]' (encoding debris); quotation fragment '(ဂ) (ပါဒတလံ) ပရိ-မဇ္ဇီ'
+214696	parimasati	quotation fragment for sense (c) '(ဂ) (ပါဒတလံ) ပရိမဇ္ဇီ'
 214706	parimāṇa	fragment 'အာဟ'; citation 'သီ၊ဋီ၊'; stray headword 'ပရိမာဏဒဿန'; 'သစ်၊(၃)'; grammarian's note 'နု-သဒ္ဒေန ဟေတ္ထ … ပရိမေယျတ္ထော စ'
 214710	parimāṇapariccheda	quotation fragment 'အာဒိမာဟ'
 214712	parimāṇavācī	quotation fragment '“ယာဝကီဝ”'
@@ -820,7 +817,7 @@ id	iast	omitted
 215035	pariyāyavacana	second printing of senses (1)-(4); quotation fragments 'န္တိ “ဝိသံယောဂာယာ”', 'ပရိယာယဝစန'; citation '(ဣတိဝုတ်။ ၂၁၈)'
 215036	pariyāyavacananiddhāraṇa	stray headword 'ပရိယာယဝိသေသဗောဓန' at the end
 215039	pariyāyavibhāvanā	quotation '“ပရိယာ။ သုဗောဓနဉ္စာ”-တိ'
-215043	pariyāyavisesabodhana	run-in article 'ပရိယာယ၀ေ၀စနဝိသိဋ္ဌ (တိ) ပရိယာယ်, ၀ေ၀kစ်အားဖြင့် ထူး သော။' and quotation 'ပရိယာယ၀ေ၀စနဝိသိဋ္ဌာ ၀ေ၀စန-ဟာရဿ။'
+215044	pariyāyavevacanavisiṭṭha	Pāḷi quotation 'ပရိယာယဝေဝစနဝိသိဋ္ဌာ ဝေဝစနဟာရဿ'
 215045	pariyāyasaddadīpaka	quotation '၀ေ၀စနပကာသကန္တိ ပရိယာယသဒ္ဒဒီပကံ။'
 215051	pariyāyahetu	quotation fragment “ပုဗ္ဗဘာဂမဂ္ဂော”
 215053	pariyāyāyatana	fragment 'နနု'
@@ -849,7 +846,6 @@ id	iast	omitted
 215145	pariyesanakkhetta	Pāḷi word 'ပရိယေသနဒုက္ခမူလ'
 215157	pariyesanamūlaka	stray headword 'ပရိယေသနာနာပဇ္ဇန' at the end
 215166	pariyesanāraha	run-in article 'ပရိယေသနုပါယ (ပု) ရှာ မှီးခြင်း၏အကြောင်း။'
-215167	pariyesanta	repeated headword 'ပရိယေသန္တိ'; grammatical analysis '[(ဧသ)+အ+အန္တိ]'
 215182	pariyesita	fragment 'ပရိယေသိတ။'
 215192	pariyesiyamāna	quotation 'ဗြာဟ္မဏော “မာ ”တိ အာဟ။'
 215201	pariyoga	fragment '”တိ။'
@@ -899,7 +895,6 @@ id	iast	omitted
 215424	parivaṭṭeti	Pāḷi word 'ပရိဝဋ္ဋေသီ'
 215425	parivaṭṭetvā	second printing of senses (1)-(3)
 215429	parivaḍḍhati	stray word 'ပရိဝဏ္ဏယန္တ' (a following headword)
-215434	parivaṇṇayati	the next article run in: 'ပရိဝဏ္ဏယန္တ (တိ) ချီး မွမ်း-ချီးကျူး-ထောမနာ-သော၊ သူ။' (praising / commending / extolling, said of a person)
 215439	parivatta	senses printed twice in the source; translated once; reference 'သာရတ္ထ၊ ပရိဝတ္တက ၂'
 215440	parivattaka	senses printed twice in the source; translated once; quotation fragment '“ဒဿာမီ”'
 215442	parivattakadvāra	Pāḷi 'ပရိဝတ္တကဒွာရမေဝါ' and citation '(ဝိ၊သင်္ဂဟ။ ၂)'
@@ -1012,7 +1007,6 @@ id	iast	omitted
 216178	parissaya	grammatical analysis '[ပရိဿယ + အ]'
 216196	parissayavinodana	Pāḷi quotation fragment 'ပရိဿယဝိနောဒနန္တိ ဥတုပရိဿယာဒိ… ဝိဟာရာဒိအာဝသထံ' (commentary gloss)
 216200	parissayasahana	source tag '“သီ-ဟော”'
-216205	parissayābhāva	merged following article 'ပရိဿယာဘာ၀၀Dမံသနတ္ထ (ပု) ဘေးရန်မရှိသည်၏ အဖြစ်ကို စူးစမ်းခြင်းအကျိုး' (with encoding debris)
 216211	parissāvana	quotation fragment 'ဝုတ္တမ္ပိ “။ ”တိ'
 216215	parissāvanacol̤abandhanaṭṭhāna	quotation '“ပရိ-ဿာဝနစောဠဗန္ဓနဋ္ဌာနေ”'
 216219	parissāvita	citation '(-ကင်္ခါ၊ဋီ၊သစ်။'
@@ -1078,7 +1072,6 @@ id	iast	omitted
 216580	paropaghāta	stray 'ဒေတိ'
 216581	paropaññāsa	quotation word 'ပရောပညာသာ'
 216584	paropaṇṇāsa	stray 'ပရောပဏ္ဏာသဓမ္မ' (a later headword) at the start
-216586	paropaṇṇāsakusaladhammaparivāra	merged following article 'ပရောပဏ္ဏာသကုသလဓမ္မ၀၀တ္ထာနကာလ (ပု) ၅၀-ကျော်သော ကုသိုလ်တရားတို့ကို-ပိုင်းခြား - မှတ်သား - သော အခါ' (with encoding debris)
 216592	paropadesanirapekkha	stray 'ပရောပရ' (a later headword)
 216594	paropadesasambhūta	quotation 'ဣတရေသံ သုတမယဉာဏသံဝဍ္ဎိုတတ္တာ'
 216596	paropara	Pāḷi fragment '(၁)(၂) ပရောပရာ။ (-။'
@@ -1097,13 +1090,14 @@ id	iast	omitted
 216655	palaya	grammatical note 'ဏော' (suffix)
 216656	palala	grammatical note 'ပလ လဝနပဝနေသု၊ အလော၊ ပလာလောပိ' (root, suffix, variant form)
 216657	palāla	grammatical note 'ပလ လဝနပဝနေသု၊ အလော၊ ပလာလောပိ' (root, suffix, variant form)
-216659	palata	quotation 'ပလတာ'; cross-reference 'ပလသတ၃နှင့် ယှဥ်ကြည့်' (compare palasata 3); the swallowed entries palavati … palaḷati with their glosses, grammatical analyses, a note on manuscript readings
+216659	palata	quoted reading '“ပလတာ”'
+216663	palasata	run-on article ပလသတ၃ (ပု) [+ဏ] ကြံ့ 'ပလတာ', with the editors' note on the readings palata / palasatā in the Chaṭṭha and other editions
 216674	palātadhītu	quotation fragment 'ပလာတဓီတာယာ'
 216679	palāpatumba	trailing 'ပလာပိတ' (start of another headword)
 216684	palāpavīhi	source tag 'အာဟ'
 216690	palāpeti	inflected form 'ပလာပေတွာ'
 216708	palāyati	list of inflected forms with --- and a page number ('၁၁၇၊ပလာယသိ --- ဇာ၊ပလာယထ---'); trailing 'ပလာယနကဂန္တ' (start of another headword)
-216712	palāyana	opening bare 'ကြည့်' (see …); the homograph numbers written with the headword; grammatical analyses '[(ပလေ)+ယု]', '[(ပလေ)+ဏေ+ယု]'; a stray trailing '(၂)'
+216712	palāyana	dangling fragment 'ကြည့်။'; headword ပလာယန၂ with label (န) and analysis bracket
 216719	palāyanattha	trailing 'ပလာယနမိဂ' (start of another headword)
 216742	palāyita	trailing 'ပလာယိတဗ္ဗ' (start of another headword)
 216745	palāyitajātaka	citation 'ဇာတကပါဠိ၊ ၂-နိပါတ၊ ၈-ဝဂ်၊ ၉-ဇာတ်၊'

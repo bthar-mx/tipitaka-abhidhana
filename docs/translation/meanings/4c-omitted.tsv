@@ -963,7 +963,6 @@ id	iast	omitted
 173684	ekaratanappamāṇa	page number
 173686	ekaratta	grammatical note citing Moggallāna ('ဧကာနရတ္တိံ'); page numbers; running head 'ဧကရတ္တိပရိဝါသ'
 173688	ekarattātikkama	analysis bracket [ဧကရတ္တ+အတိက္ကမ]; page number
-173689	ekaratti	run-on article ဧကရတ္တိန္ဒိဝ [ဧကရတ္တိ+ဒိဝ] with its definition (one night and one day)
 173693	ekarattivāsa	citations
 173696	ekarava	stray '၁'
 173697	ekarasa	the duplicate copy of the article; citations; scan debris
@@ -1798,7 +1797,8 @@ id	iast	omitted
 175078	okkāmenti	citation သာဋ္ဌ ၃ ၁ဝ၉; fragment 'တေနာဟ'; run-on article ဩက္ကာဝရဓရ (တိ) 'bearing the noble Ukkāka / Okkāka lineage (said of a person)', with quotation 'ဩက္ကာဝရဓရာတိ ပုဗ္ဗပုရိသသင်္ခါတဥက္ကာကဝံသဝရဓာရိကာ' and a note on the passage commented on (၂၀၈); run-on article ဩက္ကိတ (တိ) [အဝ+ကိရ+တ] 'intermingled / …'
 175081	okkhaka	quotation 'ဥက္ခာနံ သမူဟော ဩက္ခကံ'; source tag မောင်
 175082	okkhanditvā	citation အံဋီ ၃; grammarians' note on splitting (ဓာန်, တိပိဓာန် on 'ပက္ခန္ဒိကာ'), OCR-damaged
-175083	okkhāmi	source tag ထေရီအပဒါနဒီပနီ; run-on article ဩက္ခာ (ထီ) [ဥခ+အ+အာ, with source tag ဓာန်ဋီ] 'a great rice pot having a wide face / a wide mouth / a wide opening', with form 'ဩက္ခာယမာန' and OCR debris
+175083	okkhāmi	source ထေရီအပဒါနဒီပနီ
+175084	okkhā	running head 'ဩက္ခာယမာန'; scan debris 'ံဝ'
 175090	okkhāsata	citation သံ
 175092	okkhitta	analysis bracket [အဝ (သံ) ခိပတ …] with fragments 'အဝတ္ခိမ္ဘ', 'ဩက္ခိတ္တပလိဃ'
 175093	okkhittacakkhu	quotation 'ဩက္ခိတ္တစက္ခု ဣရိယာပထသမ္ပန္နော' with citations ဝိ၁ ၁ဝ၄, ပါစိတ်ယော; commentary quotation 'ဩကာရော စေတ္ထ အဝသဒ္ဒဿ ဝိပရီတော …'
@@ -1856,7 +1856,8 @@ id	iast	omitted
 175192	oghataraṇasutta	OCR debris throughout; reference '(အကျယ်ကို သံ ၁-၁၉ ကြည့်)'
 175193	oghataraṇākāra	analysis fragment 'အာကာရ]'; OCR debris; citation သံဋီ ၁ဝ
 175194	oghataraṇūpāya	OCR debris '၈ ပ ဝ ဖို့] ၈ ဓါ [။'
-175197	oghana	see-reference 'ဩဃနိ(နီ)ယ-ကြည့်' and form 'ဩဃနီ(နီ)ယ' with citation မဋ္ဌ၂ (belonging to the next articles); run-on article ဩဃနဒီ (ထီ) 'a river that has a current / that is flowing', with citation ကင်္ခါဋီသစ်
+175197	oghana	see-reference 'ဩဃနိ(နီ)ယ-ကြည့်' and form 'ဩဃနီ(နီ)ယ' with citation မဋ္ဌ၂ (belonging to the next articles)
+175198	oghanadī	fragment '[ဩယနဒံ)'; citation 'ကခါ၊ဋီ၊ သစ်'
 175199	oghanittharaṇa	damaged analysis bracket '[ဩဃနိတ္ထရဏ'
 175200	oghanittharaṇattha	run-on article ဩဃနိ(နီ)ယ (တိ) [ဩဃ+ဏိက (ဣယ)]: (1) to be gone beyond / transgressed and trampled by the four ogha (taking them as object); being the object of the four ogha, (2) apt to sink / cause to sink / oppress, with quotations ('ဩဃေဟိ အတိက္ကမိတဗ္ဗာ ဩဃနိယာ …'), a grammarians' note (kita suffix anīya vs taddhita ṇika; Madhuṭīkā; Aṭṭhasālinī nissaya) and see-ref (၂) 'square brackets of the following headword'; run-on article ဩဃနိယောဃ (ပု) 'the current / whirlpool-flood / ogha-dhamma that causes to sink, sinks, oppresses', with quotation
 175205	oghandhakāra	run-on article ဩဃပဉှသုတ္တ: the sutta in which, because the wanderer Jambukhādaka asked Ven. Sāriputta about the ogha-dhamma and the path of practice for abandoning it, the four ogha and the eightfold path that abandons them are taught; reference 'အကျယ်ကို ၄၅၂-ကြည့်'
@@ -2074,7 +2075,7 @@ id	iast	omitted
 175605	odagyapaccupaṭṭhāna	citations '၈ရ။ အံ၊ဋ္ဌ၁။ ၈ဝ'
 175609	odana	citations 'ဝိ၊ မဋ္ဌာ။ ၁ရ၉'
 175611	odanagatika	citations 'ဝိနယာလင်္ကာရဋီ၊၁ဝ၃။ (-ကင်္ခါ။ ာရ၈'
-175614	odanacatutthabhāgappamāṇa	run-on article 'သဒနပစန (န) ထမင်း ဆွမ်း- ချက်ခြင်း'; debris 'ဝ ရီး] [ ဤ ဖို့ ဝ'
+175615	odanapacana	scan debris 'ဝ ရီး] [ ဤ ဖို့ ဝ'
 175616	odanapacanavidhi	debris ') … ့းျူ ချူ [၅ ချူ ဝ ဝ' and 'ဝ မို့] ၈ မ'
 175617	odanapacchi	debris '၉ ၂။ ၍ချ်'
 175618	odanapaṭivīsa	quotation 'သဩဒနပဋိဝီသောတိ … ပဋိဝီသော'; citation 'လင်္ကာရ'
@@ -2487,10 +2488,9 @@ id	iast	omitted
 176428	olambavilambanantakadhara	analysis bracket '[ဩလမ္ဗဝိလမ္ဗနန္တက+ဓရ'; citation 'ဇာဋ္ဌ၄'
 176429	olambavilambasuttakākiṇṇa	analysis bracket '[ဩလမ္ဗဝိလမ္ဗသုတ္တက+အာကိဏ္ဏ'; page number '၁ဝ၄'
 176430	olambāpeti	run-on fragment 'သဩလမ္ပာပေ'
-176431	olambāpetvā	run-on article ဩလမ္ဗာပေထ (ကာ၊ကြိ) with its analysis bracket: 'make hang down / dangle; let down hanging; hang up on a hook' (2nd pl.); stray '၇ သဩလမ္ဗိက'
+176431	olambāpetvā	running head '၇ သဩလမ္ဗိက'
 176433	olambāpesi	run-on article ဩလမ္ဗာမ္ဗုရ '(cloud) that hangs down / dangles'
 176434	olambārammaṇa	citation 'မ၊ဋီ၃'; fragmentary note '( ဟု ရ၅-၌ ဖွင့်သည်' ('so explained at …')
-176435	olambiṁsu	run-on article ဩလမ္ဗိ (ကြိ) with its analysis bracket: 'hung down / dangled; hung loosely' (3rd sg.)
 176438	olambikādhāra	scan debris 'ရ “ ၍]ရျ ဌ ဝ ့ရျူ'; quotation fragment 'သိကာယာတိ သလမ္ဗိကာဓာ'; citation 'ဝိ၊ဝိနိစ'; debris
 176439	olambita	scan debris '၍့။ နျူ ရ စျူ [ျူ'; quotation '(၁) ပုရာဏတစ ဇိဂုစ္ဆန္တောတံ ဇိဏ္ဏ-ပ'; debris
 176440	olambitakusumadāma	run-on article ဩလမ္ဗိတကုလာဝက (တိ) 'having a nest / weaver-bird's nest that hangs down / dangles (a bird)'; stray ')၈ ဩလမ္ဗိတွာ'
@@ -2672,7 +2672,8 @@ id	iast	omitted
 176773	oviparita	quotation 'ဩဝိပရိတောတိ ဩကာရဿ ဝိပရိတ'; source tag 'သံပျင်', page number
 176774	ovuṭa	citations 'မဋ္ဌ၂', 'ပဋိသံဋ္ဌ', 'စူဠနိ၊ဋီ', page numbers; a note on a variant reading 'အာဝုတာ' too garbled to read; scan debris
 176775	ovuyhati	scan debris; quotation 'သေယျထာပိ ဘိက္ခဝေ ပုရိသော နဒိယာ သောတေန ဩဝုယှေယျ ပိယရူပသာတရူပေန'; citations 'ဣတိဝုတ်၊ဋ္ဌ', 'ဥဒါဋ္ဌ', page numbers
-176778	osa	source tag '(အမရကောသ)'; stray '”'; run-on article (ဩသက္က) (ကြိ) 'recede back; draw back'; run-on article '[ဩသက္က… (ပု၊န) [+အ]' 'alighting / arriving', garbled; fragment 'ဩသက္ကသမ္ပ-'
+176778	osa	source tag (အမရကောသ); lost see-target
+176779	osakka	fragment 'က”'; run-on article with bracket '[+အ]' 'သက်ရောက်-ဆိုက်ရောက်-ခြင်း' and fragment 'သသက္ကသမ္ပ-'
 176780	osakkati	the repeated sense list with quotations ('ဩသက္ကသီတိ သင်္ကောစတိ', 'ဧကဝါရံ စရိတွာ မာ ဩသက္ကထ ပုနပ္ပုနံ စရထ', 'တံ ဝီရိယံ န ဩသက္ကေယျ', '(မဟာသမုဒ္ဒေါ)'), inflected forms and citations
 176781	osakkatha	run-on article ဩသက္ကန (ထီ၊န) with its analysis bracket: 'receding. (1)(a) stopping and receding; shrinking back, calming. (b) receding backward. (c) moving down; sliding down. (adj.)(2)(a) where decline happens; where one declines, where one vanishes. (b) where sliding down happens. See the following headword', with the senses repeated and quotations
 176783	osakkanakandara	note 'the Shwe-u-min nissaya gives the meaning …' (garbled); Pāḷi commentary 'ဝေလံ နာတိဝတ္တတီတိ … မရိယာဒတ္ထံ။ =တီရံ'

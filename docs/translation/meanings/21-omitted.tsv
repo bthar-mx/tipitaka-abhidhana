@@ -361,7 +361,8 @@ id	iast	omitted
 164664	saüpakaraṇa	form 'သဥပကရဏဿာ'
 164665	saüpakāra	list mark ---; quotation 'သမူလံ သဥပကာရံ … ပညာပေတုံ'
 164666	saüpakkilesa	stray bracket; quotation 'န သဥပတ္တိလေသံ'
-164667	saüpaghāta	form 'သဥပဃာတော' with page numbers; run-on article saüpaghātaka with its analysis '+ က။ (သမာသန္တ က)' and cross-reference
+164667	saüpaghāta	form 'သဥပဃာတော' with page numbers
+164668	saüpaghātaka	analysis bracket fragment '+ က။ (သမာသန္တ က)။ ]'
 164669	saüpacāra	quotation 'သဥပစာရာ တိ'; citation 'ဝိသုဒ္ဓိ၊ ဋီ ၂'
 164671	saüpatāpa	quotation 'သဥပါယာသန္တိ … သဝီဠံ'; citation 'ပါဋိ ၃ု'
 164672	saüpaddava	page number '၁ဝ၆'
@@ -721,7 +722,7 @@ id	iast	omitted
 165205	sakalavaṭṭadukkhavūpasama	quotation 'သကလဝဋ္ဋဒုက္ခဝူပသမာယ သမဇတိ'; citations (ဒါန၊ ဣတိဝုတ်၊ ဋ္ဌ; ဣတာ ပြီ ၁၃၂); OCR debris 'မ္ပဇ္ဇတံ်'
 165206	sakalavaṭṭadukkhavūpasamaṭṭha	page-header fragment 'သကလဝဋ္ဋဟေတု ၍ီ၏----'
 165208	sakalavaṭṭadukkhasamuccheda	OCR debris 'ဖို့။ ီ့။ ရို့]'; citation (ဝိသုဒ္ဓိ၊ ဋီ ၂)
-165209	sakalavaṭṭadukkhāpanūdana	run-on article '၂၀ကလဝဋ္ဋဒုက္ခာဘာဝ (ပု) [ အလံးစံသော … ဝဋ်ဆင်းရဲ၏ မရှိခြင်း' with OCR debris
+165210	sakalavaṭṭadukkhābhāva	garbled OCR 'ု၏[< [[. ဌသွင်းရဲ၏ မရခြင်း'
 165211	sakalavaṭṭadukkhamūlakadukkha	OCR debris ']] ဖု့ူ', '် င်းဝိ ဋသူ'
 165214	sakalavatthukāma	analysis fragment 'ဝတ္ထုကာမ ]'; quotation 'သကလဝတ္ထုကာမသင်္ခါတေ ဒုက္ခေ ဒေါသဒဿာဝီနံ ဝသေန'
 165217	sakalavācaka	grammar note on the feminine (ထီ - ၌ ---ဝါစိကာ)
@@ -1203,7 +1204,8 @@ id	iast	omitted
 166023	sagocara	garbled 'ဒံ မံဒ'; 'ပေ။ (၁) ကြည့်'; quotation 'တိ ယာဒိသော သောဏော ... ဂေါစရောယေဝ'
 166024	sagocarakicca	quotation fragment 'သဂေါစရကိစ္စာဒိ-ဝသေနာ'
 166025	sagocarapasuta	label debris 'သုတ (တိ)'; analysis '[သဂေါစရ + ပသုတ ]'
-166026	sagotta	source tag 'ဓာန်'; run-on article 'သဂ္ဂံ (ပု၊ န) [ သု + အဇ + ဏျ ... ] နတ်ပြည် နတ်ရွာ ဗြဟ္မာ့ပြည် ... (၅) မိုးစာ-ပျံလွှား-ငှက်' with its analyses, Sanskrit / Prakrit notes, quotations, citations and the fragment 'လောက်။' before «S1»
+166026	sagotta	source ဓာန်; run-on analysis bracket of သဂ္ဂ (ပု၊ န) with Sanskrit forms and sources
+166027	sagga	Prakrit / Ardhamāgadhī forms; OCR duplicate of senses (a)–(5) with Pāḷi quotations (သဂ္ဂဂ္ဂဟဏေန ဒေဝဂတိ ဧဝ, သဂ္ဂေသူ, ဆကာမာဝစရေ, ကာမဝစရရူပါဝစရဒေဝလောကေသု, ဆဗ္ဗီသတိဒေဝလောကဘေဒံ …) and citations (ဣတိဝုတ် ၂၀၃, သာရတ္ထ ၃, ထေရ, ပါစိတ်, လောက်)
 166028	sagga	page debris '၁ သဂ္ဂကထာ”'; analysis brackets 'နောက်ပုဒ် ကျေ', 'သဂ္ဂ + ဏ', 'ဧကသိသ်ပြု', 'သဇ္ဇ + ဏ'; bare sense numbers '(၁) (၂)'
 166029	saggakathā	forms 'သဂ္ဂကထ'; '---'; stray ')'; bare sense letters '(က) (ခ)'
 166031	saggakathānantaraṁ	stray ']'; quotation fragment '(ကထေတဗ္ဗာ)'
@@ -2755,7 +2757,7 @@ id	iast	omitted
 168882	sata	grammarian's notes ([ဒသ (-ဒသဒသက) = သတ; ကစ္စည်း ၄ာ၅; သတ-သဒ္ဒေါ ဧကန္တနပုံသကော; Sanskrit, Prakrit, Ardhamāgadhī); quotation 'အနေကတ္ထောတိ ဣဓ သတ-သဒ္ဒေါ'; citation ထေရ; truncated 'သတတေဇ သတဒန္တာတို့လည်း'
 168884	sata	citation (ဝိသုဒ္ဓိ၊ ၁ဝ)
 168885	sata	quotation fragments 'သတော', 'သတာ'; grammarian's note '(၁၂၆-၌ကား ကတ္တုသာဓန ကြံတော်မူသည်)'
-168890	sata	run-on article 'သတ” (န) [။ နောက်ပုဒ်ကျေ။ ] အရာ-တရာ- သော-သူ-လူ-အမတ်' with quotation 'သတံ ဝိဇ္ဇေ အမောစယီ'
+168888	sata	dashes and quotation 'သတံ ဝိဇ္ဇေ အမောစယီ'
 168891	sataka	quotation 'ပဏ္ဏာသကံ၊ သတကံ၊ သဟဿကံ'
 168892	satakappasahassa	stray '၅ သတကုဋ' (a later headword); quotation 'သတကပ္ပသဟဿာနိ … စေဠနာမကာ'; citation (သျာ။ မူ)
 168894	satakarīsavatthuka	analysis 'ဝတ္ထု + က'
@@ -3732,7 +3734,7 @@ id	iast	omitted
 170871	saddārammaṇa	quotation 'ကာမာဝစရံ ကုသလံ စိတ္တံ ဥပ္ပန္နံ ရူပါရမ္မဏံ ဝါ သဒ္ဒါရမ္မဏံ ဝါ'
 170874	saddārāma	stray headword 'သဒ္ဒုပ္ပတ္တိဋ္ဌာနနိဒဿန' at the start
 170876	saddika	source tags 'မောဂ်၊ သျ'
-170877	saddita	run-on articles 'ပဒ္ဒီယတိ (ကမ္မ၊ ကြို) [ (၁) နှုတ်မြွက်-ရွတ်ဆို-အပ်၏။ (၂) သင်ယူ-သင်ကြား- အပ်၏။' and 'ဒ္ဒယန္တိ (ကမ္ပ ကြု [ နွုတ်မြွက်-ရွတ်ဆို- အပ်ကုန်၏။'
+170878	saddīyati	run-on article saddīyanti 'နှုတ်မြွက်-ရွတ်ဆို-အပ်ကုန်၏' with bracket fragment
 170880	sadduppattiṭṭhānanidassana	quotation 'ဩဋ္ဌေ စာတိအာဒိ သဒ္ဒုပ္ပတ္တိဋ္ဌာနနိဒဿန န္တိ'
 170881	sadduppattihetu	quotation 'သဒ္ဒုပ္ပတ္တိဟေတုဘူတော ပထဝီဓာတုယာ အာကာရဝိကာရော ဝိသုံ အဓိပ္ပါယဿ အဝိညာပနတော ဝစီဝိညတ္တိ န ဟောတိ'
 170882	sadduppāda	quotation 'သဒ္ဒါသင်္ခါတမေဝ ဥမ္မုဇ္ဇန န္တိ'
@@ -4160,7 +4162,8 @@ id	iast	omitted
 171781	santilakkhaṇa	OCR debris '၃ သန္တိဝါဒ' inside (b); source citations '(ဋီကာ ကျော်၊ သျ၊ ပြည်မ)'; repeated sense markers; quotation 'သန္တိလက္ခဏေနာ' with citation
 171783	santivāda	commentary quotation
 171785	santisadda	Pāḷi quotation
-171791	santīraṇakicca	santīraṇa, continued: note on the three santīraṇa cittas (akusalavipāka upekkhāsahagata, kusalavipāka somanassasahagata, kusalavipāka upekkhāsahagata), sense (2) 'investigating / examining / scrutinizing / weighing', sense (3) 'apt to investigate / reflect / consider (wisdom)'; run-on article 'သန္ဒီရဏကာလ (၇) ၂] … သော ကာလ' (the time of investigating); Pāḷi quotation with citation
+171790	santīraṇakāla	stray '၂]'
+171791	santīraṇakicca	santīraṇa, continued: note on the three santīraṇa cittas (akusalavipāka upekkhāsahagata, kusalavipāka somanassasahagata, kusalavipāka upekkhāsahagata), sense (2) 'investigating / examining / scrutinizing / weighing', sense (3) 'apt to investigate / reflect / consider (wisdom)'; Pāḷi quotation with citation
 171792	santīraṇabhāvī	quotation fragment 'မနောဓာတူနဉ္စာ'
 171796	santīreti	citations; run-on form 'သန္တီရယမာန (သင်္ဂဟ။ ၅၈]'
 171797	santuṭṭha	OCR debris '၆ သန္တုဋ္ဌ'; a second, partly garbled copy of the whole article (with 'see the word below' in sense 2, a Pāḷi quotation under (3), the sutta's citation under (4))

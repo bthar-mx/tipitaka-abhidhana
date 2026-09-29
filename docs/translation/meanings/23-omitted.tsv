@@ -420,14 +420,13 @@ id	iast	omitted
 186250	sammukhāvinaya	grammatical note 'ဘာဝပ္ပဓာန, ဘာဝလောပ'; forms 'သမ္မုခါဝိနယသ္မိ။ သမ္ဗုခါဝိနယသ္မိ (ဘာဝပ္ပဓာနနိဒ္ဒေသော- သင့်)'
 186251	sammukhāvinayapatirūpaka	debris '['; quotation 'အဓမ္မဝါဒီ ပုဂ္ဂလော … သမ္မုခါဝိနယပတိရူပကေန'
 186253	sammukhāvinayādisattavidha	debris '['
-186254	sammukhāparammukhābhūta	run-on article sammukhāsāvikā (ထီ): 'သမ္ဗုခါသာဝိကာ (ထီ) … ၏----(မြတ်စွာဘုရား၏) မျက်မှောက်-အသက်ထင် ရှားရှိရာအခါ-၌ဖြစ်သောတပည့် မ။'; run-on headword '၅ သမ္ပုခိဘူတကာလ ၆'
-186255	sammukhāsāvikā	fragment 'နာမ'
+186255	sammukhāsāvikā	running-head debris '၅ သမ္ပုခိဘူတကာလ ၆ ၏----'
 186256	sammukhibhūtakāla	debris '['
 186257	sammukhībhāva	form '(၂) သမ္မုခီဘာဝါ'
 186258	sammukhībhāvakāla	quotation 'မာ တိ ယေဟိ … ပမဇ္ဇန္တိ'
 186259	sammukhībhāvasutta	headword repeated 'သမ္ဗုခီဘာဝသုတ်'
 186260	sammukhībhāvasuttavaṇṇanā	run-on article sammukhībhūta (တိ): 'သမ္ဗုခီဘူတ (တိ) [။ ၁၃၃၈-ဖြင့် ဤ-အက္ခရာလာ။ ] မျက်မှောက် ၌ဖြစ်သည်ဖြစ်၍ ဖြစ်သော။ (က) ဥပစာရသိမ် တွင်း၌တည်သော။ (ခ) … (ဂ) သံယော ဇဉ်တရားတို့၏ … သို့ကပ်ရောက်သောသူ။' with quotations 'သမ္ဗုခီဘူတေနာ' and grammatical quotation, citation 'ပါစိတ်၊ (ဂ)'
-186261	sammukhībhūta	headword 'သမ္ဗုခီဘူတကထာ (ထီ) ['; run-on headword '၆ သမ္ဗုစ္စာ'
+186262	sammukhībhūtakathā	running-head debris '၆ သမ္ဗုစ္စာ'
 186263	sammuccā	forms '[-သမ္ဗူတိယာ သမ္ဗုတျာ-သမ္ဗုစ္စာ၊'; debris '['; form 'သမ္ပုစ္စာ'
 186264	sammucchita	Sanskrit and Prakrit notes 'သမ္မူန္ဆိတ-သံ။ သံမုစ္ဆိအ-ပြာ'; debris '['
 186265	saṁmuñcanī	quotation 'သမ္ဗုဉ္စနိ န္တိ … မုဋိသမ္ပုဉ္စနိ ဝါ'; citations 'ပါစိတ်၊' (twice); grammatical note 'တာလုဇော ပဌမက္ခရော'
@@ -1290,7 +1289,8 @@ id	iast	omitted
 187859	savicāra	citation 'ဝိ၊ (၂)'
 187862	savicikiccha	analysis '+ အ]'; source note 'အဘိဓာန် (အဝင်) ၁၆ ပ-မ-သ-စ ၅'; start of the next article 'သဝိဇ္ဇုက'
 187865	saviññattikasadda	quotation fragment 'ဝစနမေဝါ'
-187868	saviññattikāsaviññattikabhedadassanappayojana	start of the next article 'သဝိညတ္တိကာဝိညတ္တိကဘေဒဘိန္န ၂၀' inside the definition; citation 'ကင်္ခါ၊'; run-on article saviññattikāsaviññattikabhedabhinna (တိ): 'divided by the division between what is and what is not accompanied by viññatti'; run-on article saviññattirūpasamuṭṭhāpana (န): 'ဝိညတ်နှင့်တကွဖြစ်သောရုပ်ကို ဖြစ်စေခြင်း' ('producing matter accompanied by viññatti')
+187868	saviññattikāsaviññattikabhedadassanappayojana	start of the next article 'သဝိညတ္တိကာဝိညတ္တိကဘေဒဘိန္န ၂၀' inside the definition; citation 'ကင်္ခါ၊'
+187869	saviññattikāsaviññattikabhedabhinna	stray '['; run-on article saviññattirūpasamuṭṭhāpana 'the producing of matter accompanied by viññatti'
 187873	saviññāṇaka	quotation
 187874	saviññāṇakaaviññāṇakappabheda	stray '၂ ['
 187875	saviññāṇakaaviññāṇakabherava	analysis '[ သဝိညာဏကအဝိညာဏက -+ ဘေရဝ'
@@ -1696,7 +1696,8 @@ id	iast	omitted
 188622	sahañcanika-sahañcaniya	grammarian's note 'ယ-ကို က-ပြု'; debris '(ယု … န)ာာ]ပျ'
 188624	sahaṭṭhāna	analysis '] + ယု'; Sanskrit note 'သဟသွာန-သံ'; quotation 'တေသံ ဒွိန္န … ပဋိက္ခိတ္တံ။ (-'
 188625	sahaṭṭhānadosāpatti	quotation 'ဇာနနစိတ္တဿပိ … ဟောတီ"တိ'
-188628	sahatantika	run-on articles sahatā (ထီ), sahati (ကြိ), sahate (ကြိ), sahattha (ပု), sahattha (တိ), with their analyses, Sanskrit/Prakrit notes, inflected forms and quotations, from 'သဟတာ (ထီ) [ သဟ + တာ' to 'သဟတ္ထော ဟေသ သမ-သဒ္ဒေါ'
+188628	sahatantika	run-on articles sahattha (ပု), sahattha (တိ), with their analyses, Sanskrit/Prakrit notes and quotations
+188629	sahatā	analysis 'သဟတာ + သုံ'; run-on article sahati with Sanskrit / Prakrit forms, six senses (endures; overpowers; is able; accepts; is; makes float / blows away), duplicate, quotation and list of inflected forms
 188632	sahattha	fragment 'အနက်ဟော' (end of the previous article); stray bracket; '၂၉ သဟတ္ထကရဏ' (page number and headword); run-on articles 'သဟတ္ထကရဏ (န) ] မိမိ၏ ဥစ္စာဖြစ်သောလက်-မိမိလက်-ကိုယ့်လက်-ဖြင့် (ကိုယ်တိုင်ကိုယ်ကျ) ပြခြင်း၊ သဟတ္ထသဒ္ဒ (ပ) ] သဟသဒ္ဒါ၏ အနက် (သမဝါယအနက်) ရှိသော သဒ္ဒါ။ သဟတ္ထာဏတ္တိက (တိ) ]'
 188638	sahatthipa	source notes 'ဟတ္ထော ရောဟော၊ ကပ္ပဒ္ဒုမ'; Sanskrit note 'ဟသ္မိံပေါ- သံ'; stray bracket; headword repeated 'သဟတ္ထိပ'
 188639	sahatthavejja	fragment 'သာထဗ္ဗန'
@@ -2249,7 +2250,18 @@ id	iast	omitted
 189589	sātthakasampajañña	quotations and headword repetitions after the senses ('သာတ္ထကသမ္ပဇည် … သမ္ပဇာနာတီတိ သမ္ပဇည်')
 189590	sāthabbana	grammarians' notes '(အထဝ်န်-သံ။ အာထဗ္ဗဏ-ပါကတ)'; variant reading 'သျ-၌ သာဝပ္ပနံ-ဟုရှိ၏'; stray ']'
 189591	sāthala	stray '['; 'သထလင်္ဂ'; quotation 'သိထိလ-သဒ္ဒေန ဝါ …'
-189593	sāthalika	analysis 'သိထိလ + ဏိက'; run-on articles with their analyses and quotations: sāthalikatābhāva 'the absence of the state of being apt to receive (instruction) laxly'; sāthalibhāva 'the state of one apt to receive laxly'; (တိ) 'သာတ္ထ + ဣ …' «S1»; sātheyya 'see sāṭheyya'; sāda 'clearness'; sādaka 'apt to enjoy / delight in / accept'; sādakabhikkhu 'the monk apt to enjoy …'; sādana '(1) clearness (2) enjoying …' «S2» with variant-reading note; sādanīya 'apt to cause to enjoy …; see the next headword'; sādanīyaṭṭha 'the meaning that causes enjoyment …'; sādayati 'enjoys / delights in / accepts / experiences' and causative 'causes to enjoy …'; sādayamāna 'enjoying …'; sādayāma 'we enjoy …'; trailing 'သာဒယတိ'
+189593	sāthalika	analysis '[ သိထိလ + ဏိက'
+189594	sāthalikatābhāva	stray '-'
+189596	sātthika	grammarian's note 'ဣက-ပစ္စည်း သကတ္ထ' (suffix -ika in its own sense)
+189597	sātheyya	analysis 'သာထ + ဏေယျ'; citation ဝိသုဒ္ဓိ ၁၀
+189598	sāda	Sanskrit form 'သွာဒ'
+189599	sādaka	analysis 'သဒ + ဏေ + ဏွု'
+189600	sādakabhikkhu	running head 'သာဒက-) ၂ သာဒန'
+189601	sādana	Sanskrit form 'သွာဒန'; quotation '(၂) အဘိဝါဒနသာဒိယနေ'
+189602	sādanīya	Sanskrit form; run-on article sādanīyaṭṭha 'the meaning / nature apt to make one consent / delight / accept'
+189604	sādayati	stray 'န တိ'; Sanskrit / Prakrit forms
+189605	sādayati	citation အနုဋီ ၁
+189606	sādayamāna	analysis 'သဒ + ဏယ မာန]'; run-on article sādayāma 'we consent / delight in / accept / enjoy' with analysis; stray 'သာဒယတိ'
 189609	sādara	stray ']'
 189610	sādaraabhisaṅkharaṇa	fragment 'ရဏ'
 189611	sādarajana	'----'
@@ -2564,7 +2576,7 @@ id	iast	omitted
 190148	sāmaññatthaasādhana	debris '['
 190149	sāmaññaselasikharamuddha	quotation 'သာမညတ္ထသေလ-သီခရမုဒ္ဓနိ အဘိရုဟနာယ'
 190150	sāmaññanāma	'"'
-190151	sāmaññanāmavijahana	----; run-on '“သာမညနိဒ္ဒိဌ (တိ) ] သာမန် အားဖြင့် ညွှန်ပြအပ်သော'
+190151	sāmaññanāmavijahana	----
 190157	sāmaññapariccāga	'(ဝ်သဒ်၊'
 190160	sāmaññaphala	quotations and glosses '(၁) (၂) တိ အရဟတ္တဖလံ။ သာမည်၊ တိ အာဟ။ သမဏဘာဝေါ သာမည်၊ သာမညဖလ သာမည်၊ မဂ္ဂေါ သာမည်'
 190162	sāmaññaphalaṅga	'"'
@@ -2949,7 +2961,8 @@ id	iast	omitted
 190852	sālavatī	'ဤ ၂'
 190853	sālavatīnagara	debris ']'
 190854	sālā	analysis, sources, Sanskrit, Prakrit and Ardhamāgadhī notes; the second copy of the compound list with its quotations and citations; running heads 'အဘိဓာန် (အ-ဝဂ်) ၃၅ ပ-မ-သ-စ ၅ သာလာ'; garbled 'ဖရုံးအိမ်'
-190855	sālākika	analysis 'သာလာကာ + ဏိက'; citation fragments '(၁) မောင်၊ (၂)။ (၃) ----'; run-on article sālākiya (ပု၊ န) with its bracket, definition and quotation
+190855	sālākika	analysis 'သာလာကာ + ဏိက'; citation fragments '(၁) မောင်၊ (၂)။ (၃) ----'
+190856	sālakiya	quotation '(၂) သလာကိယ န္တိ သာလာကဝဇ္ဇကမ္မံ'
 190858	sāladvāra	headword 'သာလဒွါရ-၇'; quotation 'သာလာမဟ အဋ္ဌာသိ'; citation 'ဇာ၊ ဋ္ဌ၊ ၆'
 190859	sālāmaha	label debris 'ပု၊ န)'; '----'
 190863	sāli	trailing 'သာလီန'
@@ -3143,7 +3156,6 @@ id	iast	omitted
 191228	sāsanapayoga	'----'; running head '၂ ၁ ) သာသနပရမတ္ထသမဏဗြာဟ္မဏ'
 191229	sāsanaparamatthasamaṇabrāhmaṇa	debris '['
 191230	sāsanapariccheda	quotation 'အယံ သာသနပရိစ္ဆေဒေါ ဧသော'
-191232	sāsanapariyeṭṭhi	run-on article '၁ာသနပရိယောသာန (တိ) သာသနာတော်၏အဆုံး-ရှိ-ဖြစ်သော (နိဗ္ဗာနဓာတ်)'
 191234	sāsanappavatti	stray '[' at start; trailing '(က) (ခ) ----'
 191236	sāsanappavattiṭṭhāna	damaged analysis bracket '(ပ္ပုဝတ္တိဋ္ဌာန (န) ]' (includes a label န)
 191240	sāsanappavesana	stray '['
@@ -3428,7 +3440,9 @@ id	iast	omitted
 191809	siṅgārarasa	stray bracket; debris 'ယပ၊ဇုပ၊ဇုပရုပ'
 191810	siṅgāravāṇijagaṇānucarita	stray bracket; quotation fragment 'ဒေဝပုရံ'
 191812	siṅgāla	grammarian's note (သိဂါလ=သိင်္ဂါလ။ နိဂ္ဂဟိတ်လာ); stray bracket; quotations 'သိင်္ဂါလကံယေဝါ', 'သိင်္ဂါလာဋာနာဋိယကံ'
-191813	siṅgālaka	repeated sense list with quotation fragments ('သိင်္ဂါလကော', 'ဗိဠာရော ဒွေ သိင်္ဂါလကာ'); run-on sub-articles siṅgālakakumāra (young man), siṅgālakapitu (father of the young man S.; the thera), siṅgālakamātu (the upāsikā S.-mātā, with quotation 'သဒ္ဓါလက္ခဏေ…'), siṅgālakula (the jackal kind), siṅgālagaṇaparivuta (surrounded by a pack of jackals), siṅgālajātaka (four jātaka summaries (a)–(d) with their citations); running header '၄၉ သိင်္ဂါလကုလ'
+191813	siṅgālaka	OCR duplicate of senses (1)–(4); quotation fragments 'သိင်္ဂါလကော', 'ဗိဠာရော ဒွေ သိင်္ဂါလကာ'
+191817	siṅgālakamātu	running head '၄၉ သိင်္ဂါလကုလ'; quotation 'သဒ္ဓါလက္ခဏေ အဘိနိဝိဋ္ဌာနံ …'
+191820	siṅgālajātaka	Jātaka numbers '(က) ၄၅၀-၁။ (ခ) ဇော။ ဌ၊ ၆) ၅၁၅-၆'
 191822	siṅgālapitu	stray bracket
 191827	siṅgālarāja	stray bracket; run-on headword 'ဝ သိင်္ဂါလရုတဝိဇ္ဇာ'
 191828	siṅgālarutavijjā	citation (ဒီ၊ ဋ္ဌ ၁); quotation 'သိဝါသဒ္ဒမေဝ…'
@@ -3539,7 +3553,9 @@ id	iast	omitted
 192048	siddhavacana	stray '၂'
 192050	siddhasādhana	running header '၅ သိဒ္ဓသာဓနဘာဝ (န) (၂)'
 192052	siddhi	grammatical note 'သိဒ္ဓိ အဏိမမာဒိ အဋ္ဌဝိဓ', source tag ထောမ, Sanskrit, Prakrit and Ardhamāgadhī forms; stray bracket; start of the repeated sense list
-192056	siddhidassana	rest of siddhi's repeated sense list (3)–(5) with quotations ('သိဒ္ဓိပ္ပတ္တဿာ…', the 18 siddhis verse 'ပါကမ္မဉ္စ တထေသိတာ…' from Kappadduma); run-on articles siddhikara-akusalacittuppādasadisa (like the akusala cittuppāda that brings success), siddhikāla (time of success), siddhikkamadassana (showing the sequence of success), siddhippatta (reached success; reached the end of the 5 abhiññā), siddhiparisuddhi (purity of success), sināta (bathed; the arahant bathed by the ariya path), with analyses and citations
+192053	siddhikaraakusalacittuppādasadisa	stray '['
+192056	siddhidassana	rest of siddhi's repeated sense list (3)–(5) with quotations ('သိဒ္ဓိပ္ပတ္တဿာ…', the 18 siddhis verse 'ပါကမ္မဉ္စ တထေသိတာ…' from Kappadduma); run-on articles siddhippatta (reached success; reached the end of the 5 abhiññā), siddhiparisuddhi (purity of success), with analyses and citations
+192060	sināta	grammarian's note on the form (analysis, Moggallāna, Kappadduma, sarabhatti, Sanskrit / Prakrit forms); citation သံ ၁၀
 192061	sināti	Sanskrit, Prakrit and Ardhamāgadhī forms; grammarian's note (ဒိဝါဒိဂိုဏ်း၌ သိနာယတိ-ပြီး၏)
 192062	sināti	Sanskrit form 'သိနာတိ-သံ'
 192063	sināna	Sanskrit, Prakrit and Ardhamāgadhī forms; running header '၇၇ သိနာနစုဏ္ဏ'; citation (ဝိသုဒ္ဓိ၊ ဋီ ၁); quotation fragments 'သိနာန'
@@ -3796,7 +3812,7 @@ id	iast	omitted
 192564	silāmaya	quotation fragments 'သေလော။ သေလာ'
 192565	silāyūpa	the Pāḷi synonym 'သိလာထမ္ဘ-' (a stone pillar) only
 192568	silārāma	stray bracket '['
-192569	silārūpaka	citation 'ဒီ၊'; run-on article 'သိလာဝတိ.သိလာဝတီ (ထီ) + ဤ ] ကျောက်တံတိုင်းအကာအရံရှိသော-ကျောင်းရာ' (a monastery site with a stone wall enclosure)
+192569	silārūpaka	citation 'ဒီ၊'
 192572	silāvayava	stray bracket '['; ----
 192576	silāsanī	run-on fragment '၃ သိလာသန္ထရ'
 192578	silāsalākatāl̤a	'(ဋ္ဋေ)'; quotation 'န စ ဝါဒနတာဠံ သိလာသလာကတာဠံ'; cross-reference '(ဓာန်၊ ဋီ။ ၁၄၂-နှင့် အနက်လည်းကြည့်)'

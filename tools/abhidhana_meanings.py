@@ -366,15 +366,21 @@ def merge(book, ids=None):
     if ids is not None:
         new = {r['id']: r for r in out if r['id'] in ids}
         old = [json.loads(l) for l in open(dest, encoding='utf-8')]
-        kept = [i for i in ids if i not in new and i in {r['id'] for r in old}]
+        had = {r['id'] for r in old}
+        # an id with no explanation left (its whole text went to a split-off article, brief §70), or whose new
+        # draft is empty in both languages, loses its row, as in a whole merge
+        gone = [i for i in ids if i in had and i not in new and (i not in W or i in R)]
+        if gone: print(f'{book}: no explanation or an empty draft for {len(gone)} ids, rows removed: {gone[:10]}')
+        kept = [i for i in ids if i in had and i not in new and i in W and i not in R]
         if kept: print(f'{book}: no new draft for {len(kept)} ids, old rows kept: {kept[:10]}')
-        out = [new.pop(r['id'], r) for r in old] + list(new.values())
+        out = [new.pop(r['id'], r) for r in old if r['id'] not in gone] + list(new.values())
         order = {i: k for k, i in enumerate(W)}   # the work file's order, as a whole merge writes (vol. 18: not id order)
         out.sort(key=lambda r: (order.get(r['id'], len(order)), r['id']))
         op = ROOT / f'docs/translation/meanings/{book}-omitted.tsv'
         if op.exists():
             prev = [l.rstrip('\n').split('\t', 2) for l in open(op, encoding='utf-8')][1:]
-            omitted = sorted([(int(i), x, o) for i, x, o in prev if int(i) not in ids] + [o for o in omitted if o[0] in ids])
+            redone = ids - set(kept)   # an id with no new draft keeps its omitted line too
+            omitted = sorted([(int(i), x, o) for i, x, o in prev if int(i) not in redone] + [o for o in omitted if o[0] in ids])
     out = corrected(book, out)
     with open(dest, 'w', encoding='utf-8') as f:
         for r in out: f.write(json.dumps(r, ensure_ascii=False) + '\n')

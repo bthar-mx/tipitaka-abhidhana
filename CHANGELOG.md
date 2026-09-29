@@ -23,6 +23,19 @@ Versions of the Tipiṭaka Pāḷi-Myanmā Abhidhāna project: the data, the too
 A release note says, per version: what changed, the brief's sections, and the headline figures
 (located, label + body, Meaning rows drafted / reviewed).
 
+## v0.28.0 — 29 Sep 2026
+
+- **The split rows and their hosts redrafted** (brief §70; plan step 1.6), in the nine books without PCED. The 241 rows split out in
+  v0.27.0 get Meaning boxes: 237 drafted, 2 "see X" formula rows; 208591 has nothing left after `prep`, 205117 was drafted empty. Of the
+  156 hosts, **30 had translated the run-on text now split off**: 29 redrafted from what is left, and 186261 sammukhībhūta, left with
+  nothing, lost its row; **126 had put it in `omitted`**: their Meaning is kept and only the parts of `flag` / `omitted` about the
+  split-off text were taken out (4 of them are now a formula only and were re-merged as formula rows). Two shards (14/2's text layer, 79
+  lines; the OCR books, 188), one agent each, the prompt of §55–57; hosts classified by two agents; 0.62 M agent tokens in all.
+- **Meaning rows 217,212 → 217,450** (98.3% of the index), all `drafted` except the 9 corrected; flags in the nine books 20,240 → 20,222.
+  Checked: no row or flag / omitted line changed outside the split rows and hosts; the usual draft checks, 0 errors.
+- `tools/abhidhana_meanings.py merge --ids`: an id with no explanation left or an empty new draft now loses its row, and an id with no new
+  draft keeps its `omitted` line (it was dropped); unit test in `tools/test_meanings_merge.py`.
+
 ## v0.27.0 — 28 Sep 2026
 
 - **Run-on articles split out of their neighbour** (brief §69; plan steps 1.3 reduced and 1.4), in the nine books without PCED only

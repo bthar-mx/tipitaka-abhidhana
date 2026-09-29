@@ -1541,3 +1541,105 @@ rows and hosts. The romanisation (`pali.jsonl`) and reports of the nine books we
 book). The site was not built here.
 
 **Tokens**: about 0.46 M in this session by its own counter (tool output and the ~250 page crops read), not the Usage page's figure.
+
+
+## 70. The split rows and their hosts redrafted (plan step 1.6) (29 Sep 2026, Cowork)
+
+**The live check after v0.27.0** (the editor): v0.27.0 live and checked.
+
+**Asked** (the editor; plan step 1.6): redraft the rows that gained a body in v0.27.0 (`located: "split"`) with `prep NN --ids` and the
+OCR-book prompt of §55–57, one agent and scratch folder per shard; redraft the hosts whose current Meaning translated the run-on text now
+split off, and for hosts that had put it in `omitted` take only those `omitted` lines away, not their Meaning; `merge NN --ids` (which
+re-applies `corrections-es.tsv`, §65) and `report`; the usual checks. Run in the Cowork cloud container (the VM's `/sessions` disk still
+full, 41 MB free): `tools/`, every book's `articles.jsonl`, the nine books' `pali.jsonl` and Meaning files, the prompts and the old work
+files (`tmp/meanings/vNN/workNN.json`, `_measure/v14b/work14b.json`) staged as tarballs in `tmp/meanings/step16/` (`in-0929a.tgz` md5
+`9643c1b…`, `oldwork-0929b.tgz` `9ea5495…`, `tools-0929c.tgz` `fe85489…`); before writing back, the 37 files to be replaced were checked
+unchanged in the folder (`base-0929e.md5`, `md5sum -c`).
+
+**What changed, measured** (`prep` on the new articles against the work files the drafts were made from): in the nine books the text
+changed for the **241 split rows** and the **156 hosts** and nothing else (besides the 14 "see X" targets of §65 and 4c's 248 target
+spellings, both already known; §65). Of the 241 split rows, 238 have Burmese to draft, 2 are a "see X" formula only (163604, 208599:
+merged as formula rows), and 208591 sulabhadāru has nothing left after `prep` (quotations and citations only). 234 had no body before
+(v0.27.0's figure); the other 7 were stubs with a scrap of body; none of the 241 had a Meaning row.
+
+**The hosts, classified.** Two agents (78 hosts each) read, for every host, the Burmese its draft was made from, what is left now, the
+split-off text and the current `es` / `en` / `flag` / `omitted`, and answered *translated* (the draft renders any of the split-off text),
+*omitted* (not rendered; left in `omitted` and flagged) or *neither*, with the new `flag` and `omitted` for the last two: the current
+strings with only the parts about the split-off text taken out. A script then found five hosts classed *omitted* whose `es` / `en` carries a
+"see X" rendered from a «Sn» that now stands in the split-off text (163229, 163238, 163250, 195010, 216659); they were moved to
+*translated*, as the agents had done for twelve others of the kind (the placeholder check would otherwise leave a neighbour's cross-reference
+in the host).
+
+| hosts | 14b | 14c | 20 | 21 | 22 | 23 | 24 | 25 | 4c | all |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| **translated the run-on text: redrafted** | 11 | 1 | 5 | 1 | 2 | 3 | 3 | 0 | 4 | **30** |
+| **put it in `omitted`: Meaning kept, `flag` / `omitted` trimmed** | 16 | 9 | 53 | 5 | 11 | 8 | 17 | 4 | 3 | **126** |
+| neither | | | | | | | | | | 0 |
+
+Of the 30: 186261 sammukhībhūta has nothing left (its whole text was sammukhībhūtakathā's, now 186262; its own definition is printed inside
+186260, §56), so it **lost its row**; 29 were redrafted. Of the 126: 4 are now a "see X" formula only (163696, 163880, 163887, 165209) and
+were re-merged as formula rows (method `formula`, no flag, no `omitted` line); 2 have no Meaning row (180232, 219098: only their `omitted`
+line changed); in the other 120 the Meaning is untouched. Over those 122: flag removed 83, shortened 36, unchanged 3; `omitted` line removed
+55, shortened 64, unchanged 3. Where a host still holds other run-on articles (211737, 163576, 179639) the note keeps them ("seven" →
+"three" headwords, etc.).
+
+**Drafted**: 267 lines, two shards rather than one per book or shards of ~445 lines: all 267 would have fitted in one, but 14/2 is the text
+layer and takes the prompt without the OCR paragraph (as in §54). **Decided without asking**: shard `14b-00` (79 lines: 68 split, 11 hosts)
+with `23-shard00-prompt.md`'s text-layer form, and shard `ocr-00` (188 lines: 170 split, 18 hosts; books 14c, 20–25, 4c mixed, each line
+carrying `book` and `role`) with the OCR-book prompt; both with one added paragraph on the redraft (what `role: split` and `role: host` mean;
+"split doubtful" if a split text is not the headword's: none was so flagged). Prompts and files in `tmp/meanings/step16/work-0929f.tgz`.
+**No wave stopped at the usage limit.**
+
+| | lines | flagged | with `omitted` | empty | clean | agent tokens | tool calls | min |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| 14b-00 (text layer) | 79 | 17 | 13 | 0 | 57 | 115,650 | 9 | 4 |
+| ocr-00 | 188 | 83 | 118 | 1 | 47 | 209,208 | 18 | 14 |
+| — split rows / hosts (both shards) | 238 / 29 | 88 / 12 | 115 / 16 | 1 / 0 | 94 / 10 | | | |
+| host classification (2 agents) | 156 hosts | | | | | 297,947 | 19 | 3 |
+
+~1,217 drafting tokens a line: small shards carry the prompt and the brief at a fixed cost (§56–64: ~555–717 a line in shards of ~445). Flags
+(substring counts): OCR read 26, run-on 26, garbled 5, truncated 5, person 5, hyphen 4, senses printed twice 2. **Checked** (both shards):
+one line per id, in order; valid JSON with id, es, en, terms, flag, omitted; every «Sn» in es and en; ⟦ ⟧ and ‹ › balanced; no Burmese
+outside them; es and en empty together, the one empty line (205117, a label fragment) flagged "nothing to translate": 0 errors. Read
+against the Burmese: 210257 pamāṇayoga, 157108 visama, 180079 sabhikkhuka, 186262 sammukhībhūtakathā, 189598 sāda, 219099 hadaya.
+
+**`merge --ids`, two fixes** (`tools/abhidhana_meanings.py`, md5 `8ea4325…`): (1) an id in the list with no explanation left, or whose new
+draft is empty in both languages, now loses its row, as in a whole merge (it kept its old row: 186261 would have kept a neighbour's
+translation); (2) an id in the list with no new draft kept its row but **lost its `omitted` line**; it keeps both now. A unit test for both
+in `tools/test_meanings_merge.py` (`python3 tools/test_meanings_merge.py`: ok).
+
+**Merged and reported** (`merge NN --ids` over the split rows, the redrafted hosts and the four formula hosts; then the 122 trimmed hosts by
+script; `report NN`). For 14b, `report` was given shard 00's Burmese as drafted (`trial/14b-shard00-in.jsonl`), as in §54, and the two §54
+redraft rows that differ (210236, 210332) keep their committed line: `14b-flags.tsv` changed only in split rows and hosts. **Checked** (every
+book, against the files before): rows changed only among the split rows and hosts, and so did the lines of `-flags.tsv` and `-omitted.tsv`;
+ids unique; no ⟦ ⟧ or «Sn» left; no Burmese outside ‹ › (except 176231 and 193595's (န) / (လ) spelling marks, §65); every status `drafted`.
+No row of the nine books is in `corrections-es.tsv`, so `merge` re-applied nothing.
+
+| | 14b | 14c | 20 | 21 | 22 | 23 | 24 | 25 | 4c | all nine |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| Meaning rows before → after | 6,795 → 6,863 | 9,348 → 9,359 | 6,947 → 7,005 | 7,752 → 7,758 | 7,613 → 7,637 | 6,906 → 6,937 | 6,685 → 6,714 | 3,732 → 3,736 | 4,784 → 4,791 | 60,562 → 60,800 |
+| flagged (`-flags.tsv`) | 1,128 → 1,122 | 2,956 → 2,955 | 2,253 → 2,232 | 2,499 → 2,500 | 2,799 → 2,803 | 2,033 → 2,042 | 2,539 → 2,538 | 1,801 → 1,801 | 2,232 → 2,229 | 20,240 → 20,222 |
+| `-omitted.tsv` lines | 1,172 → 1,166 | 5,920 → 5,921 | 3,945 → 3,945 | 4,402 → 4,405 | 5,073 → 5,091 | 3,873 → 3,889 | 3,611 → 3,617 | 3,144 → 3,147 | 3,015 → 3,016 | 34,155 → 34,197 |
+| terms kept in Pāḷi | 572 → 575 | 737 | 946 → 949 | 736 | 773 → 775 | 595 → 596 | 520 → 521 | 330 | 468 | |
+
+**+239 rows** (237 drafted, 2 formula) **−1** (186261). **Totals: 217,450 Meaning rows, all `drafted` except the 9 corrected: 98.3%** of
+the index (221,154). Split rows still without a Meaning: 208591 (nothing left after `prep`) and 205117 (drafted empty). The 7 unsure splits
+of §69 were drafted like the rest; a `wrong` from the editor would take the split away at the next article run, and its Meaning row with it
+at the next `merge --ids`. The site was not built here.
+
+**Not done**: the 14 "see X" targets in 14/3 and 20–24 with a stray mark (§65) still wait for a re-merge of those rows from their old
+drafts (`tmp/meanings/vNN/out/`); they were not in this redraft.
+
+**What the agents reported** (nothing reviewed; for the final revision, NEXT-SESSION 1c (ag)):
+- **219099 hadaya** (25): the split text begins inside the article's second, garbled pass; sense (1) *heart* (နှလုံးသား), in the host's old
+  text, is not in it; the draft numbers hadayarūpa (1), flagged. Check on the page.
+- **180232 samacchera** (22, no Meaning row): the split-off text of 180231 seems to carry the host's own gloss (the classifier).
+- **214130 paripūresuṁ, 216712 palāyana** (14b): the host opens with a leftover "see" fragment of the article split off before it, then a
+  numbered second homonym (ပရိပူရေသုံ², ပလာယန²), translated as the host's own, flagged. **195010 pahari** (14/3): a second ပဟရိ article
+  after «S1», translated in the line. **208563 suruttavācā** (24): «S1» inside a run-on bracket, kept.
+- 163881 saṁvidhāna sense (d): the Spanish says *repartir*, the English "breaking open"; 180718: "27 thousand" against the headword's
+  27 × 100,000; 176432 olambāpetha in the 2nd plural as *vosotros* (*vosotros* or *ustedes* is not decided anywhere: for 2.1's sheet);
+  216659 ကြံ read ကြံ့ (rhinoceros; as printed, sugar cane); 210984, 210985 the causative -စေ kept as printed; 216662 and the palasata rows
+  keep kyat and viss.
+
+**Tokens**: agents 622,805 (drafting 324,858, classification 297,947); this session's own not counted.

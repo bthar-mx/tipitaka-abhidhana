@@ -407,7 +407,8 @@ id	iast	omitted
 193364	pavattivipākadāyaka	grammatical note 'in the feminine ပဝတ္တိဝိပါကဒါယိကာ'
 193366	pavattivipākamattadāyikamma	analysis bracket (ပ)ဝတ္တိဝိပါကမတ္တဒါယီ+ကမ္မ; citation အံဋီ၃
 193368	pavattivipākamattanibbattaka	citation မဋီ၃
-193369	pavattivipphandanadaratharahita	analysis bracket ပဝတ္တိဝိပ္ဖန္ဒနဒရထ+ရဟိတ; run-on article (ပ)ဝတ္တိဝိဗန္ဓက (တိ) 'ဖြစ်ခြင်းကို တားမြစ်တတ်သော' with citation အနုဋီ၃
+193369	pavattivipphandanadaratharahita	analysis bracket ပဝတ္တိဝိပ္ဖန္ဒနဒရထ+ရဟိတ
+193370	pavattivibandhaka	citation 'အနုဋီ၃'
 193371	pavattivibhāga	stray '[' and '၃၁'
 193374	pavattivisesa	analysis bracket ပဝတ္တိဝိသေသ
 193376	pavattisaṁhāra	debris '(ပ ဖြင်'; fragment 'တ-၍'
@@ -506,7 +507,6 @@ id	iast	omitted
 193556	pavāritakāla	quotation 'သစေ ပဝါရိတကာလေ ဝဿဝါသိကံ ဒေန္တိ'; citations ဝိဋ ၃, ဝိသင်္ဂဟ
 193559	pavāritacīvara	citation ခုဒ္ဒသိက္ခာဋီ၊သစ်
 193561	pavāritadivasa	debris 'ံ ပဝါရိယ'
-193562	pavāritapada	run-on article (ပ)ဝါရိတပဝါရဏ (တိ) 'ဖိတ်ကြားအပ်ပြီးသော ပဝါရဏာရှိသော၊ သူ (ရဟန်း)'
 193565	pavāritamatta	citation ဝိ၃
 193566	pavāritasaññī	citation ကင်္ခါ
 193568	pavāritānurūpa	citation ဝိ၊ဋ္ဌ ၃
@@ -561,7 +561,7 @@ id	iast	omitted
 193659	pavāl̤ika	quotation 'ဝိပ္ပကိဏ္ဏမဏိမုတ္တပဝါဠိကာ'
 193661	pavikatthita	citation
 193662	pavicaya	stray sense number '(၁)' after (ဟာရ)
-193665	pavicayaṭṭha	citation; run-on articles '၂ဝိစယတိ (ကြိ) [ပ+ဝိ+] စိစစ် စူးစမ်းဆင်ခြင်၏။' and '၂ဝိစယန္တ (တိ) [ပ+ဝိ+စယ+အ+ အန္တု စိစစ် စူးစမ်းဆင်ခြင်ဆုံးဖြတ်သော၊သူ။'
+193665	pavicayaṭṭha	citation
 193668	pavicayapaccavekkhaṇasamādāna	fragment '၆ ပဝိစယမဏ္ဍ'
 193669	pavicayapaccupaṭṭhāna	trailing '('
 193670	pavicayapaññā	stray quotation mark '“'
@@ -882,7 +882,7 @@ id	iast	omitted
 194292	pasākha	analysis debris 'ပြသာခ-သုံ'; quotations 'ပသာခေါ ဝိဋပေါ' and 'တတော ဟိ ယသ္မာ ရုက္ခဿ သာခါ …'; citations
 194293	pasākhakāla	quotation fragment 'ပသာခကာလေပိ'
 194294	pasākhaja	citations
-194298	pasāda	run-on articles 'ဥပ္ပန္နအနုသာခေါ။ )သာခါပတ္တ (ပုန) … ရွက်နု' and '၂)သာဌန (န) … အဆင်တန်ဆာ' with analyses and quotation; analysis '[ပ+သဒ+ဏါ'; repetition of senses (1)–(6) with citations and quotation 'ဘေသဇ္ဇေ ဝိဟိတေ သုဒ္ဓ-ဗုဒ္ဓါဒိရတနတ္တယေ'
+194298	pasāda	run-on articles 'ဥပ္ပန္နအနုသာခေါ။' and '၂)သာဌန (န) … အဆင်တန်ဆာ' with analyses and quotation; analysis '[ပ+သဒ+ဏါ'; repetition of senses (1)–(6) with citations and quotation 'ဘေသဇ္ဇေ ဝိဟိတေ သုဒ္ဓ-ဗုဒ္ဓါဒိရတနတ္တယေ'
 194299	pasādaka	quotation 'အဇ္ဈတ္တိကာနိ စက္ခာဒီ၊ ပဉ္စေတေဝ ပသာဒကာ'; citation
 194300	pasādakara	stray '('
 194301	pasādakaraṇa	debris 'ဖြဲ'; citation
@@ -974,7 +974,6 @@ id	iast	omitted
 194455	pasādetvā	citations
 194456	pasādenta	grammarian's note 'ထီ၌ ပသာဒေန္တီ' (feminine form)
 194458	pasādentī	debris 'ဤ'
-194459	pasādema	run-on article 'ပသာဒေဓိ (ကာ၊ ကြို [ပ+သဒ(သီဒ)+ဏေ-+ မိ ကြည်လင်-ကြည်ညို-စေပါ၏'
 194464	pasādeyyuṁ	analysis '(ကာ၊ ကြို ပ+သဒ(သီဒ)+ဏေ+ ဧယျုံ'
 194467	pasādesiṁ	analysis '(ကာ၊ ကြို ပ+သဒ(သီဒ)+ဏေ+ ဣ'
 194468	pasādesuṁ	running head '၈ ပသာဓန'
@@ -1086,7 +1085,6 @@ id	iast	omitted
 194703	passaddhattha	stray bracket '('
 194705	passaddhasabbadaratha	citation 'ဒီ၊ဋီ၁'
 194707	passaddhi	OCR repeat 'သိက်'; citations 'ဝိ၃။ ဝိ၅။ အံ၃။ ဝိသုဒ္ဓိ ၂။ ခုဒ္ဒကုဋ္ဌ။ ဒီ၊ဋီ၃။ မ၊ဋီ၁ဝ။ အံ၊ဋီ၃'
-194710	passaddhikāyapuggalasevana	run-on article 'ပဿဒ္ဓိကိလေသ (တိ) [ ငြိမ်းအေးသော ကိလေသာရှိသော၊ သူ' (having calmed defilements, said of a person)
 194713	passaddhanadvaya	quoted form 'ပဿဒ္ဓိဒွယံ'; citation 'ဒီ၊ဋီ၁ဝ'; bare number '၂၆၂'
 194717	passaddhalakkhaṇa	'၆ ပဿဒ္ဓိသမ္ဗောဇ္ဈင်္ဂရတန' (a later headword)
 194721	passaddhasampanna	stray bracket '['; quotation 'ပဿဒွိယာ သတိ … ဟောတိ သုခ'
@@ -1127,7 +1125,8 @@ id	iast	omitted
 194806	passāvupatthambha	stray bracket '['; cross-reference with page '(၁၁၁-လည်း ကြည့်' and citation 'ဝိ'
 194807	passāsa	citation 'ဓာန်၊ဋီ'; quotation fragment '“”တိအာဒိ'
 194808	passāsakāya	citation 'ဝိသုဒ္ဓိ၁'
-194809	passāsapaṭisaṅkhanā	fragment 'သင်္ခနာ'; 'ပဿာ-သပဋိသင်နာ။ ၁၆၃'; run-on article ပဿာသပဋိလာဘ (ပု) with its analysis ('the obtaining of the in-breath (Vinaya commentary); of the out-breath (Suttanta commentary)'), page '၁၆၃'
+194809	passāsapaṭisaṅkhanā	fragment 'သင်္ခနာ'; 'ပဿာ-သပဋိသင်နာ။ ၁၆၃'
+194810	passāsapaṭilābha	stray OCR 'ဘါ' at the start; page number '၁၆၃'
 194811	passāsamūlaka	fragment 'ပသ'
 194812	passāsavāra	citations 'မဋ္ဌ၂။ သ ၁၉၃'
 194813	passāsādi	analysis '[ပဿာသ အာဒိ'; fragment 'သ။ ၁၆၅'
@@ -1221,7 +1220,8 @@ id	iast	omitted
 194998	paharāpehi	fragment 'အန္တ'; grammatical note 'ထီ-၌ ပဟရာပေန္တီ' (the feminine form)
 194999	paharāpeyya	run-on article 'ပဟရာပေသိံ (ကာ၊ ကြို [ပ++ သို' with senses (1)–(3) ('caused to strike …; to touch …; to sound …')
 195006	paharāpehi	analysis '(ကာက ကြို [ပ+]'
-195010	pahari	run-on article ပဟရိံသု (ကြိ) with its analysis ('(1) they struck / attacked … destroyed; (2) they sounded / beat …'); run-on article ပဟရိ (ကြိ) with its analysis ('(1) struck … destroyed; (2) snapped (the fingers); (3) sounded …; (4) sprinkled')
+195009	pahariṁsu	analysis bracket fragment '[ဟရ,'
+195010	pahari	analysis bracket fragment 'ကြု [ဟရ,'
 195011	paharita	quotation fragment 'သုုသလသာဂတဿပဉ်ာ'
 195012	paharitabba	citation 'ဓမ္မဋ္ဌ၂'
 195013	paharitabbasarīrappadesa	analysis 'ပဟရိတဗ္ဗသရီရ +ပဒေသျ'
@@ -1683,7 +1683,8 @@ id	iast	omitted
 195790	pāṇakadosa	quotation 'သော ပန ရောဂေါ ပါဏကဒေါ-သေန သမ္ဘဝတိ'
 195792	pāṇakarahitaüdakabhojana	analysis 'ပါဏကရ ဟိတဥဒက+ ဘောဇန'
 195793	pāṇakavijcyana	quotation 'အနုပဒ္ဒဝေတိ ပါဏကဝိဇ္ဈန-သတ္ထပ္ပဟာရာ-ဒိဥပဒ္ဒဝရဟိတေ'
-195794	pāṇakavidga	citation ဓမ္မုဋ္ဌ၁; run-on article ပါဏကဟရဏ (န) '[ပါဏက+ဟရဏ] ပိုးကောင်ငယ်တို့ကို ပယ်ခြင်း'
+195794	pāṇakavidga	citation ဓမ္မုဋ္ဌ၁
+195795	pāṇakaharaṇa	analysis 'ပါဏက+ဟရဏုံ'
 195796	pāṇakānurakkharaṇa	analysis bracket '[ပါဏကအနုရက္ခဏ'
 195797	pāṇakoṭi	citation မဋီ၃
 195798	pāṇakoṭika	citation မါဋ္ဌ၃
@@ -3072,7 +3073,7 @@ id	iast	omitted
 198323	pidahitvāna	stray ]
 198331	pidhāna	run-on articles ခီဿာမ (ကြိ) … ကုန်အံ့, (ကြို) … အံ့, ဟယျ (ကြိ) … ရာ၏, ဟယျာထ (ကြိ) … ကုန်ရာ၏, ဘဗ္ဗ (တိ) … အပ်သော, တုံ (ကြို ဝိ) … ခြင်းငှါ, with their analyses and citations; analysis [အပိ+ဓာ+ယု with commentary quotation အပိဓရတိ …; OCR debris ၍၌့ရျ မ ၅ ရို၏ ဝ နီ.; citations ဝိဋ္ဌ၃, ဓာန်, ၅ဝ; quotation နေတ္တိံသာဒိပိဓာနေ ခဂ္ဂါဒီနံ ဂေဟေ
 198332	pidhānaka	run-on headword ပိဓာနကဗန္ဓ
-198335	pidhānabandhana	source tag ဋီသစ်; run-on article ၆ဓာနကိစ္စ (တိ) စောင်း ခြင် ကိစ္စရှိသော
+198335	pidhānabandhana	source tag ဋီသစ်
 198337	pidhānaṭṭha	citation မ၊ဋ္ဌ၁
 198341	pidhānābhāva	analysis bracket [ပိဓာနနအဘာဝါ
 198343	pidhāya	stray )

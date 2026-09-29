@@ -50,6 +50,26 @@ def unit():
     again = M.corrected('zz', [dict(r) for r in out])                        # idempotent: the draft is kept
     assert again == out, 'corrected() is not idempotent'
     assert list(out[0]) == list(rows[0]) + ['es_drafted', 'corrected_es']      # the key order of §51's rows
+    # merge --ids (brief §70): a new draft replaces its row and omitted line; an id with no explanation left
+    # loses its row and line; an id with no new draft keeps both; every other row and line is kept
+    w = d / 'work'; (w / 'shards').mkdir(parents=True); (w / 'out').mkdir()
+    ex = lambda i: {'id': i, 'hw': 'x', 'iast': f'h{i}', 'label': None, 'src': 'ocr', 'text': 'ဗမာ', 'forms': {}, 'only': False}
+    json.dump([ex(1), ex(2), ex(4), ex(5)], open(w / 'workzz.json', 'w'))               # 3's text went elsewhere
+    (w / 'shards/00.jsonl').write_text(json.dumps({'id': 1}) + '\n' + json.dumps({'id': 5}) + '\n')
+    (w / 'out/00.jsonl').write_text(json.dumps({'id': 1, 'es': 'nuevo.', 'en': 'new.', 'terms': [], 'flag': '',
+                                                'omitted': 'otra cosa'}) + '\n' +
+                                    json.dumps({'id': 5, 'es': '', 'en': '', 'terms': [], 'flag': 'nothing to translate',
+                                                'omitted': 'restos'}) + '\n')          # 5: drafted empty
+    mp = d / 'docs/translation/meanings'; mp.mkdir(parents=True)
+    old = [dict(base(i, f'viejo {i}.'), flag='f') for i in (1, 2, 3, 4, 5)]
+    (mp / 'zz.jsonl').write_text(''.join(json.dumps(r) + '\n' for r in old))
+    (mp / 'zz-omitted.tsv').write_text('id\tiast\tomitted\n' + ''.join(f'{i}\th{i}\tviejo {i}\n' for i in (1, 2, 3, 4, 5)))
+    (d / 'docs/translation/corrections-es.tsv').write_text('id\tbook\tiast\tes\tsenses\tby\tdate\tnote\n')
+    M.WORK = w; M.merge('zz', {1, 2, 3, 5})
+    got = [json.loads(l) for l in (mp / 'zz.jsonl').read_text().splitlines()]
+    assert [r['id'] for r in got] == [1, 2, 4] and got[0]['es'] == 'nuevo.' and got[1] == old[1] and got[2] == old[3]
+    om = (mp / 'zz-omitted.tsv').read_text().splitlines()[1:]
+    assert om == ['1\th1\totra cosa', '2\th2\tviejo 2', '4\th4\tviejo 4', '5\th5\trestos'], om
     M.ROOT = ROOT
     print('unit: ok')
 

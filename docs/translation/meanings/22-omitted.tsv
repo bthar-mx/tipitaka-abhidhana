@@ -475,7 +475,9 @@ id	iast	omitted
 178086	sappasirūpama	analysis '[ + အ'
 178089	sappāgamanavijjā	Sanskrit note 'သပဝိဒျာ-သံ'
 178090	sappapāṭihāriya	grammarians' notes (analysis ပဋိ + ဟရ + ဏျ, suffix note, Sanskrit, Prakrit); quotation '…ပဋိပက္ခဟရဏတော'; run-on text 'တန်ခိုးပြာဋိဟာနှင့်တကွဖြစ်သောတရား' (a state accompanied by pāṭihāriya of power); next headword 'သပ္ပါဋိဟိရ'
-178093	sappāṭihīra	grammarians' notes (analysis, ဟာ-၏ အာ-ကို ဣ-ပြု, forms ပါဋိဟီရံ, ပါဋိဟေရံ, Sanskrit, Prakrit); run-on article sappāṭihīrakata ('made so as to be accompanied by removing / eliminating the opposing states and leading to Nibbāna'); run-on article sappāṭihīraka ('accompanied by an answer apt to throw back a fault another has brought'); citation '၉၀ဝ'; OCR debris
+178093	sappāṭihīra	grammarian's note: analysis [(=ပါဋိဟီရ) ပဋိ + ဟရ + ဏ …], ၁၃၀၃, Sanskrit / Prakrit forms
+178094	sappāṭihirakata	analysis bracket fragment '[ သပ္ပါဋိဟိရ ကတ တ္တ သပ္ပါဋိဟိရက'; scan debris '၉] ဝ.၂ ဝ ဌ ဣဋ္ဋ,'; citation 'ဝ နို့။ ၉၀ဝ'
+178095	sappāṭihiraka	scan debris 'ဝဝဝ ီ့၏] ]]]'
 178096	sappāṭihirakata	OCR debris 'သပ္ပါဠီဟိ က-ကြ ၌၊ ညညံ့'
 178097	sappāṭihirapavisana	garbled headword echoes; OCR debris
 178098	sappāṭihirappavesanasambandha	OCR debris; run-on article sappāṇa / sappāṇaka ('(1) accompanied by small creatures; (2) the sappāṇaka training rule, laid down on account of the chabbaggiya monks who used water with creatures in it knowingly') with quotation 'သဉ္စိစ္စဝဓ-သပ္ပါဏံ'
@@ -1424,7 +1426,8 @@ id	iast	omitted
 179535	sabbākusalamūlabandhana	quotation 'သဗ္ဗာကုသလ-မူလဗန္ဓနာပမုတ္တေနာ'
 179536	sabbākusalaviddhaṁsaka	OCR debris 'ဝ ဖို]'
 179538	sabbākusalasambhava	analysis bracket '[သဗ္ဗာကုသလ - သမ္ဘဝါ'
-179539	sabbākusalasādhāraṇa	quotation '“သဗ္ဗာကုသလသမ္ဘဝဿာ”တိ'; run-on article သဗ္ဗာကုသလာဘိသင်္ခါရ (ပု) 'the state apt to form / fashion, namely all the unwholesome'
+179539	sabbākusalasādhāraṇa	quotation '“သဗ္ဗာကုသလသမ္ဘဝဿာ”တိ'
+179540	sabbākusalābhisaṅkhāra	stray 'န'
 179542	sabbācariyasādhāraṇavinicchaya	OCR debris 'ရို့] ီရ ဟု၍] ိ၏' inside the text
 179543	sabbātikkantapaccayāpekkhā	stray 'ီ)'; debris '-== ဖို့'
 179545	sabbātithīyācayoga	OCR debris 'ဝ ရ ချို' inside the text; 'အနုစ္ဆ-ီ့။ ဖု့]'
@@ -1453,7 +1456,7 @@ id	iast	omitted
 179572	sabbābharaṇabhūsita	damaged analysis bracket '[ သဗ္ဗာဘရဏ ဗွာဘရဏဘူ ဒွာဘရ ဘူသိတ ]'
 179573	sabbābharaṇavibhūsita	OCR debris 'ူ ] ဖို့] ရို့ ဝ။ ဖို့ ဖ့၏'
 179574	sabbāsañchanna	OCR debris 'နာ။ ်ဖြု ဌ ဋ ဖ၏' inside the text
-179575	sabbābhiññā	run-on article သဗ္ဗာဘိညာဗလပ္ပတ္တ (တိ) with two senses ('(1) that has reached the power of all abhiññā; (2) that has reached all abhiññā and power') and its quotation, with OCR debris
+179576	sabbābhiññābalappatta	scan debris 'ု့၏] ချာ] ရ ပ ီ့ရျ'; quotation 'သဗ္ဗာဘိညာဗလပ္ပတ္တော'
 179577	sabbābhideyya	OCR debris 'ရို့ ပ'; quotation 'ပါဒေါဒကပါဒဗ္ဘဉ္ဇနာဒိဒါနာ-' and debris
 179578	sabbābhibhū	stray '(၃)' before (က); OCR debris in (ဂ) and (ဃ); quotations and citations for senses (က)–(ဃ); next headword 'သဗ္ဗာဘိသင်္ဂ' with debris
 179580	sabbāmagandhamūlabhūta	analysis fragment 'မူလဘူတ'; quotation 'ဧသာမဂန္ဓောတိ … အာမဂန္ဓော'
@@ -1496,7 +1499,14 @@ id	iast	omitted
 179635	sabbāhitakāraka	quotation fragment 'ပစ္စတို့ကော'
 179636	sabbitthī	quotation 'သဗ္ဗာ ဣတ္ထိယော ပါပံ ကရေယျုံ'
 179638	sabbiriyāpatha	analysis bracket 'ရိယာပထ (ပု) [ … ဣရိယာပထါုံ'; citations and quotation fragments; thirteen run-on articles (from သဗ္ဗီရိယာပထဝတ္တန to သဗ္ဗုပဒ္ဒဝ) with their definitions and OCR debris; next headword 'သဗ္ဗုပဒ္ဒဝကမ္မပရိဝတ္ထုတာ'
-179639	sabbīriyāpatha	analysis bracket; citations and quotation fragments; thirteen run-on articles (from သဗ္ဗီရိယာပထဝတ္တန to သဗ္ဗုပဒ္ဒဝ) with their definitions and OCR debris; next headword 'သဗ္ဗုပဒ္ဒဝကမ္မပရိဝတ္ထုတာ'
+179639	sabbīriyāpatha	analysis bracket; citations and quotation fragments; run-on article သဗ္ဗီရိယာပထဝတ္တန with its definition and OCR debris
+179641	sabbiriyāpathasādhāraṇa	quotation fragment 'သဗ္ဗိရိယာပထသာဓာ…ရဏ … ဝဟာရုဝစန' and citation 'ဝိဒိ ၃၈' mixed with scan debris
+179642	sabbiriyāpathasādhāraṇavacana	scan debris 'ဖု့ ချာ] ် ၄', '] ဖို ၅] ီ့', 'ဝ ဖို့ ိ့ ၅'; quotation 'သဗ္ဗိရိယာပထသာဓာရဏဝစနံ'
+179643	sabbissariya	stray 'န'
+179644	sabbīti	quotation fragment 'သဗ္ဗီတိယော'; run-on article sabbītiparivajjita 'avoiding / free from all dangers'; scan debris and page number ၃၉၅
+179646	sabbītimutta	running head 'သမ္ဗုက္ကဋ္ဌ'; quotation 'သဗ္ဗီတိမုတ္တော'; run-on articles sabbukkaṭṭha 'the most excellent among / above all' and sabbukkaṭṭhapariccheda 'the most excellent limit'; source ကင်္ဂါ; scan debris
+179649	sabbuttama	stray 'ရို့'
+179651	sabbupakkilesaparisuddha	scan debris; citation သုတ္တနိ; run-on article sabbupaddava 'all; all danger / obstacle'; quotation fragment 'သဗ္ဗုပဒ္ဒဝကမ္မပရိဝတ္ထုတာ'
 179656	sabbūpaddavavatthukatā	analysis bracket '(ဗ္ဗူပဒ္ဒဝဝတ္ထုတာ (ထီ) [ သဗ္ဗု (ဂုံ ပဒ္ဒဝ + ဝတ္ထု + တာ ]'; citation 'စဠနိ၊ ဥပဒ္ဒ ုတ္တန၊ ၌ ၉'
 179658	sabbūpadhi	analysis bracket 'ပဓ (ပု) [ သဗ္ဗံ" ဥပဓ ]'; quotation fragment 'ပရိက္ခိ-ဖို့ မ ဏတ္တာ'
 179659	sabbupadhipaṭinissaggabhāva	stray ']'
@@ -1703,7 +1713,8 @@ id	iast	omitted
 179956	sabhāvapaṭivedhapaññā	analysis fragment '... + ပညာ ]'; debris
 179957	sabhāvapaṭivedhalakkhaṇa	analysis '[ သဘာဝပဋိဝေဓ ံ ]'
 179958	sabhāvapaṭisedha	quotation 'အာမသန္ဘီတိ ... ပရိမဏ္ဏိ'
-179960	sabhāvapada	quotation '“ဖဿော”'; run-on article '၃၀ ဘာဝပဘေဒ (ပု) [ သဘော၏ -အထူး- အပြား။ သဘာဝဖြစ် သော- အထူးအပြား'
+179960	sabhāvapada	quotation '“ဖဿော”'
+179961	sabhāvapabheda	stray 'ဒ' and '['
 179965	sabhāvaparicchedaka	grammatical note 'ထီ-၌ ပရိစ္ဆေဒိကာ'; quotation fragment 'သဝနဓာရဏ-'
 179966	sabhāvapariyāya	citation 'အနုဋံ'; debris
 179967	sabhāvaparisuddha	quotation fragment 'ယေ တတေ'; debris
@@ -1787,7 +1798,8 @@ id	iast	omitted
 180075	sabhāvūpagamana	quotation 'သရီရသဘာ-အတုနော ... တ္တနေ'
 180076	sabhāvūpadhāraṇa	OCR debris 'သူ၊ ု့၏ ချိ ဟုလ ်ျ ၂၂၂၂ ['
 180077	sabhāvūpadhāraṇamukha	quotation 'ဧဝံ ကာယဿ ... စိတ္တစေတသိကာနံ'
-180078	sabhāvūpalakkhaṇa	quotation 'သဘာဓဝူပလက္ခဏဝသေ-နာ'; run-on article '၁ သဘက္ခုက (တိ) + က။ ] ရဟန်းနှင့်တကွ ဖြစ်-ရဟန်းရှိ-သော …' with citations and debris
+180078	sabhāvūpalakkhaṇa	quotation 'သဘာဓဝူပလက္ခဏဝသေ-နာ'
+180079	sabhikkhuka	analysis fragment '+ က။ ]'; scan debris; quotation fragment 'သဘိက္ခုက…'; citations and page numbers
 180080	sabhikkhukasañña	debris 'အ ]', 'ကေ သဘိက္က-'; quotation fragment 'သဘက္ခိုတသည်ာယ'
 180081	sabhikkhukasaññī	debris 'ဖို့ ဖို့'
 180082	sabhikkhukārāma	garbled repeat 'ရိဟနးနှင့်တကွုဖြစ-ရှ ရာ'
@@ -1889,7 +1901,8 @@ id	iast	omitted
 180226	samacchaka	debris 'နီ'; run-on article 'ဝစ္ဆန္ဒ … ဆ-ကြောင့် စ-အသဒိသဒ္ဓေဘော်လာ။ ] တူမျှသော အလို ဆန္ဒရှိသော၊ သူ'
 180228	samacchamaṁsa	trailing '(၇) ငါးနုင့်တကွ' (start of the next article)
 180229	samaccharasa	debris 'ဖို့] ဖီ့] ပ'; run-on article 'ဝမစ္ဆရေ (ကြို) [ သံ + အာသ + အန္တိ … (၁) နေထိင် … ကုန်၏။ (၂) ဝန်းရန်၍နေထိုင်ကုန်၏' with its grammarians' notes
-180232	samacchare	citation '၂ဝ၃'; run-on article 'မစ္ဆိန္နသင်္ခပန္တိ (ထီ) … ညီစွာဖြတ်အပ်သော ခရုသင်းခွက် အစဉ် အတန်း'; run-on article 'မစ္ဆေရ (တိ) … ဝန်တိုခြင်း-နှင့် တကွဖြစ်သော'; debris and citation '၂၀၄-နှာ'
+180231	samacchinnasaṅkhapanti	analysis '[ သင် + ပန္တိ'; scan debris 'ဟ ဟို]'; run-on article samacchera 'accompanied by avarice / stinginess'; page reference ၂၀၄
+180232	samacchare	citation '၂ဝ၃'
 180234	samajātika	debris 'န က'
 180235	samajātikakula	debris 'ပ မှု ဝ ရို့ ပ'
 180236	samajātigottavibhava	debris '“, သ ဟု့] ြ'
@@ -2203,7 +2216,8 @@ id	iast	omitted
 180714	samadhika	grammatical notes 'လာသည်။ သံ + အဓိက သမဓိက-သံ။ သမဟိတ-ပြာ'; 'မ-ကာရော ပနေတ္ထ ပဒသန္ဓိကရော'; quotation '“သံ အဓိကာနီ”'; 'မ-ကာရော ပဒသန္ဓိဝသေန အာဂတော'
 180715	samadhikachasaṭṭhisata	quotation 'သမဓိက-ဆသဋ္ဌိသတမီတိ ဝိညေယျာ ဘာဏဝါရာနံ'
 180716	samadhikachasaṭṭhisatapamāṇa	stray '['
-180717	samadhikapuggalavirahitā	stray '['; 'အပ၊'; run-on '[ သမဓိကသတ္တဝီသတိသဟဿမတ္တ (တိ) [ ၂၇-[ ... (ဘာသာဋီကာ)း)။ သ ၂၆၃'
+180717	samadhikapuggalavirahitā	stray '['; 'အပ၊'
+180718	samadhisattavīsatisatasahassamatta	stray '၂၇['; source tag (ဘာသာဋီကာ); citation 'သ ၂၆၃'
 180720	samadhigacchanta	run-on start of the next headword '၄ သမဓိဂဏှာတိ'
 180722	samadhigata	notes 'သမဓိဂစ္ဆတိ-မှ။ သမဓိီဂတ-သံ၊ သမဟိဂယ-ပြာ'; citation 'ဣတိဝုတ်၊'; quotation '(၃) ပဝတ္တိသင်ါတဿ'
 180723	samadhigatajjhānasukha	analysis fragment 'သုခ (န)'
@@ -2287,7 +2301,8 @@ id	iast	omitted
 180853	samanuyuñjati	Sanskrit note 'သမနုယုဇုတေ-သံ။ ]'; list of inflected forms with page numbers and citations
 180857	samanuyuñjanti	quotation 'အထ ခေါ တေပိ သမနုယုဉ္ဇန္တိ သမနုဂါဟန္တိ သမနုဘာသန္တိ'
 180859	samanuyuñjāpana	analysis 'ဏာပေ + ယု ]'
-180860	samanuyuñjitvā	end of the previous article 'ခြင်းစေကြောင်း (စကား)။ သမနုယုဉာပန-ကထာ။ ဒီဃနိကာယ၊ သီလက္ခန္ဓဝဂ္ဂပါဠိ ၈-သုတ်'; headword echo, label and analysis '(ကြ၊ ဝိ) [သံ + အနု "ယုဇ + တွာ ]'; run-on article samanuyuñjiyamāna ('(အယူ-ဝါဒ-ကို) မေးမြန်း-စိစစ်-စစ်ဆေး-အပ်-ခံရ-သော၊ သူ') with its quotation
+180860	samanuyuñjitvā	end of the previous article 'ခြင်းစေကြောင်း (စကား)။ သမနုယုဉာပန-ကထာ။ ဒီဃနိကာယ၊ သီလက္ခန္ဓဝဂ္ဂပါဠိ ၈-သုတ်'; headword echo, label and analysis '(ကြ၊ ဝိ) [သံ + အနု "ယုဇ + တွာ ]'
+180861	samanuyuñjiyamāna	Sanskrit form; quotations 'ဧဝမေဝ ခေါ တွံ အဂ္ဂိဝေဿန …', 'သမနုယုဉ္ဇိယမာနာနီ'
 180863	samanuyuñjeyyuṁ	quotation 'သမနုယုဉ္ဇေယျု လဒ္ဓိံ ပုစ္ဆေယျုံ'
 180864	samanusāsa	grammatical note 'နဟိ။ သမနုသာသတိ-မှ။'; debris '"”'
 180865	samanusāsati	grammarian's notes 'သမနုဂါိ-သံ။ သမဏုသာသက္က-… ပြာ'; list of inflected forms
@@ -2844,7 +2859,8 @@ id	iast	omitted
 181864	samādhisuttavaṇṇanā	stray [; quotation 'သမာဓိသုတ္တ-ဝဏ္ဏနာ'
 181870	samādhūpanisa	embedded run-on 'ြ သမာဓူပနိဿယ'
 181873	samāna	grammarian's notes 'အ-သရကျေ။ ၅၂၇-နှာ။ သတ်-သံ။ သမာဏ-ပြာ'; quotation 'ဗာဟိရကဒါနဉှိ … န သက္ကောတိ'; citations 'ဇာ၊ ဌ၊ ၆ ၂၁', 'သမာနော (ကင်္ခါ။ ၁၀၄)'
-181874	samāna	stray ]; quotation fragments '(၁) သမာနတ္တတာယာ။ သမာနတ္တတာယာ'; debris '[.။ ဓာန်'; run-on 'သမာန? (တိ)။ ဓာန်၊ ] (၁) မာန်-မာန-ရှိသော။ (၂) အတိုင်းအရှည်-ပမာဏ-ရှိသော။ ဏ (၁)။ ----'
+181874	samāna	stray ]; quotation fragments '(၁) သမာနတ္တတာယာ။ သမာနတ္တတာယာ'; debris '[.။ ဓာန်'
+181875	samāna	stray 'ဏ (၁)။ ----'
 181876	samāna	quotation 'သမာနာ'
 181877	samānaaggha	stray dashes
 181881	samānakattulakkhaṇa	quotation fragment 'ပဋိစ္စ- ['; citation 'ဝိသုဒ္ဓိ၊ ဋီ ၂'
@@ -3152,7 +3168,7 @@ id	iast	omitted
 182435	samāhare	grammarian's notes (the ending expresses the future; mi becomes e; the canon reads sabbamāhariṁ); debris 'ရို့', 'ဟို။ ့] ဝ'
 182436	samāhareyya	analysis '(ကြို'; garbled 'စုရုံး “ “ ညး ရာ'; run-on article samāhāra (analysis; Sanskrit and Prakrit forms; senses '(၁) အပေါင်း၊ အစ။ (၂) စရုံး-ပေါင်းစ-တပေါင်းတည်းဆောင်ခြင်း')
 182437	samāhāra	quotation '(၂) သမာဟာရ'; citation 'သီ၊ ဋီ'; debris and quotation fragments '(၃) “သိဝိယ-ဝ [၅]] သျ ဣတာ သူ [ါ သမ္ဗုက န္တိ'
-182438	samāhāradvanda	run-on article samāhita (analysis; Sanskrit, Prakrit, Ardhamāgadhī forms; senses 1-5 printed twice; citation; quotation 'သုက္ကဓမ္မသမာဟိတာ ... သုက္ကဓမ္မာ နာမ')
+182439	samāhita	analysis and Sanskrit / Prakrit forms; OCR duplicate of senses (1)–(5); citation ဣတိဝုတ် ဋ္ဌ ၁၆၅; quotation 'သုက္ကဓမ္မသမာဟိတာ …'
 182440	samāhitaïndriya	analysis '[ သမာဟိတ -+ ဣန္ဒြိယ'
 182441	samāhitacitta	stray '(၁) ၄'
 182444	samāhitapuggalasevanā	citation 'ဝိ၊ ဋ္ဌ ၂'
@@ -3331,7 +3347,6 @@ id	iast	omitted
 182708	samuccayati	root note 'စိ-စယေ'; inflected forms 'သမုစ္စေတိ၊ သမုစ္စယတိ'
 182709	samuccayatta	OCR debris 'ဿ၏-ဿ-ဿဇာသသ-အ-ဿ အာစ ာ-ဏူ'; quotation fragment 'သမုစ္စယတ္ထတ္တံ'
 182710	samuccayattha	stray bracket; citations 'ဝိ၊ (၇) (၂)', '( နေတ္တိ၊ ဝိ။ ၁၁)'
-182711	samuccayatthatta	run-on article 'မုစ္စယတ္ထဒီပက (တိ) [။ ထီ-၌ ဒီပိကာ။ ] သမုစ္စည်းအနက်ကိုပြတတ်သော'; stray '၅'
 182713	samuccayaddhaya	run-on article 'မုစ္စယဝဏ္ဏနာ (ထီ) [ အပေါင်း-အစု-အားဖြင့် ဖွင့်ခြင်း'
 182714	samuccayavāra	citation 'ပါစိတ်'; OCR debris 'ဖို့ ဝ ဝ ့]'
 182715	samuccayaviratitapāṭha	OCR debris 'ဦ ်သျို ်းရ န ပါဌ', 'ဌ်-ပါဠိ။ ီ့] ပ [၅]] ့'; quotation fragment 'ဒိဿတိ'
@@ -4743,7 +4758,10 @@ id	iast	omitted
 184972	samphusitaka	quotation 'သိသိရေတိ … ဘာဂတော ဝါတော' with headword fragment; source tag ပါစိတ်
 184974	samphusituṁ	run-on article 'သမ္ဗုသိတွာ (ကြ၊ ဝါ) ကောင်းစွာ-တွေ့ထိ-တို့ထိ-၍'
 184976	samphusissati	quotation fragment 'သမ္ဖူသိဿတိ ၂၁၇'; source tag ထေရီ; run-on article fragment 'သမ္ဗုသီ (ကြို။ အာတဗဓံ'
-184979	samphuseti	label fragment '(ကာ၊ ကြို'; run-on articles with their analyses, Sanskrit and Prakrit notes, page references and glosses (ဖွဲ့-စပ်-ဆက်စပ်-၏ etc.), from 'သမဿ (ကြိ) ] သမူူသိတွာ-ကြည့်' to 'သမ္ဗတိ … (၁) အသံကို ပြု၏။ (၂) တန်းဆာဆင်၏' with grammarian's note
+184979	samphuseti	run-on articles: 'သမဿ (ကြိ) … သမူူသိတွာ-ကြည့်', 'သမ္ဗ (?) [ သမ္ပ က ] သမုက-ကြည့်', 'သမ္ဗဇ္ဈတိ (ကြိ) … binds / joins / connects', 'သမ္ဗဇ္ဈတိ (ကမ္မ ကြိ) … is bound / joined / connected', 'သမ္ဗုဇ္ဈတိ ကြည့်'; page numbers
+184986	sambajjhanīya	run-on article sambajjhanti with analysis bracket 'join / connect (3rd pl.)'
+184988	sambajcyamāna	quotation fragment 'တိ ဧတေန ဘဝိတုမရဟတိ'
+184989	sambajjhitabba	scan debris ') သ။ ၀ ယ'; run-on absolutive 'ဖွဲ့စပ်-ဆက်စပ်-၍' with citation သီ ဋီ သစ် ၂၂၇; run-on verb (1) makes a sound (2) adorns, with ပါစိတ် and root note
 184992	sambaddha	quotations for senses (1) and (2)
 184993	sambaddhaaṅgulantara	quotation 'ပဋိဗဒ္ဓအင်္ဂုလန္တရောတိ … သမ္ဗဒ္ဓအင်္ဂု-လန္တရော'
 184995	sambaddhacitta	quotation 'ဗဒ္ဓစိတ္တော … သမ္ပဒ္ဒစိတ္တော' with debris
