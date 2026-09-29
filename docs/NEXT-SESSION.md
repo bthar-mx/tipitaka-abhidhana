@@ -117,12 +117,16 @@ Project are for advice and for what needs the Mac. What the new chat should know
 - **Live check after the push** (`/data/version.json` 0.28.0): `/w/pamāṇayoga` (14/2, 210257), `/w/sāda` (23, 189598), `/w/sabhikkhuka`
   (22, 180079) and `/w/sammukhībhūtakathā` (23, 186262) show a Meaning box, *borrador*; `/w/sammukhībhūta` (186261) no longer shows
   sammukhībhūtakathā's translation (no Meaning box); `/w/visama` (vol. 20, 157107, a host) no longer flags the run-on ဝိသမ.
-- **Small, pending**: the 14 "see X" targets with a stray mark in 14/3 and 20–24 (brief §65) want `merge NN --ids` on those rows from
+- ~~**Small, pending**~~ (done, v0.28.1, brief §71): the 14 "see X" targets with a stray mark in 14/3 and 20–24 (brief §65) want `merge NN --ids` on those rows from
   their old drafts (`tmp/meanings/vNN/out/`); not part of this redraft.
 - ~~**Next: Phase 2** (2.1, the decision sheet)~~: 2.1 done 29 Sep (next section).
 
 ## After the decision sheet (plan step 2.1, 29 Sep): for the editor
 
+- **Decisions come last (the editor, 29 Sep, repeated):** the editor answers the decision sheet only after all other work is
+  done. Do not ask for the answers, or schedule work that waits on them, before then; do next whatever needs no decision (see
+  "Work that needs no decision" below). Answers given so far are saved on the decision page (Project `claude/decision-page.md`;
+  30 of 131 on 29 Sep, some with notes and references) and stay there until the end.
 - **The editor**: commit `docs/translation/decisions.md` and this file (git commands given in the session; docs only, no version bump).
 - **Answer the sheet** (`docs/translation/decisions.md`; Project `claude/decision-sheet.md`): an option after each **Decision:**, grouped
   A verb person, B stems and renderings (with how to apply R2–R12), C glossary, D labels / History / Budistas, E grammar notes, F source
@@ -277,8 +281,22 @@ on the credit; redrafts and rule changes in Cowork. ~~**Next**: the editor runs 
 and 1.1 in a Cowork chat~~: done (0.3 v0.26.2, 1.1 §67). ~~**Next**: the editor reads §67 and decides 1.3's scope~~: decided 28 Sep
 (§68): the split rule alone, in the nine books without PCED; the rest optional (1.8). ~~**Next**: the editor reviews and tags v0.26.4; then 1.3 (reduced), 1.4, 1.5~~: done (v0.27.0, §69). ~~**Next**: push v0.27.0; the
 editor decides the seven unsure splits; 1.6 (redraft of 397 rows) in Cowork~~: pushed; 1.6 done (v0.28.0, §70). **Next**: push v0.28.0;
-the editor decides the seven unsure splits; then Phase 2 (2.1 first). ~~2.1~~: done 29 Sep. **Next**: the editor answers the
-decision sheet (one or two sittings); then 2.3.
+the editor decides the seven unsure splits; then Phase 2 (2.1 first). ~~2.1~~: done 29 Sep. **Next** (29 Sep): the work that needs no
+decision (below); the editor answers the decision sheet at the end, then 2.3.
+
+## Work that needs no decision (29 Sep, before the decision sheet is answered)
+
+Facts and mechanics only; nothing re-renders a translation. Each result is kept for the end, not applied to the Spanish.
+- ~~**2.2's id lists**~~: done 29 Sep (brief §71): `tmp/dec21/lists/NN-{accept,rule,image,editor}.tsv`, `lists/summary.tsv`.
+- **2.4 page checks, mechanical rows**: numbers lost or misread (393 flagged), headword / text disagreeing (59, strict test),
+  rows the agents asked to check (44), the 6 misromanised headwords and 4 index spellings (to `index-errata.md`), vol. 25 p. 15
+  (the History's year). What the page prints is recorded; the Spanish is not changed. ~3 k tokens a row (guess, not measured).
+- ~~**The 14 "see X" targets with a stray mark**~~: done 29 Sep, v0.28.1 (brief §71). Was: (brief §65): `merge NN --ids` from their old drafts; no redraft.
+- **Script diffs for the lexical rules of 27 Sep** (R4–R8, R10, R11; `tmp/dec0927/mech.py`): written as diffs to read at the end, not merged.
+- **Item 9**: the 207 supplement rows moved beside vols. 15, 4/2, 16 (Cowork ~200 k + a Mac re-run).
+- **Item 3b**: transcribe the citation abbreviations (vol. 4/1 pp. 31–36, vol. 15 pp. 17–22) and the case abbreviations from the images.
+- **Item 4**: repo size (`git count-objects -vH`, `git gc`; the editor, in Terminal).
+- Optional, larger: 1.8 (homonym swaps, farther-body run-ons), 7b (14/3's analysis), 8 (label disagreements on the image).
 
 ## Next, in order
 

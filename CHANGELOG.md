@@ -23,6 +23,14 @@ Versions of the Tipiṭaka Pāḷi-Myanmā Abhidhāna project: the data, the too
 A release note says, per version: what changed, the brief's sections, and the headline figures
 (located, label + body, Meaning rows drafted / reviewed).
 
+## v0.28.1 — 29 Sep 2026
+
+- **14 "see X" links without their stray mark** (brief §71): 14/3 192706, 193589, 194844; 21 165539, 165879, 167295, 168395, 168914,
+  169374; 22 180186; 23 187505, 192332; 24 209222, 209501. `merge NN --ids` over a fresh `prep` (the §65 target fix), no redraft;
+  e.g. *Véase [[sakula”]]* → *Véase [[sakula]]*. No other row, `omitted` or `terms` line changed; the flags files only in these rows.
+- Plan step 2.2's id lists (per book and proposed action; `tmp/dec21/lists/`, not committed): accept 31,718, rule 4,714, image 225,
+  editor 4,385. Nothing applied to the Spanish.
+
 ## v0.28.0 — 29 Sep 2026
 
 - **The split rows and their hosts redrafted** (brief §70; plan step 1.6), in the nine books without PCED. The 241 rows split out in

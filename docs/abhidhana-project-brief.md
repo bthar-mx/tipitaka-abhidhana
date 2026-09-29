@@ -1643,3 +1643,42 @@ drafts (`tmp/meanings/vNN/out/`); they were not in this redraft.
   keep kyat and viss.
 
 **Tokens**: agents 622,805 (drafting 324,858, classification 297,947); this session's own not counted.
+
+
+## 71. The 14 "see X" targets with a stray mark, re-merged (29 Sep 2026, Cowork)
+
+**Asked** (the editor; NEXT-SESSION "Work that needs no decision"): the 14 targets of §65 that kept a stray mark, `merge NN --ids` from
+their old drafts, no redraft.
+
+**The 14, found by comparison, not by list**: `prep` with the tool of v0.28.0 (md5 `8ea4325…`) for 14c, 21, 22, 23, 24 into
+`tmp/stray14/vNN` (shards 21, 17, 17, 15, 15), against the work files the drafts were made from (`tmp/meanings/vNN/`): rows whose text is
+unchanged and whose formula targets differ are exactly §65's 14 — 14/3 192706 ပဝဇ္ဇတိ”, 193589 ပဝါရေတိ”, 194844 ပဿိ”; 21 165539 သကုလ”,
+165879 သက္ခိ", 167295 သစ္စ”, 168395 သညာပန”, 168914 သတ", 169374 သတိ”; 22 180186 [သမင်္ဂီဘာဝ; 23 187505 သလ္လ”, 192332 သိပ္ပိက”;
+24 209222 ]သုဝိဇာန, 209501 သုသမာရဒ္ဓ” (the other rows whose work text differs are v0.27.0's split rows and hosts, not touched).
+
+**Merged** in the Cowork VM: Aksharamukha 2.3 installed with `pip --target tmp/pylib` (the VM's `/sessions` disk is still full, 40 MB;
+the folder is not on it). The old drafts: `tmp/meanings/vNN/out/` for 14c, 21, 22, 24. **Vol. 23's drafts of shards 01–14 are not in
+the folder** (drafted in a cloud session, §56; only shard 00's trial output is, `docs/translation/trial/23-shard00-out.jsonl`), and
+neither row is in shard 00: for 187505 and 192332 the draft line was rebuilt from the committed row, the rendered link (*Véase
+[[salla”]].* / *See [[salla”]].*) put back as its placeholder «S1», with the row's flag, terms and omitted line
+(`tmp/stray14/v23/out/98.jsonl`, `99.jsonl`). 180186 and 209501 are formula rows (from the work file alone).
+
+**Checked**, each book against copies taken before (`tmp/stray14/before/`): the same rows in the same order; **only the 14 rows changed,
+and in each only the link text**, in es and en (*[[sakula”]]* → *[[sakula]]*, *[[[samaṅgībhāva]]* → *[[samaṅgībhāva]]*, *[[]suvijāna]]*
+→ *[[suvijāna]]* …); `-omitted.tsv` identical; `report` with the new work files: `-terms.tsv` identical, `-flags.tsv` the same ids, changed
+only in the lines of the six flagged rows among the 14 (their es / en column). Meaning rows unchanged: 217,450. v0.28.1. The site was
+not built here.
+
+None of the 14 is in `corrections-es.tsv`, so `merge` re-applied nothing. **"See X" links matching a romanised headword** (occurrences
+of `[[…]]` in the Spanish against every book's `iast`, as §64–65): 14/3 948 → 951 of 1,149 (82.5 → 82.8%); 21 831 → 837 of 1,011
+(82.2 → 82.8%); 22 714 → 715 of 900 (79.3 → 79.4%); 23 615 → 617 of 801 (76.8 → 77.0%); 24 573 → 575 of 719 → 720 (79.7 → 79.9%;
+the before-count missed *[[]suvijāna]]*, whose `]` broke the pattern). All 14 now match.
+
+*Where it ran*: the merge and report ran in the Cowork VM, with Aksharamukha in `tmp/pylib` on the folder, not in the cloud container
+as the editor asked afterwards; the outcome was checked as above. This session also ran `git log -1` and `git status` in the VM against
+the rule (read-only; no `index.lock` left, checked).
+
+**Plan step 2.2's id lists** (same session): `tmp/dec21/lists.py` writes one list per book and proposed action from `flags.py`'s primary
+kind, `tmp/dec21/lists/NN-{accept,rule,image,editor}.tsv` (id, iast, kind; 114 files, gitignored) and `lists/summary.tsv`: **accept
+31,718, rule 4,714, image 225, editor 4,385 = 41,042** (per book in the summary; the decision sheet §H gives the kinds). Nothing applied.
+
