@@ -288,9 +288,10 @@ decision (below); the editor answers the decision sheet at the end, then 2.3.
 
 Facts and mechanics only; nothing re-renders a translation. Each result is kept for the end, not applied to the Spanish.
 - ~~**2.2's id lists**~~: done 29 Sep (brief §71): `tmp/dec21/lists/NN-{accept,rule,image,editor}.tsv`, `lists/summary.tsv`.
-- **2.4 page checks, mechanical rows**: numbers lost or misread (393 flagged), headword / text disagreeing (59, strict test),
-  rows the agents asked to check (44), the 6 misromanised headwords and 4 index spellings (to `index-errata.md`), vol. 25 p. 15
-  (the History's year). What the page prints is recorded; the Spanish is not changed. ~3 k tokens a row (guess, not measured).
+- ~~**2.4 page checks, first batch**~~: done 29 Sep (brief §73): `docs/page-checks.tsv` (56 rows: the 11 headword / index rows, 8 index
+  errors to `index-errata.md`; the 44 rows the agents asked to check, 22 as drafted, 20 differ, 2 unreadable; vol. 25 p. 15 prints 1384).
+  **Left of 2.4**: the 393 rows with lost or misread numbers and the 59 headword / text disagreements (sheet F1, F2). The Spanish of the 20
+  that differ is unchanged, for the final revision. Was: 2.4 page checks, mechanical rows.
 - ~~**The 14 "see X" targets with a stray mark**~~: done 29 Sep, v0.28.1 (brief §71). Was: (brief §65): `merge NN --ids` from their old drafts; no redraft.
 - ~~**Script diffs for the lexical rules of 27 Sep**~~: done 29 Sep (brief §72): `tmp/dec0927/diffs/R*.tsv`, 583 rows would change; not merged.
 - **Item 9**: the 207 supplement rows moved beside vols. 15, 4/2, 16 (Cowork ~200 k + a Mac re-run).

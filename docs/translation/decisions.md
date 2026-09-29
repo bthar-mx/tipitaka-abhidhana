@@ -210,6 +210,23 @@ do; (c) only where the text depends on the amount.
 test). *Recommended*: Pāḷi places in Pāḷi (Vesālī), modern places in their usual Spanish or English spelling.
 **Decision:**
 
+### B5. R10 maṅgala: the cases a word swap does not settle (added 29 Sep, brief §72–73)
+
+The rule of 27 Sep renders *\*maṅgala\** as *bendición* where it is not a name (R10). Read against the Burmese (brief §72), some of
+R10's 127 proposed changes use maṅgala in a way *bendición* may not fit: 9, 29 and 30 rows of the three kinds below, counted in
+`tmp/dec0927/diffs/R10.tsv` by pattern (a row can fall under two kinds, so they are not 68 distinct rows). Nothing is changed; the current drafts keep *\*maṅgala\**.
+
+| kind | rows | examples (current draft → the rule's proposal) |
+|---|---:|---|
+| a ceremony or festival (Burmese မင်္ဂလာပြု / ဆောင် / ပွဲ) | 9 | [123642](https://abhidhana.buddha-dhamma.net/w/ma%E1%B9%85galakiriy%C4%81divasa) maṅgalakiriyādivasa (16): el día en que se realiza *maṅgalā*. → *el día en que se realiza bendición.*; [123635](https://abhidhana.buddha-dhamma.net/w/ma%E1%B9%85galakamyat%C4%81) maṅgalakamyatā (16): el hecho de desear para realizar *maṅgalā*; el desear realizar *maṅgalā*.… |
+| an attribute, "auspicious / of state" (*elefante, jardín, espada, caballo … de bendición*) | 29 | [123628](https://abhidhana.buddha-dhamma.net/w/ma%E1%B9%85galaasi) maṅgalaasi (16): espada que tiene *maṅgalā*; espada de *maṅgalā*. → *espada de bendición*; [123630](https://abhidhana.buddha-dhamma.net/w/ma%E1%B9%85galaassanh%C4%81natittha) maṅgalaassanhānatittha (16): lugar de baño del caballo de *maṅgalā*. → *caballo de bendición* |
+| a bare *bendición* after a verb, without article | 30 | [123639](https://abhidhana.buddha-dhamma.net/w/ma%E1%B9%85galak%C4%81la) maṅgalakāla (16): el momento en que se realiza *maṅgalā*. → *se realiza bendición*; [83532](https://abhidhana.buddha-dhamma.net/w/di%E1%B9%AD%E1%B9%ADhama%E1%B9%85galika) diṭṭhamaṅgalika (10): (1) que suele decir / considerar que el *rūpārammaṇa* visto es *maṅgalā* (causa de prosper… → *… es bendición* |
+
+Options: (a) *bendición* everywhere, as the rule says; (b) by sense: a ceremony *ceremonia / festividad*, an attribute *auspicioso / de
+estado* (or *ceremonial*), *bendición* elsewhere, with the article supplied; (c) keep ⟦maṅgala⟧ in these rows. *No recommendation here*;
+Claude's reading of the kinds is by pattern and may misclass a row (low to medium confidence).
+**Decision:**
+
 ---
 
 ## C. Glossary terms

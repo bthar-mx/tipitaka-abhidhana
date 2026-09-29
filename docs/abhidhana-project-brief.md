@@ -1737,3 +1737,47 @@ pattern, not looked into).
 For the end of the revision (2.3): R6, R7, R8, R11 can be merged as they stand; R4, R5 after a skim; R10 needs the ceremony / attribute
 cases decided (a question for the decision sheet's B, not asked now). Tokens: this session's own, not counted.
 
+
+## 73. Plan step 2.4, first batch: mechanical rows checked on the page image; R10's open cases in the decision sheet (29 Sep 2026, Cowork)
+
+**Asked** (the editor; NEXT-SESSION "Work that needs no decision"): (1) R10's open cases of §72 as one question in the decision sheet,
+without an answer; (2) plan step 2.4, mechanical rows only, each looked at on the page image: the misromanised headwords and index
+spellings, the 44 rows the agents asked to check (the strict test of the sheet's F5), vol. 25 p. 15; a record in `docs/page-checks.tsv`;
+confirmed index errors to `docs/index-errata.md`. No Spanish and no article data changed.
+
+**How.** Only the pages needed were cut from the PDFs on the Mac (`qpdf --pages`, 16 books, 109 pages, 4.4 MB, `tmp/pagecheck/`) and
+staged to the Cowork cloud container, where `pdftoppm` rendered them (70–200 dpi) and a band of the right column was cropped around
+the headword, its place estimated from the OCR page text (`ocr/NN/pages/pNNNN.json`, `col.psm6`); where the band missed, the whole
+column. Each crop read by eye. Scripts `r.py`, `band.py` in the container only (not kept). Some 100 crops read (not counted exactly).
+
+**`docs/page-checks.tsv`** (id, book, pdf_page, asked, page_prints, verdict, note): 56 rows.
+
+| group | rows | as drafted | differs | unreadable |
+|---|---:|---:|---:|---:|
+| headwords and index spellings (with both pāpatara rows) | 11 | 3 | 8 | 0 |
+| rows the agents asked to check | 44 | 22 | 20 | 2 |
+| vol. 25 p. 15 | 1 | 1 | 0 | 0 |
+
+- **Index errors confirmed** (added to `index-errata.md` §3): 196602 ပါပတရ → print ပါပရတ; 196606 ပါပရာဂီ → ပါပရောဂီ; 196644 ပါပဘိက္ခမာနာ →
+  ပါပသိက္ခမာနာ; 216840 ပလိဂိဇ္စျေယျ → ပလိဂိဇ္ဈေယျ; 212175 → ပရိကီဠနာ; 210262 → ပမာဏဝဝတ္ထာန; 163326 → …လဉ္ဆက; 190856 → သာလာကိယ.
+  **Not errors**: 196510 ပါပတရ (right; the suspicion belonged to the second row), 196666 ပါဝိကတရ (printed so, analysis ပါဝိကာ+တရ; whether
+  the print is a slip for pāpika- is not established), 196680 ပါပိန္တဝေ (printed so; the print marks its analysis "?").
+- **The 44**: half read as drafted, the print confirming what the agent doubted (e.g. 157122's eyes, 181281's nasal mucus, 200164's
+  palm leaf, 11548's apa-, 31717 = āhu², 33026 = uggacchati² 'subsides'). **20 differ from the draft**, mostly where the OCR, not the
+  print, was damaged: 200236 (2) cast iron, 200514 has the negation, 131296, 133527, 184115, 184409, 204082, 204219, 204403, 218938
+  legible on the page; 158654's headword is printed ဝိဟာရဘိတ္တိကောဋိ (-bhitti-, an index / OCR spelling); 166065 and 204403 have a
+  label; 181326 ends in ၍ (absolutive); 182937's "see" is ‹သမုဋ္ဌာပက›, not samuṭṭhāpita; 204204 prints 7 and ခြင်္သေ့ (no misreading) and
+  "see Milinda p. 385", not a headword; 204089 ခဲပုတ်နီ; 208274's "(ti) … Williams" is inside the analysis bracket; 208756's senses are
+  (1) (2); 208844 is not on its page as such (the nearest, suvaṇṇapaṭa(p)pasāraṇakāla); 181250 has no ဖြစ်၍ ဖြစ်သော. **Unreadable**:
+  156798 (not found on PDF pp. 41–42), 184099 (its senses run onto p. 749, not rendered).
+  33599's ၁၁ (11 kusalakammapatha) is read as printed at low confidence. The drafts are unchanged; the 20 are for the final revision.
+- **Vol. 25 p. 15** prints the completion as ၁၃၈၄-ခုနှစ် တန်ဆောင်မုန်းလဆန်း ၈-ရက် (၂၀. ၁၁. ၂၀၂၃) တနင်္လာနေ့, as p. 16 does: 1384 BE is the
+  book's own figure on both pages, not an OCR error; that 20 Nov 2023 falls in 1385 BE was not verified against a calendar table here.
+  `docs/history.md`'s open point is not edited.
+
+**The decision sheet**: `docs/translation/decisions.md` gains **B5**, R10's cases from §72 (ceremony 9, attribute 29, bare *bendición* 30;
+two examples each with the current draft and the rule's proposal; options; no recommendation).
+
+**Left of 2.4**: the 393 rows with lost or misread numbers and the 59 headword / text disagreements (sheet F1, F2). Tokens: this
+session's own, not counted.
+
