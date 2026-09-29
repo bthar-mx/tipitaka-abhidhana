@@ -23,6 +23,18 @@ Versions of the Tipiṭaka Pāḷi-Myanmā Abhidhāna project: the data, the too
 A release note says, per version: what changed, the brief's sections, and the headline figures
 (located, label + body, Meaning rows drafted / reviewed).
 
+## v0.27.0 — 28 Sep 2026
+
+- **Run-on articles split out of their neighbour** (brief §69; plan steps 1.3 reduced and 1.4), in the nine books without PCED only
+  (14/2, 14/3, 20–25, 4/3): `abhidhana_articles.py` `split_runons()`, the rule of §67 plus a homonym rule and an end at the next
+  headword of the neighbourhood. Each split row carries `split_from`, `split_rule`, `split_checked`; each host `split_to` and
+  `body_before_split`. **Every split checked on the page image** (the editor's decision): 248 checked, 234 right, 7 wrong (left out;
+  all homonyms or double headwords), 7 unsure (kept, listed in §69); `docs/splits-checked.tsv`. **241 splits applied; 234 articles
+  gained a body** (articles without a body in the nine books 2,899 → 2,665); label + body 57,786 → 58,022 in those books.
+- Tested: no row outside the split rows and their 156 hosts changed (per-row digest), and books 01–19 (with 4/1, 4/2, 14/1) re-run
+  byte-identical. Articles, romanisation and reports re-run for the nine books. The site maps `located: "split"` to the fuzzy mark.
+- Not done: the Meaning boxes of the split rows and hosts (plan step 1.6, the redraft).
+
 ## v0.26.5 — 28 Sep 2026
 
 - **Tooltips larger and easier to see** (the editor asked): the browser's small `title` tooltips are replaced by the site's own, in the

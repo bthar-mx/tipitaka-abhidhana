@@ -1442,3 +1442,102 @@ the unchanged base commit; this change touches neither `functions/` nor the edit
 PCED (14/2, 14/3, 20–25, 4/3), about 200 articles gaining a body (§67's 202), checked by B + C (1.4), then their redraft (1.6). No
 splitting in 01–19, where the Meaning comes from PCED per headword. The ~700 headwords inside a farther body, the 311 homonym swaps of
 item 5b and the 4,601 not in the text become optional later items (1.8). Phase 2 next after the reduced Phase 1.
+
+
+## 69. Run-on articles split out of their neighbour, every split checked on the page (plan steps 1.3 reduced and 1.4) (28 Sep 2026, Cowork)
+
+**Asked** (the editor; the reduced Phase 1 of §68): the split rule of §67 in `abhidhana_articles.py`, **for the nine books without PCED
+only** (14/2, 14/3, 20–25, 4/3); each split row carries `split_from` / `split_rule`; tested so that no row outside the split rows and
+their hosts changes (per-row digest) and books 01–19 stay byte-identical. **Every split checked on the page image**, not a sample (the
+editor's decision, 28 Sep; this replaces B + C of plan step 1.4): right / wrong / unsure in `docs/splits-checked.tsv`, the wrong ones
+left out of the rule's output, the unsure ones listed for the editor. Then articles and romanisation for the changed books; stop before
+any redraft. Run in the Cowork cloud container (the VM's `/sessions` disk still full, 41 MB free): the repo's `tools/`, `db/`, the
+witness joins and `ocr/` of all 29 books were staged as tarballs (`tmp/split13/stage/`, gitignored), the nine PDFs staged for the images.
+**Baseline**: the unchanged tool reproduced vol. 23's and vol. 1's `articles.jsonl` byte for byte in the container before any change.
+
+**The rule** (`split_runons()`, called after the fields are read and the witness steps, before the hand corrections; `SPLIT_BOOKS`):
+- *Candidates*: unlocated rows and **stubs** (located, body empty or under 8 base letters and no ကြည့်), as §67. Rows with neither
+  label nor analysis compete for lines (as in §67) but are never split.
+- *Host*: the nearest article with a body before and after the candidate, in id order, walking over bodiless candidates; a body line
+  (a line ending in `-` without `(` or `[` read joined to the next) that begins with the headword exactly, folded, or as an OCR
+  misreading (±1 letter, same last letter, ≥ 0.8 alike, not itself an index headword), then `[` or a `( … )` that is a label. **One
+  change from §67**: a `( … )` counts as a label when `normalise_label()` maps it to one (the table of `docs/labels.md` §0), not by a
+  count of ≥ 5 over all books' `label` fields (the pass cannot read other books' output). It finds every one of §67's 209 splits in
+  these books (unlocated 196 + stubs 13), each with the same host, and 35 more, mostly labels OCR reads as (ပ), (၇), (ကြို.
+- One line, one article: exact > folded > fuzzy, the article before first.
+- **Two additions, both found on the images**:
+  - *Homonyms* (`+homonym` in `split_rule`): a candidate with no line whose previous row has the same headword and was given one takes
+    the next line of that host beginning with the headword (213399 ပရိဒဟတိ², 213401 ပရိဒဟန², 216663 ပလသတ², 189605 သာဒယတိ²).
+    Without it the first homonym's text ran on over the second's.
+  - *A split ends* at the next split line, and also at a line that begins with **another headword of the neighbourhood** (the host's
+    own or one within 40 ids, + label or `[`; an initial ပ read as ၂ ၆ or `)` is read back for this test only). Such a line stays in the
+    host: the host had been placed on a line above its own entry (a citation, a "ကြည့်" line, the running head), and without this the
+    split from the article after it took the host's real entry too (14c 194296 ပသာခါပတ္တ took ပသာဒ's whole article, 78 lines). 7 hosts
+    keep a line below a split this way (`split_own_line`).
+- *What changes*: the split row gets `label`, `analysis`, `body`, `citations` … read from the split text by `fields()`, `raw` = the split
+  text, `located: "split"`, `pdf_page` = the page the split line stands on (the host's page or one its text runs on into), `split_from`
+  (the host's id), `split_rule` (`run-on:<exact|fold|fuzzy>:<label|bracket>[+homonym]:<prev|next>`), `split_checked` (the image verdict),
+  and `split_replaced` (a stub's old `located`, `pdf_page`, `raw`, `label`, `body`). The host keeps its `raw` (the OCR span it was cut from)
+  and gets `body` without the split lines, `citations` recomputed, `split_to` (the ids) and `body_before_split`.
+- The site's build maps `located: "split"` to the *fuzzy* mark (`abhidhana_site.py`, `X`): shown as located, not as "text not found".
+
+**Tests.** `tmp/split13/digest_test.py` (kept with the stage files; gitignored) against the committed files: in all nine books the same
+rows in the same order; **every row that changed is a split row or its host**, a host's changes only `body`, `citations`, `split_to`,
+`body_before_split`, `split_own_line`, its new body the old one's lines in order with the split lines taken out, and every split text a
+piece of its host's old body: **PASS, 0 exceptions**. `pali.jsonl`: rows changed only among the split rows and hosts (0 outside).
+**Books 01–19 (with 4/1, 4/2, 14/1): articles re-run with the new tool, byte-identical** (`articles.jsonl` and the report, all 20 files).
+
+**The image check** (every split): the PDF page rendered in the container with pymupdf at the book's OCR dpi, cut at the gutter as
+`abhidhana_ocr.py` cuts it, the column's lines found by Tesseract's own `mya` model and aligned to our OCR's lines (so the crop is the
+line the split starts at, marked in red); 14/2's crops from its text layer's line positions. Each crop read by eye, 3 lines before and 8
+after, with the split's first line and host beside it; where the crop was doubtful the whole column was read. `docs/splits-checked.tsv`:
+id, book, headword, host, verdict, PDF page, rule, note.
+
+| book | checked | right | wrong | unsure | split (applied) | unlocated / stubs | no body: before → after | hosts | label + body: before → after |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| 14/2 | 68 | 68 | 0 | 0 | 68 | 67 / 1 | 125 → 58 | 27 | 6,776 → 6,844 |
+| 14/3 | 11 | 11 | 0 | 0 | 11 | 11 / 0 | 845 → 834 | 10 | 8,892 → 8,903 |
+| 20 | 61 | 56 | 3 | 2 | 58 | 57 / 1 | 352 → 294 | 58 | 6,418 → 6,476 |
+| 21 | 8 | 4 | 2 | 2 | 6 | 4 / 2 | 238 → 233 | 6 | 7,302 → 7,308 |
+| 22 | 24 | 22 | 0 | 2 | 24 | 21 / 3 | 301 → 277 | 13 | 7,287 → 7,309 |
+| 23 | 32 | 32 | 0 | 0 | 32 | 30 / 2 | 174 → 144 | 11 | 6,656 → 6,688 |
+| 24 | 31 | 30 | 0 | 1 | 31 | 29 / 2 | 268 → 239 | 20 | 6,378 → 6,407 |
+| 25 | 4 | 4 | 0 | 0 | 4 | 3 / 1 | 196 → 193 | 4 | 3,535 → 3,539 |
+| 4/3 | 9 | 7 | 2 | 0 | 7 | 4 / 3 | 400 → 393 | 7 | 4,542 → 4,548 |
+| **all** | **248** | **234** | **7** | **7** | **241** | **226 / 15** | **2,899 → 2,665** | **156** | **57,786 → 58,022** |
+
+**234 articles gained a body** (§67 predicted 202; the difference is the label test above and the homonym rule). No host was left
+without a body. **Right: 94.4%** of the splits checked (234 of 248), wrong 2.8%, unsure 2.8%. 14/2 (the text layer) and 14/3, 23, 25:
+every split right.
+
+**The seven wrong** (left out: the rule does not make them; their text stays where it was): **all homonyms or double headwords**, which a
+run-on rule cannot mend:
+- *Homonyms placed one line off* (item 5b): 162101 ဝေါဒါန, 163457 သံဝစ္ဆရ, 168298 သညတ္တ, 172827 ဧကတိံသ, 174689 ဧသိ: the line is the
+  second (or third) homonym in print, and the row that would take it is the first; the host holds the other one. Splitting would swap them.
+- *A double headword printed on one entry*: 163301 (သံယာစိက • သညာစိက¹, the row 163299 already holds the entry) and 167229
+  (သင်္ဃာတနိက = သင်္ဃာတနီယ, row 167228): the split cut one entry in two.
+
+**The seven unsure** (kept, marked `split_checked: unsure`), for the editor, with the page on the site:
+- 157108 ဝိသမ (20, PDF 74, https://abhidhana.buddha-dhamma.net/v/20/74): the line is ဝိသမ⁴; five ဝိသမ rows, placements look shifted by one.
+- 162430 သ (20, PDF 740, …/v/20/740): the line is သ⁶; seven သ rows, four of them the letter's framing pages.
+- 166027 သဂ္ဂ (21, PDF 228, …/v/21/228): sagga's text, but the split begins inside its analysis (the Prakrit forms); the head line stays
+  in 166026 sagotta.
+- 168888 သတ (21, PDF 553, …/v/21/553): the line is သတ⁸; nine သတ rows, 168888 the seventh.
+- 180718 samadhisattavīsatisatasahassamatta (22, PDF 364, …/v/22/364): its text, but the split begins at the analysis's second line; the head line
+  stays in 180717.
+- 181875 သမာန (22, PDF 487, …/v/22/487): the line is သမာန²; four သမာန rows, the host reads like two entries run together.
+- 204389 သု (24, PDF 158, …/v/24/158): the line is သု² (ဗျ, the prefix); five သု rows, two unplaced.
+(Five of the seven are homonym numbering again: item 5b.)
+
+**Noted on the images, not changed**: a split's text runs on over an unplaced neighbour in 212728 (over ပရိစ္ဆဇ္ဇ, printed ပရိစ္ဆိဇ္ဇ²),
+188629 (over သဟတိ, indexed p. 170), 176779 ဩသက္က¹ (over ဩသက္က², not indexed apart); 192053's text carries the running head's words; the
+print spells 212175 ပရိကီဠနာ, 210262 ပမာဏဝဝတ္ထာန, 163326 …လဉ္ဆက, 190856 သာလာကိယ where the index differs. The "run-on" drafts of
+the OCR books remain mostly out of this rule's reach (§67).
+
+**Downstream, not done** (stop before any redraft, as asked): the 241 split rows have a body and no Meaning of their own (most were
+unlocated), and the 156 hosts' Meaning boxes were drafted from text that included the run-on articles (in `omitted` where the agents
+followed the prompt, translated where they departed from it). That is plan step 1.6: `prep NN --ids` / `merge NN --ids` for the split
+rows and hosts. The romanisation (`pali.jsonl`) and reports of the nine books were re-run; the witness joins need no re-run (none is a PCED
+book). The site was not built here.
+
+**Tokens**: about 0.46 M in this session by its own counter (tool output and the ~250 page crops read), not the Usage page's figure.

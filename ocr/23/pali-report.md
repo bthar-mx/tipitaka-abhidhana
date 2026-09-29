@@ -6,12 +6,12 @@ Output: `pali.jsonl`, one row per article, keyed by `id`.*
 | | |
 |---|---:|
 | headwords romanised | 7,182 (all) |
-| compound analyses romanised | 5,321 |
-| of which every element Pāḷi-shaped | 5,263 = 98.9% (the rest keep Burmese parts in ⟨ ⟩) |
-| articles with Pāḷi found in the definition | 6,751 = 94.0% |
-| Pāḷi spans | 18,673 |
-| tokens in those spans | 72,073, of which **90.8% attested in OSBCT** |
-| citations romanised (mechanically, abbreviations not expanded) | 12,296 |
+| compound analyses romanised | 5,348 |
+| of which every element Pāḷi-shaped | 5,290 = 98.9% (the rest keep Burmese parts in ⟨ ⟩) |
+| articles with Pāḷi found in the definition | 6,778 = 94.4% |
+| Pāḷi spans | 18,653 |
+| tokens in those spans | 72,027, of which **90.8% attested in OSBCT** |
+| citations romanised (mechanically, abbreviations not expanded) | 12,295 |
 
 What is and is not claimed:
 

@@ -1,0 +1,249 @@
+id	book	headword	host	verdict	pdf_page	rule	note
+210255	14b	ပမာဏယုတ္တနေတ္တ	210254	right	38	run-on:exact:label:prev	
+210257	14b	ပမာဏယောဂ	210256	right	39	run-on:exact:label:prev	
+210262	14b	ပမာဏဝတ္ထာန	210261	right	40	run-on:fuzzy:label:prev	the print spells ပမာဏဝဝတ္ထာန (vavatthāna), the index ပမာဏဝတ္ထာန
+210733	14b	ပယောဇနပရိစ္ဆေဒဝဝတ္ထာပန	210732	right	106	run-on:fuzzy:label:prev	
+210982	14b	ပရဒါရဝီတိက္ကမ	210981	right	143	run-on:exact:label:prev	
+210983	14b	ပရဒါရသေဝန	210981	right	143	run-on:exact:label:prev	
+210984	14b	ပရဒါရသေဝိနီ	210981	right	143	run-on:exact:label:prev	
+210985	14b	ပရဒါရသေဝီ	210981	right	143	run-on:exact:label:prev	
+211354	14b	ပရမဒါန	211353	right	195	run-on:exact:label:prev	
+211744	14b	ပရဝါဒီပက္ခမူလက	211737	right	238	run-on:exact:label:prev	
+211745	14b	ပရဝါဒီပဋိက္ခေပမုခ	211737	right	238	run-on:exact:label:prev	
+211746	14b	ပရဝါဒီပဋိညာ	211737	right	238	run-on:exact:label:prev	
+211747	14b	ပရဝါဒီပရိကပ္ပိတ	211737	right	238	run-on:exact:label:prev	
+211787	14b	ပရသက္ကာရ	211785	right	243	run-on:exact:label:prev	
+211788	14b	ပရသင်္ဂဏှန	211785	right	243	run-on:exact:label:prev	
+211789	14b	ပရသင်္ဂဟကရဏ	211785	right	243	run-on:exact:label:prev	
+211790	14b	ပရသဉ္စေတနာ	211785	right	243	run-on:exact:label:prev	
+211791	14b	ပရသဉ္စေတနာဟေတု	211785	right	243	run-on:exact:label:prev	
+211792	14b	ပရသတ္တ	211785	right	243	run-on:exact:label:prev	
+211915	14b	ပရာဘတ	211914	right	259	run-on:exact:label:prev	
+211971	14b	ပရာမာသဝိပ္ပယုတ္တ	211970	right	269	run-on:exact:label:prev	
+211972	14b	ပရာမာသသမ္ပယုတ္တ	211970	right	269	run-on:exact:label:prev	
+211973	14b	ပရာမာသသီသ	211970	right	269	run-on:exact:label:prev	
+212172	14b	ပရိကိလေသေတွာ	212170	right	298	run-on:exact:label:prev	
+212173	14b	ပရိကိလေသောပစာရ	212170	right	298	run-on:exact:label:prev	
+212174	14b	ပရိကိဿတိ	212170	right	298	run-on:exact:label:prev	
+212175	14b	ပရိကီဠိနာ	212170	right	298	run-on:fuzzy:label:prev	the print spells ပရိကီဠနာ, the index ပရိကီဠိနာ
+212176	14b	ပရိကုပိတ	212170	right	298	run-on:exact:label:prev	
+212249	14b	ပရိက္ခာရဝေဝဏ္ဏိယ	212248	right	308	run-on:fuzzy:label:prev	
+212413	14b	ပရိဂ္ဂဟဘာဝဝိယောဇန	212412	right	332	run-on:fuzzy:label:prev	
+212728	14b	ပရိစ္ဆိဇ္ဇ	212727	right	380	run-on:exact:label:prev	right start; its text runs on over the second homonym, printed ပရိစ္ဆိဇ္ဇ² and indexed ပရိစ္ဆဇ္ဇ (212729, still unplaced)
+212824	14b	ပရိစ္ဆိန္နာယုဘာဝဝိဘာဝနမုခ	212823	right	393	run-on:fuzzy:label:prev	
+213093	14b	ပရိဏတပလ္လဝဝဏ္ဏ	213092	right	428	run-on:fuzzy:label:prev	
+213094	14b	ပရိဏတပလ္လဝဝဏ္ဏကာလ	213092	right	428	run-on:fuzzy:label:prev	
+213398	14b	ပရိဒဟတိ	213395	right	462	run-on:exact:label:prev	
+213399	14b	ပရိဒဟတိ	213395	right	462	run-on:exact:label+homonym:prev	
+213400	14b	ပရိဒဟန	213395	right	462	run-on:exact:label:prev	
+213401	14b	ပရိဒဟန	213395	right	462	run-on:exact:label+homonym:prev	
+213402	14b	ပရိဒဟနကရ	213395	right	462	run-on:exact:label:prev	
+213403	14b	ပရိဒဟနသမတ္ထ	213395	right	462	run-on:exact:label:prev	
+213404	14b	ပရိဒဟန္တ	213395	right	462	run-on:exact:label:prev	
+213405	14b	ပရိဒဟန္တိ	213395	right	462	run-on:exact:label:prev	
+214129	14b	ပရိပူရေသုံ	214130	right	561	run-on:exact:label:next	right start; the next homonym's entry (ပရိပူရေသုံ²) ends it and stays with row 214130, placed on the line before (item 5b)
+214267	14b	ပရိဗ္ဘမန	214266	right	579	run-on:exact:label:prev	
+214268	14b	ပရိဗ္ဘမနက	214266	right	579	run-on:exact:label:prev	
+214271	14b	ပရိဗ္ဘမနကစက္က	214266	right	579	run-on:exact:label:prev	
+214272	14b	ပရိဗ္ဘမနကသတ္တ	214266	right	579	run-on:exact:label:prev	
+214689	14b	ပရိမဒ္ဒိတဗ္ဗသဘာဝ	214688	right	649	run-on:exact:label:prev	
+214690	14b	ပရိမဒ္ဒိတမဟာဘူတ	214688	right	649	run-on:exact:label:prev	
+214691	14b	ပရိမဒ္ဒိတသင်္ခါရ	214688	right	649	run-on:exact:label:prev	
+214692	14b	ပရိမဒ္ဒိတွာ	214688	right	649	run-on:exact:label:prev	
+214693	14b	ပရိမဒ္ဒိယမာန	214688	right	649	run-on:exact:label:prev	
+214694	14b	ပရိမဒ္ဒေတွာ	214688	right	649	run-on:exact:label:prev	
+214695	14b	ပရိမဒ္ဒေယျံ	214688	right	649	run-on:exact:label:prev	
+214696	14b	ပရိမသတိ	214688	right	649	run-on:exact:label:prev	
+215044	14b	ပရိယာယဝေဝစနဝိသိဋ္ဌ	215043	right	702	run-on:fuzzy:label:prev	
+215168	14b	ပရိယေသန္တိ	215167	right	718	run-on:exact:label:prev	
+215435	14b	ပရိဝဏ္ဏယန္တ	215434	right	748	run-on:exact:label:prev	
+216206	14b	ပရိဿယာဘာဝဝီမံသနတ္ထ	216205	right	843	run-on:fuzzy:label:prev	
+216587	14b	ပရောပဏ္ဏာသကုသလဓမ္မဝဝတ္ထာနကာလ	216586	right	889	run-on:fuzzy:label:prev	
+216660	14b	ပလဝတိ	216659	right	897	run-on:exact:label:prev	
+216661	14b	ပလဝန္တိ	216659	right	897	run-on:exact:label:prev	
+216662	14b	ပလသတ	216659	right	897	run-on:exact:label:prev	
+216663	14b	ပလသတ	216659	right	897	run-on:exact:label+homonym:prev	
+216664	14b	ပလသတစမ္မ	216659	right	897	run-on:exact:label:prev	
+216665	14b	ပလသတပ္ပမာဏ	216659	right	897	run-on:exact:label:prev	
+216667	14b	ပလဠတိ	216659	right	897	run-on:exact:label:prev	
+216711	14b	ပလာယန	216712	right	903	run-on:exact:label:next	right start; the next homonym's entry (ပလာယန²) ends it and stays with row 216712, placed on the line before (item 5b)
+193370	14c	ပဝတ္တိဝိဗန္ဓက	193369	right	102	run-on:fuzzy:label:prev	the OCR read the initial ပ as ၂
+193563	14c	ပဝါရိတပဝါရဏ	193562	right	133	run-on:fuzzy:label:prev	
+193666	14c	ပဝိစယတိ	193665	right	143	run-on:fuzzy:label:prev	
+193667	14c	ပဝိစယန္တ	193665	right	143	run-on:fuzzy:label:prev	
+194296	14c	ပသာခါပတ္တ	194298	right	198	run-on:fuzzy:label:next	right start; host 194298 ပသာဒ was placed on the running head; ပသာဋန (194297) and ပသာဒ's own entry end the split and stay with the host
+194460	14c	ပသာဒေမိ	194459	right	215	run-on:fuzzy:label:prev	
+194711	14c	ပဿဒ္ဓိကိလေသ	194710	right	242	run-on:exact:label:prev	
+194810	14c	ပဿာသပဋိလာဘ	194809	right	250	run-on:fuzzy:label:prev	
+195009	14c	ပဟရိံသု	195010	right	269	run-on:fuzzy:label:next	
+195795	14c	ပါဏကဟရဏ	195794	right	351	run-on:fuzzy:label:prev	
+198336	14c	ပိဓာနကိစ္စ	198335	right	636	run-on:fuzzy:label:prev	
+157108	20	ဝိသမ	157107	unsure	74	run-on:exact:label:prev	the line is ဝိသမ⁴ in print; 157108 is the third of five ဝိသမ rows (157106–157110), whose placements on this page look shifted by one
+158162	20	ဝိဿဇ္ဇိံသု	158163	right	199	run-on:fuzzy:label:next	
+160280	20	ဝုတ္တယက္ခ	160279	right	461	run-on:exact:label:prev	
+162101	20	ဝေါဒါန	162102	wrong	697	run-on:exact:label:next	the line is ဝေါဒါန² in print; 162101 is the first of the two ဝေါဒါန rows, so the entry is 162102's (placed on a citation line above it)
+162430	20	သ	162429	unsure	740	run-on:exact:label:prev	the line is သ⁶ in print; 162430 is the last of seven သ rows (162424–162430), four of them the letter's framing pages; the numbering could not be matched
+163204	20	သံဘဉ္ဇန	163203	right	838	run-on:exact:label:prev	
+163218	20	သံဘုဉ္ဇနရသ	163217	right	839	run-on:exact:label:prev	
+163230	20	သံမန္တယမာန	163229	right	840	run-on:exact:label:prev	
+163239	20	သံမုစ္ဆန	163238	right	841	run-on:exact:label:prev	
+163243	20	သံမုဋ္ဌဿတိ	163242	right	842	run-on:exact:label:prev	
+163251	20	သံယတ	163250	right	843	run-on:exact:label:prev	
+163261	20	သံယတဝိဟာရ	163260	right	844	run-on:exact:label:prev	
+163281	20	သံယမဟေတု	163280	right	848	run-on:exact:label:prev	
+163301	20	သညာစိက	163299	wrong	850	run-on:fuzzy:label:prev	the line is the second half of the printed double headword သံယာစိက • သညာစိက¹, whose entry row 163299 already holds; the split cut one entry in two
+163311	20	သံယုဇ္ဇန္တ	163310	right	851	run-on:exact:label:prev	
+163316	20	သံယုတ္တ	163315	right	852	run-on:exact:label:prev	
+163326	20	သံယုတ္တနိကာယဝရလဉ္ဇက	163325	right	860	run-on:fold:label:prev	the print spells ...လဉ္ဆက, the index ...လဉ္ဇက
+163337	20	သံယုတ္တဝဂ္ဂပဋိမဏ္ဍိတ	163336	right	861	run-on:exact:label:prev	
+163347	20	သံယုတ္တာဂမဝရလဉ္ဆက	163346	right	862	run-on:exact:label:prev	
+163353	20	သံယောဂက္ခဏ	163352	right	863	run-on:exact:label:prev	
+163361	20	သံယောဂပရ	163360	right	864	run-on:exact:label:prev	
+163367	20	သံယောဇက	163366	right	865	run-on:exact:label:prev	
+163379	20	သံယောဇနတ္တယာနုပစ္ဆေဒ	163378	right	868	run-on:exact:label:prev	
+163402	20	သံယောဇနဝိပ္ပမောက္ခ	163401	right	870	run-on:exact:label:prev	
+163412	20	သံယောဇနာတိဂ	163411	right	871	run-on:exact:label:prev	
+163423	20	သံယောဇီယတိ	163422	right	872	run-on:exact:label:prev	
+163436	20	သံရက္ခိယမာနစိတ္တ	163435	right	873	run-on:exact:label:prev	
+163450	20	သံလက္ခာပန	163449	right	874	run-on:exact:label:prev	
+163457	20	သံဝစ္ဆရ	163458	wrong	875	run-on:exact:label:next	the line is သံဝစ္ဆရ² in print; 163457 is the first of the two သံဝစ္ဆရ rows, and 163458, the host, sits on the entry before: the two homonyms are swapped (item 5b), which a split cannot mend
+163461	20	သံဝစ္ဆရစ္စယ	163460	right	875	run-on:exact:label:prev	
+163473	20	သံဝစ္ဆရိက	163472	right	876	run-on:exact:label:prev	
+163492	20	သံဝဋ္ဋမာနလောကဓာတု	163491	right	879	run-on:exact:label:prev	
+163505	20	သံဝဍ္ဎတိ	163504	right	880	run-on:exact:label:prev	
+163532	20	သံဝဏ္ဏနာက္ကမ	163531	right	883	run-on:fuzzy:label:prev	
+163545	20	သံဝဏ္ဏနာလက္ခဏ	163544	right	884	run-on:exact:label:prev	
+163566	20	သံဝဏ္ဏိယမာနသုတ္တ	163565	right	886	run-on:exact:label:prev	
+163577	20	သံဝဏ္ဏေတဗ္ဗဓမ္မာနုကူလ	163576	right	887	run-on:fuzzy:label:prev	
+163604	20	သံဝတ္တနကဝိတက္က	163603	right	890	run-on:exact:label:prev	
+163626	20	သံဝဒမာန	163625	right	892	run-on:exact:label:prev	
+163649	20	သံဝရဋ္ဌ	163648	right	896	run-on:exact:label:prev	
+163651	20	သံဝရဏကရဏ	163650	right	897	run-on:exact:label:prev	
+163661	20	သံဝရတိ	163660	right	898	run-on:exact:label:prev	
+163668	20	သံဝရပဉ္စက	163667	right	899	run-on:exact:label:prev	
+163676	20	သံဝရပ္ပဟာနပဋိသံယုတ္တ	163675	right	900	run-on:exact:label:prev	
+163688	20	သံဝရဝိဓာန	163687	right	901	run-on:exact:label:prev	
+163697	20	သံဝရဝိသယ	163696	right	902	run-on:exact:label:prev	
+163707	20	သံဝရသီလသင်္ဂဟ	163706	right	903	run-on:exact:label:prev	
+163718	20	သံဝရာသံဝရသဗ္ဘာဝ	163717	right	904	run-on:exact:label:prev	
+163728	20	သံဝရိဿာမိ	163727	right	905	run-on:exact:label:prev	
+163742	20	သံဝသန္တ	163740	right	907	run-on:exact:label:prev	
+163790	20	သံဝါသာဓိဝါသန	163789	right	913	run-on:exact:label:prev	
+163799	20	သံဝိဂ္ဂတရမာနသ	163798	right	914	run-on:exact:label:prev	
+163819	20	သံဝိဇ္ဇနာကာရဝိဘာဝန	163818	right	916	run-on:exact:label:prev	
+163847	20	သံဝိဒဟနပစ္စုပဋ္ဌာန	163846	right	919	run-on:exact:label:prev	
+163858	20	သံဝိဒဟာမ	163857	right	920	run-on:exact:label:prev	
+163875	20	သံဝိဒိတ	163874	right	922	run-on:exact:label:prev	
+163881	20	သံဝိဓာန	163880	right	923	run-on:exact:label:prev	
+163888	20	သံဝိဓေတိ	163887	right	924	run-on:exact:label:prev	
+163910	20	သံဝိဘဇေတု	163909	right	926	run-on:exact:label:prev	
+163919	20	သံဝိဘာဂပဋိစ္ဆဒန	163917	right	927	run-on:exact:label:prev	
+163940	20	သံဝိဿတ္ထ	163939	right	929	run-on:exact:label:prev	
+164668	21	သဥပဃာတက	164667	right	95	run-on:fuzzy:label:prev	
+165210	21	သကလဝဋ္ဋဒုက္ခာဘာဝ	165209	right	147	run-on:fuzzy:label:prev	
+166027	21	သဂ္ဂ	166026	unsure	228	run-on:exact:label:prev	the text is sagga's, but the line taken is inside its analysis (the Prakrit forms, သဂ္ဂ-(ပု၊ န) ပါကတ); the head line and the start of the analysis stay in 166026 sagotta
+167229	21	သင်္ဃာတနိယ	167228	wrong	371	run-on:fuzzy:label:prev	the line is the second half of the printed double headword သင်္ဃာတနိက = သင်္ဃာတနီယ, whose entry row 167228 already holds; the split cut one entry in two
+168298	21	သညတ္တ	168299	wrong	490	run-on:exact:label:next	the line is သညတ္တ³ in print and the line above it သညတ္တ², which row 168299 holds; 168298 is the second of the three သညတ္တ rows: the homonyms are swapped (item 5b)
+168888	21	သတ	168890	unsure	553	run-on:exact:label:next	the line is သတ⁸ in print (the last သတ on the page, after ⁶ and ⁷); the index has nine သတ rows (168882–168890) and 168888 is the seventh, so which row ⁸ belongs to could not be settled
+170878	21	သဒ္ဒီယတိ	170877	right	771	run-on:fuzzy:label:prev	
+171790	21	သန္တီရဏကာလ	171791	right	872	run-on:fuzzy:label:next	
+178094	22	သပ္ပါဋိဟိရကတ	178093	right	117	run-on:fuzzy:label:prev	
+178095	22	သပ္ပါဋိဟိရက	178093	right	117	run-on:exact:label:prev	
+179540	22	သဗ္ဗာကုသလာဘိသင်္ခါရ	179539	right	250	run-on:exact:label:prev	
+179576	22	သဗ္ဗာဘိညာဗလပ္ပတ္တ	179575	right	253	run-on:fuzzy:label:prev	
+179641	22	သဗ္ဗိရိယာပထသာဓာရဏ	179639	right	259	run-on:exact:label:prev	
+179642	22	သဗ္ဗိရိယာပထသာဓာရဏဝစန	179639	right	259	run-on:exact:label:prev	
+179643	22	သဗ္ဗိဿရိယ	179639	right	259	run-on:exact:label:prev	
+179644	22	သဗ္ဗီတိ	179639	right	259	run-on:exact:label:prev	
+179646	22	သဗ္ဗီတိမုတ္တ	179639	right	259	run-on:exact:label:prev	
+179649	22	သဗ္ဗုတ္တမ	179639	right	259	run-on:fuzzy:label:prev	
+179650	22	သဗ္ဗုပကရဏသမ္ပန္န	179639	right	259	run-on:exact:label:prev	
+179651	22	သဗ္ဗုပက္ကိလေသပရိသုဒ္ဓ	179639	right	259	run-on:exact:label:prev	
+179961	22	သဘာဝပဘေဒ	179960	right	289	run-on:fuzzy:label:prev	
+180079	22	သဘိက္ခုက	180078	right	300	run-on:fuzzy:label:prev	
+180231	22	သမစ္ဆိန္နသင်္ခပန္တိ	180232	right	316	run-on:fuzzy:label:next	
+180718	22	သမဓိသတ္တဝီသတိသတသဟဿမတ္တ	180717	unsure	364	run-on:fuzzy:bracket:prev	the text is this article's (printed သမဓိကသတ္တဝီသတိသဟဿမတ္တ), but the split begins at its analysis's second line; the head line stays in 180717
+180861	22	သမနုယုဉ္ဇိယမာန	180860	right	378	run-on:fuzzy:label:prev	
+181875	22	သမာန	181874	unsure	487	run-on:exact:label:prev	the line is သမာန² in print; four သမာန rows (181873–181876), and 181874, the host, reads like two entries run together: which row ² belongs to could not be settled
+182439	22	သမာဟိတ	182438	right	543	run-on:fuzzy:label:prev	
+182712	22	သမုစ္စယတ္ထဒီပက	182711	right	576	run-on:fuzzy:label:prev	
+184985	22	သမ္ဗဇ္ဈန	184979	right	855	run-on:exact:label:prev	
+184986	22	သမ္ဗဇ္ဈနီယ	184979	right	855	run-on:exact:label:prev	
+184988	22	သမ္ဗဇ္စျမာန	184979	right	855	run-on:fuzzy:label:prev	
+184989	22	သမ္ဗဇ္ဈိတဗ္ဗ	184979	right	855	run-on:fuzzy:label:prev	
+186255	23	သမ္မုခါသာဝိကာ	186254	right	120	run-on:fuzzy:label:prev	
+186262	23	သမ္မုခီဘူတကထာ	186261	right	121	run-on:fuzzy:label:prev	
+187869	23	သဝိညတ္တိကာသဝိညတ္တိကဘေဒဘိန္န	187868	right	277	run-on:fuzzy:label:prev	
+188629	23	သဟတာ	188628	right	350	run-on:exact:label:prev	right start; its text runs on over သဟတိ (188630, unplaced: the index gives it p. 170)
+188631	23	သဟတေ	188628	right	350	run-on:exact:label:prev	
+189594	23	သာထလိကတာဘာဝ	189593	right	447	run-on:exact:label:prev	
+189595	23	သာထလိဘာဝ	189593	right	447	run-on:exact:label:prev	
+189596	23	သာတ္ထိက	189593	right	447	run-on:exact:label:prev	
+189597	23	သာထေယျ	189593	right	447	run-on:exact:label:prev	
+189598	23	သာဒ	189593	right	447	run-on:exact:label:prev	
+189599	23	သာဒက	189593	right	447	run-on:exact:label:prev	
+189600	23	သာဒကဘိက္ခု	189593	right	447	run-on:exact:label:prev	
+189601	23	သာဒန	189593	right	447	run-on:exact:label:prev	
+189602	23	သာဒနီယ	189593	right	447	run-on:exact:label:prev	
+189604	23	သာဒယတိ	189593	right	447	run-on:exact:label:prev	
+189605	23	သာဒယတိ	189593	right	447	run-on:exact:label+homonym:prev	
+189606	23	သာဒယမာန	189593	right	447	run-on:exact:label:prev	
+190152	23	သာမညနိဒ္ဒိဋ္ဌ	190151	right	504	run-on:fuzzy:label:prev	
+190856	23	သာလကိယ	190855	right	582	run-on:fuzzy:label:prev	the print spells သာလာကိယ, the index သာလကိယ
+191233	23	သာသနပရိယောသာန	191232	right	622	run-on:fuzzy:label:prev	
+191814	23	သိင်္ဂါလကကုမာရ	191813	right	684	run-on:exact:label:prev	
+191815	23	သိင်္ဂါလကပိတု	191813	right	684	run-on:exact:label:prev	
+191816	23	သိင်္ဂါလကပိတုတ္ထေရ	191813	right	684	run-on:exact:label:prev	
+191817	23	သိင်္ဂါလကမာတု	191813	right	684	run-on:exact:label:prev	
+191818	23	သိင်္ဂါလကုလ	191813	right	684	run-on:exact:label:prev	
+191819	23	သိင်္ဂါလဂဏပရိဝုတ	191813	right	684	run-on:exact:label:prev	
+191820	23	သိင်္ဂါလဇာတက	191813	right	684	run-on:exact:label:prev	
+192053	23	သိဒ္ဓိကရအကုသလစိတ္တုပ္ပါဒသဒိသ	192056	right	711	run-on:fuzzy:label:next	right; the crop found the running head (the same words); the entry stands above 192054 in the same column, and its text carries the running head's "၆ သိဒ္ဓိကာလ" as a stray line
+192054	23	သိဒ္ဓိကာလ	192056	right	711	run-on:exact:label:next	
+192055	23	သိဒ္ဓက္ကမဒဿန	192056	right	711	run-on:fuzzy:label:next	
+192060	23	သိနာတ	192056	right	711	run-on:fuzzy:label:prev	
+192570	23	သိလာဝတိ-သိလာဝတီ	192569	right	768	run-on:fuzzy:label:prev	
+203137	24	သီတတာသင်္ကာ	203136	right	41	run-on:fuzzy:label:prev	
+203791	24	သီလသမာဓိပညာဝိမုတ္တိဝိမုတ္တိဉာဏဒဿနသမ္ပတ္တိသမုဒါဂမ	203790	right	101	run-on:exact:label:prev	
+204389	24	သု	204388	unsure	158	run-on:exact:label:prev	the line is သု² (ဗျ, the prefix) in print; five သု rows (204385–204389), the two before it placed on the two dhātu entries (သုံ ဓာတု) and two unplaced: which row the prefix belongs to could not be settled
+204698	24	သုခအဝိပါကီ	204697	right	192	run-on:fuzzy:label:prev	
+204777	24	သုခဒုက္ခုပ္ပါဒက	204776	right	199	run-on:fuzzy:label:prev	
+204907	24	သုခမဟတ္တ	204906	right	209	run-on:fuzzy:label:prev	
+204969	24	သုခဝိသေသဒါယက	204968	right	214	run-on:fuzzy:label:prev	
+205117	24	သုခါဒိသဘာဝ	205116	right	230	run-on:fuzzy:label:prev	
+205244	24	သုခုမတမနိကန္တိဝတ္ထု	205243	right	243	run-on:fuzzy:label:prev	
+205415	24	သုဂတပဒ	205414	right	261	run-on:fuzzy:label:prev	
+205683	24	သုစိမုခီသုတ္တဝဏ္ဏနာ	205682	right	286	run-on:fuzzy:label:prev	
+206652	24	သုဒ္ဓကတ္ထုတ္ထ	206651	right	392	run-on:fuzzy:label:prev	
+206930	24	သုဒ္ဓေါဒနမဟီပတိ	206929	right	418	run-on:fuzzy:label:prev	
+207488	24	သုပရိပက္ကယဝသမုဒါယ	207487	right	471	run-on:fuzzy:label:prev	
+208082	24	သုဘာရမ္မဏပစ္စယ	208081	right	528	run-on:fuzzy:label:prev	
+208563	24	သုရုတ္တဝါစာ	208562	right	578	run-on:fuzzy:label:prev	
+208590	24	သုလဘတိဏောဒက	208589	right	581	run-on:exact:label:prev	
+208591	24	သုလဘဒါရု	208589	right	581	run-on:exact:label:prev	
+208592	24	သုလဘဓည	208589	right	581	run-on:exact:label:prev	
+208593	24	သုလဘန္နပါန	208589	right	581	run-on:exact:label:prev	
+208594	24	သုလဘန္နပါနကာလ	208589	right	581	run-on:exact:label:prev	
+208595	24	သုလဘပစ္စယ	208589	right	581	run-on:exact:label:prev	
+208596	24	သုလဘပိဏ္ဍ	208589	right	581	run-on:fuzzy:label:prev	
+208597	24	သုလဘပိဏ္ဍပါတ	208589	right	581	run-on:fuzzy:label:prev	
+208598	24	သုလဘဖလာဖလ	208589	right	581	run-on:fuzzy:label:prev	
+208599	24	သုလဘဘိက္ခ	208589	right	581	run-on:fuzzy:label:prev	
+208600	24	သုလဘမူလဖလာဖလ	208589	right	581	run-on:fuzzy:label:prev	
+208601	24	သုလဘရူပ	208589	right	581	run-on:exact:label:prev	
+209098	24	သုဝဏ္ဏသလာကာ	209097	right	622	run-on:fuzzy:label:prev	
+209156	24	သုဝတ္ထဝသန	209155	right	627	run-on:fuzzy:label:prev	
+209168	24	သုဝပေါတက	209167	right	628	run-on:fuzzy:label:prev	
+217454	25	သောတပထာဂမန	217453	right	73	run-on:exact:label:prev	
+217822	25	သောဘိတုံ	217821	right	115	run-on:fuzzy:label:prev	
+219059	25	ဟတ္ထိသာရီ	219058	right	245	run-on:exact:label:prev	
+219099	25	ဟဒယ	219098	right	250	run-on:exact:label:prev	right; hadaya had no row of its own in the drafts (brief §61: its whole article sat in 219098 hadanti)
+172827	4c	ဧကတိံသ	172828	wrong	108	run-on:exact:label:next	the line is ဧကတိံသ² in print; 172827 is the first of the two ဧကတိံသ rows and 172828, the host, holds ¹: the homonyms would be swapped (item 5b)
+173690	4c	ဧကရတ္တိန္ဒိဝ	173689	right	217	run-on:fuzzy:label:prev	
+174689	4c	ဧသိ	174690	wrong	359	run-on:exact:label:next	the line is ဧသိ² in print; 174689 is the first of the two ဧသိ rows and 174690, the host, holds ¹: the homonyms would be swapped (item 5b)
+175084	4c	ဩက္ခာ	175083	right	417	run-on:fuzzy:label:prev	
+175198	4c	ဩဃနဒီ	175197	right	437	run-on:fuzzy:label:prev	
+175615	4c	ဩဒနပစန	175614	right	496	run-on:fuzzy:label:prev	
+176432	4c	ဩလမ္ဗာပေထ	176431	right	614	run-on:fuzzy:label:prev	
+176436	4c	ဩလမ္ဗိ	176435	right	614	run-on:fuzzy:label:prev	
+176779	4c	ဩသက္က	176778	right	657	run-on:fuzzy:label:prev	right start (ဩသက္က¹); its text runs on over ဩသက္က², which the index does not list apart

@@ -45,7 +45,7 @@ SRC = ROOT / 'site/src'
 OUT = Path(os.environ.get('ABHIDHANA_SITE_OUT', ROOT / 'site/dist'))
 sys.path.insert(0, str(ROOT / 'tools'))
 from abhidhana_labels import LABELS   # docs/labels.md §0: the one label table
-X = {'verbatim': 'v', 'verbatim-inline': 'v', 'folded': 'v', 'fuzzy': 'f', 'unlocated': 'u'}
+X = {'verbatim': 'v', 'verbatim-inline': 'v', 'folded': 'v', 'fuzzy': 'f', 'split': 'f', 'unlocated': 'u'}
 MAX_FILE = 25 * 1024 * 1024      # Cloudflare Pages: 25 MiB per file
 MAX_FILES = 20000                # and 20,000 files per site on the free plan
 

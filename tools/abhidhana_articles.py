@@ -554,6 +554,170 @@ def fields_after(rest, out_hw, iast='', glued=False):
     return out
 
 
+
+# ---- run-on articles split out of their neighbour (brief §67, §69; plan step 1.3) ----------------
+# In the books drafted from our own text, an article the index places but the pass above could not
+# (unlocated), or placed on a stub line, often has its text inside the nearest article with a body,
+# before or after it: its headword at a line start of that body, followed by a label or [. That line,
+# up to the next such line in the same host or the host's end, becomes the article's text. The rule
+# is the measurement of §67 (tmp/split11/measure.py) made a pass, except that a ( ) counts as a label
+# when it normalises to one (docs/labels.md §0), not by a count over all books' articles. Only the
+# books without PCED (the editor, 28 Sep 2026): in 01-19 the Meaning comes from PCED per headword.
+# Each split was checked on the page image (docs/splits-checked.tsv, the editor's decision of 28 Sep):
+# a split marked `wrong` there is not made.
+SPLIT_BOOKS = {'14b', '14c', '20', '21', '22', '23', '24', '25', '4c'}
+SPLIT_CHECKED = ROOT / 'docs/splits-checked.tsv'
+_SP = lambda s: re.sub(r'\s', '', s or '')
+_BASE = re.compile(r'[က-ဪ]')
+_TRAIL = re.compile(r'(?:ာ?ါ|ဝ်|[”"\'’?၁-၉¹²³⁴⁵⁶⁷⁸⁹\-–—။])+$')
+_KINDRANK = {'exact': 3, 'fold': 2, 'fuzzy': 1}
+
+
+def _split_checked():
+    """{id: (verdict, host)} from docs/splits-checked.tsv (id, book, headword, host, verdict, note)"""
+    out = {}
+    if SPLIT_CHECKED.exists():
+        for ln in SPLIT_CHECKED.read_text(encoding='utf-8').splitlines()[1:]:
+            c = ln.split('\t')
+            if len(c) >= 5 and c[0].strip().isdigit(): out[int(c[0])] = (c[4].strip(), int(c[3]) if c[3].strip().isdigit() else None)
+    return out
+
+
+def _jlines(text):
+    """a body's lines; a line ending in '-' with no ( or [ is read joined to the next (a headword
+    broken by the printer). Same length as the lines, index for index."""
+    ls = text.split('\n'); out = []
+    for k, ln in enumerate(ls):
+        if ln.rstrip().endswith('-') and not re.search(r'[(\[]', ln) and k + 1 < len(ls):
+            out.append(ln.rstrip()[:-1] + ls[k + 1])
+        else: out.append(ln)
+    return out, ls
+
+
+def _head_match(line, h, hf, allhw, iast, lead=False):
+    """the line starts with headword h (exact, folded, or an OCR misreading of it), then a label in
+    ( ) or a [ : (how, delimiter) or None. lead: an initial ပ read as ၂ ၆ or ) is read back (used only to
+    end a split, not to make one)"""
+    s = _SP(line)
+    m = re.search(r'[(\[（［]', s)
+    if not m or m.start() == 0: return None
+    pre = _TRAIL.sub('', s[:m.start()])
+    if lead and h.startswith('ပ'): pre = re.sub(r'^(?:[၂၆]\)?|\))(?=[\u1000-\u102A])', 'ပ', pre)
+    how = 'exact' if pre == h else ('fold' if fold(pre) == hf else None)
+    # same length +-1, same last letter, >= 0.8 alike, and not itself a headword of the index (the
+    # dictionary's stem families differ by a syllable)
+    if (not how and len(h) >= 5 and abs(len(pre) - len(h)) <= 1 and pre[-1:] == h[-1:] and pre not in allhw
+            and SequenceMatcher(None, pre, h, autojunk=False).ratio() >= 0.8): how = 'fuzzy'
+    if not how: return None
+    rest = s[m.start():]
+    if rest[0] in '[［': return how, 'bracket'
+    m2 = re.match(r'[(（]([^)）]{1,20})[)）]', rest)
+    if m2 and normalise_label(m2.group(1), iast)[0]: return how, 'label'
+    return None
+
+
+def split_runons(book, rows, allhw, pages_text):
+    """split run-on articles out of their host's body, in place; returns report lines.
+    pages_text(p) gives a PDF page's column text (to tell on which page the split line stands)."""
+    if book not in SPLIT_BOOKS: return []
+    checked = _split_checked()
+    rs = sorted(rows, key=lambda r: int(r['id']))
+    def stub(r):
+        b = r.get('body')
+        return not b or (len(_BASE.findall(b)) < 8 and 'ကြည့်' not in b)
+    def kind(r):
+        if r['located'] == 'unlocated': return 'unlocated'
+        if stub(r): return 'stub'
+        if not r.get('label') and not r.get('analysis'): return 'nolabel'   # competes for a line, never split
+        return None
+    kinds = [kind(r) for r in rs]
+    bodyless = lambda j: not rs[j].get('body')
+    lines, claims = {}, {}
+    for i, r in enumerate(rs):
+        if not kinds[i]: continue
+        h = _SP(r['headword']); hf = fold(h)
+        for side, rng in (('prev', range(i - 1, max(-1, i - 40), -1)), ('next', range(i + 1, min(len(rs), i + 40)))):
+            for j in rng:
+                if kinds[j] and bodyless(j): continue          # walk over bodiless candidates to the host
+                if j not in lines: lines[j] = _jlines(rs[j].get('body') or '')
+                for k, ln in enumerate(lines[j][0]):
+                    hm = _head_match(ln, h, hf, allhw, r.get('iast', ''))
+                    if hm:
+                        claims.setdefault((j, k), []).append((_KINDRANK[hm[0]] * 10 + (side == 'prev'), i, side, hm)); break
+                break                                          # the nearest article with a body, each side
+    won = {}
+    for (j, k), cs in claims.items():                          # one line, one article: exact > fold > fuzzy, prev first
+        cs.sort(key=lambda c: -c[0])
+        for sc, i, side, hm in cs:
+            if i not in won or won[i][0] < sc: won[i] = (sc, j, k, side, hm); break
+    # Homonyms (¹ ²): both lines begin with the same headword, and the first took the first line. A
+    # candidate with no line of its own, whose previous row has the same headword and was given a
+    # line, takes the next line of that host that begins with the headword (brief §69; else the first
+    # homonym's text ran on over the second's).
+    taken = {(j, k) for sc, j, k, side, hm in won.values()}
+    for i in range(1, len(rs)):
+        if i in won or kinds[i] not in ('unlocated', 'stub') or (i - 1) not in won: continue
+        h = _SP(rs[i]['headword'])
+        if h != _SP(rs[i - 1]['headword']): continue
+        sc, j, k, side, hm = won[i - 1]
+        for k2 in range(k + 1, len(lines[j][0])):
+            hm2 = _head_match(lines[j][0][k2], h, fold(h), allhw, rs[i].get('iast', ''))
+            if hm2 and (j, k2) not in taken:
+                won[i] = (sc, j, k2, side, (hm2[0], hm2[1] + '+homonym')); taken.add((j, k2)); break
+    splits = {i: w for i, w in won.items() if kinds[i] in ('unlocated', 'stub')}
+    dropped = [i for i in splits if checked.get(int(rs[i]['id']), ('',))[0] == 'wrong']
+    for i in dropped: del splits[i]
+    byhost = {}
+    for i, (sc, j, k, side, hm) in splits.items(): byhost.setdefault(j, []).append((k, i, side, hm))
+    for j, xs in sorted(byhost.items()):
+        host = rs[j]; jl, ls = lines[j]; ks = sorted(k for k, *_ in xs)
+        # a line of the host's body that begins with the host's own headword (+ label or [) is the host's
+        # own entry, the host having been placed on a line above it: a split ends there, and the host
+        # keeps it (a split from the article after it otherwise took that article too)
+        # Likewise a line that begins with any other headword of the neighbourhood (+ label or [): another
+        # entry, which the split must not take with it; it stays in the host as before.
+        near = {(_SP(rs[q]['headword']), rs[q].get('iast', '')) for q in range(max(0, j - 40), min(len(rs), j + 40))}
+        near -= {(_SP(rs[i]['headword']), rs[i].get('iast', '')) for _, i, _, _ in xs}
+        near.add((_SP(host['headword']), host.get('iast', '')))
+        stops = [q for q in range(1, len(jl)) if q not in ks
+                 and any(_head_match(jl[q], hh, fold(hh), allhw, ia, lead=True) for hh, ia in near)]
+        ends = sorted(set(ks) | set(stops))
+        old_body = host['body']; covered = set()
+        for k, i, side, hm in xs:
+            nxt = next((q for q in ends if q > k), len(ls))
+            covered.update(range(k, nxt))
+            joined = jl[k] != ls[k]
+            seg = [jl[k]] + ls[k + (2 if joined else 1):nxt] if not (joined and k + 1 >= nxt) else [jl[k]]
+            text = '\n'.join(seg)
+            r = rs[i]
+            before = {f: r.get(f) for f in ('located', 'pdf_page', 'raw', 'label', 'body') if r.get(f) is not None}
+            for f in ('label', 'label_ocr', 'label_how', 'analysis', 'headword_ocr', 'analysis_ocr', 'analysis_bracket_damaged',
+                      'analysis_open_lost', 'label_bracket_damaged', 'label_debris', 'headword_variant', 'noise_lines',
+                      'body_head_restored', 'body', 'citations', 'raw', 'continues_on', 'runs_through', 'continuation_uncertain'):
+                r.pop(f, None)
+            r.update(fields(text, r['headword'], r.get('iast', '')))
+            r['raw'] = text
+            # the page the split line stands on: the host's page or one its text runs on into
+            head = _SP(jl[k])[:24]
+            for q in [host['pdf_page']] + ([host['continues_on']] if host.get('continues_on') else []) + host.get('runs_through', [])[1:]:
+                if head and head in _SP('\n'.join(_jlines(pages_text(q))[0])): r['pdf_page'] = q; break
+            else: r['pdf_page'] = host['pdf_page']
+            r['located'] = 'split'
+            r['split_from'] = host['id']
+            r['split_rule'] = f'run-on:{hm[0]}:{hm[1]}:{side}'
+            if before: r['split_replaced'] = before
+            v = checked.get(int(r['id']))
+            if v: r['split_checked'] = v[0]
+        host['body'] = re.sub(r'[ \t]+', ' ', '\n'.join(ln for q, ln in enumerate(ls) if q not in covered)).strip()
+        if any(q > ks[0] and q not in covered for q in range(len(ls))): host['split_own_line'] = True
+        host['citations'] = [re.sub(r'\s+', '', cite_trim(c)) for c in CITE.findall(host['body'])]
+        host['split_to'] = sorted(rs[i]['id'] for _, i, _, _ in xs)
+        host['body_before_split'] = old_body
+    n = len(splits)
+    return [f'run-on articles split out of a neighbour (§67 rule): {n} '
+            f'(unlocated {sum(kinds[i] == "unlocated" for i in splits)}, stub {sum(kinds[i] == "stub" for i in splits)}; '
+            f'hosts {len(byhost)}; left out as wrong on the image {len(dropped)})']
+
 def main(book):
     c = sqlite3.connect(f'file:{ROOT}/db/tipitaka_abidan.db?mode=ro', uri=True)
     start = c.execute('select start_page from books where id=?', (book,)).fetchone()[0]
@@ -644,6 +808,16 @@ def main(book):
                 row['osbct'] = 'word' if k in vocab else ('inside' if k in blob else 'none')
             rows.append(row)
 
+    # run-on articles split out of their neighbour (books without PCED only; brief §67, §69)
+    if book in SPLIT_BOOKS:
+        allhw = {re.sub(r'\s', '', nfc(w)) for (w,) in c.execute('select word from words')}
+        _pt = {}
+        def pages_text(q):
+            if q not in _pt:
+                fp = pdir / f'p{q:04d}.json'
+                _pt[q] = page_text(json.loads(fp.read_text())) if fp.exists() else ''
+            return _pt[q]
+        for m in split_runons(book, rows, allhw, pages_text): print(m)
     # the compound analysis from the typed PCED witness where it has one (tools/abhidhana_witness_analysis.py)
     from abhidhana_witness_analysis import apply as apply_witness_analysis
     for m in apply_witness_analysis(book, rows): print(m)
