@@ -28,6 +28,7 @@ headwords in Burmese when that script is chosen, and the index keys in roman.
 """
 import csv, json, re, unicodedata
 from pathlib import Path
+import abhidhana_citefold as citefold   # damaged citation abbreviations (tooltip only)
 
 ROOT = Path(__file__).resolve().parent.parent
 CHUNK = 400
@@ -107,7 +108,9 @@ def cite_key(c, K):
     for n in range(k2.count('၊'), 0, -1):
         tail = '၊'.join(k2.split('၊')[-n:])
         if tail in K: return K[tail]
-    return -1
+    # a damaged abbreviation (tools/abhidhana_citefold.py): the tooltip only, the text shown is unchanged
+    r = citefold.resolve(k, K)
+    return K[r] if r is not None else -1
 
 
 # --- the build -------------------------------------------------------------------------------------

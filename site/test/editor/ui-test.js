@@ -161,6 +161,65 @@ async function seed(token) {
   ok(!(await page.$('[data-edit]')), 'not signed in: no Edit button');
   ok((await page.textContent('.ed-badge')).includes('not signed in'), 'not signed in: badge says so');
   await ctx.close();
+
+  // 7. Copy / Cite / Share beside the headword (brief §81). The clipboard is read back; navigator.share is taken
+  //    away for the fallback (copy the link) and replaced by a stub to see what it would be given
+  const MON = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'], NOW = new Date();
+  const TODAY = `${NOW.getDate()} ${MON[NOW.getMonth()]} ${NOW.getFullYear()}`;
+  const VER = (await (await fetch(B + '/data/version.json')).json()).version;
+  const clipAfter = async (sel) => {
+    await page.evaluate(() => navigator.clipboard.writeText(''));
+    await page.click(sel);
+    await page.waitForFunction(() => document.querySelector('.acts-msg').textContent.length > 0, null, { timeout: 5000 }).catch(() => {});
+    return [await page.evaluate(() => navigator.clipboard.readText()), await page.textContent('.acts-msg')];
+  };
+  ctx = await browser.newContext({ locale: 'es-ES', permissions: ['clipboard-read', 'clipboard-write'] }); page = await ctx.newPage();
+  await page.addInitScript(() => { Object.defineProperty(Navigator.prototype, 'share', { value: undefined, configurable: true }); });
+  await page.goto(B + '/w/bhijja'); await page.waitForSelector('.head .acts [data-act="share"]');
+  const acts = await page.$$eval('.head .acts button[data-act]', bs => bs.map(b => [b.dataset.act, b.type, b.getAttribute('aria-label') || '']));
+  ok(acts.map(a => a[0]).join() === 'copy,cite,share' && acts.every(a => a[1] === 'button' && a[2]), 'acts: copy, cite, share beside the headword, buttons with aria-label: ' + JSON.stringify(acts));
+  await page.waitForTimeout(300);   // /data/version.json read by the page
+  const WANT = `Tipiṭaka Pāḷi-Myanmā Abhidhāna, vol. 15 (suplemento, encuadernado en el vol. 4/3), p. 686 (p. del PDF 713), s.v. bhijja. Edición digital, IEBH, v${VER}. https://abhidhana.buddha-dhamma.net/w/bhijja (consultado el ${TODAY}).`;
+  let [clip, msg] = await clipAfter('[data-act="cite"]');
+  ok(clip === WANT, 'Cite /w/bhijja: ' + clip);
+  ok(msg === 'cita copiada', 'Cite: flash "' + msg + '"');
+  [clip, msg] = await clipAfter('[data-act="copy"]');
+  const lines = clip.split('\n');
+  ok(lines[0] === 'bhijja · ဘိဇ္ဇ' && /^Significado \(borrador, sin revisar\): \S/.test(lines.find(l => l.startsWith('Significado')) || '') &&
+     lines.some(l => l.startsWith('Definición birmana (texto del diccionario;')) &&
+     lines[lines.length - 1] === 'Tipiṭaka Pāḷi-Myanmā Abhidhāna — edición digital del IEBH (lo añadido, CC BY-SA 4.0; el texto del diccionario no se relicencia) — https://abhidhana.buddha-dhamma.net/w/bhijja',
+     'Copy /w/bhijja: headword, status borrador, the Burmese marked as the dictionary\'s, attribution: ' + JSON.stringify(lines.map(l => l.slice(0, 60))));
+  [clip, msg] = await clipAfter('[data-act="share"]');
+  ok(clip === 'https://abhidhana.buddha-dhamma.net/w/bhijja' && msg === 'enlace copiado', 'Share without navigator.share: the link copied, "' + msg + '"');
+  // the Copy of an edited article carries the edit's status (luñcana: sense 1 corrected in step 3)
+  await page.goto(B + '/w/luñcana'); await page.waitForSelector('.head .acts'); await page.waitForTimeout(800);
+  [clip] = await clipAfter('[data-act="copy"]');
+  ok(clip.includes('\nSignificado (corregido en parte: sentido (1); el resto sin revisar): '), 'Copy /w/luñcana: the status from editor mode: ' + (clip.split('\n').find(l => l.startsWith('Significado')) || '').slice(0, 90));
+  // English: the citation's words and date
+  await page.evaluate(() => localStorage.setItem('lang', 'en'));
+  await page.goto(B + '/w/bhijja'); await page.waitForSelector('.head .acts'); await page.waitForTimeout(300);
+  [clip] = await clipAfter('[data-act="cite"]');
+  const EN = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'][NOW.getMonth()];
+  ok(clip === `Tipiṭaka Pāḷi-Myanmā Abhidhāna, vol. 15 (supplement, bound in vol. 4/3), p. 686 (PDF p. 713), s.v. bhijja. Digital edition, IEBH, v${VER}. https://abhidhana.buddha-dhamma.net/w/bhijja (accessed ${NOW.getDate()} ${EN} ${NOW.getFullYear()}).`, 'Cite in English: ' + clip);
+  await ctx.close();
+  // navigator.share, where there is one: given the title, the citation and the address
+  ctx = await browser.newContext({ locale: 'es-ES', permissions: ['clipboard-read', 'clipboard-write'] }); page = await ctx.newPage();
+  await page.addInitScript(() => { window.__shared = null; Object.defineProperty(Navigator.prototype, 'share', { value: function (o) { window.__shared = o; return Promise.resolve(); }, configurable: true }); });
+  await page.goto(B + '/w/bhijja'); await page.waitForSelector('.head .acts'); await page.waitForTimeout(300);
+  await page.click('[data-act="share"]'); await page.waitForTimeout(200);
+  const sh = await page.evaluate(() => window.__shared);
+  ok(sh && sh.url === 'https://abhidhana.buddha-dhamma.net/w/bhijja' && sh.text === WANT && /bhijja/.test(sh.title), 'Share: navigator.share given ' + JSON.stringify(sh));
+  // 375 px: the buttons take no height of their own (the Meaning box starts where it did without them); no sideways scroll
+  await page.setViewportSize({ width: 375, height: 812 });
+  for (const w of ['bhijja', 'luñcana']) {
+    await page.goto(B + '/w/' + w); await page.waitForSelector('.meaning'); await page.waitForTimeout(300);
+    const y1 = await page.evaluate(() => document.querySelector('.meaning').getBoundingClientRect().top);
+    await page.addStyleTag({ content: '.acts{display:none!important}' });
+    const y0 = await page.evaluate(() => document.querySelector('.meaning').getBoundingClientRect().top);
+    const sw = await page.evaluate(() => document.documentElement.scrollWidth);
+    ok(Math.abs(y1 - y0) < 1 && sw <= 375, `375 px /w/${w}: Meaning box at ${y1.toFixed(0)} px with the buttons, ${y0.toFixed(0)} without; page width ${sw}`);
+  }
+  await ctx.close();
   await browser.close();
   console.log(`pass ${pass} fail ${fail}`);
   process.exitCode = fail ? 1 : 0;

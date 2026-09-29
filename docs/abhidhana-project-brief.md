@@ -2267,3 +2267,122 @@ twelve was read but not written down, and is not reconstructed here. Two of the 
 already in §3 without an id (brief §16); the old line points to the new rows. Item 9 in NEXT-SESSION is now closed.
 Nothing in the data or the site changed; no version bump.
 
+## 81. Copy, Cite and Share on the article (29 Sep 2026, Cowork; v0.28.4)
+
+**Asked** (the editor): three buttons beside the headword of every article (Browse and `/w/…`), modelled on the Reader of
+buddha-dhamma.net (`reader/reader2.html`: icon buttons *Copy text* / *Copy citation*, `navigator.clipboard`, a short flash);
+labels ES / EN in `common.js`; keyboard- and screen-reader-accessible; no layout change at 375 px (§66); UI-test checks.
+
+**What was built** (`site/src/assets/browse.js`, `common.js`, `style.css`; nothing in the data):
+- The three buttons follow the headword (after the Burmese headword when both scripts are shown), before the label chip: the
+  Reader's two icons (copy, quotation marks) and a share icon, 30 × 28 px, `type="button"`, each with an `aria-label` and the
+  site's tooltip, inside `role="group"`; a message (`role="status"`, `aria-live="polite"`) placed below them out of the flow, so a
+  flash moves nothing. As in the Reader, the button shows ✓ for a moment (1.5 s), with *copiado* / *cita copiada* / *enlace
+  copiado* (✗ and *no se pudo copiar* if the browser refuses). `navigator.clipboard.writeText`, with the old `execCommand('copy')`
+  fallback for a page not in a secure context.
+- **Copy** (plain text, one field per line), from the record as shown, editor-mode edits laid over:
+  `bhijja · ဘိဇ္ဇ` / `Categoría: kri (ကြိ) — verbo` / `Análisis: [bhidi + ya + hi] [ဘိဒိ + ယ + ဟိ]` /
+  `Significado (borrador, sin revisar): …` / `Definición birmana (texto del diccionario; leído por máquina, sin revisar): …` /
+  the attribution line. The status is the Meaning chip's (*borrador, sin revisar*; *revisado*; *corregido*; *corregido en parte:
+  sentido (1); el resto sin revisar*); an untranslated article gives `Significado: sin traducir`. The Burmese says *corregido a
+  mano* when the body was corrected. The Meaning's markup is dropped (`[[x|y]]` → x, `*x*` → x, `‹x›` → x); whitespace in a field
+  is folded to one space. Homonyms carry their superscript (bhijja²).
+- **Attribution line** (Copy only): ES "Tipiṭaka Pāḷi-Myanmā Abhidhāna — edición digital del IEBH (lo añadido, CC BY-SA 4.0; el
+  texto del diccionario no se relicencia) — <URL>"; EN "… — IEBH digital edition (additions CC BY-SA 4.0; the dictionary’s text not
+  relicensed) — <URL>". *Decided without asking*: the brackets rendered wholly in the page's language (the request mixed them).
+- **Cite**: "Tipiṭaka Pāḷi-Myanmā Abhidhāna, vol. <volume as the article names it>, p. <printed> (p. del PDF <n>), s.v. <IAST>.
+  Edición digital, IEBH, v<VERSION>. <URL> (consultado el <d mmm yyyy>)." EN: "PDF p.", "Digital edition", "accessed 29 Sep 2026".
+  The volume is `volLabel(k, kb)` (a supplement row: "15 (suplemento, encuadernado en el vol. 4/3)"); the printed page is
+  `printedP()` (the one the article shows; left out, with the PDF page alone, where the article shows none). VERSION from
+  `/data/version.json` (read once on load; the page's `<meta name="version">` until it arrives). Months are written out
+  (ene … dic; Jan … Dec), not `Intl`, which gives "sept." in es-ES. *Decided without asking*: "p. del PDF" in Spanish, as the
+  article line prints it (the request's example had "PDF p." in both).
+- **The address** is always `https://abhidhana.buddha-dhamma.net/w/<address>` (not `location.origin`), so a copy made on a test
+  server cites the public site. In Copy and Cite it is written as read (`/w/luñcana`); Share and the copied link send it
+  percent-encoded (`/w/lu%C3%B1cana`).
+- **Share**: `navigator.share({ title: "<IAST> — Tipiṭaka Pāḷi-Myanmā Abhidhāna", text: <the citation>, url })`; dismissing the
+  sheet does nothing; with no `navigator.share` (most desktop browsers), or any other refusal, the link is copied and *enlace
+  copiado* flashes.
+
+**Checks**:
+- Full build in the VM (`ABHIDHANA_SITE_OUT=/tmp/abh-new`): 958 files, v0.28.4 stamped, no errors.
+- Headless Chromium (the cloud container's Playwright 1.56) on a subset of the build (bh and l letters, 8 MB, served with the
+  `/w/*` rewrite; no API): **14 pass, 0 fail** — the three buttons with `aria-label`s; Cite for `/w/bhijja` exactly as above
+  (ES and EN, v0.28.4, today's date); Copy for bhijja (headword line, *borrador, sin revisar*, the Burmese marked, the attribution
+  line) and luñcana (*corregido*, vol. 18, a PCED book); Share with no `navigator.share` copies the link; with a stub, it is given
+  the title, the citation and the address; Tab reaches Copy, Cite, Share in order and Enter copies; `group` / `status` roles; at
+  375 × 812 the Meaning box starts at the same y with and without the buttons (bhijja 385 px, luñcana 401 px) and the page is 375 px
+  wide; no script errors. Screenshots looked at: 375 px bhijja and luñcana (with the flash), 1,280 px bhijja.
+- `site/test/editor/ui-test.js` step 7 (10 checks, run by `run.sh` against the full build, after the API test's edits): the three
+  buttons; Cite for `/w/bhijja`; Copy for bhijja (*borrador, sin revisar*) and for luñcana with step 3's edits (*corregido en
+  parte: sentido (1); el resto sin revisar*); Share both ways; Cite in English; 375 px for bhijja and luñcana. **Not run here**
+  (no Playwright in the VM): to run on the Mac. Not tested: Safari, Firefox, a real phone's share sheet.
+
+*Left*: `tmp/ui-check/dist-v0284.tgz` (the subset; gitignored). The label line uses `labels.json`'s `roman`, which carries its own
+brackets, stripped (`(kri)` → `kri`).
+
+## 82. The citation normaliser for the tooltips (29 Sep 2026; built in the advice chat, reviewed here; v0.28.4)
+
+**Built in the advice chat** (29 Sep; measured and page-checked there, working files in `tmp/cite-norm/`, gitignored):
+`tools/abhidhana_citefold.py` (new) and, in `tools/abhidhana_browse.py`, `import abhidhana_citefold as citefold` and a last step in
+`cite_key()`: when the exact match, the `FOLD` forms, the dropped *သစ်* and the stray-word tail all fail, `citefold.resolve()` maps a
+damaged abbreviation to a key of `docs/introduction/citation-abbreviations.tsv`. Only the tooltip's work (`cx`) changes; the
+citation text shown stays as the OCR read it. Not resolved on purpose: ၊ဋ alone where both ၊ဋ္ဌ and ၊ဋီ are keys (B2), *အပါ*
+alone (အပ or အပ၊ဋ္ဌ), and the lost heads other than *အဋ္ဌ*.
+
+**The advice chat's measurement** (from `tmp/cite-norm/README.md`), v0.28.3's citations:
+
+| group | citations | share | what it is |
+|---|---:|---:|---|
+| exact (today) | 450,399 | 84.8% | |
+| **A** mechanical | 16,862 | 3.2% | ၊ read as ါ or ု before ဋ္ဌ / ဋီ (*မါဋ္ဌ* → မ၊ဋ္ဌ, *ဓမ္မါဋ္ဌ*, *အပါဋ္ဌ*), ဋ lost before ္ဌ (*ဝိ္ဌ*), ဋံ / ဋိ for ဋီ (*အနုဋံ*, *မူလဋိ*), a lost ၊ (*သီ၊ဋီသစ်*), ါ before ၊ (*အပါ၊ဋ္ဌ*) |
+| **T** whole-word misreadings | 2,395 | 0.5% | 10 forms: *ရတ္ထ* → သာရတ္ထ (the print breaks သာ- / ရတ္ထ across a line), *ဝိသဒိ* / *ဝိသုဒ္ဓါ* → ဝိသုဒ္ဓိ, *မဏိမဉ္စူ*, *ပူလဋီ* → မူလဋီ, *သုတ္တန*, *မဟာဝံသ* → မဟာဝံ, *ဝိ၊ဝိနိစ္ဆယ၊ဋီ* (as printed) → ဝိ၊နိစ္ဆယ၊ဋီ, *ဝိမဘိ* |
+| **B1** one reading | 9,275 | 1.7% | the niggahīta of အံ lost (*အ*, *အ၊ဋီ*, *အ၊ဋ္ဌ*, *အါဋ္ဌ* → အံ …); ၊ဋ where only one reading is a key |
+| **B2** two readings | 2,353 | 0.4% | ၊ဋ alone where both ၊ဋ္ဌ and ၊ဋီ are keys (*ဒီ၊ဋ*, *မ၊ဋ*, *သံ၊ဋ*, *အံ၊ဋ*) |
+| lost head | 12,280 | 2.3% | the abbreviation's start lost: *အဋ္ဌ* 7,353, *ဋ္ဌ* 3,100, *ဋီ* 1,113, others 714 |
+| number only | 18,425 | 3.5% | the parser kept only the numbers |
+| other | 18,976 | 3.6% | 3,000+ rare forms (*ဂ* 585, *ဇာ၊ဋီ* 247, *ယော* 241, *ဝ* 190 …) |
+
+**Its page check** (62 citations at random, seed 20260929; 47 located and read):
+
+| group | read | right | notes |
+|---|---:|---:|---|
+| A | 11 | 10 | wrong: 4c 424 *အပါ၊၁။၁၉၉* → the rule gives အပ; the page prints **အပ၊ဋ္ဌ**၊၁။၁၉၉. *အပါ* alone (1,938) is ambiguous; every other A form checked held |
+| T | 8 | 8 | 7/185 and 3/609: *ရတ္ထ* is *သာ-* / *ရတ္ထ* across a line break; 22/118 prints ဝိ၊**ဝိ**နိစ္ဆယ၊ဋီ (the table's key omits the second ဝိ: the same work) |
+| B1 | 9 | 9 | every *အ…* was **အံ…** in print |
+| B2 | 6 | 3 / 3 | ၊ဋ was ဋ္ဌ three times (19/197, 14c/617, 17/134), ဋီ three times (14/108, 18/424, 14/405): no rule decides it |
+| lost head *အဋ္ဌ*, *ဋီ* | 6 | 6 | every one was **အံ၊ဋ္ဌ** (18/150, 10/440, 13/522, 4c/393, 14c/1012) or **အံ၊ဋီ** (21/347) |
+| number only | 6 | — | in 5 the abbreviation is on the line but ends in **။** instead of ၊ (*ထေရ။ ၂၂၅၊ ၃၄၄*, *နီတိ၊ သုတ္တ။ ၁၁၇၉၊ ၁၂၁၇*, *ဝိ၊ ၅။ ၂၄၄၊ ၃၆၈* read as a page list): a **parser** matter (`CITE` in `abhidhana_articles.py`), not a normaliser one |
+
+**Reviewed here** (this session):
+- **The figure, confirmed**: a full build gives citations with a tooltip **483,912 of 530,965 (91.1%)**, from 450,399 (84.8%). The
+  README's projection was 484,346 (91.2%); the implemented rules give 434 fewer (not looked into).
+- **No citation matched before maps elsewhere.** A second full build with `citefold.resolve` replaced by `None` (the committed
+  code's behaviour; the fallback is the only change to `cite_key`) gives 450,399. Compared record by record over the 820 chunks
+  (221,154 records): `cx` **changed 0, lost 0, gained 33,513**; every other field identical; every file outside `data/c/`
+  identical. By construction the fallback runs only where `cite_key` returned −1 before. Gains by work (top): အံ၊ဋ္ဌ 10,400,
+  အပ၊ဋ္ဌ 4,035, မ၊ဋ္ဌ 3,621, အံ၊ဋီ 2,840, အံ 2,077, ဓမ္မ၊ဋ္ဌ 1,923, သီ၊ဋီ၊သစ် 1,135, အနု၊ဋီ 1,060, ဝိ၊ဋ္ဌ 1,043, သာရတ္ထ 767.
+- **10 newly resolved citations on the page images** (drawn by rule from the 33,513, seed 20260929 + 81, none from the advice
+  chat's sample; located by their column-OCR line; crops rendered from `pdfs/NN.pdf` in the VM, `tmp/cite-check/`, gitignored):
+  **10 right, 0 wrong.**
+
+| rule | book / PDF p. | OCR | resolved to | the page prints |
+|---|---|---|---|---|
+| A ါ for ၊ | 06 / 488 (53860) | အပါဋ္ဌ၊၁။၂၁၂။ | အပ၊ဋ္ဌ | အပ၊ဋ္ဌ၊၁။၂၁၂။ ✓ |
+| A ါ for ၊ | 09 / 154 (74926) | ဓမ္မါဋ္ဌ၊၂။၃၃၄။ | ဓမ္မ၊ဋ္ဌ | ဓမ္မ၊ဋ္ဌ ✓ |
+| A ဋိ for ဋီ | 13 / 886 (108055) | သီ၊ဋိ၊သစ်၊၂။၃၁၉။ | သီ၊ဋီ၊သစ် | သီ၊ဋီ၊သစ် ✓ |
+| A ါ before ၊ | 18 / 460 (143216) | အပါ၊ဋ္ဌ၊၂။ | အပ၊ဋ္ဌ | အပ၊ဋ္ဌ ✓ |
+| T | 11 / 211 (89292) | မဟာဝံသ၊၉၈၃၀၄။ | မဟာဝံ | မဟာဝံသ (the table's key is မဟာဝံ, the same work) ✓; the numbers read ၉၀။၃၀၄ |
+| T | 05 / 65 (41322) | ရတ္ထ၊၂။ | သာရတ္ထ | သာ- / ရတ္ထ across the line ✓ |
+| B1 အံ | 4c / 481 (175510) | အါဋ္ဌ၊၁။၂၈၆၉။ | အံ၊ဋ္ဌ | အံ၊ဋ္ဌ ✓ |
+| B1 အံ | 05 / 448 (45020) | အ၊ဋီ၊၃။၂၉၂။ | အံ၊ဋီ | အံ၊ဋီ ✓ |
+| B1 ၊ဋ | 14c / 654 (198517) | အဘိ၊ဋ၊၂။၁၀၄။ | အဘိ၊ဋ္ဌ | အဘိ၊ဋ္ဌ ✓ (the ္ဌ small; confidence medium) |
+| lost head | 02 / 769 (14210) | အဋ္ဌ၊၃။၂၇၇။ | အံ၊ဋ္ဌ | အံ၊ဋ္ဌ ✓ |
+
+- **Reading the code**: `_mech` applies its ၊-insertions anywhere in the key, not only at its end (e.g. `(?<!ဋ)္ဌ` would also
+  rewrite a ဏ္ဌ); the result must still be a table key, so a stray rewrite can only fail, not mis-resolve, unless it lands on
+  another key. None was seen in the sample. With 10 of 10 here and the advice chat's 33 of 34 on these groups (the one wrong, *အပါ* alone, is now left unresolved), confidence is
+  medium-high that the gain is right in the large; the numbers after the abbreviation are not checked by either sample.
+- Left for later (from the README): B2 (2,353), *အပါ* alone (1,938), the other lost heads (~4,900), a parser fix for
+  abbreviations ending in ။ (the "number only" group, up to ~94%), and a tooltip note that the work was inferred.
+

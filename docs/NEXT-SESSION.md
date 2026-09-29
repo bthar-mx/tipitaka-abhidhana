@@ -1,4 +1,4 @@
-# Abhidhāna — handover, 28 September 2026 (editor mode built, not yet switched on, v0.17.0; roman input in its form, v0.18.0; 14/2's 497 rows redrafted, v0.18.3; the OCR pilot, v0.18.5; vol. 23 drafted from our OCR, v0.19.0; vol. 22 drafted from our OCR, v0.20.0; vol. 24, v0.21.0; vol. 21, v0.22.0; vol. 20, v0.23.0; vol. 25, v0.24.0; 14/3 and 4/3 prepared, §62; `prep`'s no-join fix, v0.24.1; vol. 14/3 drafted from our OCR, v0.25.0, and 4/3's shards drafted, not merged, §63; vol. 4/3 merged, v0.26.0: every book drafted, §64; the next phase planned and decided, the brief shrunk, v0.26.1; `merge` keeps the corrections, 4/3's "see X" targets restored, v0.26.2, §65; site display fixes, v0.26.3, §66, checked live; run-on headwords measured (plan step 1.1), §67; Phase 1 reduced (the editor), and the folds and "analysis not read" refined, v0.26.4, §68; run-on articles split out in the nine books without PCED, every split checked on the image, v0.27.0, §69; the split rows and their hosts redrafted (plan step 1.6), v0.28.0, §70; the decision sheet, plan step 2.1, 29 Sep, docs only; plan step 2.4 page checks done, §73–76, docs only; citation abbreviations from vol. 15's key, v0.28.2, §77; item 9 planned, §78, docs only; `git gc` done, item 4; item 9 built, v0.28.3, §79; its editor tests passed on the Mac, and the supplement misspellings in the index errata, §80, docs only)
+# Abhidhāna — handover, 28 September 2026 (editor mode built, not yet switched on, v0.17.0; roman input in its form, v0.18.0; 14/2's 497 rows redrafted, v0.18.3; the OCR pilot, v0.18.5; vol. 23 drafted from our OCR, v0.19.0; vol. 22 drafted from our OCR, v0.20.0; vol. 24, v0.21.0; vol. 21, v0.22.0; vol. 20, v0.23.0; vol. 25, v0.24.0; 14/3 and 4/3 prepared, §62; `prep`'s no-join fix, v0.24.1; vol. 14/3 drafted from our OCR, v0.25.0, and 4/3's shards drafted, not merged, §63; vol. 4/3 merged, v0.26.0: every book drafted, §64; the next phase planned and decided, the brief shrunk, v0.26.1; `merge` keeps the corrections, 4/3's "see X" targets restored, v0.26.2, §65; site display fixes, v0.26.3, §66, checked live; run-on headwords measured (plan step 1.1), §67; Phase 1 reduced (the editor), and the folds and "analysis not read" refined, v0.26.4, §68; run-on articles split out in the nine books without PCED, every split checked on the image, v0.27.0, §69; the split rows and their hosts redrafted (plan step 1.6), v0.28.0, §70; the decision sheet, plan step 2.1, 29 Sep, docs only; plan step 2.4 page checks done, §73–76, docs only; citation abbreviations from vol. 15's key, v0.28.2, §77; item 9 planned, §78, docs only; `git gc` done, item 4; item 9 built, v0.28.3, §79; its editor tests passed on the Mac, and the supplement misspellings in the index errata, §80, docs only; Copy / Cite / Share on the article and the citation normaliser for the tooltips, v0.28.4, §81–82)
 
 *All 29 books are digitised end to end, spot-checked and in the Reader: 221,154 index rows, 94.1%
 located, 88.1% with label + body (brief §30). Read
@@ -36,6 +36,7 @@ witness.*
   the repo in `~/abhidhana-pw`; from the repo root, in Terminal:
   `PLAYWRIGHT=~/abhidhana-pw/node_modules/playwright sh site/test/editor/run.sh`
   Last run 29 Sep against v0.28.3, twice: API pass 28 fail 0, UI pass 48 fail 0 (brief §80).
+  v0.28.4 adds 10 UI checks (step 7, brief §81): expect UI pass 58 fail 0; not yet run on the Mac.
 - **Docs in the folder and in the Project must match.** On 25 Sep night the folder's brief and
   NEXT-SESSION twice went back to an older version. The cause was this session: `device_commit_files`
   sent a stale copy when the same staged path under `/mnt/user-data/outputs/` was reused. Give each
@@ -141,6 +142,22 @@ Project are for advice and for what needs the Mac. What the new chat should know
   them. Noticed while counting: item 3 below is out of date (most label combinations are confirmed in `docs/labels.md` §0; nine remain,
   sheet D1).
 
+
+## After v0.28.4 (Copy / Cite / Share, brief §81; the citation normaliser, §82): for the editor
+
+- **The editor**: run the git commands given in the session (commit, tag v0.28.4, push). The commit includes
+  `tools/abhidhana_citefold.py` (new, from the advice chat) and its call in `tools/abhidhana_browse.py`.
+- **The editor tests on the Mac** (step 7 is new): `PLAYWRIGHT=~/abhidhana-pw/node_modules/playwright sh site/test/editor/run.sh`;
+  expect API pass 28 fail 0, UI pass 58 fail 0. Record the result in brief §81.
+- **Live check after the push** (`/data/version.json` 0.28.4): on `/w/bhijja` the three buttons beside the headword; *Cite* pastes
+  "Tipiṭaka Pāḷi-Myanmā Abhidhāna, vol. 15 (suplemento, encuadernado en el vol. 4/3), p. 686 (p. del PDF 713), s.v. bhijja. Edición
+  digital, IEBH, v0.28.4. https://abhidhana.buddha-dhamma.net/w/bhijja (consultado el <today>)."; *Copy* pastes six lines, the
+  Meaning marked *borrador, sin revisar*; *Share* on a phone opens the share sheet (Safari / iOS, Android Chrome: not tested so
+  far), on a desktop copies the link. A citation chip such as *အပါဋ္ဌ* on `/w/khandhamatta` (vol. 6, PDF p. 488) now has a
+  tooltip naming the work.
+- **For the editor to say** (brief §81, decided without asking): the attribution line wholly in the page's language; "p. del PDF"
+  in the Spanish citation (as the article line), not "PDF p."; the address written as read in Copy / Cite (`/w/luñcana`), encoded
+  in Share.
 
 ## Next phase: the plan (28 Sep; decided by the editor the same day)
 

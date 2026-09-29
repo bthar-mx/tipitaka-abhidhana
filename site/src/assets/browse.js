@@ -344,6 +344,84 @@ function reportURL(d) {
   const body = `**Volume:** ${vn(d.kb || d.k)}${d.kb ? ` (supplement bound in vol. ${vn(d.k)})` : ''} (book \`${d.k}\`)\n**PDF page:** ${d.p} · **printed page:** ${d.q}\n**Headword:** ${d.h} (${d.r})\n**Article id:** ${d.i}\n**Link:** ${link}\n\n**What is wrong** (and, if you can, what the printed page says):\n\n`;
   return `${REPO}/issues/new?labels=error-report&title=${encodeURIComponent(title)}&body=${encodeURIComponent(body)}`;
 }
+// --- Copy / Cite / Share (brief §81), modelled on the Reader of buddha-dhamma.net (reader2.html: icon buttons,
+// navigator.clipboard, a short flash). Plain text, one field per line, built from the record as shown (edits laid over).
+// The address is always the public site's, so a copy made anywhere cites the same place.
+const SITE = 'https://abhidhana.buddha-dhamma.net';
+let VER = (document.querySelector('meta[name="version"]') || {}).content || '';
+fetch('/data/version.json').then(r => r.ok ? r.json() : null).then(j => { if (j && j.version) VER = j.version; }).catch(() => {});
+const SUPN = n => String(n).replace(/\d/g, c => '⁰¹²³⁴⁵⁶⁷⁸⁹'[c]);
+const wURL = d => `${SITE}/w/${d.sl}`;                                          // as read (the citation, the copy)
+const wHref = d => `${SITE}/w/${encodeURIComponent(d.sl).replace(/%2F/g, '/')}`;   // as sent (share, the copied link)
+const one = s => String(s || '').replace(/\s+/g, ' ').trim();
+const plainTr = x => (x || '').replace(/\[\[([^\]|]+)\|[^\]]*\]\]/g, '$1').replace(/\[\[([^\]]+)\]\]/g, '$1')
+  .replace(/\*([^*]+)\*/g, '$1').replace(/‹([^›]+)›/g, '$1');
+function today() { const n = new Date(); return `${n.getDate()} ${t('months')[n.getMonth()]} ${n.getFullYear()}`; }
+function copyText(d) {
+  const hn = d.hn ? SUPN(d.hn) : '', L = [];
+  L.push(d.r ? `${d.r}${hn} · ${d.h}${hn}` : `${d.h}${hn}`);
+  if (d.l) {
+    const B = LABS.get(d.l);
+    L.push(`${t('cp_label')}: ` + (B ? `${B.roman ? B.roman.replace(/^\((.*)\)$/, '$1') + ' ' : ''}(${d.l}) — ${B[LANG] || B.en}` : `(${d.l})`));
+  }
+  if (d.a || d.ai) L.push(`${t('cp_analysis')}: ` + [d.ai && `[${d.ai}]`, d.a && `[${d.a}]`].filter(Boolean).join(' '));
+  const tr = d.t && d.t[LANG];
+  if (tr) {
+    let st = t('st_' + tr.s);
+    if (tr.s === 'drafted') st += ', ' + t('cp_unreviewed');
+    if (tr.s === 'partial' || tr.s === 'rpartial') st += `: ${t('cp_sense', (tr.cs || []).map(n => `(${n})`).join(', '))}; ${t('cp_rest')}`;
+    L.push(`${t('cp_meaning')} (${st}): ${one(plainTr(tr.x))}`);
+  } else L.push(`${t('cp_meaning')}: ${t('not_translated')}`);
+  if (d.b) L.push(`${t('cp_def')}; ${t((d.cf || []).includes('body') ? 'cp_def_fixed' : 'cp_def_ocr')}: ${one(d.b)}`);
+  L.push(t('cp_attr', wURL(d)));
+  return L.join('\n');
+}
+function citeText(d) {
+  const q = printedP(d.k, d.p), pg = q ? `${t('print_p')} ${q} (${t('pdf_p')} ${d.p})` : `${t('pdf_p')} ${d.p}`;
+  return `Tipiṭaka Pāḷi-Myanmā Abhidhāna, ${t('vol_short')} ${volLabel(d.k, d.kb)}, ${pg}, s.v. ${d.r || d.h}${d.hn ? SUPN(d.hn) : ''}. ` +
+    `${t('ct_ed')}, IEBH${VER ? ', v' + VER : ''}. ${wURL(d)} (${t('ct_acc', today())}).`;
+}
+async function clip(s) {
+  try { if (navigator.clipboard && window.isSecureContext) { await navigator.clipboard.writeText(s); return true; } } catch (e) {}
+  const f = document.activeElement;   // older browsers, or a page not served over https
+  try {
+    const ta = document.createElement('textarea'); ta.value = s; ta.setAttribute('readonly', ''); ta.style.cssText = 'position:fixed;top:-1000px;opacity:0';
+    document.body.appendChild(ta); ta.select(); const r = document.execCommand('copy'); ta.remove(); if (f && f.focus) f.focus(); return r;
+  } catch (e) { return false; }
+}
+const ICONS = {
+  copy: '<svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true" focusable="false"><rect x="5" y="5" width="8" height="9" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M3 10.5V3a1 1 0 0 1 1-1h6" fill="none" stroke="currentColor" stroke-width="1.3"/></svg>',
+  cite: '<svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true" focusable="false"><path d="M6 5H3.5A1.5 1.5 0 0 0 2 6.5V9A1.5 1.5 0 0 0 3.5 10.5H5V11a2 2 0 0 1-2 2M14 5h-2.5A1.5 1.5 0 0 0 10 6.5V9a1.5 1.5 0 0 0 1.5 1.5H13V11a2 2 0 0 1-2 2" fill="none" stroke="currentColor" stroke-width="1.2"/></svg>',
+  share: '<svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true" focusable="false"><path d="M8 10V2M5 4.5 8 1.5l3 3M5 7H3.5A1.5 1.5 0 0 0 2 8.5v4A1.5 1.5 0 0 0 3.5 14h9a1.5 1.5 0 0 0 1.5-1.5v-4A1.5 1.5 0 0 0 12.5 7H11" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+};
+function actsHTML() {
+  return `<span class="acts" role="group" aria-label="${esc(t('act_group'))}">` +
+    ['copy', 'cite', 'share'].map(k => `<button type="button" class="icn" data-act="${k}" aria-label="${esc(t('act_' + k))}" title="${esc(t('act_' + k))}">${ICONS[k]}</button>`).join('') +
+    '<span class="acts-msg" role="status" aria-live="polite"></span></span>';
+}
+function flash(b, ok, msg) {   // as the Reader: the button shows ✓ for a moment; the message is also read out
+  const m = b.parentNode && b.parentNode.querySelector('.acts-msg'), k = b.dataset.act;
+  b.classList.remove('ok', 'bad'); b.classList.add(ok ? 'ok' : 'bad');
+  b.innerHTML = `<span aria-hidden="true">${ok ? '✓' : '✗'}</span>`;
+  if (m) { m.textContent = msg; m.classList.toggle('bad', !ok); }
+  clearTimeout(b._ft);
+  b._ft = setTimeout(() => { b.classList.remove('ok', 'bad'); b.innerHTML = ICONS[k]; if (m) m.textContent = ''; }, 1500);
+}
+async function act(k, b) {
+  const d = ov(cur.recs[cur.k]); if (!d) return;
+  if (k === 'copy') { const r = await clip(copyText(d)); return flash(b, r, t(r ? 'act_copied' : 'act_failed')); }
+  if (k === 'cite') { const r = await clip(citeText(d)); return flash(b, r, t(r ? 'act_cited' : 'act_failed')); }
+  if (k === 'share') {
+    if (navigator.share) {
+      try { await navigator.share({ title: `${d.r || d.h} — Tipiṭaka Pāḷi-Myanmā Abhidhāna`, text: citeText(d), url: wHref(d) }); return; }
+      catch (e) { if (e && e.name === 'AbortError') return; }   // dismissed; any other refusal falls back to the link
+    }
+    const r = await clip(wHref(d)); return flash(b, r, t(r ? 'act_linked' : 'act_failed'));
+  }
+}
+window.ABH_ACTS = { copyText: () => { const d = ov(cur.recs[cur.k]); return d ? copyText(d) : ''; },
+  citeText: () => { const d = ov(cur.recs[cur.k]); return d ? citeText(d) : ''; } };   // for the UI test
+
 // the Meaning box's small markup: *pāḷi* in italics, [[iast|address]] a link to another headword
 // ([[iast|]] and [[iast]] in italics),
 // ‹…› a Burmese word the draft left untranslated
@@ -407,6 +485,7 @@ function article() {
   H.push(`<div class="head">` +
     (ro ? `<h1 class="pl" lang="pi">${esc(d.r)}${d.hn ? `<sup>${d.hn}</sup>` : ''}</h1>` : '') +
     (my ? `<div class="my hw-my${ro ? ' second' : ''}" lang="my">${esc(d.h)}${!ro && d.hn ? `<sup>${d.hn}</sup>` : ''}</div>` : '') +
+    actsHTML() +
     (d.l ? `<button type="button" class="lab" data-label aria-expanded="${open.label}">${labelShown(d)}</button>` : '') +
     ((d.cf || []).includes('label') ? ` <span class="chip c-ok" title="${esc(t('corrected_t'))}">${esc(t('corrected_f'))}</span>` : '') +
     homsHTML(d) +
@@ -561,6 +640,7 @@ async function search(q) {
 app.addEventListener('click', async e => {
   const el = e.target.closest('button, a'); if (!el) return;
   const ds = el.dataset;
+  if (ds.act) return act(ds.act, el);
   if (ds.mode) return setMode(ds.mode);
   if (ds.set) return setOne(ds.set, ds.set === 'scan' ? ds.val === 'true' : ds.val);
   if ('done' in ds) { open.settings = false; return modebar(); }

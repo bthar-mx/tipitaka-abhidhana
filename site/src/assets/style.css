@@ -486,3 +486,13 @@ html[data-script="ro"] .lt.on .pl{color:var(--on-accent)}
 #tip.on{opacity:1}
 #tip.my{font-family:var(--my);font-size:17px;line-height:1.7}
 @media (prefers-reduced-motion: reduce){#tip{transition:none}}
+/* the article's Copy / Cite / Share buttons, beside the headword (brief §81; after the Reader's .icn). The message
+   is placed below the buttons, out of the flow, so a flash never moves the article */
+.acts{position:relative;display:inline-flex;gap:4px;align-self:center}
+.acts .icn{width:30px;height:28px;padding:0;display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--rule);border-radius:7px;background:var(--surface);color:var(--muted);cursor:pointer;font:600 14px var(--ui)}
+.acts .icn:hover{color:var(--ink);border-color:var(--line2)}
+.acts .icn.ok{color:var(--ok);border-color:var(--ok)}
+.acts .icn.bad{color:var(--crit);border-color:var(--crit)}
+.acts-msg{position:absolute;left:0;top:100%;margin-top:4px;white-space:nowrap;font:12.5px var(--ui);color:var(--ok);background:var(--surface);border:1px solid var(--rule);border-radius:6px;padding:2px 8px;z-index:5;pointer-events:none}
+.acts-msg.bad{color:var(--crit)}
+.acts-msg:empty{display:none}

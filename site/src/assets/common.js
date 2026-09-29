@@ -240,6 +240,26 @@ Object.assign(T.es, { menu_open: 'Menú', menu_close: 'Cerrar el menú' });
   document.addEventListener('keydown', e => { if (e.key === 'Escape' && hdr.classList.contains('menu-open')) { set(false); b.focus(); } });
 })();
 
+// --- the article's Copy / Cite / Share buttons (browse.js, brief §81), modelled on the Reader of buddha-dhamma.net
+Object.assign(T.en, {
+  act_group: 'Copy, cite, share', act_copy: 'Copy the article', act_cite: 'Copy the citation', act_share: 'Share',
+  act_copied: 'copied', act_cited: 'citation copied', act_linked: 'link copied', act_failed: 'could not copy',
+  cp_label: 'Label', cp_analysis: 'Analysis', cp_meaning: 'Meaning', cp_unreviewed: 'not reviewed', cp_rest: 'the rest not reviewed',
+  cp_sense: s => `sense ${s}`, cp_def: 'Burmese definition (the dictionary’s text', cp_def_ocr: 'machine-read, unchecked)', cp_def_fixed: 'corrected by hand)',
+  cp_attr: u => `Tipiṭaka Pāḷi-Myanmā Abhidhāna — IEBH digital edition (additions CC BY-SA 4.0; the dictionary’s text not relicensed) — ${u}`,
+  ct_ed: 'Digital edition', ct_acc: d => `accessed ${d}`,
+  months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+});
+Object.assign(T.es, {
+  act_group: 'Copiar, citar, compartir', act_copy: 'Copiar el artículo', act_cite: 'Copiar la cita', act_share: 'Compartir',
+  act_copied: 'copiado', act_cited: 'cita copiada', act_linked: 'enlace copiado', act_failed: 'no se pudo copiar',
+  cp_label: 'Categoría', cp_analysis: 'Análisis', cp_meaning: 'Significado', cp_unreviewed: 'sin revisar', cp_rest: 'el resto sin revisar',
+  cp_sense: s => `sentido ${s}`, cp_def: 'Definición birmana (texto del diccionario', cp_def_ocr: 'leído por máquina, sin revisar)', cp_def_fixed: 'corregido a mano)',
+  cp_attr: u => `Tipiṭaka Pāḷi-Myanmā Abhidhāna — edición digital del IEBH (lo añadido, CC BY-SA 4.0; el texto del diccionario no se relicencia) — ${u}`,
+  ct_ed: 'Edición digital', ct_acc: d => `consultado el ${d}`,
+  months: ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'],
+});
+
 // --- tooltips: the site's own, larger and in the theme's colours, in place of the browser's small `title` ones.
 // Any element with a `title` gets it moved to `data-tip` on first hover or focus (titles set later by code are
 // moved the same way); the tip shows after a short delay below the element, or above it near the bottom edge.

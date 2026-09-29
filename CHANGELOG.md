@@ -23,6 +23,25 @@ Versions of the Tipiṭaka Pāḷi-Myanmā Abhidhāna project: the data, the too
 A release note says, per version: what changed, the brief's sections, and the headline figures
 (located, label + body, Meaning rows drafted / reviewed).
 
+## v0.28.4 — 29 Sep 2026
+
+- **Copy, Cite and Share on every article** (brief §81), beside the headword in Browse and on `/w/…`, modelled on the Reader of
+  buddha-dhamma.net (icon buttons, `navigator.clipboard`, a short ✓ flash). *Copy*: the headword (IAST · Burmese), label,
+  analysis, the Meaning in the page's language with its status (*borrador, sin revisar* / *revisado* / *corregido* / *corregido en
+  parte: sentido (n)*), the Burmese definition marked as the dictionary's text (machine-read, unchecked, or corrected by hand), and
+  one attribution line; plain text, one field per line. *Cite*: e.g. "Tipiṭaka Pāḷi-Myanmā Abhidhāna, vol. 15 (suplemento,
+  encuadernado en el vol. 4/3), p. 686 (p. del PDF 713), s.v. bhijja. Edición digital, IEBH, v0.28.4.
+  https://abhidhana.buddha-dhamma.net/w/bhijja (consultado el 29 sep 2026)." (EN: "PDF p.", "Digital edition", "accessed 29 Sep
+  2026"). *Share*: `navigator.share` (title, the citation, the address) where the browser has it; otherwise the link is copied
+  ("enlace copiado"). Buttons with `aria-label`s, a `role="status"` message; no height added at 375 px. Strings ES / EN in `common.js`.
+  UI test: 10 new checks (`site/test/editor/ui-test.js` step 7).
+- **Citation tooltips: a normaliser for damaged abbreviations** (brief §82; built in the advice chat, reviewed here). New
+  `tools/abhidhana_citefold.py`, called at the end of `abhidhana_browse.cite_key()` when every earlier match fails; the citation text
+  shown is unchanged. Citations with a tooltip **450,399 → 483,912 of 530,965 (84.8% → 91.1%)**; no citation matched before maps
+  to another work (checked against a build without the fallback: 0 changed, 0 lost, 33,513 gained). 10 newly resolved citations
+  checked on the page images: 10 right.
+- No data file changed: `ocr/*`, `meanings/*`, D1 and editor mode as they were.
+
 ## v0.28.3 — 29 Sep 2026
 
 - **The supplements bound in vol. 4/3 shown with the volumes they belong to** (brief §78 way (c), §79; NEXT-SESSION item 9).
