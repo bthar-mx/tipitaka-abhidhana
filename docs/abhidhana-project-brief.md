@@ -1682,3 +1682,58 @@ the rule (read-only; no `index.lock` left, checked).
 kind, `tmp/dec21/lists/NN-{accept,rule,image,editor}.tsv` (id, iast, kind; 114 files, gitignored) and `lists/summary.tsv`: **accept
 31,718, rule 4,714, image 225, editor 4,385 = 41,042** (per book in the summary; the decision sheet §H gives the kinds). Nothing applied.
 
+
+## 72. The lexical rules of 27 Sep as script diffs over every book (R4–R8, R10, R11) (29 Sep 2026, Cowork)
+
+**Asked** (the editor; NEXT-SESSION "Work that needs no decision"): re-run `tmp/dec0927/mech.py` against the Meaning rows of v0.28.1, every
+book, not only the revision queue; one diff per rule; read 5 rows per rule against the Burmese. **Nothing merged; no Spanish changed.**
+
+**The script** (`tmp/dec0927/mech2.py`, md5 `2374e79…`, gitignored; `mech.py` left as it was). `mech.py` could not simply be re-run: it
+took its R4 rows from a 27 Sep candidate list and its Burmese from `tmp/dec0927/burmese.json` (163,445 rows, before 14/2's redraft, the
+OCR books and 4/3), and R5, R7, R11 were hand renderings (`MANUAL`, `SUBS`) of the 27 Sep rows. `mech2.py` keeps the hand renderings
+where the row is unchanged since, and finds every other row by rule, over all 217,450 rows:
+- Burmese: the work files of the PCED books (`tmp/meanings/vNN/`), vol. 1 from `burmese.json`, and for the nine books without PCED a fresh
+  `prep` of v0.28.1 into `tmp/stray14/vNN/` (20, 25, 4c, 14b run for this; 14c, 21–24 from §71), so the split rows have their text.
+  Every Meaning row has its Burmese.
+- R4: headword in -attha, အကျိုး not followed by ရှိ, and *el propósito / provecho / fin* de / del / que …; "con el fin de" (purpose) left.
+  R5: ပရိသတ် in the Burmese and no *asamblea*: the first of *\*parisā\**, *séquito*, *comitiva*, *concurrencia*, *audiencia*, *gentío*,
+  *público* becomes *asamblea*, article and a *gran / numeroso* before it made feminine; 16270 left out (PCED's ပရိသတ် for ပရိယတ်, §51).
+  R6: as `mech.py`, except the word itself (*la palabra \*parikkhāra\**) is kept. R7: ≥ 2 of အံ့ / လတ္တံ့ / လိမ့်မည် and *X / habrá de …
+  / va a …* → *X*. R8, R10: as `mech.py`, the name test widened (a name after *\*bodhisatta\**, *asceta*, *devaputta*, *upāsaka*). R11: ají
+  where the Burmese has ငရုတ် or the headword is marica-.
+- Rows not `drafted` or in `corrections-es.tsv` are never proposed (none matched).
+
+**Output**: `tmp/dec0927/diffs/R4.tsv` … `R11.tsv` (id, book, rule, current_es, proposed_es, Burmese excerpt, how, in_queue) and `summary.tsv`.
+
+| rule | rows | proposed a change | no mechanical change | in the queue (of the queue's rows) | per book (rows) |
+|---|---:|---:|---:|---|---|
+| R4 -attha | 183 | 176 | 7 | 172 (182) | 08 28, 13 24, 07 17, 14/2 15, 19 15, 03 14, 12 12, 15 10, 18 10; 20, 23, 24, 25: 6 |
+| R5 ပရိသတ် | 28 | 25 | 3 | 24 (24) | 03 5, 15 4, 16 3; 22, 23, 14/3: 3 |
+| R6 pariveṇa etc. | 182 | 181 | 1 | 181 (184) | 14/2 121, 01 7, 05 6; 22: 1 |
+| R7 three futures | 9 | 9 | 0 | 9 (9) | 19 6, 18 3 |
+| R8 ငရဲ | 58 | 58 | 0 | 58 (58) | 12 16, 09 13, 18 9 |
+| R10 maṅgala | 150 | 127 | 23 | 128 (128) | 16 110, 24 6, 18 5; 20, 23, 14/3: 4 |
+| R11 ají | 7 | 7 | 0 | 7 (7) | 16 7 |
+
+**583 rows would change**, nearly all already in the revision queue: the books drafted after 27 Sep (20–25, 4/3, 14/3) followed the rules
+through `drafting-prompt.md` and add only a handful. Queue rows the diff does not reach: R4 10, R6 3 (their Spanish no longer holds the
+pattern, not looked into).
+
+**Read against the Burmese** (5 random rows per rule, and a second 5 of the rule-made rows for R4, R5, R6, R10; about 60 rows):
+- **Right**: R6, R7, R8, R11 in every row read; R5's hand rows of 27 Sep; R4 where the -attha noun is a benefit or result.
+- **Fixed in the script before the figures above**: R4 turned *con el fin de sentarse* (99208, ထိုင်နေရန်-အကျိုး-အတွက်, purpose) into *con el
+  beneficio de*; R5 gave *un gran asamblea* (189534); R6 turned *la palabra \*parikkhāra\** (185344, a word mention) into *la palabra
+  requisitos*; R10 turned the names *\*bodhisatta\* \*maṅgala\** (134277, the 27 Sep diff had the same error) and *el asceta \*maṅgala\**
+  (192037) into *bendición*. After the fixes, no R10 proposal puts *bendición* after a name word (checked by pattern); 23 R10 rows are
+  names and left (the Buddha Maṅgala: 89562, 123689, 204016, 28627, 34282 …).
+- **Left for the editor, not fixable by a word swap**: (1) R10 where maṅgala means a ceremony or festival, not a blessing (မင်္ဂလာပြု /
+  ဆောင် / ပွဲ): **9 rows** (123635, 123636, 123637, 123639, 123641, 123642 …: *el día en que se realiza bendición*); where it qualifies a
+  thing, *elefante / jardín / espada / caballo de bendición* (auspicious, state): **29 rows** (123628–123631, 123645, 123658 …); a bare
+  *bendición* without article after a verb: **30 rows**. Vol. 16's maṅgala run is most of them. (2) R4: 14 of the 176 have ငှာ / အတွက် /
+  ရန် (purpose) in the Burmese, where *beneficio* follows the rule but "purpose" may be the sense (127736 *el beneficio de la cocina*,
+  124315); by the rule of 27 Sep, as written. (3) R5 keeps an alternative that is not ပရိသတ် (*el séquito / la asamblea*, 120404) as the
+  27 Sep hand rows did. (4) 177891's Burmese in the work file belongs to the next article (a split / placement residue): no change proposed.
+
+For the end of the revision (2.3): R6, R7, R8, R11 can be merged as they stand; R4, R5 after a skim; R10 needs the ceremony / attribute
+cases decided (a question for the decision sheet's B, not asked now). Tokens: this session's own, not counted.
+

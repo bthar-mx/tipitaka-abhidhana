@@ -292,7 +292,7 @@ Facts and mechanics only; nothing re-renders a translation. Each result is kept 
   rows the agents asked to check (44), the 6 misromanised headwords and 4 index spellings (to `index-errata.md`), vol. 25 p. 15
   (the History's year). What the page prints is recorded; the Spanish is not changed. ~3 k tokens a row (guess, not measured).
 - ~~**The 14 "see X" targets with a stray mark**~~: done 29 Sep, v0.28.1 (brief §71). Was: (brief §65): `merge NN --ids` from their old drafts; no redraft.
-- **Script diffs for the lexical rules of 27 Sep** (R4–R8, R10, R11; `tmp/dec0927/mech.py`): written as diffs to read at the end, not merged.
+- ~~**Script diffs for the lexical rules of 27 Sep**~~: done 29 Sep (brief §72): `tmp/dec0927/diffs/R*.tsv`, 583 rows would change; not merged.
 - **Item 9**: the 207 supplement rows moved beside vols. 15, 4/2, 16 (Cowork ~200 k + a Mac re-run).
 - **Item 3b**: transcribe the citation abbreviations (vol. 4/1 pp. 31–36, vol. 15 pp. 17–22) and the case abbreviations from the images.
 - **Item 4**: repo size (`git count-objects -vH`, `git gc`; the editor, in Terminal).
