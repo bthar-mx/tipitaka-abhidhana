@@ -1781,3 +1781,48 @@ two examples each with the current draft and the rule's proposal; options; no re
 **Left of 2.4**: the 393 rows with lost or misread numbers and the 59 headword / text disagreements (sheet F1, F2). Tokens: this
 session's own, not counted.
 
+
+## 74. Plan step 2.4, second batch: the 59 headword / text disagreements, §73's two open rows, vol. 25's year (29 Sep 2026, Cowork)
+
+**Asked** (the editor; NEXT-SESSION "Work that needs no decision"): record what the page prints, changing no Spanish and no article data:
+(1) §73's two unreadable rows (184099 on p. 749; 156798 on PDF pp. 40–43 and the neighbours' pages); (2) the 59 headword / text
+disagreements of the decision sheet's F2 (strict test): which headword the page prints there, whether the text belongs to it or to a
+neighbour (run-on, homonym, misplacement), whether the index spelling is wrong; (3) 158654's -bhitti- against the index's -bhatta-;
+(4) vol. 25's year in `docs/page-checks.tsv`.
+
+**How**, as §73: the pages cut on the Mac (`qpdf`, 16 books, 121 pages, 4.8 MB, `tmp/pagecheck2/`), rendered with `pdftoppm` in the cloud
+container, a band cropped where the headword stands (now found by the closest head line in the OCR page text, `tmp/pagecheck2/map2.json`),
+the whole column where it missed. Each crop read by eye; the index's neighbours (`db/tipitaka_abidan.db`) consulted where the printed
+word differed. Some 90 crops read.
+
+**`docs/page-checks.tsv`**: 62 rows appended (118 in all): 156798, 184099, 158654 and the 59.
+
+| group | rows | as drafted | differs | unreadable |
+|---|---:|---:|---:|---:|
+| the 59 headword / text rows | 59 | 34 | 24 | 1 |
+| §73's two open rows (156798, 184099) | 2 | 0 | 2 | 0 |
+| 158654 (index spelling) | 1 | 0 | 1 | 0 |
+
+- **What the 59 are.** Of the 34 as drafted, most are printed as they stand (the print's own oddity: 105412's gloss and bracket, 205220's
+  သုခ, 189804/05's 280,090 and 280,000, 105976's 1,150th, 126135's "corrupt form" note), one entry with two spellings and two index rows
+  (156977, 156979, 157006), homonyms whose row is the right one (61429 caṇḍakāḷī², 174965, 196674, 15832), or a run-on the flag
+  diagnosed rightly while the row's own gloss is right (186450, 187053, 217511, 220139, 206612). **The 24 that differ**: misplacement, the
+  draft carrying the neighbour's text (512, 18883, 133204, 135266, 166649, 179000, 198085, 172317); OCR misreadings the print does not have
+  (18506, 47659, 48823); senses in their own article that the OCR ran into a neighbour (162556, 182890, 158074, 160743 homonyms, 133680);
+  and **8 index spelling errors** (below; a ninth, 201598, is counted as drafted: its text is right, only the index spells it ပုရိမယဿ). **Unreadable**: 206033 suta, four homonym rows on two columns, left for item 5b.
+- **Index errors confirmed** (11, added to `index-errata.md` §3): 156798 → ဝိသံသဋ္ဌာဘာဝ; 158654 → ဝိဟာရဘိတ္တိကောဋိ; 201391 → ပုရိမကာလတ္ထ;
+  201598 → ပုရိမယသ; 124782 → မတကဘတ္တသင်္ခေပ; 125634 → မနုဿရာဟသေယျက; 167023 → သင်္ဂါမပ္ပဒေသ; 178400 → သဗ္ဗကိစ္စသာဓက (medium confidence, by
+  its place between the neighbours); 179634 → သဗ္ဗာဟာရ; 181000 → သမပညာသမုစ္ဆနာ; 176808 → ဩသက္ကိတောသက္ကိတဋ္ဌာန. In 124782, 125634, 167023,
+  179634, 181000 and 201391 the draft already fits the printed word (the agent read the text, not the index); in 125634 it does not (the
+  draft renders the neighbour ramaṇeyya); 201598 and 176808 fit too.
+- **156798** is on PDF p. 41 after all (the index's page is right; §73's crop missed it), printed ဝိသံသဋ္ဌာဘာဝ, its double negation the
+  print's own. **184099**: the "second pass" is the print's layout (a summary list of senses, then each in full), not an OCR doubling; the
+  start of (c) is legible on p. 749.
+- **Vol. 25's year**: the row now notes that ME 1385 began at Thingyan (New Year day 17 Apr 2023), so 20 Nov 2023 falls in 1385, and that
+  Tazaungmon's full moon (Tazaungdaing) was 27 Nov 2023 (MYANMORE's list of 2023 public holidays), so waxing 8 = 20 Nov 2023 = 1385
+  Tazaungmon waxing 8. Derived from a holiday list, not read from a Myanmar calendar table (none reached; timeanddate.com refused the
+  request). `docs/history.md` unchanged.
+
+Nothing in `meanings/` or `articles.jsonl` changed. **Left of 2.4**: the 393 rows with lost or misread numbers (sheet F1). Tokens: this
+session's own, not counted.
+

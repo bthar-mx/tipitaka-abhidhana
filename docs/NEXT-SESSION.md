@@ -290,7 +290,8 @@ Facts and mechanics only; nothing re-renders a translation. Each result is kept 
 - ~~**2.2's id lists**~~: done 29 Sep (brief §71): `tmp/dec21/lists/NN-{accept,rule,image,editor}.tsv`, `lists/summary.tsv`.
 - ~~**2.4 page checks, first batch**~~: done 29 Sep (brief §73): `docs/page-checks.tsv` (56 rows: the 11 headword / index rows, 8 index
   errors to `index-errata.md`; the 44 rows the agents asked to check, 22 as drafted, 20 differ, 2 unreadable; vol. 25 p. 15 prints 1384).
-  **Left of 2.4**: the 393 rows with lost or misread numbers and the 59 headword / text disagreements (sheet F1, F2). The Spanish of the 20
+  **Left of 2.4**: the 393 rows with lost or misread numbers (sheet F1); ~~the 59 headword / text disagreements~~ done 29 Sep (brief §74:
+  34 as drafted, 24 differ, 1 unreadable; 11 index errors to `index-errata.md`; 156798 found on p. 41, 184099 read on p. 749). The Spanish of the 20
   that differ is unchanged, for the final revision. Was: 2.4 page checks, mechanical rows.
 - ~~**The 14 "see X" targets with a stray mark**~~: done 29 Sep, v0.28.1 (brief §71). Was: (brief §65): `merge NN --ids` from their old drafts; no redraft.
 - ~~**Script diffs for the lexical rules of 27 Sep**~~: done 29 Sep (brief §72): `tmp/dec0927/diffs/R*.tsv`, 583 rows would change; not merged.
