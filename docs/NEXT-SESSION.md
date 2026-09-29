@@ -1,4 +1,4 @@
-# Abhidhāna — handover, 28 September 2026 (editor mode built, not yet switched on, v0.17.0; roman input in its form, v0.18.0; 14/2's 497 rows redrafted, v0.18.3; the OCR pilot, v0.18.5; vol. 23 drafted from our OCR, v0.19.0; vol. 22 drafted from our OCR, v0.20.0; vol. 24, v0.21.0; vol. 21, v0.22.0; vol. 20, v0.23.0; vol. 25, v0.24.0; 14/3 and 4/3 prepared, §62; `prep`'s no-join fix, v0.24.1; vol. 14/3 drafted from our OCR, v0.25.0, and 4/3's shards drafted, not merged, §63; vol. 4/3 merged, v0.26.0: every book drafted, §64; the next phase planned and decided, the brief shrunk, v0.26.1; `merge` keeps the corrections, 4/3's "see X" targets restored, v0.26.2, §65; site display fixes, v0.26.3, §66, checked live; run-on headwords measured (plan step 1.1), §67; Phase 1 reduced (the editor), and the folds and "analysis not read" refined, v0.26.4, §68; run-on articles split out in the nine books without PCED, every split checked on the image, v0.27.0, §69; the split rows and their hosts redrafted (plan step 1.6), v0.28.0, §70; the decision sheet, plan step 2.1, 29 Sep, docs only; plan step 2.4 page checks done, §73–76, docs only; citation abbreviations from vol. 15's key, v0.28.2, §77; item 9 planned, §78, docs only; `git gc` done, item 4; item 9 built, v0.28.3, §79)
+# Abhidhāna — handover, 28 September 2026 (editor mode built, not yet switched on, v0.17.0; roman input in its form, v0.18.0; 14/2's 497 rows redrafted, v0.18.3; the OCR pilot, v0.18.5; vol. 23 drafted from our OCR, v0.19.0; vol. 22 drafted from our OCR, v0.20.0; vol. 24, v0.21.0; vol. 21, v0.22.0; vol. 20, v0.23.0; vol. 25, v0.24.0; 14/3 and 4/3 prepared, §62; `prep`'s no-join fix, v0.24.1; vol. 14/3 drafted from our OCR, v0.25.0, and 4/3's shards drafted, not merged, §63; vol. 4/3 merged, v0.26.0: every book drafted, §64; the next phase planned and decided, the brief shrunk, v0.26.1; `merge` keeps the corrections, 4/3's "see X" targets restored, v0.26.2, §65; site display fixes, v0.26.3, §66, checked live; run-on headwords measured (plan step 1.1), §67; Phase 1 reduced (the editor), and the folds and "analysis not read" refined, v0.26.4, §68; run-on articles split out in the nine books without PCED, every split checked on the image, v0.27.0, §69; the split rows and their hosts redrafted (plan step 1.6), v0.28.0, §70; the decision sheet, plan step 2.1, 29 Sep, docs only; plan step 2.4 page checks done, §73–76, docs only; citation abbreviations from vol. 15's key, v0.28.2, §77; item 9 planned, §78, docs only; `git gc` done, item 4; item 9 built, v0.28.3, §79; its editor tests passed on the Mac, and the supplement misspellings in the index errata, §80, docs only)
 
 *All 29 books are digitised end to end, spot-checked and in the Reader: 221,154 index rows, 94.1%
 located, 88.1% with label + body (brief §30). Read
@@ -32,6 +32,10 @@ witness.*
 - **The Reader is retired** (the editor, 28 Sep): the website replaces it. The artifact
   (https://claude.ai/artifact/RjuFxtkh4FASRkhBeYhVS3) stays where it is, with its last data, and is no longer republished;
   `tools/abhidhana_reader_data.py` and `reader/` stay in the repo, unused.
+- **The editor tests run on the Mac**, not in the VM (no Playwright / Chromium there). Playwright 1.56 is installed outside
+  the repo in `~/abhidhana-pw`; from the repo root, in Terminal:
+  `PLAYWRIGHT=~/abhidhana-pw/node_modules/playwright sh site/test/editor/run.sh`
+  Last run 29 Sep against v0.28.3, twice: API pass 28 fail 0, UI pass 48 fail 0 (brief §80).
 - **Docs in the folder and in the Project must match.** On 25 Sep night the folder's brief and
   NEXT-SESSION twice went back to an older version. The cause was this session: `device_commit_files`
   sent a stale copy when the same staged path under `/mnt/user-data/outputs/` was reused. Give each
@@ -619,8 +623,8 @@ Facts and mechanics only; nothing re-renders a translation. Each result is kept 
    51227, 51941, 54340; vol. 24 has (ထီ၊ ၇) 17 and (ထိ၊ န) 11 unnormalised) before mapping them.
 9. ~~**Vol. 15** must be joined with 4c's supplement to it~~: done 29 Sep, v0.28.3 (brief §79, way (c) of §78). The rows stay
    under 4c; `docs/supplements.tsv` (88 anchors checked on the images) places them in their volume's alphabet on the site.
-   Open: 22 supplement headwords the index misspells, and 4 index rows with no article of their own (§79), not yet in
-   `docs/index-errata.md`.
+   The 22 supplement headwords the index misspells, the 4 index rows with no article of their own and 177412 are in
+   `docs/index-errata.md` §3 (brief §80). The editor tests passed on the Mac against v0.28.3 (API 28/0, UI 48/0, twice; §80).
 10. **Vol. 13's sixteen pages of vol. 15 headwords** (`docs/index-errata.md` §2): their real
    headwords can only come from our OCR; a later task.
 

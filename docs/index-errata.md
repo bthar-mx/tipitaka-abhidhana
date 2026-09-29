@@ -77,13 +77,56 @@ needs only one of its two; vol. 18 needs none.
 | 10 | 81979 | ဒသအကုလလကမ္မပထ | ဒသအကုသလ(ဒသာကုသလ)ကမ္မပထ | image, PDF 220 |
 | 23 | 188777 | အဟဿအဿာဇာနီယ | presumably သဟဿ… | **not checked** |
 | 4b | — | ဥဒယဗ္ဗကဉာကပဋိပါဋိ | ဥဒယဗ္ဗယညာဏပဋိပါဋိ | image (brief §15) |
-| 4c | — | ဩလမ္ဗတကုလာဝက, ဥဒါနိ, ဥပါဃာတဘူမိ, စကစတုက္ကာဒိကဆတ္တိက (printed ဧကစတုက္ကာဒိကဆတ္တိက, id 172639, PDF p. 85: the editor 26 Sep 2026, corrected via `docs/corrections.tsv`) | the other printed forms not recorded in the brief | image (brief §16) |
+| 4c | — | ဩလမ္ဗတကုလာဝက, ဥဒါနိ (177260, below), ဥပါဃာတဘူမိ (177269, below), စကစတုက္ကာဒိကဆတ္တိက (printed ဧကစတုက္ကာဒိကဆတ္တိက, id 172639, PDF p. 85: the editor 26 Sep 2026, corrected via `docs/corrections.tsv`) | the other printed forms not recorded in the brief | image (brief §16) |
 | 4c | — | ဧဏိ / ဧဏီ as two bare headwords | one variant entry | image |
-| 4c | — | ဥပက္ကိလေသ | no printed entry found | image |
+| 4c | 177266 | ဥပက္ကိလေသ | no printed entry found (no article of its own: below) | image |
 | 05 | — | ကဉ္စိက | ကဉ္ဇိက | image (brief §17) |
 | 14b | — | ပရတီိိရ, ပရစိိတ္တဇာနနက | (doubled vowel signs) | text layer |
 | 14b | — | ပရိတ္တဇ္စျာန, ပရိပုဏ္ဏဇ္စျာသယ | ဇ္ဈ for ဇ္စျ | text layer |
 | 14b | — | ပရိဘိန္ဒသု | ပရိဘိန္ဒိံသု | text layer, p. 600 |
+
+### 4c: the supplements bound after vol. 4/3 (from §79)
+
+*From brief §79, where each was read on the page images (4c PDF pp. 721–735); copied here from `tools/abhidhana_supplements.py`
+(`PRINTED`, `SAME_AS`, `NOTES`) and `docs/supplements.tsv`, not re-checked (brief §80). The script places each row by its printed
+form; the data keeps the index's spelling. "Vol." is the volume the supplement belongs to. The printed form is in Burmese where §79
+recorded it; otherwise in IAST only, as the script holds it.*
+
+| id | vol. | index | print | 4c PDF p. |
+|---|---|---|---|---|
+| 177260 | 4/2 | ဥဒါနိ (*udāni*) | *udānita* (IAST; Burmese not recorded) | 721 |
+| 177267 | 4/2 | ဥပက္ကိလေသမုစ္ဆေဒ (*upakkilesamuccheda*) | ဥပက္ကိလေသသမုစ္ဆေဒ (*upakkilesasamuccheda*) | 721 |
+| 177269 | 4/2 | ဥပါဃာတဘူမိ (*upāghātabhūmi*) | ဥပဃာတဘူမိ (*upaghātabhūmi*) | 721 |
+| 177277 | 4/2 | ဥပဇ္ဈယိနီ (*upajjhayinī*) | *upajjhāyinī* (IAST; Burmese not recorded) | 722 |
+| 177282 | 4/2 | ဥပါနာဟက (*upānāhaka*) | ဥပနာဟက (*upanāhaka*) | 723 |
+| 177287 | 4/2 | ဥပပက္ကလေသမုစ္ဆေဒ (*upapakkalesamuccheda*) | ဥပပက္ကိလေသသမုစ္ဆေဒ (*upapakkilesasamuccheda*) — a "see" entry | 723 |
+| 177300 | 4/2 | ဥပနန္တ (*upananta*) | ဥပဝနန္တ (*upavananta*) | 724 |
+| 177305 | 4/2 | ဥပဝိယတိ (*upaviyati*) | *upavīyati* (IAST; Burmese not recorded) | 724 |
+| 177307 | 4/2 | ဥပသေဝန (*upasevana*) | ဥပဝေသန (*upavesana*) | 724 |
+| 177314 | 4/2 | ဥပသမ္ပဒါဒျ (*upasampadādya*) | *upasampādya* (IAST; Burmese not recorded) | 725 |
+| 177326 | 4/2 | ဥပါနာဟက (*upānāhaka*) | ဥပါန (*upāna*) — the index repeats 177282's spelling | 726 |
+| 177327 | 4/2 | ဥပါဒန္တဘူ (*upādantabhū*) | ဥပါန္တဘူ (*upāntabhū*) | 726 |
+| 177332 | 4/2 | ဥပါဝတ္ထ (*upāvattha*) | *upāvatta* (IAST; Burmese not recorded) | 726 |
+| 177336 | 4/2 | ဥပေက္ခိယ (*upekkhiya*) | *upekkhikā* (IAST; Burmese not recorded) | 727 |
+| 177337 | 4/2 | ဥပေယမာ (*upeyamā*) | *upeyamāna* (IAST; Burmese not recorded) | 727 |
+| 177338 | 4/2 | ဥပ္ပဇ္ဇန္ဇိ (*uppajjanji*) | *uppajjantī* (IAST; Burmese not recorded) | 727 |
+| 177343 | 4/2 | ဥဗ္ဗဋ (*ubbaṭa*) | *ubbaṭṭa* (IAST; Burmese not recorded) | 727 |
+| 177344 | 4/2 | ဥဗ္ဗဋဗီဇက (*ubbaṭabījaka*) | *ubbaṭṭabījaka* (IAST; Burmese not recorded) | 727 |
+| 177368 | 4/2 | ဥဿိဉ္ဇန္တိ (*ussiñjanti*) | *ussiñcanti* (IAST; Burmese not recorded) | 730 |
+| 177373 | 16 | မံသကာရဏ (*maṁsakāraṇa*) | မံကာရဏ (*maṁkāraṇa*) | 731 |
+| 177389 | 16 | မာဲဏိဝရ (*māaiṇivara*) | *māṇivara* (IAST; Burmese not recorded) | 732 |
+| 177424 | 16 | မေဒက (*medaka*) | မောဒက (*modaka*) | 735 |
+
+**Index rows and printed articles that do not match one to one** (from §79): four index rows have no article of their own and are
+placed with the article they belong to (`SAME_AS`); one index row covers two printed articles.
+
+| id | vol. | index | §79's note | 4c PDF p. |
+|---|---|---|---|---|
+| 177266 | 4/2 | ဥပက္ကိလေသ (*upakkilesa*) | no article of its own on p. 721: the page prints ဥပက္ကိလေသသမုစ္ဆေဒ (177267); placed with it | 721 |
+| 177350 | 4/2 | ဥဗ္ဘံ (*ubbhaṁ*) | one printed article with 177349 (ဥဗ္ဘ၊ ဥဗ္ဘံ); placed with it | 728 |
+| 177381 | 16 | မဋ္ဋက (*maṭṭaka*) | p. 731 prints one မဋ္ဋက article; the index has two rows (177381, 177382); placed with 177382 | 731 |
+| 177402 | 16 | မိယမာန (*miyamāna*) | one printed article with 177401 (မီ(မိ)ယမာန¹); placed with it | 732 |
+| 177412 | 16 | မေဃဇ္ဇဝမေဃလ (*meghajjavameghala*) | the index row covers two printed articles, မေဃဇ္ဇဝ and မေဃလ | 734 |
 
 **Systematic, not errors of a single row** (handled by the spelling folds, `tools/abhidhana_fold.py`):
 the index writes ါ where the print writes ာ after a stacked consonant (vols. 3, 4/2, 22), and ဉာ

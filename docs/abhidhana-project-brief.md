@@ -2217,7 +2217,7 @@ Token cost of this plan: ~150 k.*
   177373 မံကာရဏ (မံသကာရဏ), 177424 မောဒက (မေဒက). Four index rows have no article of their own and are placed with the one they
   belong to (`SAME_AS`): 177266 (p. 721 prints only ဥပက္ကိလေသသမုစ္ဆေဒ, 177267), 177350 (ဥဗ္ဘ၊ ဥဗ္ဘံ is one article, 177349),
   177402 (မီ(မိ)ယမာန¹ is one article, 177401), 177381 (p. 731 prints one မဋ္ဋက, the index two). 177412 is one index row for two
-  printed articles (မေဃဇ္ဇဝ, မေဃလ). None of this is in `docs/index-errata.md` yet, and the index spellings stay as they are
+  printed articles (မေဃဇ္ဇဝ, မေဃလ). Recorded in `docs/index-errata.md` §3 since §80; the index spellings stay as they are
   in the data (the site shows the index's headword).
 - **The supplements print homonym numbers**: မဇ္ဈ², မဏိ², မတ², မီယမာန¹ / ², မေသ², ဥပသမ္ပဒ². Each supplement row with a numbered
   homonym in its volume goes after that volume's rows of the headword, which agrees with every number seen.
@@ -2244,7 +2244,26 @@ Token cost of this plan: ~150 k.*
   of the build served locally; no page errors. Screenshots looked at: Volumes, `/w/bhijja`.
 - `site/test/editor/run.sh` in the VM (with `TMPDIR=/tmp`, npm's cache in /tmp: the session disk was full): **API tests pass 28,
   fail 0**; the UI test cannot run there (no Playwright / Chromium in the VM). To run on the Mac.
+  **Run on the Mac by the editor, 29 Sep, against v0.28.3, twice: API pass 28 fail 0, UI pass 48 fail 0, both times** (§80).
 - `u` lists 4/3 among its volumes, as before: rows of 4c romanised with short *u*; not a supplement question, not looked into.
 
 *Left*: `tmp/supp-img/` (page crops) and `tmp/ui-check/` (the build subset) in the folder, gitignored; the VM cannot delete them
 (and one full-page PNG, `tmp/supp-img/4c-723.png`). Token cost: ~250 k.*
+
+## 80. §79's UI test run on the Mac; the supplement misspellings in the index errata (29 Sep 2026, Cowork; docs only)
+
+**The editor tests** (`site/test/editor/run.sh`), run by the editor on the Mac on 29 Sep against v0.28.3, twice: **API pass 28,
+fail 0; UI pass 48, fail 0**, both times. This closes the one check §79 could not run in the VM. Playwright 1.56 is installed
+outside the repo, in `~/abhidhana-pw`, and passed in by the script's `PLAYWRIGHT` variable (`ui-test.js` requires
+`process.env.PLAYWRIGHT || 'playwright'`):
+`PLAYWRIGHT=~/abhidhana-pw/node_modules/playwright sh site/test/editor/run.sh` (NEXT-SESSION, "Every session").
+
+**`docs/index-errata.md` §3** gains a sub-table "4c: the supplements bound after vol. 4/3 (from §79)": the 22 rows of `PRINTED` in
+`tools/abhidhana_supplements.py` (id, the index's spelling, the printed spelling, 4c PDF page), and the five rows where index and
+print disagree on how many articles there are (`SAME_AS` 177266, 177350, 177402, 177381; and 177412), each with §79's note.
+Taken from the script and `docs/supplements.tsv`; not re-checked on the images (they were read there, §79). The printed spelling is
+given in Burmese where §79 recorded it (the script's `NOTES`), otherwise in IAST as `PRINTED` holds it: the Burmese of those
+twelve was read but not written down, and is not reconstructed here. Two of the 22 (ဥဒါနိ 177260, ဥပါဃာတဘူမိ 177269) were
+already in §3 without an id (brief §16); the old line points to the new rows. Item 9 in NEXT-SESSION is now closed.
+Nothing in the data or the site changed; no version bump.
+
