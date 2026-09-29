@@ -1,4 +1,4 @@
-# Abhidhāna — handover, 28 September 2026 (editor mode built, not yet switched on, v0.17.0; roman input in its form, v0.18.0; 14/2's 497 rows redrafted, v0.18.3; the OCR pilot, v0.18.5; vol. 23 drafted from our OCR, v0.19.0; vol. 22 drafted from our OCR, v0.20.0; vol. 24, v0.21.0; vol. 21, v0.22.0; vol. 20, v0.23.0; vol. 25, v0.24.0; 14/3 and 4/3 prepared, §62; `prep`'s no-join fix, v0.24.1; vol. 14/3 drafted from our OCR, v0.25.0, and 4/3's shards drafted, not merged, §63; vol. 4/3 merged, v0.26.0: every book drafted, §64; the next phase planned and decided, the brief shrunk, v0.26.1; `merge` keeps the corrections, 4/3's "see X" targets restored, v0.26.2, §65; site display fixes, v0.26.3, §66, checked live; run-on headwords measured (plan step 1.1), §67; Phase 1 reduced (the editor), and the folds and "analysis not read" refined, v0.26.4, §68; run-on articles split out in the nine books without PCED, every split checked on the image, v0.27.0, §69; the split rows and their hosts redrafted (plan step 1.6), v0.28.0, §70; the decision sheet, plan step 2.1, 29 Sep, docs only; plan step 2.4 page checks done, §73–76, docs only; citation abbreviations from vol. 15's key, v0.28.2, §77)
+# Abhidhāna — handover, 28 September 2026 (editor mode built, not yet switched on, v0.17.0; roman input in its form, v0.18.0; 14/2's 497 rows redrafted, v0.18.3; the OCR pilot, v0.18.5; vol. 23 drafted from our OCR, v0.19.0; vol. 22 drafted from our OCR, v0.20.0; vol. 24, v0.21.0; vol. 21, v0.22.0; vol. 20, v0.23.0; vol. 25, v0.24.0; 14/3 and 4/3 prepared, §62; `prep`'s no-join fix, v0.24.1; vol. 14/3 drafted from our OCR, v0.25.0, and 4/3's shards drafted, not merged, §63; vol. 4/3 merged, v0.26.0: every book drafted, §64; the next phase planned and decided, the brief shrunk, v0.26.1; `merge` keeps the corrections, 4/3's "see X" targets restored, v0.26.2, §65; site display fixes, v0.26.3, §66, checked live; run-on headwords measured (plan step 1.1), §67; Phase 1 reduced (the editor), and the folds and "analysis not read" refined, v0.26.4, §68; run-on articles split out in the nine books without PCED, every split checked on the image, v0.27.0, §69; the split rows and their hosts redrafted (plan step 1.6), v0.28.0, §70; the decision sheet, plan step 2.1, 29 Sep, docs only; plan step 2.4 page checks done, §73–76, docs only; citation abbreviations from vol. 15's key, v0.28.2, §77; item 9 planned, §78, docs only; `git gc` done, item 4)
 
 *All 29 books are digitised end to end, spot-checked and in the Reader: 221,154 index rows, 94.1%
 located, 88.1% with label + body (brief §30). Read
@@ -161,7 +161,7 @@ fixes testable on committed data (decided: **code fixes only**, on the credit). 
 20 352, 21 238, 22 301, 23 174, 24 268, 25 196 = **2,899**.
 
 ### Phase 0 — unblock (this week; cheap)
-- **0.1** The editor, no tokens: `git count-objects -vH` and `git gc` (item 4) before the article step rewrites 29 books.
+- ~~**0.1**~~ Done 29 Sep (the editor): `git gc` (item 4); 367.8 MiB packed, 0 loose. Was: `git count-objects -vH` and `git gc` before the article step rewrites 29 books.
   `tmp/_to_delete/` was deleted (28 Sep). (v0.26.0 is tagged, and editor mode is on: PR #33 came from it.)
 - **0.2** ~~Slim the brief~~: done 28 Sep (v0.26.1): §2–49 moved unchanged into `docs/abhidhana-brief-archive.md` (Project:
   `claude/abhidhana-brief-archive.md`), a summary of the facts still in use in their place. The brief went from 248,594 to 114,880 bytes
@@ -268,7 +268,7 @@ reaches few rows; the plan below needs re-sizing before 1.3 (see 1.1).
 ### Phase 3 — (d) housekeeping, alongside
 - ~~**The Reader**~~: **retired** (the editor, 28 Sep): noted in "Every session" and the README; the artifact left as it is.
 - **Labels (item 3) and the History (7c)**: the editor's; can go into 2.1's sheet.
-- **Item 9** (the 207 supplement rows beside vols. 15, 4/2, 16): after phase 1 (the same article step); Cowork ~200 k + Mac re-run.
+- **Item 9** (the 207 supplement rows beside vols. 15, 4/2, 16): planned (brief §78): way (c), a sidecar table, no Mac re-run; Cowork ~150–250 k.
 - **Later**: 7b (14/3's analysis), 8 (label disagreements on the image), 10 (vol. 13's sixteen pages), 3b (case and citation
   abbreviations), page records to `sources-v1` (the editor), the title-page counts (open questions), Budistas / Buddhistas (00c).
 
@@ -303,11 +303,16 @@ Facts and mechanics only; nothing re-renders a translation. Each result is kept 
   that differ is unchanged, for the final revision. Was: 2.4 page checks, mechanical rows.
 - ~~**The 14 "see X" targets with a stray mark**~~: done 29 Sep, v0.28.1 (brief §71). Was: (brief §65): `merge NN --ids` from their old drafts; no redraft.
 - ~~**Script diffs for the lexical rules of 27 Sep**~~: done 29 Sep (brief §72): `tmp/dec0927/diffs/R*.tsv`, 583 rows would change; not merged.
-- **Item 9**: the 207 supplement rows moved beside vols. 15, 4/2, 16 (Cowork ~200 k + a Mac re-run).
+- **Item 9** (the 207 supplement rows beside vols. 15, 4/2, 16): **planned 29 Sep (brief §78), docs only**. Recommended (c):
+  keep book 4c everywhere; a sidecar `docs/supplements.tsv` (id, belongs_to, after_id) read by `abhidhana_browse.py` / `abhidhana_site.py`
+  and the scripts; addresses frozen (sl assigned in today's order, then re-ordered); no data file, D1 or Mac run touched; Cowork
+  ~150–250 k. PCED and Pn Daza have none of the supplement entries: no join gains, whatever the book. Moving the rows (a) would
+  reassign 30–51 `/w/` addresses. Before building: the editor checks `/api/edits?book=4c` for ids 177206–177428.
 - ~~**Item 3b**~~: done 29 Sep, v0.28.2 (brief §77): vol. 15's key transcribed (`tmp/abbr3b/`, drafted); 23 new rows and 2 spelling
   variants in `citation-abbreviations.tsv` (123 rows); citations matched 84.7% → 84.8%; the rest is OCR damage (normaliser not built).
   Was: transcribe the citation abbreviations (vol. 4/1 pp. 31–36, vol. 15 pp. 17–22) and the case abbreviations from the images.
-- **Item 4**: repo size (`git count-objects -vH`, `git gc`; the editor, in Terminal).
+- ~~**Item 4**~~: done 29 Sep (the editor): `git gc`; 367.8 MiB packed, 0 loose (before: 59 MiB loose + 337.6 MiB packed).
+  No further action until it nears ~1 GB. Was: repo size (`git count-objects -vH`, `git gc`; the editor, in Terminal).
 - Optional, larger: 1.8 (homonym swaps, farther-body run-ons), 7b (14/3's analysis), 8 (label disagreements on the image).
 
 ## Next, in order
@@ -581,7 +586,8 @@ Facts and mechanics only; nothing re-renders a translation. Each result is kept 
    inside analyses and definitions; the site could explain them the same way. And the **citation
    abbreviations** (vol. 4/1 pp. 31–36, vol. 15 pp. 17–22) are the key for resolving citations
    against OSBCT: transcribe them from the images when that work starts.
-4. **Repo size** (brief §28): run `git count-objects -vH` and `git gc` (the objects are loose;
+4. ~~**Repo size**~~: done 29 Sep (the editor): `git gc`, 367.8 MiB packed, 0 loose (before: 59 MiB loose + 337.6 MiB packed); no
+   further action until it nears ~1 GB. Was (brief §28): run `git count-objects -vH` and `git gc` (the objects are loose;
    a pack stores a re-run as deltas). If it still grows fast: stop committing `raw` (articles) and
    `body_joined` (pali), which repeat other fields (~40%), and keep them in a release tarball;
    only past ~1 GB move `articles.jsonl` / `pali.jsonl` to release assets, with the site build
@@ -612,7 +618,8 @@ Facts and mechanics only; nothing re-renders a translation. Each result is kept 
    of (တိ)/(gender), (ပု)/(ပု၊န), (ကြိ)/(တိ). And (ထိန), (ထီ၊၇), (ထိ၊န) (`docs/labels.md` §7; ids
    51227, 51941, 54340; vol. 24 has (ထီ၊ ၇) 17 and (ထိ၊ န) 11 unnormalised) before mapping them.
 9. **Vol. 15** must be joined with 4c's supplement to it (53 ဘိဇ္ဇ headwords indexed only there). The supplements' Meaning rows
-   (brief §64: 50 to vol. 15, 107 to 4/2, 50 to 16, ids 177206–177428) are in `meanings/4c.jsonl` and move with them.
+   (brief §64: 50 to vol. 15, 107 to 4/2, 50 to 16, ids 177206–177428) are in `meanings/4c.jsonl`. **Planned (brief §78)**: they stay
+   under 4c; `docs/supplements.tsv` tells the site which volume each belongs to and where it goes in that volume's alphabet.
 10. **Vol. 13's sixteen pages of vol. 15 headwords** (`docs/index-errata.md` §2): their real
    headwords can only come from our OCR; a later task.
 

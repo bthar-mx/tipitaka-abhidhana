@@ -2066,3 +2066,127 @@ matched (e.g. `/w/paṭati`, ဝိ၊နိစ္ဆယ၊ဋီ၊၁။ → t
 ပဋိသံ၊၂။၃၀၄။ → "Paṭisambhidāmagga · vol. 2, p. 304"), *netti ṭī* 75, *milinda* 24. One flaw the tooltip had before and still
 has: a work cited by verse number (the Vinayavinicchaya and its ṭīkā, the Abhidhānappadīpikā …) shows "p. N"; the note in the
 popup says "cited by verse number". No Spanish, no article data changed.
+
+## 78. Item 9 planned: the 207 supplement rows and the volumes they belong to (29 Sep 2026, Cowork; a plan, nothing changed)
+
+**Asked** (the editor; NEXT-SESSION "Work that needs no decision", item 9): plan only, no data changed. The supplements bound
+in 4c's PDF (§16: pp. 713–735, index ids 177206–177428; §64: 207 Meaning rows, 50 to vol. 15, 107 to 4/2, 50 to 16) sit under
+book 4c in the index, the articles, `pali.jsonl`, `meanings/4c.jsonl` and the site. List every place a row's book is used; check
+PCED; describe two or three ways; recommend one.
+
+**The rows, measured here.** 223 index rows (53 / 114 / 56, as §16), all in `ocr/4c/articles.jsonl` at positions 5,007–5,229
+(the last of the book), PDF pp. 713–735; 164 verbatim, 39 fuzzy, 5 folded, 15 unlocated. 207 have a Meaning row (§64). No row
+in the range is in `docs/corrections.tsv`, `corrections-es.tsv`, `page-checks.tsv`, `splits-checked.tsv`, `revision-queue.tsv`
+or `index-errata.md`. It is in `4c-flags.tsv` (92 lines), `4c-omitted.tsv` (122) and `tmp/dec21/lists/4c-{accept,rule,editor}.tsv`
+(77 / 11 / 4). **Not checked: the D1 edits** — the site's API cannot be reached from the Cowork VM or container; the editor can
+open `https://abhidhana.buddha-dhamma.net/api/edits?book=4c` and look for ids 177206–177428.
+
+### 1. Where a row's book is used
+
+| where | how the book is used |
+|---|---|
+| index `db/tipitaka_abidan.db` | `words.book_id` = 4c; `abhidhana_articles.py NN` selects `where book_id=?`, so the article step for 15 / 4b / 16 never sees these ids |
+| `ocr/4c/pages/` | the page records the article step reads; the supplements' OCR exists only here |
+| `abhidhana_articles.py` | 4c-specific: `ID_PAGE_FIX['4c']`, `SPLIT_BOOKS` (run-on split); the `book` field of every row |
+| `abhidhana_romanise.py` | copies `book` into `pali.jsonl`; per-book file paths and report |
+| `abhidhana_meanings.py` | files per book (`work4c.json`, `meanings/4c.jsonl`, `4c-flags/omitted/terms.tsv`); `target(x, book)` restores ဩ from သြ / သ **only when book == '4c'** (a property of 4c's scan); `prep` treats 4c's join as none; `corrected()` filters `corrections-es.tsv` by `book`; `merge` drops rows it has no work line for |
+| witness joins | `join-<book>.jsonl` per book, but the pairing itself is book-blind (all index rows of a headword, in id order) |
+| `abhidhana_site.py` | `data/v<book>.json` per book; `search.json` rows `[book, id, p, h, r]`; `volumes.json` counts (4c: 5,230 headwords, with the supplement note); `ax` ("analysis not read") decided per book — by the raw head line in books without PCED, by PCED in the others |
+| `abhidhana_browse.py` | the dictionary's order = books in `volumes.json` order, each in index order (so the supplements come after 4/3 and before vol. 5: in their letter groups the rows supplementing 15 and 16 sort **before** every row of those volumes, those supplementing 4/2 **after** every row of 4/2); `k` on every record; the letter's `books` list ("in vols …"); **addresses** `sl` and homonym numbers `hn` are assigned in that order; search shards `[sl, r, h, book, page, chunk]` |
+| URLs | `/w/<sl>` (address from the global order); `/v/<book>/<pdf page>` (PDF page of that book); page images `IMG/<book>/NNNN.webp`; printed page = PDF page − the book's `offset` (`pageStr`) |
+| `browse.js`, `common.js`, `read.js` | "vol. N · p. …" from `d.k`; the scan pane's image URL; the page-view link; search results link `/v/<book>/<p>`; the GitHub issue body names the book |
+| editor mode | `editor.js` POSTs `{book: d.k, id}`; `functions/_lib/edits.js` checks `book` against `BOOK`; D1 `edits.book` (indexed); `/api/edits?book=NN` loaded per book when an article is shown, cached 60 s per book |
+| weekly export | `abhidhana_edits_export.py` writes an edit to `meanings/<book>.jsonl` or `corrections.tsv` by its D1 book, and lists the books to re-run; `.github/workflows/export-edits.yml` reports per book |
+| corrections files | `corrections.tsv`, `corrections-es.tsv`, `page-checks.tsv`, `splits-checked.tsv`, `revision-queue.tsv`: a `book` column (0 rows in range today) |
+| docs | README (line 101), `volumes.json` notes, §16, §64, `index-errata.md` |
+
+**The page is 4c's whatever the plan.** A supplement row's `p` is a page of 4c's PDF; its image is `4c/0713.webp`…, and its
+printed page needs 4c's offset. A row filed under book 15 would show vol. 15's page 713 and a wrong printed page unless it
+carried a second book for its page. So "moving" the rows can never be complete: some field must keep saying 4c.
+
+**PCED (and Pn Daza) do not have the supplements** (measured here on `witness/pced_k.jsonl` and `pndaza_k.jsonl`, with the join's
+exact-then-folded lookup): of the 53 vol. 15 headwords, **0** are in PCED; of 4/2's 114, 17; of 16's 56, 14 — and for every one
+of those 31 PCED has exactly as many entries as the index has *other* rows with that headword (the main volume's). Their text
+agrees better with the main volume's row in 24 of 26 comparable cases (2 closer to the supplement row, only 1 at ≥ 0.6
+similarity; 5 supplement rows have no body). The join pairs the k-th index row of a headword with the k-th witness entry, in id
+order; the supplement ids are the highest, so they stay unpaired **whatever book they are filed under**. Re-running the joins
+for 15 / 4b / 16 would pair nothing new. Pn Daza's witness gives the same counts. (Confidence high; the two closer cases could be
+looked at on the image, not joined.)
+
+**Addresses.** Measured by re-computing the site's addresses in each order (`/w/` = the IAST headword, `-2`, `-3` for homonyms
+in the global order): 48 supplement rows share their IAST with another row (20 / 10 / 18 for 4b / 15 / 16), 26 have a `-N`
+address now. Moving the rows to the end of their volumes changes **30 addresses** (14 supplement rows, **16 rows of vol. 16**);
+placing them at their alphabetical place changes **51** (25 supplement, **16 of 4/2 and 10 of 16**). A changed address is not
+a dead link but a *reassigned* one: `/w/x-2` would open a different article, which no redirect can fix.
+
+**Placing them alphabetically.** A Pāḷi-alphabet key on the romanised headword (the site's `letters()`, niggahīta first)
+reproduces the volumes' own order for 97.1% (15), 95.5% (4b) and 97.4% (16) of adjacent pairs; every supplement row gets an
+anchor inside its volume (none at the start or end). Good enough to place them, not to prove the place: the anchors want a look.
+
+### 2. Three ways
+
+**(a) Move the rows into books 15 / 4b / 16 in every file.**
+- Touched: `abhidhana_articles.py` (4c must drop the range, 15 / 4b / 16 must take it from `ocr/4c/pages/`: the index says 4c,
+  so a remap table or a post-step that moves lines between files), `abhidhana_romanise.py` output, `ocr/{4c,15,4b,16}/articles.jsonl`,
+  `pali.jsonl` and their reports; `meanings/4c.jsonl` split into `15 / 4b / 16.jsonl` and the same for `-flags`, `-omitted`, `-terms`
+  (15 / 16 / 4b have no `-omitted` file today); `work4c.json` — and `merge 15` from vol. 15's own work file would *remove* the
+  moved rows (it drops ids it has no work line for), so `prep` must learn them too; `target()`'s 4c-only ဩ rule must follow the
+  rows; a page-book field in the records, `browse.js`, `common.js`, `read.js` for image, page view and printed page; D1
+  `UPDATE edits SET book=… WHERE id BETWEEN 177206 AND 177428` if any edit exists; `volumes.json` counts; the tmp lists.
+- Mac: the article step and romanisation for 4c, 15, 4b, 16; the witness joins for 15, 4b, 16 (no gain, above); `ocr_stats`.
+- Site: the rows under their volumes, in order (if placed), with the right page only if the page-book field is added.
+- Risk: **30–51 addresses reassigned**, 16–26 of them *main-volume* articles; every regeneration of 4c or 15 / 4b / 16 must
+  repeat the move; the editor's future edits of these rows go to a book whose files no longer hold them unless D1 is migrated.
+- Cost: Cowork ~500–800 k tokens (code in four tools and three scripts, checks on four books), plus the Mac re-runs.
+
+**(b) Keep book 4c and add `belongs_to` to the rows, used by the site.**
+- Touched: `abhidhana_articles.py` emits `belongs_to` for the id range (a small table beside `ID_PAGE_FIX`), `abhidhana_site.py`
+  passes it (`kb`), `abhidhana_browse.py` uses it for the letter's volume list and places the rows (after their volume, or by
+  anchor), `browse.js` / `common.js` / `read.js` show "vol. 15 (supplement, bound in 4/3)"; `volumes.json` notes.
+- Mac: the article step and romanisation for 4c (the field must survive every regeneration, so it has to come from the tool);
+  the output should be byte-identical to today's apart from the new field — to be checked by diff.
+- Site: as (c). Risk to links: none if addresses are frozen (below); edits and D1 untouched.
+- Cost: Cowork ~200–300 k, plus one Mac run of 4c (and a diff).
+
+**(c) Keep book 4c everywhere; one sidecar table the site reads (proposed).** Nothing in the data changes. A new
+`docs/supplements.tsv`, 223 rows: `id`, `book` (4c), `belongs_to` (15 / 4b / 16), `after_id` (the row of that volume it follows),
+`how` (key / checked), `note`. Made once by a script from the Pāḷi-alphabet key, the anchors looked at where the key is unsure
+(adjacent disorder, homonyms: the 48 shared IASTs first).
+- Touched: `docs/supplements.tsv` (new); `abhidhana_browse.py` — (1) assign `sl` in **today's order first** (the addresses are
+  then identical by construction), (2) then re-order the entries, each supplement row after its anchor, (3) `hn` by the new
+  order, (4) the letter's `books` and the shard's volume from `belongs_to`; `abhidhana_site.py` — `kb` on the supplement records,
+  `search.json` rows and `volumes.json` (vol. 15: "+ 53 in the supplement bound in 4/3", linking `/v/4c/713`; 4/2 and 16
+  likewise; 4/3: "5,007 + 223 in the supplements"); `browse.js` / `common.js` — the volume shown is `kb || k`, with
+  "supplement, bound in vol. 4/3"; the page, image, page-view link, printed page, edits (`book=4c`) stay on `k`; `read.js` — a
+  line on 4c's pp. 713–735 naming the volume the page supplements. README line 101.
+- Unchanged: the index, `ocr/4c/*`, `pali.jsonl`, `meanings/4c.jsonl` and its flag / omitted / terms files, the witness joins,
+  `abhidhana_meanings.py` (the ဩ rule keeps applying), corrections files, D1, the editor's API, the weekly export.
+- Mac: **nothing**. One full build in the VM (`ABHIDHANA_SITE_OUT=/tmp/…`) and a check that the address → id map of every
+  record is the same as today's (expected 0 differences), `/w/bhijja` reading vol. 15, the bh- chunk showing it among vol. 15's
+  rows, the letter list of bh not naming 4/3.
+- Site: the supplement rows in their volume's alphabet, under that volume's name, marked as a supplement; the page view and scan
+  still 4c's. The one visible cost of frozen addresses: in up to 51 homonym sets (the anchored figure above) the superscript
+  (display order) and the `-N` of the address differ, e.g. an article shown as x¹ at `/w/x-2`. The alternative, superscript =
+  address suffix, keeps them equal but numbers homonyms out of display order.
+- Risk: to links, none (addresses frozen); to edits, none; an anchor placed wrong only misplaces a row in Browse, and is fixed in
+  one TSV line.
+- Cost: Cowork ~150–250 k tokens (a sidecar script, ~60 lines in `browse.py` / `site.py`, ~20 in the scripts, a build and the
+  checks), no Mac time. A push that changes the site: a version bump then (not now).
+
+### 3. Recommendation
+
+**(c)**, confidence **medium-high (~80%)**. What decides it: the page of a supplement row is 4c's in any case, so "4c plus a
+statement of which volume it supplements" is the true description, and (c) is the only way that changes no data, reassigns no
+address, needs no Mac run and leaves editor mode and the weekly export alone. (b) is (c) with the statement stored in
+`articles.jsonl` instead of a table, at the price of a Mac run and a field every regeneration must reproduce; choose it only if
+the field should travel with the data outside the site (a data release, say). (a) is not recommended (confidence high): it
+reassigns 30–51 addresses, main-volume ones included, and must still keep 4c for the page.
+
+**Open inside (c)**, to settle when it is built (not decisions for the sheet): the superscript rule (display order proposed);
+whether vol. 15's row count on the volume list includes the 53 (proposed: shown as "+ 53", the index figure kept); the 1–2 rows
+PCED seems to share, to look at on the image. **Before building**, the editor checks the D1 edits for the range (URL above); an
+edit there changes nothing in (c), but would have in (a).
+
+*Measured here with read-only scripts on the folder (the index, `ocr/{4b,4c,15,16}`, `witness/pced_k.jsonl`, `pndaza_k.jsonl`,
+`site/volumes.json`, `tools/abhidhana_browse.py`'s own `letters()`); nothing written but this section and NEXT-SESSION.
+Token cost of this plan: ~150 k.*
