@@ -1826,3 +1826,80 @@ word differed. Some 90 crops read.
 Nothing in `meanings/` or `articles.jsonl` changed. **Left of 2.4**: the 393 rows with lost or misread numbers (sheet F1). Tokens: this
 session's own, not counted.
 
+
+## 75. Plan step 2.4, third batch: F1's numbers, first half (194 of 393 rows, books 01–20); `page-checks.tsv` housekeeping (29 Sep 2026, Cowork)
+
+**Asked** (the editor; NEXT-SESSION "Work that needs no decision"): the decision sheet's F1, the 393 rows whose flag says a number was
+lost or misread, in two halves by book order; this session the first ~200. For each row: what the page prints at that place, whether
+the draft's number matches (as drafted / differs / unreadable), a note. Append to `docs/page-checks.tsv`; there, §73's rows for 156798
+and 184099 (re-checked in §74) marked `superseded (§74)`. No Spanish and no article data changed.
+
+**The list.** F1 is `gather.py`'s `numbers` group (`tmp/dec21/gather.py`: flag names number / numeral / digit / figure / total *and*
+lost / garbled / misread / ? / missing / probably), re-run over today's `meanings/` and flag files: **393 rows, the same count as the
+sheet**. `tmp/pagecheck3/list.py` writes them in book order (01, 02, 03, 4a, 4b, 4c, 05 … 14b, 14c, 15 … 25) to
+`tmp/pagecheck3/f1-rows.tsv` (n, id, book, pdf_page, located, iast, flag, es). The first half is **rows 1–194, books 01 to 20 whole**
+(the cut falls between vols. 20 and 21); the rest, rows 195–393 (vols. 21 46, 22 41, 23 26, 24 38, 25 48 = 199), are in
+`tmp/pagecheck3/f1-rows-left.tsv`.
+
+**How**, as §73–74: `tmp/pagecheck3/pos.py 1-194` took each row's page from `ocr/NN/articles.jsonl` (the index page for the 6
+unlocated rows) and pages to its `continues_on` (at most +4) plus one; a guess of the headword's line from the OCR page text
+(`page.psm6`; `col.psm6` for 14b); **437 pages from 22 books cut on the Mac with `qpdf`** (17.2 MB, `tmp/pagecheck3/NN-pages.pdf`),
+18 more for the long articles (`*-extra.pdf`). Staged to the Cowork cloud container, rendered with `pdftoppm` at 2,100 px wide,
+cropped by `crop.py` (a band of one column) and `ov.py` (page overview), both kept in `tmp/pagecheck3/` with `INSTRUCTIONS.md`, the
+rules the checks followed. **The reading was delegated**: seven sub-agents in the container, 15–37 rows each, then an eighth for
+the pages of 8 long articles first left short; every number read by eye on a crop (none by OCR). The headword guess pointed to the
+wrong column or a homonym in some rows (batch A: 10 of 25); the right article was found by its OCR text. A spot check here: 176422's
+(ခ) (the OCR's (၁)) confirmed on the crop. Sub-agent tokens: **1.91 M for 194 rows, ~9.9 k a row** (the sheet guessed ~3 k); this
+session's own not counted. *Incident*: the sub-agents shared a scratch folder and one helper script overwrote another's, so some
+rows of two batches landed in a third batch's file as well; the result was merged by id, each row from its own batch's file
+(3 rows had an older copy elsewhere, not used). All 194 ids once each.
+
+**Verdict rule** (`INSTRUCTIONS.md`): *as drafted* = the draft's numbers are the printed ones, or the page prints none / a repeat / a
+skip and the draft and flag say so; *differs* = the page prints a number the draft lacks, leaves as "…" or renders otherwise, or the
+draft or flag contradicts the page; *unreadable* = not found or not legible.
+
+| books | rows | as drafted | differs | unreadable |
+|---|---:|---:|---:|---:|
+| 01–03, 4a, 4b | 25 | 10 | 15 | 0 |
+| 4c | 15 | 7 | 8 | 0 |
+| 06–13, 14b | 31 | 9 | 22 | 0 |
+| 14c | 49 | 22 | 27 | 0 |
+| 15–19 | 16 | 10 | 6 | 0 |
+| 20 | 58 | 25 | 33 | 0 |
+| **all** | **194** | **83** | **111** | **0** |
+
+- **What "differs" mostly is** (examples; not counted by kind): **the page prints the number the draft lost**, and the flag's "missing
+  in the source" is wrong, the loss being the OCR's: (၁) at the start (174872, 194232, 194388, 194413, 194458, 195018, 195110, 197815,
+  198028, 200833, 132378, 156844), (၂) (157219, 157852, 158202, 194317, 194547, 194696, 196261, 197474), (၃) (13721, 20007), (က) (9180),
+  (၇) (142236); **a number misread**: (၁) read (၃) (192911, 192916, 201720), (ခ) read (၁) (176422, 17277), (ပု) read (၇) (137786, 158436),
+  vedalla's (5) is (၂) (161271); **the draft has a number the page does not**: a cross-reference ("(၂) အနက်လည်း ကြည့်", "(၆) …") or
+  the quotation block's own (၁) (၂) drafted as a sense (4210, 15106, 31730, 136352's second (11), 85873, 86145, 79239, 160604,
+  160696, 160699, 161658), the two derivations inside the analysis bracket read as senses (201136); **figures and counts the draft left
+  as "…" or got wrong**, legible on the page: 172993 77 times and age 4 (and 100 yojana, drafted "mil"), 174455 two stanzas, 195241 (၈)
+  wonders, 198120 two suttas, 200200 three suttas, 200611 91 aeons and Vipassī, 158617 15–17 and 10 / 100 / 1,000 / 10,000, 157387
+  (၅၀၀) pāsādas and Visākhā's age (၁၂၀), 160965 brahmacariya (၄၈) years, 159442 vīsati … navuti, 196091 the foot's 76 bones (၆၄ + ၂ +
+  ၄ + ၄ + ၂, the draft drops 64 and 2), 175776's formula items (၁)–(၅), (၁)–(၇) and the two mnemonic verses (printed clean), 174355's
+  lists numbered in full (bhikkhus 1–41, bhikkhunīs 1–13, upāsakas 1–10, upāsikās 1–10), 163323 Sagāthāvagga 11 saṁyuttas (not 13),
+  Saḷāyatana's vagga 10 suttas and aṭṭhasatapariyāya 11 (not 1), the ‹ဒ› is ၁, 160978 vagga (၉), 161713 = Jā 1.162, 160999 the eighth
+  Vedanā sutta = 1st saṁyutta, 7th vagga, 9th sutta, and a sense (၂) အနာရောဂါ the draft lacks.
+- **As drafted, with the flag's diagnosis corrected**: many "(N) printed twice" are the print's layout (a list of senses, then the
+  citation block numbered again: 23737, 23879, 84239, 88478, 216938, 193173, 193254, 194013, 197689); real source skips or repeats,
+  confirmed: 6252 and 29549 (no (၈)), 4989 (၁) twice, 34111, 36709, 141084, 172200 (၄) twice; no number printed, as flagged: 6796,
+  107900, 216765, 139182, 149810, 150179, 194503, 195097, 197526 (and 164069, where the flag blamed the OCR: *differs* only because
+  the draft presents its supplied (1) as printed). Printed and drafted, only the flag wrong: 158205, 158222,
+  159749, 176564, 174642, 161893 (၁၀) cities, 163342 7762 and its bracket, 160999's ၃၆ (not ၃၉၆), 175925 (၇၅) (its own Pāḷi says
+  sattapaññāsa, 57: a slip in the print, if so).
+- **Found beside the numbers** (in the notes, not acted on): 16356 prints အဘိဓေယျ (the flag's "source typo" is the OCR's); 40119's
+  draft is the next article (ubbhakappara), ubbha¹ ² stand above it; 134380's OCR text is the neighbour ယာစက; 162424 runs sa¹ ² ³
+  together; 121524 glosses a country Bhinnāgata; 193173 drops the printed ဒုက္ခ; 195865 and 195671 have no gaps where the draft has
+  "(…)"; 159359's […] are printed (Visuddhi 1.128–9; causes (၇)(၈); thina-middha).
+- **Left short** (pages not cut): 159115 vīthi, the ādikammika items (5)–(6) (p. 322); 163323 saṁyuttanikāya, the Saccasaṁyutta and
+  the grand totals (p. 860). Both rows are *differs* on what was read.
+- **Checked twice**: 133527 was also one of §73's 44 (another question; both *differs*), as 158654 is in §73 and §74. Left as two
+  rows each: different questions, same verdict.
+
+**`docs/page-checks.tsv`**: 194 rows appended (**312 rows**); §73's 156798 and 184099 now `superseded (§74)`. **Counted** (without the
+2 superseded): 310 rows, 308 ids: **as drafted 143, differs 166, unreadable 1** (206033, §74). The drafts are unchanged; the 111 that
+differ are for the final revision. **Left of 2.4**: F1 rows 195–393 (`tmp/pagecheck3/f1-rows-left.tsv`; for the cut:
+`python3 tmp/pagecheck3/pos.py 195-393`, then `qpdf` per book as here). Tokens: see above.
+

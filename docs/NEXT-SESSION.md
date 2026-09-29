@@ -290,7 +290,14 @@ Facts and mechanics only; nothing re-renders a translation. Each result is kept 
 - ~~**2.2's id lists**~~: done 29 Sep (brief §71): `tmp/dec21/lists/NN-{accept,rule,image,editor}.tsv`, `lists/summary.tsv`.
 - ~~**2.4 page checks, first batch**~~: done 29 Sep (brief §73): `docs/page-checks.tsv` (56 rows: the 11 headword / index rows, 8 index
   errors to `index-errata.md`; the 44 rows the agents asked to check, 22 as drafted, 20 differ, 2 unreadable; vol. 25 p. 15 prints 1384).
-  **Left of 2.4**: the 393 rows with lost or misread numbers (sheet F1); ~~the 59 headword / text disagreements~~ done 29 Sep (brief §74:
+  ~~F1, first half~~: done 29 Sep (brief §75): rows 1–194 of 393 (books 01–20), 83 as drafted, 111 differ, 0 unreadable, appended to
+  `page-checks.tsv` (now 312 rows; §73's 156798 / 184099 marked `superseded (§74)`; counted 310: 143 as drafted, 166 differ, 1 unreadable).
+  **Left of 2.4: F1 rows 195–393 (199 rows: vols. 21 46, 22 41, 23 26, 24 38, 25 48)**, ids in `tmp/pagecheck3/f1-rows-left.tsv`
+  (full rows with flag and draft: `f1-rows.tsv`, n ≥ 195). Method and tools in `tmp/pagecheck3/`: `pos.py 195-393` (writes `rows.json`,
+  `pages.json`), then `qpdf` per book on the Mac, stage, render at 2,100 px, `crop.py` / `ov.py`, rules in `INSTRUCTIONS.md`. Cut pages
+  to `continues_on` + 1 and a few more for long articles (§75 left 159115 p. 322 and 163323 p. 860 unread). Sub-agents: give each
+  its own scratch folder (§75's shared one mixed up their output files). ~10 k sub-agent tokens a row.
+  ~~the 59 headword / text disagreements~~ done 29 Sep (brief §74:
   34 as drafted, 24 differ, 1 unreadable; 11 index errors to `index-errata.md`; 156798 found on p. 41, 184099 read on p. 749). The Spanish of the 20
   that differ is unchanged, for the final revision. Was: 2.4 page checks, mechanical rows.
 - ~~**The 14 "see X" targets with a stray mark**~~: done 29 Sep, v0.28.1 (brief §71). Was: (brief §65): `merge NN --ids` from their old drafts; no redraft.
