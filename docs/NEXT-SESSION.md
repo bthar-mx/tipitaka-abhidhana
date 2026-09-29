@@ -1,4 +1,4 @@
-# Abhidhāna — handover, 28 September 2026 (editor mode built, not yet switched on, v0.17.0; roman input in its form, v0.18.0; 14/2's 497 rows redrafted, v0.18.3; the OCR pilot, v0.18.5; vol. 23 drafted from our OCR, v0.19.0; vol. 22 drafted from our OCR, v0.20.0; vol. 24, v0.21.0; vol. 21, v0.22.0; vol. 20, v0.23.0; vol. 25, v0.24.0; 14/3 and 4/3 prepared, §62; `prep`'s no-join fix, v0.24.1; vol. 14/3 drafted from our OCR, v0.25.0, and 4/3's shards drafted, not merged, §63; vol. 4/3 merged, v0.26.0: every book drafted, §64; the next phase planned and decided, the brief shrunk, v0.26.1; `merge` keeps the corrections, 4/3's "see X" targets restored, v0.26.2, §65; site display fixes, v0.26.3, §66, checked live; run-on headwords measured (plan step 1.1), §67; Phase 1 reduced (the editor), and the folds and "analysis not read" refined, v0.26.4, §68; run-on articles split out in the nine books without PCED, every split checked on the image, v0.27.0, §69; the split rows and their hosts redrafted (plan step 1.6), v0.28.0, §70)
+# Abhidhāna — handover, 28 September 2026 (editor mode built, not yet switched on, v0.17.0; roman input in its form, v0.18.0; 14/2's 497 rows redrafted, v0.18.3; the OCR pilot, v0.18.5; vol. 23 drafted from our OCR, v0.19.0; vol. 22 drafted from our OCR, v0.20.0; vol. 24, v0.21.0; vol. 21, v0.22.0; vol. 20, v0.23.0; vol. 25, v0.24.0; 14/3 and 4/3 prepared, §62; `prep`'s no-join fix, v0.24.1; vol. 14/3 drafted from our OCR, v0.25.0, and 4/3's shards drafted, not merged, §63; vol. 4/3 merged, v0.26.0: every book drafted, §64; the next phase planned and decided, the brief shrunk, v0.26.1; `merge` keeps the corrections, 4/3's "see X" targets restored, v0.26.2, §65; site display fixes, v0.26.3, §66, checked live; run-on headwords measured (plan step 1.1), §67; Phase 1 reduced (the editor), and the folds and "analysis not read" refined, v0.26.4, §68; run-on articles split out in the nine books without PCED, every split checked on the image, v0.27.0, §69; the split rows and their hosts redrafted (plan step 1.6), v0.28.0, §70; the decision sheet, plan step 2.1, 29 Sep, docs only)
 
 *All 29 books are digitised end to end, spot-checked and in the Reader: 221,154 index rows, 94.1%
 located, 88.1% with label + body (brief §30). Read
@@ -119,7 +119,20 @@ Project are for advice and for what needs the Mac. What the new chat should know
   sammukhībhūtakathā's translation (no Meaning box); `/w/visama` (vol. 20, 157107, a host) no longer flags the run-on ဝိသမ.
 - **Small, pending**: the 14 "see X" targets with a stray mark in 14/3 and 20–24 (brief §65) want `merge NN --ids` on those rows from
   their old drafts (`tmp/meanings/vNN/out/`); not part of this redraft.
-- **Next: Phase 2** (2.1, the decision sheet), unless the editor first takes up 1.7 / 1.8.
+- ~~**Next: Phase 2** (2.1, the decision sheet)~~: 2.1 done 29 Sep (next section).
+
+## After the decision sheet (plan step 2.1, 29 Sep): for the editor
+
+- **The editor**: commit `docs/translation/decisions.md` and this file (git commands given in the session; docs only, no version bump).
+- **Answer the sheet** (`docs/translation/decisions.md`; Project `claude/decision-sheet.md`): an option after each **Decision:**, grouped
+  A verb person, B stems and renderings (with how to apply R2–R12), C glossary, D labels / History / Budistas, E grammar notes, F source
+  defects, G run-ons and homonyms (the seven unsure splits in G1), H the flag files by kind. Every count was measured (`tmp/dec21/`,
+  gitignored: `flags.py`, `gather.py`, `extra.py`, `build.py`, `gather.json`); counts of Burmese words exclude vol. 1 (no work file) and
+  the 238 split rows. The recommendations are Claude's, marked with their confidence.
+- **Then**: the answers go to `stems.tsv`, `glossary.tsv`, `drafting-prompt.md`, `labels.md` and `splits-checked.tsv` (G1); step 2.3 applies
+  them. Noticed while counting: item 3 below is out of date (most label combinations are confirmed in `docs/labels.md` §0; nine remain,
+  sheet D1).
+
 
 ## Next phase: the plan (28 Sep; decided by the editor the same day)
 
@@ -221,7 +234,8 @@ reaches few rows; the plan below needs re-sizing before 1.3 (see 1.1).
   Not before Phase 2.
 
 ### Phase 2 — (c) the final revision (1c)  — next after the reduced Phase 1
-- **2.1** Cowork, ~200–300 k: **one decision sheet** (a Claude Docs doc) with every open question, grouped by kind, not by
+- **2.1** **Done 29 Sep** (`docs/translation/decisions.md`, Project `claude/decision-sheet.md`: a Markdown file, as the editor asked, not a
+  Claude Docs doc). Was: Cowork, ~200–300 k: **one decision sheet** (a Claude Docs doc) with every open question, grouped by kind, not by
   volume: verb person (-si / -esi aorists, -tha, -ttha, -etha, -ittha, -aṁ, future headwords with a past); "see the original";
   senses printed twice (kept once: confirm); ~60 renderings (soka, sāsana, saṁsāra, cakkavāḷa, sikkhāpada, ပြာသာဒ်, ကမ္ဘာ, ကံ as
   act / object, ကြိယာ as verb, ဘုံ as storey, ဥတု as menses, ဟင်္သာ, စောင်း for vīṇā …); a policy for plant, animal and mineral
@@ -229,7 +243,8 @@ reaches few rows; the plan below needs re-sizing before 1.3 (see 1.1).
   open items of 1b. Each with its count, two example ids and the drafts' current choices. Labels (item 3) and the History (7c)
   can go in too. The editor decides in one or two sittings; decisions go to `stems.tsv`, `glossary.tsv`, `drafting-prompt.md`,
   as on 27 Sep.
-- **2.2** Cowork, ~150 k, a script: triage of the 41,060 flag rows by kind (OCR read-through, run-on — mostly gone after
+- **2.2** **Counted 29 Sep with 2.1** (sheet §H and Appendix B: 41,042 rows by kind and book, an action proposed per kind;
+  `tmp/dec21/flags.py`); per-book id lists per action still to make. Was: Cowork, ~150 k, a script: triage of the 41,060 flag rows by kind (OCR read-through, run-on — mostly gone after
   phase 1 —, person, see-X, nothing to translate, truncated / garbled, check on the page, tentative identification …), counts
   per book and kind, and a proposed action per kind: accept, re-render by rule (2.3), image (2.4), the editor (2.5).
 - **2.3** Applying settled rules. **By script** where the change is lexical and the Spanish word unambiguous (R4–R8, R10, R11
@@ -262,7 +277,8 @@ on the credit; redrafts and rule changes in Cowork. ~~**Next**: the editor runs 
 and 1.1 in a Cowork chat~~: done (0.3 v0.26.2, 1.1 §67). ~~**Next**: the editor reads §67 and decides 1.3's scope~~: decided 28 Sep
 (§68): the split rule alone, in the nine books without PCED; the rest optional (1.8). ~~**Next**: the editor reviews and tags v0.26.4; then 1.3 (reduced), 1.4, 1.5~~: done (v0.27.0, §69). ~~**Next**: push v0.27.0; the
 editor decides the seven unsure splits; 1.6 (redraft of 397 rows) in Cowork~~: pushed; 1.6 done (v0.28.0, §70). **Next**: push v0.28.0;
-the editor decides the seven unsure splits; then Phase 2 (2.1 first).
+the editor decides the seven unsure splits; then Phase 2 (2.1 first). ~~2.1~~: done 29 Sep. **Next**: the editor answers the
+decision sheet (one or two sittings); then 2.3.
 
 ## Next, in order
 
