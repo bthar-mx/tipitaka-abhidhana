@@ -23,6 +23,17 @@ Versions of the Tipiṭaka Pāḷi-Myanmā Abhidhāna project: the data, the too
 A release note says, per version: what changed, the brief's sections, and the headline figures
 (located, label + body, Meaning rows drafted / reviewed).
 
+## v0.28.2 — 29 Sep 2026
+
+- **Citation abbreviations from vol. 15's key** (brief §77, item 3b): `docs/introduction/citation-abbreviations.tsv` 100 → 123 rows.
+  The 23 base abbreviations of the later volumes' key (vol. 15, PDF pp. 23–28; vol. 4/1 prints the same) that vol. 1's table lacks
+  (*vi nicchaya ṭī*, *netti ṭī*, *netti vi*, *vi saṅgaha*, *milinda*, *peṭako*, C.P.D., P.T.S. …), and the key's spellings *paṭisaṁ*
+  and *anu ṭī* as alternatives of vol. 1's *paṭi saṁ* and *anuṭī*. All *drafted*, transcribed from the page images, not checked by
+  the editor; page written `15/N`, linked to book 15's page image.
+- Browse: an `A / B` row matches both forms (it matched neither before). Citations with a tooltip 449,811 → 450,399 of 530,965
+  (84.7% → 84.8%). Most of the rest is OCR damage in the citations, not missing abbreviations; no normaliser yet.
+- No article data, Spanish or published figure changed.
+
 ## v0.28.1 — 29 Sep 2026
 
 - **14 "see X" links without their stray mark** (brief §71): 14/3 192706, 193589, 194844; 21 165539, 165879, 167295, 168395, 168914,

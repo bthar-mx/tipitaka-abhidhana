@@ -29,6 +29,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 DIR = ROOT / 'docs/introduction'
 IMG = 'https://abhidhana-img.buddha-dhamma.net/01/{:04d}.webp'   # the introduction is in vol. 1
+IMGB = 'https://abhidhana-img.buddha-dhamma.net/{}/{:04d}.webp'   # any book's page (the abbreviations)
 E = lambda s: html.escape(s, quote=False)
 MARK = re.compile(r'`\[p\.\s*(\d+)([^\]`]*)\]`')
 LANGS = ('my', 'en', 'es')
@@ -333,7 +334,9 @@ def abbreviations_html():
         g = lambda k: (r.get(k) or '').strip()
         lst = lambda lang: E(' '.join(x for x in ((g('list') if lang == 'en' else g('list_es') or g('list')), g('list_no')) if x))
         p = g('pdf_page')
-        pl = f'<a class="pg" href="{IMG.format(int(p))}" target="_blank" rel="noopener">{E(p)}</a>' if p.isdigit() else E(p)
+        m = re.fullmatch(r'(?:(\w+)/)?(\d+)', p)   # "97" = vol. 1's page; "15/27" = book 15's (the later volumes' key)
+        pl = (f'<a class="pg" href="{IMGB.format(m.group(1) or "01", int(m.group(2)))}" target="_blank" rel="noopener">{E(p)}</a>'
+              if m else E(p))
         h.append('<tr>'
                  f'<td class="my" lang="my">{E(g("abbr_my"))}</td>'
                  f'<td class="ro">{E(g("abbr_iast"))}</td>'
@@ -398,9 +401,11 @@ def page_html():
         abbr = ('<section class="chap" id="abbreviations"><h2 class="chap-title"><span class="tr" lang="en">Citation abbreviations</span>'
                 '<span class="tr" lang="es">Abreviaturas de las citas</span></h2>'
                 f'<div class="chap-meta"><span class="tr" lang="en">The {nab} abbreviations of the works cited, with the full title as vol. 1 prints it '
-                '(PDF pp. 94–97) and the work\'s place in its list of works consulted. A citation is volume.page unless the note says otherwise.</span>'
+                '(PDF pp. 94–97) and the work\'s place in its list of works consulted; those vol. 1 lacks are from the key of the later volumes '
+                '(vol. 15, PDF pp. 23–28: page 15/N). A citation is volume.page unless the note says otherwise.</span>'
                 f'<span class="tr" lang="es">Las {nab} abreviaturas de las obras citadas, con el título completo tal como lo imprime el vol. 1 '
-                '(págs. 94–97 del PDF) y el lugar de la obra en su lista de obras consultadas. Una cita es volumen.página salvo que la nota diga otra cosa.</span></div>'
+                '(págs. 94–97 del PDF) y el lugar de la obra en su lista de obras consultadas; las que faltan en el vol. 1 vienen de la clave de los '
+                'volúmenes posteriores (vol. 15, págs. 23–28 del PDF: página 15/N). Una cita es volumen.página salvo que la nota diga otra cosa.</span></div>'
                 '<label class="searchbox abbr-search" for="abbr-q"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><circle cx="7" cy="7" r="5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M11 11l3.5 3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>'
                 '<input id="abbr-q" type="search" autocomplete="off" spellcheck="false" data-i18n-ph="abbr_ph"></label>'
                 '<p class="note" id="abbr-n"></p><div class="abbr-wrap">' + ab + '</div></section>')

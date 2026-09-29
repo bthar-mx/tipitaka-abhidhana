@@ -135,5 +135,43 @@ it matches `citations_iast` in `pali.jsonl`.
    **Jātaka nissaya**: four list numbers, five volumes.
 3. **Amarakośa nissaya**: "Abhayārāma Sayadaw's hand-copied duplicated text". Vol. 25 calls
    U Sīlānanda "the Abhayārāma Sayadaw"; whether this copy is his is not stated.
-4. Works cited in vols. 2–25 but not in this list are not covered here; later volumes have their
-   own tables (e.g. vol. 4a, PDF pp. 31–40; vol. 11, pp. 63–74).
+4. Works cited in vols. 2–25 but not in this list: see *Added from vol. 15's key* below. Later
+   volumes have their own tables (vol. 4/1, PDF pp. 31–40; vol. 15, pp. 17–28; vol. 11, pp. 63–74).
+
+## Added from vol. 15's key (29 Sep 2026, brief §77)
+
+Vols. 4/1 and 15 print one alphabetical key of 166 entries (vol. 15, PDF pp. 23–28, numbered;
+vol. 4/1, pp. 37–40, the same entries). It reduces to 107 base abbreviations; 25 are not in the
+table above. Two of them are only the key's spelling of a vol. 1 abbreviation and were added to
+that row as an alternative (`A / B` in the TSV): **ပဋိ၊ သံ / ပဋိသံ** (*paṭi saṁ / paṭisaṁ*) and
+**အနုဋီ / အနု၊ ဋီ** (*anuṭī / anu ṭī*). The other 23 are new rows, each with the vol. 15 PDF page
+written `15/N`. Status **drafted**: transcribed by Claude from the page images, not checked by the
+editor. Two of the 23 are also the same work as a vol. 1 row under another spelling (*pācityo* =
+*pācit yo*, *vīlyam* = *vilyaṁ*); they are kept as rows of their own, with a note.
+
+| abbreviation | romanised | work | vol. 15 p. |
+|---|---|---|---|
+| အပ၊ သျ | apa sya | Apadāna nissaya | 23 |
+| အဘိ၊ ဓာ | abhi dhā | Dhātukathā | 23 |
+| ကင်္ခါ၊ ဋီ | kaṅkhā ṭī | Kaṅkhāvitaraṇī Ṭīkā (old and new) | 24 |
+| ဏွာဒိ | ṇvādi | Moggallāna, Ṇvādivutti | 24 |
+| တောင်ပေါက်၊ ဓာန်၊ သျ | toṅpok dhān sya | Abhidhānappadīpikā, new nissaya by the Taungpauk Sayadaw | 24 |
+| နီတိ၊ ဓာ၊ သျ | nīti dhā sya | Saddanīti, Dhātumālā nissaya | 25 |
+| နီတိ၊ ပဒ၊ သျ | nīti pada sya | Saddanīti, Padamālā nissaya | 25 |
+| နီတိ၊ သုတ္တ၊ သျ | nīti sutta sya | Saddanīti, Suttamālā nissaya | 25 |
+| နေတ္တိ၊ ဋီ | netti ṭī | Netti Ṭīkā | 25 |
+| နေတ္တိ၊ ဝိ | netti vi | Nettivibhāvinī | 25 |
+| ပါစိတ်ယော | pācityo | Pācittiyādi-yojanā | 25 |
+| ပေဋကော | peṭako | Peṭakopadesa | 25 |
+| မိလိန္ဒ | milinda | Milindapañha | 26 |
+| မောဂ်၊ ပဉ္စိကာ | mog pañcikā | Moggallāna grammar, Vuttivivaraṇapañcikā | 26 |
+| ဝိနယာလင်္ကာရ | vinayālaṅkāra | Vinayālaṅkāra Ṭīkā | 27 |
+| ဝိ၊ နိစ္ဆယ | vi nicchaya | Vinayavinicchaya | 27 |
+| ဝိ၊ နိစ္ဆယ၊ ဋီ | vi nicchaya ṭī | Vinayavinicchaya Ṭīkā | 27 |
+| ဝိ၊ ပိ၊ ဓာန် | vi pi dhān | Visuddhārāma Piṭaka dictionary | 27 |
+| ဝိ၊ သင်္ဂဟ | vi saṅgaha | Vinayasaṅgaha Aṭṭhakathā | 27 |
+| ဝီလျမ် | vīlyam | Monier-Williams, Sanskrit–English Dictionary | 27 |
+| C.P.D. | C.P.D. | A Critical Pāli Dictionary | 28 |
+| D.P.PN. | D.P.PN. | Dictionary of Pāli Proper Names (Malalasekera) | 28 |
+| P.T.S. | P.T.S. | The Pali Text Society's Pali–English Dictionary | 28 |
+

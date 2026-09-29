@@ -1975,3 +1975,94 @@ drafted. Still *differs* on §75's part.
 509 rows, 503 ids: **as drafted 251, differs 257, unreadable 1** (206033, §74). F1 whole: 393 rows, **191 as drafted, 202 differ,
 0 unreadable**. The second half also in `tmp/pagecheck3/f1-page-checks-half2.tsv`. Nothing in `meanings/` or `articles.jsonl`
 changed; the 91 that differ are for the final revision. **Plan step 2.4 is done.**
+
+## 77. Item 3b: the citation abbreviations of vols. 4/1 and 15, transcribed; 25 added to the table (29 Sep 2026, Cowork)
+
+**Asked** (the editor; NEXT-SESSION "Work that needs no decision", item 3b): add to
+`docs/introduction/citation-abbreviations.tsv` the 25 base abbreviations that `tmp/abbr3b/key-vs-vol1.tsv` marks "no", the two
+spelling variants *paṭisaṁ* and *anu ṭī* as alternatives of existing rows, status drafted, with the vol. 15 PDF page; spot-check
+the key against the images first; rebuild what reads the file; copy `tmp/abbr3b/README.md`'s findings here. No normaliser.
+
+**The transcription** (advice chat, 29 Sep; working files in `tmp/abbr3b/`, gitignored; status **drafted**, not checked by the
+editor). Vol. 15 (PDF pp. 17–28) and vol. 4/1 (pp. 31–40) print the same apparatus, headed ကျမ်းစဉ်ပုံ၊ အက္ခရာစဉ်ပုံနှင့် သင်္ကေတများ:
+
+1. **Prose** (vol. 15 p. 17; vol. 4/1 p. 31). *ကျမ်းစဉ်ပုံ* (order of works): for each word, Pāḷi, then aṭṭhakathā, then ṭīkā are
+   cited, in the order of the principal texts; within the Pāḷi the five Vinaya books first, then Dīgha, Majjhima, Saṁyutta,
+   Aṅguttara and the rest of the Khuddaka, and within that the seven Abhidhamma books first, then Paṭisambhidāmagga and the
+   following. A Vinaya headword puts Vinaya works first; an Abhidhamma or Suttanta headword, those. *ကျမ်းမည်သင်္ကေတ*: works
+   are cited by abbreviation, with the volume number when the work has several (printed example: the Pārājika, **ဝိ၊ ၁**). The
+   dictionary's words are alphabetised by an attached table ("ဇယား ကြည့်"; that alphabet table was not read).
+2. **Tables by class** (vol. 15 pp. 18–22; vol. 4/1 pp. 32–36): ပါဠိတော်များ 40 volumes, အဋ္ဌကထာများ 52, ဋီကာများ 26 — number,
+   work, abbreviation → `v15-tables.tsv` (133 rows; a volume binding several works has a row per work).
+3. **Alphabetical key**, ကျမ်းညွှန်းသင်္ကေတများ (vol. 15 pp. 23–28, numbered 1–166; vol. 4/1 pp. 37–40, unnumbered, volumes grouped
+   "အံ။ ၁။ ၂။ ၃") → `v15-key.tsv` (166 rows). Vol. 4/1's key was read in full against vol. 15's: the same entries. Vol. 4/1's
+   tables were seen at page size only, not collated line by line.
+
+**Points in the print** (in `v15-key.tsv`'s notes): key no. 86 ပဋ္ဌာန without volumes (the table: ပဋ္ဌာန၊ ၁–၅); no. 54 ထေရ၊ဋ္ဌ (the
+table: ၁–၂); table ṭīkā nos. 24–26 have a blank abbreviation column, supplied by the key (nos. 143–144, 80, 82); slips: no. 93
+မူလမဏ္ဏာသ for မူလပဏ္ဏာသ, nos. 69 and 156 with a wrong first letter, no. 148 "(၃)" for "(တ)", no. 122 printed without its number;
+medium confidence: no. 17 read **အပ၊သျ** (vol. 4/1 the same).
+
+**Spot check here** (this session, on `tmp/abbr3b/hi/15-23…28`, 6,515 px wide, read by eye): every one of the 25 bases added
+below, plus nos. 11, 69, 93, 122, 148 — **no misreading of an abbreviation or a work**. Small things the TSV normalises, noted
+not changed: no. 52 is printed တောင်ပေါက်၊ ဓာန်။သျ (a ။ inside the abbreviation; the TSV has ၊); nos. 59, 62, 65 print ပါတိက
+(the TSV ပါထိက, the usual spelling); no. 111's number is printed with a gap ("၁၁ ။"). No. 17's သျ reads clearly at this size.
+
+**Against the site's table** (`key-vs-vol1.tsv`): the key's 166 entries reduce to **107 base abbreviations** (volume numbers
+dropped); **25 are not in vol. 1's table** of 100. By citations in all 29 books' `pali.jsonl` (`citations_iast`, 530,965):
+
+| not in the site's table | citations |
+|---|---:|
+| vi nicchaya ṭī (Vinayavinicchaya-ṭīkā) | 218 |
+| paṭisaṁ (vol. 1 has *paṭi saṁ*) | 162 |
+| netti ṭī | 68 |
+| anu ṭī (vol. 1 has *anuṭī*) | 64 |
+| vi saṅgaha, netti vi | 35 each |
+| milinda | 24 |
+| peṭako, vi pi dhān, nīti … sya, ṇvādi, apa sya, abhi dhā | 1–7 each |
+| 9 others (C.P.D., D.P.PN., P.T.S., Vinayālaṅkāra, Toṅpok nissaya …) | 0 |
+
+Vol. 1's table has 19 abbreviations the later key does not (aṭṭhasā sya / yo, jā sya, thoma, kaṅkhā ṭī hoṅḥ / sac,
+paṭṭhānḥkok, pā, pārā gaṇṭhisac …): vol. 1 cited works the later volumes dropped or renamed.
+
+**Coverage of the citations** (a citation's base = its text less the trailing numbers; measured in the advice chat on the
+romanised citations):
+
+| | citations | share |
+|---|---:|---:|
+| base is an abbreviation of vol. 1's table (or of the key) | 410,707 | 77.4% |
+| — adding the key's 25 new bases gains | 631 | 0.1% |
+| same once spaces are removed (*saṁṭṭha*, *viṭṭha* …) | 20,284 | 3.8% |
+| number only | 16,852 | 3.2% |
+| other | 83,122 | 15.7% |
+
+So the missing 23% is **not missing abbreviations**; it is OCR damage in the citations: ဋ္ဌ read ဋ (*vi ṭha* 3,331, *jā ṭha*,
+*aṁ ṭha* …), ၊ read as ာ (*māṭṭha* 3,429 = မ၊ဋ္ဌ, *apāṭṭha*, *dhammāṭṭha*, *sāṭṭha*), the first letter lost (*aṭṭha* 7,353,
+*ṭṭha* 3,090, *a ṭī*, *rattha* for *sārattha*). A normaliser for those (ṭha → ṭṭha after a work abbreviation; ā + ṭṭha → " ṭṭha";
+spaces) is a later, mechanical job, not built; its precision is not measured.
+
+**Applied** (v0.28.2):
+- `docs/introduction/citation-abbreviations.tsv`: **100 → 123 rows**. The 23 new bases as rows in the key's order, status
+  *drafted*, `entry_my` = the work as the key prints it, `work` in English, `pdf_page` written **`15/N`** (book 15's PDF page; a
+  bare number stays vol. 1's), `list` only where vol. 15's tables place the work (Pāḷi, Aṭṭhakathā, Ṭīkā), `list_no` empty (vol.
+  15's table numbers are its own, not vol. 1's list of works consulted; given in the note), each note ending "from vol. 15's key
+  (not in vol. 1)". The two variants on their vol. 1 rows, as the file already wrote *kaṅkhā yo / kaṅkhā mahāṭī*: **ပဋိ၊ သံ /
+  ပဋိသံ** and **အနုဋီ / အနု၊ ဋီ**, with a note giving the key number and page. CRLF and the file's quoting kept (the script
+  `tmp/abbr3b/add_rows.py`; the file before, `tmp/abbr3b/citation-abbreviations.before.tsv`).
+  Not merged, only noted: *pācityo* (= vol. 1's *pācit yo*) and *vīlyam* (= *vilyaṁ*) are the same works under another
+  spelling, and *kaṅkhā ṭī* covers vol. 1's two rows *kaṅkhā ṭī hoṅḥ / sac*. Uncertain: *vi pi dhān*, ဝိသုဒ္ဓါရုံပိဋကအဘိဓာန်,
+  rendered "Visuddhārāma Piṭaka dictionary", not identified further.
+- `tools/abhidhana_browse.py`: `abbreviations()` registered only the whole `abbr_my`, so an `A / B` row matched neither form
+  (*kaṅkhā yo / mahāṭī* had never matched). Each alternative is now a key of its row.
+- `tools/abhidhana_intro.py`: a `pdf_page` `15/N` links book 15's page image (`<book>/NNNN.webp`, present in
+  `release/pages-webp/15/`); the table's lead sentence says where the added rows come from.
+- `docs/introduction/citation-abbreviations.md`: a section *Added from vol. 15's key* listing the 23 and the two variants.
+
+**Checked** with a full build (`ABHIDHANA_SITE_OUT=/tmp/dist… python3 tools/abhidhana_site.py`, ~18 s; the VM's session disk
+was full, so `/tmp`): **citations matched 449,811 → 450,399 of 530,965 (84.7% → 84.8%)**, +588 (the browse matcher folds the
+OCR's commentary marks, hence above the 77.4% base-exact figure). `data/abbr.json` 123 rows; the Introduction and
+/abbreviations/ tables 123 rows each, `15/27` linking `…/15/0027.webp`. Per abbreviation: *vi nicchaya ṭī* 225 citations
+matched (e.g. `/w/paṭati`, ဝိ၊နိစ္ဆယ၊ဋီ၊၁။ → tooltip "Vinayavinicchaya Ṭīkā · p. 1"), *paṭi saṁ / paṭisaṁ* 164 (`/w/sacca-2`,
+ပဋိသံ၊၂။၃၀၄။ → "Paṭisambhidāmagga · vol. 2, p. 304"), *netti ṭī* 75, *milinda* 24. One flaw the tooltip had before and still
+has: a work cited by verse number (the Vinayavinicchaya and its ṭīkā, the Abhidhānappadīpikā …) shows "p. N"; the note in the
+popup says "cited by verse number". No Spanish, no article data changed.

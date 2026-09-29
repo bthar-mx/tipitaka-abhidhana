@@ -74,7 +74,8 @@ def abbreviations():
         out.append({'my': g('abbr_my'), 'ro': g('abbr_iast'), 'work': g('work'), 'list': g('list'),
                     'list_es': g('list_es'), 'list_no': g('list_no'), 'note_en': g('note_en'),
                     'note_es': g('note_es'), 'p': g('pdf_page'), 'st': g('status') or 'drafted'})
-        key.setdefault(re.sub(r'[\s။]', '', mynorm(g('abbr_my'))), len(out) - 1)
+        for a in g('abbr_my').split('/'):   # "A / B": a spelling variant of the same work (vol. 15's key)
+            key.setdefault(re.sub(r'[\s။]', '', mynorm(a)), len(out) - 1)
     return out, key
 
 

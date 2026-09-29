@@ -1,4 +1,4 @@
-# Abhidhāna — handover, 28 September 2026 (editor mode built, not yet switched on, v0.17.0; roman input in its form, v0.18.0; 14/2's 497 rows redrafted, v0.18.3; the OCR pilot, v0.18.5; vol. 23 drafted from our OCR, v0.19.0; vol. 22 drafted from our OCR, v0.20.0; vol. 24, v0.21.0; vol. 21, v0.22.0; vol. 20, v0.23.0; vol. 25, v0.24.0; 14/3 and 4/3 prepared, §62; `prep`'s no-join fix, v0.24.1; vol. 14/3 drafted from our OCR, v0.25.0, and 4/3's shards drafted, not merged, §63; vol. 4/3 merged, v0.26.0: every book drafted, §64; the next phase planned and decided, the brief shrunk, v0.26.1; `merge` keeps the corrections, 4/3's "see X" targets restored, v0.26.2, §65; site display fixes, v0.26.3, §66, checked live; run-on headwords measured (plan step 1.1), §67; Phase 1 reduced (the editor), and the folds and "analysis not read" refined, v0.26.4, §68; run-on articles split out in the nine books without PCED, every split checked on the image, v0.27.0, §69; the split rows and their hosts redrafted (plan step 1.6), v0.28.0, §70; the decision sheet, plan step 2.1, 29 Sep, docs only; plan step 2.4 page checks done, §73–76, docs only)
+# Abhidhāna — handover, 28 September 2026 (editor mode built, not yet switched on, v0.17.0; roman input in its form, v0.18.0; 14/2's 497 rows redrafted, v0.18.3; the OCR pilot, v0.18.5; vol. 23 drafted from our OCR, v0.19.0; vol. 22 drafted from our OCR, v0.20.0; vol. 24, v0.21.0; vol. 21, v0.22.0; vol. 20, v0.23.0; vol. 25, v0.24.0; 14/3 and 4/3 prepared, §62; `prep`'s no-join fix, v0.24.1; vol. 14/3 drafted from our OCR, v0.25.0, and 4/3's shards drafted, not merged, §63; vol. 4/3 merged, v0.26.0: every book drafted, §64; the next phase planned and decided, the brief shrunk, v0.26.1; `merge` keeps the corrections, 4/3's "see X" targets restored, v0.26.2, §65; site display fixes, v0.26.3, §66, checked live; run-on headwords measured (plan step 1.1), §67; Phase 1 reduced (the editor), and the folds and "analysis not read" refined, v0.26.4, §68; run-on articles split out in the nine books without PCED, every split checked on the image, v0.27.0, §69; the split rows and their hosts redrafted (plan step 1.6), v0.28.0, §70; the decision sheet, plan step 2.1, 29 Sep, docs only; plan step 2.4 page checks done, §73–76, docs only; citation abbreviations from vol. 15's key, v0.28.2, §77)
 
 *All 29 books are digitised end to end, spot-checked and in the Reader: 221,154 index rows, 94.1%
 located, 88.1% with label + body (brief §30). Read
@@ -304,7 +304,9 @@ Facts and mechanics only; nothing re-renders a translation. Each result is kept 
 - ~~**The 14 "see X" targets with a stray mark**~~: done 29 Sep, v0.28.1 (brief §71). Was: (brief §65): `merge NN --ids` from their old drafts; no redraft.
 - ~~**Script diffs for the lexical rules of 27 Sep**~~: done 29 Sep (brief §72): `tmp/dec0927/diffs/R*.tsv`, 583 rows would change; not merged.
 - **Item 9**: the 207 supplement rows moved beside vols. 15, 4/2, 16 (Cowork ~200 k + a Mac re-run).
-- **Item 3b**: transcribe the citation abbreviations (vol. 4/1 pp. 31–36, vol. 15 pp. 17–22) and the case abbreviations from the images.
+- ~~**Item 3b**~~: done 29 Sep, v0.28.2 (brief §77): vol. 15's key transcribed (`tmp/abbr3b/`, drafted); 23 new rows and 2 spelling
+  variants in `citation-abbreviations.tsv` (123 rows); citations matched 84.7% → 84.8%; the rest is OCR damage (normaliser not built).
+  Was: transcribe the citation abbreviations (vol. 4/1 pp. 31–36, vol. 15 pp. 17–22) and the case abbreviations from the images.
 - **Item 4**: repo size (`git count-objects -vH`, `git gc`; the editor, in Terminal).
 - Optional, larger: 1.8 (homonym swaps, farther-body run-ons), 7b (14/3's analysis), 8 (label disagreements on the image).
 
@@ -625,4 +627,7 @@ Translate volume by volume only as drafts, never presented as readings. Flag unc
 - **Body text of a head placed by its superscript** starts with the debris (ာါ, ဝ်): cosmetic, not yet stripped.
 - **The last 160 pages of 4a** are worn print. `pdfs-drive/` has another copy of vol. 4/1; compare a page before re-OCRing.
 - **`myap` redistribution**: check Pn Daza's licence before attaching the model to the release.
+- **Zenodo / DOI**: not now (the editor, 29 Sep). Wait until the licence of the OCR'd Burmese is settled or v1.0.0; then either
+  archive the whole repo via a GitHub Release (`.zenodo.json`, IEBH as creator), or archive only the code and the project's own
+  additions, without the OCR'd Burmese.
 - (Retired 28 Sep, kept for anyone using the old artifact.) **The Reader needs `DecompressionStream`** (Safari 16.4+, Chrome 80+, Firefox 113+). Say so if someone reports a blank page.
