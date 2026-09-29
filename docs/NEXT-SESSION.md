@@ -1,4 +1,4 @@
-# Abhidhāna — handover, 28 September 2026 (editor mode built, not yet switched on, v0.17.0; roman input in its form, v0.18.0; 14/2's 497 rows redrafted, v0.18.3; the OCR pilot, v0.18.5; vol. 23 drafted from our OCR, v0.19.0; vol. 22 drafted from our OCR, v0.20.0; vol. 24, v0.21.0; vol. 21, v0.22.0; vol. 20, v0.23.0; vol. 25, v0.24.0; 14/3 and 4/3 prepared, §62; `prep`'s no-join fix, v0.24.1; vol. 14/3 drafted from our OCR, v0.25.0, and 4/3's shards drafted, not merged, §63; vol. 4/3 merged, v0.26.0: every book drafted, §64; the next phase planned and decided, the brief shrunk, v0.26.1; `merge` keeps the corrections, 4/3's "see X" targets restored, v0.26.2, §65; site display fixes, v0.26.3, §66, checked live; run-on headwords measured (plan step 1.1), §67; Phase 1 reduced (the editor), and the folds and "analysis not read" refined, v0.26.4, §68; run-on articles split out in the nine books without PCED, every split checked on the image, v0.27.0, §69; the split rows and their hosts redrafted (plan step 1.6), v0.28.0, §70; the decision sheet, plan step 2.1, 29 Sep, docs only)
+# Abhidhāna — handover, 28 September 2026 (editor mode built, not yet switched on, v0.17.0; roman input in its form, v0.18.0; 14/2's 497 rows redrafted, v0.18.3; the OCR pilot, v0.18.5; vol. 23 drafted from our OCR, v0.19.0; vol. 22 drafted from our OCR, v0.20.0; vol. 24, v0.21.0; vol. 21, v0.22.0; vol. 20, v0.23.0; vol. 25, v0.24.0; 14/3 and 4/3 prepared, §62; `prep`'s no-join fix, v0.24.1; vol. 14/3 drafted from our OCR, v0.25.0, and 4/3's shards drafted, not merged, §63; vol. 4/3 merged, v0.26.0: every book drafted, §64; the next phase planned and decided, the brief shrunk, v0.26.1; `merge` keeps the corrections, 4/3's "see X" targets restored, v0.26.2, §65; site display fixes, v0.26.3, §66, checked live; run-on headwords measured (plan step 1.1), §67; Phase 1 reduced (the editor), and the folds and "analysis not read" refined, v0.26.4, §68; run-on articles split out in the nine books without PCED, every split checked on the image, v0.27.0, §69; the split rows and their hosts redrafted (plan step 1.6), v0.28.0, §70; the decision sheet, plan step 2.1, 29 Sep, docs only; plan step 2.4 page checks done, §73–76, docs only)
 
 *All 29 books are digitised end to end, spot-checked and in the Reader: 221,154 index rows, 94.1%
 located, 88.1% with label + body (brief §30). Read
@@ -259,7 +259,8 @@ reaches few rows; the plan below needs re-sizing before 1.3 (see 1.1).
   Every changed row stays `drafted` and records the rule (`revised: Rn`); `corrections-es.tsv` wins over both (0.3 first).
 - **2.4** Rows to check on the page (the lists of §55–64 and flags naming the page; a few hundred ids): mechanical ones
   (numbers, headword / text disagreement, run-on residue) by Claude in Cowork, ~3 k a row; doctrinal or garbled ones by the
-  editor in the page pane (no tokens).
+  editor in the page pane (no tokens). **Mechanical part done 29 Sep (brief §73–76)**: `docs/page-checks.tsv`, ~7–10 k sub-agent
+  tokens a row, not ~3 k.
 - **2.5** The editor's own review, in editor mode (the weekly export brings it in): by stem first (the top 1,000 stems carry
   59% of stem occurrences, brief §37; an approved stem is carried everywhere by 2.3), then one volume through to `reviewed` for
   v1.0.0 (`CHANGELOG.md`). 217,212 rows will not all be reviewed by hand; the status says which are.
@@ -292,11 +293,11 @@ Facts and mechanics only; nothing re-renders a translation. Each result is kept 
   errors to `index-errata.md`; the 44 rows the agents asked to check, 22 as drafted, 20 differ, 2 unreadable; vol. 25 p. 15 prints 1384).
   ~~F1, first half~~: done 29 Sep (brief §75): rows 1–194 of 393 (books 01–20), 83 as drafted, 111 differ, 0 unreadable, appended to
   `page-checks.tsv` (now 312 rows; §73's 156798 / 184099 marked `superseded (§74)`; counted 310: 143 as drafted, 166 differ, 1 unreadable).
-  **Left of 2.4: F1 rows 195–393 (199 rows: vols. 21 46, 22 41, 23 26, 24 38, 25 48)**, ids in `tmp/pagecheck3/f1-rows-left.tsv`
-  (full rows with flag and draft: `f1-rows.tsv`, n ≥ 195). Method and tools in `tmp/pagecheck3/`: `pos.py 195-393` (writes `rows.json`,
-  `pages.json`), then `qpdf` per book on the Mac, stage, render at 2,100 px, `crop.py` / `ov.py`, rules in `INSTRUCTIONS.md`. Cut pages
-  to `continues_on` + 1 and a few more for long articles (§75 left 159115 p. 322 and 163323 p. 860 unread). Sub-agents: give each
-  its own scratch folder (§75's shared one mixed up their output files). ~10 k sub-agent tokens a row.
+  ~~F1, second half~~: done 29 Sep (brief §76): rows 195–393 (vols. 21–25), 108 as drafted, 91 differ, 0 unreadable (8 rows set to
+  *as drafted* at the merge, as §75 counted "only the flag wrong"), appended to `page-checks.tsv` (now 511 rows; counted 509: 251 as
+  drafted, 257 differ, 1 unreadable); §75's 159115 (p. 322) and 163323 (p. 860) finished in place. F1 whole: 191 as drafted, 202 differ.
+  **2.4 is done.** Left unread inside it (noted in §76): 168484's glosses (p. 510), 192123's mountain fractions and months (p. 721 on),
+  166596's own article (printed lower on p. 299). Sub-agents: ~6.8 k tokens a row, each in its own folder.
   ~~the 59 headword / text disagreements~~ done 29 Sep (brief §74:
   34 as drafted, 24 differ, 1 unreadable; 11 index errors to `index-errata.md`; 156798 found on p. 41, 184099 read on p. 749). The Spanish of the 20
   that differ is unchanged, for the final revision. Was: 2.4 page checks, mechanical rows.

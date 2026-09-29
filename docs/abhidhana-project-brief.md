@@ -1903,3 +1903,75 @@ draft or flag contradicts the page; *unreadable* = not found or not legible.
 differ are for the final revision. **Left of 2.4**: F1 rows 195–393 (`tmp/pagecheck3/f1-rows-left.tsv`; for the cut:
 `python3 tmp/pagecheck3/pos.py 195-393`, then `qpdf` per book as here). Tokens: see above.
 
+
+## 76. Plan step 2.4, last batch: F1's numbers, second half (199 rows, books 21–25); §75's two rows finished (29 Sep 2026, Cowork)
+
+**Asked** (the editor; NEXT-SESSION "Work that needs no decision"): the rest of the decision sheet's F1, rows 195–393
+(`tmp/pagecheck3/f1-rows-left.tsv`, vols. 21–25), by §75's method, verdict rule and scripts; each sub-agent with its own scratch
+folder and output file, at most 8; merged by id, each id once. Also §75's two rows left short, 159115 vīthi (p. 322) and 163323
+saṁyuttanikāya (p. 860), their existing rows updated. Stop at a book boundary if sub-agent tokens passed 2.5 M. No Spanish and
+no article data changed; docs only, no version bump.
+
+**How**, as §75: `python3 tmp/pagecheck3/pos.py 195-393` (199 rows, 397 pages, 12 rows without a line guess; the first half's
+`rows.json` / `pages.json` kept as `rows-1-194.json`, `pages-1-194.json`); **396 pages from 5 books cut on the Mac with `qpdf`**
+(`tmp/pagecheck3/21-pages.pdf` … `25-pages.pdf`, 19.6 MB; vol. 25's "one after" p. 467 dropped, the book has 466 pages) and
+`20-fix.pdf` (vol. 20 pp. 321–323, 859–862) for the two short rows. Staged to the Cowork cloud container, rendered with `pdftoppm`
+at 2,100 px wide, read with `crop.py` / `ov.py` under `INSTRUCTIONS.md` unchanged. **Eight sub-agents**, one per batch, each with
+its own folder `pc3/{A…H}/` (its own copy of the two scripts writing crops there, its own `batchX.tsv`): A–B vol. 21 (23 + 23),
+C–D vol. 22 (21 + 20), E vol. 23 (26) plus the two short rows (in a separate `batchE-fix.tsv`), F vol. 24 (38), G–H vol. 25 (24 + 24).
+Every number read by eye on a crop. No file crossed between batches; **all 199 ids once each**, in batch order, 7 fields each.
+A spot check here: 206134's count, printed ၉-ပါး (9, not the OCR's ၆), confirmed on the crop (vol. 24 p. 339 R).
+Sub-agent tokens: **1.36 M for 199 rows + 2 finished, ~6.8 k a row** (A 182 k, B 177 k, C 144 k, D 132 k, E 213 k, F 201 k,
+G 157 k, H 152 k); under the 2.5 M limit, so the batch was done whole. This session's own not counted.
+
+**The verdict rule, applied as §75 applied it.** Five sub-agents marked *differs* where the draft's numbers are the printed ones and
+only the flag's diagnosis is wrong ("missing in the source" where the page prints it, "muddled" where it is the citation block).
+`INSTRUCTIONS.md`'s wording allows that reading, but §75 counted such rows *as drafted* ("printed and drafted, only the flag
+wrong"). For one count across both halves, **8 rows were set to *as drafted* at the merge**, each note saying so: 169999, 179519,
+180565, 182612, 186131, 188113, 191848, 192428. Rows where the draft marks a printed number as supplied, or a supplied one as
+printed (170052, 169472, 217719), stay *differs*, as §75's 164069.
+
+| books | rows | as drafted | differs | unreadable |
+|---|---:|---:|---:|---:|
+| 21 | 46 | 15 | 31 | 0 |
+| 22 | 41 | 21 | 20 | 0 |
+| 23 | 26 | 10 | 16 | 0 |
+| 24 | 38 | 24 | 14 | 0 |
+| 25 | 48 | 38 | 10 | 0 |
+| **all** | **199** | **108** | **91** | **0** |
+
+- **What "differs" mostly is** (examples; not counted by kind): **the page prints the (၁) or (၂) the draft lacks**, the loss the
+  OCR's, not the source's (169533, 170118, 170160, 179158, 179460, 182011, 182710, 182829, 182963, 183011, 183033, 183072, 183185,
+  183647, 183671, 183725, 183728, 183838, 186343, 188862, 189960, 191931, 191933, 192202, 192466, 205305, 206905, 207029, 210046,
+  217329, 218271, 220192); **a number misread**: (၁) read (၃) (164274, 166016, 170111, 182876, 189814, 206760, 208756, 208816), (၁)
+  read (ခ) (166383), (၄) read (ရ) (168737), ၁- read ၁၁ (181264), ၉-ပါး read ၆ (206134); **figures the draft left as "…" or dropped**:
+  165090 ၆ deva levels, 168508 ၄ suttas, 168673 ၆၀, 167097 the Wagaung day (၅) and king Siridhammāsoka, 167190 the Buddha's span
+  4½ cubits and the pakatipurisa length ၄၀ + a fraction (read ¾, moderate confidence), 169417 87 *koṭis*, 203190 (၉၁) aeons, 205435
+  ၆ and ၂၇ bhūmi, 205487 sugata² (ထ), 206925 ၂-လ, 218108 and 218175 ၁၆, 218194 the step ၃½ × ၁၀၀၀, 218957 ၂ suttas;
+  **senses the draft lacks or invents**: 172185 a whole (၂), 181826 the (ခ) gloss, 186854 (၂) the paccekabuddha Sarabhaṅga,
+  188191 sense (၁)'s gloss, 192436 (၁) ဦးခေါင်း, 207035 (၂) Sunakha Jātaka, 203084's (3) is the next headword sīghasaya, 219966's
+  (2) is not on the page.
+- **As drafted, with the flag's diagnosis corrected**: the page itself prints no number where the flag blamed the OCR (167085,
+  167355/56, 217985, 219275, 219591, 220560, 220702, 221131, 180823); 221148 prints ၃၀ (30th letter), the source's own figure, not
+  an OCR misreading (it prints (၂) in ဠ², though: *differs*).
+- **Found beside the numbers** (in the notes, not acted on): 166596's text is the neighbour သင်္ခါရဂတ (its own article is printed
+  lower, not read on); 183725's headword is printed သမောဓာနေတဗ္ဗ (the index lacks ေ); 191399 prints ပြုခြင်း ('doing'), not ပြခြင်း;
+  171245's see-reference names Vinaya vols. 3 and 4; 179158's variant readings cite Dī. Ṭī. 1.54 and Sī. Ṭī. (new) 1.206;
+  206925 prints Amitodana, Amitā; 219245, 219415, 220045 have the right numbers but wording the draft misses.
+- **Less sure** (the sub-agents' own flags): 167190's fraction; 168484 (article begins on p. 510, not rendered; only the stray ၃
+  checked, the running head's page number); 168888's and 169374's superscripts; 171245's second range (398-၁ as printed); 188432
+  saha³; 192123 sineru (the (6)/(7) mountain fractions and the months are on p. 721 or later, not rendered: partly checked);
+  205487's ထ; 205435's ၂၇.
+- **Checked twice**: 186096, 189804 and 208756 were also among §74's 59, same verdict; 206033 suta was §74's *unreadable* (which of
+  four homonym rows is which, item 5b); here its number (၁၅) is read, *as drafted*. Left as two rows each.
+
+**§75's two rows, updated in place** (no new rows): **159115** vīthi now pp. 316–322: the ādikammika list prints (၅)
+ရူပပဉ္စမဈာနဝီထိ and (၆) အာကာသာနဉ္စာယတနဈာနဝီထိ, which the draft leaves "[…]"; the rest of the list and its totals as drafted
+(9 kinds, 18, 36, 72; jhāna 8/8/8/8/40). Still *differs*. **163323** saṁyuttanikāya now pp. 854–860: the Saccasaṁyutta (1)–(11),
+131 suttas, and the grand totals (Mahāvagga 12 / 109 / 1091 / 1208; the Nikāya 5 / 56 / 229 / 1 / 2916 / 3043) are printed as
+drafted. Still *differs* on §75's part.
+
+**`docs/page-checks.tsv`**: 199 rows appended (**511 rows**), 159115 and 163323 updated. **Counted** (without the 2 superseded):
+509 rows, 503 ids: **as drafted 251, differs 257, unreadable 1** (206033, §74). F1 whole: 393 rows, **191 as drafted, 202 differ,
+0 unreadable**. The second half also in `tmp/pagecheck3/f1-page-checks-half2.tsv`. Nothing in `meanings/` or `articles.jsonl`
+changed; the 91 that differ are for the final revision. **Plan step 2.4 is done.**
