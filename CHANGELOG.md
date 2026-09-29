@@ -23,6 +23,21 @@ Versions of the Tipiṭaka Pāḷi-Myanmā Abhidhāna project: the data, the too
 A release note says, per version: what changed, the brief's sections, and the headline figures
 (located, label + body, Meaning rows drafted / reviewed).
 
+## v0.28.5 — 29 Sep 2026
+
+- **Copy / Cite / Share no longer add a line on a phone** (brief §83). v0.28.4's UI test on the Mac (real fonts) failed at 375 px
+  on `/w/luñcana`: with a label and the *corregido* chips, the head line wrapped once the three buttons were added (the Meaning box
+  407 → 435 px). Below 768 px the buttons now sit out of the flow at the top right of the article, in the 28 px that are always
+  empty above the meta line ("vol. … · p. …"); nothing reserves room for them, so the head and the meta line are laid out exactly as
+  without them, whatever they hold. 26 px tall there (28 on desktop); the message flashes below them, right-aligned. The DOM order is
+  unchanged (headword, buttons, label). Desktop and 768–1,023 px as they were. `site/src/assets/style.css` only.
+- UI test step 7: the 375-px check covers three articles — bhijja, luñcana with step 6's edits, and bhijjanasabhāva² (homonym
+  superscript, both scripts, the labels in full, a label edit for the *corregido* chip, the homonyms, *análisis no leído*, a
+  supplement row) — and checks, besides the Meaning box, the head's height with and without the buttons, that the buttons overlap
+  neither the head nor the meta line, and names the web fonts loaded. `ABH_FONTS=<folder>` serves a local copy of the fonts
+  (`run.sh`). Expect UI pass 61 fail 0.
+- No data file changed.
+
 ## v0.28.4 — 29 Sep 2026
 
 - **Copy, Cite and Share on every article** (brief §81), beside the headword in Browse and on `/w/…`, modelled on the Reader of

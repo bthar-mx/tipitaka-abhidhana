@@ -1,4 +1,4 @@
-# Abhidhāna — handover, 28 September 2026 (editor mode built, not yet switched on, v0.17.0; roman input in its form, v0.18.0; 14/2's 497 rows redrafted, v0.18.3; the OCR pilot, v0.18.5; vol. 23 drafted from our OCR, v0.19.0; vol. 22 drafted from our OCR, v0.20.0; vol. 24, v0.21.0; vol. 21, v0.22.0; vol. 20, v0.23.0; vol. 25, v0.24.0; 14/3 and 4/3 prepared, §62; `prep`'s no-join fix, v0.24.1; vol. 14/3 drafted from our OCR, v0.25.0, and 4/3's shards drafted, not merged, §63; vol. 4/3 merged, v0.26.0: every book drafted, §64; the next phase planned and decided, the brief shrunk, v0.26.1; `merge` keeps the corrections, 4/3's "see X" targets restored, v0.26.2, §65; site display fixes, v0.26.3, §66, checked live; run-on headwords measured (plan step 1.1), §67; Phase 1 reduced (the editor), and the folds and "analysis not read" refined, v0.26.4, §68; run-on articles split out in the nine books without PCED, every split checked on the image, v0.27.0, §69; the split rows and their hosts redrafted (plan step 1.6), v0.28.0, §70; the decision sheet, plan step 2.1, 29 Sep, docs only; plan step 2.4 page checks done, §73–76, docs only; citation abbreviations from vol. 15's key, v0.28.2, §77; item 9 planned, §78, docs only; `git gc` done, item 4; item 9 built, v0.28.3, §79; its editor tests passed on the Mac, and the supplement misspellings in the index errata, §80, docs only; Copy / Cite / Share on the article and the citation normaliser for the tooltips, v0.28.4, §81–82)
+# Abhidhāna — handover, 28 September 2026 (editor mode built, not yet switched on, v0.17.0; roman input in its form, v0.18.0; 14/2's 497 rows redrafted, v0.18.3; the OCR pilot, v0.18.5; vol. 23 drafted from our OCR, v0.19.0; vol. 22 drafted from our OCR, v0.20.0; vol. 24, v0.21.0; vol. 21, v0.22.0; vol. 20, v0.23.0; vol. 25, v0.24.0; 14/3 and 4/3 prepared, §62; `prep`'s no-join fix, v0.24.1; vol. 14/3 drafted from our OCR, v0.25.0, and 4/3's shards drafted, not merged, §63; vol. 4/3 merged, v0.26.0: every book drafted, §64; the next phase planned and decided, the brief shrunk, v0.26.1; `merge` keeps the corrections, 4/3's "see X" targets restored, v0.26.2, §65; site display fixes, v0.26.3, §66, checked live; run-on headwords measured (plan step 1.1), §67; Phase 1 reduced (the editor), and the folds and "analysis not read" refined, v0.26.4, §68; run-on articles split out in the nine books without PCED, every split checked on the image, v0.27.0, §69; the split rows and their hosts redrafted (plan step 1.6), v0.28.0, §70; the decision sheet, plan step 2.1, 29 Sep, docs only; plan step 2.4 page checks done, §73–76, docs only; citation abbreviations from vol. 15's key, v0.28.2, §77; item 9 planned, §78, docs only; `git gc` done, item 4; item 9 built, v0.28.3, §79; its editor tests passed on the Mac, and the supplement misspellings in the index errata, §80, docs only; Copy / Cite / Share on the article and the citation normaliser for the tooltips, v0.28.4, §81–82; its UI test failed at 375 px on the Mac, and the buttons moved out of the head line on phones, v0.28.5, §83)
 
 *All 29 books are digitised end to end, spot-checked and in the Reader: 221,154 index rows, 94.1%
 located, 88.1% with label + body (brief §30). Read
@@ -35,8 +35,8 @@ witness.*
 - **The editor tests run on the Mac**, not in the VM (no Playwright / Chromium there). Playwright 1.56 is installed outside
   the repo in `~/abhidhana-pw`; from the repo root, in Terminal:
   `PLAYWRIGHT=~/abhidhana-pw/node_modules/playwright sh site/test/editor/run.sh`
-  Last run 29 Sep against v0.28.3, twice: API pass 28 fail 0, UI pass 48 fail 0 (brief §80).
-  v0.28.4 adds 10 UI checks (step 7, brief §81): expect UI pass 58 fail 0; not yet run on the Mac.
+  Last run 29 Sep against v0.28.4: API pass 28 fail 0, UI pass 57 fail 1 (375 px /w/luñcana: the buttons wrapped the head line;
+  brief §83). v0.28.5 fixes it and widens step 7's 375-px check to three articles: expect UI pass 61 fail 0; not yet run on the Mac.
 - **Docs in the folder and in the Project must match.** On 25 Sep night the folder's brief and
   NEXT-SESSION twice went back to an older version. The cause was this session: `device_commit_files`
   sent a stale copy when the same staged path under `/mnt/user-data/outputs/` was reused. Give each
@@ -143,7 +143,21 @@ Project are for advice and for what needs the Mac. What the new chat should know
   sheet D1).
 
 
-## After v0.28.4 (Copy / Cite / Share, brief §81; the citation normaliser, §82): for the editor
+## After v0.28.5 (the article's buttons out of the head line on phones, brief §83): for the editor
+
+- **The editor**: run the git commands given in the session (commit, tag v0.28.5, push). Changed: `VERSION`, `CHANGELOG.md`,
+  `site/src/assets/style.css` (one block below 768 px), `site/test/editor/ui-test.js` (step 7's 375-px check), `site/test/editor/run.sh`
+  (a comment: `ABH_FONTS`), `docs/abhidhana-project-brief.md` (§83), `docs/NEXT-SESSION.md`.
+- **The editor tests on the Mac**: `PLAYWRIGHT=~/abhidhana-pw/node_modules/playwright sh site/test/editor/run.sh`; expect API pass 28
+  fail 0, UI pass 61 fail 0, the three `375 px /w/…` lines naming the four web fonts. Record the result in brief §83.
+- **Live check after the push** (`/data/version.json` 0.28.5), on a phone or at 375 px: on `/w/luñcana` and `/w/bhijja` the three buttons
+  at the top right, above "vol. … · p. …", the headword line as before §81; a tap on *Citar* flashes *cita copiada* below them.
+  At ≥ 768 px they stay beside the headword.
+- **For the editor to say** (brief §83): the buttons are 26 px tall on phones (28 on desktop); on a phone they are drawn above the
+  headword but come after it in the keyboard order. Left open: the chip *entrada corregida; el índice la escribe …* does not wrap and
+  can widen a 320-px page after a headword edit (as in v0.28.4).
+
+## After v0.28.4 (Copy / Cite / Share, brief §81; the citation normaliser, §82): done: tagged; the Mac test ran, brief §83
 
 - **The editor**: run the git commands given in the session (commit, tag v0.28.4, push). The commit includes
   `tools/abhidhana_citefold.py` (new, from the advice chat) and its call in `tools/abhidhana_browse.py`.

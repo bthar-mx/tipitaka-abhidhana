@@ -3,7 +3,8 @@
 # and an empty local D1, stand in for Cloudflare Access, run the API and browser tests. Everything
 # goes to a temporary folder; nothing in the repository changes.
 #   sh site/test/editor/run.sh            (needs node, npx and Playwright with a Chromium)
-# Env: WRANGLER (default: npx --yes wrangler@4), PLAYWRIGHT (module path), CHROME (browser binary).
+# Env: WRANGLER (default: npx --yes wrangler@4), PLAYWRIGHT (module path), CHROME (browser binary),
+#      ABH_FONTS (a folder with fonts.css and its .woff2 files, used instead of Google Fonts; for a machine offline).
 set -e
 REPO=$(cd "$(dirname "$0")/../../.." && pwd)
 HERE="$REPO/site/test/editor"

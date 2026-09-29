@@ -496,3 +496,15 @@ html[data-script="ro"] .lt.on .pl{color:var(--on-accent)}
 .acts-msg{position:absolute;left:0;top:100%;margin-top:4px;white-space:nowrap;font:12.5px var(--ui);color:var(--ok);background:var(--surface);border:1px solid var(--rule);border-radius:6px;padding:2px 8px;z-index:5;pointer-events:none}
 .acts-msg.bad{color:var(--crit)}
 .acts-msg:empty{display:none}
+/* below 768 px the buttons leave the head line (v0.28.5, brief §83). At 375 px a head line with a label and *corregido*
+   chips wrapped once the buttons were added (luñcana: the Meaning box 407 → 435 px on the Mac). They are taken out of the
+   flow and set at the top right of the article, in the 28 px that are always empty above the meta line ("vol. … · p. …"):
+   the .art's padding (14 px) and the article's (14 px). Nothing reserves room for them, so neither the head nor the meta
+   line is laid out any differently, whatever they hold. 26 px tall here (28 on desktop) to leave 1 px on either side.
+   The DOM order is kept (headword, buttons, label) for the keyboard and screen readers */
+@media (max-width: 767px){
+  .art article{position:relative}
+  .art .head .acts{position:absolute;top:-13px;right:16px}
+  .acts .icn{height:26px}
+  .acts-msg{left:auto;right:0}
+}

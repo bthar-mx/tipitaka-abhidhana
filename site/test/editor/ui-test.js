@@ -209,16 +209,48 @@ async function seed(token) {
   await page.click('[data-act="share"]'); await page.waitForTimeout(200);
   const sh = await page.evaluate(() => window.__shared);
   ok(sh && sh.url === 'https://abhidhana.buddha-dhamma.net/w/bhijja' && sh.text === WANT && /bhijja/.test(sh.title), 'Share: navigator.share given ' + JSON.stringify(sh));
-  // 375 px: the buttons take no height of their own (the Meaning box starts where it did without them); no sideways scroll
+  // 375 px (brief §83): below 768 px the buttons sit out of the flow, above the meta line, so they never add a line to the
+  // head, whatever it holds. Three articles: bhijja (a supplement row); luñcana with step 6's edits (a label and the
+  // *corregido* chips); bhijjanasabhāva² (a homonym with its superscript, a supplement row, *análisis no leído*), shown
+  // with both scripts and the labels in full, and given the longest label (ကြိ၊ဝိ) by an edit here, so its *corregido* chip
+  // shows. Real fonts: the page's Google Fonts, or with ABH_FONTS=<folder> a local copy (fonts.css + its .woff2 files).
+  if (process.env.ABH_FONTS) {
+    const F = process.env.ABH_FONTS, fsp = require('fs'), pth = require('path');
+    await page.route(/fonts\.googleapis\.com/, r => r.fulfill({ path: pth.join(F, 'fonts.css'), contentType: 'text/css' }));
+    await page.route(/\/__fonts\//, r => r.fulfill({ path: pth.join(F, pth.basename(new URL(r.request().url()).pathname)), contentType: 'font/woff2' }));
+  }
+  const lab = await fetch(B + '/api/admin/edits', { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Abhidhana-Editor': '1', Origin: B, 'Cf-Access-Jwt-Assertion': token },
+    body: JSON.stringify({ book: '4c', id: 177224, edits: [{ field: 'label', value: 'ကြိ၊ဝိ', old: 'တိ' }] }) });
+  ok(lab.status === 200, 'seeded a label edit of bhijjanasabhāva² (4c 177224) through the API: ' + lab.status);
   await page.setViewportSize({ width: 375, height: 812 });
-  for (const w of ['bhijja', 'luñcana']) {
-    await page.goto(B + '/w/' + w); await page.waitForSelector('.meaning'); await page.waitForTimeout(300);
-    const y1 = await page.evaluate(() => document.querySelector('.meaning').getBoundingClientRect().top);
+  const LONG = { mode: 'custom', script: 'both', defs: 'collapse', labels: 'full', scan: false };
+  for (const [w, set] of [['bhijja', null], ['luñcana', null], ['bhijjanasabhāva-2', LONG]]) {
+    await page.evaluate(s => s ? localStorage.setItem('browse', JSON.stringify(s)) : localStorage.removeItem('browse'), set);
+    await page.goto(B + '/w/' + w); await page.waitForSelector('.meaning'); await page.waitForTimeout(800);
+    await page.evaluate(() => document.fonts.ready);
+    const fonts = await page.evaluate(() => [...new Set([...document.fonts].filter(f => f.status === 'loaded').map(f => f.family.replace(/"/g, '')))].sort().join(', ') || 'none loaded');
+    const g = await page.evaluate(() => {
+      const q = s => document.querySelector(s), R = e => e.getBoundingClientRect(), A = R(q('.head .acts'));
+      const hit = r => r.width && r.left < A.right - 0.5 && r.right > A.left + 0.5 && r.top < A.bottom - 0.5 && r.bottom > A.top + 0.5;
+      const txt = []; const tw = document.createTreeWalker(q('.where'), NodeFilter.SHOW_TEXT); let n;
+      while ((n = tw.nextNode())) { const rg = document.createRange(); rg.selectNodeContents(n); txt.push(...rg.getClientRects()); }
+      q('.where').querySelectorAll('.chip').forEach(e => txt.push(R(e)));
+      const head = [...q('.head').children].filter(e => !e.classList.contains('acts')).map(R);
+      return { y: R(q('.meaning')).top, h: R(q('.head')).height, sw: document.documentElement.scrollWidth, over: txt.some(hit) || head.some(hit),
+        inside: A.left >= 0 && A.right <= innerWidth, sup: !!q('.head h1 sup'), lab: !!q('.head .lab'), my: !!q('.head .hw-my'), fixed: !!q('.head .chip.c-ok'),
+        homs: !!q('.head .homs'), nr: !!q('.head .notread'), supp: /suplemento/.test(q('.where').textContent) };
+    });
+    await page.screenshot({ path: `${shots}/375-${w}.png` });
     await page.addStyleTag({ content: '.acts{display:none!important}' });
     const y0 = await page.evaluate(() => document.querySelector('.meaning').getBoundingClientRect().top);
-    const sw = await page.evaluate(() => document.documentElement.scrollWidth);
-    ok(Math.abs(y1 - y0) < 1 && sw <= 375, `375 px /w/${w}: Meaning box at ${y1.toFixed(0)} px with the buttons, ${y0.toFixed(0)} without; page width ${sw}`);
+    const h0 = await page.evaluate(() => document.querySelector('.head').getBoundingClientRect().height);
+    const holds = Object.entries(g).filter(([k, v]) => ['sup', 'lab', 'my', 'fixed', 'homs', 'nr', 'supp'].includes(k) && v).map(([k]) => k).join(' ');
+    ok(Math.abs(g.y - y0) < 1 && Math.abs(g.h - h0) < 1 && g.sw <= 375 && !g.over && g.inside,
+      `375 px /w/${w} [${holds}]: Meaning box at ${g.y.toFixed(0)} px with the buttons, ${y0.toFixed(0)} without; head ${g.h.toFixed(0)} / ${h0.toFixed(0)} px; ` +
+      `buttons ${g.over ? 'OVERLAP the head or the meta line' : 'clear of the head and the meta line'}${g.inside ? '' : ', OUTSIDE the page'}; page width ${g.sw}; fonts: ${fonts}`);
+    if (w === 'bhijjanasabhāva-2') ok(g.sup && g.lab && g.my && g.fixed && g.homs && g.nr && g.supp, `375 px /w/${w}: the long head holds a superscript, both scripts, a label, a corregido chip, the homonyms, a "not read" note, a supplement row: ${holds}`);
   }
+  await page.evaluate(() => localStorage.removeItem('browse'));
   await ctx.close();
   await browser.close();
   console.log(`pass ${pass} fail ${fail}`);

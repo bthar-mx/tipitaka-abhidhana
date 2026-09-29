@@ -2386,3 +2386,70 @@ alone (အပ or အပ၊ဋ္ဌ), and the lost heads other than *အဋ္�
 - Left for later (from the README): B2 (2,353), *အပါ* alone (1,938), the other lost heads (~4,900), a parser fix for
   abbreviations ending in ။ (the "number only" group, up to ~94%), and a tooltip note that the work was inferred.
 
+
+## 83. The article's buttons on a phone: out of the head line (29 Sep 2026, Cowork; v0.28.5)
+
+**§81's test on the Mac** (the editor, `run.sh` against v0.28.4, real fonts): **API 28 / 0, UI 57 pass, 1 fail** —
+`FAIL 375 px /w/luñcana: Meaning box at 435 px with the buttons, 407 without`. With the Mac's fonts, luñcana's head line (headword,
+label, the *corregido* chip from step 6's edits) wrapped at 375 px once the three buttons (98 px) were added; §81's check in the
+cloud container passed because Playwright there had none of the site's web fonts (Google Fonts is refused by the container's proxy).
+
+**Reproduced here with the site's fonts**: the same four families (Gentium Book Plus, Padauk, IBM Plex Sans, IBM Plex Mono) from
+the `@fontsource` 5.3.0 packages (npm), served locally in place of `fonts.googleapis.com`, on §81's subset of the build (bh- and
+l-, v0.28.4) with the editor's edits stood in by a fixture. luñcana at 375 px: Meaning box **435 with the buttons / 408 without**
+(the Mac: 435 / 407). Not only luñcana: bhijjanasabhāva² 360 / 341; bhijja with both scripts and the labels in full 444 / 419.
+*Caveat*: Burmese in the container looked incompletely shaped (the stacked ဇ္ဇ drawn side by side; not looked into), so Burmese
+widths there are not the Mac's. The fix below does not depend on any width.
+
+**The fix** (`site/src/assets/style.css`, one block, below 768 px): the button group is taken out of the flow
+(`position:absolute` against the `article`) and set at the top right of the article, **in the 28 px that are always empty above
+the meta line** ("vol. … · p. …"): the `.art`'s padding (14 px) and the `article`'s (14 px), measured: the mode bar ends at
+141.5 px, the meta line starts at 169.5 px, on `/w/…` and on `/browse/…`. Nothing reserves room for them, so the head and the
+meta line are laid out exactly as without them, whatever they hold. The buttons are 26 px tall there (28 on desktop) to leave
+1 px on either side; 30 × 26 px meets WCAG 2.2's 24 × 24 minimum (the 44 pt of Apple's guidelines was not met by the 28 px either).
+The message (*copiado* …) flashes below them, right-aligned, over the meta line for 1.5 s, out of the flow. The DOM is unchanged:
+headword, buttons, label, so keyboard and screen-reader order are §81's (on a phone the focus order no longer follows the visual
+order exactly: the buttons are drawn above the headword). ≥ 768 px unchanged.
+
+*Why not the two ways suggested*: (a) the group in the meta line, right-aligned, needs 98 px on that line's last row, and adds a
+row when the row is full — the same fault moved one line up. (b) Absolutely at the right of the head with padding reserved narrows
+every head line by ~106 px and adds lines to long heads. A variant of (a) was built and measured first: the group level with the
+meta line's first row, a float reserving 108 px on that row only. Swept over 17,781 articles (§81's subset plus one chunk of every
+book, 29 books, the meta line rebuilt for each at 375 px): no extra row in Spanish, but **3,088 (17.4%) got a meta row more in
+English** ("vol. 15 · p. 462 · PDF p. 490 / *ocr · unchecked* / *located approximately*": 2 rows → 3). Rejected for the band.
+
+**Measured** (the site's fonts, 375 px; Meaning box's top with the buttons / without):
+
+| article | v0.28.4 | v0.28.5 | v0.28.4 without the buttons (= before §81) |
+|---|---|---|---|
+| bhijja | 385 / 385 | 385 / 385 | 385 |
+| luñcana, step 6's edits | 435 / 408 | 408 / 408 | 408 |
+| bhijjanasabhāva² | 360 / 341 | 341 / 341 | 341 |
+| bhijjanasabhāva², both scripts, labels in full, label edited | 421 / 421 | 421 / 421 | 421 |
+| bhijja, both scripts, labels in full | 444 / 419 | 419 / 419 | 419 |
+| luñcana, *printed* mode | 455 / 428 | 428 / 428 | 428 |
+
+The fixture: step 6's edits of luñcana (headword, label, analysis, Spanish) and the label edit of bhijjanasabhāva²; a headword
+edit tried on bhijjanasabhāva² as well was dropped, as it widened the page (below). Also at 320 and 767 px:
+equal with and without the buttons in every case; the buttons clear of the head and the meta line; no sideways scroll, except
+luñcana at 320 px (341 px wide), the same in v0.28.4: the chip *entrada corregida; el índice la escribe …* (from step 6's headword
+edit) does not wrap (`white-space:nowrap`). Only one article in the built data carries that chip (4c *ekacatukkādikachattika*),
+and in the sweep no meta line overflowed at 375 px; an editor's headword edit can bring it on any article. Not fixed here (a
+`white-space:normal` on the chip wrapped it early inside its inline-flex box; left for later). The flash: *enlace copiado* ends at
+the right edge of the text column (x 231–343 px), page width 375. Screenshots looked at: 375 px bhijja, luñcana, the long
+bhijjanasabhāva², light, and bhijja dark with the flash.
+
+**UI test step 7** (`site/test/editor/ui-test.js`): the 375-px check now covers three articles: **bhijja** (a supplement row),
+**luñcana** with step 6's edits (a label, the *corregido* chips), and **bhijjanasabhāva²** shown with both scripts and the labels
+in full, given the longest label (ကြိ၊ဝိ, *calificativo verbal: absolutivo (-tvā, -tvāna …)*) by an edit seeded through the API so
+its *corregido* chip shows: the homonym superscript, the Burmese headword, the label, the chip, *homónimos 1 2*, *análisis no
+leído* and the supplement row (vol. 15 bound in 4/3) on one head; a check asserts all seven are there. For each: the Meaning box
+and the head's height the same with and without the buttons, the buttons overlapping neither the head's items nor the meta line's
+text and chips, inside the page, page width ≤ 375; the message names the web fonts loaded (`document.fonts`), so a run without
+them shows. `ABH_FONTS=<folder>` (fonts.css + its .woff2) serves a local copy in place of Google Fonts (`run.sh`'s header). Checks:
+2 → 5 (the seed, 3 articles, the long head's contents): **expect UI pass 61, fail 0**. Run here as an extract against the static
+subset, the edits from a fixture and the seed stubbed: **5 pass** with v0.28.5's CSS; with v0.28.4's, **3 pass, 2 fail**
+(luñcana 443 / 415, bhijjanasabhāva² 413 / 381): the check catches the fault. **Not run here in full** (no wrangler / D1 in the
+container, no Playwright in the VM): to run on the Mac. Not tested: Safari, Firefox, a real phone.
+
+*Left*: `tmp/ui-check/c83/` (32 chunks of the full build for the sweep; gitignored).
