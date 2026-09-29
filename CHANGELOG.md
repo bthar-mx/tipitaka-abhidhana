@@ -23,6 +23,23 @@ Versions of the Tipiṭaka Pāḷi-Myanmā Abhidhāna project: the data, the too
 A release note says, per version: what changed, the brief's sections, and the headline figures
 (located, label + body, Meaning rows drafted / reviewed).
 
+## v0.28.3 — 29 Sep 2026
+
+- **The supplements bound in vol. 4/3 shown with the volumes they belong to** (brief §78 way (c), §79; NEXT-SESSION item 9).
+  New `docs/supplements.tsv`, 223 rows (id, book 4c, belongs_to 15 / 4b / 16 — 53 / 114 / 56 —, after_id, how, note), made by
+  `tools/abhidhana_supplements.py` with the Pāḷi-alphabet key; 88 anchors `checked` on the page images (4c PDF pp. 721–735, vol. 15
+  p. 738), 135 `key`. 22 supplement headwords are printed otherwise than the index spells them (e.g. ဥပဝေသန, indexed ဥပသေဝန); their
+  anchors use the printed form. No data file changed: the index, `ocr/4c/*`, `meanings/4c.jsonl`, D1 and editor mode as they were.
+- Browse: each supplement row after its anchor in that volume's alphabet; "vol. 15 (supplement, bound in vol. 4/3)", the page,
+  image, printed page and edits still 4/3's. **Addresses unchanged** (assigned before the move: 0 of 221,154 differ). Homonym
+  superscripts follow the order shown: in 32 rows the superscript and the address's `-N` now differ (e.g. `/w/mata` is *mata*³).
+  The bh and m letters no longer list 4/3 among their volumes. Search results name the volume the same way; the page view of
+  4c pp. 713–735 names the volume it supplements.
+- Volumes: 4/2, 15 and 16 show "+ N in the supplement bound in 4/3", 4/3 "5,007 + 223 in the supplements to vols. 4/2, 15, 16";
+  the index figures are kept. `data/volumes.json` gains `supp` / `supp_out`; `search.json` rows and Browse shards gain a `kb`
+  element for supplement rows; `v4c.json` records gain `kb`.
+- No article data, Spanish or published figure changed.
+
 ## v0.28.2 — 29 Sep 2026
 
 - **Citation abbreviations from vol. 15's key** (brief §77, item 3b): `docs/introduction/citation-abbreviations.tsv` 100 → 123 rows.

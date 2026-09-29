@@ -13,10 +13,14 @@ What it writes under site/dist/data/:
                         entries), in the dictionary's order; the records of tools/abhidhana_site.py
                         plus g (global order), k (book), sl (address), hn (homonym number),
                         see ([[iast, address]] for "see X"), cx (abbreviation index per citation)
-    s/<L>.json          the search shard of a letter: [address, iast, Burmese, book, page, chunk]
+    s/<L>.json          the search shard of a letter: [address, iast, Burmese, book, page, chunk], and for a
+                        supplement row a seventh element, the volume it belongs to (kb)
     abbr.json           the citation abbreviations of docs/introduction/citation-abbreviations.tsv
 
-The order is the book's: the books in site/volumes.json order, each in index order. Groups and
+The order is the book's: the books in site/volumes.json order, each in index order -- except the
+supplements bound in vol. 4/3 (docs/supplements.tsv, brief §78-79): each of those rows (book 4c, kb = the
+volume it belongs to) is shown after its anchor row in that volume. Addresses (sl) are assigned in the
+order without that move, so that no address changes; homonym numbers (hn) follow the order shown. Groups and
 syllables are listed in the order they first occur, so the thumb index follows the printed
 dictionary (niggahīta first, simple consonants before conjuncts) without a sorting rule.
 The groups and syllables are computed on the romanised headword; a Burmese reader sees the
@@ -57,6 +61,14 @@ def keys(iast):
             if nv == 2: break
     syll = ''.join(L[:k + 1]) if nv >= 2 else ''.join(L)
     return LIDX[L[0]], group, syll
+
+
+def supplements():
+    """docs/supplements.tsv -> {id: (belongs_to, after_id)} for the supplements bound in vol. 4/3"""
+    f = ROOT / 'docs/supplements.tsv'
+    if not f.exists(): return {}
+    return {int(r['id']): (r['belongs_to'], int(r['after_id']))
+            for r in csv.DictReader(f.open(encoding='utf-8'), delimiter='\t')}
 
 
 def mynorm(t):
@@ -106,10 +118,10 @@ def build(OUT, vols, book_records, dump):
     for v in vols:
         for d in book_records.get(v['id'], []):
             d['k'] = v['id']; E.append(d)
-    # addresses: the IAST headword; homonyms (same IAST) get -2, -3 in the index's order
+    # addresses: the IAST headword; homonyms (same IAST) get -2, -3 in the index's order -- the order
+    # before the supplements are moved (brief §79), so that every address stays what it was
     seen = {}
-    for g, d in enumerate(E):
-        d['g'] = g
+    for d in E:
         base = unicodedata.normalize('NFC', d.get('r') or '').strip() or f"id-{d['i']}"
         base = re.sub(r'[\s/?#%]+', '-', base)
         n = seen.get(base, 0) + 1; seen[base] = n
@@ -117,6 +129,21 @@ def build(OUT, vols, book_records, dump):
     first = {}
     for d in E:
         first.setdefault(unicodedata.normalize('NFC', d.get('r') or ''), d['sl'])
+    # the supplements bound in 4/3: each after its anchor row in the volume it belongs to (in id order
+    # when several share an anchor); then the global order g is the order shown
+    SUP = supplements()
+    after = {}
+    for d in E:
+        if d['i'] in SUP and d['k'] == '4c': after.setdefault(SUP[d['i']][1], []).append(d)
+    moved = {id(d) for ds in after.values() for d in ds}
+    E2 = []
+    for d in E:
+        if id(d) in moved: continue
+        E2.append(d); E2 += after.pop(d['i'], [])
+    if after: raise SystemExit(f'docs/supplements.tsv: anchors not found: {sorted(after)[:5]}')
+    assert len(E2) == len(E), (len(E2), len(E))
+    E = E2
+    for g, d in enumerate(E): d['g'] = g
     # the Meaning box: [[iast]] (a "see X" in a translation) linked when X is a headword; [[iast|]] when
     # it is not (shown in italics), so that the editor's form can give back the source text (brief §52)
     def link(m):
@@ -125,7 +152,7 @@ def build(OUT, vols, book_records, dump):
     for d in E:
         for v in (d.get('t') or {}).values():
             if '[[' in v['x']: v['x'] = re.sub(r'\[\[([^\]|]+)\]\]', link, v['x'])
-    homs = {}
+    homs = {}   # homonym numbers in the order shown (the -N of an address keeps the index's order)
     for d in E: homs.setdefault(d['sl'].rsplit('-', 1)[0] if re.search(r'-\d+$', d['sl']) else d['sl'], []).append(d)
     for base, ds in homs.items():
         if len(ds) > 1:
@@ -151,7 +178,8 @@ def build(OUT, vols, book_records, dump):
         if not kk: other.append(d); continue
         li, gk, sk = kk
         L = nav[li]; L['n'] += 1
-        if d['k'] not in L['books']: L['books'].append(d['k'])
+        vb = d.get('kb') or d['k']   # a supplement row counts for the volume it belongs to
+        if vb not in L['books']: L['books'].append(vb)
         if (li, gk) not in G:
             G[(li, gk)] = {'k': gk, 'subs': {}, 'order': []}; L['groups'].append(G[(li, gk)])
         grp = G[(li, gk)]
@@ -176,7 +204,8 @@ def build(OUT, vols, book_records, dump):
                 cs = sorted({chunk_of[d['g']] for d in grp['subs'][sk]}, key=int)
                 subs.append({'k': sk, 'n': len(grp['subs'][sk]), 'c': cs})
             out.append({'k': grp['k'], 'n': len(recs), 'subs': subs})
-            shard += [[d['sl'], d.get('r', ''), d['h'], d['k'], d['p'], chunk_of[d['g']]] for d in recs]
+            shard += [[d['sl'], d.get('r', ''), d['h'], d['k'], d['p'], chunk_of[d['g']]] + ([d['kb']] if d.get('kb') else [])
+                      for d in recs]
         dump(OUT / f'data/nav/{li}.json', out)
         L['groups'] = len(out); ngroups += len(out)
         dump(OUT / f'data/s/{li}.json', shard)
@@ -184,11 +213,13 @@ def build(OUT, vols, book_records, dump):
         name = str(cn); cn += 1
         for d in other: chunk_of[d['g']] = name
         dump(OUT / f'data/c/{name}.json', other)
-        dump(OUT / 'data/s/x.json', [[d['sl'], d.get('r', ''), d['h'], d['k'], d['p'], name] for d in other])
+        dump(OUT / 'data/s/x.json', [[d['sl'], d.get('r', ''), d['h'], d['k'], d['p'], name] + ([d['kb']] if d.get('kb') else [])
+                                     for d in other])
     dump(OUT / 'data/nav.json', {'letters': nav, 'total': len(E), 'unsorted': len(other)})
     dump(OUT / 'data/abbr.json', ABBR)
     matched = sum(1 for d in E for x in d.get('cx', []) if x >= 0)
     cites = sum(len(d.get('c') or []) for d in E)
     print(f'browse: {len(E):,} entries, {ngroups:,} groups, {cn:,} chunks; '
           f'see-links {sum(len(d.get("see", [])) for d in E):,}; citations matched {matched:,} of {cites:,} '
-          f'({100 * matched / max(1, cites):.1f}%); without romanisation {len(other)}')
+          f'({100 * matched / max(1, cites):.1f}%); without romanisation {len(other)}; '
+          f'supplement rows placed {len(moved)}')

@@ -22,7 +22,8 @@ Output, site/dist/ (gitignored):
                           build runs with ABHIDHANA_SITE_DRAFTS=1 (a local preview, marked draft)
     data/volumes.json     the books, their status and their figures
     data/v<book>.json     one per published book: compact records, in index order
-    data/search.json      [book, id, p, h, r] per headword, for search across all books
+    data/search.json      [book, id, p, h, r] per headword, for search across all books; a supplement row adds
+                          a sixth element, kb
     data/labels.json      the label table (no OCR readings), with the number of articles per label
     abbreviations/index.html  <!--LABELS--> (the label table) and <!--ABBR--> (the citation abbreviations)
     data/v<book>.json records carry t = {es|en: {x: text, s: status}} from docs/translation/meanings/<book>.jsonl
@@ -34,6 +35,8 @@ Record keys (as in the Reader, docs of tools/abhidhana_reader_data.py, plus i, s
     as "pced" when the analysis comes from the typed PCED witness (tools/abhidhana_witness_analysis.py)
     hi the index's spelling of a headword corrected by hand
     cf the fields corrected by hand against the print (docs/corrections.tsv), e.g. ["analysis"]
+    kb the volume a row of the supplements bound in vol. 4/3 belongs to (docs/supplements.tsv, brief §79):
+       15, 4b or 16; the row stays in book 4c (its page, image, printed page and edits are 4c's)
     ax 1 when no analysis was read but one is likely printed (the site's "analysis not read"): in the
        books PCED covers, where PCED has one for the row; elsewhere, where the raw head line shows [ or +
 """
@@ -45,13 +48,14 @@ SRC = ROOT / 'site/src'
 OUT = Path(os.environ.get('ABHIDHANA_SITE_OUT', ROOT / 'site/dist'))
 sys.path.insert(0, str(ROOT / 'tools'))
 from abhidhana_labels import LABELS   # docs/labels.md §0: the one label table
+from abhidhana_browse import supplements   # docs/supplements.tsv: the supplements bound in vol. 4/3
 X = {'verbatim': 'v', 'verbatim-inline': 'v', 'folded': 'v', 'fuzzy': 'f', 'split': 'f', 'unlocated': 'u'}
 MAX_FILE = 25 * 1024 * 1024      # Cloudflare Pages: 25 MiB per file
 MAX_FILES = 20000                # and 20,000 files per site on the free plan
 
 
 def records(book):
-    P = {}; TR = meanings(book)
+    P = {}; TR = meanings(book); SUP = supplements() if book == '4c' else {}
     with (ROOT / f'ocr/{book}/pali.jsonl').open(encoding='utf-8') as f:
         for line in f:
             r = json.loads(line); P[r['id']] = r
@@ -80,6 +84,7 @@ def records(book):
         if r.get('analysis_source') == 'pced': d['as'] = 'pced'   # analysis from the typed PCED witness
         if r.get('corrected'): d['cf'] = sorted(r['corrected'])   # fields corrected by hand (docs/corrections.tsv)
         if r['id'] in TR: d['t'] = TR[r['id']]
+        if r['id'] in SUP: d['kb'] = SUP[r['id']][0]   # a supplement bound in 4/3: the volume it belongs to
         # "analysis not read" only where an analysis is likely printed (the editor, 28 Sep 2026)
         if d['x'] != 'u' and 'a' not in d and 'ai' not in d and (
                 r.get('analysis_source') == 'pced' if pced else re.search(r'[\[+]', (r.get('raw') or '').split('\n', 1)[0])):
@@ -228,10 +233,21 @@ def main():
         v.update(status='done', records=n, pages=len({d['p'] for d in V}),
                  located=round(100 * sum(d['x'] != 'u' for d in V) / n, 1),
                  usable=round(100 * sum(bool(d.get('l') and d.get('b')) for d in V) / n, 1))
-        search += [[b, d['i'], d['p'], d['h'], d['r']] for d in V]
+        search += [[b, d['i'], d['p'], d['h'], d['r']] + ([d['kb']] if d.get('kb') else []) for d in V]
         for d in V:
             if d.get('l'): lab_n[d['l']] = lab_n.get(d['l'], 0) + 1
         print(f'{b:>3}: {n:,} records, {(OUT / f"data/v{b}.json").stat().st_size / 1e6:.1f} MB')
+    # the supplements bound in 4/3 (brief §79): on the volumes they belong to, their count (index rows) and
+    # where they are; the index figures (`headwords`) stay as they are
+    sup = {}
+    for i, (kb, _) in supplements().items(): sup.setdefault(kb, []).append(i)
+    first_p = {d['i']: d['p'] for d in book_records.get('4c', [])}
+    VN = {v['id']: v['n'] for v in vols}
+    for v in vols:
+        if v['id'] in sup:
+            v['supp'] = {'n': len(sup[v['id']]), 'in': '4c', 'p': min(first_p.get(i, 10 ** 6) for i in sup[v['id']])}
+        if v['id'] == '4c' and sup:
+            v['supp_out'] = {'n': sum(len(x) for x in sup.values()), 'to': [k for k in (w['id'] for w in vols) if k in sup]}
     dump(OUT / 'data/volumes.json', vols)
     from abhidhana_browse import build as browse_build   # the Browse page's data (nav, chunks, shards)
     browse_build(OUT, vols, book_records, dump)
@@ -269,6 +285,16 @@ def main():
         inner = (f'<span class="vn">{html.escape(v["n"])}</span><span class="rg">'
                  f'<span class="my" lang="my">{html.escape(v["range_my"])}</span>'
                  f'<span class="ro" lang="pi">{html.escape(v["range_ro"])}</span></span>')
+        if v.get('supp'):   # "+ 53 in the supplement bound in 4/3"
+            s = v['supp']; bn = html.escape(VN[s['in']])
+            inner = inner[:-len('</span>')] + (
+                f'<span class="ro sp"><span class="tr" lang="en">+ {s["n"]:,} in the supplement bound in {bn}</span>'
+                f'<span class="tr" lang="es">+ {s["n"]:,} en el suplemento encuadernado en el {bn}</span></span></span>')
+        if v.get('supp_out'):   # 4/3: its own rows and the supplements'
+            s = v['supp_out']; own = v['headwords'] - s['n']; to = ', '.join(html.escape(VN[k]) for k in s['to'])
+            inner = inner[:-len('</span>')] + (
+                f'<span class="ro sp"><span class="tr" lang="en">{own:,} + {s["n"]:,} in the supplements to vols. {to}</span>'
+                f'<span class="tr" lang="es">{own:,} + {s["n"]:,} en los suplementos a los vols. {to}</span></span></span>')
         link = (f'<a class="vl" href="/v/{v["id"]}/{v["start"]}">{inner}</a>' if done
                 else f'<span class="vl">{inner}</span>')
         stat = (f'<span class="num">{v["headwords"]:,}</span>'

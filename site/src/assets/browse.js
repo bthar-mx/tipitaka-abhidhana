@@ -340,8 +340,8 @@ function citeTip(d, j) {
 }
 function reportURL(d) {
   const link = `${location.origin}/w/${encodeURIComponent(d.sl)}`;
-  const title = `Error: vol. ${vn(d.k)}, PDF p. ${d.p}, ${d.h} (id ${d.i})`;
-  const body = `**Volume:** ${vn(d.k)} (book \`${d.k}\`)\n**PDF page:** ${d.p} · **printed page:** ${d.q}\n**Headword:** ${d.h} (${d.r})\n**Article id:** ${d.i}\n**Link:** ${link}\n\n**What is wrong** (and, if you can, what the printed page says):\n\n`;
+  const title = `Error: vol. ${vn(d.kb || d.k)}, PDF p. ${d.p}, ${d.h} (id ${d.i})`;
+  const body = `**Volume:** ${vn(d.kb || d.k)}${d.kb ? ` (supplement bound in vol. ${vn(d.k)})` : ''} (book \`${d.k}\`)\n**PDF page:** ${d.p} · **printed page:** ${d.q}\n**Headword:** ${d.h} (${d.r})\n**Article id:** ${d.i}\n**Link:** ${link}\n\n**What is wrong** (and, if you can, what the printed page says):\n\n`;
   return `${REPO}/issues/new?labels=error-report&title=${encodeURIComponent(title)}&body=${encodeURIComponent(body)}`;
 }
 // the Meaning box's small markup: *pāḷi* in italics, [[iast|address]] a link to another headword
@@ -398,7 +398,7 @@ function article() {
   const d = ov(cur.recs[cur.k]);
   if (!d) { $('art').innerHTML = ''; return; }
   const H = [];
-  H.push(`<div class="where"><span>${esc(t('vol_short'))} ${esc(vn(d.k))} · ${esc(pageStr(d.k, d.p))}</span>` +
+  H.push(`<div class="where"><span>${esc(t('vol_short'))} ${esc(volLabel(d.k, d.kb))} · ${esc(pageStr(d.k, d.p))}</span>` +
     `<span class="chip"${d.s === 'drafted' ? ` title="${esc(t('drafted_t'))}"` : ''}>${esc(d.s === 'ocr' ? t('ocr_st') : t('st_' + d.s))}</span>` +
     (d.x === 'f' ? `<span class="chip c-warn">${esc(t('fuzzy'))}</span>` : '') +
     (d.m ? `<span class="chip">${esc(t('misfiled'))}</span>` : '') +
@@ -552,7 +552,7 @@ async function search(q) {
     if ($('hq').value.trim() !== q) return;
     box.innerHTML = out.map(r => `<a class="res" href="/w/${encodeURIComponent(r[0])}"><span>` +
       (S.script === 'my' ? `<span class="my" lang="my">${esc(r[2])}</span>` : `<span class="pl" lang="pi">${esc(r[1])}</span>${S.script === 'both' ? ` <span class="my sub" lang="my">${esc(r[2])}</span>` : ''}`) +
-      `</span><span class="pg">${esc(t('vol_short'))} ${esc(vn(r[3]))} · ${esc(pageStr(r[3], r[4]))}</span></a>`).join('') +
+      `</span><span class="pg">${esc(t('vol_short'))} ${esc(volLabel(r[3], r[6]))} · ${esc(pageStr(r[3], r[4]))}</span></a>`).join('') +
       (out.length ? (pre.length + sub.length > 60 ? `<div class="more">${esc(t('results_more'))}</div>` : '') : `<div class="more">${esc(t('results_none'))}</div>`);
   } catch (e) { box.innerHTML = `<div class="more">${esc(t('load_fail'))}</div>`; }
 }

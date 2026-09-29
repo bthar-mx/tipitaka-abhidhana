@@ -2190,3 +2190,61 @@ edit there changes nothing in (c), but would have in (a).
 *Measured here with read-only scripts on the folder (the index, `ocr/{4b,4c,15,16}`, `witness/pced_k.jsonl`, `pndaza_k.jsonl`,
 `site/volumes.json`, `tools/abhidhana_browse.py`'s own `letters()`); nothing written but this section and NEXT-SESSION.
 Token cost of this plan: ~150 k.*
+
+## 79. Item 9 built: the supplements shown with their volumes, way (c) (29 Sep 2026, Cowork; v0.28.3)
+
+**Asked** (the editor): build §78 (c). The D1 edits for 4c were checked by the editor in the advice chat: 3 edits (176136, 176140,
+176144), none in 177206–177428. Nothing in the data changed; the site reads a sidecar table.
+
+**`docs/supplements.tsv`** (223 rows: `id`, `book` 4c, `belongs_to`, `after_id`, `how`, `note`), written by
+`tools/abhidhana_supplements.py --write` (re-runnable; the checks below are recorded in the script, so it reproduces the table).
+`belongs_to` by the id ranges that open each supplement in print (§64): 177206–177258 → 15 (53), 177259–177372 → 4b (114),
+177373–177428 → 16 (56). `after_id`: the insertion point in the volume's index order that leaves fewest rows out of key order
+(latest point on ties); a row whose IAST the volume already has goes after the volume's last row of it.
+- **The key**, refined here: the Pāḷi letters of the IAST, niggahīta first, and the end of the word after niggahīta but before
+  any letter (so *ubbhaṁ* before *ubbha*, *upacineyyaṁ* before *upacineyya*, as the volumes print). Adjacent pairs in key order:
+  vol. 15 97.09 → 97.63%, 4/2 95.54 → 96.15%, 16 97.41 → 97.66% (§78's key → this one).
+- **Unsure** by the key: 55 rows — the 46 that share their IAST with another row (32 with a row of their own volume; §78's 48
+  less 177282 and 177326, which share nothing once read as printed, below), 13 whose neighbours are out of key order, 3 with more
+  than one best point (a row can have several reasons).
+- **Looked at on the page images** (4c PDF pp. 721–735 at 110 dpi, both columns; vol. 15 p. 738): all 55, and the rows the OCR did
+  not find verbatim. **88 rows `checked`, 135 `key`.** The "neighbours out of order" cases are the volumes' own disorder
+  (*upacīyati / upaciyati*, *uragaṇḍi-* before *uragajātaka*, *merusamāna* before *merupama* …); every anchor holds on the Burmese
+  spelling. Vol. 15 has no ဘိဇ္ဇ headword: the whole supplement to it follows ဘိင်္ကစ္ဆာပ (121320, p. 738), in id order.
+- **The index misspells the supplements more than the volumes.** 22 headwords are printed otherwise than indexed, and their anchor
+  is found on the printed form (`PRINTED` in the script; the note names both): e.g. 177307 printed ဥပဝေသန (indexed ဥပသေဝန),
+  177282 ဥပနာဟက (ဥပါနာဟက), 177326 ဥပါန (ဥပါနာဟက again), 177269 ဥပဃာတဘူမိ (ဥပါဃာတဘူမိ), 177300 ဥပဝနန္တ (ဥပနန္တ),
+  177373 မံကာရဏ (မံသကာရဏ), 177424 မောဒက (မေဒက). Four index rows have no article of their own and are placed with the one they
+  belong to (`SAME_AS`): 177266 (p. 721 prints only ဥပက္ကိလေသသမုစ္ဆေဒ, 177267), 177350 (ဥဗ္ဘ၊ ဥဗ္ဘံ is one article, 177349),
+  177402 (မီ(မိ)ယမာန¹ is one article, 177401), 177381 (p. 731 prints one မဋ္ဋက, the index two). 177412 is one index row for two
+  printed articles (မေဃဇ္ဇဝ, မေဃလ). None of this is in `docs/index-errata.md` yet, and the index spellings stay as they are
+  in the data (the site shows the index's headword).
+- **The supplements print homonym numbers**: မဇ္ဈ², မဏိ², မတ², မီယမာန¹ / ², မေသ², ဥပသမ္ပဒ². Each supplement row with a numbered
+  homonym in its volume goes after that volume's rows of the headword, which agrees with every number seen.
+
+**The site** (`abhidhana_browse.py`, `abhidhana_site.py`, `browse.js`, `common.js`, `read.js`):
+1. Addresses (`sl`) are assigned in today's order first; then each supplement row is moved after its anchor (in id order when
+   several share one) and `g` is the order shown; `hn` is numbered in the order shown. "See X" links keep today's first address.
+2. `kb` (the volume) on the supplement records (`v4c.json`, chunks), a 6th element in `search.json` rows and a 7th in the Browse
+   shards; the letter's volume list uses `kb`. Shown as "vol. 15 (supplement, bound in vol. 4/3)" (es: "suplemento, encuadernado
+   en el vol. 4/3") in the article, Browse search and page-view search; the error report names both. Page, image, scan pane,
+   printed page, page-view link and edits stay on `k` = 4c.
+3. The page view of 4c pp. 713–735 has a line "Supplement to vol. 15, bound in vol. 4/3".
+4. Volumes: 4/2, 15, 16 "+ 114 / 53 / 56 in the supplement bound in 4/3"; 4/3 "5,007 + 223 in the supplements to vols. 4/2, 15,
+   16"; the index figures (6,655 / 9,342 / 10,394 / 5,230) kept. The line is plain text inside the volume's link, not a link to
+   4c p. 713 as §78 proposed (a link inside a link is invalid HTML). `volumes.json` rows gain `supp` / `supp_out`.
+
+**Checks** (full build in the VM, `ABHIDHANA_SITE_OUT=/tmp/…`; the baseline was built the same way from v0.28.2's code first):
+- Address → id of every record: **0 differences** of 221,154. Homonym superscripts changed in 32 rows, and in the same 32 the
+  superscript and the address's `-N` differ (§78 bounded it at 51), e.g. `/w/mata-2` *mata*¹, `/w/mata-3` *mata*², `/w/mata`
+  *mata*³ (the supplement row, which took the bare address because 4/3 comes before 16 in the index order).
+- `/w/bhijja`: "vol. 15 (supplement, bound in vol. 4/3) · p. 686 · PDF p. 713", between *bhiṅkacchāpa* and *bhijjati*¹; the bh
+  letter: "In vols. 15" (was "4/3, 15"); m: "09, 14/3, 16, 22" (was with 4/3). Page view 4c/713 shows the supplement line; 4c/712
+  none. Browse and page-view search name the volume. Checked in a headless Chromium (the cloud container's Playwright) on a subset
+  of the build served locally; no page errors. Screenshots looked at: Volumes, `/w/bhijja`.
+- `site/test/editor/run.sh` in the VM (with `TMPDIR=/tmp`, npm's cache in /tmp: the session disk was full): **API tests pass 28,
+  fail 0**; the UI test cannot run there (no Playwright / Chromium in the VM). To run on the Mac.
+- `u` lists 4/3 among its volumes, as before: rows of 4c romanised with short *u*; not a supplement question, not looked into.
+
+*Left*: `tmp/supp-img/` (page crops) and `tmp/ui-check/` (the build subset) in the folder, gitignored; the VM cannot delete them
+(and one full-page PNG, `tmp/supp-img/4c-723.png`). Token cost: ~250 k.*

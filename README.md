@@ -99,7 +99,9 @@ with a spot check against the page images.
 
 Vol. 14/2 is typeset text, not a scan: it was converted from its legacy WinInnwa fonts, not OCR'd.
 Vol. 4/3 includes supplements to vols. 15, 4/2 and 16 (PDF pp. 713–735). Their Meaning boxes are drafted with
-4/3's and kept under book 4c (`docs/translation/meanings/4c.jsonl`), as the index files them.
+4/3's and kept under book 4c (`docs/translation/meanings/4c.jsonl`), as the index files them. The website shows each
+of those 223 rows in the alphabet of the volume it supplements, after the row given in `docs/supplements.tsv`, as
+"vol. 15 (supplement, bound in vol. 4/3)"; its page, image and printed page stay 4/3's.
 
 ## The index, and its errors
 

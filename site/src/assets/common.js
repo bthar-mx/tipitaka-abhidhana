@@ -130,6 +130,12 @@ function volumes() {
     .then(v => (VOLS = v)));
 }
 const volOf = id => (VOLS || []).find(v => v.id === id);
+// the supplements bound in vol. 4/3 (docs/supplements.tsv, brief §79): a row of book 4c with kb = the volume it
+// belongs to is named by that volume, "supplement, bound in vol. 4/3"; its page, image and printed page stay 4c's
+Object.assign(T.en, { supp_in: v => `supplement, bound in vol. ${v}`, supp_page: (v, b) => `Supplement to vol. ${v}, bound in vol. ${b}` });
+Object.assign(T.es, { supp_in: v => `suplemento, encuadernado en el vol. ${v}`, supp_page: (v, b) => `Suplemento al vol. ${v}, encuadernado en el vol. ${b}` });
+const volName = id => (volOf(id) || { n: id }).n;
+function volLabel(k, kb) { return kb ? `${volName(kb)} (${t('supp_in', volName(k))})` : volName(k); }
 // the page as the book prints it: PDF page - the index's start_page (site/volumes.json `offset`), with
 // the known exceptions (vol. 2's two pages bound out of order; vol. 22's missing page before PDF 920)
 function printedP(id, p) {
@@ -142,7 +148,7 @@ function printedP(id, p) {
 let S = null, S_P = null;
 function searchIndex() {
   return S_P || (S_P = fetch('/data/search.json').then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
-    .then(x => (S = x.map(row => row.concat(fold(row[4]))))));
+    .then(x => (S = x.map(row => row.slice(0, 5).concat(fold(row[4]), row[5] || null)))));   // [book, id, p, h, r, folded r, kb]
 }
 function runSearch(q, box) {
   q = q.trim();
@@ -158,14 +164,13 @@ function runSearch(q, box) {
   for (const row of S) {
     const hay = isMy ? row[3] : row[5];
     const pos = hay.indexOf(isMy ? q : fq); if (pos < 0) continue;
-    out.push([pos === 0 ? 0 : 1, pos === 0 && !isMy ? dmiss(row[4], q) : 0, hay.length, ord[row[0]] ?? 99, row[1], row]);
+    out.push([pos === 0 ? 0 : 1, pos === 0 && !isMy ? dmiss(row[4], q) : 0, hay.length, ord[row[6] || row[0]] ?? 99, row[1], row]);
   }
   out.sort((a, b) => a[0] - b[0] || a[1] - b[1] || a[2] - b[2] || a[3] - b[3] || a[4] - b[4]);
-  const vn = id => (volOf(id) || { n: id }).n;
   box.innerHTML = `<h3>${esc(t('matches', out.length))}</h3>` +
     out.slice(0, 60).map(x => {
-      const [b, i, p, h, r] = x[5];
-      return `<a class="res" href="/v/${b}/${p}#a${i}"><span><span class="my" lang="my">${esc(h)}</span><span class="ro" lang="pi">${esc(r)}</span></span><span class="pg">${t('vol')} ${esc(vn(b))} · ${t('page')} ${p}</span></a>`;
+      const [b, i, p, h, r, , kb] = x[5];
+      return `<a class="res" href="/v/${b}/${p}#a${i}"><span><span class="my" lang="my">${esc(h)}</span><span class="ro" lang="pi">${esc(r)}</span></span><span class="pg">${t('vol')} ${esc(volLabel(b, kb))} · ${t('page')} ${p}</span></a>`;
     }).join('') +
     (out.length > 60 ? `<div class="more">${esc(t('first60'))}</div>` : '') +
     (out.length ? '' : `<div class="more">${esc(t('nothing'))}</div>`);

@@ -27,7 +27,7 @@ function chip(cls, txt) { return `<span class="chip ${cls}">${esc(txt)}</span>`;
 function reportURL(d) {
   const link = `${location.origin}/v/${V.id}/${d.p}#a${d.i}`;
   const title = `Error: vol. ${V.n}, PDF p. ${d.p}, ${d.h} (id ${d.i})`;
-  const body = `**Volume:** ${V.n} (book \`${V.id}\`)\n**PDF page:** ${d.p} · **printed page:** ${d.q}\n**Headword:** ${d.h} (${d.r})\n**Article id:** ${d.i}\n**Link:** ${link}\n\n**What is wrong** (and, if you can, what the printed page says):\n\n`;
+  const body = `**Volume:** ${d.kb ? `${volName(d.kb)} (supplement bound in vol. ${V.n})` : V.n} (book \`${V.id}\`)\n**PDF page:** ${d.p} · **printed page:** ${d.q}\n**Headword:** ${d.h} (${d.r})\n**Article id:** ${d.i}\n**Link:** ${link}\n\n**What is wrong** (and, if you can, what the printed page says):\n\n`;
   return `${REPO}/issues/new?labels=error-report&title=${encodeURIComponent(title)}&body=${encodeURIComponent(body)}`;
 }
 function card(d) {
@@ -75,7 +75,9 @@ function render(p, scroll) {
   const c = { v: 0, f: 0, u: 0 }; idx.forEach(i => c[D[i].x]++);
   const d0 = D[idx[0]];
   $('pagehead').innerHTML = `<h2>${esc(t('pdfp'))} <b>${p}</b> · ${esc(t('printed'))} <b>${(q => q ? my2(q) : (d0 ? my2(d0.q) : '–'))(printedP(V.id, p))}</b> · ${idx.length} ${esc(t('headwords'))}</h2>
-    <div>${chip('c-v', c.v + ' ' + t('located'))}${c.f ? chip('c-f', c.f + ' ' + t('fuzzy')) : ''}${c.u ? chip('c-u', c.u + ' ' + t('unlocated')) : ''}</div>`;
+    <div>${chip('c-v', c.v + ' ' + t('located'))}${c.f ? chip('c-f', c.f + ' ' + t('fuzzy')) : ''}${c.u ? chip('c-u', c.u + ' ' + t('unlocated')) : ''}</div>` +
+    // the supplements bound in vol. 4/3 (brief §79): name the volume the page supplements
+    [...new Set(idx.map(i => D[i].kb).filter(Boolean))].map(kb => `<p class="note">${esc(t('supp_page', volName(kb), V.n))}</p>`).join('');
   $('list').innerHTML = rows.length ? rows.map(i => card(D[i])).join('') : `<div class="loading">${esc(t('no_rows'))}</div>`;
   const k = pages.indexOf(p); $('prev').disabled = k <= 0; $('next').disabled = k >= pages.length - 1;
   setImage(p);
