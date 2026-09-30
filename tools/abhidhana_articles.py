@@ -667,6 +667,13 @@ def split_runons(book, rows, allhw, pages_text):
     splits = {i: w for i, w in won.items() if kinds[i] in ('unlocated', 'stub')}
     dropped = [i for i in splits if checked.get(int(rs[i]['id']), ('',))[0] == 'wrong']
     for i in dropped: del splits[i]
+    # With the homonym rule on (§86), R gives some rows a line and changes some bodies, and the split test then finds
+    # splits §69 never saw. Every split is checked on the image before it is made (the editor, 28 Sep): one not in
+    # docs/splits-checked.tsv with the same host is reported, not made.
+    unchecked = []
+    if HOMONYM:
+        unchecked = [i for i in splits if checked.get(int(rs[i]['id']), (None, None))[1] != int(rs[splits[i][1]]['id'])]
+        for i in unchecked: del splits[i]
     byhost = {}
     for i, (sc, j, k, side, hm) in splits.items(): byhost.setdefault(j, []).append((k, i, side, hm))
     for j, xs in sorted(byhost.items()):
@@ -716,7 +723,241 @@ def split_runons(book, rows, allhw, pages_text):
     n = len(splits)
     return [f'run-on articles split out of a neighbour (§67 rule): {n} '
             f'(unlocated {sum(kinds[i] == "unlocated" for i in splits)}, stub {sum(kinds[i] == "stub" for i in splits)}; '
-            f'hosts {len(byhost)}; left out as wrong on the image {len(dropped)})']
+            f'hosts {len(byhost)}; left out as wrong on the image {len(dropped)})'] + \
+        ([f'split candidates not in docs/splits-checked.tsv with this host, not made: {len(unchecked)}: '
+          + ' '.join(f'{rs[i]["id"]}<{rs[won[i][1]]["id"]}' for i in sorted(unchecked))] if unchecked else [])
+
+
+# ---- homonyms placed on each other's line: the order rule R and the PCED pass (brief §85, §86; plan step 1.8) ----
+# A run is a maximal sequence of consecutive index ids with one headword (spaces removed). The index is ground truth
+# for how many entries the run has and in what order they are printed; where OCR misread a head line (a superscript ¹
+# read as ံ or ာ, a ( lost, a label not recognised), a row took its sibling's line and the rows after it shifted by one.
+# R: the lines of the run's pages that begin an entry of the headword, in reading order, between the run's placed
+# neighbours (the page before the run's first row, the one after its last; a run that ends its page also reaches the
+# head of the next page, the text that is otherwise its last article's continuation). If there are exactly n such lines
+# for n rows, row i takes line i; otherwise the run is left as it is. An entry line: §67's test (_head_match: the
+# headword exact, folded or an OCR misreading, then a label or [) -- "strict"; or the headword exact or folded, then a
+# ( or [ whose first characters hold no digit and no ။ (not a citation) -- "weak"; or the same with a superscript ¹
+# read as a final ံ or ာ, taken as the headword when that form is not itself an index headword -- "sup".
+# In the PCED books (01-19) PCED gates R (a run in which PCED puts a moved row's new text on another entry of the
+# headword is left as it was) and completes it (pced_homonyms, below). ABH_HOMONYM=0 turns both off.
+HOMONYM = __import__('os').environ.get('ABH_HOMONYM', '1') != '0'
+_HOMONYM_KEEP = ('id', 'book', 'index_page', 'index_misfiled', 'headword', 'iast', 'osbct', 'status')
+
+
+def page_lines(t, f, offs):
+    """[(flat offset, line, joined line)] for the non-empty lines of a page's text: a line ending in '-' with no ( or [
+    is read joined to the next (a headword broken by the printer), as _jlines"""
+    raw = []; o = 0
+    for ln in t.split('\n'):
+        if ln.strip(): raw.append((len(re.sub(r'\s', '', t[:o])), ln))
+        o += len(ln) + 1
+    out = []
+    for k, (s0, ln) in enumerate(raw):
+        j = ln.rstrip()[:-1] + raw[k + 1][1] if ln.rstrip().endswith('-') and not re.search(r'[(\[]', ln) and k + 1 < len(raw) else ln
+        out.append((s0, ln, j))
+    return out
+
+
+def entry_tier(line, h, hf, allhw, iast):
+    """(tier, how) when the line begins an entry of headword h: tier strict | weak | sup, how exact | fold | fuzzy"""
+    hm = _head_match(line, h, hf, allhw, iast)
+    if hm: return 'strict', hm[0]
+    s = _SP(line); m = re.search(r'[(\[（［]', s)
+    if not m or m.start() == 0: return None
+    pre = _TRAIL.sub('', s[:m.start()]); sup = False
+    if pre[:-1] == h and pre[-1:] in ('ံ', 'ာ') and pre not in allhw: pre = h; sup = True
+    if (pre == h or fold(pre) == hf) and not re.search(r'[၀-၉0-9။]', s[m.start() + 1:m.start() + 12].split(')')[0]):
+        return ('sup' if sup else 'weak'), ('exact' if pre == h else 'fold')
+    return None
+
+
+def order_rule(order, idx, located, P, H, twins, nxt_in_seq, allhw, iasts, disabled=frozenset()):
+    """R over the book, on the placements P[p] / H[p] (copies, changed in place). Returns (moves, cross, extras, stats):
+    moves {(p, i): info}, cross {(p, i): (q, s0)} for a row given a line on another page, extras {q: [s0]}."""
+    seqr = [(p, i) for p in order for i in range(len(idx[p]))]
+    runs, cur = [], []
+    for p, i in seqr:
+        wid, hw = idx[p][i]
+        if cur and _SP(hw) == _SP(idx[cur[-1][0]][cur[-1][1]][1]) and wid == idx[cur[-1][0]][cur[-1][1]][0] + 1: cur.append((p, i))
+        else:
+            if len(cur) > 1: runs.append(cur)
+            cur = [(p, i)]
+    if len(cur) > 1: runs.append(cur)
+    LN = {}
+    def lines(q):
+        if q not in LN:
+            t, f, offs = located[q][:3]
+            LN[q] = page_lines(t, f, offs)
+        return LN[q]
+    moves, cross, extras = {}, {}, {}
+    trace = order_rule.trace = []
+    st = {'runs': len(runs), 'keep': 0, 'reassign': 0, 'abstain': 0, 'skipped': 0, 'disabled': 0}
+    for run in runs:
+        key = idx[run[0][0]][run[0][1]][0]
+        ids = [idx[p][i][0] for p, i in run]
+        if key in disabled: st['disabled'] += 1; trace.append({'ids': ids, 'act': 'disabled'}); continue
+        pages = []
+        for p, _ in run:
+            if p not in pages: pages.append(p)
+        twinned = any(twins[p][i] is not None for p, i in run) or \
+            any(twins[p][k] in [i for q, i in run if q == p] for p in pages for k in range(len(idx[p])))
+        if twinned or any(nxt_in_seq.get(a) != b for a, b in zip(pages, pages[1:])):
+            st['skipped'] += 1; trace.append({'ids': ids, 'act': 'skip', 'why': 'twin' if twinned else 'pages', 'pages': pages}); continue
+        n = len(run); h = _SP(idx[run[0][0]][run[0][1]][1]); hf = fold(h); ia = iasts[key]
+        p0, i0 = run[0]; pl, il = run[-1]
+        lo = max([P[p0][k] + 1 for k in range(i0) if P[p0][k] is not None], default=0)
+        after = [P[pl][k] for k in range(il + 1, len(idx[pl])) if P[pl][k] is not None]
+        rng = [(q, lo if q == p0 else 0, None) for q in pages]
+        if after: rng[-1] = (pl, rng[-1][1], min(after))
+        elif il == len(idx[pl]) - 1 and nxt_in_seq.get(pl) in located:
+            qn = nxt_in_seq[pl]
+            first = min([x for x in P[qn] if x is not None], default=None)
+            rng.append((qn, 0, first))
+        E = []
+        for q, a, b in rng:
+            for s0, ln, jl in lines(q):
+                if s0 < a or (b is not None and s0 >= b): continue
+                et = entry_tier(jl, h, hf, allhw, ia)
+                if et: E.append((q, s0) + et)
+        tr = {'ids': ids, 'pages': pages, 'rng': [x[0] for x in rng], 'm': len(E), 'E': [[e[0], e[2]] for e in E]}
+        trace.append(tr)
+        if len(E) != n: st['abstain'] += 1; tr['act'] = 'abstain'; continue
+        if all(E[k][:2] == (p, P[p][i]) for k, (p, i) in enumerate(run)): st['keep'] += 1; tr['act'] = 'keep'; continue
+        st['reassign'] += 1; tr['act'] = 'reassign'
+        eset = {e[:2] for e in E}
+        for k, (p, i) in enumerate(run):
+            q, s0, tier, how = E[k]
+            old = P[p][i]
+            if (q, s0) == (p, old): continue
+            kind = 'unplaced' if old is None else ('other homonym' if (p, old) in eset
+                                                   else ('non-entry line' if old in {x for x, _, _ in lines(p)}
+                                                         else 'line not found'))
+            moves[(p, i)] = {'n': n, 'tier': tier, 'kind': kind, 'old': old, 'old_how': H[p][i], 'q': q, 'run': key}
+            newhow = {'exact': 'verbatim', 'fold': 'folded', 'fuzzy': 'fuzzy'}[how]
+            if q == p: P[p][i] = s0; H[p][i] = newhow
+            else:
+                P[p][i] = None; H[p][i] = newhow; cross[(p, i)] = (q, s0); extras.setdefault(q, []).append(s0)
+    return moves, cross, extras, st
+
+
+_PCED = None
+
+
+def _pced():
+    """({seq: entry}, {headword key: [seq]}, {folded key: [seq]}) from witness/pced_k.jsonl"""
+    global _PCED
+    if _PCED is None:
+        f = ROOT / 'witness/pced_k.jsonl'; E, ex, fo = {}, {}, {}
+        if f.exists():
+            for line in f.open(encoding='utf-8'):
+                w = json.loads(line); k = _SP(nfc(w['headword']))
+                E[w['seq']] = w; ex.setdefault(k, []).append(w['seq']); fo.setdefault(fold(k), []).append(w['seq'])
+        _PCED = (E, ex, fo)
+    return _PCED
+
+
+def _pced_verdict(r, own, others, E):
+    """'right' | ('another', seq) | 'unclear' for a row's body against its own PCED entry and the headword's others
+    (the join's measure: SequenceMatcher on the body against the analysis's tail after ။ + the definition, capped at
+    600 characters; right: own >= 0.6 and >= 0.2 above every other; another: another >= 0.6 and >= 0.2 above own)"""
+    ob = _SP(r.get('body'))
+    if r.get('located') == 'unlocated' or not ob: return 'unclear'
+    def ratio(seq):
+        w = E[seq]; wd = _SP(nfc((w.get('analysis') or '').partition('။')[2] + (w.get('definition') or '')))[:600]
+        return round(SequenceMatcher(None, ob[:len(wd)], wd, autojunk=False).ratio(), 3) if wd else None
+    o = ratio(own) if own in E else None
+    alts = [(v, s) for s in others for v in [ratio(s)] if v is not None]
+    a, aseq = max(alts) if alts else (None, None)
+    if o is None: return 'unclear'
+    if a is not None and a >= .6 and a - o >= .2: return ('another', aseq)
+    if o >= .6 and (a is None or o - a >= .2): return 'right'
+    return 'unclear'
+
+
+def pced_runs(book, rows):
+    """the PCED view of each run of the book: {row id: (run key, own seq, [other seqs of the headword], {seq: id})}"""
+    jf = ROOT / f'witness/join-{book}.jsonl'
+    E, ex, fo = _pced()
+    if not jf.exists() or not E: return {}
+    J = {}
+    for line in jf.open(encoding='utf-8'):
+        j = json.loads(line)
+        if j.get('seq') is not None and not j.get('count_mismatch'): J[j['id']] = j['seq']
+    rs = sorted(rows, key=lambda r: int(r['id'])); out = {}; cur = []
+    def close(g):
+        if len(g) < 2: return
+        h = _SP(g[0]['headword']); seqs = ex.get(h) or fo.get(fold(h)) or []
+        owner = {J[r['id']]: r['id'] for r in g if r['id'] in J}
+        for r in g:
+            if r['id'] in J and J[r['id']] in seqs:
+                out[r['id']] = (g[0]['id'], J[r['id']], [s for s in seqs if s != J[r['id']]], owner)
+    for r in rs:
+        if cur and _SP(r['headword']) == _SP(cur[-1]['headword']) and int(r['id']) == int(cur[-1]['id']) + 1: cur.append(r)
+        else: close(cur); cur = [r]
+    close(cur)
+    return out
+
+
+def pced_gate(book, rows):
+    """the runs in which PCED puts an R-moved row's new text on another entry: {run key}, and the rows so contradicted"""
+    V = pced_runs(book, rows); E = _pced()[0]; bad, rows_bad = set(), []
+    for r in rows:
+        if not str(r.get('homonym_rule', '')).startswith('order') or r['id'] not in V: continue
+        key, own, others, owner = V[r['id']]
+        v = _pced_verdict(r, own, others, E)
+        if isinstance(v, tuple): bad.add(r['homonym_run']); rows_bad.append(r['id'])
+    return bad, rows_bad
+
+
+def pced_homonyms(book, rows):
+    """PCED completes R: a row R did not move whose text PCED decides as another homonym's gives it to that homonym's
+    row, in the same run, when that row is unplaced or itself gives its text away (a permutation of the run's texts);
+    a row that gives its text and receives none is left unlocated. Moved rows get homonym_rule "pced", homonym_before,
+    and homonym_from (the id whose text they took). Returns report lines and the stats."""
+    V = pced_runs(book, rows); E = _pced()[0]
+    by = {r['id']: r for r in rows}
+    verdict = {}
+    for i, (key, own, others, owner) in V.items():
+        r = by[i]
+        if str(r.get('homonym_rule', '')).startswith('order'): continue
+        verdict[i] = _pced_verdict(r, own, others, E)
+    want = {}
+    for i, v in verdict.items():
+        if isinstance(v, tuple):
+            b = V[i][3].get(v[1])
+            if b is not None and b != i: want[i] = b
+    conflicts = set()
+    claim = {}
+    for a, b in want.items(): claim.setdefault(b, []).append(a)
+    ok = {a: b for a, b in want.items() if len(claim[b]) == 1}
+    conflicts |= {a for a in want if a not in ok}
+    while True:
+        drop = [a for a, b in ok.items()
+                if not (by[b].get('located') == 'unlocated' or b in ok)
+                or str(by[b].get('homonym_rule', '')).startswith('order')]
+        if not drop: break
+        for a in drop: del ok[a]; conflicts.add(a)
+    texts = {i: {k: v for k, v in by[i].items() if k not in _HOMONYM_KEEP and k != 'pdf_page'} for i in set(ok) | set(ok.values())}
+    pages = {i: by[i]['pdf_page'] for i in texts}
+    before = {i: {'located': by[i]['located'], 'pdf_page': by[i]['pdf_page'],
+                  'raw': (by[i].get('raw') or '').split('\n')[0] or None} for i in texts}
+    recv = {b: a for a, b in ok.items()}
+    for i in texts:
+        r = by[i]
+        for k in list(r):
+            if k not in _HOMONYM_KEEP and k != 'pdf_page': del r[k]
+        if i in recv:
+            r.update(texts[recv[i]]); r['pdf_page'] = pages[recv[i]]; r['homonym_from'] = recv[i]
+        else:
+            r['located'] = 'unlocated'
+        r['homonym_rule'] = 'pced'
+        r['homonym_before'] = {k: v for k, v in before[i].items() if v is not None}
+    st = {'moved': len(texts), 'received': len(recv), 'left_unlocated': len(texts) - len(recv), 'conflicts': len(conflicts),
+          'decided_another': sum(isinstance(v, tuple) for v in verdict.values())}
+    return [f'homonyms, PCED pass: {len(texts)} rows changed ({len(recv)} took a sibling\'s text, '
+            f'{len(texts) - len(recv)} left unlocated); {len(conflicts)} conflicts left'], st
+
 
 def main(book):
     c = sqlite3.connect(f'file:{ROOT}/db/tipitaka_abidan.db?mode=ro', uri=True)
@@ -758,59 +999,108 @@ def main(book):
     nxt_in_seq = {a: b for a, b in zip(seq, seq[1:]) if place(b) == place(a) + 1}
     order = sorted(pages, key=place)
 
-    def continuation(p):
-        """text after the last located article of page p, up to the next located headword"""
-        parts, via, uncertain = [], [], False
-        q = nxt_in_seq.get(p)
-        while q is not None:
-            if q in located:
-                t2, f2, offs2, pos2, _ = located[q]
-                first = min([x for x in pos2 if x is not None], default=None)
-                cont = t2[:offs2[first]] if first is not None else ''
-                if cont.strip(): parts.append(cont); via.append(q)
-                if first is None or pos2[0] is None: uncertain = True
-                break
-            rec = json.loads((pdir / f'p{q:04d}.json').read_text())
-            parts.append(page_text(rec)); via.append(q)
-            q = nxt_in_seq.get(q)
-        return parts, via, uncertain
+    iasts = {wid: transliterate.process('Burmese', 'IAST', re.sub('[' + MY_DIGITS + r'\d\s]', '', hw)).replace('ṃ', 'ṁ')
+             for p in order for wid, hw in idx[p]}
+    allhw = {re.sub(r'\s', '', nfc(w)) for (w,) in c.execute('select word from words')}
 
-    rows = []
-    for pi, p in enumerate(order):
-        t, f, offs, pos, how = located[p]
-        ents = idx[p]
-        found = sorted((pos[i], i) for i in range(len(ents)) if pos[i] is not None)
-        # an article runs to the next located headword at a later position (the two spellings
-        # of a variant entry share one position and one article)
-        nxt_pos = {i: next((q for q, _ in found[k + 1:] if q > pos[i]), None) for k, (_, i) in enumerate(found)}
-        for i, (wid, hw) in enumerate(ents):
-            row = dict(id=wid, book=book, pdf_page=p, index_page=ipage[p], headword=hw,
-                       located=how[i], status='ocr')
-            if twins[p][i] is not None: row['variant_of'] = ents[twins[p][i]][0]
-            if wid in misfiled: row['index_page'] = misfiled[wid]; row['index_misfiled'] = True
-            base = re.sub('[' + MY_DIGITS + r'\d\s]', '', hw)
-            iast = transliterate.process('Burmese', 'IAST', base).replace('ṃ', 'ṁ')
-            if pos[i] is not None:
-                a = offs[pos[i]]
-                e = offs[nxt_pos[i]] if nxt_pos[i] is not None else len(t)
-                raw = t[a:e]
-                if nxt_pos[i] is None:
-                    parts, via, uncertain = continuation(p)
-                    if parts:
-                        raw += '\n' + '\n'.join(parts); row['continues_on'] = via[0]
-                        if len(via) > 1: row['runs_through'] = via
-                    if uncertain: row['continuation_uncertain'] = True
-                row['raw'] = raw.strip()
-                row.update(fields(raw, hw, iast))
-            row['iast'] = iast
-            if vocab is not None:
-                k = iast.lower()
-                row['osbct'] = 'word' if k in vocab else ('inside' if k in blob else 'none')
-            rows.append(row)
+    def build(disabled=frozenset()):
+        """the rows, from the placements of the first pass with R applied (unless ABH_HOMONYM=0)"""
+        P = {p: list(located[p][3]) for p in order}; H = {p: list(located[p][4]) for p in order}
+        moves, cross, extras, st = (order_rule(order, idx, located, P, H, twins, nxt_in_seq, allhw, iasts, disabled)
+                                    if HOMONYM else ({}, {}, {}, None))
+        # an article's text runs to the next start on its page: a placed row's, or a line R gave to a row of another page
+        bounds = {p: sorted({x for x in P[p] if x is not None} | set(extras.get(p, []))) for p in order}
+
+        def continuation(p):
+            """text after the last located article of page p, up to the next located headword"""
+            parts, via, uncertain = [], [], False
+            q = nxt_in_seq.get(p)
+            while q is not None:
+                if q in located:
+                    t2, f2, offs2 = located[q][:3]; pos2 = P[q]
+                    first = bounds[q][0] if bounds[q] else None
+                    cont = t2[:offs2[first]] if first is not None else ''
+                    if cont.strip(): parts.append(cont); via.append(q)
+                    if first is None or (pos2[0] is None and first not in extras.get(q, [])): uncertain = True
+                    break
+                rec = json.loads((pdir / f'p{q:04d}.json').read_text())
+                parts.append(page_text(rec)); via.append(q)
+                q = nxt_in_seq.get(q)
+            return parts, via, uncertain
+
+        rows = []
+        for pi, p in enumerate(order):
+            ents = idx[p]
+            for i, (wid, hw) in enumerate(ents):
+                q, at = cross.get((p, i), (p, P[p][i]))
+                row = dict(id=wid, book=book, pdf_page=q, index_page=ipage[p], headword=hw,
+                           located=H[p][i], status='ocr')
+                if twins[p][i] is not None: row['variant_of'] = ents[twins[p][i]][0]
+                if wid in misfiled: row['index_page'] = misfiled[wid]; row['index_misfiled'] = True
+                iast = iasts[wid]
+                if at is not None:
+                    t, f, offs = located[q][:3]
+                    a = offs[at]
+                    nb = next((x for x in bounds[q] if x > at), None)
+                    e = offs[nb] if nb is not None else len(t)
+                    raw = t[a:e]
+                    if nb is None:
+                        parts, via, uncertain = continuation(q)
+                        if parts:
+                            raw += '\n' + '\n'.join(parts); row['continues_on'] = via[0]
+                            if len(via) > 1: row['runs_through'] = via
+                        if uncertain: row['continuation_uncertain'] = True
+                    row['raw'] = raw.strip()
+                    row.update(fields(raw, hw, iast))
+                row['iast'] = iast
+                if vocab is not None:
+                    k = iast.lower()
+                    row['osbct'] = 'word' if k in vocab else ('inside' if k in blob else 'none')
+                mv = moves.get((p, i))
+                if mv:
+                    t0, f0, offs0 = located[p][:3]
+                    old = mv['old']
+                    before = {'located': mv['old_how'], 'pdf_page': p}
+                    if old is not None:
+                        a0 = offs0[old]; e0 = t0.find('\n', a0)
+                        before['raw'] = t0[a0:e0 if e0 != -1 else len(t0)].strip()
+                    before['kind'] = mv['kind']
+                    row['homonym_rule'] = f'order:{mv["n"]}:{mv["tier"]}'
+                    row['homonym_before'] = before
+                    row['homonym_run'] = mv['run']
+                rows.append(row)
+        return rows, moves, st
+
+    rows, moves, rst = build()
+    trace0 = getattr(order_rule, 'trace', [])
+    hst = None; gate_rows = []; undone = 0
+    if HOMONYM:
+        from abhidhana_witness_analysis import PCED_BOOKS
+        if book in PCED_BOOKS:
+            bad, gate_rows = pced_gate(book, rows)
+            if bad:
+                undone = sum(1 for r in rows if r.get('homonym_run') in bad)
+                rows, moves, rst = build(frozenset(bad))
+        kinds = {}
+        for mv in moves.values(): kinds[mv['kind']] = kinds.get(mv['kind'], 0) + 1
+        print(f'homonyms, order rule R: {rst["runs"]} runs; reassigned {rst["reassign"]}, kept {rst["keep"]}, '
+              f'abstained {rst["abstain"]}, skipped {rst["skipped"]} (pages not consecutive or a variant twin); '
+              f'{len(moves)} rows moved (' + ', '.join(f'{k} {v}' for k, v in sorted(kinds.items())) + ')'
+              + (f'; PCED contradicted {len(gate_rows)} rows, {rst["disabled"]} runs left as they were ({undone} R moves undone)'
+                 if book in PCED_BOOKS else ''))
+        if book in PCED_BOOKS:
+            m, hst = pced_homonyms(book, rows)
+            for x in m: print(x)
+        for r in rows: r.pop('homonym_run', None)
+        tp = __import__('os').environ.get('ABH_HOMONYM_TRACE')
+        if tp:   # a record of R's decision on every run (measurement only; nothing in the output depends on it)
+            with open(f'{tp}/trace-{book}.jsonl', 'w', encoding='utf-8') as tf:
+                for x in trace0: tf.write(json.dumps(dict(x, stage='first'), ensure_ascii=False) + '\n')
+                if getattr(order_rule, 'trace', []) is not trace0:
+                    for x in order_rule.trace: tf.write(json.dumps(dict(x, stage='after gate'), ensure_ascii=False) + '\n')
 
     # run-on articles split out of their neighbour (books without PCED only; brief §67, §69)
     if book in SPLIT_BOOKS:
-        allhw = {re.sub(r'\s', '', nfc(w)) for (w,) in c.execute('select word from words')}
         _pt = {}
         def pages_text(q):
             if q not in _pt:
