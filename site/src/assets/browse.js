@@ -193,7 +193,7 @@ window.ABH = { ov, setEdits, current: () => cur.recs[cur.k], rows: (book, id) =>
 
 // --- state ----------------------------------------------------------------------------------------
 let cur = { li: 0, gi: 0, si: 0, recs: [], k: 0, off: 0 };   // the syllable shown and the entry in it
-const FRESH = { label: false, def: false, cit: -1, scanDelta: 0, qall: false, qevery: false, call: false, cevery: false };   // per article
+const FRESH = { label: false, def: false, cit: -1, scanDelta: 0, qall: false, qevery: false, call: false, cevery: false, mall: false };   // per article
 let open = Object.assign({ drawer: false, settings: false }, FRESH);
 const W = 160;
 
@@ -431,6 +431,68 @@ function fmtTr(x) {
     .replace(/\*([^*]+)\*/g, '<i class="pl" lang="pi">$1</i>')
     .replace(/‹([^›]+)›/g, '<span class="my" lang="my">$1</span>');
 }
+// --- senses: BEGIN (display only, brief §84) ----------------------------------------------------------
+// A Meaning with numbered senses shown as a list. Nothing in the text or the data changes; Copy keeps the
+// plain text. A marker is "(n)" at the start, or after . ; : , and a space, with any grammatical labels
+// ("(adjetivo)") between: those labels go with the sense that follows. "(n)" anywhere else (véase [[x]] (2),
+// "veinte (20)") is text. The list is used only when the markers run 1, 2, 3 … with no gap or repeat,
+// there are at least two, and the Meaning is longer than SENSE_MIN characters; letter sub-senses (a), (b) …
+// are nested under their number by the same in-order rule. Otherwise the paragraph stays as it is.
+const SENSE_MIN = 120, SENSE_FOLD = 8;
+function senseMarks(x, re, val) {
+  const out = []; let m; re.lastIndex = 0;
+  while ((m = re.exec(x))) {
+    let pre = x.slice(0, m.index), s = m.index, lm;
+    while ((lm = /\([^()\d]{2,40}\)\s*$/.exec(pre))) { s = lm.index; pre = pre.slice(0, lm.index); }
+    pre = pre.replace(/\s+$/, '');
+    if (pre && !/[.;:,]$/.test(pre)) continue;
+    out.push({ s, a: m.index, e: m.index + m[0].length, n: val(m[1]), mk: m[0] });
+  }
+  return out;
+}
+const balanced = p => (p.split('[[').length === p.split(']]').length) && (p.split('‹').length === p.split('›').length) &&
+  (p.split('*').length % 2 === 1);
+function senseCut(x, marks) {   // [lead, [{mk, x}]] with each piece's labels before its text
+  const items = marks.map((k, j) => ({ mk: k.mk, x: (x.slice(k.s, k.a) + x.slice(k.e, j + 1 < marks.length ? marks[j + 1].s : x.length)).replace(/\s+/g, ' ').trim() }));
+  return [x.slice(0, marks[0].s).trim(), items];
+}
+function inOrder(marks) {
+  if (marks.length < 2) return 'one';
+  for (let j = 0; j < marks.length; j++) if (marks[j].n !== j + 1) {
+    return j === 0 ? 'start' : marks.slice(0, j).some(k => k.n === marks[j].n) ? 'repeat' : marks[j].n > j + 1 ? 'gap' : 'order';
+  }
+  return '';
+}
+function splitSenses(x, noLen) {   // {lead, items: [{mk, x, sub}]} or {why}
+  x = x || '';
+  const M = senseMarks(x, /\((\d{1,3})\)/g, Number);
+  if (!M.length) return { why: /\(\d{1,3}\)/.test(x) ? 'text' : 'none' };
+  const w = inOrder(M); if (w) return { why: w };
+  if (!noLen && plainTr(x).length <= SENSE_MIN) return { why: 'short' };
+  const [lead, items] = senseCut(x, M);
+  if (![lead, ...items.map(i => i.x)].every(balanced)) return { why: 'markup' };
+  if (items.some(i => !i.x)) return { why: 'empty' };
+  for (const it of items) {   // letter sub-senses inside one sense
+    const L = senseMarks(it.x, /\(([a-z])\)/g, c => c.charCodeAt(0) - 96);
+    if (L.length < 2 || inOrder(L)) continue;
+    const [sl, si] = senseCut(it.x, L);
+    if ([sl, ...si.map(i => i.x)].every(balanced) && si.every(i => i.x)) it.sub = { lead: sl, items: si };
+  }
+  return { lead, items };
+}
+function sensesHTML(x, all = open.mall) {
+  const P = splitSenses(x);
+  if (!P.items) return fmtTr(x);
+  const li = it => `<li><span class="sn">${esc(it.mk)}</span>` + (it.sub
+    ? (it.sub.lead ? `<span>${fmtTr(it.sub.lead)}</span>` : '') + `<ol class="senses sub">${it.sub.items.map(s => li(s)).join('')}</ol>`
+    : fmtTr(it.x)) + '</li>';
+  const n = P.items.length, shown = all || n <= SENSE_FOLD ? P.items : P.items.slice(0, SENSE_FOLD);
+  return (P.lead ? `<div class="s-lead">${fmtTr(P.lead)}</div>` : '') +
+    `<ol class="senses${n >= 10 ? ' w2' : ''}">${shown.map(it => li(it)).join('')}</ol>` +
+    (n > SENSE_FOLD ? `<div class="fold"><button type="button" data-fold="mall" aria-expanded="${!!all}">${esc(all ? t('show_fewer') : t('show_all_n', n))}</button></div>` : '');
+}
+window.ABH_SENSES = { split: splitSenses, html: sensesHTML };   // for the UI test
+// --- senses: END --------------------------------------------------------------------------------------
 // display only: a quoted line of one word, or mostly dashes, digits or symbols (over 30% of its
 // characters not letters), and a citation that is only numbers ("2.50"; "vi 1" names a work and stays),
 // are hidden behind "show everything" (the editor, 28 Sep 2026). Nothing in the data changes.
@@ -507,7 +569,7 @@ function article() {
   // Meaning: the translation with its status, or an honest "not yet translated"
   const tr = d.t && d.t[LANG];
   H.push(`<section><h2>${esc(t('meaning'))}</h2>` + (tr
-    ? `<div class="meaning"><span class="chip ${tr.s === 'drafted' || tr.s === 'partial' || tr.s === 'rpartial' ? 'c-warn' : 'c-ok'}"${tr.s === 'drafted' ? ` title="${esc(t('drafted_t'))}"` : ''}>${esc(t('st_' + tr.s))}</span><div lang="${LANG}">${fmtTr(tr.x)}</div>${tr.s === 'drafted' ? `<div class="muted small">${esc(t('drafted_note'))}</div>` : ''}${tr.s === 'partial' || tr.s === 'rpartial' ? `<div class="muted small">${esc(t(tr.s === 'partial' ? 'partial_note' : 'rpartial_note', (tr.cs || []).map(n => `(${n})`).join(', ')))}</div>` : ''}${tr.date ? `<div class="muted small">${esc(t('edited_on', tr.date.slice(0, 10)))}</div>` : ''}</div>`
+    ? `<div class="meaning"><span class="chip ${tr.s === 'drafted' || tr.s === 'partial' || tr.s === 'rpartial' ? 'c-warn' : 'c-ok'}"${tr.s === 'drafted' ? ` title="${esc(t('drafted_t'))}"` : ''}>${esc(t('st_' + tr.s))}</span><div lang="${LANG}">${sensesHTML(tr.x)}</div>${tr.s === 'drafted' ? `<div class="muted small">${esc(t('drafted_note'))}</div>` : ''}${tr.s === 'partial' || tr.s === 'rpartial' ? `<div class="muted small">${esc(t(tr.s === 'partial' ? 'partial_note' : 'rpartial_note', (tr.cs || []).map(n => `(${n})`).join(', ')))}</div>` : ''}${tr.date ? `<div class="muted small">${esc(t('edited_on', tr.date.slice(0, 10)))}</div>` : ''}</div>`
     : `<div class="meaning empty"><span class="chip">${esc(t('not_translated'))}</span><span>${esc(t('trans_note'))}</span></div>`));
   const showDef = d.b && (S.defs === 'show' || (S.defs === 'collapse' && open.def));
   if (d.b && S.defs === 'collapse' && !open.def) H.push(`<button type="button" class="btn" data-def="1" aria-expanded="false">${esc(t('show_def'))}</button>`);

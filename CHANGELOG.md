@@ -23,6 +23,23 @@ Versions of the Tipiṭaka Pāḷi-Myanmā Abhidhāna project: the data, the too
 A release note says, per version: what changed, the brief's sections, and the headline figures
 (located, label + body, Meaning rows drafted / reviewed).
 
+## v0.28.6 — 29 Sep 2026
+
+- **A Meaning with numbered senses is shown as a list** (brief §84; display only: the Meaning text and the data are unchanged,
+  Copy still copies the plain text). The draft's own "(1)", "(2)" are the markers, hanging to the left, no gap between senses,
+  the same font size; text before (1) (karoti's "hace;") stays as a lead line; letter sub-senses (a), (b) … are nested under
+  their number. A marker is "(n)" at the start or after `.` `;` `:` `,` (grammatical labels such as "(adjetivo)" before it go
+  with that sense); "(n)" anywhere else (`Véase [[x]] (2)`, "veinte (20)") is text. The list is used only with ≥ 2 markers
+  running 1, 2, 3 … with no gap or repeat, in a Meaning longer than 120 characters; otherwise the paragraph is as before.
+  Over 8 senses: the first 8 and *mostrar todo (N)* / *show all (N)*.
+- Measured over `docs/translation/meanings/*.jsonl` (217,450 rows): **9,478 ES and 8,877 EN Meanings split** (1,993 / 1,978 with
+  nested letters; 314 each with more than 8 senses). Numbers but left as a paragraph (ES / EN): 120 characters or fewer 8,021 /
+  8,619; numbers only inside the text (cross-references, counts) 4,308 / 4,312; one marker 840 / 844; a number repeated 1,174 /
+  1,173; not starting at (1) 201 / 203; a gap 184 / 181.
+- `site/src/assets/browse.js` (the senses block, `mall` in the fold state), `style.css` (one block). UI test step 8 (27 checks,
+  375 and 1,280 px): expect UI pass 88 fail 0.
+- No data file changed.
+
 ## v0.28.5 — 29 Sep 2026
 
 - **Copy / Cite / Share no longer add a line on a phone** (brief §83). v0.28.4's UI test on the Mac (real fonts) failed at 375 px

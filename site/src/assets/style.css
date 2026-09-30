@@ -508,3 +508,12 @@ html[data-script="ro"] .lt.on .pl{color:var(--on-accent)}
   .acts .icn{height:26px}
   .acts-msg{left:auto;right:0}
 }
+
+/* ---------- v0.28.6: a Meaning's numbered senses as a list (display only, brief §84) ---------- */
+/* the draft's own "(1)", "(2)" hang in a column to the left; same size, no gap between items */
+.senses{list-style:none;margin:0;padding:0;--sw:1.6em}
+.senses.w2{--sw:2.4em}
+.senses.sub{--sw:1.8em}
+.senses > li{margin:0;padding:0 0 0 var(--sw)}
+.senses > li > .sn{float:left;width:var(--sw);margin-left:calc(-1 * var(--sw));white-space:nowrap}
+.meaning .senses + .fold{margin-top:4px}

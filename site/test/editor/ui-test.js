@@ -252,6 +252,85 @@ async function seed(token) {
   }
   await page.evaluate(() => localStorage.removeItem('browse'));
   await ctx.close();
+
+  // 8. a Meaning's numbered senses as a list (brief §84; display only). karoti: a lead ("hace;"), 18 senses folded to
+  //    8 + "mostrar todo (18)"; bhava in English: 16 senses, (5) with (a) (b) nested; bhijja, luñcana: no numbers;
+  //    kāyaggahaṇa: "(3)" printed twice; kaṁsatālakaṭṭhatālasadda: "Véase [[kaṁsatāla]] (1)": paragraphs as before. The
+  //    marker's text clear of its sense (≥ 3 px), every line of a sense at the same x, no gap between senses, one font
+  //    size; Copy the plain text; at 375 px the buttons of §81/§83 add no line; real fonts as in step 7 (ABH_FONTS).
+  const geo = () => {
+    const q = s => document.querySelector(s), box = q('.meaning > div[lang]'), L = box && box.querySelector(':scope > ol.senses');
+    const R = e => e.getBoundingClientRect(), out = { list: !!L, sw: document.documentElement.scrollWidth, y: R(q('.meaning')).top, hh: R(q('.head')).height };
+    if (!L) return out;
+    const lines = li => {   // the left edge of each line of the sense's own text (not its marker, not a nested list)
+      const tw = document.createTreeWalker(li, NodeFilter.SHOW_TEXT, { acceptNode: n => n.parentElement.closest('.sn') || n.parentElement.closest('ol') !== li.parentElement ? 2 : 1 });
+      const by = {}; let n;
+      while ((n = tw.nextNode())) { const rg = document.createRange(); rg.selectNodeContents(n); for (const r of rg.getClientRects()) if (r.width) { const k = Math.round(r.top); by[k] = Math.min(by[k] ?? 1e9, r.left); } }
+      return Object.values(by);
+    };
+    const lis = [...box.querySelectorAll('ol.senses > li')], top = [...L.children]; let hang = true, gap = 0, lineN = 0; const fs = new Set();
+    for (const li of lis) {
+      const cs = getComputedStyle(li), x0 = R(li).left + parseFloat(cs.paddingLeft), sn = li.querySelector(':scope > .sn');
+      fs.add(cs.fontSize); fs.add(getComputedStyle(sn).fontSize);
+      const ls = lines(li); lineN = Math.max(lineN, ls.length);
+      const rs = document.createRange(); rs.selectNodeContents(sn);
+      if (rs.getBoundingClientRect().right > x0 - 3 || ls.some(l => Math.abs(l - x0) > 1)) hang = false;
+      const sub = li.querySelector(':scope > ol.senses'); if (sub && Math.abs(R(sub).left - x0) > 1) hang = false;
+    }
+    for (let j = 1; j < top.length; j++) gap = Math.max(gap, Math.abs(R(top[j]).top - R(top[j - 1]).bottom));
+    const btn = box.querySelector('[data-fold="mall"]');
+    return Object.assign(out, { n: top.length, mk: top.map(li => li.querySelector('.sn').textContent), lead: (box.querySelector(':scope > .s-lead') || {}).textContent || '',
+      sub: box.querySelectorAll('ol.senses.sub').length, hang, gap, lineN, fs: [...new Set([...fs, getComputedStyle(box).fontSize])], btn: btn ? btn.textContent : '' });
+  };
+  for (const [W, H] of [[375, 812], [1280, 900]]) {
+    ctx = await browser.newContext({ locale: 'es-ES', viewport: { width: W, height: H } }); page = await ctx.newPage();
+    if (process.env.ABH_FONTS) {
+      const F = process.env.ABH_FONTS, pth = require('path');
+      await page.route(/fonts\.googleapis\.com/, r => r.fulfill({ path: pth.join(F, 'fonts.css'), contentType: 'text/css' }));
+      await page.route(/\/__fonts\//, r => r.fulfill({ path: pth.join(F, pth.basename(new URL(r.request().url()).pathname)), contentType: 'font/woff2' }));
+    }
+    const errs = []; page.on('pageerror', e => errs.push(String(e)));
+    const go = async (w, lang) => {
+      await page.evaluate(l => localStorage.setItem('lang', l), lang);
+      await page.goto(B + '/w/' + w); await page.waitForSelector('.meaning'); await page.waitForTimeout(800);
+      await page.evaluate(() => document.fonts.ready);
+      return page.evaluate(geo);
+    };
+    await page.goto(B + '/');
+    let g = await go('karoti', 'es');
+    const fonts = await page.evaluate(() => [...new Set([...document.fonts].filter(f => f.status === 'loaded').map(f => f.family.replace(/"/g, '')))].sort().join(', ') || 'none loaded');
+    ok(g.list && g.lead === 'hace;' && g.n === 8 && g.mk.join('') === '(1)(2)(3)(4)(5)(6)(7)(8)' && g.btn === 'mostrar todo (18)',
+      `senses ${W} px /w/karoti: lead "${g.lead}", ${g.n} shown ${g.mk.join('')}, "${g.btn}"`);
+    ok(g.hang && g.gap < 0.5 && g.fs.length === 1, `senses ${W} px /w/karoti: hanging indent ${g.hang}, gap ${g.gap.toFixed(2)} px, font size ${g.fs.join(' / ')}`);
+    ok(g.sw <= W, `senses ${W} px /w/karoti: page width ${g.sw}; fonts: ${fonts}`);
+    await page.screenshot({ path: `${shots}/senses-${W}-karoti.png`, fullPage: W === 375 });
+    if (W === 375) {
+      const st = await page.addStyleTag({ content: '.acts{display:none!important}' }); const g0 = await page.evaluate(geo); await st.evaluate(e => e.remove());
+      ok(Math.abs(g0.y - g.y) < 1 && Math.abs(g0.hh - g.hh) < 1, `senses 375 px /w/karoti: Meaning box at ${g.y.toFixed(0)} px with the buttons, ${g0.y.toFixed(0)} without`);
+    }
+    await page.click('[data-fold="mall"]'); g = await page.evaluate(geo);
+    ok(g.n === 18 && g.mk[17] === '(18)' && g.btn === 'mostrar menos' && g.hang && g.gap < 0.5, `senses ${W} px /w/karoti unfolded: ${g.n}, last ${g.mk[17]}, "${g.btn}"`);
+    await page.click('[data-fold="mall"]'); g = await page.evaluate(geo);
+    ok(g.n === 8, `senses ${W} px /w/karoti folded back: ${g.n}`);
+    const cp = await page.evaluate(() => ABH_ACTS.copyText());
+    ok(cp.includes('Significado (borrador, sin revisar): hace; (1) produce; (2) practica. (3) pone.'),
+      `senses ${W} px /w/karoti: Copy keeps the plain text: ` + (cp.split('\n').find(l => l.startsWith('Significado')) || '').slice(0, 90));
+    g = await go('bhava', 'en');
+    ok(g.list && g.n === 8 && g.btn === 'show all (16)' && g.sub === 1 && g.hang && g.gap < 0.5 && g.fs.length === 1 && g.sw <= W,
+      `senses ${W} px /w/bhava (EN): ${g.n} shown, "${g.btn}", ${g.sub} nested list, hanging ${g.hang}, longest sense ${g.lineN} lines, page width ${g.sw}`);
+    await page.screenshot({ path: `${shots}/senses-${W}-bhava-en.png`, fullPage: W === 375 });
+    for (const [w, why] of [['bhijja', 'no numbers'], ['luñcana', 'no numbers'], ['kāyaggahaṇa', '(3) printed twice'], ['kaṁsatālakaṭṭhatālasadda', 'Véase … (1)']]) {
+      g = await go(w, 'es');
+      ok(!g.list && g.sw <= W, `senses ${W} px /w/${w}: a paragraph (${why}); page width ${g.sw}`);
+      if (W === 375 && (w === 'bhijja' || w === 'luñcana')) {
+        const st = await page.addStyleTag({ content: '.acts{display:none!important}' }); const g0 = await page.evaluate(geo); await st.evaluate(e => e.remove());
+        ok(Math.abs(g0.y - g.y) < 1, `senses 375 px /w/${w}: Meaning box at ${g.y.toFixed(0)} px with the buttons, ${g0.y.toFixed(0)} without`);
+      }
+    }
+    ok(!errs.length, `senses ${W} px: no script errors ${errs.join(' | ')}`);
+    await page.evaluate(() => localStorage.removeItem('lang'));
+    await ctx.close();
+  }
   await browser.close();
   console.log(`pass ${pass} fail ${fail}`);
   process.exitCode = fail ? 1 : 0;

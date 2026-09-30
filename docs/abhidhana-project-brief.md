@@ -2453,3 +2453,76 @@ subset, the edits from a fixture and the seed stubbed: **5 pass** with v0.28.5's
 container, no Playwright in the VM): to run on the Mac. Not tested: Safari, Firefox, a real phone.
 
 *Left*: `tmp/ui-check/c83/` (32 chunks of the full build for the sweep; gitignored).
+
+
+## 84. A Meaning's numbered senses shown as a list (29 Sep 2026, Cowork; v0.28.6)
+
+**Asked** (the editor; display only, the Meaning text and the data unchanged, Copy still the plain text): a Meaning with several
+numbered senses shown as a list — only with ≥ 2 senses, longer than ~120 characters, and numbers running 1, 2, 3 … in order with no
+gap or repeat; otherwise the paragraph as it is (cross-references such as "véase (2)", numbers in citation blocks and senses printed
+twice never split). Text before (1) a lead line; letter sub-senses nested by the same rule; the draft's own "(1)" as markers, hanging
+indent, no extra gap, same font size; over 8 senses folded like the passages (§66); checked at 375 and 1,280 px with the site's web
+fonts; the buttons of §81/§83 still add no line on a phone; checks in `ui-test.js`.
+
+**The rule** (`site/src/assets/browse.js`, the block between `senses: BEGIN` and `senses: END`; nothing else reads it):
+- A **marker** is "(n)" (1–3 digits) at the start of the Meaning, or after `.` `;` `:` `,` and a space, with any parenthesised words
+  of two or more letters and no digit between ("hace algo. (adjetivo) (2) que …"): such labels go with the sense that follows and are
+  drawn after its marker ("(2) (adjetivo) que …"; *decided without asking*: the drafts write the label both before and after the
+  number, 4,040 and 876 times before for *adjetivo* / *neutro* in ES). Every other "(n)" is text: after a word or a link
+  (`Véase [[khaṇḍa]] (4)`, "veinte (20)", "Véase la entrada anterior (5)"), after another number or a letter ("(a) (1)").
+- **Split** only when the markers are ≥ 2, run exactly 1, 2, 3 … (from 1, no gap, no repeat, in order), the Meaning's plain text
+  (markup dropped, as Copy) is longer than 120 characters, and each piece has balanced `*`, `[[ ]]`, `‹ ›` and some text (no row
+  failed these two). "(n)" that are text do not stop a split: `Véase [[x]] (2)` inside a sense stays in that sense.
+- Text before the first marker is the **lead**; text after the last sense's text stays in the last sense (karoti's "(18) hace comer;
+  alimenta. Véase el original." — *decided without asking*: the draft does not say whether the note is (18)'s or the article's).
+- **Letters** (a)…(z) inside a sense, by the same marker test and the same in-order rule (≥ 2, from (a)); no length threshold; text
+  before (a) is the sense's own first line. When the letters do not qualify, the sense stays one paragraph.
+- **Drawn**: `<ol class="senses">`, each sense `<li><span class="sn">(1)</span>…</li>`; the marker floats in a column of 1.6 em
+  (2.4 em with ten senses or more, 1.8 em for letters), so every line of a sense starts at the same x; `list-style:none`, no margin
+  between senses, the Meaning's 17 px. Over 8 senses: the first 8 and *mostrar todo (N)* / *show all (N)* (the passages' button and
+  fold state, `open.mall`; *mostrar menos* folds back). `window.ABH_SENSES` (split, html) for the tests.
+
+**Measured** (`tmp/senses/measure.js`, which evaluates the block as it is in `browse.js`, over `docs/translation/meanings/*.jsonl`,
+217,450 rows):
+
+| | ES | EN |
+|---|---:|---:|
+| split into a list | **9,478** | **8,877** |
+| … with letter sub-senses nested | 1,993 | 1,978 |
+| … with more than 8 senses (folded) | 314 | 314 |
+| numbers, but a paragraph: 120 characters or fewer | 8,021 | 8,619 |
+| … numbers only inside the text (cross-references, counts) | 4,308 | 4,312 |
+| … one marker only | 840 | 844 |
+| … a number repeated (senses printed twice, enumerations in citation-like blocks, "(3). Véase …") | 1,174 | 1,173 |
+| … not starting at (1) (e.g. "(a) (1) …", a first sense unnumbered) | 201 | 203 |
+| … a gap (a marker with no punctuation before it, "rechazar (3) palabra …") | 184 | 181 |
+
+800 rows split in ES only and 199 in EN only: the same markers, the two languages on either side of 120 characters. Senses per
+split row (ES): 2: 5,024, 3: 2,054, 4: 922, 5: 549, 6: 289, 7: 205, 8: 121, more: 314 (most: *apa* 46, *sudassana* 43). The
+repeat rule is conservative: *kāyaggahaṇa* "(3) … (3). Véase [[…]]" and *kusi* "(4) … (4) Véase …" stay paragraphs though their
+senses run in order before the cross-reference (not counted separately).
+
+**Checks** (headless Chromium, the cloud container's Playwright 1.56, on a subset of a full build — 958 files built in the folder,
+`tmp/senses/dist`; the letters k, bh and l, 63 chunks — served with the `/w/*` rewrite, no API; the four web fonts from
+`@fontsource` 5.3.0 as in §83):
+- `/w/karoti` (vol. 5, 18 senses) at 375 and 1,280 px: lead *hace;*, 8 senses (1)–(8), *mostrar todo (18)*; unfolded 18, *mostrar
+  menos*, folded back 8; the marker's text ≥ 3 px clear of its sense, every line of a sense at the same x, 0 px between senses, one
+  font size (17 px); Copy gives "hace; (1) produce; (2) practica. …" as before; page width 375 / 1,280.
+- `/w/bhava` in English (vol. 15, 16 senses, (5) with (a) (b)): 8 shown, *show all (16)*, the nested list aligned with its sense's
+  text; the longest sense 4 lines at 375 px.
+- `/w/bhijja`, `/w/luñcana` (no numbers), `/w/kāyaggahaṇa` ("(3)" twice), `/w/kaṁsatālakaṭṭhatālasadda` ("Véase [[kaṁsatāla]]
+  (1)"): paragraphs as before.
+- 375 px, the buttons of §81/§83: the Meaning box at the same y with and without them on karoti (406 px), bhijja (392), luñcana
+  (407). No script errors.
+- Every split Meaning in the subset (1,366, ES and EN) drawn unfolded into the page at 375 and 1,280 px: the marker's text ≥ 3.6 px
+  clear of its sense (the narrowest: "(m)"), no sideways scroll; all markers (1)–(46) and (a)–(z) in one list likewise.
+- Screenshots looked at: 375 px karoti and bhava (EN), 1,280 px karoti unfolded. The first version's 2.1 em column for two-digit
+  markers left "(10)" touching its text at 1,280 px: widened to 2.4 em, and the check measures the marker's text, not its box.
+- **UI test step 8** (`site/test/editor/ui-test.js`): the above as 27 checks (15 at 375 px, 12 at 1,280), with `ABH_FONTS` as in
+  step 7. Run here as an extract against the static subset: **27 pass, 0 fail** with the web fonts. Without them (the container's
+  fallback fonts) one fails: karoti's Meaning box 399 / 398 px with / without the buttons — a 1-px shift of §83's head, not of the
+  list; with the Mac's Google Fonts expect it to pass. **Expect UI pass 88 fail 0** (61 + 27). **Not run here in full** (no wrangler
+  / D1 in the container, no Playwright in the VM): to run on the Mac. Not tested: Safari, Firefox, a real phone.
+
+*Left*: `tmp/senses/` (gitignored): `measure.js`, `show.js`, `why.js`, `split-es.tsv` (the 9,478 ES rows split: book, id, IAST,
+senses), and `dist/` (the full build, 617 MB, for the editor to delete) and `subset.tgz`.
