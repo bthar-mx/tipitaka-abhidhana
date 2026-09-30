@@ -25,7 +25,7 @@ Object.assign(T.en, {
   show_def: 'Show the Burmese definition', hide_def: 'Hide the Burmese definition', my_def: 'Burmese definition',
   ocrnote: 'Machine-read Burmese (OCR), unchecked. Compare the printed page before quoting.',
   quotes: 'Pāḷi passages quoted', quotes_note: 'Picked out of the definition by machine; their references are among the citations.',
-  cit_vp: (v, p) => `vol. ${v}, p. ${p}`, cit_p: p => `p. ${p}`, cit: 'Citations', cit_unknown: 'abbreviation not yet identified', cit_list: 'in the list of works', cit_draft: 'table drafted, not reviewed',
+  cit_vp: (v, p) => `vol. ${v}, p. ${p}`, cit_p: p => `p. ${p}`, cit: 'Citations', cit_unknown: 'abbreviation not yet identified', cit_list: 'in the list of works', cit_draft: 'table drafted, not reviewed', cit_inf: m => `read as ${m}: the OCR damaged the abbreviation, the work is inferred`,
   scan: 'Printed page', see_page: 'See the printed page', page_view: 'Page view', close_scan: 'Close the printed page',
   prev_page: 'Previous page', next_page: 'Next page', img_none: 'This page image is not available.',
   fuzzy: 'located approximately', unlocated_h: 'Not found in the machine reading',
@@ -64,7 +64,7 @@ Object.assign(T.es, {
   show_def: 'Mostrar la definición birmana', hide_def: 'Ocultar la definición birmana', my_def: 'Definición birmana',
   ocrnote: 'Birmano leído por máquina (OCR), sin revisar. Compare con la página impresa antes de citar.',
   quotes: 'Pasajes pāḷi citados', quotes_note: 'Extraídos por máquina de la definición; sus referencias están entre las citas.',
-  cit_vp: (v, p) => `tomo ${v}, página ${p}`, cit_p: p => `página ${p}`, cit: 'Citas', cit_unknown: 'abreviatura aún no identificada', cit_list: 'en la lista de obras', cit_draft: 'tabla en borrador, sin revisar',
+  cit_vp: (v, p) => `tomo ${v}, página ${p}`, cit_p: p => `página ${p}`, cit: 'Citas', cit_unknown: 'abreviatura aún no identificada', cit_list: 'en la lista de obras', cit_draft: 'tabla en borrador, sin revisar', cit_inf: m => `leído como ${m}: el OCR dañó la abreviatura, la obra es inferida`,
   scan: 'Página impresa', see_page: 'Ver la página impresa', page_view: 'Vista de página', close_scan: 'Cerrar la página impresa',
   prev_page: 'Página anterior', next_page: 'Página siguiente', img_none: 'La imagen de esta página no está disponible.',
   fuzzy: 'localizada aproximadamente', unlocated_h: 'No encontrada en la lectura automática',
@@ -336,7 +336,9 @@ function citeTip(d, j) {
   if (!A) return '';
   const n = (d.c[j].replace(/[၀-၉]/g, c => '၀၁၂၃၄၅၆၇၈၉'.indexOf(c)).match(/\d+(?:\s*[-–]\s*\d+)?/g) || []).map(v => v.replace(/\s+/g, ''));
   const loc = n.length === 2 ? t('cit_vp', n[0], n[1]) : n.length === 1 ? t('cit_p', n[0]) : n.join('.');
-  return A.work + (loc ? ' · ' + loc : '');
+  // the work inferred by tools/abhidhana_citefold.py (d.cg): say so, so that a guess is not shown as the print
+  const inf = d.cg && d.cg.includes(j) ? ' · ' + t('cit_inf', A.my) : '';
+  return A.work + (loc ? ' · ' + loc : '') + inf;
 }
 function reportURL(d) {
   const link = `${location.origin}/w/${encodeURIComponent(d.sl)}`;

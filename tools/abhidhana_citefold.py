@@ -5,15 +5,22 @@ the citation text shown is never changed. Every rule was measured on all 530,965
 the page images (tmp/cite-norm/README.md, 29 Sep 2026): A (mechanical OCR forms of ၊ and the commentary
 marks), T (whole-word misreadings), B1 (the niggahīta of အံ lost; ၊ဋ where only one reading is a key), and
 the lost head အဋ္ဌ -> အံ၊ဋ္ဌ. Not resolved on purpose: ၊ဋ where both ၊ဋ္ဌ and ၊ဋီ are keys (the print has
-either, 3 / 3 in the sample), အပါ alone (အပ or အပ၊ဋ္ဌ), and other lost heads.
+either: 6 ဋ္ဌ / 11 ဋီ in two samples). Added 30 Sep: အပါ alone -> အပ၊ဋ္ဌ (16 / 16 on the page), and head() below.
 resolve(k, K) takes the abbreviation part of a citation as cite_key() builds it (no spaces, no ။) and
-returns the table key it maps to, or None."""
+returns the table key it maps to, or None.
+
+head(k, before) (30 Sep 2026, tmp/cite-norm/section.md): a citation that is only the commentary mark (ဋ္ဌ၊၂။၁၇၉။,
+ဋီ၊၁။, ဌ …) lost its work, and the work is almost always the word just before it in the body: the head
+printed at a line's end (ပဋိသံ၊ / ဋ္ဌ), or ended by ။ instead of ၊ (ဇာ။ ဋ္ဌ), so the citation parser left it
+out. head() returns that word, to be joined to the citation and matched again; only the one word right
+before the citation is tried."""
 import re
 
 T = 'ဋ္ဌ'
 TYPO = {'ဝိသဒိ': 'ဝိသုဒ္ဓိ', 'ဝိသုဒ္ဓါ': 'ဝိသုဒ္ဓိ', 'ပူလဋီ': 'မူလဋီ', 'မဏိမဉ္စူ': 'မဏိမဉ္ဇူ', 'ရတ္ထ': 'သာရတ္ထ',
         'ဝိ၊ဝိနိစ္ဆယ': 'ဝိ၊နိစ္ဆယ', 'ဝိ၊လင်္ကာရ': 'ဝိနယာလင်္ကာရ', 'မဟာဝံသ': 'မဟာဝံ', 'သုတ္တန': 'သုတ္တနိ',
         'ဝိမဘိ': 'ဝိမတိ'}
+APA = {'အပါ', 'အပါဌ', 'အပါဋ'}   # အပါ alone read on the page 16 times (29-30 Sep): always အပ၊ဋ္ဌ, never အပ
 FOLD = [(r'၊(?:ဌ|္ဌ)$', '၊' + T), (r'(?<=[^၊])ဋ္ဌ$', '၊' + T), (r'၊(?:ဋံ|ဋိ)$', '၊ဋီ'), (r'(?<=[^၊])ဋီ$', '၊ဋီ')]
 
 
@@ -38,7 +45,7 @@ def _key(x, K):
 
 
 def _a(k, K):
-    if k == 'အပါ': return None                                             # အပ or အပ၊ဋ္ဌ: not decided
+    if k in APA: return 'အပ၊ဋ္ဌ' if 'အပ၊ဋ္ဌ' in K else None                    # အပါ: 16 / 16 အပ၊ဋ္ဌ on the page
     return _key(_mech(k), K)
 
 
@@ -67,3 +74,18 @@ def resolve(k, K):
     if not k: return None
     if k == 'အဋ္ဌ': return 'အံ၊ဋ္ဌ' if 'အံ၊ဋ္ဌ' in K else None               # lost head: 5 / 5 on the page
     return _a(k, K) or _t(k, K) or _b1(k, K)
+
+
+LOST = re.compile(r'^(?:ဋ္ဌ|ဋီ|ဌ|ဋ|ဋိ|ဋံ|္ဌ)(?:၊|$)')          # the citation begins with the mark: its work is lost
+HEADTYPO = {'သုတ္တန်': 'သုတ္တနိ'}                                   # the print's သုတ္တနိ read with an asat
+
+
+def head(k, before):
+    """the word right before a lost-head citation in the body (its work, cut off by the parser), or None"""
+    if not before or not LOST.match(k): return None
+    toks = before.split()
+    if not toks: return None
+    t = re.sub(r'^[(\[\-–]+', '', re.sub(r'[။၊\-–,.]+$', '', toks[-1]))
+    t = t.rsplit('။', 1)[-1]
+    if not t or re.search('[၀-၉0-9]', t): return None
+    return HEADTYPO.get(t, t)

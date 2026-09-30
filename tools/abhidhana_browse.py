@@ -12,7 +12,8 @@ What it writes under site/dist/data/:
     c/<n>.json          the articles, one file per group (split into parts of at most CHUNK
                         entries), in the dictionary's order; the records of tools/abhidhana_site.py
                         plus g (global order), k (book), sl (address), hn (homonym number),
-                        see ([[iast, address]] for "see X"), cx (abbreviation index per citation)
+                        see ([[iast, address]] for "see X"), cx (abbreviation index per citation),
+                        cg (the citations whose work tools/abhidhana_citefold.py inferred)
     s/<L>.json          the search shard of a letter: [address, iast, Burmese, book, page, chunk], and for a
                         supplement row a seventh element, the volume it belongs to (kb)
     abbr.json           the citation abbreviations of docs/introduction/citation-abbreviations.tsv
@@ -95,22 +96,43 @@ def abbreviations():
 FOLD = [(r'၊(?:ဌ|္ဌ)$', '၊ဋ္ဌ'), (r'(?<=[^၊])ဋ္ဌ$', '၊ဋ္ဌ'), (r'၊(?:ဋံ|ဋိ)$', '၊ဋီ'), (r'(?<=[^၊])ဋီ$', '၊ဋီ')]
 
 
-def cite_key(c, K):
-    """the index in the table of a citation's abbreviation, or -1: exact, then with the OCR forms
-    of the commentary marks folded (ဌ ္ဌ -> ဋ္ဌ, ဋံ ဋိ -> ဋီ) and a trailing သစ် ("new") dropped"""
+def cite_how(c, K, before=None):
+    """(index in the table of a citation's abbreviation or -1, inferred): exact, then with the OCR forms
+    of the commentary marks folded (ဌ ္ဌ -> ဋ္ဌ, ဋံ ဋိ -> ဋီ) and a trailing သစ် ("new") dropped, then a stray
+    word before it; inferred is True when tools/abhidhana_citefold.py had to guess the work (a damaged
+    abbreviation, or a lost head taken from `before`, the body text just before the citation)"""
     m = re.match(r'^(.*?)[၀-၉0-9]', mynorm(c))
     k = re.sub(r'[\s။]', '', m.group(1) if m else c).rstrip('၊,.')
-    if k in K: return K[k]
+    if k in K: return K[k], False
     k2 = re.sub(r'၊?သစ်$', '', k)
     for a, b in FOLD: k2 = re.sub(a, b, k2)
-    if k2 in K: return K[k2]
+    if k2 in K: return K[k2], False
     # a stray word before the abbreviation: the longest table key it ends with
     for n in range(k2.count('၊'), 0, -1):
         tail = '၊'.join(k2.split('၊')[-n:])
-        if tail in K: return K[tail]
+        if tail in K: return K[tail], False
     # a damaged abbreviation (tools/abhidhana_citefold.py): the tooltip only, the text shown is unchanged
     r = citefold.resolve(k, K)
-    return K[r] if r is not None else -1
+    if r is not None: return K[r], True
+    h = citefold.head(k, before)
+    if h:
+        x, _ = cite_how(h + '၊' + mynorm(c), K)
+        if x >= 0: return x, True
+    return -1, False
+
+
+def cite_key(c, K, before=None):
+    return cite_how(c, K, before)[0]
+
+
+def cite_befores(b, cs):
+    """the body text before each citation (up to 60 characters), found in order, spaces ignored"""
+    out, cur = [], 0
+    for c in cs:
+        m = re.compile(r'\s*'.join(map(re.escape, c))).search(b, cur) if c else None
+        if m: out.append(b[max(0, m.start() - 60):m.start()]); cur = m.end()
+        else: out.append(None)
+    return out
 
 
 # --- the build -------------------------------------------------------------------------------------
@@ -170,8 +192,12 @@ def build(OUT, vols, book_records, dump):
                 if x and x != d['sl']: see.append([sp[2], x])
         if see: d['see'] = see
         if d.get('c') and AK:
-            cx = [cite_key(c, AK) for c in d['c']]
-            if any(x >= 0 for x in cx): d['cx'] = cx
+            hw = [cite_how(c, AK, bf) for c, bf in zip(d['c'], cite_befores(d.get('b') or '', d['c']))]
+            cx = [x for x, _ in hw]
+            if any(x >= 0 for x in cx):
+                d['cx'] = cx
+                cf = [j for j, (x, inf) in enumerate(hw) if inf]
+                if cf: d['cg'] = cf   # the work inferred by abhidhana_citefold: the tooltip says "read as …"
     # the thumb index and the chunks
     nav = [{'ro': ro, 'my': my, 'n': 0, 'books': [], 'groups': []} for ro, my in LETTERS]
     G = {}   # (letter, group) -> {'k', 'subs': {syll: [records]}, 'order': [syll]}
@@ -221,8 +247,9 @@ def build(OUT, vols, book_records, dump):
     dump(OUT / 'data/nav.json', {'letters': nav, 'total': len(E), 'unsorted': len(other)})
     dump(OUT / 'data/abbr.json', ABBR)
     matched = sum(1 for d in E for x in d.get('cx', []) if x >= 0)
+    inferred = sum(len(d.get('cg', [])) for d in E)
     cites = sum(len(d.get('c') or []) for d in E)
     print(f'browse: {len(E):,} entries, {ngroups:,} groups, {cn:,} chunks; '
           f'see-links {sum(len(d.get("see", [])) for d in E):,}; citations matched {matched:,} of {cites:,} '
-          f'({100 * matched / max(1, cites):.1f}%); without romanisation {len(other)}; '
+          f'({100 * matched / max(1, cites):.1f}%; inferred {inferred:,}); without romanisation {len(other)}; '
           f'supplement rows placed {len(moved)}')
