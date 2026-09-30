@@ -1,4 +1,4 @@
-# Abhidhāna — handover, 28 September 2026 (editor mode built, not yet switched on, v0.17.0; roman input in its form, v0.18.0; 14/2's 497 rows redrafted, v0.18.3; the OCR pilot, v0.18.5; vol. 23 drafted from our OCR, v0.19.0; vol. 22 drafted from our OCR, v0.20.0; vol. 24, v0.21.0; vol. 21, v0.22.0; vol. 20, v0.23.0; vol. 25, v0.24.0; 14/3 and 4/3 prepared, §62; `prep`'s no-join fix, v0.24.1; vol. 14/3 drafted from our OCR, v0.25.0, and 4/3's shards drafted, not merged, §63; vol. 4/3 merged, v0.26.0: every book drafted, §64; the next phase planned and decided, the brief shrunk, v0.26.1; `merge` keeps the corrections, 4/3's "see X" targets restored, v0.26.2, §65; site display fixes, v0.26.3, §66, checked live; run-on headwords measured (plan step 1.1), §67; Phase 1 reduced (the editor), and the folds and "analysis not read" refined, v0.26.4, §68; run-on articles split out in the nine books without PCED, every split checked on the image, v0.27.0, §69; the split rows and their hosts redrafted (plan step 1.6), v0.28.0, §70; the decision sheet, plan step 2.1, 29 Sep, docs only; plan step 2.4 page checks done, §73–76, docs only; citation abbreviations from vol. 15's key, v0.28.2, §77; item 9 planned, §78, docs only; `git gc` done, item 4; item 9 built, v0.28.3, §79; its editor tests passed on the Mac, and the supplement misspellings in the index errata, §80, docs only; Copy / Cite / Share on the article and the citation normaliser for the tooltips, v0.28.4, §81–82; its UI test failed at 375 px on the Mac, and the buttons moved out of the head line on phones, v0.28.5, §83; a Meaning's numbered senses shown as a list, v0.28.6, §84; plan step 1.8's homonyms measured and planned, §85, docs only; 1.8 stage 1 of 3: rule R and the PCED pass built and tested, samples 28 / 30 and 19 / 20 right on the image, §86, no version bump)
+# Abhidhāna — handover, 28 September 2026 (editor mode built, not yet switched on, v0.17.0; roman input in its form, v0.18.0; 14/2's 497 rows redrafted, v0.18.3; the OCR pilot, v0.18.5; vol. 23 drafted from our OCR, v0.19.0; vol. 22 drafted from our OCR, v0.20.0; vol. 24, v0.21.0; vol. 21, v0.22.0; vol. 20, v0.23.0; vol. 25, v0.24.0; 14/3 and 4/3 prepared, §62; `prep`'s no-join fix, v0.24.1; vol. 14/3 drafted from our OCR, v0.25.0, and 4/3's shards drafted, not merged, §63; vol. 4/3 merged, v0.26.0: every book drafted, §64; the next phase planned and decided, the brief shrunk, v0.26.1; `merge` keeps the corrections, 4/3's "see X" targets restored, v0.26.2, §65; site display fixes, v0.26.3, §66, checked live; run-on headwords measured (plan step 1.1), §67; Phase 1 reduced (the editor), and the folds and "analysis not read" refined, v0.26.4, §68; run-on articles split out in the nine books without PCED, every split checked on the image, v0.27.0, §69; the split rows and their hosts redrafted (plan step 1.6), v0.28.0, §70; the decision sheet, plan step 2.1, 29 Sep, docs only; plan step 2.4 page checks done, §73–76, docs only; citation abbreviations from vol. 15's key, v0.28.2, §77; item 9 planned, §78, docs only; `git gc` done, item 4; item 9 built, v0.28.3, §79; its editor tests passed on the Mac, and the supplement misspellings in the index errata, §80, docs only; Copy / Cite / Share on the article and the citation normaliser for the tooltips, v0.28.4, §81–82; its UI test failed at 375 px on the Mac, and the buttons moved out of the head line on phones, v0.28.5, §83; a Meaning's numbered senses shown as a list, v0.28.6, §84; plan step 1.8's homonyms measured and planned, §85, docs only; 1.8 stage 1 of 3: rule R and the PCED pass built and tested, samples 28 / 30 and 19 / 20 right on the image, §86, no version bump; stage 2, the image table, §88; the farther-body splits, §89; the citation tooltips' second pass, §90; stage 3, the redraft, the re-reads and the checks, v0.29.0 prepared, §91, not pushed)
 
 *All 29 books are digitised end to end, spot-checked and in the Reader: 221,154 index rows, 94.1%
 located, 88.1% with label + body (brief §30). Read
@@ -37,7 +37,7 @@ witness.*
   `PLAYWRIGHT=~/abhidhana-pw/node_modules/playwright sh site/test/editor/run.sh`
   Last run 29 Sep against v0.28.4: API pass 28 fail 0, UI pass 57 fail 1 (375 px /w/luñcana: the buttons wrapped the head line;
   brief §83). v0.28.5 fixes it and widens step 7's 375-px check to three articles (UI 61); v0.28.6 adds step 8, the senses list (27):
-  expect UI pass 88 fail 0; not yet run on the Mac.
+  expect UI pass 88 fail 0; not yet run on the Mac. v0.29.0 (brief §91) changes no article the tests visit and no test file: expect the same.
 - **Docs in the folder and in the Project must match.** On 25 Sep night the folder's brief and
   NEXT-SESSION twice went back to an older version. The cause was this session: `device_commit_files`
   sent a stale copy when the same staged path under `/mnt/user-data/outputs/` was reused. Give each
@@ -143,6 +143,26 @@ Project are for advice and for what needs the Mac. What the new chat should know
   them. Noticed while counting: item 3 below is out of date (most label combinations are confirmed in `docs/labels.md` §0; nine remain,
   sheet D1).
 
+
+## After v0.29.0 (plan step 1.8 and the citation tooltips, brief §85–91): for the editor, on the Mac, in this order
+
+1. **Commit** stage 3 locally (the commands given in the session). No push yet.
+2. **The witness joins for 01–19**: `python3 tools/abhidhana_witness_join.py 01 02 03 4a 4b 05 06 07 08 09 10 11 12 13 14 15 16 17 18 19`,
+   then `python3 tmp/stage3/check_joins.py`: expect "21 of 21 files as expected" (brief §91 §9: 5,408 rows change against the Mac's old
+   joins, `seq` in none, so the articles need no re-run). `witness/` is gitignored: nothing to commit.
+3. **The editor tests**: `PLAYWRIGHT=~/abhidhana-pw/node_modules/playwright sh site/test/editor/run.sh`; expect API pass 28 fail 0,
+   UI pass 88 fail 0 (v0.28.6's step 8 has not yet been run on the Mac; no test file and no visited article changed since). Record in §91.
+4. **The D1 edits**: `python3 tmp/stage3/d1check.py` (brief §91 §8). No hits: go on. A hit: an edit made on the text the row held
+   before 1.8; look at it before the push.
+5. **Push and tag v0.29.0** (the commands given in the session).
+6. **Live check** (`/data/version.json` 0.29.0): `/w/sattha-2` (vol. 21, 170160) shows *amonestado* (the "admonished" entry, printed
+   သတ္ထ²), and `/w/sattha-3` the merchants; `/w/vodāna` (vol. 20, 162101) now has a Meaning box; `/w/ekatiṁsa` (4/3, 172827) *treinta y uno*;
+   `/w/pallaṅka-2` (14/2, 217055, a `same_as` row) no longer shows a Meaning box; a citation chip such as *ဋ္ဌ၊၂။၁၀၃။* after ထေရ၊ names
+   Theragāthā Aṭṭhakathā with *leído como …* (§90).
+
+**Next** (brief §90 §Next): **the ။ parser fix** in `CITE` / `cite_trim` (`tools/abhidhana_articles.py`), then the article step and
+romanisation for all 29 books, and measure what `citefold.head()` still adds. Later: the 39 wrong farther-body splits (§89), the 36 unsure
+homonym rows (§88), then Phase 2 as planned (the decision sheet last).
 
 ## After v0.28.6 (a Meaning's numbered senses as a list, brief §84): for the editor
 
@@ -324,6 +344,16 @@ reaches few rows; the plan below needs re-sizing before 1.3 (see 1.1).
   (105 drafts, 1 redraft, 6 withdrawals, 31 trims, 22 hosts to classify). Sub-agents 1.38 M. **Next**: the editor reviews and commits locally
   (no push); stage 3 as above, now with §89's rows; the 39 wrong items (their readers' start / end in `splits-checked.tsv`) and a better end
   rule for a later pass; the one-line-short ends PCED cannot see in 01–19.
+
+  **Stage 3 done 30 Sep (brief §91), v0.29.0 prepared, not pushed. 1.8 is done** but for what is left open below. The 1,036 Meaning rows of
+  the nine books: 330 drafted, 11 new formula rows, 263 redrafted (hosts classified the §70 way: 38 translated, 175 kept with `flag` /
+  `omitted` trimmed; "about the same" 30 kept, 21 redrafted), 6 re-merged as formula, **53 withdrawn** (`docs/translation/withdrawn.tsv`);
+  Meaning rows 217,450 → 217,738. Check files re-read in place (page-checks 17: 7 valid / 10 superseded; splits 24: 15 / 9; queue 26: 24 / 2).
+  `index-errata.md` §5: 4 rows left, 174421 re-read on the image. `/w/` address → id: 0 differences of 221,154. D1 not reachable from the
+  cloud: `tmp/stage3/d1check.py` on the Mac. §90 (citation tooltips) folded in. Sub-agents 1.72 M tokens.
+  **Left open**: the 36 unsure image rows of §88 (H047 သ …) and 168888 သတ (§76 read it as သတ⁸; §88 left it without text); 174421 / 174419
+  ဧဓတိ (the index lists ² before ¹); the 39 wrong farther-body items of §89 (their readers' start / end in `splits-checked.tsv`) and a better
+  end rule, **for a later pass**; the one-line-short ends PCED cannot see in 01–19 (§89 §5).
 
 ### Phase 2 — (c) the final revision (1c)  — next after the reduced Phase 1
 - **2.1** **Done 29 Sep** (`docs/translation/decisions.md`, Project `claude/decision-sheet.md`: a Markdown file, as the editor asked, not a

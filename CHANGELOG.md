@@ -23,6 +23,33 @@ Versions of the Tipiṭaka Pāḷi-Myanmā Abhidhāna project: the data, the too
 A release note says, per version: what changed, the brief's sections, and the headline figures
 (located, label + body, Meaning rows drafted / reviewed).
 
+## v0.29.0 — 30 Sep 2026
+
+Plan step 1.8 (brief §85–89, §91) and the citation tooltips' second pass (§90). Re-runs across all 29 books. Released with the six
+local commits before it (10a6e4d … 3d4cfe9) and stage 3's.
+
+- **Homonyms placed on their own printed entries** (§86, §88). Rule R in `tools/abhidhana_articles.py`: in a run of identical index
+  headwords, row i takes the i-th printed entry line when the counts agree (R moved 668 rows; image samples 28 / 30 right in the nine
+  books without PCED); in books 01–19 PCED gates R and moves 274 rows more (143 take a sibling's text; sample 19 / 20). The nine books'
+  residue, 172 runs / 456 rows, read on the page image (a second reader on 159 runs): `docs/homonyms-checked.tsv`, applied as
+  `HOMONYM_FIX` (420 rows; 61 index rows with no entry of their own kept as `same_as` records; 36 unsure left). 44 new split candidates
+  made (right on the image). `ABH_HOMONYM=0` turns all of it off.
+- **Farther-body run-ons split out** (§89): `farbody_split()`, all 29 books: 523 split rows (427 PCED-gated in 01–19, 96 read right on the
+  image in the nine), 272 hosts cut, 35 chained rows on their own line, 83 left unlocated. `ABH_FARBODY=0` turns it off. With both off the
+  tool reproduces v0.28.6's `ocr/` files byte for byte (116 of 116, checked again in §91).
+- **The nine books' Meaning rows redrafted** (§91): of the 1,036 rows 1.8 changed, 330 drafted (new rows), 11 new formula rows, 263
+  redrafted, 6 re-merged as formula rows, **53 withdrawn** ("not yet translated"; recorded in the new `docs/translation/withdrawn.tsv`),
+  175 hosts kept with `flag` / `omitted` trimmed, 150 kept as they were, 48 with nothing to do or drafted empty. Every row `drafted`.
+  **Meaning rows 217,450 → 217,738 (98.5% of the index).**
+- **Citation tooltips** (§90): lost heads taken from the body, *အပါ* alone → အပ၊ဋ္ဌ; "leído como …" / "read as …" when the work is
+  inferred (`cg` per record). Citations with a tooltip: 489,082 of 530,869 (92.1%). Not tested in Safari, on a phone or with the Mac's fonts.
+- **Index errata** (`docs/index-errata.md` §5): 4 repeats left (now on their own printed entries), 174421 ဧဓတိ re-read (printed ¹; the
+  index lists ² first); the 78 repeats of §85 all stay.
+- **Check files re-read** (§91 §5): `page-checks.tsv` 17 rows (7 still valid, 10 superseded), `splits-checked.tsv` 24 (15 / 9),
+  `revision-queue.tsv` 26 (24 / 2, new column `reread_1_8`).
+- `/w/` addresses: address → id unchanged for all 221,154 records (full builds before and after).
+- Headline figures: 221,154 index rows; label + body 196,172 (§89); Meaning rows 217,738 drafted / 9 corrected / 0 reviewed.
+
 ## v0.28.6 — 29 Sep 2026
 
 - **A Meaning with numbered senses is shown as a list** (brief §84; display only: the Meaning text and the data are unchanged,

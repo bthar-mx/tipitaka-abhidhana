@@ -1,11 +1,11 @@
 term	articles	proposal
-sīla	453	keep in Pāḷi (drafts); IEBH to fix a rendering
-sukha	132	keep in Pāḷi (drafts); IEBH to fix a rendering
+sīla	456	keep in Pāḷi (drafts); IEBH to fix a rendering
+sukha	133	keep in Pāḷi (drafts); IEBH to fix a rendering
 thera	125	keep in Pāḷi (drafts); IEBH to fix a rendering
 deva	65	keep in Pāḷi (drafts); IEBH to fix a rendering
-sīmā	62	keep in Pāḷi (drafts); IEBH to fix a rendering
+sīmā	63	keep in Pāḷi (drafts); IEBH to fix a rendering
 suttanta	61	keep in Pāḷi (drafts); IEBH to fix a rendering
-paññā	54	keep in Pāḷi (drafts); IEBH to fix a rendering
+paññā	56	keep in Pāḷi (drafts); IEBH to fix a rendering
 jātaka	45	keep in Pāḷi (drafts); IEBH to fix a rendering
 bhūmi	40	keep in Pāḷi (drafts); IEBH to fix a rendering
 sugati	39	keep in Pāḷi (drafts); IEBH to fix a rendering
@@ -23,9 +23,9 @@ sukhavedanā	29	keep in Pāḷi (drafts); IEBH to fix a rendering
 atta	27	keep in Pāḷi (drafts); IEBH to fix a rendering
 garuḷa	23	keep in Pāḷi (drafts); IEBH to fix a rendering
 jhāna	23	keep in Pāḷi (drafts); IEBH to fix a rendering
+paccekabuddha	23	keep in Pāḷi (drafts); IEBH to fix a rendering
 samādhi	23	keep in Pāḷi (drafts); IEBH to fix a rendering
 bahussuta	22	keep in Pāḷi (drafts); IEBH to fix a rendering
-paccekabuddha	22	keep in Pāḷi (drafts); IEBH to fix a rendering
 vimāna	22	keep in Pāḷi (drafts); IEBH to fix a rendering
 saṁvaṇṇanā	21	keep in Pāḷi (drafts); IEBH to fix a rendering
 devaputta	19	keep in Pāḷi (drafts); IEBH to fix a rendering
@@ -63,6 +63,7 @@ sāmaṇera	10	keep in Pāḷi (drafts); IEBH to fix a rendering
 sīlakkhandha	10	keep in Pāḷi (drafts); IEBH to fix a rendering
 vagga	10	keep in Pāḷi (drafts); IEBH to fix a rendering
 vāra	10	keep in Pāḷi (drafts); IEBH to fix a rendering
+nāga	9	keep in Pāḷi (drafts); IEBH to fix a rendering
 peta	9	keep in Pāḷi (drafts); IEBH to fix a rendering
 sukhumarūpa	9	keep in Pāḷi (drafts); IEBH to fix a rendering
 sīmantarika	9	keep in Pāḷi (drafts); IEBH to fix a rendering
@@ -71,8 +72,8 @@ aṭṭhuppatti	8	keep in Pāḷi (drafts); IEBH to fix a rendering
 suññatavimokkha	8	keep in Pāḷi (drafts); IEBH to fix a rendering
 aggasāvaka	7	keep in Pāḷi (drafts); IEBH to fix a rendering
 apadāna	7	keep in Pāḷi (drafts); IEBH to fix a rendering
+cetasika	7	keep in Pāḷi (drafts); IEBH to fix a rendering
 kāyakamma	7	keep in Pāḷi (drafts); IEBH to fix a rendering
-nāga	7	keep in Pāḷi (drafts); IEBH to fix a rendering
 parinibbāna	7	keep in Pāḷi (drafts); IEBH to fix a rendering
 pariyatti	7	keep in Pāḷi (drafts); IEBH to fix a rendering
 pāramī	7	keep in Pāḷi (drafts); IEBH to fix a rendering
@@ -86,7 +87,6 @@ abhidhamma	6	keep in Pāḷi (drafts); IEBH to fix a rendering
 aggasāvikā	6	keep in Pāḷi (drafts); IEBH to fix a rendering
 asura	6	keep in Pāḷi (drafts); IEBH to fix a rendering
 cetanā	6	keep in Pāḷi (drafts); IEBH to fix a rendering
-cetasika	6	keep in Pāḷi (drafts); IEBH to fix a rendering
 cetasikasukha	6	keep in Pāḷi (drafts); IEBH to fix a rendering
 etadagga	6	keep in Pāḷi (drafts); IEBH to fix a rendering
 kusala	6	keep in Pāḷi (drafts); IEBH to fix a rendering
@@ -188,10 +188,12 @@ dukkhavedanā	2	keep in Pāḷi (drafts); IEBH to fix a rendering
 dukkhindriya	2	keep in Pāḷi (drafts); IEBH to fix a rendering
 dāna	2	keep in Pāḷi (drafts); IEBH to fix a rendering
 ekuppāda	2	keep in Pāḷi (drafts); IEBH to fix a rendering
+haṁsa	2	keep in Pāḷi (drafts); IEBH to fix a rendering
 hirī	2	keep in Pāḷi (drafts); IEBH to fix a rendering
 karajakāya	2	keep in Pāḷi (drafts); IEBH to fix a rendering
 kiriyā	2	keep in Pāḷi (drafts); IEBH to fix a rendering
 kāmabhūmi	2	keep in Pāḷi (drafts); IEBH to fix a rendering
+kāyika	2	keep in Pāḷi (drafts); IEBH to fix a rendering
 lahusaññā	2	keep in Pāḷi (drafts); IEBH to fix a rendering
 lobha	2	keep in Pāḷi (drafts); IEBH to fix a rendering
 lokuttara	2	keep in Pāḷi (drafts); IEBH to fix a rendering
@@ -259,6 +261,7 @@ anāgāriya	1	keep in Pāḷi (drafts); IEBH to fix a rendering
 apāya	1	keep in Pāḷi (drafts); IEBH to fix a rendering
 arahattamaggasukha	1	keep in Pāḷi (drafts); IEBH to fix a rendering
 arahattaphalasukha	1	keep in Pāḷi (drafts); IEBH to fix a rendering
+ariya	1	keep in Pāḷi (drafts); IEBH to fix a rendering
 ariyapuggala	1	keep in Pāḷi (drafts); IEBH to fix a rendering
 ariyasacca	1	keep in Pāḷi (drafts); IEBH to fix a rendering
 assāsapassāsa	1	keep in Pāḷi (drafts); IEBH to fix a rendering
@@ -293,6 +296,7 @@ cittuppāda	1	keep in Pāḷi (drafts); IEBH to fix a rendering
 cuti	1	keep in Pāḷi (drafts); IEBH to fix a rendering
 cāga	1	keep in Pāḷi (drafts); IEBH to fix a rendering
 cārittasikkhāpada	1	keep in Pāḷi (drafts); IEBH to fix a rendering
+cārittasīla	1	keep in Pāḷi (drafts); IEBH to fix a rendering
 dakkhiṇeyya	1	keep in Pāḷi (drafts); IEBH to fix a rendering
 desanā	1	keep in Pāḷi (drafts); IEBH to fix a rendering
 dhammacakka	1	keep in Pāḷi (drafts); IEBH to fix a rendering
@@ -313,7 +317,6 @@ gantha	1	keep in Pāḷi (drafts); IEBH to fix a rendering
 gati	1	keep in Pāḷi (drafts); IEBH to fix a rendering
 gaṇṭhipada	1	keep in Pāḷi (drafts); IEBH to fix a rendering
 hadayavatthu	1	keep in Pāḷi (drafts); IEBH to fix a rendering
-haṁsa	1	keep in Pāḷi (drafts); IEBH to fix a rendering
 hetu	1	keep in Pāḷi (drafts); IEBH to fix a rendering
 iddhipāda	1	keep in Pāḷi (drafts); IEBH to fix a rendering
 indriyasaṁvarasīla	1	keep in Pāḷi (drafts); IEBH to fix a rendering
@@ -341,7 +344,6 @@ kāyadvāra	1	keep in Pāḷi (drafts); IEBH to fix a rendering
 kāyagatāsati	1	keep in Pāḷi (drafts); IEBH to fix a rendering
 kāyagatāsatibhāvanā	1	keep in Pāḷi (drafts); IEBH to fix a rendering
 kāyapayoga	1	keep in Pāḷi (drafts); IEBH to fix a rendering
-kāyika	1	keep in Pāḷi (drafts); IEBH to fix a rendering
 kāyikasukhavedanā	1	keep in Pāḷi (drafts); IEBH to fix a rendering
 lokadhamma	1	keep in Pāḷi (drafts); IEBH to fix a rendering
 loluppacāra	1	keep in Pāḷi (drafts); IEBH to fix a rendering
@@ -431,6 +433,7 @@ sampayutta	1	keep in Pāḷi (drafts); IEBH to fix a rendering
 sampaṭicchana	1	keep in Pāḷi (drafts); IEBH to fix a rendering
 samuṭṭhāna	1	keep in Pāḷi (drafts); IEBH to fix a rendering
 samādhikkhandha	1	keep in Pāḷi (drafts); IEBH to fix a rendering
+saṁsayattha	1	keep in Pāḷi (drafts); IEBH to fix a rendering
 saṁvara	1	keep in Pāḷi (drafts); IEBH to fix a rendering
 saṁvarasīla	1	keep in Pāḷi (drafts); IEBH to fix a rendering
 saṁyama	1	keep in Pāḷi (drafts); IEBH to fix a rendering
@@ -510,6 +513,7 @@ viññattirūpa	1	keep in Pāḷi (drafts); IEBH to fix a rendering
 vuḍḍhi	1	keep in Pāḷi (drafts); IEBH to fix a rendering
 vyāpāda	1	keep in Pāḷi (drafts); IEBH to fix a rendering
 vācāsiliṭṭha	1	keep in Pāḷi (drafts); IEBH to fix a rendering
+vārittasīla	1	keep in Pāḷi (drafts); IEBH to fix a rendering
 yojana	1	keep in Pāḷi (drafts); IEBH to fix a rendering
 ñeyya	1	keep in Pāḷi (drafts); IEBH to fix a rendering
 ācariyavāda	1	keep in Pāḷi (drafts); IEBH to fix a rendering

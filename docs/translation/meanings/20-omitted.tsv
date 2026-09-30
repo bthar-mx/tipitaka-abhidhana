@@ -294,9 +294,8 @@ id	iast	omitted
 157102	visabhūta	OCR debris '[၅ [ပဝါ ၂'
 157103	visabhūtadukkhadassana	quotation fragment 'ဝိသဘတဒကုဒဿေ'; OCR debris
 157104	visabheda	citations 'ဓာန်၊ ဋီ။ ၄၃၄-နှာ'
-157105	visabhojanakicchācaraṇa	run-on article 'ဝိသမ (တိ) [ ဝိ + သမ။ ဝိပမ-သံ။ ဝိသမ-ပြာ၊ အဒ္ဓမာဂဓီ။ ] (၁)–(၁၁)' with the start of its example section and quotation 'ဈာနပစ္စနီကသင်ါတံ'
-157106	visama	quotation fragment 'ဝိသမာဟာရ'; fragment 'စာ'
-157109	visama	analysis fragment '+ အ။'; stray ']'; reference 'ဝိသမဂတ (၃)'
+157106	visama	repeated sense list (1)-(11) of the quotation section, with quotation fragments 'ဈာနပစ္စနီကသင်ါတံ။ ဝိသမ', 'ဝိသမာဟာရ'; 'စာ။'
+157109	visama	cross-reference fragment 'ဝိသမဂတ (၃)'
 157112	visamakaraṇa	OCR debris 'မောင်၊', '[ ဂျိာာကပတ သည် ကုံ ပြု'
 157113	visamakiriya	quotation fragment 'ဝိသမကိရိယာယ'
 157114	visamakoṭṭha	quotation 'ဝိသမကောဋ္ဌဿ မန္ဒဒဗ္ဗလ-'; OCR debris
@@ -463,8 +462,9 @@ id	iast	omitted
 157333	visarukkhaāṇi	Pāḷi quotation 'ဝိသရုက္ခအာဏိ န္တိ ဝိသဒါရမယပဋာဏိ'; citation '၁ ဝိသဒါရုမယပဋာ ဋီ ၉၁'; OCR debris
 157334	visarukkhabīja	bracket remnant '['
 157335	visarakkhavātasamphassa	bracket remnant '['; Pāḷi quotation 'ဝိသရုက္ခဝါတသမ္ဖဿေနာ'
-157336	visarukkhasannissitavāsamphassa	run-on article ဝိသရုက္ခသမူပမ (တိ) 'having the simile of a poison tree'; run-on article ဝိသလ္လ (တိ) with its analysis, Sanskrit/Prakrit notes and senses; OCR debris
-157337	visalla	OCR debris
+157336	visarukkhasannissitavāsamphassa	run-on article ဝိသရုက္ခသမူပမ (တိ) 'having the simile of a poison tree'; OCR debris
+157337	visalla	Sanskrit and Prakrit notes 'ကပ္ပဒ္ဒုမ။ ဝိဇလျ-သံ။ ဖိ၏၊ လ ပဒါ ဝိသလ္လ ပြာ၊ အဒ္ဓမာဂဓီ။'; OCR debris 'ီ ရ ရျ ဖို့'; quotation-section fragment '----။ (ခ) ပဉ္စန္နံ ု။'
+157338	visalla	debris 'ပ [ ဝ ီ့၏]'
 157340	visavaṇijjā	citations '၂၅', '၆ ၂။ ၁၉၀'
 157342	visavanta	OCR debris; Pāḷi quotation 'နဝဝိသံ ဝါ ကရောန္တိ ဝိသဝန္တမေဝ ဝါ'
 157343	visavantajātaka	citation: Khuddakanikāya, Jātakapāḷi, 1st nipāta, 7th vagga, jātaka 'ဥ' (9?)
@@ -609,9 +609,13 @@ id	iast	omitted
 157535	visī	headword residue 'နေတိ (ကြိ)'; analysis bracket and grammatical notes (nirutti method; nāmadhātu); Sanskrit note; Pāḷi quotation 'ဝိသိနေန္တီတိ … ပါဌော သုန္ဒရော'
 157538	visinoti	analysis bracket 'ကြို [ဝိ သိ+ ဏု+ တိ။ သိ ဗန္ဓနေ။ ဝိ + သိနောတိ - သံ။ ]'
 157539	visibba	Prakrit note 'ဝိ+ သိဝ္ပ-ပြာ'
-157540	visibbati	run-on text 'ဓှ။ ] စီဝရဝိသိဗ္ဗနသိက္ခာပုဒ်။ စာ။'; analysis bracket; run-on article 'ဝိသိဗ္ဗနံ (န) [ … ] (၁) (ချုပ်ရိုးကို) ဖြေခြင်း။ (၂) (ချုပ်ရိုးကို) ဖြေရာဖြစ်သော (နေ့'; stray '(၁) ---။ (၂)'
-157541	visibbana	run-on articles (ဝိသိဗ္ဗနအဂ္ဂိ 'fire for warming'; ဝိသိဗ္ဗနတ္ထ 'the benefit of warming'; ဝိသိဗ္ဗနဒိဝသ 'day of unpicking'; ဝိသိဗ္ဗနဝတ္ထု 'the account of warming'; ဝိသိဗ္ဗနသိက္ခာပဒ 'the training rule laid down because of warming at a fire', with a note on its names Jotika/Joti-sikkhāpada and citations; ဝိသိဗ္ဗနာပေက္ခ (တိ) [ …); Pāḷi quotations; OCR debris
-157542	visibbana	analysis residue '+ + အ'
+157540	visibbati	run-on from the preceding article 'ဓှ။ ] စီဝရဝိသိဗ္ဗနသိက္ခာပုံဒ်။ စာ။'; headword, label and analysis 'ဝိသိဗ္ဗတိ ကြို [ဝိ သိဝု + ယ +တိ။ ]'; quotation-section fragment '(၁)(၂) ဝိသိဗ္ဗေတိ-'
+157541	visibbana	quotation-section sense numbers '(၁) ---။ (၂)'
+157543	visibbanaaggi	debris ':ျု-တပနီ။'; run-on article 'ဝိသိဗ္ဗနတ္ထ ၇) လှံ မီးလုံခြင်းဟူသော အကိုူး။'; garbled quotation '“လှူ ခးဟုူ ျုး ဥ သီတာတုရာနံ ဥပကာရံ ဟောတိ။'; debris 'ဝ ဝ ဖု့] ဝ'
+157545	visibbanadivasa	stray '[ ['
+157546	visibbanavatthu	debris 'ဝ ဝ ချို၊'
+157547	visibbanasikkhāpada	analysis fragment 'သိက္ခာပဒ ]'; citation '၃ ၂၉။ ကင်္ခါ၊ ကင်္ခါ၊ ဋီ၊ သစ်။'; location 'ဝိနယပိဋက၊ ပါစိတ္တိယပါဠိ။ ၅-ကဏ္ဍ၊ ၆-ဝဂ်၊ ၆-သိက္ခာပုဒ်။'; debris 'ပဋိလာတံ ရို့ ဋ ဝ ဝ ဝ။ ၁ ၂၅။'
+157548	visibbanāpekkha	analysis fragment '+ အ'
 157549	visibbanta	grammatical note (-anta; feminine ဝိသိဗ္ဗန္တီ); Pāḷi quotation 'သော ဝိသိဗ္ဗန္တော ဖလကတ္ထရေ နိပဇ္ဇိ'
 157550	visibbamāna	run-on article 'ဝိသိဗ္ဗာပန (န) [ … ] (ချုပ်ရိုးကို) ဖြေစေခြင်း'; stray dashes
 157551	visibbāpeti	analysis bracket '[ဝိ ဦ သိဝု … ဝိသိဗ္ဗတိ - မှ ]'
@@ -784,7 +788,7 @@ id	iast	omitted
 157788	visevana	stray '၈ ဝိသေဝိတ'; quotations 'ဝိသေဝနာစာရ', 'နိဗ္ဗိသေဝ-နတ္ထာယာ', 'စိတ္တပရိဂ္ဂဏှနကာလော'; '၂)'
 157790	visevanācāra	quotation fragment 'ဝိသေဝနာစာရ'
 157791	visevita	quotation fragment 'ဝိသေဝနာစာရ'
-157792	visesa	senses repeated in the reference section with quotations ('န္တိ အရဟတ္တံ လဘိတွာ', 'အပရံ … ဇာနန္တိ', 'ဧဝံ … ဝိသေသံ'); citations 'အဘိဓာန်၊ (အ-ဝဂ်) ၉ ပ-မ-သ-စ', 'ဣတိဝုတ်', 'အပ'; '----+-'; run-on text 'ဝိသေသာ (တိ) [ဝိသေသ + ဏ] ထူးသောဂုဏ်ရှိသော။ ဝိသေသယောဂတော ဝါ ဝိသေသော။ ၂ ၆၃။ ဝိသေသအဋ္ဌုပ္ပတ္တိ (ထီ) ထူးသောအဋုပ္ပတ်။ ကင်္ခါ၊ ဋီ၊ ၈ဝ။ ဝိသေသကာ (ပု၊ န [ဝိ+သိသ+ဏု။ ဓာန်။ ဝိဇေဖက-သံ၊ဝိသေသယ-ပြာ။ ] မှန်ကူ ကွက်ခြင်း ပါးကွက် ကွက်ခြင်း'
+157792	visesa	repeated sense list of the quotation section with quotations 'သွာယံ အဘိဓာန်…', 'န္တိ အရဟတ္တံ လဘိတွာ', 'အပရံ ကသိဏပရိကမ္မာဒိဝိသေသံ ဇာနန္တိ', 'ဧဝံ အဋ္ဌသမာပတ္တိစတုမဂ္ဂဝသေန ပုဗ္ဗာပရဘာဝေန ဌိတံ ဝိသေသံ', 'ဣတိဝုတ်', 'အပ'; debris '----+-'; run-on articles 'ဝိသေသာ (တိ) [ဝိသေသ + ဏ] ထူးသောဂုဏ်ရှိသော…', 'ဝိသေသအဋ္ဌုပ္ပတ္တိ (ထီ) ထူးသောအဋုပ္ပတ်…', 'ဝိသေသကာ (ပု၊ န …) မှန်ကူ ကွက်ခြင်း ပါးကွက် ကွက်ခြင်း။ ဝိသေသက။'
 157793	visesaka	repeated headword 'ဝိသေသကာ'; analysis bracket '[။ ဝိသေသ + က ]'
 157797	visesakappana	stray '၁ ဝိသေသကိတ္တန' (a later headword)
 157800	visesakāraka	quotation fragment '“အဇ္ဈတ္တသန္တာနေ "'
@@ -946,9 +950,7 @@ id	iast	omitted
 158095	vissajjakara	variant-reading note '" ဝိဿဇ္ဇကရ န္တိပိ ပါဌော'
 158096	vissajjaṭṭhāna	quotation fragment 'ဝိဿဇ္ဇောကာသ'
 158097	vissajjati	reference section repeating the senses, with quotations '(ပ) ဝိဿဇ္ဇာမီ', 'အာယုသင်္ခါရံ ဝိဿဇ္ဇိ ပဇဟိ', 'ဆဗ္ဗဏ္ဏရသ္မိယော ဝိဿဇ္ဇိ', 'ဝိဿဇ္ဇေယျု'
-158098	vissajjatu	run-on text 'ဝိဿဇ္ဇနာ (ထီ၊ န) [ဝိ + သဇ + ယု။ … ] (၃) စွန့်-စွန်လွတပယ်စွန့် ခြင်း … (၁၁) ဖြေ-ဖြေဆို-ရာ (အရပ်)။ (၃) … ဖွင့်ပြ-ထင်ရှားအောင်ပြု-ခြင်း' with quotation 'သဏောဇနံ နာမ … ကာတဗ္ဗံ'
-158099	vissajjana	quotation fragment 'န္တိ ဝိဝရဏံ … ဝိဘူတဘာဝကရဏတော'; quotations 'နိစ္စသမယေ … ဝိဿဇ္ဇနံ', 'ဝေါဿဇ္ဇနေနာ', 'ဝိဿဇ္ဇေယျု'
-158100	vissajjana	run-on text 'ဝိဿဇ္ဇနာ (န) [။ မောဂ်၊ ] ဖြေ-ဖြေဆို- တတ်သည်၏ အဖြစ်'
+158099	vissajjana	garbled first run of the sense list (1)-(11) with '၂ ဝိဿဇ္ဇနံ'; quotations 'သဏောဇနံ နာမ … ကာတဗ္ဗံ', 'ဝိဿဇ္ဇန န္တိ ဝိဝရဏံ … ကရဏတော', 'နိစ္စသမယေ … ဝိဿဇ္ဇနံ', 'ဝေါဿဇ္ဇနေနာ', 'ဝိဿဇ္ဇေယျု'
 158101	vissajjanaovāda	quotation 'ဒေသန န္တိ ဝိဿဇ္ဇနဩြဝါဒံ'
 158102	vissajjanakāla	quotation fragment '" သီလဝါ ”'; run-on text 'ဝိဿဇ္ဇနတ္တမ (၇) ဖြေ-ဖြေဆို-ခြင်း အစဉ်။ စေ "'
 158103	vissajjanagāthā	quotation 'ပဉ္စ ဇာဂရတန္တိ … သုတ္တာ နာမ'; stray '၃ ဝိဿဇ္ဇနပစ္စယ'
@@ -993,7 +995,7 @@ id	iast	omitted
 158190	vissajjissanti	analysis fragment '[ဝိ သဇ (။ ဓာန်၊ ၂]'; '(က-မူ'
 158192	vissajjīyati	quotation 'သော ဧဝ စ ဝိဿဇ္ဇီယတိ'
 158193	vissajjīyate	number '(၁၂၂)'
-158194	vissajjīyanti	run-on article ဝိဿဇ္ဇေတဗ္ဗံ (တိ) with its analysis, Sanskrit/Prakrit forms, senses (1)-(6) given twice ('to be given up / let go; caused to let go; thrown away; given away / donated; spread / dried in the sun; answered') and citations
+158195	vissajjetabba	garbled first run of the sense list; '(ထေရ'; citations 'ဝိ၊ ဋ္ဌ ၂။ (ကင်္ခါ၊ ဋီ။ ၆၇)'
 158196	vissajjetabba	analysis fragment '+ တ္တ။ မောဂ်၊ ]'; '၇၁'; quotation in (2) 'ယသ္မာ ဝိဿဇ္ဇနံ နာမ …'
 158199	vissajjeti	second run of senses (1)-(8) repeating the first, with quotation 'သဗ္ဗာ ဧကစ္ဃနာ …'
 158200	vissajjetuṁ	second run of senses (1)-(5) repeating the first (quotations removed)
@@ -1056,8 +1058,8 @@ id	iast	omitted
 158318	vissanditvā	analysis fragment '[ဝိ'; quotation fragment '(၁) သိင်ာဏိကန္တိ'
 158320	vissamaṭṭhāna	quotation 'န္တိ သကလသံသာရသာဂရေ …'
 158321	vissamati	label and analysis in the text 'ကြို [ဝိ။ … အဒ္ဓမာဂဓီ။ ]'
-158324	vissamana	Sanskrit form 'ဝိရမဏ-သံ'; run-on articles ဝိဿမနာ (န) 'causing to rest', ဝိဿမနဋ္ဌာန (န) 'place of rest', ဝိဿမနတ္ထ 'the benefit of resting; of causing to rest'
-158325	vissamana	fragment 'ကြည့်။' (see …); stray '၉ ဝိဿမမာန' (page mark / next headword)
+158324	vissamana	Sanskrit form 'ဝိရမဏ-သံ'
+158327	vissamanattha	page number '၉' and running head 'ဝိဿမမာန'
 158331	vissamappatti	stray ']'
 158332	vissamabhūmi	note '(၁၅၂ -၌ ဂါထာအရာဖြစ်၍ ဝိဿာမဘူမိ-ဟုရှိသည်)' — at 152, being in verse, it reads vissāmabhūmi
 158334	vissamāhi	grammar note 'ဝိဿမတိ-မှ' (from vissamati)
@@ -1203,8 +1205,7 @@ id	iast	omitted
 158603	vihāracīvaraparivattana	quotation 'ဝိဟာရစီဝရပရိဝတ္တနဝသေနာ'
 158604	vihāracchādanavatthu	location 'ခုဒ္ဒကနိကာယ ဝိနယပိဋက၊ ပါရာဇိကပါဠိ။ ၁ - ကဏ္ဍ၊ ၃-ပါရာဇိက။ ၂၈ - ဝတ္ထု'
 158605	vihārachāyā	note 'သိဝစ္ဆာယာ (၇၂ ဂဲ့သို့ ဝိဟာရစ္စာယာ-ရှိသင့်၏' (like sivacchāyā, it should be vihāracchāyā); stray '၄ ဝိဟာရဋ္ဌကထာ'
-158608	vihāraṭṭha	run-on fragments 'ဝိဟာရ ၇) ဝိပဿနာဝိဟာရ၏သဘော' ('(7) the nature of vipassanāvihāra') and 'ဝိဟာရဋ္ဌက (တိ) [ဝိဟာရ + က]'
-158609	vihāraṭṭha	fragment 'ကြည့်။'
+158609	vihāraṭṭha	run-on article 'ဝိဟာရဋ္ဌက (တိ) [ဝိဟာရ + က] ဝိဟာရဋ္ဌ -ကြည့်။'
 158611	vihāraṭṭhakathā	quotation 'ဝိဟာရဋ္ဌကထာယံ … တိအာဒိ'; citation 'သာရတ္ထ ၂'
 158612	vihāraṭṭhāna	quotation for sense (1) 'အတ္တနော နဂရေ … ကာရေသိ'
 158615	vihāradassana	empty quotation marks for sense (2)
@@ -1356,11 +1357,11 @@ id	iast	omitted
 158924	vīṇopamovāda	running head '၃ ဝီတံသသကုဏ'
 158925	vīṇovāda	quotation 'ဝီဏံ ဥပမံ … ဝီဏောပမောဝါဒေန'; run-on article 'ဝီတံသ ထီ၊ ပု) [ … ] (၁) တိန်ညင်ငှက် (တယ်ချိုး တယ်ခါ )။ (၂) ဝီတံသာမြစ် ( မြစ်ကြီး ၁၀- အနက် နဝမမြစ်)'
 158926	vītaṁsa	debris 'အလင်္ကာရေ န- ဃဉ်)'; source tags '(အမရ။ ဗြိဟတ်)', '(ကောတ္ထုဘ)', '(ဝါစပ္ပတိ။ ထောမ။ သဒ္ဒတ္ထစိန္တာမဏိ)'
-158927	vītaṁsasakuṇa	run-on article 'ဝီတာ (တိ) [ဝီ+ တ … ] (၁) (ချည်, ကြိမ်, နီးစသည် တို့ဖြင့်) ယက်-ထိုး အပ်သော။ (၂) ယက်-ထိုး-ရာဌာန' with quotation 'မဉ္စပီဌံ … ဟောတိ' and '(၂) ဝီတဋ္ဌာန-'
-158928	vīta	quotations '(၂) ဝီတခိလော' and '(၄) [ ဝီတခိလ ဝိနဋ္ဌပုရိမစ္ဆဝိဝဏ္ဏော စ'
-158929	vīta	analysis 'ဝီ + တ္တ။ ဝီ + ဣ + တ္တ'; source tags '(ကောတ္ထုဘ)', '(ဗြိဟတ်)'; stray '(၇)'
-158934	vītaṅgāra	run-on articles 'ဝီတစ္စိက (တိ) …', 'ဝီတစ္စိကင်္ဂါရ (ပု) …', 'ဝီတစ္စိကင်္ဂါရသန္ထတ (တိ) … ၄၂၄-၅)', 'ဝီတစ္စိကင်္ဂါရသန္ထရ (၇) ] …'
+158928	vīta	quotation 'မဉ္စပီဌံ … ဝီတံ ဟောတိ'; cross-reference fragment '(၂) ဝီတဋ္ဌာန-'
+158929	vīta	cross-references (ဝီတဂေဓ, ဝီတစ္စိတ, ဝီတတဏှ; ဝီတခိလော; ဝီတတဏှ sense 2); quotation fragment; Sanskrit analysis bracket '(ဝီတ (တိ) ဝီ + တ္တ …' with the senses of Sanskrit vīta (1)–(14) and (1)–(6), sources ကောတ္ထုဘ, ဗြိဟတ်
+158934	vītaṅgāra	run-on articles 'ဝီတစ္စိက (တိ) …', 'ဝီတစ္စိကင်္ဂါရသန္ထရ (၇) ] …'
 158935	vītaccita	quotation 'မယှံ ပိတု … ပစထ'
+158937	vītaccikaṅgārasanthata	bare page numbers '၄၂၄-၅)'
 158940	vītaccitakhadiraṅgāravaṇṇa	analysis 'န- အင်္ဂါရ + ဝဏ္ဏ'; synonym 'ခဒိရင်္ဂါရသန္နိဘ'
 158946	vītaṭṭhāna	stray bracket '['
 158947	vītataṇha	OCR debris 'ဖုပြ' and running head 'ဝီတဒေါသ'
@@ -1422,7 +1423,8 @@ id	iast	omitted
 159067	vītināmenti	ending 'ဏေ + အန္တိ'
 159070	vītināmeyyaṁ	label fragment 'ကာ၊ ကြို'; analysis bracket '[ဝိ+ အတိ + နမု ဏေယျ]'
 159071	vītināmeyya	headword and label 'ဝီတိနာမေယျ ကာ၊ ကြို [ဝိ + ]'; stray '(၂)'
-159074	vītināmesi	fragment 'ဖို။'; run-on 'ဝီတိနာမေသိပ ကာ၊ ကြို [ဝိ + အတိ + နမု ဏေ ဤအချိန် အခါကို)'
+159073	vītināmesi	debris 'ဖို'
+159074	vītināmesi	label 'ကာ၊ ကြို'; analysis bracket '[ဝိ + အတိ + နမု ဏေ ဤ'; fragment 'အချိန် အခါကို)' ('the time', object of a lost verb)
 159075	vītināmesuṁ	quotation 'ဘောဇနကာလံ အတိက္ကာမေသုံ'
 159077	vītināmessāma	label fragment 'ကာ၊ ကြို [ဝိ. ]'; quotation 'အဇ္ဇ ပီတိသုခေနေဝ ဝီတိနာမေဿာမ'
 159079	vītipatati	stray '(၂)'
@@ -1454,8 +1456,9 @@ id	iast	omitted
 159125	vīthijavana	dashes '---------='
 159126	vīthiññū	quotation 'ရူပသညုတ္တာ … အယံ မဂ္ဂေါ'
 159127	vīthintara	dashes; quotation fragment 'အဟံ ပုစ္ဆိံ'
-159128	vīthipaṭipatti	quotation 'ဝိပဿနာယ … ဥပ္ပဇ္ဇတိ'; run-on articles ဝီထိပဋိပန္န (တိ) with its senses and quotation, ဝီထိပဋိပန္နကာလ, ဝီထိပဋိပန္နဝိပဿန (တိ) with its quotation
+159128	vīthipaṭipatti	quotation 'ဝိပဿနာယ … ဥပ္ပဇ္ဇတိ'; run-on article ဝီထိပဋိပန္န (တိ) with its senses and quotation
 159129	vīthipa	rest of the headword 'ဋိပါဋိ' and label '(ထီ)'
+159131	vīthipaṭipannavipassana	quotation 'ပဿဒ္ဓကာယစိတ္တဿ … ဥဒါနေသိ'
 159134	vīthipaṭipādaka	quotation 'သွာယံ … အဓိဝစနံ'
 159138	vīthibhatta	trailing debris '(က) (ခ) (ယ'
 159139	vīthibhāga	stray quotation mark
@@ -1464,7 +1467,6 @@ id	iast	omitted
 159144	vīthisabhāga	quotation 'တေ မလ္လရာဇာနော … ဝုတ္တံ " "တိ'
 159146	vīthisampaṭipādanattha	citations 'ဝိသုဒ္ဓိ၊ ၁ဝ', 'ဝိသုဒ္ဓိ၊ ဋီ၊ ၁ဝ'
 159150	vīthisammajjattheraapadāna	citation 'အပ၊ ၁ဝ'
-159155	vīnaṭṭhāna	run-on article 'ဝီမံသံ (ပ) [မာန + သ + အ။ ဝီမံသ-အဒ္ဓမာဂဓီ။ ] ဝီမံသဋ္ဌ-ကြည့်'
 159158	vīmaṁsaka	sense list repeated in the detailed section; page-header debris '၂ ဝီမံသကုက္ကုစ္စကာရီ'
 159160	vīmaṁsakabhūmi	quotation 'အဋ္ဌ ပုရိသဘူမိယောတိ … ဝီမံသကဘူမိ နာမ'
 159163	vīmaṁsakukkuccakārī	quotation 'ကုက္ကုစ္စကေသူ တိ " ”'
@@ -1606,8 +1608,8 @@ id	iast	omitted
 159421	vīriyūpanissaya	quotation fragment 'ဒုတိယဂါထာယ " "'
 159423	vīvadāta	quotation 'တိ သကာယဒိဋ္ဌိယာ … ဟောန္တိ စေ'
 159424	vīsaṁ	grammarians' notes in the bracket '(အလိင်္ဂ [။ ကစ္စည်း။ ( ဝိစတိ-သံ။ ဝီသ၊ ဝီသက္က-ပြာ၊ အဒ္ဓမာဂဓီ။ ]'; quotations for senses (1) and (2)
-159427	vīsaṁvassasatika	run-on article 'ဝီသ = ဝီသာ (ထီ) [ဝီသ + အာ … ] နှစ်ဆယ် ၂၀၊ ၂ (နှစ်) ကျိပ်။ (၂၀ (နှစ်ဆယ်) သောလူ၊ ၂၀ သောနတ်၊ ၂၀ သောဗြဟ္မာစသည်)' with its quotations and citation 'ဝိ၊ ၁ဝ'
-159429	vīsa	grammarian's note '(တဒသ္မိန္နဓိကမိတိ ဒဇန္တောဍ္ဍး။ ၃၅၁-၌ စာပျက် နေတတ်သည်။ ) မောင်'
+159428	vīsa	variant '= ဝီသာ (ထီ)'; analysis bracket with a grammar quotation ('အထ ဝီသတိံသတျာဒီနိ …'); quotations ('သော အနေကဝိဟိတံ …', 'ဒသပိ ဘန္တေ နာဠန္ဒာ …') and citation
+159430	vīsa	grammarian's note with the rule 'တဒသ္မိန္နဓိကမိတိ …' and the remark that the text at 351 is often corrupt; debris 'မောင်'
 159438	vīsatākāra	page-header debris '၅ ဝီသတိ'; citation 'ဝိ၊ ဋ္ဌ ၁'
 159441	vīsatiṁsahatthagambhīra	quotation word 'ဥဒပါနော'
 159442	vīsati	citations 'ဓာန်', 'ဓာန်၊ သုတ္တနိဒ္ဒေသ။ ၂၅၁)', 'ဝိ၊ ဌ၊', '(သီ၊ မူ)'; page-header debris '၆ ဝီသတိအန္တရကပ္ပသင်္ဂဟ ၂'; repeated 'စသည်'
@@ -1804,8 +1806,8 @@ id	iast	omitted
 159862	vuḍḍhivisesa	stray '၂)'; quotation 'ဝုဍိန္တိ အဘိဝုဍိနိမိတ္တံ'; run-on article 'ဝုဒ် ( (ု) … ဟူသော အထူးသို့ ရောက်ခြင်း'; run-on article 'ဝမိ (န) ဟတ (တိ) [ဝမိ။ ဟတ[ … ဖျက်ဆီးတတ် သော၊ သူ'
 159865	vuṇāti	forms 'ဝုဏောတိ၊ ဝုဏာတိ'; running-head 'ဋ၌ ဝုတ္တ'
 159867	vuta	forms 'ဝုတော၊ သံဝုတော၊ သုသဝုတော'; page reference '၅၁၃-နှာ'
-159868	vuti	citation 'ဓာန်'; run-on article 'ဝုတ္တံ (တိ) [ဝစ္ဆု + တ …] (ဆံ) ရိတ်ဖြတ်-ပယ်ချ-ခေါင်းတုံး-အပ်သော'
-159869	vutta	citations 'ဣတိဝုတ်', 'ဝိသုဒ္ဓိ၊ ဋီ ၁', 'ဝိသုဒ္ဓိ၊ ဋီ၊ ၁ဝ။ ၄', 'ဣတိဝုတ်၊ ၄'; quotation 'ပဋိဝုတ္တံ … သမီကတံ'
+159868	vuti	citation 'ဓာန်'
+159870	vutta	citations (ဣတိဝုတ်, ဝိသုဒ္ဓိ ဋီ); quotation 'ပဋိဝုတ္တံ ဗီဇာနံ … သမီကတံ'
 159871	vutta	quotations 'ဧတရဟိ ခေါ … ဝိဟရာမိ', 'အယံ ဟိဿ အတ္ထော … စရိတန္တိ'; citations 'ဝိ', 'ဣတိဝုတ်၊ ဌ'
 159872	vutta	citation 'ဣတိဝုတ်၊ ၄'
 159873	vutta	quotations 'ဝုတ္တောပျတြ', 'စကာရေန … ဂဟိတာ။ ဏော'; citations 'ဓာန်'
@@ -2125,8 +2127,8 @@ id	iast	omitted
 160473	vuttāvasiṭṭha	quotation 'တေန ဝါသဒ္ဒေန ဝုတ္တာဝသိဋ္ဌံ … သင်္ဂဏှာတိ'
 160477	vuttāvasesapāṭidesanīyadvaya	quotation 'ဒုဗ္ဗဏ္ဏေ ဒွေ ဝုတ္တသိက္ခာပဒဉ္စ ဝုတ္တာဝသေသပါဋိဒေသနီယဒွယဉ္စ'
 160481	vuttāvasesāpacāyana	citation အဘိဓာန် (အ-ဝဂ်) ၂၉ ပ-မ-သ-စ ၉; quotation 'ဝုတ္တိံ ဝုတ္တာဝသေသာပစာယနာဒိဝသေန … ကာယိကံ ကိရိယံ သင်္ဂဏှာတိ'
-160483	vuttāvuttatthasamuccayattha	quotation 'ဝါ-သဒ္ဒေါ ဝုတ္တာဝုတ္တတ္ထသမုစ္စယတ္ထော'; run-on article ဝုတ္တိ (ထီ) with its analysis [ဓာန်၊ လတ္တီ-သံ …], senses (၁)–(၆) and quotation 'ယာ ဝုတ္တိ ဝိနိပါတေနာ … ဧသာ'
-160484	vutti	citations ဝိသုဒ္ဓိ၊ ၁ဝ, ဝိသုဒ္ဓိ၊ ဋီ ၁, (ကင်္ခါ။ ၈၃), ဝုတ္တောဒယ။ ၁၉၅-နှာ, ဝစနတ္ထဇောတိကာ။ ဋီ၊ ၄၄-ဂါထာ, (ဆန်း၊ နယသမ္ပုဏ္ဏ၊ ဆန်း၊ ဂဏ္ဌိ။ ၄၆-ဂါထာ); quotations 'သုစိသလ္လေခဝုတ္တိနာ' and 'ဝိဇ္ဇမာနတာဘိဗျတ္တိကိရိယာသင်ါတာယ ဝ'
+160483	vuttāvuttatthasamuccayattha	quotation 'ဝါ-သဒ္ဒေါ ဝုတ္တာဝုတ္တတ္ထသမုစ္စယတ္ထော'
+160484	vutti	second pass of senses (1)–(6) with quotations and citations (ဝိသုဒ္ဓိ, ကင်္ခါ, ဝုတ္တောဒယ, ဝစနတ္ထဇောတိကာ, ဆန်း); garbled OCR of the repeated sense (6)
 160485	vutti	citations ဓာန်။ ၈၅-နှာ, နိရုတ္တိ-သာရမဍဒ္ဍုသာ။ ၁၂၃-၄-နှာ, သုတ္တနိဒ္ဒေသ။ ၅-နှာ, ဂဠုန်ပျံ။ ၁၈-နှာ; quotations 'ဝုတ္တိ သုတ္တဝိဝရဏံ, ဇီဝိကာပဝတ္တိဝိနယဉ္စ' and 'သဗ္ဗဝစနာနမတ္ထော … သဒ္ဒပ္ပဗန္ဓော'
 160486	vuttika	analysis bracket with grammarian's note '[ဝုတ္တိ က။ ကသိရဝုတ္တိက-က - ကို သမာသန္တက-လည်း ကြံနိုင်သည်။ လတ္တိက-သံ။ ]'; quotations '(၁) ဣဓ မဟာရာဇ … ကသိရဝုတ္တိကေ' and '(၂) … သဘာဂဝုတ္တိကာ ဝိဟရိဿန္တိ'
 160487	vuttikappana	stray '၂)'
@@ -2205,10 +2207,11 @@ id	iast	omitted
 160628	vūpakāsetuṁ	tail of a cross-reference 'ကြည့်။ )' at the start; analysis bracket (vi + upa + kasa + ṇe + tuṁ); stray 'ံ ၆ ဝူပဂတ' (next headword)
 160630	vūpakāseyya	run-on article ဝူပကာသေသိ (causative verb, analysis bracket; 'caused to separate; led / took away to another place')
 160632	vūpakāsessati	run-on article ဝူပကာသေဿာမိ ('(1) (I) shall cause to separate; shall lead / take away to another place. (2) (I) shall remove / calm') with its cross-reference '၃ပကာသာပေဿာမိ ကြည်'
-160635	vūpasanta	grammarian's note (u lengthened to ū); Sanskrit form and source tag; citations '၂၁၄၊ သျ၊ ပြည်' inside (2); quotations 'iti ayañca santā … atthaṅgatā', 'santo ca bhikkhu upasanto …'; citation Sāratthadīpanī 10; run-on article ဝူပသန္တ (adjective, causative) with its analysis bracket and two senses
-160636	vūpasanta	label '(တိ)'
-160642	vūpasantagaṇanā	debris '} ၅ ဝူပသန္တတေဇ'; run-on article ဝူပသန္တစိတ္တ (adjective; '(1) having a calmed / cooled mind. (2) (a) having an especially still mind. (b) having a well-stilled mind') with quotations 'santacittā … vūpasantacittā', 'ye hi ariyā …', 'na uddhato vūpasantacitto samāhitoti attho', citations Itivuttaka, Theragāthā 276 and a note on the reading 'santacitto'
-160643	vūpasantacitta	citation Aṅguttara 10
+160635	vūpasanta	grammarian's note (u lengthened to ū); Sanskrit form and source tag; citations '၂၁၄၊ သျ၊ ပြည်' inside (2); quotations 'iti ayañca santā … atthaṅgatā'; citation Sāratthadīpanī 10
+160636	vūpasanta	'(အာဝုသော)'; quotation 'သန္တော စ ဘိက္ခု … သန္တော'
+160642	vūpasantagaṇanā	debris '} ၅ ဝူပသန္တတေဇ'
+160643	vūpasantacitta	quotations and citations; editorial note that Thera 276 reads 'သန္တစိတ္တော'
+160644	vūpasantacitta	citation 'အံ၊ ၁ဝ'
 160645	vūpasantateja	citation Dī. Ṭī. 2
 160646	vūpasantadaratha	stray '['
 160648	vūpasantapañcindriya	headword fragment '[ ဝူပသန္တ- ပဒ္စိန္ဒိယ'; reference 'santindriya (Udāna)'; run-on article ဝူပသန္တပဋိဃ (adjective; 'having anger especially calmed / cooled; who has especially calmed / cooled anger; having anger removed; who has removed anger')
@@ -2243,7 +2246,8 @@ id	iast	omitted
 160706	vūpasamissāmi	quotation 'vūpasamissāmī' with citation Kaṅkhā 255
 160707	vūpasamīyati	label and analysis bracket fragment 'ကာ၊ ကမ္မ၊ ကြို [ဝိ + ]'
 160711	vūpasameti	page reference '၄၄၅-နှာ'; quotations 'taṁ vūpasameti' and 'ayampi kho bhikkhave pāpake akusale dhamme ṭhānaso antaradhāpeti vūpasameti' with sense numbers; citation Visuddhimagga Ṭīkā 1; stray ')၈'
-160712	vūpasametuṁ	label and analysis bracket fragment; quotation 'na sakkonti taṁ adhikaraṇaṁ … yebhuyyasikāya vūpasametuṁ'; run-on article ဝူပသမေတု (feminine, masculine; analysis bracket; 'one who tends to cause to calm / abate')
+160712	vūpasametuṁ	label and analysis bracket fragment; quotation 'na sakkonti taṁ adhikaraṇaṁ … yebhuyyasikāya vūpasametuṁ'
+160713	vūpasametu	label '(ထီ၊ ပု)'; analysis bracket '[ ဝိ + + ဏေ + တု ]'; debris '”'
 160715	vūpasametvā	label and analysis bracket fragment; citation Vi. Ṭṭha 1
 160716	vūpasametha	label and analysis bracket fragment 'ကာ၊ ကြို [ဝိ + ]'
 160718	vūpasamenti	citation '၁ဝ၅'
@@ -2255,9 +2259,8 @@ id	iast	omitted
 160737	vūpasammanti	cross-reference fragment '(၂) ဝူပသမ္မတိ (၃)' without ကြည့်
 160738	vūpasammissati	stray '၂'
 160739	vūpasammeyya	run-on article ဝုဠ (adjective) with analysis bracket, Sanskrit and Prakrit forms and cross-reference 'see ဝုဠှ'; citation Abhidhāna (a-vagga) 31 'ပ-မ-သ-စ'
-160741	ve	Sanskrit and Prakrit forms ('saṁ-vai', 'vā + khaṁ', 've', 'vaṇṇa'); source tags ကောတ္ထုဘ, ထောမ, သက္ကတပိဋက; stray '(၁)'; second copy of senses (1)–(4) with citations Pācittiya and p. 390
-160742	ve	empty quotation marks; citation Theragāthā 279–80; quotations 'yo ve … viyānurakkhī' and 'idaṁ vuttaṁ hoti … na yācati'; run-on article ဝေ (root, 've tantasantāne')
-160743	ve	tail of the root article 'vāyati, tantavāya'; stray '၂ ဝေကတိက ဝေ?'
+160741	ve	grammarian's notes (သံ-ဝဲ, ဝါ + ခဲ့, ဝေ-သံ, ဝေ-ပြာ; sources ကောတ္ထုဘ, ထောမ, သက္ကတပိဋက, ဝဏ္ဏ); second pass of senses (1)–(8), partly garbled, with quotations and citations (ပါစိတ်, ထေရ ၂၇၉-၈၀, ၃၉၀-နှာ, 'ဣဒံ ဝုတ္တံ ဟောတိ …')
+160742	ve	analysis bracket '[ဝေ။ ]'; related forms ဝါယတိ, တန္တဝါယ, ဝေကတိက
 160744	vekaṭika	grammarian's note (ṇika in the sense of tassīla); source tag မောင်
 160746	vekata	stray quotation mark; citation Dī. Ṭī. 1
 160747	vekatika	quotation 'bhante nāgasena idhekacce udakaṁ tāpetvā vekatikavekatikaṁ paribhuñjanti'
@@ -2476,9 +2479,8 @@ id	iast	omitted
 161193	vedanāssāda	quotation
 161194	vedanāhetupariññā	quotation
 161195	vedanindriya	reference '၁၂၀'; run-on article 'ဝေဒနိယာ (တိ)' with grammatical note (Skt., Pkt., Ardhamāgadhī forms), senses and quotation
-161196	vedaniya	headword form 'ဝေဒနီယာ (တိ)'; quotation fragments 'ဝေဒနိယ။ တေနာဟ "။ ၂)'
-161197	vedanīya	quotations 'ဒိဋ္ဌဓမ္မဝေဒနီယာဒီ', 'ပဏ္ဍိတဝေဒနီယော'
-161198	vedanīya	Pāḷi quotation only
+161197	vedanīya	quotation fragment 'ဝေဒနိယ။ တေနာဟ "။ ၂)'
+161198	vedanīya	quotation fragments ('ဒိဋ္ဌဓမ္မဝေဒနီယာဒီ', 'ပဏ္ဍိတဝေဒနီယော', 'န္တိ ဣဓ ဝိပစ္စနကံ … ပသဝေယျာသိ')
 161199	vedanupaya	headword fragment and damaged analysis 'ပယ (တိ) [။ +ဣ + ဏ။ ]'; debris '------'
 161200	vedanūpaya	headword fragment and damaged analysis 'ပယ (တိ) [။ +ဣ + ဏ။ ]'; debris '------'
 161201	vedanupādānakkhandha	'ဟု ဆိုအပ်သော' without its antecedent
@@ -2490,7 +2492,7 @@ id	iast	omitted
 161212	vedantagū	number '၈ဝ'; quotation
 161213	vedantogadha	stray '"။'
 161215	vedapaṭilābha	run-on article 'ဝေဒပဋိသံယုတ္တ (တိ) အသိဉာဏ်နှင့်စပ်ယှဉ်သော'; fragment 'ဝေဒလ္လကထ'
-161220	vedabahula	run-on articles ဝေဒဗ္ဗ = ဝေဒဗ္ဘ (analysis, senses 'the Vedabbha mantra', 'the brahmin who knows it'), ဝေဒဗ္ဗဇာတက (location in the Jātaka), ဝေဒဗ္ဗဗြာဟ္မဏ (ပ)
+161220	vedabahula	run-on articles ဝေဒဗ္ဗ = ဝေဒဗ္ဘ (analysis, senses 'the Vedabbha mantra', 'the brahmin who knows it'), ဝေဒဗ္ဗဗြာဟ္မဏ (ပ)
 161221	vedabba	run-on '၄ ဝေဒယတိ = ဝေဒေတိ'
 161226	vedamada	quotation
 161227	vedamanta	debris '(-'
@@ -2505,8 +2507,7 @@ id	iast	omitted
 161239	vedayāmi	debris '(၂)၊ "'
 161240	vedayiṁsu	quotation
 161241	vedayi	run-on '၆၆ ဝေဒယတိကိရိယာ'
-161242	vedayita	quotation markers '(န) (၁) ဝေဒယိတ'; quotation
-161243	vedayita	citation 'မ၊ ဋီ၂။ (၄)'; headword 'ဝေဒယိတ'
+161242	vedayita	second pass: cross-references ဝေဒယိတ, ဝေဒယိတသဘာဝ; quotation 'ဧဝံ ပန ဝိဒ္ဓသမာနော …'; citation 'မ၊ ဋီ၂'
 161249	vedayitaparikkhāra	edition siglum '(သျ။'
 161250	vedayitabba	run-on '၇ ဝေဒယိတလိင်္ဂ'
 161252	vedayitabhāvadīpaka	grammatical note: feminine --ဒီပိကာ
@@ -2558,7 +2559,7 @@ id	iast	omitted
 161341	vedissaṁgiri	stray ']'; equivalence 'ဝေဒိသ = ဝေဒိဿ'
 161343	vedissāma	analysis 'ကြို [ဝိဒ + ဏေ + ဿာမ ]'
 161344	vedissāmi	garbled fragment 'သ-အံ-လတ္တံ့လိမ့်မည်'
-161345	vedī	run-on article 'ဝေဒီ ၁ (ကြိ) [ ဝိဒ + ဏေ + ဤ။ ဝိဒတိ - မှ။ ] သိမြင်- ထိုးထွင်းသိ-၏-ပြီ'
+161346	vedī	'၁ (ကြိ)'; analysis bracket '[ ဝိဒ + ဏေ + ဤ။ ဝိဒတိ - မှ။ ]'
 161348	vedūra	citation 'ကစ္စည်း။ ၆၈ဝ'
 161350	vedetu	analysis 'ကြို [ဝိဒ +ဏေ + တု ]'
 161353	vedemi	analysis 'ဝိဒ +ဏေ + မိ)]'
@@ -2569,8 +2570,8 @@ id	iast	omitted
 161358	vedeha	run-on '၉ ဝေဒေဟာါ'; start of the repeated sense list of the quotation apparatus (continues in 161359)
 161359	vedeha	OCR debris 'ရို၏ ဂ', '၌ရူ ဖို့] ရ ဖု့] ဝပု ဤ', '” ့'; citations 'ဇာ၊ ၆ ၁ ၂၈', '( ၁၀၈-၁၂၊ ၁၁၅၊ ၁၁၈၊ ၁၂၀-၂]'
 161360	vedehaïsi	quotation
-161361	vedehaputta	run-on article 'ဝေဒေဟပုနိ (၇) ပညာရှိသော ရဟန်း (အာနန္ဒာထေရ်)'; quotation fragment 'ဝေဒေဟော'
-161362	vedehamuni	stray ']'; quotation with debris
+161362	vedehamuni	quotation fragment '“ဝေဒေဟော”'
+161363	vedehamuni	stray ']'; quotation 'ဝေဒေဟမုနီတိ ဝေဒေဟရဋ္ဌေ … ဝေဒေဟိပုတ္တော' with OCR debris
 161365	vedeharāja	quotation
 161368	vedehiputta	quotation; marker '(၂)'
 161369	vedehisi	reference 'အဘိဓာန် (အ-ဝဂ်) ၃၆ ပ-မ-သ-စ'; quotation
@@ -2588,7 +2589,7 @@ id	iast	omitted
 161393	vedhitā	run-on 'သို့ ဝေဓေယျ'
 161394	vedhima	unclear 'ပြ-သ'
 161396	vedhetvā	quotation '(၁) န သမ္ပဝေဓေယျာ'
-161398	vedheyya	'ကြို'; run-on articles: ဝေန (Abhidhāna, Uṇādi, feminine ဝေနီ, Skt. forms; '(1) one who lives by rushes, a bamboo worker, a rush-worker, a basket-weaver; (2) broad'), ဝေနဇာတိ (တိ) ('(1) the caste of rush-workers / basket-weavers, (2) the caste of carpenters'), ဝေနဇာတိက (တိ) (with see-also ဝေနဇာတိ), ဝေနမုတ္တိ ('a kind of pea, wild pea'; citation), ဝေနသာခ (တိ) ('a tree having broad branches')
+161398	vedheyya	'ကြို'; run-on articles: ဝေန (Abhidhāna, Uṇādi, feminine ဝေနီ, Skt. forms; '(1) one who lives by rushes, a bamboo worker, a rush-worker, a basket-weaver; (2) broad'), ဝေနဇာတိက (တိ) (with see-also ဝေနဇာတိ), ဝေနမုတ္တိ ('a kind of pea, wild pea'; citation), ဝေနသာခ (တိ) ('a tree having broad branches')
 161399	vena	run-on '၅ ဝေနယိက'
 161404	venasākhajātaka	location (Khuddakanikāya, Jātaka, 5th nipāta, 1st vagga, 3rd jātaka)
 161405	venateyya	source tags 'ကစ္စည်း', 'ဓာန်'; feminine ဝေနတေယျံ; Skt. form
@@ -2660,7 +2661,7 @@ id	iast	omitted
 161557	vemātubhātika	bracket debris ') (ပု) [ (ဘာတိက) ]'; inflected forms 'ဝေမာတုဘာတရံ (ဝေမာတုဘာတိကံ)'
 161559	vemānika	Sanskrit note 'ဝဲမာနိက-သံ၊ သက္ကဋပိဋက'; stray numbers '၂', '၅'; quotation fragment 'အညေ စ ဝေမာနိကာ ပေတာ'; page numbers '၁၀၄', '၁၇၂'
 161561	vemānikapetarāja	quotation fragment 'တေနာဟ " "တိ'
-161562	vemānikapetarūpa	run-on articles ဝေယဉ္စနိက (see ဝေယျဉ္ဇနိက), ဝေယတ္တိယ (skill; wisdom) and ဝေယျဂ္ဃ (tiger path; tiger skin) with their grammar brackets, and the start of a grammarian's note on the spelling ဝေယဂ္ဃ
+161562	vemānikapetarūpa	run-on articles ဝေယဉ္စနိက (see ဝေယျဉ္ဇနိက) and ဝေယျဂ္ဃ (tiger path; tiger skin) with their grammar brackets, and the start of a grammarian's note on the spelling ဝေယဂ္ဃ
 161563	veyañjanika	grammarian's note on the spelling of ဝေယဂ္ဃ / ဝေယျဂ္ဃ (reference to Kaccāyana suttas 40, 375); start of the article ဝေယျဂ္ဃာ
 161566	veyyaggha	grammar bracket '+ ဏ။ ဏော။ ဓာန်၊ ကပ္ပဒ္ဒုမ။ (တိ) ဝဲယာယြ-သံ။ ]'; stray '(၇)'
 161569	veyagghaparisibbita	OCR echo of the headword 'ဌပရိသိဗ္ဗိတ (တိ) [ဝေယဂ္ဃ + ပရိသိဗ္ဗိတ ]'; OCR debris '၇ ဝေယျတ္တံ'
@@ -2678,10 +2679,10 @@ id	iast	omitted
 161596	veyyāvaccakara	OCR debris '၂ ဝေယျဝစ္စကရတ္ထေရအပဒါန'
 161601	veyyāvaccakarattheraapadāna	citation 'ပဒါနပါဠိ၊ ၁၀ - ဝဂ်။ ၉-အပဒါန'
 161607	veyyāvaccamaya	sense pointers '(က) (ခ)'; OCR debris '------အဘိဓာန် (အ-ဝဂ်) ၃၈ ပ-မ-သ-စ ၃'; quotation 'ဝေယျဝဋိကာ နိဗ္ဗာနသမ္ပတ္တိဉ္စ ဒါတုံ သက္ခိဿသိ'
-161609	veyyāvaccha	quotation 'ဗျာဝစ္ဆဿ ပုတ္တော ဝေယျာဝစ္ဆော'; run-on article ဝေယျာဝဋိက (န) with grammar bracket, Sanskrit and Prakrit forms and its gloss 'same as ဝေယျာဝစ္စ; duties great and small, a thing to be done'
+161609	veyyāvaccha	quotation 'ဗျာဝစ္ဆဿ ပုတ္တော ဝေယျာဝစ္ဆော'
+161610	veyyāvaṭika	analysis bracket (ဏိက; Sanskrit and Prakrit forms ဝဲယာဝုတ္တု, ဝေယာဝစ္စ, ဝေယာဝဍိယ; 'like ဝေယျာဝစ္စ'); trailing 'ဝေယျာဝဋိက'
 161611	veyyāvaṭika	garbled 'ဆော် ဆွမ်းညွန်'; quotation 'သစ္စံ ကိရ သမ္မ တယာ သမာဒပိတော'
-161612	veyyāvaṭiikakamma	run-on article ဝေရ (ပု၊ န) with grammar bracket, Sanskrit and Prakrit forms and its senses (a)–(g), (2), (3) (the senses are translated under the next line, 161613)
-161613	vera	quotation fragments 'ံ ကတွာ', 'ဇယံ ဧဝံ ဇိနန္တော သယံ ဝေရံ ပသဝတိ', 'ကတမေ ပဉ္စ၊ သုရာမေရယမဇ္ဇပ္ပမာဒဋ္ဌာနံ'; citations 'ဣတိဝုတ်', 'အင်္ဂုတ္တရနိကာယ၊ ၅-နိပါတ်…၄-သုတ်', 'အင်္ဂုတ္တရနိကာယ၊ ၉-နိပါတ်…၈-သုတ်'
+161613	vera	second pass of the senses with quotations; locations of the three Vera suttas (AN 5-nipāta, AN 9-nipāta)
 161616	veraappaṭinissaggalakkhaṇa	run-on fragment '၅ ဝေရကာရပုဂ္ဂလစေတနာ'
 161619	verakāraṇa	quotation fragment 'ဝေရာနီ ဝုစ္စန္တိ'
 161621	verakārapuggalacetanā	stray bracket '['
@@ -2749,7 +2750,7 @@ id	iast	omitted
 161747	velambaka	source tag '(သျ)'
 161748	velayati	headword label and bracket 'ကြို [။ ဝေလယတိ - သံ။ ]'
 161749	velā	the duplicated second OCR pass of senses 1–6; OCR debris 'အဘိဓာန် (အ-ဝဂ်) ၃၉ ပ-မ-သ-စ ၉', 'ဂို', '(ခ)၊'; Pāḷi quotations 'ဝေလာ ဣမံ ဥဒါနံ ဥဒါနေသိ', 'တိ ဝိနာသေတုံ သမတ္ထတာယ ဝေလာ ဗလံ နာမ', 'ဝေလာ တာသံ န ဝိဇ္ဇတီတိ… နတ္ထိ'; citation 'ပါစိတ်၊ ယော။ ၅၅၈'
-161751	velā	headword echo and grammar bracket 'ဝေလာ? (ထီ) [။ နောက်ပုဒ်ကြေ။ ဝေလာတိကြမ - သံ။ ဝေလာအက္ကက္ကမ - အဒ္ဓမာဂဓီ။ ]'; quotation fragment 'ဝေလာ ” တိ'; citation 'ပါစိတ်'
+161751	velā	quotation fragment '“၊ "ဝေလာ ” တိ'; citation 'ပါစိတ်'
 161752	velāanatikkama	quotations for (a) and (b) ('စတူဟိ ဝစီဒုစ္စရိတေဟိ ဝေလာအနတိက္ကမော သေတုဃာတော', 'ပဉ္စဟိ အာပတ္တိက္ခန္ဓေဟိ ဝေလာအနတိက္ကမော သေတုဃာတော' and others)
 161753	velātaṭa	Sanskrit and Prakrit forms 'ဝေလာတဋ -သံ။ ဝေလာဦလ (ဥလ)-ပြာ၊ အဒ္ဓမာဂဓီ'
 161754	velātikkanta	citation 'မဟာနိ၊ ဋ်'
@@ -2775,8 +2776,8 @@ id	iast	omitted
 161792	vevacanavicāraṇā	quotation fragment '“ "တိအာဒိ'
 161793	vevacanasamāropana	OCR debris '၇ ဝေဝစနသမာရောပန'; Pāḷi quotation 'ဝေဝစနသမာရောပနော, ဘာဝနာ… ဝေဝစနသမာရောပနော'; list of further references for details (နေတ္တိဟာရတ္ထဒီပနီ, နေတ္တိဟာရတ္ထဒီပနီသစ်, …)
 161794	vevacanahāra	citations '(နေတ္တိ၊ ဝိ။ ၂၁)', '(သီ၊ ဋီ သစ် ၁။ နည်း)'; run-on debris '၈ ဝေဝစနာဟာရသင်္ဂဟိတ'
-161801	vevajja	run-on article ဝေဝဏ္ဏ (န) with grammar bracket, source tag ထောမ, Sanskrit and Prakrit forms and its gloss 'the state of having an altered colour (alteration of colour)'; start of the article ဝေဝဏ္ဏိယ with citation 'အလင်္ကာ၊ ဋီ၊ သစ်' and Sanskrit form
-161802	vevaṇṇa	fragment 'ကြည့်]'; stray '(-'
+161801	vevajja	run-on article ဝေဝဏ္ဏ (န) with grammar bracket, source tag ထောမ, Sanskrit and Prakrit forms and its gloss 'the state of having an altered colour (alteration of colour)'
+161803	vevaṇṇiya	trailing '(-'
 161804	vevāhika	sense pointer '(၁)' with quotation 'ဣဒါနိ ကတိပါဟဿေဝ သော အာဂတော ဘဝိဿတိ'
 161805	vevāhikapurisa	run-on fragment 'ဝေဝါဟိက-'
 161806	veviccha	quotation 'ယော ရာဂေါ ပရိယုဋ္ဌာနံ လတာ ဝေဝိစ္ဆံ ဒုက္ခမူလံ ဒုက္ခနိဒါနံ ဒုက္ခပ္ပဘဝေါ'; citation 'ဥ၆'
@@ -2847,10 +2848,11 @@ id	iast	omitted
 161909	vessika	sense pointer and inflected form '(၁) ဝေဿေ'
 161910	vessinī	run-on fragment '၂ ဝေဟပ္ဖလဝါရ'
 161912	vehapphala	quotation forms 'ဝိပုလပ္ဖလာ', 'ဝေဟပ္ဖလာ'; citation 'မဏိမဉ္ဇူ ၂'; Sanskrit form 'ဗဟတွလ - သံ၊ သက္ကဋပိဋက'
-161916	vehaliṅga	citation '(သီ၊ မူ။ )'; run-on article ဝေဟာယသ (န) with grammar bracket, Sanskrit and Prakrit forms, and its gloss 'sky'
-161917	vehāyasa	headword echo and bracket 'ဝေဟာယသာ (တိ) [ဝေဟာယသ + ဏ ]'; quotation fragment 'ဝေဟာယဿာါမေ'; run-on article ဝေဟာယသင်္ဂမ (တိ) 'going / roaming in the sky' with debris '၃ ဝေဟာသာါ'; start of the article ဝေဟာယသသညိတ (တိ)
-161918	vehāyasa	end of the run-on article ဝေဟာယသသညိတ '…ဟူ၍ -သိ-မှတ်- အပ်သော' ('known / regarded as …'); grammar bracket 'ဝိ ဟယ + ဏ။ တစ်နည်း- ဝိ+ ဟာသ… ဟေဟာယသ-ကြည့်'; quotations 'ဣဓာယံ အဒ္ဒသံ… ဝေဟာသံ ဂစ္ဆန္တိ', 'အာကာသံ ပက္ခန္ဒိ'
-161922	vehāsa	quotation 'ယံကိဉ္စိ ဣဓ ပထဝီဂတံ ဘူမိနိဿိတံ ဝေဟာသံ ဘဝတ္တယပရိယာပန္နံ သင်္ခတံ'
+161916	vehaliṅga	citation '(သီ၊ မူ။ )'
+161918	vehāyasa	garbled quotation fragment 'ဝေဟာယဿာါမေ'
+161919	vehāyasaṅgama	debris 'အ]'; fragment '၃ ဝေဟာသာါ'
+161921	vehāsa	analysis bracket (alternative analysis ဝိ + ဟာသ, derivation 'ဝိသေသေန ဟယတိ …', ဓာန်, 'see ဟေဟာယသ'); quotations 'ဣဓာယံ အဒ္ဒသံ …', 'အာကာသံ ပက္ခန္ဒိ'
+161922	vehāsa	quotation 'တိ ယံကိဉ္စိ ဣဓ ပထဝီဂတံ … သင်္ခတံ'
 161923	vehāsakuṭi	quotations 'ယာ ပမာဏမဇ္ဈိမဿ သီသံ န ဃဋ္ဋေတိ… န ဝေဟာသကုဋိ လက္ခဏံ', 'ယာ ဝေဟာသကုဋီ'
 161925	vehāsakuṭisikkhāpada	citation 'ဝိနယပိဋက၊ ပါစိတ္တိယပါဠိ။ ၅-ကဏ္ဍ၊၂-ဝဂ်၊ ၈-သိက္ခာပုဒ်'; page number '၁၇'
 161926	vehāsakkhittakhaṇḍa	debris 'ဦု'
@@ -2886,13 +2888,12 @@ id	iast	omitted
 161987	vel̤uparamparā	quotation 'အထ ခေါ ရာဇဂဟကော ဝေဠဂ္ဂေ အာလဂ္ဂေတွာ ဝေဠုပရမ္ပရာယ ဗန္ဓိတွာ ဧဝမာဟ'
 161988	vel̤upesikā	quotation 'ဝေဠုပေ-သိကာဟီ တိ ဝေဠုဝိလီဝေဟိ'; citation '(ဝိ၊ သင်္ဂဟ။ ၄၆၆)'
 161990	vel̤ubhaṇḍa	citation '(ကင်္ခါ။ ၂၆၃)'; quotation 'ဝေဠုဘဏ္ဍေ ဝုတ္တပ္ပမာဏော'
-161992	vel̤umaya	quotation 'အနုဇာနာမိ နဠမယံ ဝေဠုမယံ ကဋ္ဌမယံ'; run-on article ဝေဠုရိယ (ပု၊ န) with grammar bracket (derivations, source tag ထောမ, Sanskrit and Prakrit forms) and its first senses: a gem (one of the 10 ratanas): emerald, jade; the fifth of the 24 gems; (a) the ဝေဠုရိယ stone (found mostly near Mount and village ဝိဠူရ); (b) the ဝံသဝဏ္ဏ stone (green like young bamboo); (c) the cat's-eye (like the round of a cat's eye; မဇ္ဇာရက္ခိမဏ္ဍလဝဏ္ဏ, မဇ္ဇာရမဏိ); (d) the cat's stone (of many colours: black, yellow, green like young bamboo, red like the ကုက္ကို flower, white); start of a note on Prakrit senses; citation 'မိလိန္ဒ၊ သျ။ ၂၂၁'
-161993	vel̤uriya	quotations ('သေယျထာပိ မဟာရာဇ မဏိ ဝေဠုရိယော…', 'ဝေဠုရိယော တိ ဝေဠုဝဏ္ဏမဏိ', 'မဉာရက္ခိ-မဏ္ဍလဝဏ္ဏော' and others) with sense pointers; citations 'ကင်္ခါ။ ၂၆၀', 'ဝိ၊ သင်္ဂဟ။ ၂၉', 'သာရတ္ထ ၃', 'ကင်္ခါ ဋီ၊ သစ်', 'ဝိသုဒ္ဓိ၊ ဋီ ၂', 'ရာဇနိယဏ္ဍု ကျမ်း', '၁ဝ၉', 'မဏိမဉ္စူ ၁'; source tag 'ထောမ'; debris '=='
+161992	vel̤umaya	quotation 'အနုဇာနာမိ နဠမယံ ဝေဠုမယံ ကဋ္ဌမယံ'
+161993	vel̤uriya	citation 'မိလိန္ဒ၊ … ၂၂၁)'; bracket with Prakrit forms and the Sanskrit senses (1)–(6) of vaidūrya ('ပါကတ၌ … ဟုဆို၏)'); '=='; quotations with citations (မိလိန္ဒ, ကင်္ခါ ၂၆၀, ဝိ၊ သင်္ဂဟ ၂၉, သာရတ္ထ ၃); source tags and citations inside the note (ကင်္ခါ ဋီ, ဝိသုဒ္ဓိ ဋီ ၂, ထောမ, ရာဇနိယဏ္ဍု ကျမ်း, ၁ဝ၉, မဏိမဉ္စူ ၁); debris '၁ ်းကောင်း'
 161994	vel̤uriya	citation 'အပ၊ ၁ဝ'
 161995	vel̤uriya	quotation 'တတ္ထ ဝေဠုရိယာသူတိ ဝေဠုရိယဘိတ္တီသု'
 161997	vel̤uriyakaroda	inflected form 'ဝေဠုရိယကရောဒါယော'
-161998	vel̤uriyajālāvatata	run-on article ဝေဠုရိယထမ္ဘ (ပ) 'a pillar made of cat's-eye'
-161999	vel̤uriyathambha	quotation 'ဝေဠုရိယထမ္ဘန္တိ ဝေဠုရိယ-မဏိမယတမ္ဘံ'
+162000	vel̤uriyathambha	quotation 'ဝေဠုရိယထမ္ဘန္တိ ဝေဠုရိယ-မဏိမယတမ္ဘံ'
 162007	vel̤uriyamaṇi	debris '[ ဝုရိယ မဏ်'
 162008	vel̤uriyamaṇibhitti	quotation 'ဝေဠုရိယမဏိဘိတ္တိ ဝိယ ပရမဒဿနီယံ ဟုတွာ တိဋ္ဌတိ'
 162009	vel̤uriyamaṇimayathambha	garbled see-reference 'ုရံယ-ကြည်'
@@ -2915,7 +2916,8 @@ id	iast	omitted
 162035	vel̤uvanārāma	citation 'ဓမ္မဋ္ဌ၁'
 162037	vel̤usamīpa	Pāḷi quotation 'အဟံ ဝေဠုသမီပံ ဂန္ဒာ'
 162038	vel̤usalākā	run-on article ဝေါ (ဗျ)/(အလိင်္ဂ): grammar notes, glosses 'you' in cases 1–6, quotations and citations
-162041	vokalana	Pāḷi quotation 'အာဒိ-သဒ္ဒေန …'; run-on article ဝေါကာရ with its analysis bracket, senses, quotations and citations
+162041	vokalana	Pāḷi quotation 'အာဒိ-သဒ္ဒေန …'
+162042	vokāra	citations; '------'; quotation 'ဝေါကာရန္တိ ဧတ္ထ ဝ-ကာရော အာဂမော …'; ဓာန်
 162043	vokāra	dashes '----'
 162044	vokāra	running head '၉ ဝေါကဏ္ဏ'; Pāḷi quotation 'ဧတေ ဝေါတိ …'
 162046	vokiṇṇa	Sanskrit-form note 'ဝျဝကီဏံ-သံ' and bracket; citation; OCR repetition of senses (1)–(6); Pāḷi quotation fragment '…ပသဋပ္ပတ္တီတိ အတ္ထော'; dashes
@@ -2951,8 +2953,8 @@ id	iast	omitted
 162095	vodāta	Pāḷi quotation 'တေ ဝေါဒါတမဂ္ဂံ ပရိယောဒါတမဂ္ဂံ'; stray '(၃)'
 162096	vodātadassana	Pāḷi quotation 'တမေဝ ဒဿိံ …'
 162097	vodātadassī	variant 'ဝေါဒါတဒဿိ'
-162100	vodātavāda	Pāḷi quotation 'ဝေါဒါတဝါဒေါ …'; run-on article ဝေါဒါန with analysis bracket, senses (1)–(7) printed twice, quotations and citations, running head
-162102	vodāna	run-on article ဝေါဒါနါ (န) with analysis bracket and gloss 'စင်ကြယ်-ဖြူစင်-စေခြင်း'
+162100	vodātavāda	quotation 'ဝေါဒါတဝါဒေါ ပရိယော-ဒါတဝါဒေါ'
+162101	vodāna	second pass of the senses with quotations and citations ('တေသံ ဒွိန္နံ …', 'တယိဒံ ဝေါဒါနံ …', 'ဧဝံဝိပါကံ …', 'ယဒါ ဇာနာတိ …', ၁ဝ၆); stray headword fragments '၆ ဝေါဒါနာ', '၇ ဝေါဒါနစိတ္တသမင်္ဂီ', 'သစိတ္တဝေါဒါန'
 162106	vodānacittasamaṅgī	Pāḷi quotation 'ဝေါဒါနစိတ္တသမင်္ဂိနာ …'
 162108	vodānañāṇa	quotation fragments '“ဝေါဒါနဉာဏာနီ ” " “'
 162109	vodānañāṇaniddasa	location reference 'ခုဒ္ဒကနိကာယ၊ ပဋိသမ္ဘိဒါမဂ္ဂပါဠိ ၁-ဝဂ်၊ ၄-နိဒ္ဒေသ'
@@ -3078,7 +3080,6 @@ id	iast	omitted
 162315	vosāsati	Pāḷi quotation 'ကမ္မန္တံ ဝေါသာသတိ'
 162316	vosāsana	stray '(၁)'
 162318	vosāsanta	Pāḷi quotation 'ဝေါသာသန္တီ နာမ …'; running head 'ဝ ဝေါသိတဝေါသာန'
-162320	vosāsamānarūpa	run-on article ဝေါသိတံ (တိ) with analysis bracket and gloss 'ပြီးဆုံးသော၊ အပြီးအဆုံးသို့ ရောက်သော'
 162323	vositavosāna	Pāḷi quotation 'ဒိဋ္ဌဓမ္မာဘိညာဝေါသာန …'
 162325	vossa	dashes '-----'
 162326	vossakamma	Pāḷi quotation 'ဝဿကမ္မံ ဝေါဿကမ္မန္တိ …' with stray '၁ ဝေါဟရတိ'
@@ -3152,14 +3153,15 @@ id	iast	omitted
 162452	saṁkathā	Sanskrit/Prakrit forms; Pāḷi quotations; run-on article 'သံကီယတိ (ကမ္မ၊ ကြို …'
 162454	saṁkatheti	label fragment and Sanskrit form 'ကြို [။ သံကထယတိ-သံ။ ]'
 162455	saṁkandana	Pāḷi quotation 'ဟရီဣစ္စာဒီနိပိ သက္ကဿ နာမာနိ'; citation
-162457	saṁkappanā	Pāḷi quotation 'တေသု တေသု ဘဝေသု …'; feminine forms 'သံကပ္ပယန္တာ, သံကပ္ပယန္တီ' (of the next headword)
-162458	saṁkappayanta	analysis fragment ''(တိ) [။ မာန-ကို အန္တာပြု'
+162457	saṁkappanā	quotation 'တေသု တေသု ဘဝေသု သံကပ္ပနာ ဒိဋ္ဌိ နတ္ထိ'
+162458	saṁkappayanta	debris 'ာ (တိ) [။'; inflection note: feminine ⟦သံကပ္ပယန္တာ⟧, ⟦သံကပ္ပယန္တီ⟧
+162459	saṁkappayanta	debris "' (တိ) [။"; grammarian's note 'မာန-ကို အန္တာပြု' (-māna made -anta); inflected form 'သံကပ္ပယန္တာယာ'
 162465	saṁkampita	fragment 'သံကလန-'
 162467	saṅkalana	analysis fragment with Sanskrit/Prakrit forms; citation 'သီဟနာဒသမောဓာန(၂၆၀'
 162468	saṁkalaha	stray '['; variant 'သံကလဟ'
 162474	saṅkalenta	fragment 'သံကသာယံတိ ='
 162477	saṁkasāyanta	running head 'အဘိဓာန် (အ-ဝဂ်) ၄၆ ပ-မ-သ-စ ၁ သံကိစ္စ'
-162478	saṁkasāyissanti	label fragment 'ကြို [။ သံကသာယတိ-မှ။ ]'; run-on article 'သံကာရံ (ပု၊ န [...] တံမြက်ချေးစု၊ အမှိုက်၊ အမှိုက်သရိုက်'
+162478	saṁkasāyissanti	label 'ကြို'; analysis bracket '[။ သံကသာယတိ-မှ။ ]'
 162480	saṁkāra	Pāḷi quotation 'သံ-ကာရတော …'; citations
 162484	saṁkicca	stray '၁)။'; Pāḷi quotation '------တဿ သင်္ကုနာ …'; running head '၂ သံကိစ္စ'; citation '(။ ၂၁၃)'; closing reference '(အကျယ်ကို ၂၈၀-၁။' (for details see 280-1)
 162486	saṁkiccajātaka	location reference 'ခုဒ္ဒကနိကာယ ဇာတကပါဠိ ၁၉-သဋ္ဌိနိပါတ်။ ၂-ဇာတ်'
@@ -3550,7 +3552,7 @@ id	iast	omitted
 163284	saṁyamissaṁ	grammarian's note '(ဘဝိဿန္တီဝိဘတ် ဖြစ်သော်လည်း ပုရေ-သဒ္ဒါ၏ အယှဉ်ဖြစ်၍ အတိတ်ကာလ၌ ဖြစ်၏။'
 163286	saṁyamī	running head '၉ သံယမေတိ'
 163289	saṁyametabba	grammarian's notes 'သံယန္တဝျ - သံ။ သံဇမိယဝ္ပ - အဒ္ဓမာဂဓီ။'
-163290	saṁyameti	grammarian's notes 'ယမ အပရိဝေသနေ။ သံဇမေကဣ-ပြာ။ ['; run-on article 'သံယမေတိ (ကြို) [ သံ + ယမု + အ+ တိ။ အ-ကို ဧ-ပြု။ ] စောင့်စည်းစောင့် ရှောက်-၏။'
+163290	saṁyameti	grammarian's notes 'ယမ အပရိဝေသနေ။ သံဇမေကဣ-ပြာ။ ['
 163294	saṁyametvā	label fragment 'တွာ ]'; quotation fragment 'ပဏီဓာယာ'
 163296	saṁyamessāmi	running head ']ဝ သံယာစိတ . သညာစိတာ'
 163299	saṁyāciṁka	headword fragment and grammarian's analysis 'ညာစိက (တိ) [ + ဏု။ ဣတ္ထိလိင်္ဂတ္တာ … ယကို ကပြ။'; stray '၂'; quotation fragment '( သံယာစိကေန)'; run-on article '(တိ) [သံယာစ + ဣက … ဘာသာဋီကာ)။ ] ကိုယ်တိုင် တောင်းအပ်သော ဆောက်အဦ ရှိသော။'
@@ -3612,7 +3614,6 @@ id	iast	omitted
 163416	saṁyojanīyadhamma	Pāḷi quotation 'တေသု သံယောဇနီယဓမ္မေသု အဿာဒဒဿနပဒဋ္ဌာနော'
 163417	saṁyojanuppajjana	Pāḷi quotation 'အာယတနံ ပဋိစ္စ … သမာရောပယိတဗ္ဗံ'
 163418	saṁyojayanti	grammarian's notes 'အန္တိ။ သံယောဇယတိ - သံ။ သံဇောဧက္က - ပြာ။'
-163419	saṁyojayamāna	start of the next article 'သံယောဇိတံ (တိ) [သံ + ယုဇ + တ။'
 163420	saṁyojita	grammarian's notes 'သံဇောဣယ - ပြာ။ သံဇောက္ကအ - အဒ္ဓမာဂဓီ။ ]'
 163423	saṁyojīyati	dashes '---'
 163427	saṁyojetvā	Pāḷi quotation 'တံ ဝပပ္ပတ္တံ ပတိရူပေန ဒါရေန ကာလမကံသု'
@@ -3627,14 +3628,17 @@ id	iast	omitted
 163444	saṁruci	Pāḷi quotation 'တမနုပုစ္ဆိ ဝေဒေဟော၊ ပစ္စေကံ ဗြူဟ သံရုစိံ'
 163446	saṁrul̤hati	label fragment and grammatical analysis 'ြို [သံ + ရုဠှ+အ+ တိ။ နာမဓာတ်။ ]'; run-on article 'သံရုဋီ (ကြို [ … ] (အသားနု) ကောင်းစွာတက်ပြီ။'
 163455	saṁlekha	fragment 'သံလေခါနုသန္တတဝုတ္တိ-' (next headword)
-163458	saṁvacchara	reference '(၁)'; run-on article '(တိ) [ သံဝစ္ဆရ + ဏ] (၁) ဟူရားတတ်သူ၊ နက္ခတ် ဗေဒင်ဆရာ။ (၂) ၁ - နှစ်ပတ်လုံး သင်ယူသော၊ သူ။' with its Pāḷi synonym list and citations
+163457	saṁvacchara	trailing '(၁)'
+163458	saṁvacchara	synonym list quoted from the Abhidhānappadīpikā ('သံဝစ္ဆရော, ဇောတိသိကော …', ဓာန်); citation ကစ္စည်း
 163459	saṁvaccharakoṭisatasahassa	Pāḷi quotation 'ဧကသံဝစ္ဆရံ ဒွေ သံဝစ္ဆရကောဋိသတသဟဿံ'
 163464	saṁvaccharapaṭicchanna	quotation fragment 'သံဝစ္ဆရပဋိစ္ဆန္န'; citation 'ပါစိတ်၊'
 163468	saṁvaccharavippavutthaticīvara	running head '၆ သံဝစ္ဆရိက'; quotation fragments '" န္တိ စ “ဆာရတ္တဝိပ္ပဝုတ္ထ "'
 163474	saṁvaccharikapāpapavāhana	Pāḷi quotation 'ယဿ ဟိ သံဝစ္ဆရိကပါပပဝါဟနံ ဟောတိ'
 163475	saṁvajanta	grammarian's notes 'သံြဇတိ-သဂြဇတ်-သံ။ ['; run-on article 'သံဝဋ္ဋ (၇) [ … ] (၁) ဆုတ်ယုတ် -ကုန်ခမ်း - ပျက် - ပျက်စီး သော … (၄) ပျက် - ပျက်စီး - ရာ (ကာလ)' with its citations, running head '၇ သံဝဋ္ဋက' and its note on the တေဇော-, အာပေါ-, ဝါယော-သံဝဋ္ဋကပ်
 163476	saṁvaṭṭa	page number '၈ဝ'
-163477	saṁvaṭṭa	fragment 'သံဝဋ္ဋကမဟာဘူတဒေသနာနုပုဗ္ဗီ-'; run-on articles 'သံဝဋ္ဋကပ္ပ (ပု) သံဝဋ္ဋကပ် ဆုတ်ယုတ်-ကုန်ခမ်း- ပျက်- ပျက်စီး ဆဲဖြစ် သော-ကပ်- ကမ္ဘာ။' and 'သံဝဋ္ဋကမဟာဘူတဒေသနာနုပုဗ္ဗီ (ထီ) … မဟာဘုတ်တို့ကို ဟောသော ဒေသနာအစဉ်။'; citation 'ဣတိဝုတ်၊ ၁၇၀)'
+163477	saṁvaṭṭa	fragment 'သံဝဋ္ဋကမဟာဘူတဒေသနာနုပုဗ္ဗီ-'
+163479	saṁvaṭṭakappa	'---'; citation 'ဣတိဝုတ်၊ ၁၇၀)'
+163480	saṁvaṭṭakamahābhūtadesanānupubbī	fragment '" ( သံဝဋ္ဋ ၂)'
 163482	saṁvaṭṭakāla	page fragment '- ၅၀)'
 163483	saṁtaṭṭaggahaṇa	running head '၈ သံဝဋ္ဋတိ'
 163484	saṁvaṭṭaṭṭhāyī	grammatical analysis '[ သံဝဋ္ဋ န- ဌာယီ။ (တစ်နည်း) + ဏီ။ ထီ - ၌ သံဝဋ္ဋဋ္ဌာယိနီ။ ['
@@ -3657,7 +3661,8 @@ id	iast	omitted
 163518	saṁvaḍḍhiyamāna	quotation fragment 'ကထံ ”'
 163519	saṁvaḍḍhetvā	label and grammatical analysis 'ကာ၊ ကြိ၊ ဝိ [သံ + ဝဍ္ဎ + ဏေ -+ တွာ ]'
 163520	saṁvaḍḍhenta	dashes; run-on article 'သံဝဒေန္တိ (ကာ၊ ကြို [ … ] ကြီးပွား-ဖွံ့ဖြိုး တိုးတက် - တိုးပွား - စေကုန်၏။'
-163522	saṁvaṇṇaka	running head '၂ သံဝဏ္ဏန” (၁)'; run-on article 'သံဝဏ္ဏနာ (တိ) [ + ယု … ] (၁) ချီးမွမ်း-ချီးကျူး-ဖေါ်ပြ-သော၊ သူ … (၇) ချီးမွမ်း ချီးကျူး ဖော်ပြခြင်း။' with its citations and quotation fragments
+163522	saṁvaṇṇaka	fragment '၂ သံဝဏ္ဏန” (၁)'
+163523	saṁvaṇṇana	Sanskrit form 'သံဝဏန-သံ'; garbled first pass; citations ('၁၉)', 'အဘိ၊ အဋ္ဌကထာ', 'ဝိ၊ ၂၅၀'); quotation 'ဣဒဉှိ “အနုဇဂ္ဃန္တာ "'
 163524	saṁvaṇṇana	Pāḷi grammatical note 'သံဝဏ္ဏနာဝသေနာ တိ ဧတ္ထ … အတ္ထော'
 163525	saṁvaṇṇanaka	fragment '၂)'
 163527	saṁvaṇṇanākaraṇa	Pāḷi quotation 'အတ္တနာ သံဝဏ္ဏိယမာနဿ … ဒဿေတုံ'
@@ -3695,11 +3700,12 @@ id	iast	omitted
 163589	saṁvaṇṇenti	quotation '… ti vutte maraṇasaṁvaṇṇanaṁ saṁvaṇṇenti … na vadanti' with stray '(ခ)'
 163592	saṁvaṇṇeyya	stray '၉' and next headword 'သံဝတ္တာ'
 163593	saṁvaṇṇesi	quotation 'athassa nānappakārehi anāthabhāvaṁ saṁvaṇṇesi' with stray '(က)'
-163595	saṁvaṇṇehi	stray label 'ကြို'; run-on article saṁvattā (ပ) with analysis bracket, Sanskrit/Prakrit/Ardhamāgadhī notes and '… the Buddha who has come about well)'
+163595	saṁvaṇṇehi	stray label 'ကြို'
+163596	saṁvatta	analysis end '+ အ'; Sanskrit, Prakrit and Ardhamāgadhī forms (သံဝတ-သံ, သံဝတ္တ-ပြာ, သံဝတ္တ-အဒ္ဓမာဂဓီ) with their labels
 163598	saṁvattati	quotations 'idaṁ … vīriyārambhāya saṁvattati', 'ete kho bhikkhave … nibbānāya saṁvattati', 'appamāṇo tassa … sukhāya saṁvattati'; debris '-==' '+'
-163599	saṁvattatu	run-on article saṁvattana (တိ/န) with analysis bracket, Sanskrit/Prakrit notes, two senses and 'see saṁvattanaka'; citation 'သာရတ္ထ၊ ၁ဝ'
-163600	saṁvattana	quotation fragment 'yo hi taṁ saṁvattanako, so'
-163601	saṁvattana	quotations 'evamayaṁ asecanako …', 'catuyonisaṁvattanato'; citation 'ဝိသုဒ္ဓိ၊ ၁ဝ'
+163600	saṁvattana	analysis bracket '[ (တ္တ + ယု'; Sanskrit and Prakrit forms (သံဝတန-သံ, သံဝဋ္ဋဏ, သံဝတ္တဏ-ပြာ); fragment 'ဝ သံဝတ္တနကဝိတက္က'; citation 'သာရတ္ထ၊ ၁ဝ'
+163601	saṁvattana	quotation 'ယော ဟိ တံ သံဝတ္တနကော၊ သော "'
+163602	saṁvattana	quotations 'ဧဝမယံ အသေစနကော …', 'စတုယောနိသံဝတ္တနတော'; citation 'ဝိသုဒ္ဓိ၊ ၁ဝ'
 163603	saṁvattanaka	quotation 'yo hi taṁ saṁvattanako so'
 163605	saṁvattanamariyādaparicchedavacana	headword repeated with citation '(ကင်္ခါ။ ၂၅၂)'; citation 'ကင်္ခါ ဋီ၊ သစ်'
 163607	saṁvattanākāra	fragment of the next headword 'သံဝတ္တနိက='
@@ -3922,8 +3928,8 @@ id	iast	omitted
 164016	saṁvejita	list marker '-----'
 164017	saṁvejitadivasa	debris 'င်၊' and next headword 'saṁvejetuṁ'
 164019	saṁvejitvā	quotation 'saṁvejitvā ti ca paṭhanti'
-164021	saṁvejetabba	run-on article saṁvejeti (ကြိ) with bracket 'is frightened …' and quotation 'dvepi ekato saṁvegaṭṭhāne saṁvejenti'
-164022	saṁvejeti	quotation '… jīvitamadamattaṁ janaṁ saṁvejeti'
+164022	saṁvejeti	quotation 'ဒွေပိ ဧကတော သံဝေဂဋ္ဌာနေ သံဝေဇေန္တိ'
+164023	saṁvejeti	'------'; quotation 'ဇီဝိတမဒမတ္တံ ဇနံ သံဝေဇေတိ'
 164025	saṁvejetukāma	quotation 'yā tasmiṁ vanasaṇḍe adhivatthā taṁ bhikkhuṁ saṁvejetukāmā'
 164032	saṁvejesi	quotation 'saṁ suṭṭhu vejesi'
 164033	saṁvejessati	stray label 'ကာ၊ ကြို' and analysis bracket
@@ -3933,7 +3939,8 @@ id	iast	omitted
 164040	saṁvedanadassana	quotation 'tassa sabbesampi bhāgānaṁ … paṭi-saddaggahaṇaṁ'; citation 'ဝိသုဒ္ဓိ၊ ဋီ ၁'
 164041	saṁvedanasīla	stray quotation marks
 164042	saṁvedayita	stray '၁' and next headword 'saṁvellanakammakāraṇa'
-164043	saṁvedayitasabhāva	run-on article saṁvedeti (ကြိ) with bracket, '(1) knows well. (2) experiences well'; run-on article saṁvedenta (တိ) with bracket, 'apt to experience well'
+164043	saṁvedayitasabhāva	run-on article saṁvedeti (ကြိ) with bracket, '(1) knows well. (2) experiences well'
+164045	saṁvedenta	inflection note: feminine ⟦သံဝေဒေန္တီ⟧
 164046	saṁvedesi	quotation '… niccābhinivesaṁ saṁvedesi'; list marker
 164047	saṁvellati	stray label 'ကြို', analysis bracket and Sanskrit/Prakrit notes
 164049	saṁvellanakammakāraṇa	citation 'မ၊ ဋီ၊ ၂'

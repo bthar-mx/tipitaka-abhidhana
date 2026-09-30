@@ -3307,3 +3307,351 @@ readers' answers, the crops and the agents' task files).
 
 *Tokens: this session's counter ~0.5 M (context: tool output, the scripts, 4 page images and crops read here); **sub-agents 1.38 M** (first wave 15 agents
 957 k, second 6 agents 422 k; each figure the agent's final context, read from its transcript). ~1.9 M in all. No git run in the VM.*
+
+## 90. The citation normaliser, second pass: lost heads from the body, *အပါ* alone, a "read as" note; B2 left; item 3b already complete (30 Sep 2026, Cowork; v0.29.0)
+
+*Written as §88 in its own Cowork session (30 Sep) and committed locally with its code; renumbered §90 here, in stage 3 of plan step 1.8
+(§91), §88–89 having gone to the homonym and farther-body work.* **Caveats, as the editor asked them stated**: the
+lost-heads rule (step 1) rests on **14 of 14** citations read on the image (with 14 of 14 the true precision could still be ~80–85% at 95%
+confidence); the "read as" note was tested only in the cloud container's headless Chromium: **not in Safari, not on a phone, not with the
+Mac's Myanmar fonts**. The figures below are over the snapshot of 14:58, 30 Sep (stage 2's articles; the farther-body splits of §89 were written
+back later, as far as the file times show); over the v0.29.0
+data the build reports 489,082 of 530,869 citations matched (92.1%; inferred 38,768), §91.
+
+**Asked** (the editor): (2) the rest of the normaliser in `tools/abhidhana_citefold.py` (the other lost heads, B2, *အပါ* alone), each
+measured before and after and checked on a sample of page images with §87's cheap method; (3) the tooltip says "leído como …"
+when citefold inferred the work (site only); (3b) add to `docs/introduction/citation-abbreviations.tsv` any bases from
+`tmp/abbr3b/` it still lacks. **Not** the ။ parser fix (item 1): it changes `tools/abhidhana_articles.py` and re-runs all 29 books,
+which another chat is doing now. Only `abhidhana_citefold.py`, the `cite_key` part of `abhidhana_browse.py`, the site's tooltip
+code and the TSV were to be touched. Builds go to `/tmp`. No VERSION, CHANGELOG, brief or NEXT-SESSION change, and no git commands:
+this goes into v0.29.0 with the unpushed work on main.
+
+**Data measured.** A snapshot of the 29 books' `articles.jsonl` taken at 14:58 on 30 Sep (after the other chat's 11:13 rewrite)
+has **531,046 citations**, not §82's 530,965. All shares below are over this snapshot (`tmp/cite-norm/r2/cites.json`). The site's
+body text before each citation (`ctx.jsonl`) was found for 531,046 of 531,046 citations, spaces ignored.
+
+### Tooltip share, step by step
+
+| step | citations with a tooltip | share | gain | a tooltip whose work changes |
+|---|---:|---:|---:|---:|
+| before (v0.28.6 code) | 483,996 | 91.1% | | |
+| 1. lost head taken from the body | 486,842 | 91.7% | +2,846 | 0 |
+| 2. *အပါ* alone → အပ၊ဋ္ဌ | 489,249 | 92.1% | +2,407 | 0 |
+| B2 (၊ဋ where both ၊ဋ္ဌ and ၊ဋီ are keys) | not resolved | | 0 | |
+| 3b (the TSV) | nothing to add | | 0 | |
+| 3 ("read as" note) | display only | | | 0 |
+
+**The full build confirms it.** `ABHIDHANA_SITE_OUT=/tmp/abh-cn python3 tools/abhidhana_site.py` in the VM: 958 files, no errors,
+"citations matched **489,249 of 531,046 (92.1%; inferred 38,769)**". A second build to `/tmp/abh-old` ran the v0.28.6
+`abhidhana_browse.py` / `abhidhana_citefold.py` (copies in `tmp/cite-norm/r2/orig/`) on the same data and gave 483,996. Record by
+record over the 820 chunks (221,154 records): `cx` **changed 0, lost 0, gained 5,253**. Every other field is identical, and every
+file outside `data/c/` is identical. Both builds used the new `browse.js`, so this compares data only. Both builds were deleted
+afterwards.
+
+### 1. Lost heads, taken from the body
+
+A citation that begins with the commentary mark (ဋ္ဌ၊၂။၁၀၃။, ဋီ၊၃။, ဌ, ဋ, ဋိ, ဋံ, ္ဌ, …; 5,242 such citations still had no tooltip)
+lost its work in the parser, not in the OCR. The work is almost always the word just before it in the body:
+
+- the head ends a line and the mark begins the next: ထေရ၊ / ဋ္ဌ၊၂။၁၀၃။;
+- the head ends in ။ instead of ၊: ဇာ။ ဋ္ဌ, ဒီ။ ဋ္ဌ (the same fault as the "number only" group);
+- the head carries an asat, so `cite_trim` dropped it as a Burmese word: ဓာန်၊ဋီ၊၃။, ဣတိဝုတ်၊ဋ္ဌ, သုတ္တန်၊ဋ္ဌ.
+
+`citefold.head(k, before)` returns the one word right before such a citation. Trailing ။ ၊ - and leading ( - [ are stripped, and
+only the part after the last ။ is kept. A word holding a digit returns nothing, and *သုတ္တန်* becomes သုတ္တနိ. `cite_how` joins
+that word to the citation and matches it again with the usual rules. It gives a result only if the joined form is a table key, so
+a stray word can only fail to match; it can't match wrongly unless it happens to form another key. Only the word immediately
+before was tried. At a depth of 1–2 words another 468 citations would match, but there the words in between are often text from
+the other column. Those were not measured on the images and are left out.
+
+**Gains by work** (top): ထေရ၊ဋ္ဌ 449, ဝိ၊ဋ္ဌ 203, ဇာ၊ဋ္ဌ 202, သုတ္တနိ၊ဋ္ဌ 196, အပ၊ဋ္ဌ 149, ပဋိသံ၊ဋ္ဌ 131, အဘိ၊ဋ္ဌ 129, သံ၊ဋ္ဌ 125,
+ဒီ၊ဋ္ဌ 123, အံ၊ဋ္ဌ 114, မ၊ဋ္ဌ 111, ဝိသုဒ္ဓိ၊ဋီ 103, ဣတိဝုတ်၊ဋ္ဌ 94, ဒီ၊ဋီ 93, မ၊ဋီ 90, ဓာန်၊ဋီ 88.
+**Still without a tooltip in this group**: 2,396. In those, the word before holds no key (a Pāḷi word, noise from the other
+column), or it resolves to a B2 pair.
+
+### 2. *အပါ* alone → အပ၊ဋ္ဌ
+
+On the page, *အပါ* alone was **အပ၊ဋ္ဌ 16 times out of 16, and အပ 0 times** (15 in this sample, plus 4c/424 in §82's). In the print
+the ၊ is read as ါ and the ဋ္ဌ is lost. `APA = {'အပါ', 'အပါဌ', 'အပါဋ'}` maps to အပ၊ဋ္ဌ. *အပါဌ* (350) and *အပါဋ* (119) are the
+same form with the mark half read. They were not sampled on their own.
+
+### B2: left unresolved
+
+Of 11 B2 citations read on the page here, the print had ဋီ 8 times and ဋ္ဌ 3 times; §82's sample had 3 and 3. Together that is
+**ဋ္ဌ 6 / ဋီ 11**. Neither reading is close to certain, and nothing in the citation decides it: the rows are spread over books 01,
+09, 12, 14, 16 and 24 with no pattern. B2's 2,353 citations keep no tooltip. `citefold.resolve` still returns None for them on
+purpose, and its docstring now gives the combined figure.
+
+### The page check (§87's method)
+
+Samples drawn with seed 20260930: 20 citations gained by step 1 (group L), 20 from B2 and 20 *အပါ* alone (AP). Each was located by
+its OCR line in `ocr/NN/pages/pNNNN.json` (`col.psm6`: which column, and how far down it). **47 were located; 13 were not** (not
+read). Pages were cut on the Mac with `qpdf` (`tmp/cite-norm/r2/NN-pages.pdf`). In the cloud container, the page's own jbig2 image
+was taken with `pdfimages` (2,051 × 3,002 px) and cut to one column, a band of about ±7.5% of the text height around the line,
+at most 900 px wide (`crops.tgz`).
+
+Five lean read-only (Explore) sub-agents each got 9–10 crops, read them all in one turn of parallel reads, and returned the
+verdicts in their reply. Each crop was given with the citation's numbers and the OCR text before it, **not** with the proposed
+work: the agents transcribed the printed abbreviation. The results are in `tmp/cite-norm/r2/verdicts.tsv`.
+
+| group | read | result | not read |
+|---|---:|---|---:|
+| L (step 1) | 14 | **14 right, 0 wrong** (6 high, 8 medium confidence). In 8, the head ends the line before; in 2 the ၊ between head and mark isn't visible (ဝိ ဋ္ဌ, ဓမ္မ ဋ္ဌ: the same work) | 2 not in crop |
+| AP (step 2) | 15 | **15 အပ၊ဋ္ဌ, 0 အပ** | 3 not in crop / not found |
+| B2 | 11 | ဋ္ဌ 3, ဋီ 8 | 1 not in crop, 1 another citation read (not counted) |
+
+Confidence: **medium-high** that steps 1–2 are right in bulk (29 of 29 read). The sample is small: with 14 of 14, the true
+precision of step 1 could still be ~80–85% at 95% confidence. Only the abbreviation was checked, not the numbers. One agent
+noted that 7/283 prints the page as a three-digit number (the OCR has ၂၉).
+
+### 3. The "read as" note
+
+- `abhidhana_browse.cite_how(c, K, before)` returns (index, inferred). `cite_key(c, K, before=None)` keeps its old result.
+  `inferred` is True only when `abhidhana_citefold` guessed the work: `resolve()` (§82's A, T, B1, *အဋ္ဌ*, and *အပါ* now) or
+  `head()`. The exact match, `FOLD` and the stray-word tail count as read.
+- The build writes, per record, **`cg`**: the indexes of the citations whose work was inferred. That's 38,769 citations: §82's
+  33,513 + 2,846 + 2,407 + 3 more from `resolve` on the new snapshot. The field isn't `cf`, because `cf` already holds the fields
+  corrected by hand (`abhidhana_site.py` l. 85) and the JS reads it in four places. The build's summary line now prints
+  `inferred N`. `cite_befores(b, cs)` finds each citation in `d['b']`, in order, with spaces ignored.
+- `site/src/assets/browse.js`: `citeTip()` adds " · leído como ‹abbr›: el OCR dañó la abreviatura, la obra es inferida" (EN
+  " · read as ‹abbr›: the OCR damaged the abbreviation, the work is inferred") when `d.cg` holds the citation. The same text shows
+  in the note box, which calls `citeTip()`. The shown chip, Copy and Cite are unchanged.
+- **Checked** with headless Chromium (Playwright 1.56, cloud container) on a subset of the build (every file but `data/c/`,
+  plus 5 chunks), served with the `/w/*` rewrite: **19 pass, 0 fail**. ES and EN: *khandhamatta* (*အပါဋ္ဌ*, §82's rule) says
+  "Apadāna Aṭṭhakathā · tomo 1, página 212 · leído como အပ၊ ဋ္ဌ: …". *ādisanta* (*ဋ္ဌ၊၂။၂၀၁။*, step 1) names Theragāthā
+  Aṭṭhakathā with the note. A citation matched exactly (ādi, no. 2) has no note. The note box carries the note in both
+  languages, and there are no script errors. A screenshot at 1,280 px was looked at. Not tested: Safari and Firefox, a phone,
+  or the Mac's Myanmar fonts. The editor's `site/test/editor/ui-test.js` was not changed or run.
+
+*For the editor to say* (decided without asking): the wording of the note, which gives the table's abbreviation, not the OCR's
+reading; and that the note is on every citefold resolution, §82's included.
+
+### 3b: nothing left to add
+
+Every base in `tmp/abbr3b/key-vs-vol1.tsv` (25 marked "no"), in `v15-key.tsv` (166 rows) and in `v15-tables.tsv` (133 rows) is
+already a key of `citation-abbreviations.tsv`. §77 (v0.28.2) added the 23 new rows and the 2 spelling variants. The TSV was not
+changed, and the tooltip share gains nothing from it.
+
+### Changed files
+
+- `tools/abhidhana_citefold.py`: `APA`, `_a()`, `LOST`, `HEADTYPO`, `head()` and the docstring.
+- `tools/abhidhana_browse.py`: `cite_how()`, `cite_key()` now a wrapper, `cite_befores()`, `cx` / `cg` in `build()`, the docstring,
+  and the summary line.
+- `site/src/assets/browse.js`: two strings (`cit_inf`, EN and ES) and three lines in `citeTip()`.
+
+Diffs are in `tmp/cite-norm/r2/*.diff`. MD5s: browse.py `3239666b…`, citefold.py `9fed3888…`, browse.js `28b812a9…`.
+`tools/abhidhana_articles.py`, `ocr/`, `docs/`, VERSION and CHANGELOG are untouched.
+
+*Working files in `tmp/cite-norm/r2/`* (gitignored): `cites.json`, `ctx.py` / `ctx.jsonl`, `measure.py`, `m2.py`, `lh.py`,
+`crop.py`, `sample.json` / `sample2.json`, `verdicts.tsv`, `crops.tgz`, `agent-tasks.txt` (batch 1; the other four are the same
+form, listed in `sample2.json`), `ui-test.js`, `serve.py`, the `NN-pages.pdf` cuts, `dist-sub.tgz` (81 MB, the build subset;
+can be deleted) and `orig/` (the v0.28.6 copies).
+
+### Next
+
+1. **After the homonym work (§85–87) is done and pushed: the ။ parser fix** in `CITE` / `cite_trim` (`tools/abhidhana_articles.py`),
+   then the article step and romanisation for all 29 books. It is the real cause of step 1's cases. It would also give much of
+   the 18,421 "number only" citations (up to ~94%) and make `head()` mostly redundant. Afterwards, measure again what `head()`
+   still adds.
+2. B2 (2,353): only the image can decide, so it could go to the final revision's page pane, not to a rule.
+3. The 1–2-word-deep lost heads (468) and the "other" group (*ဂ* 585, *ဇာ၊ဋီ* 247, *ယော* 241, …): not measured.
+
+*Tokens*: this session's counter shows about 0.30 M (it restarted once mid-session, when the tool connection dropped; the two
+spans are ~0.16 M + ~0.14 M). The five sub-agents' tokens were not reported to this session and were not measured; at §87's
+rate, the estimate is ~5 × 50–60 k. Git was not run.
+## 91. Plan step 1.8, stage 3 of 3: the redraft, the re-reads, the index errata, the address check; v0.29.0 prepared (30 Sep 2026, Cowork; not pushed)
+
+**Asked** (the editor): the last stage of 1.8 over the nine books' Meaning rows that §86–89 changed (`tmp/homonym18/s1/out/meaning-rows.tsv`,
+1,036 rows): (a) classify the hosts whose lost text is not in `omitted` the §70 way; (b) draft the rows that gained a text, redraft the rows
+whose text changed, the hosts grown and the hosts that had translated the lost text; (c) withdraw, recorded, the Meaning of rows with no text
+now and of `same_as` rows; (d) trim `omitted` as §70; (e) check the "about the same" rows (similarity ≥ 0.8), keep unless the meaning
+changed. Then: re-read the check files' rows among the changed ids; re-check `docs/index-errata.md` §5 and 174421; the `/w/` address check;
+the D1 edits; §90 (the citation tooltips) folded in; v0.29.0, CHANGELOG, NEXT-SESSION; the Mac steps. No git in the VM.
+
+**Run** in the Cowork cloud container. Staged from the folder: `tmp/stage3/cur-0930a.tgz` (md5 `2c9a1912…`: `tools/`, `docs/`, `site/src`,
+`site/test`, every book's `articles.jsonl`, `pali.jsonl` and reports, the stage lists) and §86's pre-1.8 tarballs (`tmp/homonym18/stage/`,
+pages included). **Baseline**: the pre-1.8 `ocr/` files matched `h18-orig-0930a.md5` (116 of 116); and the committed tool, run with
+`ABH_HOMONYM=0 ABH_FARBODY=0` on those pages for all 29 books (articles, then romanisation), reproduced the 116 files byte for byte (the first
+try differed in 01–19 only because the staged `witness/` held `pced_k.jsonl.gz` and not the plain file the tool reads).
+
+### 1. What each row needed, measured
+
+`prep` run on the pre-1.8 articles and on today's, for the nine books (`--work` folders, nothing written to `tmp/meanings`): the Burmese
+changed **only** for ids in `meaning-rows.tsv` (0 elsewhere). Of the 1,036: the Burmese `prep` gives is identical for 120 with a Meaning (a
+change only in quotations, citations or debris `prep` leaves out: kept) and for 44 without one (nothing to do). The rest, by what they have:
+
+- **With a Meaning, no text now: 48** — `same_as` 30 (§88), no text after the image table 10 (§88: displaced, unsure, unlocated), chained rows
+  left unlocated 6 (§89), hosts with nothing left after the cut 2 (20 161196, 4c 174964; in §88's list as hosts to classify).
+- **Hosts** (text lost, Meaning kept so far): **213**, and the **51** "about the same" rows with a Meaning whose Burmese differs: read by five
+  agents (below).
+- **Redraft directly: 209** (text changed < 0.8: 181; hosts grown: 25; the chained row on its own line with a Meaning: 1; two 14/2 hosts whose
+  Meaning was a bare "Véase." and which now have their own text, 212627 and 213162).
+- **Draft: 334** rows without a Meaning that now have Burmese to translate (gained a text 178, §89 splits 89, text changed 36, chained rows
+  on their own line 9, "about the same" 9, hosts with no Meaning row 13, their old draft having been empty); **17** rows (with a Meaning or
+  not) are now a "see X" formula only: merged as formula rows, no draft.
+
+### 2. The classification (the §70 way)
+
+Five general-purpose sub-agents, one folder each (`cls/c1…c5`, ~53 rows): for a host, *translated* (the draft renders any of the lost text,
+or a "see X" whose X now stands only in the lost text) / *omitted* (not rendered; new `flag` and `omitted` with only the parts about the lost
+text taken out) / *neither*; for a changed row, *keep* / *redraft*. A script then looked for §70's case (an «Sn» of the old text, now only in
+the lost text, rendered as `[[x]]` in the Meaning of a row classed *omitted*): **0** (the agents had classed such rows *translated* themselves).
+
+| | 14b | 14c | 20 | 21 | 22 | 23 | 24 | 25 | 4c | all |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| hosts: translated → redraft | 4 | 7 | 10 | 1 | 1 | 5 | 1 | 2 | 7 | **38** |
+| hosts: omitted → Meaning kept, `flag` / `omitted` trimmed | 10 | 19 | 34 | 26 | 20 | 21 | 19 | 17 | 9 | **175** |
+| "about the same": keep | 2 | 0 | 5 | 3 | 5 | 8 | 5 | 2 | 0 | **30** |
+| "about the same": the meaning changed → redraft | 0 | 1 | 5 | 4 | 3 | 1 | 3 | 1 | 3 | **21** |
+
+Of §88–89's hosts whose lost text was **not** found in `omitted` by string (160 with text left): **32 translated, 128 omitted after all** (their
+note named the run-on by its headword or in English, which the string test of §88 could not see). Of those found there (the "trim" class, 51
+with a changed text): 45 omitted, **6 translated**. Over the 175 trimmed: flag removed 85, shortened 80, unchanged 10; `omitted` line removed
+51, shortened 123, unchanged 1.
+
+### 3. Drafted
+
+**602 lines**, one agent and one scratch folder per shard (`tr/shards/*.jsonl`, `tr/scratch/<shard>/`), the prompt `drafting-prompt.md`'s
+text as §70 gave it (the text-layer form for 14/2, the OCR-book form for the rest), with §70's REDRAFT paragraph rewritten for this stage: each
+line carries `role` — **homonym** 361 (a row now on its own printed entry: its earlier draft, if any, rendered another entry), **split** 142,
+**host** 50, **grown** 28, **changed** 21 — and "text doubtful: …" where a text does not look like the headword's own. The "choices already
+made" block is `drafting-prompt.md`'s, unchanged (checked by diff). Shards: 14/2 alone (30 lines, the text layer), the eight OCR books mixed,
+in six shards of 92–96.
+
+| shard | lines | flagged | with `omitted` | empty | clean | agent tokens | tool calls |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| 14b-00 (text layer) | 30 | 12 | 12 | 0 | 13 | 104,907 | 9 |
+| ocr-00 | 96 | 48 | 61 | 1 | 25 | 150,373 | 17 |
+| ocr-01 | 96 | 39 | 65 | 3 | 18 | 170,239 | 14 |
+| ocr-02 | 96 | 48 | 66 | 1 | 20 | 179,326 | 16 |
+| ocr-03 | 96 | 55 | 76 | 0 | 9 | 164,973 | 14 |
+| ocr-04 | 96 | 63 | 71 | 3 | 14 | 159,194 | 14 |
+| ocr-05 | 92 | 61 | 73 | 1 | 13 | 169,532 | 13 |
+| **all** | **602** | **326** | **424** | **9** | **112** | **1,098,544** | |
+| classification (5 agents, 264 rows) | | | | | | 618,012 | 44 |
+
+~1,825 drafting tokens a line (§70: ~1,217 at shards of 79 and 188). **Checked** (every shard): one line per id, in order; valid JSON with
+id, es, en, terms, flag, omitted; every «Sn» in both languages; ⟦ ⟧ and ‹ › balanced; no Burmese outside them; es and en empty together, each
+empty line flagged "nothing to translate": **0 errors**. Read against the Burmese here: 159131, 158100, 170163, 216845, 209027 (as drafted).
+
+### 4. Merged, trimmed, reported
+
+`merge NN --ids` (the drafted ids, the formula ids and the ids to withdraw) with each book's `--work` folder; `corrections-es.tsv` has no row
+of the nine books, so nothing to re-apply (merge printed none). The 175 trims applied by script. `report NN`; for 14/2, the 64 `-flags.tsv`
+lines of rows outside this stage that `report` rewrote from today's Burmese were set back to their committed lines, as §70 did.
+**Checked** (every book, against the files before): rows changed only among the 1,036; `-omitted.tsv` lines likewise; ids unique; no ⟦ ⟧ or
+«Sn» left; no Burmese outside ‹ › but 176231 and 193595's (န) / (လ) (§65); every changed row `drafted`. `python3 tools/test_meanings_merge.py`: ok.
+
+**Counts per book and action** (the 1,036 rows):
+
+| action | 14b | 14c | 20 | 21 | 22 | 23 | 24 | 25 | 4c | all |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| drafted: a new Meaning row | 12 | 52 | 49 | 40 | 31 | 41 | 27 | 49 | 29 | **330** |
+| a new formula row ("see X" only) | 0 | 0 | 0 | 2 | 0 | 2 | 2 | 5 | 0 | **11** |
+| redrafted | 18 | 21 | 49 | 42 | 23 | 44 | 21 | 17 | 28 | **263** |
+| re-merged as a formula row | 0 | 0 | 1 | 1 | 1 | 1 | 2 | 0 | 0 | **6** |
+| **withdrawn** ("not yet translated") | 1 | 5 | 6 | 15 | 3 | 3 | 3 | 12 | 5 | **53** |
+| kept, `flag` / `omitted` trimmed | 10 | 19 | 34 | 26 | 20 | 21 | 19 | 17 | 9 | **175** |
+| checked, kept (≥ 0.8, same meaning) | 2 | 0 | 5 | 3 | 5 | 8 | 5 | 2 | 0 | **30** |
+| kept: the Burmese `prep` gives is unchanged | 22 | 22 | 14 | 33 | 7 | 8 | 6 | 1 | 7 | **120** |
+| drafted empty ("nothing to translate"): no row | 0 | 1 | 0 | 2 | 0 | 0 | 0 | 1 | 0 | **4** |
+| no text and no Meaning: nothing to do | 4 | 7 | 6 | 10 | 4 | 7 | 2 | 3 | 1 | **44** |
+
+Of the 268 lines redrafted (209 direct, 38 hosts, 21 changed rows), 5 came out empty and were withdrawn; of the 263 kept, 1 is identical to
+the old row (21 168287) and 1 was set back to its earlier draft (23 191848 siṅgī, below).
+**Withdrawn, 53**: `same_as` 30, no text after the image table 10, chained rows left unlocated 6, hosts with nothing left 2, **redrafts that
+came out empty 5** (e.g. 25 217109 so¹, the particle, "nothing to translate"). Each is recorded, with the Meaning withdrawn, in the new
+**`docs/translation/withdrawn.tsv`** (id, book, iast, date, reason, es / en / flag withdrawn); the site shows "not yet translated" for them.
+
+| | 14b | 14c | 20 | 21 | 22 | 23 | 24 | 25 | 4c | all nine |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| Meaning rows before → after | 6,863 → 6,874 | 9,359 → 9,406 | 7,005 → 7,048 | 7,758 → 7,785 | 7,637 → 7,665 | 6,937 → 6,977 | 6,714 → 6,740 | 3,736 → 3,778 | 4,791 → 4,815 | 60,800 → 61,088 |
+| flagged | 1,122 → 1,114 | 2,955 → 2,966 | 2,232 → 2,219 | 2,500 → 2,480 | 2,803 → 2,808 | 2,042 → 2,038 | 2,538 → 2,542 | 1,801 → 1,820 | 2,229 → 2,235 | 20,222 → 20,222 |
+| `-omitted.tsv` lines | 1,166 → 1,156 | 5,921 → 5,938 | 3,945 → 3,952 | 4,405 → 4,405 | 5,091 → 5,097 | 3,889 → 3,905 | 3,617 → 3,624 | 3,147 → 3,171 | 3,016 → 3,025 | 34,197 → 34,273 |
+
+**+288 rows** (330 drafted + 11 formula − 53). **Totals: 217,738 Meaning rows** (217,450 → 217,738), all `drafted` but the 9 corrected:
+**98.5%** of the index (221,154). Over all books, 827 Meaning rows differ from v0.28.6's: 341 new, 259 with a new es / en, 174 with only
+`flag` / `omitted` changed, 53 withdrawn (`tmp/stage3/meaning-changed-ids.tsv`).
+
+**Decided without asking**: (1) shards of ~96 lines, 14/2 apart; (2) the "about the same" rows read by the classifying agents, not by a
+threshold; (3) the withdrawn rows kept in a new file rather than only in this section; (4) **191848 siṅgī** (23): its Burmese changed only by
+losing a run-on siṅgī (ထီ) (§88); the redraft left sense (1) out as garbled ("… ser vivo"), while page-checks.tsv (§76) had confirmed the
+earlier draft against the print — the earlier row was put back, with the run-on taken out of its flag and `omitted` line.
+
+**What the agents reported** (nothing reviewed): -si endings drafted as the 2nd person by the rule and flagged where ၏ / ပြီ suggest the
+aorist (193586 / 195249 against their homonyms 193587 / 195250; 174690 esi; 176586 olokesi); *vosotros* again (216710; 2.1's sheet);
+"text doubtful" in 207927 subbata (the gloss fits subbaca), 172872 ekatta (fits ekattakāya), 167285 sacca (a noun sense under (တိ),
+truncated), 168890 sata (too garbled); 212983 pariññā (14/2) lacks its first two kinds in the text; 161993 veḷuriya's long encyclopaedic note
+translated and flagged, 158929 vīta's Sanskrit senses left out; 188777's IAST reads "ahassa-" (sahassa-?); 184523 renders အတ္တဘော
+*individualidad*, not L084's *existencia individual*; 176981 osāreyya may hold a run-on homonym (translated whole, flagged).
+
+### 5. The re-reads (task 2)
+
+Rows of the check files among the 2,754 changed ids (`moved-ids.tsv`), re-read against the new text and Meaning and marked **in place**
+(`page-checks.tsv`: the verdict set to `superseded (§91)` as §75 did, the old verdict kept in the note; `splits-checked.tsv`: a note
+"[§91: …]" appended, the verdict column untouched because `split_runons()` reads it; `revision-queue.tsv`: a new column `reread_1_8`, filled
+only for these rows).
+
+- **`docs/page-checks.tsv`: 17 rows — 7 still valid, 10 superseded.** Still valid: 15830, 15832, 141084, 180565, 191848, 205403, 217243.
+  Superseded: 157109, 167285, 218271 (redrafted: the page reading stands for checking the new draft; 157109's wrong "Véase 133" is gone,
+  218271 now numbers (2) the sun but still lacks (3)); 198956 (§88 placed it on pīta³); 160743, 170160, 171730, 174965, 217109 (R moved each
+  to another homonym). **These five contradicted R on their face** (each check had named the text's superscript), so they were looked into:
+  - 170160 သတ္ထ and 160743 ဝေ: **read on the image here** (21 p. 697, 20 p. 512): the printed သတ္ထ² is the "admonished" entry (running head
+    and head, p. 697 L), the merchant text is သတ္ထ³ (p. 697 R); ဝေ² is the root "to weave" (p. 512 L), so the case ending is ³. **R is right;
+    the checks' superscripts were wrong.**
+  - 174965 ဩကိရိယန္တိ, 217109 သော, 171730 သန္တိ: the check read the text as ² (or did not number it) and R gave that text to the next index
+    row, which the index order makes ²: consistent with R; not re-read on the image.
+  - **168888 သတ (21)**: §76 read the row's text as the print's သတ⁸, as drafted; §88 left the whole run (H067) unsure and the row without text,
+    so its Meaning was withdrawn. **For the editor**: a line in `homonyms-checked.tsv` would restore it.
+- **`docs/splits-checked.tsv`: 24 rows** of §69 (the 168 rows of §88–89 are this stage's own verdicts, not re-read) — **15 still valid** (the
+  13 splits of 14/2 whose host is now an image-table row, same text; 214129 and 216711 now placed by R with the split's text), **9
+  superseded** (§69's wrong 162101, 163457, 168298, 172827, 174689 and unsure 157108, 181875, 168888, 204389: settled by R, §85 or §88).
+- **`docs/translation/revision-queue.tsv`: 26 rows — 24 still valid, 2 superseded** (216710 and 215534, redrafted: apply the rule to the new
+  draft). The 21 PCED-book rows keep their Meaning (PCED's, by id).
+
+### 6. `docs/index-errata.md` §5 (task 3)
+
+- **Left §5: 4 rows**, now each on its own printed entry (a farther-body split of §89): 14c 196387 ပါနီယကူပ, 15 118320 ဗြဟ္မလောကူပပတ္တိ, 19
+  150247 ဝိစ္စေဿတိ, 24 204839 သုခပ္ပဋိသံဝေဒီ. Recorded in a note under the table (the rows and their twins named).
+- **The 78 rows of §85 §1 all stay**: none is placed by `HOMONYM_FIX`, R or PCED, none is `same_as` or split, no twin changed. **§88's
+  finding** (a headword indexed again for each page a long entry runs over) explains none: in 41 the twin's article stands on the repeat's
+  own page, in 37 on a later page. 14c 194663 ပဿ was looked at apart: its page's continuation row is 194648, not it.
+- **174421 ဧဓတိ, read on the image here (4c p. 320 R)**: its entry is printed **ဧဓတိ¹** (ကြိ) [ဧဓ+အ+တိ], and 174419's **ဧဓတိ²** (ကာ၊ကြိ), last on
+  the page (running head ဧဓတိ²). The §89 measurement's "printed ²" was a misreading; §89's reader had it right. **Against the index order**: the
+  index lists ² (174419) before ¹ (174421), with 174420 ဧဓိတ္တ between — printed only as sense (3) inside ဧဓတိ¹'s quotations, no entry of its
+  own. The row stays in §5 for the order, its note rewritten. (By the index-order convention of §85, 174419 is ¹ and 174421 ²: the texts would
+  swap. Left as it is: **for the editor**.)
+- 202368 ပေက္ခတေ stays. §5's rows: 84 → 80.
+
+### 7. The `/w/` addresses (task 4)
+
+Full builds (`ABHIDHANA_SITE_OUT`), the same code (today's `tools/`, `site/src`) over two data sets: **before**, the pre-1.8 `ocr/` files
+(reproduced above with `ABH_HOMONYM=0 ABH_FARBODY=0`) with v0.28.6's Meaning files; **after**, today's. Both: 958 files, 221,154 search
+entries, 29 books. Address → id over every record of `data/c/*.json`: **0 differences of 221,154**; no address used twice in either; `hn`
+the same for every id. What changed: the body of 2,603 records, the Meaning of 653, the page of 32. Citations matched 489,165 of 530,965 →
+**489,082 of 530,869** (92.1%, inferred 38,766 → 38,768); see-links 8,467 → 8,489. Builds deleted after.
+
+### 8. The D1 edits (task 5)
+
+The container's proxy refuses `abhidhana.buddha-dhamma.net` (403 at CONNECT), and so does the Mac VM's (same allowlist). Not read. A script
+for the Mac: **`tmp/stage3/d1check.py`** (one GET of `/api/edits?book=all`, the public endpoint; intersects with `moved-ids.tsv` and
+`tmp/stage3/meaning-changed-ids.tsv`; writes `tmp/stage3/d1-hits.tsv`). Before the push: no hits → push; a hit is an edit made on the text
+or Meaning the row held before 1.8, to look at by hand (its `old` against the row now).
+
+### 9. Not done here, for the Mac
+
+The witness joins for 01–19. **Run here first** on today's articles (the staged `db/` and `pced_k`): against the Mac's joins (as staged in
+§86) **5,408 rows change** (`body_ratio` 5,399, `label` 1,032, `located` 994, `analysis_ratio` 972, `label_ours` 158, `analysis_differs` 30),
+**`seq` in none**, so the pairing the article step reads is the same and the articles need no re-run. The expected MD5s of the 20 join files
+and `join-table.md` are in `tmp/stage3/witness-join-expected.md5`, checked by `tmp/stage3/check_joins.py` after the Mac's run. The editor UI
+test (API 28 / UI 88 expected: none of the articles it visits changed in 1.8 — bhijja, luñcana, karoti, labhissati, bhava, kāyaggahaṇa,
+kaṁsatālakaṭṭhatālasadda checked against `moved-ids.tsv` and the Meaning changes); `d1check.py`. `ocr-report.md` needs no re-run (§89).
+
+**Files changed**: `docs/translation/meanings/{14b,14c,20,21,22,23,24,25,4c}.jsonl`, `-flags.tsv`, `-terms.tsv`, `-omitted.tsv` (36 files);
+`docs/translation/withdrawn.tsv` (new); `docs/page-checks.tsv`, `docs/splits-checked.tsv`, `docs/translation/revision-queue.tsv` (the re-reads);
+`docs/index-errata.md` (§5); this section and §90; `docs/NEXT-SESSION.md`; `VERSION`, `CHANGELOG.md`. Gitignored: `tmp/stage3/` (the input
+tarball, `d1check.py`, `meaning-changed-ids.tsv`, `check_joins.py`, `witness-join-expected.md5`, three page renders in `img/`, the work
+archive `s3-work.tgz`: the classification and drafting folders, prompts, scripts).
+
+*Tokens: sub-agents **1.72 M** (drafting 7 agents 1,098,544; classification 5 agents 618,012; each the agent's reported total). This
+session's own context: ~0.5 M by its counter when this section was written (tool output, the Burmese read in the re-reads, three page images). ~2.2 M in all. No git run in the VM.*

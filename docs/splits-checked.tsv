@@ -33,15 +33,15 @@ id	book	headword	host	verdict	pdf_page	rule	note
 212824	14b	ပရိစ္ဆိန္နာယုဘာဝဝိဘာဝနမုခ	212823	right	393	run-on:fuzzy:label:prev	
 213093	14b	ပရိဏတပလ္လဝဝဏ္ဏ	213092	right	428	run-on:fuzzy:label:prev	
 213094	14b	ပရိဏတပလ္လဝဝဏ္ဏကာလ	213092	right	428	run-on:fuzzy:label:prev	
-213398	14b	ပရိဒဟတိ	213395	right	462	run-on:exact:label:prev	
-213399	14b	ပရိဒဟတိ	213395	right	462	run-on:exact:label+homonym:prev	
-213400	14b	ပရိဒဟန	213395	right	462	run-on:exact:label:prev	
-213401	14b	ပရိဒဟန	213395	right	462	run-on:exact:label+homonym:prev	
-213402	14b	ပရိဒဟနကရ	213395	right	462	run-on:exact:label:prev	
-213403	14b	ပရိဒဟနသမတ္ထ	213395	right	462	run-on:exact:label:prev	
-213404	14b	ပရိဒဟန္တ	213395	right	462	run-on:exact:label:prev	
-213405	14b	ပရိဒဟန္တိ	213395	right	462	run-on:exact:label:prev	
-214129	14b	ပရိပူရေသုံ	214130	right	561	run-on:exact:label:next	right start; the next homonym's entry (ပရိပူရေသုံ²) ends it and stays with row 214130, placed on the line before (item 5b)
+213398	14b	ပရိဒဟတိ	213395	right	462	run-on:exact:label:prev	[§91: still valid: host now an image-table row (§88); split and text unchanged]
+213399	14b	ပရိဒဟတိ	213395	right	462	run-on:exact:label+homonym:prev	[§91: still valid: host now an image-table row (§88); split and text unchanged]
+213400	14b	ပရိဒဟန	213395	right	462	run-on:exact:label:prev	[§91: still valid: host now an image-table row (§88); split and text unchanged]
+213401	14b	ပရိဒဟန	213395	right	462	run-on:exact:label+homonym:prev	[§91: still valid: host now an image-table row (§88); split and text unchanged]
+213402	14b	ပရိဒဟနကရ	213395	right	462	run-on:exact:label:prev	[§91: still valid: host now an image-table row (§88); split and text unchanged]
+213403	14b	ပရိဒဟနသမတ္ထ	213395	right	462	run-on:exact:label:prev	[§91: still valid: host now an image-table row (§88); split and text unchanged]
+213404	14b	ပရိဒဟန္တ	213395	right	462	run-on:exact:label:prev	[§91: still valid: host now an image-table row (§88); split and text unchanged]
+213405	14b	ပရိဒဟန္တိ	213395	right	462	run-on:exact:label:prev	[§91: still valid: host now an image-table row (§88); split and text unchanged]
+214129	14b	ပရိပူရေသုံ	214130	right	561	run-on:exact:label:next	right start; the next homonym's entry (ပရိပူရေသုံ²) ends it and stays with row 214130, placed on the line before (item 5b) [§91: still valid: row now placed by R with the same text; not a split any more]
 214267	14b	ပရိဗ္ဘမန	214266	right	579	run-on:exact:label:prev	
 214268	14b	ပရိဗ္ဘမနက	214266	right	579	run-on:exact:label:prev	
 214271	14b	ပရိဗ္ဘမနကစက္က	214266	right	579	run-on:exact:label:prev	
@@ -61,12 +61,12 @@ id	book	headword	host	verdict	pdf_page	rule	note
 216587	14b	ပရောပဏ္ဏာသကုသလဓမ္မဝဝတ္ထာနကာလ	216586	right	889	run-on:fuzzy:label:prev	
 216660	14b	ပလဝတိ	216659	right	897	run-on:exact:label:prev	
 216661	14b	ပလဝန္တိ	216659	right	897	run-on:exact:label:prev	
-216662	14b	ပလသတ	216659	right	897	run-on:exact:label:prev	
-216663	14b	ပလသတ	216659	right	897	run-on:exact:label+homonym:prev	
-216664	14b	ပလသတစမ္မ	216659	right	897	run-on:exact:label:prev	
-216665	14b	ပလသတပ္ပမာဏ	216659	right	897	run-on:exact:label:prev	
-216667	14b	ပလဠတိ	216659	right	897	run-on:exact:label:prev	
-216711	14b	ပလာယန	216712	right	903	run-on:exact:label:next	right start; the next homonym's entry (ပလာယန²) ends it and stays with row 216712, placed on the line before (item 5b)
+216662	14b	ပလသတ	216659	right	897	run-on:exact:label:prev	[§91: still valid: host now an image-table row (§88); split and text unchanged]
+216663	14b	ပလသတ	216659	right	897	run-on:exact:label+homonym:prev	[§91: still valid: host now an image-table row (§88); split and text unchanged]
+216664	14b	ပလသတစမ္မ	216659	right	897	run-on:exact:label:prev	[§91: still valid: host now an image-table row (§88); split and text unchanged]
+216665	14b	ပလသတပ္ပမာဏ	216659	right	897	run-on:exact:label:prev	[§91: still valid: host now an image-table row (§88); split and text unchanged]
+216667	14b	ပလဠတိ	216659	right	897	run-on:exact:label:prev	[§91: still valid: host now an image-table row (§88); split and text unchanged]
+216711	14b	ပလာယန	216712	right	903	run-on:exact:label:next	right start; the next homonym's entry (ပလာယန²) ends it and stays with row 216712, placed on the line before (item 5b) [§91: still valid: row now placed by R with the same text; not a split any more]
 193370	14c	ပဝတ္တိဝိဗန္ဓက	193369	right	102	run-on:fuzzy:label:prev	the OCR read the initial ပ as ၂
 193563	14c	ပဝါရိတပဝါရဏ	193562	right	133	run-on:fuzzy:label:prev	
 193666	14c	ပဝိစယတိ	193665	right	143	run-on:fuzzy:label:prev	
@@ -78,10 +78,10 @@ id	book	headword	host	verdict	pdf_page	rule	note
 195009	14c	ပဟရိံသု	195010	right	269	run-on:fuzzy:label:next	
 195795	14c	ပါဏကဟရဏ	195794	right	351	run-on:fuzzy:label:prev	
 198336	14c	ပိဓာနကိစ္စ	198335	right	636	run-on:fuzzy:label:prev	
-157108	20	ဝိသမ	157107	unsure	74	run-on:exact:label:prev	the line is ဝိသမ⁴ in print; 157108 is the third of five ဝိသမ rows (157106–157110), whose placements on this page look shifted by one
+157108	20	ဝိသမ	157107	unsure	74	run-on:exact:label:prev	the line is ဝိသမ⁴ in print; 157108 is the third of five ဝိသမ rows (157106–157110), whose placements on this page look shifted by one [§91: superseded: §88 read the run on the image: right now (image table)]
 158162	20	ဝိဿဇ္ဇိံသု	158163	right	199	run-on:fuzzy:label:next	
 160280	20	ဝုတ္တယက္ခ	160279	right	461	run-on:exact:label:prev	
-162101	20	ဝေါဒါန	162102	wrong	697	run-on:exact:label:next	the line is ဝေါဒါန² in print; 162101 is the first of the two ဝေါဒါန rows, so the entry is 162102's (placed on a citation line above it)
+162101	20	ဝေါဒါန	162102	wrong	697	run-on:exact:label:next	the line is ဝေါဒါန² in print; 162101 is the first of the two ဝေါဒါန rows, so the entry is 162102's (placed on a citation line above it) [§91: superseded: the homonym fix of plan step 1.8 (R / §88 image table) placed the row on its own entry; redrafted]
 162430	20	သ	162429	unsure	740	run-on:exact:label:prev	the line is သ⁶ in print; 162430 is the last of seven သ rows (162424–162430), four of them the letter's framing pages; the numbering could not be matched
 163204	20	သံဘဉ္ဇန	163203	right	838	run-on:exact:label:prev	
 163218	20	သံဘုဉ္ဇနရသ	163217	right	839	run-on:exact:label:prev	
@@ -106,7 +106,7 @@ id	book	headword	host	verdict	pdf_page	rule	note
 163423	20	သံယောဇီယတိ	163422	right	872	run-on:exact:label:prev	
 163436	20	သံရက္ခိယမာနစိတ္တ	163435	right	873	run-on:exact:label:prev	
 163450	20	သံလက္ခာပန	163449	right	874	run-on:exact:label:prev	
-163457	20	သံဝစ္ဆရ	163458	wrong	875	run-on:exact:label:next	the line is သံဝစ္ဆရ² in print; 163457 is the first of the two သံဝစ္ဆရ rows, and 163458, the host, sits on the entry before: the two homonyms are swapped (item 5b), which a split cannot mend
+163457	20	သံဝစ္ဆရ	163458	wrong	875	run-on:exact:label:next	the line is သံဝစ္ဆရ² in print; 163457 is the first of the two သံဝစ္ဆရ rows, and 163458, the host, sits on the entry before: the two homonyms are swapped (item 5b), which a split cannot mend [§91: superseded: the homonym fix of plan step 1.8 (R / §88 image table) placed the row on its own entry; redrafted]
 163461	20	သံဝစ္ဆရစ္စယ	163460	right	875	run-on:exact:label:prev	
 163473	20	သံဝစ္ဆရိက	163472	right	876	run-on:exact:label:prev	
 163492	20	သံဝဋ္ဋမာနလောကဓာတု	163491	right	879	run-on:exact:label:prev	
@@ -143,8 +143,8 @@ id	book	headword	host	verdict	pdf_page	rule	note
 165210	21	သကလဝဋ္ဋဒုက္ခာဘာဝ	165209	right	147	run-on:fuzzy:label:prev	
 166027	21	သဂ္ဂ	166026	unsure	228	run-on:exact:label:prev	the text is sagga's, but the line taken is inside its analysis (the Prakrit forms, သဂ္ဂ-(ပု၊ န) ပါကတ); the head line and the start of the analysis stay in 166026 sagotta
 167229	21	သင်္ဃာတနိယ	167228	wrong	371	run-on:fuzzy:label:prev	the line is the second half of the printed double headword သင်္ဃာတနိက = သင်္ဃာတနီယ, whose entry row 167228 already holds; the split cut one entry in two
-168298	21	သညတ္တ	168299	wrong	490	run-on:exact:label:next	the line is သညတ္တ³ in print and the line above it သညတ္တ², which row 168299 holds; 168298 is the second of the three သညတ္တ rows: the homonyms are swapped (item 5b)
-168888	21	သတ	168890	unsure	553	run-on:exact:label:next	the line is သတ⁸ in print (the last သတ on the page, after ⁶ and ⁷); the index has nine သတ rows (168882–168890) and 168888 is the seventh, so which row ⁸ belongs to could not be settled
+168298	21	သညတ္တ	168299	wrong	490	run-on:exact:label:next	the line is သညတ္တ³ in print and the line above it သညတ္တ², which row 168299 holds; 168298 is the second of the three သညတ္တ rows: the homonyms are swapped (item 5b) [§91: superseded: the homonym fix of plan step 1.8 (R / §88 image table) placed the row on its own entry; redrafted]
+168888	21	သတ	168890	unsure	553	run-on:exact:label:next	the line is သတ⁸ in print (the last သတ on the page, after ⁶ and ⁷); the index has nine သတ rows (168882–168890) and 168888 is the seventh, so which row ⁸ belongs to could not be settled [§91: superseded: §88 left it unsure (run H067); no text now; Meaning withdrawn (see page-checks.tsv)]
 170878	21	သဒ္ဒီယတိ	170877	right	771	run-on:fuzzy:label:prev	
 171790	21	သန္တီရဏကာလ	171791	right	872	run-on:fuzzy:label:next	
 178094	22	သပ္ပါဋိဟိရကတ	178093	right	117	run-on:fuzzy:label:prev	
@@ -164,7 +164,7 @@ id	book	headword	host	verdict	pdf_page	rule	note
 180231	22	သမစ္ဆိန္နသင်္ခပန္တိ	180232	right	316	run-on:fuzzy:label:next	
 180718	22	သမဓိသတ္တဝီသတိသတသဟဿမတ္တ	180717	unsure	364	run-on:fuzzy:bracket:prev	the text is this article's (printed သမဓိကသတ္တဝီသတိသဟဿမတ္တ), but the split begins at its analysis's second line; the head line stays in 180717
 180861	22	သမနုယုဉ္ဇိယမာန	180860	right	378	run-on:fuzzy:label:prev	
-181875	22	သမာန	181874	unsure	487	run-on:exact:label:prev	the line is သမာန² in print; four သမာန rows (181873–181876), and 181874, the host, reads like two entries run together: which row ² belongs to could not be settled
+181875	22	သမာန	181874	unsure	487	run-on:exact:label:prev	the line is သမာန² in print; four သမာန rows (181873–181876), and 181874, the host, reads like two entries run together: which row ² belongs to could not be settled [§91: superseded: §85 read it on the image: right (သမာန³); text unchanged]
 182439	22	သမာဟိတ	182438	right	543	run-on:fuzzy:label:prev	
 182712	22	သမုစ္စယတ္ထဒီပက	182711	right	576	run-on:fuzzy:label:prev	
 184985	22	သမ္ဗဇ္ဈန	184979	right	855	run-on:exact:label:prev	
@@ -205,7 +205,7 @@ id	book	headword	host	verdict	pdf_page	rule	note
 192570	23	သိလာဝတိ-သိလာဝတီ	192569	right	768	run-on:fuzzy:label:prev	
 203137	24	သီတတာသင်္ကာ	203136	right	41	run-on:fuzzy:label:prev	
 203791	24	သီလသမာဓိပညာဝိမုတ္တိဝိမုတ္တိဉာဏဒဿနသမ္ပတ္တိသမုဒါဂမ	203790	right	101	run-on:exact:label:prev	
-204389	24	သု	204388	unsure	158	run-on:exact:label:prev	the line is သု² (ဗျ, the prefix) in print; five သု rows (204385–204389), the two before it placed on the two dhātu entries (သုံ ဓာတု) and two unplaced: which row the prefix belongs to could not be settled
+204389	24	သု	204388	unsure	158	run-on:exact:label:prev	the line is သု² (ဗျ, the prefix) in print; five သု rows (204385–204389), the two before it placed on the two dhātu entries (သုံ ဓာတု) and two unplaced: which row the prefix belongs to could not be settled [§91: superseded: §88: same_as (the index row has no entry of its own); Meaning withdrawn]
 204698	24	သုခအဝိပါကီ	204697	right	192	run-on:fuzzy:label:prev	
 204777	24	သုခဒုက္ခုပ္ပါဒက	204776	right	199	run-on:fuzzy:label:prev	
 204907	24	သုခမဟတ္တ	204906	right	209	run-on:fuzzy:label:prev	
@@ -238,9 +238,9 @@ id	book	headword	host	verdict	pdf_page	rule	note
 217822	25	သောဘိတုံ	217821	right	115	run-on:fuzzy:label:prev	
 219059	25	ဟတ္ထိသာရီ	219058	right	245	run-on:exact:label:prev	
 219099	25	ဟဒယ	219098	right	250	run-on:exact:label:prev	right; hadaya had no row of its own in the drafts (brief §61: its whole article sat in 219098 hadanti)
-172827	4c	ဧကတိံသ	172828	wrong	108	run-on:exact:label:next	the line is ဧကတိံသ² in print; 172827 is the first of the two ဧကတိံသ rows and 172828, the host, holds ¹: the homonyms would be swapped (item 5b)
+172827	4c	ဧကတိံသ	172828	wrong	108	run-on:exact:label:next	the line is ဧကတိံသ² in print; 172827 is the first of the two ဧကတိံသ rows and 172828, the host, holds ¹: the homonyms would be swapped (item 5b) [§91: superseded: the homonym fix of plan step 1.8 (R / §88 image table) placed the row on its own entry; redrafted]
 173690	4c	ဧကရတ္တိန္ဒိဝ	173689	right	217	run-on:fuzzy:label:prev	
-174689	4c	ဧသိ	174690	wrong	359	run-on:exact:label:next	the line is ဧသိ² in print; 174689 is the first of the two ဧသိ rows and 174690, the host, holds ¹: the homonyms would be swapped (item 5b)
+174689	4c	ဧသိ	174690	wrong	359	run-on:exact:label:next	the line is ဧသိ² in print; 174689 is the first of the two ဧသိ rows and 174690, the host, holds ¹: the homonyms would be swapped (item 5b) [§91: superseded: the homonym fix of plan step 1.8 (R / §88 image table) placed the row on its own entry; redrafted]
 175084	4c	ဩက္ခာ	175083	right	417	run-on:fuzzy:label:prev	
 175198	4c	ဩဃနဒီ	175197	right	437	run-on:fuzzy:label:prev	
 175615	4c	ဩဒနပစန	175614	right	496	run-on:fuzzy:label:prev	

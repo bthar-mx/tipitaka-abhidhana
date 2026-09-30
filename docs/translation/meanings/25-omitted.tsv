@@ -1,6 +1,6 @@
 id	iast	omitted
-217109	so	analysis [ta + si]; citation Kaccāyana 104; OCR debris; trailing run-on 'အဘိဓာန် (အ-ဝဂ်) ၁ …' and 'နမော … သမ္မာသမ္ဗုဒ္ဓဿ' (title matter)
-217110	so	OCR debris throughout; Pāḷi quotations ('ဧတ္ထ သောတိ ပသိဒ္ဓိယံ …', 'သုဂတ … ဝိဒတ္ထိယာ', 'သော အန္တကမ္မနိ'); citation '၄၁၉-ဂါထာ'
+217109	so	citations ဣတိဝုတ် (twice); quotation fragment 'ကိံ သော တိ' with numbers '၁၁ နိပါ ၃၂၆)'
+217110	so	analysis 'တ + သိ'; citation ကစ္စည်း ၁ဝ၄; stray 'နို'; the repeated senses (1)–(7) with quotations, citations and OCR debris
 217111	soka	citation Maṇimañjūsā 2; Sanskrit and Ardhamāgadhī forms; Pāḷi quotations (Vibhaṅga definition of soka and commentary); citation (၁၃၆); run-on 'သောကနုဒ'; OCR debris
 217114	sokakaraṇa	analysis 'sokakaraṇa + tta', grammatical note 'bhāvalopa'
 217118	sokaggi	OCR debris ('အာဒါတ္တ န္တ ိ] သို့ ဝ')
@@ -101,8 +101,8 @@ id	iast	omitted
 217240	sokhumāla	grammarian's note 'ရ-ကို လ-ပြု' (r becomes l) and the forms sukumāra-sukumāla-sukhumāla-sokhumāla; OCR debris
 217241	sokhumma	quotation fragments '(က) သော ခမ္မာနီ', '(ခ) အပရေ ပနာဟု- သော ခမွန္နိ အဂ္ဂမဂ္ဂဖလေသု'; stray 'ဝိ. နူုည-သည်'; OCR debris
 217242	sokhya	Ardhamāgadhī form fragment; Sanskrit form 'သောချ'
-217243	sogata	citation 'နိရုတ္တိ ၄၆'; quotation fragment 'သုဂတော'; run-on articles 'သောဂန္ဓိက (တိ) [ … ]' (in two OCR copies) and 'သောဂန္ဓိယ (တိ) [ သောဂန္ဓိက = သောဂန္ဓိယ ]'; Sanskrit and Prakrit forms; OCR debris
-217244	sogandhika	'ကြည့်'
+217243	sogata	citation 'နိရုတ္တိ ၄၆'; quotation fragment 'သုဂတော'; OCR debris
+217244	sogandhika	analysis bracket with cognates and citation ကပ္ပဒ္ဒုမ; OCR debris; the repeated senses (1)–(5) with quotations (သေတသောဂန္ဓိကေဟိ …, ဧဝမေကော …) and citations
 217246	socaṁ	citation 'ဇာ၊ ၁ဝ'
 217247	soca	citations Kappandumā, Kaccāyana; Sanskrit and Prakrit forms
 217248	soca	analysis [suca a + ī] and grammarian's note 'သောစိ ဖြစ်သင့်သည်' (it should be soci); number '၁၀၇-၅'; OCR debris
@@ -145,8 +145,8 @@ id	iast	omitted
 217295	socayanta	analysis [ṇe (ṇaya) + anta]; feminine note; quotation fragment 'သောစယန္တံ'
 217296	socenti	OCR debris
 217297	soceyyaṁ	analysis fragment 'ဧယျံ'
-217298	soceyya	run-on 'သောစေယျ (ပု၊ န) [ … ] … (န) (၁) သန့်ရှင်း-စင်ကြယ်-သောပုဂ္ဂိုလ်၏အဖြစ်။ (၂) သန့်ရှင်း-စင်ကြယ်-အောင်ပြုတတ်သော-အကျင့်-တရား။ (၃) (ပု၊ န) သန့်ရှင်း စင်ကြယ်-သောမိန်းမ၏သား' with analysis, Pāḷi commentary ('သုစိ-သဒ္ဒတော ဘာဝေ ယျ-ကာရံ …'), citation 'ဒီ၊ ဋီ ၃' and Sanskrit form; OCR debris
-217299	soceyya	stray '(၇)'
+217298	soceyya	OCR debris before the definition and 'ဟို' after it
+217299	soceyya	OCR debris; quotation '(၁) … သောစေယျ'; stray '(၇)'
 217300	soceyyaggahaṇa	OCR debris
 217301	soceyyapaccupaṭṭhāna	echo of the headword 'သောစေယျပစ္စုပဋ္ဌာန'; OCR debris
 217302	soceyyappaṭipadā	quotation fragment 'သောစေယျာနီ'
@@ -158,8 +158,8 @@ id	iast	omitted
 217308	soṇa	citations 'ဓာန်', 'ဓာန်၊ ဋီ', 'အလင်္ကာ'; quotation 'ဇာတသောဏေန သောဏိမာ'; stray '(ပ) (၃)'; OCR debris
 217309	soṇa	analysis [su + ṇa]; feminine form soṇī; citation Kappandumā; Sanskrit form; quotation fragment 'သောဏာ'; citation 'ဇာ၊ ဋ္ဌ၊ ၆ ၁၃၃'
 217310	soṇa	second copy of the list with quotation fragments ('သောဏဿာ', 'သောဏော', 'သုဝဏ္ဏဘုမိံ ဂန္ထာန၊ သောဏုတ္တရာ မဟိဒ္ဓိကာ', 'သောဏကုမာရော', 'သောဏကူဋမဟာလိဇာလိနီ') and citations ('၈၃', '၃၅၆'); OCR debris
-217311	soṇaka	quotation fragments 'သဒ္ဓိဝိဟာရိကော', 'သောဏက-ကုမာရော'; citations 'သာရတ္ထ၊ ၁ဝ', '၂၆၁', '(၃) ပါဠိ၊ ၁၉-နိပါတ်၊ ၁-ဇာတ်'; stray '(၁) စိကဗုဒ္ဓ'; run-on '(ပု) [ သဏ + ဏျ … သောဏ + က … ကြောင် လျှာပင်။ သောဏကကုမာရ (ပု) [ … လုလင် -သတို့သား'; OCR debris
-217312	soṇaka	'ကြည့်'
+217311	soṇaka	quotation fragments 'သဒ္ဓိဝိဟာရိကော', 'သောဏက-ကုမာရော'; citations 'သာရတ္ထ၊ ၁ဝ', '၂၆၁', '(၃) ပါဠိ၊ ၁၉-နိပါတ်၊ ၁-ဇာတ်'; stray '(၁) စိကဗုဒ္ဓ'; OCR debris
+217312	soṇaka	citation ဓာန်၊ ဋီ; OCR debris and page number ၅၇၂; analysis 'သောဏ + က' and grammatical note; citation ကပ္ပဒ္ဒုမ; Sanskrit cognate; stray 'နို'
 217316	soṇakapaccekabuddha	quotation fragment 'တဒါ'
 217319	soṇakuṭikaṇṇattheragāthāvaṇṇanā	tail of the previous article 'သောဂါထာ'; Pāḷi titles 'သောဏကုဋိကဏ္ဏတ္ထေရဂါထာ', 'သောဏကုဋိကဏ္ဏတ္ထေရဂါထာဝဏ္ဏနာ (ထီ) ['
 217320	soṇakuṭikaṇṇattheravatthu	citation 'အရ၊ ြ ၁'; run-on 'သောဏကုဋိကဏ္ဏဝတ္ထုကထာ ၏-အဖွင့်-သံဝဏ္ဏနာ-အဋ္ဌကထာ-ဋီကာ'
@@ -188,10 +188,16 @@ id	iast	omitted
 217356	soṇi	Sanskrit form; Prakrit and Ardhamāgadhī forms; quotation fragments ('… ၆၉) န္တိ တဋီ', 'ပုထုသုဿောဏီ'); citation 'ဇာ'; stray '(၁)'
 217357	soṇita	garbled repeat 'ဓ နမြနး'; Pāḷi quotations 'လောဟိတပိတ္တ …', 'ကရောတိ ဟိ မာတု သောဏိတသင်္ခါတ …'; stray '(၁)'
 217359	soṇitapitta	OCR debris
-217360	soṇima	Pāḷi quotation '… ဇာတသောဏေန သောဏိမာ'; citations 'အလင်္ကာ'; run-on fragment 'သောဏိ (ထီ) သု + ဏိ'; quotation fragments 'အက္ခဿာ', 'သောဏီ'
+217360	soṇima	OCR debris 'န-နမြနး ခ ည'; quotation 'ပါပါဘိသမ္မဒ္ဒ၊ ဇာတသောဏေန သောဏိမာ'; citation အလင်္ကာ (twice)
+217361	soṇī	'အက္ခဿာ။ သောဏီ'
 217363	soṇuttara	Sanskrit form 'ဒေါဏောတ္တရ'; OCR debris
-217364	soṇuttarabrāhmaṇa	run-on 'သောဏ္ဍာ (ထီ၊ ပု) … (၁) ဆင်နှာမောင်း။ (၂) မာန ထောင်လွှားခြင်း။ … (၃) … သွမ်းဖျင်းဖက်-သူငယ်ချင်း (အပေါင်းဖော်)' with analysis, grammarian's note on the niggahīta, citations and Sanskrit form; OCR debris
-217365	soṇḍa	tail of soṇḍā's quotation '(၃) ပမောဒပ္ပဝတ္တိယာ … သဟာယော'; headword form and analysis 'သောဏ္ဍ (တိ) [ သုဏ္ဍံ ဏ … ]', citations, Sanskrit and Prakrit forms; garbled 'ဘတ္ထ-ပုဝ'; quotation '(၁) သောဏ္ဍာ'; run-on 'သောဏ္ဍပါရုတ (န) …', 'သောဏ္ဍဗလိ (ပု) …', 'သောဏ္ဍဝန္တု (တိ) …', 'သောဏ္ဍသဒိသ (ပု) …', 'သောဏ္ဍသဟာယ (ပု) …', 'သောဏ္ဍသဟာယက (ပု) … ကြည့်'; OCR debris
+217364	soṇuttarabrāhmaṇa	OCR debris
+217365	soṇḍa	grammatical note (ဍ-၏ရှေး၌ နိဂ္ဂဟိတ …); citation ဓာန်; Sanskrit/Prakrit cognates; garbled '(၃) ဧ။ (၂) မာန သွားခြင်း။ (၃ ခြု ရ ရီး ၃ ရ ရှင်း'; quotations '(၂) … သောဏ္ဍ', '(၃) ပမောဒပ္ပဝတ္တိယာ … သဟာယော'
+217366	soṇḍa	analysis bracket with quotation (ပါနာဝါရံ ဝါ သုဏ္ဍာ), citations ဓာန်, ကပ္ပဒ္ဒုမ, 'အက်ပတေး' and cognates; quotation '(၁) သောဏ္ဍာ'; citation ဓာန်
+217367	soṇḍapāruta	OCR debris 'ရီး] ဟု ဝ ိ'; fragment 'ဧကသာဋာ-[ ြ သို့] --'
+217368	soṇḍabali	OCR debris 'ိ [ သို့] ဝ ဝ'
+217369	soṇḍavantu	OCR debris 'နီး] ု့'
+217371	soṇḍasahāya	OCR debris 'ဋ ရိုင်း ဟိ ိ ုဝှ'; quotation fragment 'သောဏ္ဍသဟာ-့၏။ … ယော'
 217373	soṇḍasahāyasaññita	quotation fragment 'ဝိယပုဂ္ဂလေ တိ သောဏ္ဍ …'; OCR debris
 217375	soṇḍika	Pāḷi quotations for (1)–(4) ('… မဇ္ဇဝိက္ကယံ', 'သောဏ္ဍိကာကိလဉ္စ', 'ဝလ္လူရဉ္စ သောဏ္ဍိကဉ္စာတိ … သူလမံသဉ္စာတိ အတ္ထော', 'သောဏ္ဍိကော … ဓာရေတိ'); number ၁ဝဝ; OCR debris
 217376	soṇḍika	OCR debris
@@ -219,8 +225,8 @@ id	iast	omitted
 217409	soṇṇasopānaphalaka	garbled repeat ')ရွဲဖြင့'; '(မြန်။ သျ)'
 217410	soṇṇābha	Pāḷi quotation 'ဣတော ဝီသတိကပ္ပမှိ'; title matter 'အဘိဓာန် (အ-ဝဂ်) ၃ ပ-မ-သ-စ'; echo of the next headword 'သောဏ္ဏာလင်္ကာရဘူသိတ'
 217411	soṇṇālaṅkārabhūsita	OCR debris
-217413	sota	quotations for (1)–(3) ('ပသာဒသောတ’န္တိ', 'သဒ္ဒဂေါစရန္တိ'); run-on 'သောတ (တိ) [ သု + တ … ] (၁) ရေအလျဉ်။ ရေအလျဉ်နှင့်တူသော (က) အရိယာမဂ်။ (ခ) တဏှာ။ (ဂ) ဒိဋ္ဌိ၊ မှားသောအမြင်။ (ဃ) ကိလေသာ။ (င) ဒုစရိုက်တရား။ (စ) … မသိခြင်း။ (ဆ) စိတ်အစဉ် ဝီထိ။ (ဇ) … အာပတ်ကို လွန်ကျူးခြင်း' with citation Maṇimañjūsā and Sanskrit form; OCR debris
-217414	sota	quotations '(၂) (က) သောတသမာပန္နာ … သောတော အရိယမဂ္ဂေါတိ အာဟ', '(ခ) … (ဇ) … ဝီတိက္ကမသောတံ ဆိန္ဒိတွာ'; citations '၉၃', 'ပါရာဇိ … ၂၂၉'
+217413	sota	quotations for (1)–(3) ('ပသာဒသောတ’န္တိ', 'သဒ္ဒဂေါစရန္တိ'); OCR debris
+217414	sota	OCR debris in (f) and (h); quotations for the senses (သောတ, သောတသမာပန္နာ, … သောတော အရိယမဂ္ဂေါတိ အာဟ, … ဝီတိတ္တမသောတံ ဆိန္ဒိတွာ) and citations (ကင်္ခါ ၉၀, ပါရာဇိ ၂၂၉ …)
 217415	sotaodahana	OCR debris
 217416	sotañjana	echo 'သောတဉ္ဇန'
 217417	sotañjali	OCR debris
@@ -257,7 +263,7 @@ id	iast	omitted
 217453	sotapathagamana	citation 'ဣတိဝုတ်'; OCR debris
 217454	sotapathāgamana	fragment 'သောတ-ဟို'
 217455	sotapada	'ဦ ၂'
-217457	sotapa(ppa)desa	quotation fragment 'သောတပ္ပဒေသဿာ'; OCR debris
+217456	sotapa(ppa)desa	quotation fragment 'သောတပ(ပ္ပဒေသဿာ'; OCR debris
 217461	sotapasādavatthuka	echo of the next headword 'သောတဗိလ'
 217462	sotabila	OCR debris
 217463	sotabba	source note 'သုဏာတိ-မှ' (from suṇāti); quotation block and citation; OCR debris
@@ -372,20 +378,22 @@ id	iast	omitted
 217605	sotukāmatānidāna	Pāḷi fragment 'သောတုကာမတာနိဒါနကမ္မဇဘူတပဒဋ္ဌာနံ'
 217609	sotumbarā	variant forms 'တုမ္ဗရ-တမ္မရ-တုမ္ဗုလ'; source 'ပုရာဏ်မြေပုံ ၁၆၉'; OCR debris
 217611	sotta	fragment '၃ … နတ်'; OCR debris
-217612	sotti	quotation fragment 'သောတ္တဉ္စ'; run-on 'သောတ္တိယ (တိ) [ … ] (၁)–(၆)' in two copies with analyses, grammarians' notes, citations and Sanskrit and Prakrit forms, and 'သောတ္တိယကုလဝံသ (ပု) …', 'သောတ္တိယဇာတိက (တိ) …', 'သောတ္တိယဗြာဟ္မဏ (ပု)'; OCR debris
-217613	sottiya	'ကြည့်'
+217612	sotti	quotation fragment 'သောတ္တဉ္စ'; OCR debris
+217613	sottiya	grammatical notes (ယ-ပြု, ဆန္ဒ + ဏ …) with citations ဓာန်, ပါဏိနီ, ကပ္ပဒ္ဒုမ and quotations 'သောတို့ယော'; Sanskrit/Prakrit/Ardhamāgadhī cognates; OCR debris in (2); the repeated senses (1)–(6) with quotations (… အရဟံကဣတိပိ; သောတို့ယကုလဝံသ …; သောတ္တိယေ ဥဒိတောဒိတေ …)
+217615	sottiyajātika	stray 'နို'; quotation 'သောတ္ထိယော (ထေ ၂ ၃၆ )' with debris
 217617	sottiyasutta	analysis bracket [ သောတို့ယ + သုတ္တ ]; citation (Aṅguttaranikāya, 9th nipāta, vagga, sutta numbers)
 217618	sottiyākulavaṁsaka	OCR debris 'တ္တိသနာန ၆' inside ဖြစ်…သော
 217619	sottisināna	OCR debris '(ဂျး-တွနး ီ့]ရျ ရို ၆ ဝဝဝ'; quotation 'တေနာဟ သောတ္ထိသိနာနန္တိ …'
-217620	sotthimagga	the whole article sotthiya that runs on (analysis bracket, grammarian's note, its seven senses repeated twice, quotations), and the start of sotthiyakula and the next headword
+217620	sotthimagga	the whole article sotthiya that runs on (analysis bracket, grammarian's note, its seven senses repeated twice, quotations), and the start of sotthiyakula
 217621	sotthiya	fragment 'ကြည့်' (see) without its target; OCR debris 'တ္ထယ (ရူ) ကြည်'
+217623	sotthiyanagara	garbled cross-reference 'တ္ထယ (ရူ) ကြည်'
 217625	sotthivantu	grammarian's note 'သးသို့တ်-တ္ထဝန္တု'; 'နို'
 217626	sotthivācaka	quotation 'ယထာ မဟာရာဇ သောတ္ထိဝါစကာ …'
 217627	sotthisena	label '(ပု'; OCR debris 'တ္ထ နာ', 'ရီး။ ီ့]'
 217628	sotthihetu	stray ')'
 217629	sotra	etymology 'သုဏာတီတိ …'; Sanskrit and Prakrit notes (ကပ္ပဒ္ဒုမ, ဂြောတြံ-သံ, သောတ္ထ-ပြာ); OCR debris; citation 'ရူ ၆၆'
 217630	sotthāna	Sanskrit note 'သွသ္တယန-သံ'; 'နို'; quotation fragments 'အာကင်္ခမာ…', 'သောတ္ထာနန္တိ သောတ္ထိဘာဝံ'; citation 'သဒ္ဒါ ၁၀၃'
-217631	sotthi	OCR debris 'တ္ထ။ ဒု ူ'
+217631	sotthi	OCR debris 'တ္ထ။ ဒု ူ', 'ရီး] ီ့] ]ရ'
 217632	sotthi	OCR debris; analysis bracket [ သု + အတ္ထ …, သု န အသ + တိ ]; Sanskrit and Prakrit notes; quotations 'သောတ္ထိကမူဿ', 'အပရံ သောတ္ထိ ဇာတာ …', 'သောတ္ထိ အာရောဂျမေဝ ဘဝေယျ'
 217633	sotthika	analysis bracket; Sanskrit, Prakrit and Ardhamāgadhī notes; 'နို'; quotation 'သောတ္ထိကော'; OCR debris
 217634	sotthikattu	OCR debris and quotation fragment 'သောတ္ထိကတ္ထာ'; citation 'ကတ္တ ၄၅'
@@ -403,8 +411,10 @@ id	iast	omitted
 217648	sodara	grammarian's note 'သမာန-ကို သ-ပြု'; etymology 'သမာနောဒရေ ဇာတော သောဒရော'; source tags ဓာန်, ကပ္ပဒ္ဒုမ; labels (ထီ၊ ပု); Sanskrit note; quotation 'သောဒရော သဟဇောပျထ'; OCR debris
 217649	sodariya	grammarian's notes 'သမာန-ကို သ-ပြု။ က-ကို ယ-ပြု'; source tags; Sanskrit note; citation 'ဇာ၊ ၁ဝ'; OCR debris
 217650	sodasa	quotation fragment 'သောဒသ ၄၁၂'; OCR repeat 'မ့်ခြောက် ('
-217653	sodhana	the senses repeated a second time; stray '(၄) စင်ကြယ်စေ-သုတ်သင် ခြင်း'; citations; quotation 'သဒ္ဓိံ ပဋိသန္ထာရမကာသိ'; the run-on articles sodhanā, sodhanahāra, sodhanakāla (ကြည့်), sodhanatthera; OCR debris
-217654	sodhana	fragment 'ထေရ်' (end of the previous run-on article); OCR debris 'သို့] စေသုံ'
+217653	sodhana	the senses repeated a second time; stray '(၄) စင်ကြယ်စေ-သုတ်သင် ခြင်း'; citations; quotation 'သဒ္ဓိံ ပဋိသန္ထာရမကာသိ'; OCR debris
+217654	sodhana	OCR debris ']]]]'; grammarian's note 'ဟာရ-ဟု ဆိုလိုလျက် ဟာရ-နောက်ပုဒ် ကြေ[ချေ]' (the following word hāra is elided)
+217655	sodhanakāla	'ဧဝ'
+217656	sodhanatthera	OCR debris '၌ျ ီ့၏]', 'သို့] စေသုံ'
 217657	sodhananimitta	fragment 'နဝဓာန' (next headword)
 217661	sodhanahāra	citation 'သီ၊ ဋီ၊ သစ်၊ ၁ဝ'
 217662	sodhanahāraniddesa	quotation fragment 'ပစ္စိတဗ္ဗတ္ထာ'
@@ -511,8 +521,8 @@ id	iast	omitted
 217797	sobhayanti	grammar fragment 'အန္တိ]'; fragment 'သောဘေန္တံ'; OCR debris
 217798	sobhayamāna	'----'
 217801	sobhayiṁsu	OCR debris
-217802	sobhare	quotation fragment 'ဝိစိတြ… င်္ဂလိကာကဿ'; OCR debris
-217803	sobhare	fragment 'သမန္နာ'; headword with label (ကြိ) and analysis bracket [ သုဘ + အ + အန္တေ ]; OCR debris
+217802	sobhare	quotation 'ဝိစိတြဝ င်္ဂလိကာကဿ … သောဘရေ သမန္နာ' with OCR debris
+217803	sobhare	fragment 'န္တိ တြညံ'
 217805	sobhasi	OCR debris; quotation 'အပိဠန္ဓာဝ သောဘသီ' and source (ဝိမာ)
 217806	sobhasī	grammarian's note 'ဆန်းငဲ့၍ သီ-ဟု ဒီဃပြုသည်' (lengthened to -sī for the metre); 'နို'; quotation 'သောဘသီ သုဝသနေဟိ …'; source 'ထေရီ၊ ဋ္ဌ'
 217809	sobhiṁsu	quotation 'သုဝဏ္ဏကလသိယော ဝိယ သောဘိံသု'
@@ -707,8 +717,8 @@ id	iast	omitted
 218051	sosanta	grammarian's note 'ထီ-၌ သောသန္တီ' (feminine sosantī); quotation fragment 'ဟောတိ' with OCR debris
 218052	sosayati	next headword 'သောသယမာန'
 218053	sosayamāna	OCR debris
-218054	sosayuṁ	grammarian's note 'သုဿတိ-မှ'; 'နို'; run-on article sosānika with Sanskrit note and its senses ('(1) left / thrown away in the cemetery …', '(2) in the habit of dwelling in the cemetery (yogī, monk)') and citations
-218055	sosānika	citation 'ဝိသုဒ္ဓိ၊ ၁ဝ'; fragment 'ပတိတ'; OCR debris
+218054	sosayuṁ	grammarian's note 'သုဿတိ-မှ'; 'နို'
+218055	sosānika	Sanskrit cognate 'ဒွါဓါနိက-သံ'; stray 'နို'; garbled 'သုသာန်-သင်္ချို [ နကဝတ္ထု'; OCR debris; quotation '(၁) သောသာနိက' with citation ဝိသုဒ္ဓိ ၁ဝ and fragment 'ပတိတ …နိသ'
 218056	sosānika	OCR debris
 218057	sosānika	OCR debris
 218058	sosānikaṅga	quotation 'ကတမေ တေရသ … နေသဇ္ဇိကင်္ဂံ'; OCR debris
@@ -838,14 +848,15 @@ id	iast	omitted
 218203	sol̤asī	debris 'နို'; form 'သောဠသိ ို့'; run-on heading '၃ သောဠသုဗ္ဗေဓ'
 218206	sol̤āragotta	list of forms ----
 218207	sol̤ārapaññāṇa	quotation 'သောဠာရပညာဏော တိ ဥဠာရပညော'; run-on article 'သုဒ္ဒ (တိ) [သိနိဟ + တ … အဒ္ဓမာဂဓီ။ «S1» ] (၁) နူးညံ့ ညက်ညော-ပြေပြစ်- ချောမွေ့သော။ (၂) မိတ်ဆွေ၊ ချစ်မိတ်ဆွေ'
-218209	sniyhati	analysis bracket '[ သိနိဟ ယ + တိ … သံ။ ]'; run-on article 'သေဟိ (တိ) [ သိနိဟ + ဏ … အဒ္ဓမာဂဓီ' with senses '(၁) စေးကပ်-အစေးဖြစ်-သော … (၅) ယိုစီးခြင်း'; the same senses repeated with quotations ('တတ္ထ အဂ္ဂရသ-ပရိတိတ္တော', 'သွေဟ-ပရေတာ … ပရိဂ္ဂဟိတာ', 'သ္နေဟဝသေန … သ္နေဟော', 'ယော စ နေသံ ကာမေသု ကာမစ္ဆန္နော', citation 'ကင်္ခါ။ ၂၂၅'); run-on article 'သွေဟာါ (တိ) [ … ] အဆီ-အစေး-ရှိသော။ သွေဟ'
+218209	sniyhati	analysis bracket '[ သိနိဟ ယ + တိ … သံ။ ]'; run-on article 'သေဟိ (တိ) [ သိနိဟ + ဏ … အဒ္ဓမာဂဓီ' with senses '(၁) စေးကပ်-အစေးဖြစ်-သော … (၅) ယိုစီးခြင်း'; the same senses repeated with quotations ('တတ္ထ အဂ္ဂရသ-ပရိတိတ္တော', 'သွေဟ-ပရေတာ … ပရိဂ္ဂဟိတာ', 'သ္နေဟဝသေန … သ္နေဟော', 'ယော စ နေသံ ကာမေသု ကာမစ္ဆန္နော', citation 'ကင်္ခါ။ ၂၂၅')
+218211	sneha	stray 'နို'; 'သွေဟ'
 218214	snehaja	form 'သွေဟဇာ ရို]'
 218215	snehatintadubbala	damaged analysis bracket '[ သွေဟ န တိန္န + ဒုဗ္ဗလ အ န္တ ဒုဗ္ဗ [ န္တ ['; quotation 'သွေဟတိန္တဒုဗ္ဗလဘာဝေန ဝသာ တေလ-မ … ဝီတပိလောတိကာ'; debris
 218216	snehadukkha	OCR debris '၆ ]၌ ဖို၌ ၁'; quotation 'တတော သွေဟော သွေဟဒုက္ခန္တိ'
 218217	snehanvaya	OCR debris 'ဋရဋ္ဋဋ္ဋ ီ ဝဋိ'
 218218	snehapaccaya	fragment 'ရာဂ-ရို ၀ သို့'
 218219	snehapareta	debris 'နို', 'ဝ နို့'; form 'သွေဟပရေတာ'
-218221	snehayati=sneheti	analysis bracket '[ သိနိဟ … သွေဟယတိ-သံ။ ]'; stray sense markers '[ (၁)။ (၂)'; Pāḷi gloss 'အဘိသန္ဒေတီ'
+218220	snehayati=sneheti	label '(ကာ၊ ကြို)'; analysis bracket with debris and cognate; bare sense numbers and quotation 'အဘိသန္ဒေတီ'
 218222	sneharasa	debris 'နို'; quotation 'ဘောဇနရသေ-သ ပါယာသော … အဂ္ဂရသာ နာမ'
 218223	snehavigamana	list of forms ----
 218225	snehasaṁseva	quotation 'သာတစ္ဆာ သွေ ဟ-သံသေဝါ'
@@ -888,8 +899,8 @@ id	iast	omitted
 218268	haṁkanakavāsī	grammarian's note '+ ဏီ။ ထီ-၌ --ဝါသိနံ'; variant reading 'ဟင်္ကနက-သီ၊ မူ'; garbled '[ဟင် ကဝါသီ။ ဟံကနကဝါသီ မူ နကဝါသီ-ကြည့်'; debris
 218269	haṁci	citation 'ဇာ၊ ဋ္ဌ၊ ၆ ၁၈၂'; debris 'ခို ဝ ဝ နို့ ရျ ဝ ဝ'
 218270	haṁcivagga	debris 'နို', '[ချိ ့ျ ဌ ိ'
-218271	haṁsa	grammarians' notes 'ကပ္ပဒ္ဒုမ။ ပါဏိနီ၊ ဥဏာဒိ … ဟံသ-သံ၊ ပြာ၊ အဒမာဂဓိ'; quotation 'ဟညတေတိ … ဟံသော'; stray 'ဘုရား ည်၊'; quotation 'န္တိ စ … သုဝဏ္ဏဟံသယောနံ'; citation 'ဝိ၊ ဋ္ဌ၊ ၃ခု'
-218272	haṁsa	run-on quotation '(၂) ဟံသော … သဝိတာ ဣစ္စာဒီနိပိ သူရယဿ နာမာနံ'; analysis 'ဟံသာ (ပု) [ ဟံသ + ကန်။ ဥပမာအနက်၌သက် … ၉၈-ဖြင့် ချေ။ ]'
+218271	haṁsa	citations ကပ္ပဒ္ဒုမ, ပါဏိနီ, ဥဏာဒိ, ဓာန်; grammatical note with 'ဟညတေတိ … ဟံသော'; cognates; debris 'ဝက်', 'က်'; quotations 'သုဝဏ္ဏဟံသယောနံ' (ဝိ၊ ဋ္ဌ) and '(၂) ဟံသော … သူရယဿ နာမာနံ'
+218272	haṁsa	grammatical note (ဥပမာအနက်၌သက် … ကန်-ပစ္စည်းကို ၉၈-ဖြင့် ချေ)
 218274	haṁsaka	source tag 'ထောမ'; grammarians' notes 'ကပ္ပဒ္ဒုမ။ က-ပစ္စည်း သွတ္ထ။ တပ္ပဒ္ဒုမ။ ဟံသတက-သံ'; quotation 'တုလာကောဋိ, ဟံသကော ပျတြ'; citation 'ဓာန်၊'
 218275	haṁsakāja	run-on heading '၂ ဟံသကီဠာ ၉၃'
 218278	haṁsakula	debris 'နို', 'ြ သို့ ] ီ]'
@@ -931,7 +942,8 @@ id	iast	omitted
 218323	haṁsavaṭṭakacchadana	debris 'သ ဟို ီ ၂ ဝ ဟို]', 'ဟင် ၂၂ဝ ီ သုခါ] ဟို သ [ချိ', '၂ ီ [ျ ဌ သို့] ိ'; quotation 'ဟံသဝဋ္ဋကစ္ဆဒနေနာ'; citation (ဝိ၊ ဖြုံ ၆ … ၂။ ၂); form 'ဟံသဝဋ္ဋကစ္ဆန္န'
 218324	haṁsavaṭṭakacchanna	quotation fragment 'သဗ္ဗာ-သို့]'; forms 'ဟံသဝဋ္ဋကစ္ဆန္နေနာ' (twice); debris
 218326	haṁsavaṭṭakādipokkharaṇigata	form 'ဟံသဝဋ္ဋကာဒိပေါက္ခရဏိ-သို့]'; debris
-218327	haṁsavaṭṭakādisenāsana	debris 'ိ။ ]ရျ ဝ သို့]'; run-on articles 'ဟံသဝတံ (ထီ) … (က) ဟံသဝတီ မြို့ … (ခ) ဟံသဝတီဥယျာဉ် …', 'ဟံသဝတံနဂရ (န) ဟံသဝတံ (က) ကြည့်', 'ဟံသဝတီနဂရဝါသိက (တိ) … ဟံသဝတီ မြို့သူမြို့သား', '(တိ) [ + က ] ဟံသဝတီအမည်ရှိသော', 'ဟံသဝတုယျာန (န)'
+218327	haṁsavaṭṭakādisenāsana	debris 'ိ။ ]ရျ ဝ သို့]'; run-on articles 'ဟံသဝတံ (ထီ) … (က) ဟံသဝတီ မြို့ … (ခ) ဟံသဝတီဥယျာဉ် …', 'ဟံသဝတီနဂရဝါသိက (တိ) … ဟံသဝတီ မြို့သူမြို့သား'
+218329	haṁsavatīnagara	OCR debris 'ရီး] မှု ဝ ီ့] မ'
 218333	haṁsavattakādipokkharaṇīgata	debris 'ဟို'
 218336	haṁsavaha	debris 'နို', 'ဖို့ ိ၍ စ ၀', '-[ဒ သို့]'
 218337	haṁsasakuṇa	grammarian's note 'ထီ-၌ ဟံသသကုဏီ'; debris 'နို'
@@ -985,7 +997,7 @@ id	iast	omitted
 218402	haṭahaṭakesa	analysis fragment ']],ရ္ဋ] ကေသ နို'; form 'ဟဋဟဋကေသော'
 218403	haṭha	debris 'ပို ရို့] ီ၍ ်သ', 'သို့ ရီျ ဟို'; citation 'ဓာန်'; quotations 'ဟဌ ဗလတ္တာရေ၊ ဏော', '(၃) (၄) ဟဝဂေါ သံဝရေ … ဝစ္စောဿဂ္ဂေ ပဝတ္ထတိ'
 218404	haṭhati	grammarian's note 'ဟဌတိ-သံ'; debris 'နို'; quotation '(၁) (၃) ဟဌတိ ပရစတ္တံ ဗလီ … ဗန္ဓတံတျတ္ထော'
-218406	haṇu=haṇukā	grammarians' notes '+က။ ကစ္စည်း။ ထီ-၌ ဟဏုကာ။ ဟနု-သံ။ ဟဏု၊ ဟဏုယာ-ပြာ၊ အဒ္ဒမာဂဓီ'; debris
+218405	haṇu=haṇukā	analysis fragment '+က'; source tag ကစ္စည်း; note on the feminine form ဟဏုကာ; Sanskrit hanu, Prakrit/Ardhamāgadhī haṇu, haṇuyā; OCR debris 'မမူ၊ ဝ ဟို] ၁'
 218408	hata	grammarians' notes 'ဟတ-သံ။ ဟယ-ပြာ။ ]'; debris; garbled duplicates in the first list '( ၂ ဖွပ်လျော်- ချေဖျက် - အပ် ၄ ဖွပလျှော-ချေဖျ သော', '( ၅'; citation 'အဘိဓာနံ (အ-ဝဂ်) ၁၀'; repeated list with quotations 'ဟတပ္ပဘာ', 'အဟတ-ကပ္ပေနာ တိ အဟတသဒိ-ဝ', 'ဟတ နိ', 'ဟတာ', 'တို့ ဟတံ'; citation 'ပါစိတ်၊'
 218409	hata	grammarians' notes 'ဟတ-သံ။ ဟဍ-ပြာ'; debris 'နို'; source 'နိရတ္ထိ'
 218411	hatakāraṇa	debris inside the see-X 'သို့ မှို စ ာ ၀'
@@ -1301,7 +1313,7 @@ id	iast	omitted
 218791	hatthājānīya	damaged analysis 'တ္ထာဇာန ငြု န'; scan debris
 218792	hatthājānīyapotaka	rest of analysis 'ပေါတက ]'; quotation fragment 'ဟတိုဿ'
 218793	hatthājāneyya	quotation 'ဧဝမိဓ သဗ္ဗေ တသန္နီတိ တ္ထာဇညကတြညံ'; scan debris
-218795	hatthāṇīka=hatthānīka	grammarian's note and quotation at the start ('အဏတိ ဘေရဝသဒ္ဒံ ... ဟတ္ထာဏီကံ', 'ဟတ္ထီ + အနီက-သံ', citation 'ပါစိတ်'); run-on headword 'ဟတ္ထာဒိအဝယဝ'; quotations 'ဟတ္ထိိ့သမူှဟတောတိ အတ္ထော', '... ဒသဟတ္ထို့တော'; citations; scan debris
+218794	hatthāṇīka=hatthānīka	analysis bracket with grammarian's note (aṇati bheravasaddaṁ …, Sanskrit hastī + anīka, Prakrit form); the second listing of the senses with '(၁) ထောင့်ကွင်းကြည့်', quotation fragments (ဟတ္ထိသမူဟ…, ဒသဟတ္ထိ…) and citations; OCR debris
 218796	hatthādiavayava	rest of analysis 'အဝယဝ'; stray 'နို'; scan debris
 218797	hatthādika	scan debris; run-on headword 'ဟတ္တာဒိကာယ ၁' (next article)
 218798	hatthādikāya	citation; scan debris
@@ -1313,7 +1325,7 @@ id	iast	omitted
 218806	hatthābhijappana	garbled bracket; quotations 'သေယျထိဒံ အာဝါဟနံ ဝိဝါဟနံ -ဟတ္ထာဘိဇပ္ပနံ', 'ပရဝတ္တံနတ္ထ မန္တဇပ္ပန'; scan debris
 218807	hatthāmalaka	quotation 'သဗ္ဗညု-တညာဏသင်ါတေန ဩလော-'; scan debris
 218808	hatthāmasana	quotation fragments 'ဟတ္ထာ-', 'ဝဒန္တိ'; scan debris
-218812	hatthāru(rū)l̤ha	quotation 'ယတ္ထ ပုဗ္ဗေ ဟတ္ထာရုဠှံ ဘဏ္ဍံ ... အဒံသု'
+218810	hatthāru(rū)l̤ha	quotation 'ယတ္ထ ပုဗ္ဗေ ဟတ္ထာရုဠှံ ဘဏ္ဍံ အာဟရာပေတွာ ရညော အဒံသု'
 218814	hatthārul̤hamaṇi	damaged duplicate 'သို့ တက်ရောက်သော ပတ္တမြား'
 218815	hatthārul̤hayodha	damaged analysis 'ဌ မ္မ ရို] ရ ယောဓ ]'
 218816	hatthāroha	citation 'အဏ်(အ)။ ၅၄၀-နာ'; stray 'နို'; run-on headword '၇ ဟတ္ထာရောဟကုလ' inside the gloss; quotations 'ဟတ္ထိံ', 'ဟတ္ထာစရိယဟတ္ထိ ဝေဇ္ဇဟတ္တို မေဏ္ဍာ ... ဒယော'; scan debris
@@ -1349,8 +1361,10 @@ id	iast	omitted
 218855	hatthiādippabheda	scan debris; quotation 'ဟတို့အာဒိပ္ပဘေဒံ ယထာဝုတ္တံ ... ပဗ္ဗဇိတော'
 218856	hatthiādisammadda	garbled alternative 'သုသ ီ သို့] မဝ'
 218857	hatthiādisarīra	scan debris
-218858	hatthiupamā	quotation 'သဝါဒမဿ ပဌမမေဝ ... ဣမံ သုတ္တံ ကထေသိ'; run-on articles hatthaka (တိ) and hatthaka (န) with their analysis brackets, quotations and grammar ('ဥက္ခာဒီဟိ- ဩက္ခကံ ...'); scan debris
-218859	hatthika	grammarian's quotations 'ပဋိဘာဂတ္ထေ- ဟတ္ထီ ဝိယ ဟတ္ထိကော ...', 'မောင်၊ ပဋိဘာဂတ္ထေ- ...'
+218858	hatthiupamā	quotation 'သဝါဒမဿ ပဌမမေဝ ... ဣမံ သုတ္တံ ကထေသိ'
+218859	hatthika	stray 'နို'; grammatical quotation 'သီသေန ဝဟတီတိ သီသကော … ခန္ဓကော။ ဟတ္ထိကော။ အင်္ဂုလိကော'; OCR debris
+218860	hatthika	stray '၂ ဟတ္ထိက'; grammatical quotations (ukkhādīhi: ဩက္ခကံ, ဩဋ္ဌကံ … ဓေနုကံ) with source tag မောဂ်
+218861	hatthika	grammatical quotations (paṭibhāgatthe: ဟတ္ထီ ဝိယ ဟတ္ထိကော, အဿကော, ဗလီဗဒ္ဒကော …) with source tag မောဂ်; OCR debris
 218862	hatthikaṇṭha	quotation fragments 'ဟတို့ကဏ္ဍေ , ဟတို့'
 218863	hatthikaṇṭhaveṭhanamuttāhāra	stray 'နို'; quotation 'ဟတို့ကဏ္ဍ-ဝေဌနမုတ္တာဟာရေ'
 218864	hatthikaṇṇa	quotation 'ဟတို့ကဏ္ဍော ကဏ္ဏသကုလိ-'
@@ -1460,7 +1474,7 @@ id	iast	omitted
 218990	hatthimaṅgalakāraka	garbled repeat; run-on article 'ဟတိုဓမဂလဆဏ (ပု) [ ... ] ဆဝါ ဓဂလာ-...' with quotation '“မဟာရာဇ ဟတ္ထိမင်္ဂလဆဏော ကရိဿာမာတိ အာဟသု' and citation; run-on headword fragment 'ဟတ္ထ မ (၇) [ +အ] ဟတ္ထိ-'
 218992	hatthimaṇḍa	citations; run-on article (see flag) with quotation 'န ဟိ သိနေရုဥပ္ပါဋနကဝါတော ...'
 218994	hatthimadacalana	scan debris only 'ရ ရို့။ ဋရယဋ္ဋဋ္ဋ ဌ ဏု။ တု'
-218995	hatthimaha	quotation 'ဇမ္ဗုဒပဝ သနော ... ကရိံသု'; citation; run-on articles (see flag)
+218995	hatthimaha	quotation 'ဇမ္ဗုဒပဝ သနော ... ကရိံသု'; citation; run-on article (see flag)
 218998	hatthimukha	quotation fragment 'ဟတိ္ထု့မခံ'; scan debris; run-on 'ဟတ္ထိမေ (ပု) [ နို ဆင်စီး၊'
 218999	hatthimeṇḍa	scan debris
 219000	hatthimeṇḍavesa	damaged analysis 'မေဏ္ဍ ု တ္ထဝေဏ္ဍံ နိ။ ] [ ၍'
@@ -1509,8 +1523,9 @@ id	iast	omitted
 219045	hatthivejja	scan debris 'ထ ပြု။ ထ မပြ'; quotation 'ဟတို့ဝေဇ္ဇာ နာမ ဟတ္ထို့ဘိသတ္ထာ'
 219046	hatthisaññā	stray 'နို', '-ဦ'
 219047	hatthisaññī	quotation 'ဟတ္ထိသည်နော'
-219048	hatthisata	run-on articles hatthisadda and hatthisaddavantu (see flag) with brackets and quotations; scan debris
+219048	hatthisata	run-on article hatthisadda (see flag) with brackets and quotations; scan debris
 219049	hatthisadda	'ကြည့်' (end of a see-reference); scan debris
+219050	hatthisaddavantu	OCR debris 'ထ ဧ န္တု ထ ဒ န္တ' inside the first gloss; debris after «S1»
 219051	hatthisannissita	damaged analysis '+ နိ+ သိ+ တ'; stray 'နို'; scan debris
 219053	hatthisamūha	quotation fragments 'ဟတို့ဃဋာ', 'တတ္ထယဋ္ဋာ'
 219054	hatthisambādha	quotation 'ဟတ္ထိသမ္ဗာဓ'; scan debris
@@ -1999,8 +2014,8 @@ id	iast	omitted
 219675	hāpesi	Pāḷi quotation fragments 'အတ္ထံ …', 'ဟာပေသံ ပရိဟာပေသံ ဝိနာသေတိ။ မာ အနီယာယာ'; debris
 219676	hāyati	analysis bracket '[ ဟာ န တိ'; grammarian's notes 'အာကာရန္တနောင် … ယ-လာ', 'ဟာဣ-၊ ဟာယက္က-ပြာ'; Pāḷi quotation 'ဟာယတေ ဝါပိ တတဿ … ဟာယတိ ပရိဟာယတိ'; debris
 219678	hāyate	quotation fragment 'ကိတ္ထို ဟာယတိ'
-219679	hāyana	debris 'သို့]'; source 'ကပ္ပဒ္ဒုမ'; grammarian's notes 'ဟာယန-သံ။ ဟယဏ-ပြာ'; quotation 'ဟာယနဝဍ္ဎန န္တိ မာတု-…'; stray 'နို'
-219681	hāyanabala	run-on article hāyana 'နှစ် (၁၂-လ)' (year, 12 months) with synonyms 'ဝဿ သံဝစ္ဆရာ နိတ္ထီ' and source 'ဓာန်'; debris 'လယ၊ မြု'
+219679	hāyana	source tag ကပ္ပဒ္ဒုမ; Sanskrit and Prakrit forms; stray 'နို'; quotation fragments 'ဟာယနဝဍ္ဎနန္တိ…', 'သဋ္ဌိဟာယန'; OCR debris
+219680	hāyana	quotation 'ဝဿ သံဝစ္ဆရာ …' with source tag ဓာန်; 'ယှတ်သော အားရှိသော' (having diminished strength); fragment 'လယ၊ မြု'
 219682	hāyanta	debris 'တံ တိံ] သုတယု'
 219683	hāyanti	Pāḷi quotation 'ဟာယန ပရဟာယန္တာ … ဝိပ္ပလုဇ္ဇန္တိ' and debris; citation fragments
 219685	hāyamāna	quotation fragment and citation 'မ၊ ဉတရာန ခာပဒါန ဟောန္တံ ၂'
@@ -2141,8 +2156,11 @@ id	iast	omitted
 219857	hiṁsāmi	debris 'ဝဋ် ဌ (ဌ ဓ ၍ူ ရို] ဌ ၂ ၌ူ' inside (1); quotations 'အဇ္ဇာဟံ သစ္စနာ-', 'မောဓို', 'ဝိဝဇ္ဇယ်'; debris
 219858	hiṁsāsīla	quotations 'ဟိံသာသီလော စ ဃာတုကော', 'ဟနနသီလော ဟိံသာသီလော'; source 'ဓာန်', 'ဓာန်၊ ဋိ'
 219859	hiṁsiṁsu	debris 'သို့ နျူ ချိ ပုမ ဟု၍ ရသူ ိ ဋ' inside the first gloss
-219860	hiṁsi	debris '၄ ဟိံသိတ' inside the gloss; run-on articles hiṁsita '(တိ) [ ဟိံသ + တ … နိုပ်စက်-ညှင်းဆဲ- အပ်သော', hiṁsitapubba, hiṁsitabba, hiṁsituṁ with their glosses and grammarian's notes; debris
+219860	hiṁsi	debris '၄ ဟိံသိတ' inside the gloss; run-on article hiṁsita '(တိ) [ ဟိံသ + တ … နိုပ်စက်-ညှင်းဆဲ- အပ်သော' with its gloss and grammarian's notes; debris
 219861	hiṁsita	debris; citation 'ဇာ၊ ၁ဝ'
+219862	hiṁsitapubba	OCR debris 'ဝဝဝ ီ့ ဟည့် ဝ၀ဝ'
+219863	hiṁsitabba	Sanskrit form; stray 'နို'; OCR debris '[ ၅ ဖို့ ိ'
+219864	hiṁsituṁ	OCR debris 'ဌ ဓ ဟို သို] ၂ ဟို', 'ပ ုဥ။ သို့] ဝဝဝ သို့]'
 219866	hiṁsitvā	debris; quotation fragment 'အတ္ထော'
 219867	hiṁsissanti	stray 'အာဝုံ။ ]'
 219868	hiṁsīyati	debris; quotation fragment 'ပုရိသော'; page number '၈ဝ'
@@ -2151,7 +2169,9 @@ id	iast	omitted
 219872	hiṁsemi	grammarian's note 'အ-ကို ဧ-ပြု'; stray 'နို'; debris '၂ ၌ူ ဝ ၂၀ ဝ ဝ သို့' inside the second gloss; citation fragments
 219873	hiṁseyya	debris 'ဝဝဝ ီ၏ ဌ စိ ူ ဋလ္လ' inside ညှင်းဆဲ
 219875	hi	the repeated second list with Pāḷi quotations and citations (ပါစိတ်, ဝိ၊ ဋ္ဌ, ဣတိဝုတ်, ဂမ္ဘီရတ္ထ, အလင်္ကာ); garbled fragments in the (4) note; run-on article ဟိပ (န) (delight / gladness, pītisomanassa) and 'ဟိ? (၇)' (the meaningless augment hi); citation 'ဝိမတိ၊ ၁ဝ'; debris
-219876	hi	debris; citation 'မူလဋ ၃'; run-on article 'ဟိတာ (တိ) [ ဟိတ + အ … ] မပြီပြင်-မထင်ရှား-ကြို့ထိုရှိုက်-သောအသံ' with Pāḷi grammar quotation
+219876	hi	OCR debris 'ဓုဝ ီ့ ီ့ ီ့၏]', 'မ ဝ သို့] ့] (ဝ ဂ မ ဝ'
+219877	hi	citation ဝိမတိ၊ ၁ဝ
+219878	hi	stray 'အ - -'; OCR debris and fragment 'တ္ထေ ၌ဗ္ဗေ မူလဋ ၃'; run-on article ဟိတာ (တိ) with its analysis (ဟိတ္ထ အဗျတ္တသဒ္ဒေ …) and gloss 'မပြီပြင်-မထင်ရှား-ကြို့ထိုရှိုက်-သောအသံ'
 219880	hikkāra	analysis bracket '[ ဟိက် . ကာရ'; source 'ကပ္ပန္ဒုမ'; grammarian's notes 'ဟတ္တာရ-သံ။ ဟိတ္တာရ-သက္ကတပိဋက'; debris ']ူ သူ ဆူ၍ ရှား'; run-on cross-reference '၉ တတ္တာရဗဟု'
 219882	hiṅkāra	analysis bracket '[ ဟိင် . ကာရ'; source 'ကပ္ပဒ္ဒုမ'; grammarian's note 'ဟိင်္ကာရ-သံ'; debris
 219883	hiṅkārayakkha	debris 'မ ဝ ု မ သို့'; commentary quotation 'ယက္ခပိသာစာဒီန … ကုမ္ဘဏ္ဍနာဂါဒီနဉ္စ'
@@ -2174,8 +2194,7 @@ id	iast	omitted
 219904	hiṅguvikati	debris 'ပ ီ] င့်'
 219905	hiṅgusipāṭikā	debris; citations '(ရွေ့ဥမင်၊ သျ။ ၂၅၀)', 'ဝိ၊ ဋ္ဌ၊', '၄၈၁'
 219906	hiṇḍati	grammarian's notes 'ဟိဏ္ဏတေ-သံ။ ဟိံဍက္က-ပြာ၊ အဒ္ဓမာဂဓီ'; stray 'နို'; commentary quotation 'ဟိဏိဿန္နိ ဝိစရိဿန္နီတိ အတ္တော'; citations; debris
-219907	hiṇḍissanti	run-on article hita '(တိ) [ဟိ + တ … ] (၁) ကြီးပွားခြင်းကို ပြုတတ်သော … (၁၃) ပိယပုဂ္ဂိုလ်' with grammarian's notes, and its senses (1)-(2) with quotation 'သပ္ပါယာနီ'; debris
-219908	hita	Pāḷi quotations and citations after each sense ('အတ္ထကာမာသိ မေ ဟိတကာမာတိ …', 'ဟိတဖရဏေနာ', 'ဟိတာဓိဂမာယာ', 'ဟိတာဟိတာသိဟီ', 'ဟိတသုခံ', 'ဟိတမဇ္ဈတ္တေ' etc.); debris
+219908	hita	source tag Ardhamāgadhī and Prakrit form; stray 'နို'; the second listing of senses (1)–(13) with quotation fragments (သပ္ပါယာနီ, ဧကန္တဟိတ, အတ္ထကာမာသိ မေ ဟိတကာမာတိ …, ဟိတဖရဏေန, ဟိတာဓိဂမာယ, ဟိတသုခံ, ဟိတမဇ္ဈတ္တေ …) and citations; OCR debris throughout
 219909	hita	debris; quotation fragment 'ဟိတော'
 219910	hitakathā	stray 'ကထာ နို'; garbled repeat '၆အပွား-ကြီးပွားခြင်း-နှင့်'; debris
 219911	hitakara	stray 'နို'; Pāḷi colophon quotation 'သဒ္ဓမ္မပါလနာမေန … ဟိတကရာ သမတ္တာ'
@@ -2269,7 +2288,7 @@ id	iast	omitted
 220006	hitasukhanipphādanādhimutti	analysis fragment 'ဟိတသုခ-'; debris
 220007	hitasukhanibbattana	quotation fragment 'တံ နိပ္ဖာဒနေ-' with garbled repeat; debris
 220008	hitasukhanibbattikara	analysis 'ကရ + အ ]'; quotation 'ဟိတသုခနိဗ္ဗတ္တိကရာ'; run-on cross-reference 'ဟိတသုခပ(ပ္ပါဋိလာဘဟေတုဘာဝ'
-220010	hitasukhapa(ppa)ṭilābhahetubhāva	repeated headword '(ပ္ပါဋိလာဘဟေတုဘာဝ (ပု) ['; debris
+220009	hitasukhapa(ppa)ṭilābhahetubhāva	headword fragment '(ပ္ပါဋိလာဘဟေတုဘာဝ (ပု)'; debris '=၅]=]'
 220011	hitasukhalābha	debris 'မ ၁ ရ ဌ ်သ ယဉ် မုနိ'
 220012	hitasukhavidhānatappara	debris
 220013	hitasukhavidhānanaya	analysis 'ဟိတသုခဝိဓာန + … နယ ]'; debris
@@ -2303,7 +2322,7 @@ id	iast	omitted
 220043	hitākārappavatti	quotation 'ဟိတာကာရပ္ပဝတို့ဝသေ' with garbled repeat; debris
 220044	hitātikkanta	citation 'မြ (ဇာ၊ ဖြီ့ ၇။ ၂၁၄)'; debris
 220045	hitādhigama	garbled 'ဓဂဟူသော'; citations 'သုတ္တနိ၊ ဌ၊', '(မ၊ … ၁။ ၁၉၅)', 'ဓမါ ဋီ၊ … ၂၉၄'; quotation 'ယတော ခေါ ဂဟပတပုတ္တာ …ဂမူပါယေန'; debris
-220048	hitādhippāyapa(ppa)vatti	garbled fragments; quotation 'ဟိတာဓိပ္ပါယပဝတိုယာ'; citations
+220047	hitādhippāyapa(ppa)vatti	debris ']' and 'ကဋှဋ ီ့ ဟို ီ့]'; quotation fragment 'ဟိတာဓိပ္ပါယပဝတ္တိယာ'; citations
 220049	hitānukampaka	grammar note 'ထ-ဒ အနုကမ္ဂကာ'; stray 'နို'; citations 'ဓါ၊ ဌ၊ ၁ ၁၄၅', '၂။ ၂၁၄'; quotation 'အနုကမ္မိကာ တိ ဟိတာ-…'; run-on article 'ဟိတာနုကမ္ပံ (တိ) [။ ထီ-၌ ဟိတာနုကမ္ပိနီ။ ] (၁) အကျိုးစီးပွားကိ-အလို ရှိ-လိုလား-သော၊ သူ။ (၂) … ချီးမြှောက်-ထောက်ပံ့ -တတ်သော၊ သု။ (၃) …စောင့်ရှောက်ခြင်းသဘော … ရှိသော၊ သူ့'; debris
 220050	hitānukampī	headword repeat 'ဟိတာနုကမ္ပိ'; citation 'ဒီ၊ ဋံ ၂'
 220051	hitānucintana	run-on cross-reference '၆ ဟိတာနုပဿီ ၁၅၁'; debris
@@ -2405,8 +2424,11 @@ id	iast	omitted
 220177	hiyyati	quoted forms 'ဟိယျမာနေ' under (3) and (4)
 220178	hiyyattana	grammarians' notes (feminine ဟိယျတ္တနီ; ဟျသ္တန-ကပ္ပဒ္ဒုမ; ဟျသတ္တန-သံ); citation 'မောင်၊ သျ၊ ဒု။ ၆၃-နှာ'
 220179	hiyyodivasa	quotation fragment 'ပုရိမာနီ'
-220180	hira	analysis and grammarians' notes (ဟီရဏျ-သံ, ဟိရဏ္ဏ ပြာ, source tags ဓာန်, ကပ္ပဒ္ဒုမ, ထောမ dropped); duplicate OCR copy of senses 1–7; quotation fragments 'ဟိရညဿာ', 'ဟိရညပူရာနီ'; run-on articles hiraññakoṭi … hiraññadhissa (giving up of crores of silver; Brahmā; knowing silver; see hiraññaṭṭhika; full of the seven jewels)
-220181	hirañña	bare 'ကြည့်' (see) without a headword
+220180	hira	analysis '[ ဟိ န ရာ + အ'; Sanskrit form; stray 'နို'; fragment '၉ ဟိရည' (start of the next article)
+220181	hirañña	run-in fragment 'ဟာဿ ဟိရဒ္စာဒေ-သော'; list of inflected forms ----; source tags ဓာန်, ကပ္ပဒ္ဒုမ, ထောမ; etymology ဟိယျတိ (ဟရတိ); Sanskrit and Prakrit/Ardhamāgadhī forms; stray 'နို'; the second listing of senses with quotation fragments 'ဟိရညဿ', 'ဟိရညပူရာနီ'
+220182	hiraññakoṭi	stray '['
+220184	hiraññagabbha	page number '၉ဝ'
+220188	hiraññapūra	quotation fragment 'ဟိရညပူရာနီ'
 220190	hiraññarāsi	quotation 'ဟိရညရာသိမို ဌပေတွာ'
 220192	hiraññavatī	quotations '(၁) ကဉ္စနဝတိယာ … ဝုစ္စတိ', '(၂) အာယာမာနန္ဒ … တေနုပသင်္ကမိဿာမ'; OCR debris 'ဤ] (၃)'
 220193	hiraññavisesana	OCR debris; quotation fragment 'ဝါဟေ'
@@ -2716,8 +2738,9 @@ id	iast	omitted
 220592	heṭṭhāgaṇana	OCR debris
 220594	heṭṭhāgamanīya	analysis 'ဟေဋ္ဌာ + ဂမနီယ - ဂမု + အနီယ'; OCR debris
 220595	heṭṭhāgalitapiṇḍikamaṁsa	analysis 'ဂလိတ + ပိဏ္ဍိက + မံသ'; quotation fragment
-220596	heṭṭhāgahaṇa	citation fragment; run-on article heṭṭhāgāmī (analysis, feminine -ဂါမိနီ, 'အောက်သို့-သွားလေ့ရှိ-သက်ဆင်းသော')
-220597	heṭṭhāgāmī	analysis 'ဂမု + ဏီ'; quotation 'အာဂန္တာ ပုန ဟေဋ္ဌာဂါမီယေဝ ဟောတီတိ ဒဿေတိ'
+220596	heṭṭhāgahaṇa	citation fragment
+220597	heṭṭhāgāmī	feminine form '၌ -- ဂါမိနီ'; stray 'နို'
+220598	heṭṭhāgāmī	analysis fragment 'ဂမှ + ဏံ ]'; debris ']ူ ဝ [မ။ [ န ပူရှ န သို့'; quotation 'အာဂန္တာ ပုန ဟေဋ္ဌာဂါမီယေဝ ဟောတီတိ ဒဿေတိ'
 220599	heṭṭhāgīvā	OCR debris
 220600	heṭṭhāgopphaka	OCR debris
 220602	heṭṭhāchatta	OCR debris
@@ -2848,7 +2871,7 @@ id	iast	omitted
 220768	hetugabbhavacana	quotation fragment 'ဒဂ္ဂဟိ-'; debris
 220769	hetugabbhavisesana	analysis 'ဝိသေသန ]'; quotation 'ဟေတု-နို့] … ဂဗ္ဘဝိသေသနမေတံ'
 220770	hetugabbhavisesanatādassana	debris inside the gloss 'ဌ သို့] ဌ ဝ သို'; quotation fragment 'ဟေတုဂဗ္ဘဝိသေသနတာ-'
-220772	hetuga(gga)haṇa	debris ']၍] ['; 'သို့ ပြု]'; citation 'ဒီ၊ ဋီ ၃'
+220771	hetuga(gga)haṇa	debris ']၍] [', 'သို့ ပြု]'; citation ဒီ၊ ဋီ ၃
 220774	hetugocchaka	damaged repeat 'ဝေစ္ဆ နးထွဋပနးချကပန်း ီ၍ ရ ၃ ဟု၍ ရှင်'; 'ရိုး'
 220775	hetugocchakaniddesa	debris 'ဟု၍ [ချိ ိ'; run-in '၇ ဟေတုစတုတ္တံ ီ့]]ရ'
 220776	hetucatukka	citation 'အဘိ၊ ကတ် တ ['
@@ -3114,7 +3137,7 @@ id	iast	omitted
 221103	heraññikasippa	quotation 'ရူပသပ္ပန္တ ဟေရညက သမ္ပ။ ၄ သ သံ'; run-on article '] မြူးတူး-ပျော်ပါး-ကစား-ဟေလားဟား လားအော်-၏။' with quotation 'ဟိလ ဟာဝတရုဏေ'
 221105	helā	definition 'ဣတ္ထန သိင်္ဂါရ-ဘာဝဇကြိယာဝိသေသော'; Sanskrit form 'ဟေလာ-သံ'; 'နို'; garbled 'မှေ လျော်ပျော်ပါး လိသ မ်'; verse 'ဝိလာသော လလိတံ လီလာ … ဝိဗ္ဘမော'; source 'ဓာန်'
 221106	heva	variant 'ဟေဝါ'
-221108	hevattha=hevatthika	analysis debris 'ထ ထ [ ရို့ (က)]'; quotation fragment 'ဟေဝတို့ကဝါဒေါ'; '----'; debris
+221107	hevattha=hevatthika	debris 'ထ ထ [ ရို့ (က)]', 'ရီး] ီ ီ'; quotation fragment 'ဟေဝတ္ထိကဝါဒေါ ----'
 221111	hevatthikavāda	'ဟေဝတ္ထိက-ကြ မြူ' (damaged cross-reference or quotation)
 221112	hessati	Sanskrit form 'ဟေပတေ-သံ'; 'နို'
 221113	hessati	debris 'ချိ ၀ ၀ ီ့၏]'; '၈ ဟေသာ … နှဲ'; quotation '(၂) ဟေဿတီ'
@@ -3133,8 +3156,9 @@ id	iast	omitted
 221132	hotha	debris 'သုသ ရို ီ့ သို့' inside the gloss; '----'; citation 'ဝိ၊ ဋ္ဌ၊ … ၁'; debris
 221133	honta	quotation fragment 'ရာဇဓီတာ'; debris
 221134	honti	analysis 'ဟူ + အ + အန္တိ'; quotation 'ဟောန္ဒီ ( … မဟာနံ။ ၁၀၃)'
-221135	hontu	debris; quotation fragment 'သဗ္ဗေ'; run-on article 'ဟောမိ (ကြို [ ဟု+ အ+ မ။ ီ]။ ဟောတိ- မူ။ ] (၁) … ဖြစ်ကုန်၏။ (၂) ဖြစ်ကုန်ပြီ'; source 'သာရတ္ထ၊ ၁ဝ'
-221136	homa	quotations '(၁) ဟောမကရဏဝသေနာ …', '(၂) ဟူယတီတိ ဟောမော'
+221135	hontu	debris; quotation fragment 'သဗ္ဗေ'
+221136	homa	root note 'ဟောတိ- မူ။ ]'; debris '့ ရို ု၍န[ဠ'; citation သာရတ္ထ၊ ၁ဝ
+221137	homa	second listing with quotation fragments 'ဟောမကရဏဝသေန', 'ဟူယတီတိ ဟောမော'; debris
 221138	homakamma	debris 'သို့ ွ ဓွ ဟု၍'; '----'
 221141	homi	debris; quotation 'ပုံ ို မှု သို့] ဂိဟံ ဟောဓိ တိ ဝါ'
 221142	horā	debris 'နာရံ၊ လင်='; quotation 'သော ဟောရာပါဌကံ'

@@ -147,8 +147,8 @@ where 4b and 22 print ညာ.
 
 *Added 30 Sep 2026 (plan step 1.8; docs only, nothing applied). An index row whose headword the index gives again within 40 ids, the
 two not adjacent, so the homonym runs of brief §85–86 (adjacent ids) do not take them. Found in the text, **not checked on the image**
-except where it says so. A repeat may be a duplicate row of one printed entry, or a homonym indexed out of its place (174421 below is
-printed ဧဓတိ²); not decided row by row. Pages: the index's printed page, the PDF page in brackets.*
+except where it says so. A repeat may be a duplicate row of one printed entry, or a homonym indexed out of its place (174421 below:
+the index lists ဧဓတိ² before ¹, read on the image in §91); not decided row by row. Pages: the index's printed page, the PDF page in brackets.*
 
 **From brief §85 §1: 78 rows** (66 unlocated, 12 stubs or rows with no label / analysis), each at a line start + label on the head line of
 the other, same-headword, article (§67's test on the articles of 29 Sep; the ids are `tmp/homonym18/cands.json`'s `flag` entries
@@ -236,14 +236,23 @@ ids earlier, on the same index page.
 | 4c | 175786 | ဩဓုနာထ | 496 (523) | 175783, p. 496 (523) | unlocated | §85 §1 |
 | 4c | 176410 | ဩလမ္ဗန္တိ | 585 (612) | 176420, p. 588 (615) | no label / analysis | §85 §1 |
 
-**From plan step 1.8's farther-body measurement: 6 rows** (30 Sep 2026, the snapshot of that day; unlocated headwords found at a line start +
+**From plan step 1.8's farther-body measurement: 6 rows, 2 left after §91** (30 Sep 2026, the snapshot of that day; unlocated headwords found at a line start +
 label inside an earlier article's body, whose headword the index repeats within 40 ids, not adjacent). None is among the 78.
 
 | book | id | headword | index p. (PDF) | the other row: id, index p. (PDF) | note | from |
 |---|---|---|---|---|---|---|
-| 14c | 196387 | ပါနီယကူပ | 391 (418) | 196384, p. 391 (418) | unlocated | 1.8 farther body (`tmp/farbody18/`) |
 | 14c | 202368 | ပေက္ခတေ | 1005 (1032) | 202376, p. 1005 (1032) | unlocated | 1.8 farther body (`tmp/farbody18/`) |
-| 15 | 118320 | ဗြဟ္မလောကူပပတ္တိ | 441 (469) | 118317, p. 441 (469) | unlocated | 1.8 farther body (`tmp/farbody18/`) |
-| 19 | 150247 | ဝိစ္စေဿတိ | 290 (311) | 150245, p. 290 (311) | unlocated | 1.8 farther body (`tmp/farbody18/`) |
-| 24 | 204839 | သုခပ္ပဋိသံဝေဒီ | 170 (204) | 204879, p. 173 (207) | unlocated | 1.8 farther body (`tmp/farbody18/`) |
-| 4c | 174421 | ဧဓတိ | 293 (320) | 174419, p. 293 (320) | unlocated; image: printed **ဧဓတိ²**, ¹ = 174419, 174420 between (a homonym indexed apart) | 1.8 farther body (`tmp/farbody18/`) |
+| 4c | 174421 | ဧဓတိ | 293 (320) | 174419, p. 293 (320) | on its own printed entry since §89 (farther-body split, right on the image); image (4c p. 320 R, read in §91): its entry is printed **ဧဓတိ¹** (ကြိ) [ဧဓ+အ+တိ], and 174419's is **ဧဓတိ²** (ကာ၊ကြိ), printed last on the page (running head ဧဓတိ²): the index lists ² (174419) before ¹ (174421), with 174420 ဧဓိတ္တ between, which the page prints only as sense (3) inside ဧဓတိ¹'s quotations (no entry of its own; unlocated). Kept here for the order; the §89 measurement's "printed ²" was a misreading | 1.8 farther body (`tmp/farbody18/`); §91 |
+
+*Re-checked 30 Sep 2026 (brief §91), after plan step 1.8 was applied (the homonym rules R, PCED and `HOMONYM_FIX`, and the
+farther-body splits):*
+- *Left §5: 4 rows, now each on its own printed entry* (a farther-body split, §89: read right on the image in the nine books, PCED-gated in
+  01–19). Both rows of each pair then have a printed entry, so the repeat is two printed articles of one headword, not a misfiled index row:
+  14c 196387 ပါနီယကူပ (twin 196384, p. 391 (418); image), 15 118320 ဗြဟ္မလောကူပပတ္တိ (118317, p. 441 (469); PCED), 19 150247 ဝိစ္စေဿတိ
+  (150245, p. 290 (311); PCED), 24 204839 သုခပ္ပဋိသံဝေဒီ (204879, p. 173 (207); image). 174421 is on its own entry too, and stays for the order (above).
+- *The 78 rows of §85 §1*: none is now placed by `HOMONYM_FIX`, R or the PCED pass, none is `same_as`, none was split out, and none of their
+  twins changed: all 78 stay. **§88's finding** (the index repeats a headword for each page a long entry runs over; those rows are `same_as`,
+  not errors) explains none of them: in 41 the twin's article stands on the repeat's own index page (PDF), in 37 on a later page (the
+  repeat is indexed before its twin), never on an earlier page it runs on from. One looked at apart: 14c 194663 ပဿ (p. 213 (240)); 194647
+  (p. 239) runs on to p. 240, but that page's continuation row is 194648, adjacent to 194647 (a homonym run), and 194663 is 15 ids further.
+- 202368 ပေက္ခတေ stays (still unlocated).
