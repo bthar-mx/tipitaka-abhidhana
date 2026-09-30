@@ -2526,3 +2526,217 @@ senses run in order before the cross-reference (not counted separately).
 
 *Left*: `tmp/senses/` (gitignored): `measure.js`, `show.js`, `why.js`, `split-es.tsv` (the 9,478 ES rows split: book, id, IAST,
 senses), and `dist/` (the full build, 617 MB, for the editor to delete) and `subset.tgz`.
+
+
+## 85. Plan step 1.8, homonyms only (item 5b): measured and planned (29 Sep 2026, Cowork; a plan, nothing changed)
+
+**Asked** (the editor): index rows of a homonym placed on another homonym's printed line (x¹ showing x²'s text). Measure and plan
+only; no data changed. (1) The candidates in all 29 books — §67's 311 ("line start + label" on a located homonym's own line), §32 /
+item 5b's 177 runs, §69's homonym wrong and unsure splits (5 + 5) — deduplicated and counted per book; (2) books 01–19 (with 4/1, 4/2,
+14/1) decided by the PCED witness; (3) the nine books without PCED: a stratified sample of 30 checked on the page images (§73's
+method), the right / wrong rate of a proposed rule and the cost per row; (4) the fix: a rule in `abhidhana_articles.py`, what re-runs
+on the Mac, which Meaning rows need a redraft, the effect on `/w/` addresses. Read-only scripts in `tmp/homonym18/` (gitignored):
+`cands.py`, `table1.py`, `pced18.py`, `decide.py`, `tiers.py`, `kinds.py`; results `cands.json`, `pced-decided(-all).json`,
+`tiers.json`, `sample30.json`, `sample30-verdicts.tsv`; page renders in `img/` (35 PNG, 63 MB, a first sample drawn with a faulty rule and dropped) and `img2/` (46 PNG, 114 MB), for the editor to delete.
+
+### 1. The candidates
+
+A **run** is a maximal sequence of consecutive index ids with the same headword (spaces removed), in the book's articles: 3,716 runs
+with pages in the 29 books (2,594 in the PCED books, 1,122 in the nine).
+- **§67's set, re-found on today's articles** (§69 changed the nine books since): §67's candidates (`tmp/split11/cand-NN.jsonl`) with
+  `where_line.py`'s own test (the first head line on pp. ±1 that matches, whatever its headword) give **320** unlocated rows on a
+  same-headword article's line (§67: 311); asking for a same-headword head line directly, 323. **257** of them are in a run; **66**
+  are not: the index lists the same headword again 5–40 ids further on (vol. 10 87119–87121 repeated as 87127–87129; 14/3 24 such
+  rows) — index repeats, not homonyms, left out of 1.8 (a line for `index-errata.md` later). The same test also finds 130 stubs and
+  no-label rows in runs (23 + 107), reported apart.
+- **§32's runs, re-found**: an earlier row of a run unlocated, a later one placed on the same PDF page: **175 runs** (§32: 177), 384
+  rows (210 pairs).
+- **§69**: the ten homonym rows (wrong 162101, 163457, 168298, 172827, 174689; unsure 157108, 162430, 168888, 181875, 204389), all in runs.
+- **Deduplicated**: **1,050 flagged rows** (the rows above and the located sibling whose line they sit on) in **489 runs holding 1,239
+  rows**; 376 runs (960 rows) hold a row of the three asked sources, the rest only a stub / no-label row. PCED books 269 runs, the nine
+  220.
+
+| book | §67 unlocated | 5b rows (runs) | §69 | also: stubs / no-label | flagged rows | runs | rows in them | not adjacent (index repeats) |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| 01 | 7 | 4 (2) | 0 | 4 | 24 | 12 | 29 | 1 |
+| 02 | 4 | 4 (2) | 0 | 0 | 12 | 6 | 12 | 0 |
+| 03 | 8 | 5 (2) | 0 | 1 | 21 | 10 | 24 | 0 |
+| 4/1 | 7 | 10 (5) | 0 | 4 | 26 | 12 | 27 | 1 |
+| 4/2 | 7 | 10 (5) | 0 | 0 | 21 | 10 | 22 | 4 |
+| 05 | 4 | 6 (3) | 0 | 2 | 17 | 8 | 24 | 0 |
+| 06 | 11 | 17 (8) | 0 | 3 | 37 | 18 | 40 | 3 |
+| 07 | 13 | 18 (9) | 0 | 2 | 40 | 19 | 47 | 0 |
+| 08 | 10 | 18 (9) | 0 | 0 | 38 | 19 | 42 | 1 |
+| 09 | 3 | 4 (2) | 0 | 0 | 10 | 5 | 19 | 1 |
+| 10 | 9 | 13 (6) | 0 | 0 | 27 | 13 | 31 | 7 |
+| 11 | 5 | 4 (2) | 0 | 0 | 14 | 7 | 16 | 1 |
+| 12 | 5 | 10 (5) | 0 | 1 | 22 | 11 | 23 | 0 |
+| 13 | 9 | 10 (5) | 0 | 0 | 24 | 12 | 28 | 1 |
+| 14/1 | 3 | 4 (2) | 0 | 2 | 14 | 7 | 15 | 2 |
+| 14/2 | 8 | 0 (0) | 0 | 5 | 26 | 13 | 27 | 0 |
+| 14/3 | 12 | 28 (13) | 0 | 9 | 61 | 28 | 70 | 24 |
+| 15 | 11 | 10 (5) | 0 | 2 | 35 | 17 | 39 | 4 |
+| 16 | 7 | 4 (2) | 0 | 0 | 17 | 8 | 18 | 1 |
+| 17 | 10 | 21 (7) | 0 | 2 | 39 | 15 | 58 | 3 |
+| 18 | 26 | 39 (18) | 0 | 5 | 90 | 40 | 117 | 1 |
+| 19 | 8 | 23 (11) | 0 | 2 | 41 | 20 | 44 | 0 |
+| 20 | 13 | 12 (6) | 4 | 21 | 79 | 38 | 96 | 3 |
+| 21 | 15 | 26 (10) | 2 | 19 | 84 | 35 | 108 | 6 |
+| 22 | 6 | 6 (3) | 1 | 11 | 37 | 18 | 42 | 1 |
+| 23 | 11 | 17 (6) | 0 | 13 | 59 | 25 | 72 | 1 |
+| 24 | 7 | 16 (6) | 1 | 8 | 39 | 17 | 43 | 3 |
+| 25 | 11 | 23 (10) | 0 | 9 | 54 | 25 | 58 | 3 |
+| 4/3 | 7 | 22 (11) | 2 | 5 | 42 | 21 | 48 | 6 |
+| **all** | 257 | 384 (175) | 10 | 130 | 1050 | 489 | 1239 | 78 |
+
+("Not adjacent": 66 unlocated + 12 stubs / no-label rows. The columns overlap: a row can be §67's and 5b's.)
+
+### 2. Books 01–19 decided by PCED
+
+Each placed row's body against **every** PCED entry of its headword (the join's measure, `SequenceMatcher` on the body against the
+analysis's tail + definition, both capped at 600 characters as §67), the join's own pairing giving each row its entry k (the k-th
+index row of a headword ↔ the k-th PCED entry, all books). A row is **right** if its own entry scores ≥ 0.6 and ≥ 0.2 above every
+other; it holds **another homonym's text** if another entry scores ≥ 0.6 and ≥ 0.2 above its own; else *close* (both high or near) or
+*neither* (both < 0.4). A run is **decided** when every placed row is right or another's and PCED has as many entries as the index.
+
+| book | runs | all right | another homonym's text | undecided | count mismatch | rows right | rows another's | rows close / neither | unplaced |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| 01 | 12 | 2 | 2 | 8 | 0 | 6 | 3 | 9 / 2 | 9 |
+| 02 | 6 | 2 | 3 | 1 | 0 | 2 | 3 | 0 / 1 | 6 |
+| 03 | 10 | 3 | 2 | 5 | 0 | 4 | 6 | 4 / 1 | 9 |
+| 4/1 | 12 | 7 | 1 | 4 | 0 | 10 | 1 | 4 / 2 | 10 |
+| 4/2 | 10 | 0 | 4 | 5 | 1 | 2 | 4 | 4 / 2 | 10 |
+| 05 | 8 | 2 | 3 | 3 | 0 | 6 | 3 | 3 / 5 | 7 |
+| 06 | 18 | 6 | 4 | 7 | 1 | 10 | 6 | 6 / 1 | 15 |
+| 07 | 19 | 5 | 6 | 8 | 0 | 12 | 9 | 4 / 3 | 18 |
+| 08 | 19 | 6 | 5 | 8 | 0 | 6 | 7 | 10 / 0 | 19 |
+| 09 | 5 | 1 | 1 | 3 | 0 | 3 | 3 | 2 / 6 | 5 |
+| 10 | 13 | 3 | 7 | 3 | 0 | 6 | 9 | 2 / 1 | 13 |
+| 11 | 7 | 1 | 5 | 1 | 0 | 3 | 5 | 1 / 0 | 7 |
+| 12 | 11 | 3 | 4 | 4 | 0 | 4 | 5 | 2 / 2 | 10 |
+| 13 | 12 | 2 | 6 | 4 | 0 | 3 | 8 | 5 / 0 | 12 |
+| 14/1 | 7 | 1 | 0 | 5 | 1 | 2 | 1 | 4 / 1 | 5 |
+| 15 | 17 | 7 | 5 | 5 | 0 | 12 | 6 | 4 / 2 | 15 |
+| 16 | 8 | 1 | 4 | 2 | 1 | 2 | 4 | 3 / 1 | 8 |
+| 17 | 15 | 2 | 5 | 8 | 0 | 8 | 12 | 3 / 11 | 23 |
+| 18 | 40 | 5 | 13 | 22 | 0 | 18 | 25 | 14 / 10 | 48 |
+| 19 | 20 | 3 | 12 | 5 | 0 | 8 | 13 | 1 / 2 | 18 |
+| **all** | 269 | 62 | 92 | 111 | 4 | 127 | 133 | 85 / 53 | 267 |
+
+- **Decided: 154 of the 269 runs (57%)** — 62 all right, 92 with a row holding another homonym's text; 111 undecided, 4 with PCED's
+  count ≠ the index's. By row: **260 of the 408 placed rows decided** (64%): **127 right, 133 holding another homonym's text**; 85
+  close, 53 neither, 10 with no body or no PCED definition; 267 rows unplaced, of which **107 have their own entry's text held by a
+  sibling**. 119 runs have at least one row holding another's text.
+- **The ratios.** Rows holding another's text: own entry median **0.265** (quartiles 0.206–0.399), the other entry median **0.851**
+  (0.754–0.949). Rows right: own **0.855** (0.742–0.933), best other 0.269 (0.196–0.360). The misplaced text is the **next** homonym's in
+  85 of 133 (the row placed one entry late: its own head line unread, it took the next), the previous one's in 40, further in 8.
+- **Checked on the image** (4 rows drawn at random from the 133; vol. 16 p. 754, 08 p. 417, 18 p. 119, 4/1 p. 666): 131408 muttā sits on
+  mutta², 70657 on jīyittha², 140584 on lapana¹, 32623 on īsa¹ — **4 of 4 as PCED says**.
+- **Beyond the flagged set** (the same test over all 2,594 runs of the PCED books): 3,071 placed rows right, **353 holding another
+  homonym's text** (220 outside the flagged runs: the candidate tests of §67 and §32 see only runs with an unplaced row near a placed
+  one), 910 close, 741 neither, 610 unplaced; 1,117 runs all right, 178 with another's text, 1,291 undecided, 8 count mismatch.
+
+### 3. The nine books without PCED: the order rule and 30 rows on the image
+
+**The rule proposed (R, the order rule).** For a run of n rows: the lines of the run's pages (the index pages, and the next) that
+begin an entry of the headword, in reading order — §67's test (headword exactly or folded, less a superscript's debris, then a label or
+`[`) and also a `( … )` that is not a citation (no digit, no ။ inside) — **and a superscript ¹ read as ံ or ာ** (ဝိသလ္လံ, သိဋ္ဌံ,
+သန္တိံ for ဝိသလ္လ¹ …), taken as the headword only when that form is not itself an index headword (ဧသိံ is one: vol. 4/3 p. 359).
+**If there are exactly n such lines, row i takes line i**; otherwise the run is left as it is. The last clause was added after the
+image check below (six of the first rule's abstentions were a ¹ read so); it is measured on PCED independently.
+
+**PCED's verdict on R** (books 01–19; the text from each line R gives to the next, against the row's own PCED entry, the same test):
+of the rows R moves whose text PCED can judge, **316 agree, 14 do not (95.8%)**; 166 unclear. In the flagged runs 55 agree, 6 do not
+(90%). Counting only real moves (an unplaced row given a line, or a row moved from another homonym's line): 146 / 7 (95.4%).
+R acts on 483 runs of all 3,716 (it keeps 1,580 as they are and leaves 1,653) and moves **751 rows**: 498 in the PCED books, **253 in the
+nine** (50 unplaced rows given a line, 59 moved from another homonym's line, 79 from a line that is no entry, 65 whose present line
+was not found in the page text). In the flagged runs it moves rows in 109 of the 489 runs (195 rows) and confirms 19 as they are (PCED 53 + 7 of 269, the nine 56 + 12 of 220).
+
+**The sample** (`tmp/homonym18/sample30.json`, `sample30-verdicts.tsv`): 30 flagged runs of the nine books, a quota per book by its
+share (14/2 2, 14/3 4, 20 6, 21 5, 22 2, 23 3, 24 2, 25 3, 4/3 3), inside each book up to half the runs where the first rule (without
+the ¹ clause) moves rows, one it keeps, the rest where it abstains; one flagged row per run (seed 1808). Each read on the page image:
+the PDF page rendered with `pdftoppm` at 150 dpi on the Mac, staged, shown whole (≈ 1,060 × 1,540 px), the superscripts read; 14/2 from
+its text layer. 38 pages for 29 runs.
+
+| on the image | rows | R moves / keeps | R right | R abstains |
+|---|---:|---:|---:|---:|
+| placed right now | 10 | 8 | 8 | 2 (a head line of the run not read as an entry: 161751, 168518) |
+| placed wrong now | 17 | 12 | 12 | 5 |
+| an index row with no printed entry of its own | 2 | 0 | — | 2 (ဝေရဉ္ဇာဝစန 161643, ဧကဓိက္ကာရပရိပုဏ္ဏ 173093: one entry, two index rows) |
+| unsure | 1 | 0 | — | 1 (သတ, vol. 21 pp. 551–553: 8 printed, 9 index rows) |
+| **all** | **30** | **20** | **20 of 20** | **10** |
+
+- **Right / wrong rate of R on the image: 20 right, 0 wrong of the 20 rows it acts on**; it abstains on 10 (5 of them placed wrong, 2
+  index rows with no entry, 1 unsure, 2 right). The first rule alone (without the ¹ clause, fixed before the images were read): 13 of
+  13 right, 17 abstentions. The 7 the ¹ clause adds were seen before the clause was written, so they are not an independent test of it;
+  PCED's 95.8% is. With 20 of 20 the 95% lower bound is about 84%; the sample over-represents runs where R acts (by design: in the nine
+  books R acts on 68 of 220 flagged runs, 31%).
+- **The placements are wrong in 17 of 30** (57%; 95% interval about 39–73%). Mostly a head line of the run is not read as an entry
+  (a ¹ read as ံ or ာ, a `(` lost, a label not recognised), so the rows after it shift by one and the last is unplaced; in 3 a row sits
+  on a quotation or cross-reference line inside its sibling's entry (214130, 161243, 217803). §69's unsure 181875 (vol. 22 p. 487) is **right**: it is သမာန³.
+- **Also seen**: index spellings the print does not have — 170596 printed သဒ္ဒကဏ္ဋက (indexed …ဍက); 197306–197308 the print's ပါရေဝတက္ခီ¹,
+  ², then ပါရေဝတက္ခိ, the index's ခိ, ခိ, ခီ; 161196 (indexed ဝေဒနိယ) is ဝေဒနီယ¹ (so the run of ဝေဒနီယ starts at ²). Not yet in
+  `index-errata.md`.
+- **Cost per row, measured**: the image check took ~115 k tokens by the session's counter for the 30 rows (~3.8 k a row, each run
+  judged whole); the counter does not seem to count all image input: 38 page images at ≈ 2.2 k tokens each (width × height / 750)
+  would add up to ~84 k. **So 3.8–6.6 k tokens a run.** (§76's sub-agents: ~6.8 k a row.)
+
+### 4. The fix proposed
+
+**(a) R in `abhidhana_articles.py`, all 29 books**, in the placement (`pos` over the page text, right after §18's "homonyms taken one
+line late", which is the two-row case of the same thing): for each run of identical headwords, the entry lines between the run's placed
+neighbours (`lo`…`hi`), with R's tests; if their count equals the run's length, assign in order; a row whose new line lies inside
+another article's span cuts that article there (as the page's spans are cut now). Each moved row gets `homonym_rule`
+(`order:<n>:<strict|weak|sup>`) and `homonym_before` (its old `located`, `pdf_page`, `raw` head line). Restricted to runs on one page
+and its continuation (measured here over the run's pages ±1: not measured how many runs span a page break).
+
+**(b) In the PCED books, PCED gates and completes R** (a pass after the fields are read, beside `apply_witness_analysis`): an R move that
+PCED contradicts (the moved text scores ≥ 0.2 higher on another entry) is undone (14 rows of 330 judged); a row R does not reach whose
+text PCED decides as another homonym's goes to that homonym's row when that row is unplaced or itself holds another's text — a
+permutation of the run's texts (`homonym_rule: pced`). Measured: such moves change **401 rows** in the PCED books (224 in the flagged
+runs), 107 of them rows R also moves; 27 cases where the owner already holds its own entry are left (conflicts). No Meaning changes
+there: the PCED books' Meaning is PCED's, per headword.
+
+**(c) The nine books: the image residue.** The flagged runs R leaves (152 of 220, 395 rows) checked on the image like §69
+(every one, the editor's standard for splits), recorded in `docs/homonyms-checked.tsv` (id, book, run, printed number, verdict, PDF
+page, note) and applied as a table beside `ID_PAGE_FIX` (`HOMONYM_FIX`: id → the id whose line it takes, or `same_as` for an index row
+with no entry of its own — kept as a record, never dropped, like §79's `SAME_AS`). By the sample, about half of them are wrong now.
+
+**Tests** (as §69): a per-row digest against the committed files, all 29 books — the same rows in the same order; every changed row is
+in a run R or PCED or the table changed, or the article whose span a moved line was cut from (only `raw`, `body`, `citations` … shorter,
+its lines in order); within a run the multiset of texts preserved where only lines are exchanged; nothing else changes. `pali.jsonl`
+likewise. A re-run with R disabled reproduces today's files byte for byte.
+
+**What re-runs on the Mac** (or in the cloud container, as §69): `abhidhana_articles.py NN` and `abhidhana_romanise.py NN` for all 29
+books (R touches runs everywhere), `abhidhana_ocr_stats.py NN`, and the witness joins for 01–19 (their `body_ratio` follows the new
+bodies). About 20 minutes on the Mac.
+
+**Which Meaning rows need a redraft** (OCR books only: 14/2, 14/3, 20–25, 4/3): every row of the nine whose text changes materially.
+From R: 253 rows move (50 unplaced gaining a text, 59 taking another homonym's line: certain; 144 whose start line moves: redraft only
+where the new body's similarity to the old is < 0.8, measured after the run); from the image residue, about half of its 395 rows. **About
+250–400 rows**; §70's redraft cost 0.62 M for 268 rows with the classification of hosts (~2.3 k a row). The articles a moved line is cut
+from lose a few lines, as §69's hosts did: those with a Meaning that translated the lost lines go to `omitted` or a redraft as in §70.
+The rows of `docs/page-checks.tsv` (10), `splits-checked.tsv` (3) and `revision-queue.tsv` (6) among R's moved rows are re-read after
+the run (their verdicts were about the text the row held); `corrections.tsv` and `corrections-es.tsv` have none. The D1 edits for
+the moved ids cannot be read from here: the editor looks them up before the push (an edit on a row now holding another text would apply
+to the wrong text).
+
+**The `/w/` addresses** (§78–79). `abhidhana_browse.py` gives each record its address from its IAST and its place in the index order
+(`-2`, `-3` for homonyms), and the IAST comes from the index headword, not the OCR. 1.8 changes no id, no order, no headword and removes
+no record (an index row with no entry of its own stays a record, marked `same_as`), so **the address → id map is unchanged by
+construction**; `hn` too. What changes at `/w/x-2` is the text it shows — x²'s own, the correction — and its page link when the row moves
+to another page. Checked as in §79: a full build before and after, address → id of every record, expected **0 differences of 221,154**.
+
+**Token estimates**: (a)+(b) code, digest tests and the article runs in the cloud container, Cowork **~400–600 k**; (c) the image
+check of the 152 runs at 3.8–6.6 k **~0.6–1.0 M** (sub-agents, one folder each, as §75–76); the redraft **~0.35–0.9 M**; the build check
+~50 k. **About 1.4–2.6 M in all**, plus the Mac's ~20 minutes and a version bump at the push.
+
+**For the editor**: (1) R in all runs, or only in the flagged ones (it moves 751 rows in all, 195 in the flagged runs; PCED agrees with
+95.8% of the moves it can judge)? (2) PCED's permutation (b) in the PCED books — yes? (3) The nine books' residue: every run on the
+image (152) or a sample? (4) Index rows with no entry of their own marked `same_as`, as §79? (5) The 78 non-adjacent repeats: to
+`index-errata.md`, apart from 1.8.
+
+*Measured here with read-only scripts on the folder (the index, `ocr/*/articles.jsonl` and pages, `witness/pced_k.jsonl`, `witness/join-*`,
+`tmp/split11/`); page images rendered on the Mac with `pdftoppm`, viewed in the cloud container. Nothing written but this section,
+NEXT-SESSION's line and `tmp/homonym18/`. No version bump. Tokens: ~0.45 M by the session's counter (the image input probably not all
+counted: ~0.1 M more).*
