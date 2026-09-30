@@ -6,23 +6,23 @@
 
 | | |
 |---|---:|
-| located verbatim (line start or before ( / [ ) | 6,439 = 68.9% |
+| located verbatim (line start or before ( / [ ) | 6,437 = 68.9% |
 | located verbatim after folding (tools/abhidhana_fold.py) | 105 = 1.1% |
 | located verbatim, inline only | 24 = 0.3% |
 | located by bounded fuzzy match | 2,164 = 23.2% |
-| **located, any** | **8,732 = 93.5%** |
-| unlocated | 610 = 6.5% |
-| label ( ) read | 8,425 = 90.2% |
-| label normalised to the closed set (docs/labels.md) | 8,197 = 87.7% |
-| of which read exactly as printed / mapped / inferred from the ending | 6,702 / 1,493 / 2 |
+| **located, any** | **8,763 = 93.8%** |
+| unlocated | 579 = 6.2% |
+| label ( ) read | 8,458 = 90.5% |
+| label normalised to the closed set (docs/labels.md) | 8,230 = 88.1% |
+| of which read exactly as printed / mapped / inferred from the ending | 6,729 / 1,499 / 2 |
 | label read but left unnormalised | 228 = 2.4% |
-| compound analysis [ ] recovered by the OCR | 7,142 = 76.5% |
+| compound analysis [ ] recovered by the OCR | 7,172 = 76.8% |
 | compound analysis taken from the typed PCED witness (tools/abhidhana_witness_analysis.py) | 9,230 = 98.8% |
 | compound analysis, either | 9,232 = 98.8% |
-| of which + signs repaired (normalise_analysis) | 1,729 = 18.5% |
-| non-empty body | 8,725 = 93.4% |
-| at least one citation parsed | 6,096 = 65.3% |
-| label + body (the article is usable) | 8,195 = 87.7% |
+| of which + signs repaired (normalise_analysis) | 1,736 = 18.6% |
+| non-empty body | 8,756 = 93.7% |
+| at least one citation parsed | 6,116 = 65.5% |
+| label + body (the article is usable) | 8,228 = 88.1% |
 
 **Romanised headwords against OSBCT** (682,010 canonical words):
 
@@ -32,7 +32,7 @@
 | inside a canonical word | 4,387 = 47.0% |
 | neither | 3,145 = 33.7% |
 
-Labels, normalised: (တိ) 2,422 · (ပု) 2,236 · (န) 1,719 · (ထီ) 843 · (ကြိ) 550 · (ပု၊န) 105 · (ကာ၊ကြိ) 104 · (ထီ၊န) 76 · (ကြိ၊ဝိ) 56 · (ဗျ) 56 · (ကာ၊ကြိ၊ဝိ) 17 · (ထီ၊ပု) 7 · (ကမ္မ၊ကြိ) 5 · (တိ၊န) 1
+Labels, normalised: (တိ) 2,435 · (ပု) 2,244 · (န) 1,724 · (ထီ) 846 · (ကြိ) 551 · (ပု၊န) 105 · (ကာ၊ကြိ) 105 · (ထီ၊န) 76 · (ဗျ) 57 · (ကြိ၊ဝိ) 56 · (ကာ၊ကြိ၊ဝိ) 18 · (ထီ၊ပု) 7 · (ကမ္မ၊ကြိ) 5 · (တိ၊န) 1
 
 Readings left unnormalised: (ပ္ပ) 23 · (၃) 10 · (နု) 9 · (ထိ၊န) 6 · (၁) 6 · (ကို) 6 · (နိ) 6 · (၂) 5 · (၅) 5 · (ရီ) 4 · (ဟိ) 4 · (ထိန) 4 · (နီ) 4 · (ထိ၊ န) 4 · (တို) 4 · (တူ) 3 · (ရ) 3 · (လော) 2 · (ဗီ) 2 · (က္ခ) 2 · (ဠ) 2 · (ကြီး) 2 · (ဇ္ဈ) 2 · (ဗြူ) 2 · (ကိံ) 2 · (ဘတ) 2 · (ကာ) 2 · (စ္ဆ) 2 · (စ္ဆေ) 2 · (ရု) 2 · (ဂ္ဂ) 2 · (ယာ) 2 · (ဆိ) 2 · (အံ၊ဋီ၊၂။၁၆၅) 2 · (မဟာနိ။ ၂၉၀) 1 · (ဒီ ဋ္ဌ၊ ၂။၁၃၇) 1 · (မဟာနိ။၆၃) 1 · (ထေရ။ ၃၄၁) 1 · (ဂ္ဂါရဟဂဟိတ (တိ) 1 · (လ္လိ (ထီ) 1 · (နိယ (တိ) 1 · (သံ၊ ဋ္ဌ၊ ၁။၃၂၄) 1 · (ဇာ၊ဝ။၂၇) 1 · (သာ တ္ထ၊၃။၄၅၀) 1 · (ဇာ၊ ၁။၂၀၁) 1 · (ဝိသုဒ္ဓိ၊ ၂။၇) 1 · (တီ၊) 1 · (ထီ.န) 1 · (ကြပ် တွာ (က) 1 · (ပ၊ န) 1 · (ဇာ၊ ၂။ ၂၇၄) 1 · (ဒီ၊ဋ္ဌ၊ ၂။၈၃) 1 · (အဘိ၊ဋ္ဌ၊၃။၄၄၄) 1 · (ဇာ၊ ၂။၄၀) 1 · (ဗံ) 1 · (ဝိ၊ဋ္ဌ၊ ၃။၃၄၃) 1 · (အံ၊ ဋီ၊ ၂၈၇။) 1 · (ဝိမတိ၊ ၁။၂၂၆) 1 · (မ၊၁။၁၈၀) 1 · (ဇာ၊ဋ္ဌ၊ ၂။၁၅၂) 1 · (သုတ္တနိ။ ၃၃၈) 1 · (သံ၊ ၁။၄၈) 1 · (ပ္ပ ဘုတိ (ဗျ) 1 · (ဝိမတိ ၁။၆၄) 1 · (ကာ ကြိ၊ဝိ) 1 · (တံ) 1 · (ဏီ၊ ပု) 1 · (ယီ) 1 · (ဍ) 1 · (ဝါ) 1 · (ဝိ၊ဋ္ဌ။ ၂။၃၀၈) 1 · (ကြိုးဝိ) 1 · (အပါ ၂။၁၁) 1 · (ဒီ၊ဋီ၊ ၂။၂၅၇) 1 · (အံ၊ဋ္ဌ၊ ၃။၁၂၄) 1 · (သံ၊၂။၄၀၄။) 1 · (ထေရ၊ဋ္ဌ၊ ၂။၂၀၆) 1 · (ဟ္မီ ပတ္တ (န) 1 · (အီ၊ ၃။၉၀) 1 · (ဇာ၊ ၁။၃၆၁) 1 · (ပ၊) 1 · (ဝိ၊ဋ္ဌ၊၁။၉၅) 1 · (ကမ္မ၊ ကြု) 1 · (ဝဒိရ။ ၂၂၉) 1 · (ကာ၊ ကတိ) 1 · (ပ္ပဠိစ္ဆာန (န) 1 · (ဝိ၊ သင်္ဂဟ။ ၂) 1 · (အဘိ၊ ဘ။၄၃၂။) 1 · (အံ၊ ဋီ၊ဝ။၉၃) 1 · (မ္ပတ္တ(တိ) 1 · (ဝိသုဒ္ဓိ၊ဋီ၊၆၀) 1 · (ဂ္ဂဟဏ (န) 1 · (တ္တ) 1 · (မဟာနိ။ ၂၁၉) 1 · (မ၊ဒ၊ ၂။၉၄) 1 · (မူလဋီ၊။၂။၃၈) 1 · (နေတ္တိ ၁၀၁) 1 · (သံ၊ ၁။၁၉၉) 1 · (ဆ) 1 · (မ၊ ဋ္ဌ၊ ၃။ ၂၀၆) 1 · (ကာ။ ကံ၊ဝိ) 1 · (တဘိ) 1 · (ဂြိ) 1 · (ကာကြိ၊) 1 · (ကာ၊ တို၊ ဝိ) 1 · (မ၊ဋီ၊ ၃။၁၀၄) 1 · (ဇာ၊ ၂။ ၂၆၁။) 1 · (တီန) 1 · (သံ၊ဋ္ဌ၊ ၁။၉၆) 1 · (ဂ) 1 · (ဏီ) 1 · (ဆိဒ္ဒ) 1 · (ဘိဒိ +သ) 1 · (ဒီ၊ ၁။၁၆၃) 1 · (နီတိ၊ဓာ။၄) 1 · (ဒု) 1 · (ထေရီ။ ၄ဝဝ) 1 · (မ၊ဋီ၊ ၃။၅၅) 1 · (ကတိ) 1 · (သံ၊ဋ၊၁။၂၄၀) 1 · (အနုဋီ၊ဝ။၆၉) 1 · (သံ) 1
 

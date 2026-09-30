@@ -315,6 +315,16 @@ reaches few rows; the plan below needs re-sizing before 1.3 (see 1.1).
   7.4 k a run on the first agent). **Next**: the editor reviews and commits stage 2 locally (no push); **stage 3** as above, with the
   larger redraft list of §88 §6, the witness joins on the Mac, `recheck.tsv` redone, and the unsure rows (H047 သ …) left for the editor.
 
+  **Farther-body run-ons built 30 Sep (brief §89)**: `farbody_split()` in `abhidhana_articles.py`, all 29 books, after the homonym passes;
+  `ABH_FARBODY=0` byte-identical to stage 2 (116 files). Candidates after stage 2: the measurement's 495 found again (494 the same); the rule
+  proposes 604 (492 of them + 112 by the `normalise_label()` test). 01–19: PCED gate, 427 of 473 made (8 own < 0.4, 38 by a new end test: a
+  neighbour's entry in the text's tail). The nine books: every split and moved row read on the image (147 items, second reader on 51): 108
+  right, 39 wrong (12 start, 18 end too long, 9 end a line short); 96 splits made. 523 split rows, 272 hosts cut, 35 chained rows on their own
+  line, 83 left unlocated (`farbody_unlocated`); digest 913 rows, 0 unexplained. Lists: `moved-ids.tsv` 2,754 rows, `meaning-rows.tsv` +177
+  (105 drafts, 1 redraft, 6 withdrawals, 31 trims, 22 hosts to classify). Sub-agents 1.38 M. **Next**: the editor reviews and commits locally
+  (no push); stage 3 as above, now with §89's rows; the 39 wrong items (their readers' start / end in `splits-checked.tsv`) and a better end
+  rule for a later pass; the one-line-short ends PCED cannot see in 01–19.
+
 ### Phase 2 — (c) the final revision (1c)  — next after the reduced Phase 1
 - **2.1** **Done 29 Sep** (`docs/translation/decisions.md`, Project `claude/decision-sheet.md`: a Markdown file, as the editor asked, not a
   Claude Docs doc). Was: Cowork, ~200–300 k: **one decision sheet** (a Claude Docs doc) with every open question, grouped by kind, not by

@@ -3064,3 +3064,246 @@ reported, not made: 20 158610 < 158609 (beside ဝိဟာရဋ္ဌ²).
 **Files changed**: `tools/abhidhana_articles.py`; `docs/homonyms-checked.tsv` (new, 456 rows); `docs/splits-checked.tsv` (+46 rows); 57
 files under `ocr/` (the four outputs of the 16 books, less the reports that did not change); this section; `docs/NEXT-SESSION.md`. Gitignored:
 `tmp/homonym18/moved-ids.tsv`, `s1/out/meaning-rows.tsv`, `meaning-by-book.json`, `stage2/` (tarballs ~0.35 GB, the work archive).
+
+## 89. Plan step 1.8, the farther-body run-ons: measured, built, every split in the nine books read on the image (30 Sep 2026, Cowork; no version bump, not pushed)
+
+**Asked** (the editor): build plan step 1.8's farther-body run-ons after homonym stage 2 (§88, committed locally as 6e76dfb), from the
+measurement and plan of `tmp/farbody18/section.md` (below, §1–§4 of the measurement, kept as written except where marked). The editor's
+answers to its four questions (30 Sep): (1) all 29 books; in 01–19 PCED gates each split and each moved misplaced row, as for the homonyms:
+a split or move whose text PCED contradicts is not made; (2) every split in the nine books, and every misplaced row moved there, read on the
+image, start **and** end; verdicts in `docs/splits-checked.tsv` as §69; only the right ones made; (3) a misplaced row whose own line is not
+found becomes unlocated, flagged, not left showing another headword's text; (4) the 6 index repeats are in `docs/index-errata.md` §5
+(b0264e5): nothing added. Tasks: re-find the candidates after stage 2, leaving alone every row `HOMONYM_FIX` places; `farbody_split()` after
+`split_runons()` and the homonym rules, `ABH_FARBODY=0` to turn it off; the image check; articles + romanisation re-run; the tests; the stage 3
+lists; this section. Run in the Cowork cloud container (§86's way): `tools/`, `db/`, `docs/`, the witness joins and `pced_k.jsonl`, and `ocr/`
+of all 29 books staged as tarballs from 6e76dfb's working tree (`tmp/farbody18/b18/stage/`, gitignored, 0.2 GB), the nine PDFs staged for the
+images. **Baseline**: the staged files matched stage 2's checksums (`tmp/homonym18/stage2/s2-out-d.md5`, 62 of 62), and the unchanged tool
+reproduced vol. 20's and vol. 1's `articles.jsonl` and report byte for byte.
+
+### 1. The measurement (30 Sep, before stage 2; from `tmp/farbody18/section.md`)
+
+**Asked** then (the editor): §67's unlocated headwords found at a line start + label on their page and sitting inside a **farther** article's
+body (~696 then; precision never measured). Measure and plan only, read-only on the repo, while another chat changed the tool and the
+articles (homonym stage 2). **Snapshot**: `ocr/*/articles.jsonl` and `pali.jsonl`, the page JSONs, `witness/join-*.jsonl`, `pced_k.jsonl`,
+`tools/*.py`, `db/`, `docs/labels.md`, `splits-checked.tsv`, `index-errata.md`, §67's scripts and the nine books' Meaning files, copied to
+`tmp/farbody18/snap/` at 14:53 UTC (§86's files, R on; size and mtime the same before and after the copy); run on that copy in the cloud
+container. Scripts and results in `tmp/farbody18/` (gitignored): `farbody.py`, `chain.py`, `ext.py`, `pced18.py`, `cont.py`, `crop.py`;
+`fb-NN.jsonl`, `ext.jsonl`, `pced-final.jsonl`, `table1.md`, `sample30.json`, `sample30-verdicts.tsv`, `crops/`, `img/`.
+
+- **The candidates.** §67's test unchanged (`tmp/split11/measure.py`, its `labels.json`), then §67's `where_line.py` classification (a body
+  line of any article on the index page ±1 that begins with the headword + label / `[`), then: excluded, rows in a homonym run (§85's run: an
+  adjacent index id with the same headword); one line, one article (exact > folded > fuzzy, then the nearest host). Unlocated at a line start
+  + label on their page: **1,003** (§67: 1,204; §69's splits and §86's R placed the rest). Inside a farther body: **548** (§67: 696). In a
+  homonym run: 50. Lost their line to another candidate: 3. **Taken: 495** — 389 in books 01–19, 106 in the nine. The other 455: 206 + 64 on
+  a same-headword article's head line (206 in runs; 64 not adjacent, §85's index repeats), 143 on another headword's head line, 42 in no
+  article.
+- **Where the host is**: before the candidate in 494 of 495, 2–17 index ids back (2: 177, 3: 122, 4: 63, 5–17: 132; one 4 ids after). So
+  "farther" is not the other column: it is the article two or more ids back, whose span swallowed the candidate because the rows between were
+  placed out of order. Between host and candidate lie 1,408 rows: 875 unlocated, the rest located — in 382 cases one located row on a line
+  that is not its own entry. *(Corrected here: the measurement said the host was "on the candidate's own page in all 495"; `farbody.py`'s
+  `page` field was the host's page, overwritten by the hit. The hosts were searched on the index page ±1, and the build keeps that.)*
+- **The chain**: in 192 of the 495 (144 in 01–19, 48 in the nine) the host's span ends at the candidate's text and the article that follows
+  in the page text is such a row between them, sitting inside the candidate's entry: the candidate's text runs on into that row. By PCED
+  that row holds the wrong text (its `raw` against its own entry ≥ 0.6 in 15 of 144, < 0.4 in 101). Its own entry line was found in the
+  host's body, before the candidate's line, for 53 of the 192.
+- **PCED precision, books 01–19** (389 splits, 379–389 with a PCED definition). §67's measure (head, label and `[ … ]` cut, start to start):
+  ≥ 0.6 in 242 of 379 as cut (63.9%), 257 of 388 with the chain (66.2%); baseline, located rows with label + body (5%, seed 11), 5,991 of
+  6,897 (86.9%). **Containment** (the share of PCED's analysis + definition found in order in the text's first 2× + 60 characters): 351 of
+  389 as cut (90.2%), **382 of 389 with the chain (98.2%)**; baseline 6,813 of 6,897 (98.8%). Closer to its own PCED entry than to the host's:
+  330 of 379 by §67's measure, 383 of 389 by containment. §67's measure undersells these splits (an unclosed `[`, a noise line or a
+  quotation before the definition sinks it): eight drawn at random from its 79 below 0.4 all began at the right entry. Three doubtful rows
+  (06 55935 ဂဏှိံ, 07 67068, 06 56895 ဂမေယျာသိ). *Decided without asking* then: containment as the second measure.
+- **The nine books: 30 on the image** (`sample30.json`, seed 1818; quota by book): **30 right, 0 wrong** (95% ≥ 88.6%), the start line only.
+  Row 30 (4/3 174421 ဧဓတိ) is printed ဧဓတိ²; ¹ is 174419, not adjacent (an index repeat).
+- **Proposed**: `farbody_split()` after the homonym passes; the chain; `ABH_FARBODY=0`; the per-row digest; ~106 drafts, 27 redrafts or
+  withdrawals, up to 29 host redrafts, 32 trims in the nine books; tokens ~0.8–2.0 M. Four questions (answered above).
+- *Tokens (the measurement)*: ~0.25 M by that session's counter; the three image sub-agents 194 k (6.5 k a row); ~0.45 M.
+
+### 2. The candidates found again after stage 2 (task 1)
+
+- **By the measurement's own scripts on today's articles** (`measure.py` + `farbody.py`, unchanged): line start + label 974 (1,003), inside a
+  farther body 543 (548), in a homonym run 45 (50), lost the line 3 (3), **taken 495 (495)**: 494 the same ids, every book's count the same;
+  in vol. 20 158610 dropped out (§88's reported nearest-host candidate beside ဝိဟာရဋ္ဌ², now split_runons' domain, not made) and 157548
+  ဝိသိဗ္ဗနာပေက္ခ came in (§88's *unsure* split: its nearest-host line was a see-line; its entry is further on, below). 493 of 494 keep the
+  same host, line and text; 4/3 176390's host moved from 176387 to 176388. **None of the 495 is a row `HOMONYM_FIX` placed**; the homonym
+  table touches 41 of the 974 line-start rows, all left alone.
+- **By the rule as built** (§3): **647** unlocated headwords at a line start + label in a farther body (the label test by
+  `normalise_label()`, as §69, not §67's count of ≥ 5), 37 of them in a homonym run, 1 whose host is an image-table row (4/3 176390: left
+  alone), 5 that lost their line → **604 proposed**: **492 of the 495**, and **112 more**, found by the label test (97 of them were
+  "elsewhere, substring only" for §67's count-based labels). The 3 of the 495 not proposed: 06 55935 ဂဏှိံ (its host lies *after* it, left
+  out by design; one of the measurement's three doubtful rows), 17 134647 ယာပိံသု (the label test finds its line in its nearest neighbour:
+  split_runons' domain, and 17 is a PCED book, so not split), 4/3 176390 (host an image-table row). 490 of the 492 have the same host and
+  line. 374 unlocated rows have their line in the nearest article with a body (split_runons' domain; in 01–19 left unsplit, §68).
+
+### 3. What was built (`tools/abhidhana_articles.py`)
+
+`farbody_split()` runs in `main()` after `split_runons()` (the nine books) and the homonym passes, before the witness analysis, `gate_head` and
+the hand corrections; in all 29 books.
+- *Candidates*: unlocated rows, not `homonym_fix`, not split, **not in a homonym run** (an adjacent id with the same headword), whose line is
+  not in the nearest article with a body on either side (split_runons' test, walking over bodiless rows).
+- *Host*: an article with a body on the candidate's index page ±1, **2–20 ids before it**, whose body has a line passing `_head_match`
+  (headword exact / folded / OCR misreading, then a label by `normalise_label()` or `[`); the host's best line (exact > fold > fuzzy), the best
+  host (rank, then nearest). A host placed by the image table is left alone. One line, one article.
+- *The split text*: to the next split line in the host, or a line that begins a headword of the neighbourhood (ids within 40 of the candidate
+  or the host) + label / `[` (§69's end, `lead` on), or the host's end.
+- *The chain*: when the text ends at the host's end, the article that follows the host in the page text (host `raw`'s last 80 characters found
+  in pages p and p + 1; the next located row between host and candidate whose `raw` starts within 3 characters) is a row between them, **not on
+  its own entry** (its head line fails R's `entry_tier` — strict, weak or sup — for its own headword; the strict test alone chained 14/3 194779
+  ပဿသိဿာမိ, whose label ကြို is printed unclosed, found on the first crops), not itself a host, and its first line begins no neighbourhood entry:
+  the candidate's text continues through that row's whole `raw`. That row then takes **its own entry line inside the host**, before the
+  candidate's line (`entry_tier`), up to the next split or neighbourhood line, when there is one; else it becomes **unlocated**, flagged
+  `farbody_unlocated` (answer 3). A row whose text ends inside the next row's text (the next row holds another entry after the run-on) is
+  not chained (1 case).
+- *Fields*, as §69: the split row gets `fields()` of its text, `raw`, `located: "split"`, `pdf_page` (the page its line stands on),
+  `split_from`, `split_rule` (`farbody:<exact|fold|fuzzy>:<label|bracket>:<distance>`, `+chain` when chained), `farbody_chain` (the chained
+  row), `split_checked` (`right` from the image, or `pced:right` / `pced:none` in 01–19), `split_replaced` (its old `located`, `pdf_page`). The
+  host: `body` less the lines, `citations`, `split_to` (added to), `body_before_split` (kept when §69 set it). A chained row moved to its own
+  line: `located: "split"`, `split_from` the host, `split_rule` `farbody-chain:own-line:<tier>`, `farbody_before` (old `located`, `pdf_page`,
+  head line), `farbody_text_to` (the candidate). A chained row left unlocated: its text fields removed, `farbody_unlocated`, `farbody_before`,
+  `farbody_text_to`.
+- **The gate.** *01–19, PCED* (the join's pairing, `witness/join-NN.jsonl`, and `pced_k.jsonl`; measure: containment): a text is
+  contradicted when it holds under 0.4 of its own entry, or another entry (the host's, the chained row's, another of the headword's) scores
+  ≥ 0.6 and ≥ 0.2 above its own (§86's margin), **or — added here — its tail, past 1.3× its own entry's length + 40 characters, holds ≥ 0.8
+  of a neighbour's entry (±8 ids)**: the text ran on into the next article. A chain is not made when the chained row's present text is its own
+  by PCED (≥ 0.6 and ≥ 0.2 above the candidate's entry); the split is then tried without it. A chained row's move to its own line is gated the
+  same way (contradicted → unlocated). No PCED entry: made, marked `pced:none` (0 cases). *The nine books*: only a split whose image verdict is
+  right for the same host and rule (`docs/splits-checked.tsv`, notes beginning "§89") is made; a chained row's move to its own line only when
+  its own verdict is right, else it is left unlocated. `split_runons()`'s reading of the TSV skips the §89 rows.
+- **Why the end test was added** (*decided without asking*): on the image, 27 of the 146 items read in the nine books had a wrong end (§4),
+  and containment, which reads only the text's start, cannot see an end. Calibrated on located rows with label + body in 01–19 (1,651, seed
+  11): a neighbour's entry ≥ 0.8 in the tail in 2.8% of them (an upper bound: those rows include hosts of run-ons), in 11.3% of the proposed
+  splits (53 of 467). It catches a text that swallowed the next entry; it cannot catch one cut a line short (§4: 9 of 39 wrong in the nine).
+- `ABH_FARBODY=0` turns it off; `ABH_FARBODY_TRACE=<dir>` writes every proposal (`farbody-NN.jsonl`: text, lines, chain, gate, decision).
+
+### 4. The image check (the nine books; task 3)
+
+**Items**: every proposed split in the nine books (**131**: 14/3 31, 20 21, 21 18, 22 13, 23 11, 24 11, 25 24, 4/3 2, 14/2 0; 35 chained)
+and every chained row that would move to its own line (**16**) — 147. The 19 chained rows without an own line would be left unlocated with
+their split; their verdict is the split's (its end is theirs). **Method** (§87–88's, adapted): each page rendered at 150 dpi (`pdftoppm
+-gray`), scaled to 1,800 px, cut at the gutter, each column read by Tesseract (`myab`, psm 6, from `~/Tipitaka/nissaya/tessdata`) **for line
+boxes only**; our OCR's lines aligned to them monotonically by text similarity against the L-then-R line list (a page's `col.psm6` text is
+sometimes one part holding both columns, sometimes the columns in the other order: the first crops, cut by an ink projection and our column
+order, landed on the wrong column and were discarded); a crop from 3 lines above the split's first line S (red bar) to 3 below its last line
+E (blue bar), one crop per column or page it crosses (163 crops for 147 items); our OCR's lines listed under each crop with their height in
+it (%) and the marks. Lean read-only sub-agents (`Explore`, the session's model), 10 items an agent, all crops read in one turn, one answer
+line an item: start yes / no (other) / unsure, end yes / no / unsure, a note. **Gate**: the first agent (W01, 10 items) **62.7 k = 6.3 k an
+item** (≤ 9 k): passed. First wave: 15 agents, **957 k** (59–67 k each; 6.5 k an item). One item (130) went unanswered by its agent.
+**Second reader** (the editor's rule): the 39 items where the first reader answered "no" (an other line), the unanswered one, and 11 of the
+107 right ones at random (seed 1889) — 51, on wider crops (6 lines above, 8 below), 6 agents, **422 k** (8.3 k an item). Of the 50 read twice
+the two readers gave the same start in 48 and the same end in 49, the same verdict in 50; the two start differences (20 197940, 21 198532:
+"no" against "no, another head" / "unsure") were read here in the text: both are fuzzy matches onto another headword's entry (ပိဋ္ဌိစက္က for
+ပိဋ္ဌိပတ္တ; ပိယဝတ္ထုအလာဘ for ပိယဝတ္ထုလောဘ). No image needed reading here beyond the two method checks (14/3 p. 248, 20 p. 124).
+
+| book | splits read | right | wrong | chained rows to their own line: right / wrong | made: splits (chained) | chained rows moved / left unlocated | hosts |
+|---|---:|---:|---:|---|---:|---|---:|
+| 14/3 | 31 | 22 | 9 | — | 22 (0) | — | 13 |
+| 20 | 21 | 13 | 8 | 1 / 1 | 13 (3) | 0 / 3 | 9 |
+| 21 | 18 | 12 | 6 | — | 12 (3) | 0 / 3 | 7 |
+| 22 | 13 | 9 | 4 | 2 / 1 | 9 (4) | 2 / 2 | 4 |
+| 23 | 11 | 10 | 1 | 2 / 0 | 10 (5) | 2 / 3 | 6 |
+| 24 | 11 | 8 | 3 | 3 / 0 | 8 (5) | 3 / 2 | 6 |
+| 25 | 24 | 20 | 4 | 4 / 2 | 20 (6) | 3 / 3 | 8 |
+| 4/3 | 2 | 2 | 0 | — | 2 (0) | — | 2 |
+| 14/2 | 0 | — | — | — | 0 | — | 0 |
+| **all** | **131** | **96 (73.3%)** | **35** | **12 / 4** | **96 (26)** | **10 / 16** | **55** |
+
+- **Right: 108 of 147 items (73.5%); wrong 39; unsure 0.** The start was right in 135 of 147 (91.8%); the measurement's 30 / 30 read the start
+  only. **Wrong**: 12 at the start (the line is another headword's: a fuzzy match onto a neighbour, an -ṃ form such as သံဝသေယျံ / သံဝိဇိံ
+  before the entry, a homonym ¹ of a run, the running head, a quotation); **18 at the end, too long** (the text takes in the next entry, whose
+  head OCR misread — an unclosed or misread label `(၇)`, `(ကာ၊ ကြို`, `()` — so the stop test did not see it, or the next column's running
+  head); **9 at the end, one line short** (a citation or cross-reference line wrapping past the line the stop test took for a head, e.g.
+  `ဟံသဝတီ (ခ) ကြည့်။`). Of the 16 chained rows' own lines, 12 right; the 4 wrong ones' rows are left unlocated where their split is made.
+- The wrong ones are not made; their verdict notes give the reader's start and end (e.g. "ends at … 3 lines above E"), for a later pass.
+- **Noted on the image**: 157545 ဝိသိဗ္ဗနဒိဝသ and 157548 ဝိသိဗ္ဗနာပေက္ခ (20, p. 124), §88's *wrong* / *unsure*, are right here: §88's
+  line was a see-line inside ဝိသိဗ္ဗန¹, this one is the printed entry further on (verdicts on different lines, so both stand). The readers saw
+  print spellings the index does not have: ဝိသက္ကိယဒူတ (OCR ဝိသတ္တိယ), ဟိရညပူရ (index ပုရ), ဩသာရေသိ¹; the printed superscripts ဧဓတိ¹ ²
+  (4/3 174421, the measurement's row 30 printed ²: to check against the index order, not done).
+
+### 5. Books 01–19: the PCED gate
+
+**473 proposed, 427 made**; not made **46**: own entry under 0.4 **8**, the end test **38**; another entry 0. Chains proposed 121; **29
+dropped** by PCED (the chained row's present text its own, or the chained text contradicted), the split then made without the chain where
+PCED allowed; **92 made chained**: 25 chained rows moved to their own line, **67 left unlocated** (65 own line not found, 2 their move
+contradicted). No split made without a PCED entry. **Not read on the image**: PCED checks the start (containment) and, by the added test, an
+end that swallowed a neighbour's entry; it cannot see an end one line short. In the nine books that was 9 of 147 items (6%): a similar share
+of the 427 may lose a wrapped citation line to the host.
+
+### 6. Re-runs and tests (task 4)
+
+- **Articles** re-run for all 29 books with the rule on (`ABH_FARBODY_TRACE`); **romanisation** for all 29. 28 books change (all but 14/2):
+  `articles.jsonl`, `articles-report.md`, `pali.jsonl`, `pali-report.md` (112 files). `abhidhana_ocr_stats.py` reads only the page records,
+  not the articles: its figures cannot change, and `ocr-report.md` is untouched (not re-run).
+- **`ABH_FARBODY=0`: byte for byte.** All 116 files (the four outputs × 29 books) identical to stage 2's (6e76dfb's working tree).
+- **`ABH_HOMONYM=0 ABH_FARBODY=0`: byte for byte with the pre-1.8 files.** All 116 files (29 books) identical to the pre-1.8 checksums
+  (`tmp/homonym18/stage/h18-orig-0930a.md5`; §88 checked the 64 of its 16 books).
+- **The digest** (`tmp/farbody18/b18/digest.py`, against stage 2's files): the same ids in the same order in every book; **913 rows
+  changed, every one explained, 0 exceptions**: **523 split rows** (405 plain, 118 chained; each split row was unlocated, its text a piece of
+  its host's old body, and a chained split's text ends with the chained row's whole old `raw`), **272 hosts cut** (only `body`, `citations`,
+  `split_to`, `body_before_split` changed; the new body the old one's lines in order), **35 chained rows on their own line** (text a piece
+  of the host's old body, marked), **83 chained rows left unlocated** (no text, marked; their old `raw` at the end of the split's text).
+- **`pali.jsonl`**: 844 rows changed, **0 outside** the changed article rows.
+- Unlocated rows, 29 books: 12,546 → 12,106 (−523 + 83); rows with label + body 195,623 → 196,172; rows without a body 12,904 → 12,467.
+  The nine books' rows without a body: 2,524 → 2,444.
+- **Witness joins** (01–19): not re-run (`body_ratio` follows the new bodies; `seq`, which the gate reads, does not change): on the Mac in
+  stage 3, as §86.
+
+| book | farther-body hits | in a homonym run | lost the line | proposed | chained | PCED: own < 0.4 / end | chains dropped (PCED) | made | chained rows: own line / unlocated | hosts |
+|---|---:|---:|---:|---:|---:|---|---:|---:|---|---:|
+| 01 | 25 | 0 | 0 | 25 | 6 | 1 / 1 | 2 | 23 | 1 / 3 | 13 |
+| 02 | 14 | 1 | 0 | 13 | 5 | 1 / 0 | 0 | 12 | 1 / 4 | 7 |
+| 03 | 33 | 3 | 1 | 29 | 8 | 2 / 2 | 3 | 25 | 3 / 2 | 12 |
+| 4/1 | 28 | 1 | 0 | 27 | 6 | 0 / 7 | 4 | 20 | 1 / 1 | 11 |
+| 4/2 | 31 | 2 | 0 | 29 | 4 | 0 / 3 | 1 | 26 | 0 / 3 | 11 |
+| 05 | 19 | 1 | 0 | 18 | 7 | 0 / 0 | 2 | 18 | 1 / 4 | 11 |
+| 06 | 55 | 5 | 2 | 48 | 8 | 1 / 8 | 3 | 39 | 2 / 3 | 16 |
+| 07 | 27 | 1 | 0 | 26 | 7 | 1 / 2 | 2 | 23 | 0 / 5 | 10 |
+| 08 | 25 | 4 | 0 | 21 | 8 | 0 / 1 | 2 | 20 | 1 / 5 | 11 |
+| 09 | 13 | 0 | 0 | 13 | 8 | 1 / 1 | 1 | 11 | 0 / 7 | 9 |
+| 10 | 12 | 0 | 0 | 12 | 2 | 0 / 0 | 0 | 12 | 0 / 2 | 7 |
+| 11 | 22 | 0 | 0 | 22 | 3 | 0 / 0 | 0 | 22 | 1 / 2 | 9 |
+| 12 | 4 | 0 | 0 | 4 | 2 | 0 / 0 | 0 | 4 | 2 / 0 | 3 |
+| 13 | 16 | 2 | 0 | 14 | 4 | 0 / 1 | 1 | 13 | 0 / 3 | 7 |
+| 14/1 | 11 | 1 | 0 | 10 | 2 | 0 / 2 | 0 | 8 | 0 / 2 | 4 |
+| 15 | 35 | 0 | 0 | 35 | 3 | 0 / 3 | 1 | 32 | 1 / 1 | 12 |
+| 16 | 36 | 1 | 0 | 35 | 10 | 1 / 3 | 4 | 31 | 3 / 3 | 17 |
+| 17 | 26 | 2 | 0 | 24 | 2 | 0 / 2 | 0 | 22 | 0 / 2 | 10 |
+| 18 | 25 | 4 | 0 | 21 | 10 | 0 / 0 | 2 | 21 | 5 / 3 | 13 |
+| 19 | 47 | 0 | 0 | 47 | 16 | 0 / 2 | 1 | 45 | 3 / 12 | 24 |
+| 14/2 | 0 | 0 | 0 | 0 | 0 | — | — | 0 | — | 0 |
+| 14/3 | 33 | 0 | 2 | 31 | 1 | image | — | 22 | 0 / 0 | 13 |
+| 20 | 22 | 1 | 0 | 21 | 7 | image | — | 13 | 0 / 3 | 9 |
+| 21 | 18 | 0 | 0 | 18 | 4 | image | — | 12 | 0 / 3 | 7 |
+| 22 | 13 | 0 | 0 | 13 | 6 | image | — | 9 | 2 / 2 | 4 |
+| 23 | 16 | 5 | 0 | 11 | 5 | image | — | 10 | 2 / 3 | 6 |
+| 24 | 12 | 1 | 0 | 11 | 5 | image | — | 8 | 3 / 2 | 6 |
+| 25 | 24 | 0 | 0 | 24 | 7 | image | — | 20 | 3 / 3 | 8 |
+| 4/3 | 5 | 2 | 0 | 2 (+1 host an image-table row) | 0 | image | — | 2 | 0 / 0 | 2 |
+| **all** | **647** | **37** | **5** | **604** | **156** | **8 / 38** | **29** | **523** | **35 / 83** | **272** |
+
+### 7. The stage 3 lists (task 5)
+
+- **`tmp/homonym18/moved-ids.tsv`**: now **2,754 rows**: stage 1–2's 1,844 + the **913** ids this step changed (`stage` "farbody", roles
+  `farbody-split`, `farbody-split-chained`, `farbody-host-cut`, `farbody-chained-own-line`, `farbody-chained-unlocated`; the page and
+  `located` before (stage 2) and now); 3 ids already listed have " + farbody" and the role added. For the editor's D1 check before the push.
+- **`tmp/homonym18/s1/out/meaning-rows.tsv`** (the nine books): **1,036 rows**, +176 new and 1 extended (177 farbody ids): **draft 105** (96
+  split rows, none with a Meaning row; 9 chained rows on their own line without one); **redraft 1** (a chained row on its own line with a
+  Meaning); **withdraw 6** (chained rows left unlocated whose Meaning translated the other headword's text: "not yet translated"; 10 more
+  have no Meaning row); **hosts 55**: 31 name the split headword in their `omitted` line (**trim `omitted`** only, §70), **22 do not
+  (classify as §70**, redraft those that translated it), 2 have no Meaning. So stage 3 gains ~105 drafts, up to 29 redrafts / withdrawals
+  after classification, 31 trims (the measurement's ~140–165 lines, fewer because 35 splits were wrong on the image).
+- **Rows of the check files among the changed ids**: `docs/page-checks.tsv` 2 (180565, 217243); `docs/splits-checked.tsv` before §89 2
+  (157545, 157548, above); `docs/translation/revision-queue.tsv` 1 (155331); `corrections.tsv`, `corrections-es.tsv`, `homonyms-checked.tsv`
+  none. The PCED books' Meaning is PCED's per headword and does not change.
+
+**Files changed**: `tools/abhidhana_articles.py` (`farbody_split()`, `_farbody_checked()`, `_pced_cont()`, `_farbody_pced()`; `main()`
+calls it; `_split_checked()` skips §89 rows); `docs/splits-checked.tsv` (+166 rows: 131 splits, 16 chained rows' own lines, 19 chained rows
+left unlocated, all with notes beginning "§89"); 112 files under `ocr/` (the four outputs of 28 books); this section; `docs/NEXT-SESSION.md`.
+Gitignored: `tmp/homonym18/moved-ids.tsv`, `s1/out/meaning-rows.tsv`; `tmp/farbody18/b18/` (the scripts, the traces, the item list with both
+readers' answers, the crops and the agents' task files).
+
+**Can be deleted** (nothing deleted here): `tmp/farbody18/snap/`, `snap-art.tgz`, `snap-rest.tgz`, `snap-meanings.tgz`, `img/`, `img.tar`
+(the measurement's copies and 25 page renders, ~0.13 GB); `tmp/farbody18/b18/stage/` (this build's input tarballs, 0.2 GB), `tmp/farbody18/b18/repo.tgz*` and `work.tgz*` (the transfer archives, already unpacked, 0.34 GB with their parts); still from §86–88:
+`tmp/homonym18/stage/` (0.6 GB), `tmp/homonym18/stage2/` tarballs (~0.35 GB), `tmp/homonym18/img/`, `img2/`, `img3/`.
+
+*Tokens: this session's counter ~0.5 M (context: tool output, the scripts, 4 page images and crops read here); **sub-agents 1.38 M** (first wave 15 agents
+957 k, second 6 agents 422 k; each figure the agent's final context, read from its transcript). ~1.9 M in all. No git run in the VM.*

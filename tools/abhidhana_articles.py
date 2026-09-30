@@ -596,6 +596,7 @@ def _split_checked():
     if SPLIT_CHECKED.exists():
         for ln in SPLIT_CHECKED.read_text(encoding='utf-8').splitlines()[1:]:
             c = ln.split('\t')
+            if len(c) >= 8 and c[7].startswith('§89'): continue       # farbody_split's own verdicts (brief §89)
             if len(c) >= 5 and c[0].strip().isdigit(): out[int(c[0])] = (c[4].strip(), int(c[3]) if c[3].strip().isdigit() else None)
     return out
 
@@ -754,6 +755,304 @@ def split_runons(book, rows, allhw, pages_text):
         ([f'split candidates not in docs/splits-checked.tsv with this host, not made: {len(unchecked)}: '
           + ' '.join(f'{rs[i]["id"]}<{rs[won[i][1]]["id"]}' for i in sorted(unchecked))] if unchecked else [])
 
+
+# ---- farther-body run-ons (brief §89; plan step 1.8) ----
+# An unlocated headword, not in a homonym run, whose entry line (the headword at a line start, then a label or [, as
+# _head_match) lies inside the body of an article placed on its page (or the page before or after, as the measurement)
+# further back than split_runons' host: the rows between
+# were placed out of order, and that article's span swallowed the entry. The line, up to the next split line in the host,
+# or a line that begins a headword of the neighbourhood (+ label or [), or the host's end, becomes the row's text (§69).
+# The chain: when the text ends at the host's end and the article that follows it in the page text is a row between host
+# and candidate (id order), placed on a line that is not its own entry, the entry runs on into that row's text: the row's
+# whole text goes to the candidate, and the row takes its own entry line inside the host (before the candidate's line)
+# when one is there, else it becomes unlocated, flagged `farbody_unlocated` (the editor, 30 Sep: not left showing another
+# headword's text). All 29 books (the editor, 30 Sep): in 01-19 PCED gates each split and each moved row (a text PCED
+# contradicts is not made); in the nine books without PCED only what the page image said right is made (rows of
+# docs/splits-checked.tsv whose note begins "§89"). Rows the homonym image table placed (homonym_fix) are left alone:
+# never a candidate, a host or a chained row. ABH_FARBODY=0 turns it off; ABH_FARBODY_TRACE=<dir> writes every proposal.
+FARBODY = __import__('os').environ.get('ABH_FARBODY', '1') != '0'
+FARBODY_WINDOW = 20          # a host within 20 ids before the candidate (the measurement: 494 of 495 were 2-17 before)
+_TEXT_FIELDS = ('label', 'label_ocr', 'label_how', 'analysis', 'headword_ocr', 'analysis_ocr', 'analysis_bracket_damaged',
+                'analysis_open_lost', 'label_bracket_damaged', 'label_debris', 'headword_variant', 'noise_lines',
+                'body_head_restored', 'body', 'citations', 'raw', 'continues_on', 'runs_through', 'continuation_uncertain')
+
+
+def _farbody_checked():
+    """{id: (verdict, host, rule)} from the rows of docs/splits-checked.tsv whose note begins '§89'"""
+    out = {}
+    if SPLIT_CHECKED.exists():
+        for ln in SPLIT_CHECKED.read_text(encoding='utf-8').splitlines()[1:]:
+            c = ln.split('\t')
+            if len(c) >= 8 and c[0].strip().isdigit() and c[7].startswith('§89'):
+                out[int(c[0])] = (c[4].strip(), int(c[3]) if c[3].strip().isdigit() else None, c[6].strip())
+    return out
+
+
+def _pced_cont(text, w):
+    """containment: the share of PCED's analysis + definition (spaces out, first 600 characters) found in order in the
+    first 2x that length + 60 characters of the text (the measure of the 30 Sep measurement, tmp/farbody18/cont.py)"""
+    t = _SP((w.get('analysis') or '') + (w.get('definition') or ''))[:600]
+    if not t: return None
+    ob = _SP(text)[:2 * len(t) + 60]
+    if not ob: return 0.0
+    return round(sum(b.size for b in SequenceMatcher(None, ob, t, autojunk=False).get_matching_blocks()) / len(t), 3)
+
+
+def _farbody_pced(book):
+    """a gate(text, id, other ids) for the PCED books: ('right' | 'contradicted' | 'none', own, (best other, seq)).
+    Contradicted: the text holds under 0.4 of the row's own PCED entry, or another entry (the host's, the chained row's,
+    another of the headword's) scores >= 0.6 and >= 0.2 above its own (§86's margin, on containment)."""
+    jf = ROOT / f'witness/join-{book}.jsonl'
+    J = {}
+    if jf.exists():
+        for line in jf.open(encoding='utf-8'):
+            j = json.loads(line)
+            if j.get('seq') is not None: J[j['id']] = j['seq']
+    E, ex, fo = _pced()
+    def gate(text, rid, hw, others, nbrs=()):
+        s = J.get(rid)
+        if s is None or s not in E: return 'none', None, None, None
+        o = _pced_cont(text, E[s])
+        if o is None: return 'none', None, None, None
+        h = _SP(hw)
+        seqs = ({J.get(x) for x in others} | set(ex.get(h) or fo.get(fold(h)) or [])) - {s, None}
+        alts = [(v, q) for q in seqs if q in E for v in [_pced_cont(text, E[q])] if v is not None]
+        a = max(alts) if alts else None
+        if o < .4: return 'contradicted', o, a, 'own < 0.4'
+        if a and a[0] >= .6 and a[0] - o >= .2: return 'contradicted', o, a, 'another entry'
+        # the end (brief §89): the text's tail, past what its own entry would fill (1.3x its PCED length + 40), holds another
+        # neighbour's PCED entry (>= 0.8 contained): the text ran on into the next article. Located rows with label + body
+        # score so in 2.8% (1,651 rows, seed 11), the proposed splits in 11.3%.
+        own = _SP((E[s].get('analysis') or '') + (E[s].get('definition') or ''))
+        tail = _SP(text)[int(len(own) * 1.3) + 40:]
+        if len(tail) >= 20:
+            for x in nbrs:
+                q = J.get(x)
+                if q in E and q != s:
+                    c = _pced_cont(tail, E[q])
+                    if c is not None and c >= .8: return 'contradicted', o, (c, q), f'end: holds {x}'
+        return 'right', o, a, None
+    return gate
+
+
+def farbody_split(book, rows, allhw, pages_text):
+    """split farther-body run-ons out of their host, in place (brief §89). Returns (report lines, proposals)."""
+    if not FARBODY: return [], []
+    from abhidhana_witness_analysis import PCED_BOOKS
+    pced = book in PCED_BOOKS
+    gate = _farbody_pced(book) if pced else None
+    checked = {} if pced else _farbody_checked()
+    rs = sorted(rows, key=lambda r: int(r['id'])); n = len(rs)
+    H = [_SP(r['headword']) for r in rs]; ids = [int(r['id']) for r in rs]
+    L = {}
+    def lines(j):
+        if j not in L: L[j] = _jlines(rs[j].get('body') or '')
+        return L[j]
+    def inrun(i):
+        return ((i > 0 and H[i - 1] == H[i] and ids[i - 1] == ids[i] - 1)
+                or (i + 1 < n and H[i + 1] == H[i] and ids[i + 1] == ids[i] + 1))
+    def hm_line(ln, q, lead=False):
+        return _head_match(ln, H[q], fold(H[q]), allhw, rs[q].get('iast', ''), lead)
+    def own_entry(ln, q):      # R's wider test (strict, weak or sup): a row's own entry line, for the chain
+        return entry_tier(ln, H[q], fold(H[q]), allhw, rs[q].get('iast', ''))
+    st = {k: 0 for k in ('nearest', 'farther', 'run', 'host_fixed', 'lost', 'taken')}
+    claims = {}
+    for i, r in enumerate(rs):
+        if r['located'] != 'unlocated' or r.get('homonym_fix') or r.get('split_from'): continue
+        # the nearest article with a body, each side (walking over bodiless rows): split_runons' domain (§67 / §69)
+        near = False
+        for rng in (range(i - 1, max(-1, i - 40), -1), range(i + 1, min(n, i + 40))):
+            for j in rng:
+                if not rs[j].get('body'): continue
+                near = near or any(hm_line(ln, i) for ln in lines(j)[0])
+                break
+        if near: st['nearest'] += 1; continue
+        best = None
+        for j in range(i - 2, max(-1, i - FARBODY_WINDOW - 1), -1):
+            if rs[j].get('pdf_page') not in (r['pdf_page'] - 1, r['pdf_page'], r['pdf_page'] + 1) or not rs[j].get('body'): continue
+            for k, ln in enumerate(lines(j)[0]):         # the host's best line: exact > fold > fuzzy, the first of a rank
+                hm = hm_line(ln, i)
+                if hm:
+                    sc = (_KINDRANK[hm[0]], -(i - j))
+                    if best is None or sc > best[0]: best = (sc, j, k, hm)
+        if not best: continue
+        st['farther'] += 1
+        if inrun(i): st['run'] += 1; continue
+        if rs[best[1]].get('homonym_fix'): st['host_fixed'] += 1; continue
+        claims.setdefault((best[1], best[2]), []).append((best[0], i, best[3]))
+    won = {}
+    for (j, k), cs in claims.items():                  # one line, one article: exact > fold > fuzzy, then the nearest host
+        cs.sort(key=lambda c: c[0], reverse=True)
+        won[cs[0][1]] = (j, k, cs[0][2]); st['lost'] += len(cs) - 1
+    st['taken'] = len(won)
+    # the proposals: each split's text, and the chain
+    byhost = {}
+    for i, (j, k, hm) in won.items(): byhost.setdefault(j, []).append((k, i, hm))
+    props = []; chained = set()
+    def page_of(host, line):
+        head = _SP(line)[:24]
+        for q in [host['pdf_page']] + ([host['continues_on']] if host.get('continues_on') else []) + host.get('runs_through', [])[1:]:
+            if head and head in _SP('\n'.join(_jlines(pages_text(q))[0])): return q
+        return host['pdf_page']
+    for j, xs in sorted(byhost.items()):
+        host = rs[j]; jl, ls = lines(j); ks = sorted(k for k, _, _ in xs)
+        nearhw = set()
+        for _, i, _ in xs:
+            nearhw |= {q for q in list(range(max(0, i - 40), min(n, i + 41))) + list(range(max(0, j - 40), min(n, j + 41)))}
+        nearhw -= {i for _, i, _ in xs}
+        nearq = {}
+        for q in nearhw: nearq.setdefault((H[q], rs[q].get('iast', '')), q)
+        def is_stop(ln):
+            return any(_head_match(ln, hh, fold(hh), allhw, ia, lead=True) for hh, ia in nearq)
+        stops = [q for q in range(1, len(jl)) if q not in ks and is_stop(jl[q])]
+        # the chain, for a split that ends at the host's end
+        chains = {}
+        for k, i, hm in xs:
+            ends = sorted(set(ks) | set(stops))
+            if next((q for q in ends if q > k), None) is not None: continue
+            p = host['pdf_page']; t = _SP(pages_text(p) + '\n' + pages_text(p + 1))
+            tail = _SP(host.get('raw'))[-80:]; ph = t.find(tail) if tail else -1
+            if ph < 0: chains[i] = ('host not found in the page text', None); continue
+            pe = ph + len(tail); nxt = None
+            for m in range(j + 1, i):
+                rm = rs[m]
+                if rm['located'] == 'unlocated' or not rm.get('raw'): continue
+                q = t.find(_SP(rm['raw'])[:60], max(0, pe - 5))
+                if q >= 0 and (nxt is None or q < nxt[0]): nxt = (q, m)
+            if not nxt or nxt[0] - pe > 3: chains[i] = ('next article not a row between', None); continue
+            m = nxt[1]; rm = rs[m]
+            if rm.get('homonym_fix'): chains[i] = ('next row placed by the image table', None); continue
+            if m in byhost or m in chained: chains[i] = ('next row is itself a host or chained', None); continue
+            if own_entry(rm['raw'].split('\n')[0], m): chains[i] = ('next row on its own entry', None); continue
+            near2 = {(H[q], rs[q].get('iast', '')) for q in range(max(0, i - 40), min(n, i + 41)) if q != i}
+            mjl = _jlines(rm['raw'])[0]
+            end = next((q for q in range(len(mjl)) if any(_head_match(mjl[q], hh, fold(hh), allhw, ia, lead=True)
+                                                           for hh, ia in near2)), len(mjl))
+            if end == 0: chains[i] = ('next row begins a neighbour\'s entry', None); continue
+            if end < len(mjl): chains[i] = ('the entry ends inside the next row (not chained)', None); continue
+            k2 = next((q for q in range(0, k) if q not in ks and own_entry(jl[q], m)), None)
+            chains[i] = ('chain', (m, k2)); chained.add(m)
+        starts = set(ks) | {c[1][1] for c in chains.values() if c[1] and c[1][1] is not None}
+        ends = sorted(starts | set(stops))
+        def seg(k):
+            nxt = next((q for q in ends if q > k), len(ls))
+            joined = jl[k] != ls[k]
+            s = [jl[k]] + ls[k + (2 if joined else 1):nxt] if not (joined and k + 1 >= nxt) else [jl[k]]
+            return s, nxt
+        for k, i, hm in sorted(xs):
+            s, nxt = seg(k)
+            c = chains.get(i)
+            pr = dict(id=rs[i]['id'], i=i, hw=rs[i]['headword'], host=host['id'], j=j, k=k, nxt=nxt, how=hm[0], delim=hm[1],
+                      dist=i - j, text='\n'.join(s), page=page_of(host, jl[k]), host_page=host['pdf_page'],
+                      end='split' if nxt in starts else ('neighbour head' if nxt < len(ls) else 'host end'),
+                      next_line=ls[nxt] if nxt < len(ls) else None, chain_note=c[0] if c else None, chain=None, mid=None)
+            pr['rule'] = f'farbody:{hm[0]}:{hm[1]}:{i - j}'
+            if c and c[1]:
+                m, k2 = c[1]; rm = rs[m]
+                pr['chain'] = dict(id=rm['id'], m=m, hw=rm['headword'], raw=rm['raw'], page=rm['pdf_page'],
+                                   located=rm['located'], k2=k2)
+                pr['rule'] += '+chain'
+                if k2 is not None:
+                    ms, mn = seg(k2)
+                    pr['mid'] = dict(id=rm['id'], m=m, hw=rm['headword'], k=k2, nxt=mn, text='\n'.join(ms),
+                                     page=page_of(host, jl[k2]), rule=f'farbody-chain:own-line:{own_entry(jl[k2], m)[0]}',
+                                     next_line=ls[mn] if mn < len(ls) else None)
+            props.append(pr)
+    # the gate: PCED (01-19) or the page image (the nine books)
+    made = []
+    for pr in props:
+        i = pr['i']; ch = pr['chain']
+        full = pr['text'] + ('\n' + ch['raw'] if ch else '')
+        pr['decision'] = None
+        if pced:
+            nb_i = [rs[q]['id'] for q in range(max(0, i - 8), min(n, i + 9)) if q not in (i, pr['j'])]
+            g = gate(full, pr['id'], pr['hw'], [pr['host']] + ([ch['id']] if ch else []), nb_i)
+            pr['pced'] = g
+            if ch:
+                gm = gate(ch['raw'], ch['id'], ch['hw'], [pr['id'], pr['host']])
+                pr['pced_mid_now'] = gm
+                # the chained row's present text is its own by PCED (>= 0.6 and >= 0.2 above the candidate's entry, §86's
+                # "right"): the chain would take it away, so it is not made
+                owns = gm[1] is not None and gm[1] >= .6 and (not gm[2] or gm[1] - gm[2][0] >= .2)
+                if g[0] == 'contradicted' or owns:
+                    g0 = gate(pr['text'], pr['id'], pr['hw'], [pr['host']], nb_i)
+                    pr['pced_plain'] = g0
+                    pr['chain_dropped'] = 'PCED'
+                    ch = None; g = g0
+            if g[0] == 'contradicted': pr['decision'] = 'not made (PCED)'; continue
+            pr['decision'] = 'made' if g[0] == 'right' else 'made (no PCED entry)'
+            if ch and pr['mid']:
+                mm = pr['mid']['m']
+                gm2 = gate(pr['mid']['text'], ch['id'], ch['hw'], [pr['id'], pr['host']],
+                           [rs[q]['id'] for q in range(max(0, mm - 8), min(n, mm + 9)) if q not in (mm, pr['j'])])
+                pr['pced_mid'] = gm2
+                pr['mid_decision'] = 'unlocated (PCED)' if gm2[0] == 'contradicted' else 'own line'
+            elif ch: pr['mid_decision'] = 'unlocated (own line not found)'
+        else:
+            v = checked.get(int(pr['id']))
+            if not v or v[1] != int(pr['host']) or v[2] != pr['rule']:
+                pr['decision'] = 'not made (not checked on the image)' if not v else f'not made (image: {v[0]}; checked {v[2]} < {v[1]})'
+                if v and v[0] == 'right': pr['decision'] = f'not made (checked another proposal: {v[2]} < {v[1]})'
+                continue
+            if v[0] != 'right': pr['decision'] = f'not made (image: {v[0]})'; continue
+            pr['decision'] = 'made (image)'
+            if ch and pr['mid']:
+                vm = checked.get(int(ch['id']))
+                ok = vm and vm[0] == 'right' and vm[1] == int(pr['host']) and vm[2] == pr['mid']['rule']
+                pr['mid_decision'] = 'own line' if ok else f'unlocated (image: {vm[0] if vm else "not checked"})'
+            elif ch: pr['mid_decision'] = 'unlocated (own line not found)'
+        made.append((pr, ch))
+    # apply
+    covered = {}
+    for pr, ch in made:
+        i, j = pr['i'], pr['j']; r = rs[i]; host = rs[j]
+        covered.setdefault(j, set()).update(range(pr['k'], pr['nxt']))
+        text = pr['text'] + ('\n' + ch['raw'] if ch else '')
+        before = {f: r.get(f) for f in ('located', 'pdf_page', 'raw', 'label', 'body') if r.get(f) is not None}
+        for f in _TEXT_FIELDS: r.pop(f, None)
+        r.update(fields(text, r['headword'], r.get('iast', '')))
+        r['raw'] = text; r['pdf_page'] = pr['page']; r['located'] = 'split'
+        r['split_from'] = host['id']; r['split_rule'] = pr['rule'] if ch else pr['rule'].replace('+chain', '')
+        if ch: r['farbody_chain'] = ch['id']
+        if before: r['split_replaced'] = before
+        if pced: r['split_checked'] = 'pced:' + ('right' if (pr.get('pced_plain') or pr['pced'])[0] == 'right' else 'none')
+        else: r['split_checked'] = 'right'
+        if ch:
+            m = ch['m']; rm = rs[m]
+            fb = {'located': rm['located'], 'pdf_page': rm['pdf_page'], 'raw': rm['raw'].split('\n')[0]}
+            for f in _TEXT_FIELDS: rm.pop(f, None)
+            rm['farbody_before'] = fb; rm['farbody_text_to'] = r['id']
+            if pr.get('mid_decision') == 'own line':
+                md = pr['mid']
+                covered[j].update(range(md['k'], md['nxt']))
+                rm.update(fields(md['text'], rm['headword'], rm.get('iast', '')))
+                rm['raw'] = md['text']; rm['pdf_page'] = md['page']; rm['located'] = 'split'
+                rm['split_from'] = host['id']; rm['split_rule'] = md['rule']
+                rm['split_checked'] = ('pced:' + ('right' if pr['pced_mid'][0] == 'right' else 'none')) if pced else 'right'
+            else:
+                rm['located'] = 'unlocated'; rm['farbody_unlocated'] = True
+    for j, cov in covered.items():
+        host = rs[j]; jl, ls = lines(j)
+        old = host['body']
+        host['body'] = re.sub(r'[ \t]+', ' ', '\n'.join(ln for q, ln in enumerate(ls) if q not in cov)).strip()
+        host['citations'] = [re.sub(r'\s+', '', cite_trim(c)) for c in CITE.findall(host['body'])]
+        host['split_to'] = sorted(set(host.get('split_to', [])) | {pr['id'] for pr, _ in made if pr['j'] == j}
+                                  | {ch['id'] for pr, ch in made if pr['j'] == j and ch and pr.get('mid_decision') == 'own line'})
+        host.setdefault('body_before_split', old)
+    nm = len(made); nch = sum(1 for _, ch in made if ch)
+    own = sum(1 for pr, ch in made if ch and pr.get('mid_decision') == 'own line')
+    _nm = __import__('collections').Counter(pr['decision'] for pr in props if not pr['decision'].startswith('made'))
+    rep = [f'farther-body run-ons (§89): {st["farther"]} unlocated headwords at a line start + label in a farther body '
+           f'(in a homonym run {st["run"]}, host placed by the image table {st["host_fixed"]}, lost the line {st["lost"]}); '
+           f'{st["taken"]} proposed, {nm} made (chained {nch}: {own} rows moved to their own line, {nch - own} left unlocated); '
+           f'hosts {len(covered)}; not made {len(props) - nm}'
+           + (' (' + ', '.join(f'{k} {v}' for k, v in sorted(_nm.items())) + ')' if _nm else '')]
+    tp = __import__('os').environ.get('ABH_FARBODY_TRACE')
+    if tp:
+        with open(f'{tp}/farbody-{book}.jsonl', 'w', encoding='utf-8') as tf:
+            tf.write(json.dumps(dict(stats=st), ensure_ascii=False) + '\n')
+            for pr in props: tf.write(json.dumps(pr, ensure_ascii=False, default=str) + '\n')
+    return rep, props
 
 # ---- homonyms placed on each other's line: the order rule R and the PCED pass (brief §85, §86; plan step 1.8) ----
 # A run is a maximal sequence of consecutive index ids with one headword (spaces removed). The index is ground truth
@@ -1195,14 +1494,17 @@ def main(book):
                     for x in order_rule.trace: tf.write(json.dumps(dict(x, stage='after gate'), ensure_ascii=False) + '\n')
 
     # run-on articles split out of their neighbour (books without PCED only; brief §67, §69)
+    _pt = {}
+    def pages_text(q):
+        if q not in _pt:
+            fp = pdir / f'p{q:04d}.json'
+            _pt[q] = page_text(json.loads(fp.read_text())) if fp.exists() else ''
+        return _pt[q]
     if book in SPLIT_BOOKS:
-        _pt = {}
-        def pages_text(q):
-            if q not in _pt:
-                fp = pdir / f'p{q:04d}.json'
-                _pt[q] = page_text(json.loads(fp.read_text())) if fp.exists() else ''
-            return _pt[q]
         for m in split_runons(book, rows, allhw, pages_text): print(m)
+    # farther-body run-ons, all 29 books (brief §89); after split_runons and the homonym passes
+    if FARBODY:
+        for m in farbody_split(book, rows, allhw, pages_text)[0]: print(m)
     # the compound analysis from the typed PCED witness where it has one (tools/abhidhana_witness_analysis.py)
     from abhidhana_witness_analysis import apply as apply_witness_analysis
     for m in apply_witness_analysis(book, rows): print(m)

@@ -6,23 +6,23 @@
 
 | | |
 |---|---:|
-| located verbatim (line start or before ( / [ ) | 4,498 = 61.8% |
+| located verbatim (line start or before ( / [ ) | 4,495 = 61.8% |
 | located verbatim after folding (tools/abhidhana_fold.py) | 162 = 2.2% |
 | located verbatim, inline only | 43 = 0.6% |
 | located by bounded fuzzy match | 1,812 = 24.9% |
-| **located, any** | **6,515 = 89.5%** |
-| unlocated | 764 = 10.5% |
-| label ( ) read | 6,217 = 85.4% |
-| label normalised to the closed set (docs/labels.md) | 6,106 = 83.9% |
-| of which read exactly as printed / mapped / inferred from the ending | 4,650 / 1,454 / 2 |
-| label read but left unnormalised | 111 = 1.5% |
-| compound analysis [ ] recovered by the OCR | 5,378 = 73.9% |
+| **located, any** | **6,525 = 89.6%** |
+| unlocated | 754 = 10.4% |
+| label ( ) read | 6,229 = 85.6% |
+| label normalised to the closed set (docs/labels.md) | 6,119 = 84.1% |
+| of which read exactly as printed / mapped / inferred from the ending | 4,658 / 1,459 / 2 |
+| label read but left unnormalised | 110 = 1.5% |
+| compound analysis [ ] recovered by the OCR | 5,388 = 74.0% |
 | compound analysis taken from the typed PCED witness (tools/abhidhana_witness_analysis.py) | 7,272 = 99.9% |
 | compound analysis, either | 7,274 = 99.9% |
-| of which + signs repaired (normalise_analysis) | 1,614 = 22.2% |
-| non-empty body | 6,509 = 89.4% |
-| at least one citation parsed | 4,449 = 61.1% |
-| label + body (the article is usable) | 6,105 = 83.9% |
+| of which + signs repaired (normalise_analysis) | 1,615 = 22.2% |
+| non-empty body | 6,519 = 89.6% |
+| at least one citation parsed | 4,452 = 61.2% |
+| label + body (the article is usable) | 6,118 = 84.1% |
 
 **Romanised headwords against OSBCT** (682,010 canonical words):
 
@@ -32,9 +32,9 @@
 | inside a canonical word | 3,137 = 43.1% |
 | neither | 2,407 = 33.1% |
 
-Labels, normalised: (တိ) 1,629 · (ပု) 1,434 · (န) 1,261 · (ကြိ) 748 · (ထီ) 543 · (ကာ၊ကြိ) 175 · (ကြိ၊ဝိ) 149 · (ပု၊န) 53 · (န၊ထီ) 37 · (ကာ၊ကြိ၊ဝိ) 33 · (ကမ္မ၊ကြိ) 29 · (ဗျ) 9 · (ပု၊ထီ) 3 · (ကာ၊ကမ္မ၊ကြိ) 2 · (ထီ၊န) 1
+Labels, normalised: (တိ) 1,630 · (ပု) 1,436 · (န) 1,263 · (ကြိ) 755 · (ထီ) 544 · (ကာ၊ကြိ) 175 · (ကြိ၊ဝိ) 149 · (ပု၊န) 53 · (န၊ထီ) 37 · (ကာ၊ကြိ၊ဝိ) 33 · (ကမ္မ၊ကြိ) 29 · (ဗျ) 9 · (ပု၊ထီ) 3 · (ကာ၊ကမ္မ၊ကြိ) 2 · (ထီ၊န) 1
 
-Readings left unnormalised: (ဏာ) 8 · (ပ္ပ) 8 · (၃) 6 · (တံ) 6 · (၂) 4 · (နု) 3 · (၅) 3 · (၁) 3 · (ရီ) 2 · (ဂ္ဂ) 2 · (ဇျာ) 2 · (တို့) 2 · (ဖ) 2 · (ကာ၊ ကို) 2 · (တူ) 2 · (ဥာ) 2 · (တ္တ) 2 · (သာရတ္ထ။၁။၁ဂ၇) 1 · (ကမ္မ၊ကြံ) 1 · (ကြု အန္တိ] (က) 1 · (ပဒို ပက္ခန္ဒ) 1 · (ကာကြိ၊ဝိ) 1 · (ကြို၊ိ) 1 · (ကြိ၊ဝ) 1 · (ဂြံ) 1 · (ကမ္မ ကိ) 1 · (နု၊ ထိ) 1 · (ဒီ၊ဝ။၁၁၊၆၆။) 1 · (ပါ) 1 · (လ္လိရက (တိ) 1 · (သဋ္ဌ၊ ၂။၁၁၀) 1 · (ပဋိသံ။ ၃၀၂) 1 · (လ) 1 · (ကို) 1 · ([ဟိ) 1 · (ပဋိသံ။၃၀) 1 · (က မက်) 1 · (ကမ္မက) 1 · (ကာ။ ကြု) 1 · (သန္နိဿိတ (တိ) 1 · (ခီ) 1 · (ကီ) 1 · (၇၂) 1 · (မဟာနိ။ ၃၆၁) 1 · (ထီ၊ပူ) 1 · (တြိ) 1 · (ဠုစ္စရ (န) 1 · (ပဋပေါဋလိကံ။ သီ) 1 · (ဏီ) 1 · (တိဂအယနဋ္ဌ (၇) 1 · (ါအာဂစ္ဆတိ (ကြု) 1 · (ကြဤ) 1 · (တို) 1 · (ဂ) 1 · (ရ) 1 · (ကျကြည်။ ၆) 1 · (ခီရလ (န) 1 · (နိယ (တိ) 1 · (ဟိ) 1 · (ကြီး) 1 · (ကမ္မံ၊ ကြိ) 1 · (ရီရဘာဝ (ပု) 1 · (ပ္ပဟာနု (န) 1 · (န်) 1 · (၁( မှား) 1 · (ပုရ) 1 · (ပ္ပဿဒ္ဓန္တ (ပု) 1 · (ပ္ပဿမ္ဘနာ (န) 1 · (ကင်္ခါ။ ၁၂၉) 1
+Readings left unnormalised: (ဏာ) 8 · (ပ္ပ) 8 · (၃) 6 · (တံ) 6 · (၂) 3 · (နု) 3 · (၅) 3 · (၁) 3 · (ရီ) 2 · (ဂ္ဂ) 2 · (ဇျာ) 2 · (တို့) 2 · (ဖ) 2 · (ကာ၊ ကို) 2 · (တူ) 2 · (ဥာ) 2 · (တ္တ) 2 · (သာရတ္ထ။၁။၁ဂ၇) 1 · (ကမ္မ၊ကြံ) 1 · (ကြု အန္တိ] (က) 1 · (ပဒို ပက္ခန္ဒ) 1 · (ကာကြိ၊ဝိ) 1 · (ကြို၊ိ) 1 · (ကြိ၊ဝ) 1 · (ဂြံ) 1 · (ကမ္မ ကိ) 1 · (နု၊ ထိ) 1 · (ဒီ၊ဝ။၁၁၊၆၆။) 1 · (ပါ) 1 · (လ္လိရက (တိ) 1 · (သဋ္ဌ၊ ၂။၁၁၀) 1 · (ပဋိသံ။ ၃၀၂) 1 · (လ) 1 · (ကို) 1 · ([ဟိ) 1 · (ပဋိသံ။၃၀) 1 · (က မက်) 1 · (ကမ္မက) 1 · (ကာ။ ကြု) 1 · (သန္နိဿိတ (တိ) 1 · (ခီ) 1 · (ကီ) 1 · (၇၂) 1 · (မဟာနိ။ ၃၆၁) 1 · (ထီ၊ပူ) 1 · (တြိ) 1 · (ဠုစ္စရ (န) 1 · (ပဋပေါဋလိကံ။ သီ) 1 · (ဏီ) 1 · (တိဂအယနဋ္ဌ (၇) 1 · (ါအာဂစ္ဆတိ (ကြု) 1 · (ကြဤ) 1 · (တို) 1 · (ဂ) 1 · (ရ) 1 · (ကျကြည်။ ၆) 1 · (ခီရလ (န) 1 · (နိယ (တိ) 1 · (ဟိ) 1 · (ကြီး) 1 · (ကမ္မံ၊ ကြိ) 1 · (ရီရဘာဝ (ပု) 1 · (ပ္ပဟာနု (န) 1 · (န်) 1 · (၁( မှား) 1 · (ပုရ) 1 · (ပ္ပဿဒ္ဓန္တ (ပု) 1 · (ပ္ပဿမ္ဘနာ (န) 1 · (ကင်္ခါ။ ၁၂၉) 1
 
 ## What these figures mean
 
