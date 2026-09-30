@@ -567,6 +567,23 @@ def fields_after(rest, out_hw, iast='', glued=False):
 # a split marked `wrong` there is not made.
 SPLIT_BOOKS = {'14b', '14c', '20', '21', '22', '23', '24', '25', '4c'}
 SPLIT_CHECKED = ROOT / 'docs/splits-checked.tsv'
+HOMONYMS_CHECKED = ROOT / 'docs/homonyms-checked.tsv'
+
+
+def _homonym_fix():
+    """HOMONYM_FIX {book: {id: (verdict, printed, pdf page, line start | 'same_as:<id>')}} from docs/homonyms-checked.tsv
+    (brief §85 4(c), §88): every homonym run read on the page image in plan step 1.8, stage 2. A row read as 'right now'
+    or 'wrong now' takes the page line that begins with `line` (spaces removed); 'same_as' rows are index rows with no
+    printed entry of their own: kept as records, given no text; 'unsure' rows are not in the table. An entry wins over R
+    and the PCED pass for its whole run."""
+    out = {}
+    if HOMONYMS_CHECKED.exists():
+        for ln in HOMONYMS_CHECKED.read_text(encoding='utf-8').splitlines()[1:]:
+            c = ln.split('\t')
+            if len(c) >= 7 and c[0].isdigit() and c[4] in ('right now', 'wrong now', 'same_as') and c[6]:
+                out.setdefault(c[1], {})[int(c[0])] = (c[4], c[3], int(c[5]), c[6])
+    return out
+HOMONYM_FIX = _homonym_fix() if __import__('os').environ.get('ABH_HOMONYM', '1') != '0' else {}
 _SP = lambda s: re.sub(r'\s', '', s or '')
 _BASE = re.compile(r'[က-ဪ]')
 _TRAIL = re.compile(r'(?:ာ?ါ|ဝ်|[”"\'’?၁-၉¹²³⁴⁵⁶⁷⁸⁹\-–—။])+$')
@@ -626,6 +643,7 @@ def split_runons(book, rows, allhw, pages_text):
         b = r.get('body')
         return not b or (len(_BASE.findall(b)) < 8 and 'ကြည့်' not in b)
     def kind(r):
+        if r.get('homonym_fix'): return None                  # decided on the image (§88): never split
         if r['located'] == 'unlocated': return 'unlocated'
         if stub(r): return 'stub'
         if not r.get('label') and not r.get('analysis'): return 'nolabel'   # competes for a line, never split
@@ -638,7 +656,8 @@ def split_runons(book, rows, allhw, pages_text):
         h = _SP(r['headword']); hf = fold(h)
         for side, rng in (('prev', range(i - 1, max(-1, i - 40), -1)), ('next', range(i + 1, min(len(rs), i + 40)))):
             for j in rng:
-                if kinds[j] and bodyless(j): continue          # walk over bodiless candidates to the host
+                if (kinds[j] or rs[j].get('homonym_fix')) and bodyless(j): continue   # walk over bodiless candidates (and
+                                                                                     # same_as rows, §88) to the host
                 if j not in lines: lines[j] = _jlines(rs[j].get('body') or '')
                 for k, ln in enumerate(lines[j][0]):
                     hm = _head_match(ln, h, hf, allhw, r.get('iast', ''))
@@ -672,7 +691,15 @@ def split_runons(book, rows, allhw, pages_text):
     # docs/splits-checked.tsv with the same host is reported, not made.
     unchecked = []
     if HOMONYM:
-        unchecked = [i for i in splits if checked.get(int(rs[i]['id']), (None, None))[1] != int(rs[splits[i][1]]['id'])]
+        # §88: a split R's changes exposed is made only when the image said right (the editor, 30 Sep)
+        s88 = set()
+        if SPLIT_CHECKED.exists():
+            for ln in SPLIT_CHECKED.read_text(encoding='utf-8').splitlines()[1:]:
+                c = ln.split('\t')
+                if len(c) >= 8 and c[0].strip().isdigit() and c[4].strip() != 'right' and c[7].startswith('§88'): s88.add(int(c[0]))
+        for i in [i for i in splits if int(rs[i]['id']) in s88]: del splits[i]
+        unchecked = [i for i in splits if checked.get(int(rs[i]['id']), (None, None))[1] != int(rs[splits[i][1]]['id'])
+                     and not (checked.get(int(rs[i]['id']), ('',))[0] == 'right' and rs[splits[i][1]].get('homonym_fix'))]
         for i in unchecked: del splits[i]
     byhost = {}
     for i, (sc, j, k, side, hm) in splits.items(): byhost.setdefault(j, []).append((k, i, side, hm))
@@ -772,7 +799,7 @@ def entry_tier(line, h, hf, allhw, iast):
     return None
 
 
-def order_rule(order, idx, located, P, H, twins, nxt_in_seq, allhw, iasts, disabled=frozenset()):
+def order_rule(order, idx, located, P, H, twins, nxt_in_seq, allhw, iasts, disabled=frozenset(), fixed=frozenset()):
     """R over the book, on the placements P[p] / H[p] (copies, changed in place). Returns (moves, cross, extras, stats):
     moves {(p, i): info}, cross {(p, i): (q, s0)} for a row given a line on another page, extras {q: [s0]}."""
     seqr = [(p, i) for p in order for i in range(len(idx[p]))]
@@ -797,6 +824,7 @@ def order_rule(order, idx, located, P, H, twins, nxt_in_seq, allhw, iasts, disab
         key = idx[run[0][0]][run[0][1]][0]
         ids = [idx[p][i][0] for p, i in run]
         if key in disabled: st['disabled'] += 1; trace.append({'ids': ids, 'act': 'disabled'}); continue
+        if any(i in fixed for i in ids): st.setdefault('fixed', 0); st['fixed'] += 1; trace.append({'ids': ids, 'act': 'fixed'}); continue
         pages = []
         for p, _ in run:
             if p not in pages: pages.append(p)
@@ -886,7 +914,7 @@ def pced_runs(book, rows):
         if j.get('seq') is not None and not j.get('count_mismatch'): J[j['id']] = j['seq']
     rs = sorted(rows, key=lambda r: int(r['id'])); out = {}; cur = []
     def close(g):
-        if len(g) < 2: return
+        if len(g) < 2 or any(r.get('homonym_fix') for r in g): return
         h = _SP(g[0]['headword']); seqs = ex.get(h) or fo.get(fold(h)) or []
         owner = {J[r['id']]: r['id'] for r in g if r['id'] in J}
         for r in g:
@@ -1006,8 +1034,56 @@ def main(book):
     def build(disabled=frozenset()):
         """the rows, from the placements of the first pass with R applied (unless ABH_HOMONYM=0)"""
         P = {p: list(located[p][3]) for p in order}; H = {p: list(located[p][4]) for p in order}
-        moves, cross, extras, st = (order_rule(order, idx, located, P, H, twins, nxt_in_seq, allhw, iasts, disabled)
+        fx = HOMONYM_FIX.get(book, {}) if HOMONYM else {}
+        cross, extras = {}, {}
+        # the image table (brief §88): the rows of every run read on the page image take the line read there, or no text
+        # (same_as); R and the PCED pass leave these runs alone
+        fmoves, displaced = {}, {}
+        if fx:
+            where = {wid: (p, i) for p in order for i, (wid, _) in enumerate(idx[p])}
+            LNf = {}
+            def flines(q):
+                if q not in LNf: LNf[q] = page_lines(*located[q][:3])
+                return LNf[q]
+            taken = {}
+            for wid, (verdict, printed, q, line) in sorted(fx.items()):
+                if wid not in where: continue
+                p, i = where[wid]
+                old = cross.get((p, i), (p, P[p][i])); old_how = H[p][i]
+                new = None; how = 'unlocated'
+                if not line.startswith('same_as:'):
+                    hits = [(s0, jl) for s0, ln, jl in (flines(q) if q in located else []) if _SP(ln).startswith(line)]
+                    if len(hits) != 1:
+                        print(f'HOMONYM_FIX {wid}: {len(hits)} lines on p. {q} begin with {line}; left as it is'); continue
+                    new = (q, hits[0][0]); h = _SP(idx[p][i][1])
+                    et = entry_tier(hits[0][1], h, fold(h), allhw, iasts[wid])
+                    how = {'exact': 'verbatim', 'fold': 'folded'}.get(et[1] if et else '', 'fuzzy')
+                cross.pop((p, i), None)
+                if old[0] != p and old[1] in extras.get(old[0], []): extras[old[0]].remove(old[1])
+                P[p][i] = None; H[p][i] = how
+                if new:
+                    if new[0] == p: P[p][i] = new[1]
+                    else: cross[(p, i)] = new; extras.setdefault(new[0], []).append(new[1])
+                    taken[new] = wid
+                fmoves[(p, i)] = {'verdict': verdict, 'printed': printed, 'old': old, 'old_how': old_how, 'line': line}
+            fcross, fextras = cross, extras
+        else:
+            fcross, fextras = {}, {}
+        # R, on the placements with the table's rows already set (so that a run beside a fixed run sees its neighbours
+        # where the page has them)
+        moves, cross, extras, st = (order_rule(order, idx, located, P, H, twins, nxt_in_seq, allhw, iasts, disabled, frozenset(fx))
                                     if HOMONYM else ({}, {}, {}, None))
+        cross.update(fcross)
+        for q, xs in fextras.items(): extras.setdefault(q, []).extend(xs)
+        if fx:
+            # a row outside the table standing on a line the table gives to a row of the run loses it
+            for p in order:
+                for i, x in enumerate(P[p]):
+                    wid = idx[p][i][0]
+                    at = cross.get((p, i), (p, x))
+                    if wid not in fx and at[1] is not None and at in taken:
+                        displaced[(p, i)] = {'by': taken[at], 'old_how': H[p][i], 'old': at}
+                        cross.pop((p, i), None); P[p][i] = None; H[p][i] = 'unlocated'
         # an article's text runs to the next start on its page: a placed row's, or a line R gave to a row of another page
         bounds = {p: sorted({x for x in P[p] if x is not None} | set(extras.get(p, []))) for p in order}
 
@@ -1056,6 +1132,20 @@ def main(book):
                 if vocab is not None:
                     k = iast.lower()
                     row['osbct'] = 'word' if k in vocab else ('inside' if k in blob else 'none')
+                fm = fmoves.get((p, i)) or displaced.get((p, i))
+                if fm:
+                    q0, s00 = fm['old']
+                    before = {'located': fm['old_how'], 'pdf_page': q0}
+                    if s00 is not None:
+                        t0, f0, offs0 = located[q0][:3]; a0 = offs0[s00]; e0 = t0.find('\n', a0)
+                        before['raw'] = t0[a0:e0 if e0 != -1 else len(t0)].strip()
+                    row['homonym_before'] = before
+                    if (p, i) in fmoves:
+                        row['homonym_rule'] = 'image'
+                        row['homonym_fix'] = {'verdict': fm['verdict'], 'printed': fm['printed']}
+                        if fm['line'].startswith('same_as:'): row['same_as'] = int(fm['line'].split(':')[1])
+                    else:
+                        row['homonym_rule'] = 'image:displaced'; row['homonym_displaced_by'] = fm['by']
                 mv = moves.get((p, i))
                 if mv:
                     t0, f0, offs0 = located[p][:3]
@@ -1072,6 +1162,11 @@ def main(book):
         return rows, moves, st
 
     rows, moves, rst = build()
+    if HOMONYM_FIX.get(book):
+        img = [r for r in rows if r.get('homonym_rule') == 'image']
+        print(f'homonyms, image table (docs/homonyms-checked.tsv): {len(img)} rows set '
+              f'({sum(1 for r in img if r.get("same_as"))} same_as), '
+              f'{sum(1 for r in rows if r.get("homonym_rule") == "image:displaced")} rows displaced from a line the table gives to another')
     trace0 = getattr(order_rule, 'trace', [])
     hst = None; gate_rows = []; undone = 0
     if HOMONYM:

@@ -2937,3 +2937,130 @@ an agent, not one, after the first); ~1.66 M in all.*
 **For the editor**: (1) 10 runs an agent (projected ~6.9 k) or 15 (~5.4 k)? (2) the 28 long runs: split into page-sized sub-runs, or read in this session? (3) the line heights in the task, as above.
 
 *Tokens: ~0.25 M in this session's context by its counter; sub-agents 79.5 k + 59.9 k = 0.14 M. Nothing in `tools/`, `ocr/` or `docs/` changed but this section. `git log` was once run read-only in the VM by mistake early in the session (no lock left).*
+
+## 88. Plan step 1.8, homonyms, stage 2 of 3: every residue run read on the image; `HOMONYM_FIX`; the 46 split candidates (30 Sep 2026, Cowork; no version bump, not pushed)
+
+**Asked** (the editor, answering §87): the full image pass of §86 §5 — the nine books' residue (`stage2-runs.tsv`, 153 runs / 397 rows),
+the 19 runs of `stage2-mform-runs.tsv` (they hold §86 §4's three wrong rows 166995, 165675, 109821) and the 46 split candidates of
+`new-splits.tsv`; 10 runs a sub-agent (the lean read-only type, same model), all crops read in one turn, verdicts in the reply; long runs
+split into page-sized parts, each told the run, its rows and the superscripts expected on the page, stitched back here; each lettered line
+given its height in the crop; **a second, independent reader** for a run whose first reader left a candidate line unused, answered
+"other", or mapped fewer heads than rows, and for 1 run in 10 at random; where they disagree, the image read here. Gate: the first agent
+≤ 9 k tokens a run. Then `docs/homonyms-checked.tsv`, `splits-checked.tsv`, `HOMONYM_FIX` (§85 4(c)), re-run, tests, the lists.
+Run in the Cowork cloud container (§86's way): the repo at 10a6e4d for the 16 books concerned and their PDFs staged
+(`tmp/homonym18/stage2/s2-base.tgz`, `s2-pced.tgz`, gitignored); the unchanged tool reproduced 14, 14b, 17 and 20 byte for byte first.
+
+### 1. Method and cost
+
+- **Units**: 172 runs, 456 rows (153 + 19). The pages were rendered at 150 dpi (`pdftoppm`), cut at the gutter and re-read by Tesseract
+  (`myab`) for line boxes only; our OCR's lines were aligned to them monotonically, page by page. A crop is one column, from ~2 lines above
+  the first candidate line to ~4 below the last, ≤ 800 px wide. Candidate lines: those that begin with the headword exactly or folded, and
+  those a row of the run stands on. 144 runs fit in ≤ 2 crops; the 28 long runs (one-letter and short headwords over many pages: သ, တ,
+  ယ, သစ္စ, သတ္တ, သမ္ဘဝ …) became **94 page parts**: 238 units in all, 24 agents.
+- **Gate**: the first agent (W01, 10 units = 8 runs): **59,436 tokens = 7.4 k a run** (5.9 k a unit): passed. The whole first wave:
+  **1,641,110 tokens** (24 agents, 59–83 k each; 9.5 k a run over the 172, the long runs costing most).
+- **Second reader**: 159 of the 172 runs qualified (unused line 107, fewer heads than rows 84, "other" 22, random 17; most runs meet
+  several), read by 23 agents on **wider crops** (±22% of the column around the candidates, and for "fewer heads" the lower half of the
+  column before): **1,717,709 tokens**. The first readers' commonest failure was a head outside the crop ("¹ precedes the crop"), which the
+  wider crops fixed.
+- **Agreement**: of 430 rows read twice, **369 agree (85.8%)**; 35 are unsure or unmapped for both readers (not a disagreement: recorded
+  `unsure`); **26 rows in 18 runs disagree: 93.4% agreement where at least one reader decided.** Every disagreement was read here on the
+  image (20 crops): the second reader was right in 20 rows (a head above the first crop, a -ṃ form, H001's single ပရိစာရေသိံ entry, H073's
+  two ကဏ္ဋက / ကဏ္ဍက heads), the first in 4 (H130: line a is the running head; H104: the first head သာသနပ(ပ္ပ)ဝေဏီ belongs to the index row
+  before the run, 191237 သာသနပဝေဏီ, so 191239 is `same_as`), and 3 stay unsure (H126 ဟတ္ထာရု(ရူ)ဠှ: two printed heads, each with its
+  ru/rū variant, for four index rows; which row is ² the page cannot say). In three long runs the readers numbered the superscripts
+  differently (H060 သစ္စ ²–⁴ or ⁶–⁸; H067 သတ; H069 သတ္တ): read here, **the index lists a headword again for each page a long entry runs
+  over**, so a page's rows beyond its printed heads are `same_as` the entry continuing there (H060: rows 2–5 are pages 379–382 of သစ္စ¹;
+  H067 p. 553 prints ⁶ ⁷ ⁸, not ⁷ ⁸). Parts are stitched by that rule, independent of the superscripts read.
+- **"Other" answers** (a head the OCR did not read as a lettered line): placed in the page text by a matcher, then checked line by line
+  here; **25 lines placed by hand** (e.g. 176047 ဩဘာသက¹ read `[သဩဘာသကာ တိ)`; 218859–218860 ဟတ္ထိက¹ ² read `ဟတ္ထက`; 195250 ပဟာသိ²,
+  whose head line the OCR lost, starts at its definition line). The matcher alone chose a wrong line in 16 of 37.
+- **Splits**: 5 agents, 10 items each, one reader (§69's standard): **293,190 tokens** (6.4 k an item).
+- **Tokens: sub-agents 3.65 M** (first wave 1.64 M, second 1.72 M, splits 0.29 M; the two trials of §87 0.14 M more). **This session's
+  counter: ~0.27 M** (the scripts, the tests, the 20 crops read here).
+
+### 2. The verdicts (`docs/homonyms-checked.tsv`: id, book, run, printed, verdict, pdf_page, line, note)
+
+"Right now" / "wrong now": whether the row's text in stage 1 began at its own printed entry. `line` is the start of the page line
+(spaces removed) where the entry begins, the key `HOMONYM_FIX` applies; the note gives the run, how it was decided and both readings.
+
+| book | right now | wrong now | same_as | unsure | rows |
+|---|---:|---:|---:|---:|---:|
+| 4/1 | 3 | 1 | 0 | 0 | 4 |
+| 09 | 3 | 6 | 0 | 0 | 9 |
+| 11 | 1 | 3 | 0 | 0 | 4 |
+| 12 | 3 | 1 | 0 | 0 | 4 |
+| 14/1 | 4 | 1 | 0 | 0 | 5 |
+| 16 | 2 | 0 | 0 | 0 | 2 |
+| 17 | 4 | 10 | 0 | 0 | 14 |
+| 14/2 | 11 | 1 | 5 | 0 | 17 |
+| 14/3 | 28 | 24 | 11 | 3 | 66 |
+| 20 | 20 | 14 | 6 | 13 | 53 |
+| 21 | 35 | 30 | 17 | 3 | 85 |
+| 22 | 12 | 11 | 4 | 1 | 28 |
+| 23 | 15 | 26 | 4 | 5 | 50 |
+| 24 | 7 | 15 | 2 | 6 | 30 |
+| 25 | 6 | 24 | 8 | 4 | 42 |
+| 4/3 | 12 | 26 | 4 | 1 | 43 |
+| **all** | **166** | **193** | **61** | **36** | **456** |
+
+- **§86 §4's three wrong rows**: all three now on their own entries (166995 on သင်္ဂဟေတု¹ (ထီ၊ ပု), not the infinitive; 165675 on
+  သက္ကရေယျ²; 109821 on ပဋ္ဌပေသိ²).
+- **same_as: 61 rows** — most are two index rows for one unnumbered entry (a variant spelling in the head, e.g. ဟဏု=ဟဏုကာ, 25 218405–218406);
+  the rest are the per-page index rows of long entries above.
+- **unsure: 36 rows**, left as they were (not in the table): 13 in vol. 20, 7 of them H047 သ (seven index rows; the print numbers at least
+  twenty-two homonyms of the letter, and the two readers read the superscripts ¹⁰–²² and ³⁰–⁴², so no row can be matched); heads not
+  in any crop and not found by the second reader (H013, H025, H034, H043, H048, H057, H058, H083, H092, H093, H111, H122, H143 …); H126.
+- **The pairing is by the index order**, as §85–86: the print's superscripts confirm it where read; where the index has fewer rows than
+  the print (H047) or more (the long entries), the rows are `unsure` or `same_as` as above.
+
+### 3. The 46 split candidates (`docs/splits-checked.tsv`, notes beginning "§88")
+
+**44 right, 1 wrong, 1 unsure.** Wrong: 157545 ဝိသိဗ္ဗနဒိဝသ (the line is "(၂) ဝိသိဗ္ဗနဒိဝသ-ကြည့်", a see-line inside ဝိသိဗ္ဗန¹). Unsure:
+157548 ဝိသိဗ္ဗနာပေက္ခ (only a see-reference in the crop). **Only the 44 right ones are made**: the split guard now also refuses a
+candidate whose §88 verdict is not right (unlike §69's unsure, which stay made). One new candidate appeared with the table on and is
+reported, not made: 20 158610 < 158609 (beside ဝိဟာရဋ္ဌ²).
+
+### 4. `HOMONYM_FIX` (`tools/abhidhana_articles.py`)
+
+- `_homonym_fix()` reads `docs/homonyms-checked.tsv` (right now / wrong now / same_as rows; unsure rows are not applied): **420 rows in
+  16 books**. In `build()` the table is applied to the first-pass placements **before** R, so a run beside a fixed run sees its
+  neighbours where the page has them (without this, 4/1's -ṃ run အာသုံ 31550–31551 lost the lines R had given it); R skips any run holding
+  a table row (`order_rule(..., fixed=)`); `pced_runs()` skips such runs, so neither `pced_gate` nor `pced_homonyms` touches them.
+- A row takes the page line that begins with `line` (exactly one must match, else it is left and a message printed: none were);
+  `same_as` rows get no text and `same_as: <id>`, and stay records. Each gets `homonym_rule: "image"`, `homonym_fix` {verdict, printed}
+  and `homonym_before` (its first-pass place). A row outside the table standing on a line the table gives to a row of the run loses it
+  (`homonym_rule: "image:displaced"`, `homonym_displaced_by`): **10 rows**, mostly the run's own unsure rows, and three neighbours R had put
+  on a homonym's head (170595 သဒ္ဒ on သဒ္ဒကဏ္ဋက; 219681 ဟာယနဗလ on ဟာယန², as §86 §1 suspected; 191237 keeps the first head).
+- The split pass never splits a table row, walks over `same_as` rows to find a host (else 20 163919, a §69 split, was lost), and accepts a
+  §69 right split whose host is now a table row that took over its old host's lines (14/2 213402–213405, 216664–216667).
+- `ABH_HOMONYM=0` turns the table off with R and the PCED pass.
+
+### 5. Tests (16 books: 4/1, 09, 11, 12, 14/1, 16, 17 and the nine; scripts in `tmp/homonym18/stage2/s2-work.tgz`)
+
+- **Off: byte for byte.** `ABH_HOMONYM=0`: all 64 files (`articles.jsonl`, `articles-report.md`, `pali.jsonl`, `pali-report.md` × 16) match
+  the pre-1.8 checksums of `tmp/homonym18/stage/h18-orig-0930a.md5`; run after every code change, the last time after the final one.
+- **On: the digest against stage 1** (10a6e4d's files): the same ids in the same order; **547 rows changed, every one explained**: 420
+  table rows; 10 displaced; 1 unsure row of a table run back at its first-pass place; 50 hosts cut (text a prefix of the old; one,
+  4/3 176046 ဩဘာသ, via its continuation page); 5 hosts grown; 44 new splits (right on the image) and 17 split hosts (only `body`,
+  `citations`, `split_to`, `body_before_split` changed); **0 other**. The other 13 books are untouched (no table rows there).
+- **`pali.jsonl`**: 381 rows changed, 0 outside the changed article rows.
+- **Witness joins** (01–19): not re-run here (`body_ratio` follows the new bodies of 4/1, 09, 11, 12, 14/1, 16, 17): on the Mac in stage 3,
+  as §86.
+
+### 6. The lists for stage 3
+
+- **`tmp/homonym18/moved-ids.tsv`**: now **1,844 ids** (stage 1 1,356 + 488 new; 59 changed in both), with a `stage` column and stage 2's
+  roles (`image:right-now | wrong-now | same_as`, `image-displaced`, `host-cut`, `host-grown`, `split-new`, `split-host`); a row now
+  identical to its pre-1.8 state is marked "(now as before 1.8)". For the editor's D1 check before the push.
+- **`tmp/homonym18/s1/out/meaning-rows.tsv`** (the nine books, every changed id against the pre-1.8 text its Meaning was drafted from):
+  **860 rows** — redraft: text changed 186, hosts grown 26, no text now 10, `same_as` with a Meaning row 30 (remove or mark), hosts whose
+  lost text is not in `omitted` 143 (classify as §70 first); draft: gained a text 182, text changed without a Meaning 36; check / keep: about
+  the same 154 (+10 without a Meaning); trim `omitted`: 22; debris only 15. So stage 3 drafts ~220 lines, redraft up to ~250 plus up to 143
+  hosts after classification, checks ~150: **more than §86's ~230–340**, because every table row now counts, and the 44 new splits.
+- `recheck.tsv` (§86 §5) was not recomputed; `docs/page-checks.tsv`, `splits-checked.tsv` and `revision-queue.tsv` rows among the new ids
+  are for stage 3.
+
+**Files changed**: `tools/abhidhana_articles.py`; `docs/homonyms-checked.tsv` (new, 456 rows); `docs/splits-checked.tsv` (+46 rows); 57
+files under `ocr/` (the four outputs of the 16 books, less the reports that did not change); this section; `docs/NEXT-SESSION.md`. Gitignored:
+`tmp/homonym18/moved-ids.tsv`, `s1/out/meaning-rows.tsv`, `meaning-by-book.json`, `stage2/` (tarballs ~0.35 GB, the work archive).

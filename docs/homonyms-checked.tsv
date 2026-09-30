@@ -1,0 +1,457 @@
+id	book	run	printed	verdict	pdf_page	line	note
+212578	14b	212578	-	right now	355	ပရိစာရေသိံ(ကာ၊ကြိ)[ပရိ+စ	H001; session (image read here); first: 1|a; second: -|a
+212579	14b	212578	-	same_as	355	same_as:212578	H001; session (image read here); first: 2|other:H001-14b-p355L.png:68:after a:ပရိစာရေသိံ²(ကာ၊ကြိ); second: -|same_as:212578
+212745	14b	212745	-	right now	382	ပရိစ္ဆိန္ဒက(တိ)[ပရိ+ဆိဒိ	H002; two readers agree; first: -|a; second: -|a
+212746	14b	212745	-	same_as	382	same_as:212745	H002; two readers agree; first: -|same_as:212745; second: -|same_as:212745
+213398	14b	213398	1	right now	462	ပရိဒဟတိ၁(ကြိ)[ပရိ+ဒဟ+အ+တ	H003; one reader; first: 1|a; second: -
+213399	14b	213398	2	right now	462	ပရိဒဟတိ၂(ကြိ)[ပရိ+ဓါ+အ+တ	H003; one reader; first: 2|b; second: -
+213400	14b	213400	1	right now	462	ပရိဒဟန၁(န၊ထီ)[ပရိ+ဒဟ+ယု]	H004; two readers agree; first: 1|b; second: 1|b
+213401	14b	213400	2	right now	462	ပရိဒဟန၂(န)[ပရိ+ဓါ+ယု]ဝတ်	H004; two readers agree; first: 2|c; second: 2|c
+214137	14b	214137	-	right now	562	ပရိပေါထယတိ(ကြိ)[ပရိ+ပေါထ	H005; two readers agree; first: -|a; second: -|a
+214138	14b	214137	-	same_as	562	same_as:214137	H005; two readers agree; first: -|same_as:214137; second: -|same_as:214137
+214187	14b	214187	-	right now	567	ပရိဗန္ဓဝိသုဒ္ဓိသမကာလဝိဘာဝီ(တိ)[ပ	H006; two readers agree; first: -|b; second: -|b
+214188	14b	214187	-	same_as	567	same_as:214187	H006; two readers agree; first: -|same_as:214187; second: -|same_as:214187
+216662	14b	216662	1	right now	897	ပလသတ၁(န)[ပလ+သတ](၁)ပိုလ်တ	H007; two readers agree; first: 1|a; second: 1|a
+216663	14b	216662	2	right now	897	ပလသတ၂(တိ)[ပလ+သတ။ပလသတ+ဏ]	H007; two readers agree; first: 2|b; second: 2|b
+217054	14b	217054	1	right now	941	ပလ္လင်္က၁(ပု)[ပရိ+အကိ+ဏ။	H008; two readers agree; first: 1|b; second: 1|b
+217055	14b	217054	-	same_as	943	same_as:217054	H008; two readers agree; first: -|same_as:217054; second: -|same_as:217054
+217056	14b	217054	2	wrong now	943	ပလ္လင်္က၂(ပု)[ပလ္လင်္က+ပ	H008; two readers agree; first: 2|g; second: 2|g
+192707	14c	192707	1	wrong now	29	ပဝိသ(က)[၀သွားချီတက်	H009; two readers agree; line placed by hand: head read ပဝိသ (က) [၀; first: 1|other:H009-14c-p29R.png:13%:after -:ပဝဇ္ဇိံသု¹ (ကြိ) [ပ+ဝဇ+ဥ; second: 1|other:H009-14c-p29R-2.png:54:after line -:ပဝဇ္ဇိံသု¹ (ကြိ) [
+192708	14c	192707	2	right now	29	ပဝဇ္ဇိသု(ကြိ)[ပ+ဝဒ+အသံမည	H009; two readers agree; first: 2|a; second: 2|a
+192740	14c	192740	-	right now	32	ပဝဍ္ဎန္တ(တိ)[ပ+ဝဍ္ဎ+အ-+အ	H010; two readers agree; first: -|a; second: -|a
+192741	14c	192740	-	same_as	32	same_as:192740	H010; two readers agree; first: -|same_as:192740; second: -|same_as:192740
+192858	14c	192858	-	right now	45	ပဝတ္တဒေသနာ(ထီ)[ပဝတ္တာ+ဒေ	H011; two readers agree; first: -|a; second: -|a
+192859	14c	192858	-	same_as	45	same_as:192858	H011; two readers agree; first: -|same_as:192858; second: -|same_as:192858
+193935	14c	193935	1	right now	166	ပဝေဏီ(ထီပ+ဝီ+ဏီ။ဓာန်၊ဋီ။	H012; two readers agree; first: 1|a; second: 1|a
+193936	14c	193935	2	right now	167	ပဝေဏီ(ထီ)ပဝေဏီ+ကထနအစဉ်အ	H012; two readers agree; first: 2|d; second: 2|d
+194541	14c	194541	1	wrong now	222	ပသိဗ္ဗကာ(ပုန)[ပ+သိဝု+ဏ္ဌ	H013; two readers agree; first: 1|a; second: 1|a
+194542	14c	194541	2	unsure	222		H013; two readers agree; first: 2|unsure; second: 2|unsure
+195249	14c	195249	1	right now	299	ပဟာသိ(ကြို)[ပ+ဟာ+သိ]ပယ်စ	H014; two readers agree; first: 1|a; second: 1|a
+195250	14c	195249	2	wrong now	299	ပယ်ဖျောက်ပြီ၊ကုန်ခမ်းစေပ	H014; two readers agree; line placed by hand: head line lost by OCR; its definition line; first: 2|other:H014-14c-p299R.png:43%:after a:ပဟာသိ² (ကြိ) [ပ+ဟာ+ဤ] ပ; second: 2|other:H014-14c-p299R-2.png:41:after line a:ပဟာသိ² (ကြိ) [ပ+ဟ
+195251	14c	195249	3	right now	299	ပဟာသိ?(ကြိ)[ပ+ဟရ+ဤ]ပုတ်ခ	H014; two readers agree; first: 3|b; second: 3|b
+196007	14c	196007	-	right now	376	ပါတိမောက္ခန္တောဂဓ(ပု)[ပါ	H015; two readers agree; first: -|a; second: -|a
+196008	14c	196007	-	same_as	376	same_as:196007	H015; two readers agree; first: -|same_as:196007; second: -|same_as:196007
+196759	14c	196759	1	wrong now	457	ပါပေတုာ(ကာ၊ကြို[ပ+အပ+ဏေ+	H016; one reader; first: 1|a; second: -
+196760	14c	196759	2	right now	457	ပါပေတုဒ(ထီ၊ပု)[ပ+အပ+ဏေ+တ	H016; one reader; first: 2|b; second: -
+196840	14c	196840	1	wrong now	464	ပါယသာ-နို့ထမင်း၊နို့ဃနာထ	H017; one reader; first: 1|a; second: -
+196841	14c	196840	2	right now	464	ပါယသာ(န)[ပါယသ+ဒါနုနို့ဃန	H017; one reader; first: 2|b; second: -
+197306	14c	197306	1	wrong now	517	ပါရေဝတက္ခီ(န)[ပါရေဝတ+အက္	H018; two readers agree; first: 1|other:H018-14c-p517L.png:3:after line -:ပါရေဝတက္ခိ¹ (န) [ပါရ; second: 1|other:H018-14c-p517L-2.png:42:after line -:ပါရေဝတက္ခိ¹ (န) [
+197307	14c	197306	2	wrong now	517	ပါရေဝတက္ခိ(တိ)[ပါရေဝတက္ခ	H018; two readers agree; first: 2|a; second: 2|a
+197552	14c	197552	-	right now	544	ပါသာဏဒဏ္ဍ(ပု)[ပါသာဏ+ဒဏ္ဍ	H019; two readers agree; first: -|a; second: -|a
+197553	14c	197552	-	same_as	544	same_as:197552	H019; two readers agree; first: -|same_as:197552; second: -|same_as:197552
+197555	14c	197555	-	right now	544	ပါသာဏဒေါဏိ(ထီ)[ပါသာဏ+ဒေါ	H020; two readers agree; first: -|a; second: -|a
+197556	14c	197555	-	same_as	544	same_as:197555	H020; two readers agree; first: -|same_as:197555; second: -|same_as:197555
+197642	14c	197642	-	right now	552	ပါသာဒသဟဿ(န)[ပါသာဒ+ဒသဟဿုပ	H021; two readers agree; first: -|a; second: -|a
+197643	14c	197642	-	same_as	552	same_as:197642	H021; two readers agree; first: -|same_as:197642; second: -|same_as:197642
+197968	14c	197968	-	wrong now	592	ပိဋိဗာဟု(၇)ပြု။တဟံလက်ပြင	H022; two readers agree; first: -|a; second: -|a
+197969	14c	197968	-	same_as	592	same_as:197968	H022; two readers agree; first: -|same_as:197968; second: -|same_as:197968
+198012	14c	198012	1	wrong now	597	ဝဏ္ဍက(၃)ပြိုကျမည်၊န်၊သျ၊	H023; session (image read here); line placed by hand: head read ဝဏ္ဍက (၃); first: 1|unsure; second: 1|other:H023-14c-p597R-2.png:27:after line -:ပိဏ္ဍက¹ (ပု) [ပိဍ
+198013	14c	198012	2	right now	597	ပိဏ္ဍကာ(ပုန)[ပိဏ္ဍ+ကုဆွမ	H023; two readers agree; first: 2|a; second: 2|a
+198954	14c	198954	1	wrong now	691	ပီတာ(ပုန)[ပီတ+အ။ပီတဝဏ္ဏေ	H024; two readers agree; first: 1|a; second: 1|a
+198955	14c	198954	2	wrong now	691	ဝီတာ(န)[ပီနတါနှစ်သက်ဝမ်း	H024; two readers agree; first: 2|other:H024-14c-p691R.png:71:after line b:ပီတ² (န) [ပီ+တ]; second: 2|other:H024-14c-p691R-2.png:73:after line b:ပီတ² (န) [ပီ+တ] န
+198956	14c	198954	3	wrong now	691	ဝတ၊(ပါတု()သောက်ခြင်း(တိ)	H024; two readers agree; line placed by hand: head read ဝတ၊ (ပါတု; first: 3|other:H024-14c-p691R.png:80:after line c:ပီတ³ (န) [ပါ+တ]; second: 3|other:H024-14c-p691R-2.png:86:after line c:ပီတ³ (န) [ပါ+တ] (
+199027	14c	199027	1	right now	698	ပီတိ(ထီ)[ပီ+တိ။ပိနယတိကာယ	H025; two readers agree; first: 1|a; second: 1|a
+199028	14c	199027	2	unsure	698		H025; two readers agree; first: 2|unsure; second: 2|unsure
+199029	14c	199027	3	unsure	698		H025; two readers agree; first: 3|unsure; second: 3|unsure
+199418	14c	199418	1	wrong now	732	ပုစ္ဆံ(ကြိုပုစ္ဆ။အ+ဟိုမေ	H026; two readers agree; first: 1|a; second: 1|a
+199419	14c	199418	2	wrong now	732	ပုစ္ဆ(ပု၊န)[ပုစ္ဆနအုအမြီ	H026; two readers agree; first: 2|c; second: 2|c
+199420	14c	199418	3	wrong now	732	ပုစ္ဆ[အဓိစ္စသမုပ္ပန္နနာမ	H026; two readers agree; first: 3|d; second: 3|d
+199970	14c	199970	1	wrong now	779	ပုဏ္ဍရီကာ(တီ၊ယာဒိစ္ဆကနာမ	H027; two readers agree; first: 1|a; second: 1|a
+199971	14c	199970	2	right now	779	ပုဏ္ဍရီကာ(၇)[ပုဏ္ဍ+ကွု။အ	H027; two readers agree; first: 2|b; second: 2|b
+199972	14c	199970	3	right now	779	ပုဏ္ဏရီက(န)[ပဒိ(မုဒိ၊မုဍ	H027; two readers agree; first: 3|c; second: 3|c
+199973	14c	199970	4	right now	780	ပုဏ္ဍရီကာ(၇)ပုဏ္ဏရီက+ဏု(	H027; two readers agree; first: 4|f; second: 4|f
+199974	14c	199970	5	right now	780	ပုဏ္ဍရီကာ(၇)[၇ုမဒလကျား။ဗ	H027; two readers agree; first: 5|g; second: 5|g
+199975	14c	199970	6	right now	780	ပုဏ္ဍရီကံ(န)[ပုဏ္ဏရီက+ဒါ	H027; two readers agree; first: 6|i; second: 6|i
+200729	14c	200729	-	wrong now	864	ပုပ္ဖသု(ဿု)(ကြိုပုပ္ဖဿပွ	H028; two readers agree; first: -|a; second: -|a
+200730	14c	200729	-	same_as	864	same_as:200729	H028; two readers agree; first: -|same_as:200729; second: -|same_as:200729
+200795	14c	200795	1	wrong now	870	ပုဗ္ဗံ(တိ)[သဗ္ဗနာမ်ပုဒ်။	H029; two readers agree; first: 1|a; second: 1|a
+200796	14c	200795	2	right now	871	ပုဗ္ဗာ(ဓာတ်)ပူရဏအနက်။ပုဗ	H029; two readers agree; first: 2|d; second: 2|d
+200797	14c	200795	3	right now	871	ပုဗ္ဗ(ပုန)[ပုဗ္ဗ+အ။ဓာန်၊	H029; two readers agree; first: 3|e; second: 3|e
+200798	14c	200795	4	right now	872	ပုဗ္ဗ(န)[ပုဗ္ဗ+ဝါသရှေး၌န	H029; two readers agree; first: 4|i; second: 4|i
+200799	14c	200795	5	wrong now	872	ပုဗ္ဗာ(န)ပုဗ္ဗဘာဂါရှေ့ဖြ	H029; two readers agree; first: 5|j; second: 5|j
+200800	14c	200795	6	wrong now	872	ပုဗ္ဗ(တိ)[ပုဗ္ဗ-ကထေတဗ္ဗါ	H029; two readers agree; first: 6|l; second: 6|l
+200801	14c	200795	7	wrong now	872	ပုဗ္ဗ(ပု)[ပုဗ္ဗဇာဝါရှေးဘ	H029; two readers agree; first: 7|m; second: 7|m
+200802	14c	200795	8	wrong now	872	ပုဗ္ဗ(၃)[ပုဗ္ဗဘဝ။ပုဗ္ဗ+အ	H029; two readers agree; first: 8|n; second: 8|n
+201319	14c	201319	-	right now	935	ပုရာဏဝိလေပန(န)[ပုရာဏ+ဝိလ	H030; two readers agree; first: -|a; second: -|a
+201320	14c	201319	-	same_as	935	same_as:201319	H030; two readers agree; first: -|same_as:201319; second: -|same_as:201319
+201894	14c	201894	-	wrong now	988	ပုနသာပ္ပါယ([ုရ-အဒါယ()ယော	H031; two readers agree; first: -|a; second: -|a
+201895	14c	201894	-	same_as	988	same_as:201894	H031; two readers agree; first: -|same_as:201894; second: -|same_as:201894
+202041	14c	202041	-	wrong now	1005	ပုဠဝ(ပုန)[ပုဠ+ဥဝါပိုးလော	H032; two readers agree; first: -|a; second: -|a
+202042	14c	202041	-	same_as	1005	same_as:202041	H032; two readers agree; first: -|same_as:202041; second: -|same_as:202041
+157040	20	157040	-	right now	67	ဝိသဘာဂဇီဝိတ(န)[ဝိသဘာဂ-+ဇ	H033; two readers agree; first: -|a; second: -|a
+157041	20	157040	-	same_as	67	same_as:157040	H033; two readers agree; first: -|same_as:157040; second: -|same_as:157040
+157106	20	157106	1	wrong now	74	ဝိသမာ(တိ)[ဝိ+သမ။ဝိဂတောဝိ	H034; two readers agree; first: 1|a; second: 1|a
+157107	20	157106	2	right now	74	ဝိသမ(တိ)[ဝိသမပရိဟာရ+ဇန+က	H034; two readers agree; first: 2|e; second: 2|e
+157108	20	157106	3	right now	74	ဝိသမ?(တိ)[ဝိသမ+ဏ]မညီမညွတ	H034; two readers agree; first: 3|g; second: 3|g
+157109	20	157106	4	right now	74	ဝိသမ(န)[ဝိသမ+အ။နီတိ၊ဓာတု	H034; two readers agree; first: 4|h; second: 4|h
+157110	20	157106	-	unsure	74		H034; two readers agree; first: -|unsure; second: -|unsure
+157536	20	157536	-	right now	123	ဝိသိနေတွာ(ကြိ၊ဝိ)[ဝိသိန+	H035; two readers agree; first: -|a; second: -|a
+157537	20	157536	-	same_as	123	same_as:157536	H035; two readers agree; first: -|same_as:157536; second: -|same_as:157536
+157618	20	157618	1	right now	135	ဝိသုဒ္ဓ(တိ)[ဝိ+သုဓ+တ။ကစ္	H036; two readers agree; first: 1|a; second: 1|a
+157619	20	157618	2	wrong now	136	ဝိသုဒ္ဓဒ(တိ)[ဝိ+သုဓ+ဏေ+တ	H036; two readers agree; first: 2|g; second: 2|g
+157620	20	157618	3	right now	136	ဝိသုဒ္ဓ(တိ)[ဝိသုဒ္ဓ+မာနသ	H036; two readers agree; first: 3|h; second: 3|h
+158092	20	158092	1	right now	191	ဝိဿဇ္ဇ(ထီ၊န)[ဝိ+သဇ+ဏျ]	H037; two readers agree; first: 1|a; second: 1|a
+158093	20	158092	2	right now	191	ဝိဿဇ္ဇကြိ၊ဝိ[ဝိ+သဇ+တွာ။	H037; two readers agree; first: 2|b; second: 2|b
+158608	20	158608	1	right now	254	ဝိဟာရဋ္ဌ(တိ)[ဝိဟာရ+ဌာ+အ။	H038; two readers agree; first: 1|a; second: 1|a
+158609	20	158608	2	wrong now	254	ဝိဟာရ၇)[ဝိဟာရ+အတ္ထ]	H038; two readers agree; line placed by hand: head read ဝိဟာရ ၇) [ဝိဟာရ + အတ္ထ]; first: 2|other:H038-20-p254R.png:42:after a:ဝိဟာရဋ္ဌ² (ပု) [ဝိဟာရ + အ; second: 2|other:H038-20-p254R-2.png:46:after a:ဝိဟာရဋ္ဌ² (ပု) [ဝိဟာရ +
+159073	20	159073	1	wrong now	310	ဝီတိနာမေသိ?(ကာ၊ကြို)[ဝိ+	H039; two readers agree; first: 1|a; second: 1|a
+159074	20	159073	2	wrong now	310	ဝီတိနာမေသိပကာ၊ကြို[ဝိ+အတ	H039; two readers agree; first: 2|c; second: 2|c
+159088	20	159088	-	right now	312	ဝီတိဝတ္တန(န)[ဝိ+အတိ+ဝတု+	H040; two readers agree; first: -|c; second: -|c
+159089	20	159088	-	same_as	312	same_as:159088	H040; two readers agree; first: -|same_as:159088; second: -|same_as:159088
+159428	20	159428	1	wrong now	374	ဝီသ=ဝီသာ(ထီ)[ဝီသ+အာ။	H041; two readers agree; first: 1|a; second: 1|a
+159429	20	159428	2	wrong now	374	ဝီသ(တိ)[ဝီသတိ+၃(ဋ)အ။ပါ။၅	H041; two readers agree; first: 2|c; second: 2|c
+159430	20	159428	3	wrong now	374	ဝီသ”(တိ)[ဝီသတိ+၃အ။ပါ၊၅။၂	H041; two readers agree; first: 3|d; second: 3|d
+159431	20	159428	4	wrong now	374	ဝီသ(န)[ဝိဤသ+အ။]ရာဂ,ဒေါသ,	H041; two readers agree; first: 4|g; second: 4|g
+159660	20	159660	-	unsure	400		H042; readers differ or unsure; first: -; second: -
+159661	20	159660	-	unsure	401		H042; readers differ or unsure; first: -; second: -
+159662	20	159660	-	unsure	402		H042; readers differ or unsure; first: -; second: -
+161289	20	161289	1	right now	581	ဝေဒိ(ထီ)[ဝိဒ+ဣဏ်။ဓာန်၊ဋီ	H043; two readers agree; first: 1|a; second: 1|a
+161290	20	161289	-	unsure	581		H043; two readers agree; first: -|unsure; second: 2|unsure
+161642	20	161642	-	right now	628	ဝေရဉ္ဇာဝစန(န)[ဝေရဉ္ဇာ+ဝစ	H044; two readers agree; first: -|a; second: -|a
+161643	20	161642	-	same_as	628	same_as:161642	H044; two readers agree; first: -|same_as:161642; second: -|same_as:161642
+161749	20	161749	1	right now	639	ဝေလာထီ)[ဝေလ+အ။နီတိ၊ဓာတု။	H045; two readers agree; first: 1|a; second: 1|a
+161750	20	161749	2	right now	640	ဝေလာ(ထီ)[ဝေလာ+ဏ	H045; two readers agree; first: 2|e; second: 2|e
+161751	20	161749	3	wrong now	640	ဝေလာ?(ထီ)[ဝေလာ+အတိတ္တမ။	H045; two readers agree; first: 3|h; second: 3|h
+161921	20	161921	1	wrong now	673	ဝေဟာသံပု၊န[ဝိဟယ+ဏ။	H046; two readers agree; first: 1|a; second: 1|a
+161922	20	161921	2	wrong now	673	ဝေဟာသ(တိ)[ဝေဟာသ+ဏ	H046; two readers agree; first: 2|c; second: 2|c
+162424	20	162424	-	unsure	735		H047; readers differ or unsure; first: -; second: -
+162425	20	162424	-	unsure	736		H047; readers differ or unsure; first: -; second: -
+162426	20	162424	-	unsure	737		H047; readers differ or unsure; first: -; second: -
+162427	20	162424	-	unsure	738		H047; readers differ or unsure; first: -; second: -
+162428	20	162424	-	unsure	739		H047; readers differ or unsure; first: -; second: -
+162429	20	162424	-	unsure	740		H047; readers differ or unsure; first: -; second: -
+162430	20	162424	-	unsure	740		H047; readers differ or unsure; first: -; second: -
+162950	20	162950	1	unsure	814		H048; two readers agree; first: 1|unsure; second: 1|unsure
+162951	20	162950	2	right now	814	သင်္ဃာဋိကာ(န)[သံဃာဋိ+က။	H048; two readers agree; first: 2|b; second: 2|b
+163523	20	163523	1	wrong now	882	သံဝဏ္ဏနာ(တိ)[သံ+ဝဏ္ဏ+ယု။	H049; two readers agree; first: 1|a; second: 1|a
+163524	20	163523	2	right now	883	သံဝဏ္ဏနာ(န)[သံဝဏ္ဏန+တ္တ။	H049; two readers agree; first: 2|i; second: 2|i
+163590	20	163590	-	wrong now	889	သံဝဏ္ဏေပ(ကြို[သံ+ဝဏ္ဏ+ဏေ	H050; two readers agree; first: -|a; second: -|a
+163591	20	163590	-	same_as	889	same_as:163590	H050; two readers agree; first: -|same_as:163590; second: -|same_as:163590
+163917	20	163917	-	right now	927	သံဝိဘာဂကရဏ(န)[သံဝိဘာဂ+	H051; two readers agree; first: -|a; second: -|a
+163918	20	163917	-	same_as	927	same_as:163917	H051; two readers agree; first: -|same_as:163917; second: -|same_as:163917
+165560	21	165560	1	right now	178	သက္က(တိ)[သက+တ။ကစ္စည်း။၅၈	H052; two readers agree; first: 1|a; second: 1|a
+165561	21	165560	2	right now	179	သက္က(ပု)[သံ+က။ကပစ္စည်းကြ	H052; two readers agree; first: 2|d; second: 2|d
+165562	21	165560	3	wrong now	179	သတ္တ(ပု)[သတစ+ဏ။သတစ-ဟု	H052; two readers agree; line placed by hand: head read သတ္တ (ပု) [ သတစ; first: 3|other:H052-21-p179R.png:49:after d:သက္က³ (ပု) [ သက္ကစ္စ + ဏ; second: 3|other:H052.2-21-p179R-2.png:53:after d:သက္က³ (ပု) [ သက္ကစ္စ 
+165563	21	165560	4	wrong now	179	သတ္တ(တိ)[သက္က+ဏ။တစ်နည်း-	H052; two readers agree; line placed by hand: head read သတ္တ (တိ) [ သက္က; first: 4|other:H052-21-p179R.png:73:after d:သက္က⁴ (တိ) [ သက္က + ဏ; second: 4|other:H052.2-21-p179R-2.png:70:after d:သက္က⁴ (တိ) [ သက္က + ဏ
+165879	21	165879	1	wrong now	210	သက္ခိံကြို[သက+တာ(န)ဤ။	H053; two readers agree; first: 1|a; second: 1|a
+165880	21	165879	2	wrong now	210	သက္ခိ(ဗျ)[သဟ+အက္ခိ။နီတိ၊	H053; two readers agree; first: 2|b; second: 2|b
+165881	21	165879	3	wrong now	210	သက္ခိသက္ခီ(တိ)[သဟ+ဣက္ခ+	H053; session (image read here); first: 3|unsure; second: 3|other:H053-21-p210R-2.png:95:after b:သက္ခိ³ = သက္ခိ (တိ) [ သ
+165961	21	165961	-	wrong now	219	သခိီတာ(ထီ)[သခ+တာ။အ-ကို	H054; two readers agree; first: -|a; second: -|a
+165962	21	165961	-	same_as	219	same_as:165961	H054; two readers agree; first: -|same_as:165961; second: -|same_as:165961
+166155	21	166155	-	right now	244	သင်္ကပ္ပဂမန(န)၂]သင်္ကပ္ပ	H055; two readers agree; first: -|a; second: -|a
+166156	21	166155	-	same_as	244	same_as:166155	H055; two readers agree; first: -|same_as:166155; second: -|same_as:166155
+166515	21	166515	-	right now	284	သင်္ခရောန္တ(တိ)[သံ+ကရ+အန	H056; two readers agree; first: -|other:H056-21-p284R.png:92:after b:သင်္ခရောန္တ (တိ) [ သံ + က; second: -|other:H056-21-p284R-2.png:71:after line b:သင်္ခရောန္တ (တိ) [
+166516	21	166515	-	same_as	284	same_as:166515	H056; two readers agree; first: -|same_as:166515; second: -|same_as:166515
+166862	21	166862	1	wrong now	327	သင်္ဂဏာ(န)[သံ+ဂဏ+အ။	H057; two readers agree; first: 1|a; second: 1|a
+166863	21	166862	2	wrong now	327	သင်္ဂဏဒါ(တိ)[သဟ-+အင်္ဂဏ။	H057; two readers agree; first: 2|b; second: 2|b
+166864	21	166862	3	unsure	327		H057; two readers agree; first: 3|unsure; second: -|unsure
+167237	21	167237	1	wrong now	372	သစက္ကံ(န)[သဟ+စတ္တ။သဟ-ကို	H058; two readers agree; first: 1|a; second: 1|a
+167238	21	167237	2	unsure	372		H058; two readers agree; first: 2|unsure; second: -|unsure
+167283	21	167283	-	right now	378	သစ္စံကိရဇာတက(န)[သစ္စံကိရ	H059; two readers agree; first: -|a; second: -|a
+167284	21	167283	-	same_as	378	same_as:167283	H059; two readers agree; first: -|same_as:167283; second: -|same_as:167283
+167285	21	167285	1	right now	378	သစ္စ(တိ[သတ+တျ။သတ+ယ။	H060; two readers agree; first: 1|a; second: 1|a
+167286	21	167285	-	same_as	379	same_as:167285	H060; two readers agree; first: -|same_as:167285; second: -|same_as:167285
+167287	21	167285	-	same_as	380	same_as:167285	H060; two readers agree; first: -|same_as:167285; second: -|same_as:167285
+167288	21	167285	-	same_as	381	same_as:167285	H060; two readers agree; first: -|same_as:167285; second: -|same_as:167285
+167289	21	167285	-	same_as	382	same_as:167285	H060; two readers agree; first: -|same_as:167285; second: -|same_as:167285
+167290	21	167285	6	right now	383	သစ္စပု၊ထီ[သစ္စ+ဏ](၁)သစ္စ	H060; two readers agree; first: 2|z5; second: 6|z5
+167291	21	167285	7	right now	383	သစ္စ”(တိ)[သစ္စ+ဏ။သစ္စံအဿ	H060; two readers agree; first: 3|z6; second: 7|z6
+167292	21	167285	8	wrong now	383	သစ္စ”(န)[သစ္စ+အဘိသမယ။	H060; two readers agree; first: 4|z14; second: 8|z14
+167425	21	167425	-	wrong now	397	သစ္စဝါဒိ(ဒ)ကာလပု)[သစ္စဝါ	H061; two readers agree; first: -|a; second: -|a
+167426	21	167425	-	same_as	397	same_as:167425	H061; two readers agree; first: -|same_as:167425; second: -|same_as:167425
+167645	21	167645	1	right now	421	သဇနပု)သ(အတ္တ)+ဇန။သွဇန-သံ	H062; two readers agree; first: 1|e; second: 1|e
+167646	21	167645	2	wrong now	421	သဇနာ(တိ)[သဟ+ဇန။သဇန-သံ။]	H062; two readers agree; first: 2|f; second: 2|f
+167647	21	167645	3	wrong now	421	သဇန”(န)သဇ+ယု]ဖန်ဆင်း-စီရ	H062; two readers agree; first: 3|g; second: 3|g
+168009	21	168009	1	right now	459	သဉ္ဇနေယျ(ကြိ)[သံ+ဇန+အဧယျ	H063; one reader; first: 1|a; second: -
+168010	21	168009	2	right now	459	သဉ္ဇနေယျကာ၊ကြို)[သံ+ဇန+	H063; one reader; first: 2|b; second: -
+168297	21	168297	1	right now	489	သညတတ္တာ(တိ)[သံ+ဉာ(ဏေ+)တ။	H064; two readers agree; first: 1|a; second: 1|a
+168298	21	168297	2	wrong now	490	သညတ္တာ(တိ)[သညာ+အတ္တ။ရူပတ	H064; two readers agree; first: 2|b; second: 2|b
+168299	21	168297	3	wrong now	490	သညတ္တ"(န)သညာ+တ္တ။ရူပတ္တ-	H064; two readers agree; first: 3|d; second: 3|d
+168517	21	168517	1	right now	514	သညီ(ညို)ဝါဒ(၇)[သညီ+ဝါဒ]	H065; two readers agree; first: 1|a; second: 1|a
+168518	21	168517	2	right now	514	သညီဝါဒါ(တိ)[သညီဝါဒန-ဏ]	H065; two readers agree; first: 2|c; second: 2|c
+168519	21	168517	3	right now	515	သညီဝါဒ?(တိ)[သညီဝဒ+ဏ]	H065; two readers agree; first: 3|h; second: 3|h
+168589	21	168589	-	wrong now	522	သဋိကောဋိ(ထံ)[သဋ္ဌိကောဋိ]	H066; two readers agree; first: -|a; second: -|a
+168590	21	168589	-	same_as	522	same_as:168589	H066; two readers agree; first: -|same_as:168589; second: -|same_as:168589
+168882	21	168882	1	right now	551	သတာ(န)[ဒသ(-ဒသဒသက)=သတ။	H067; two readers agree; first: 1|a; second: 1|a
+168883	21	168882	-	same_as	552	same_as:168882	H067; two readers agree; first: -|same_as:168882; second: -|same_as:168882
+168884	21	168882	2	right now	552	သတာ(တိ)[သရ+တ။သရတီတိ	H067; two readers agree; first: 2|e; second: 2|e
+168885	21	168882	3	right now	552	သတ်(တိ)[သတိ+ဏ။သဒ္ဓါအဿ	H067; two readers agree; first: 3|i; second: 3|i
+168886	21	168882	4	right now	552	သတ်(တိ)[အသ+တ။သတြ-သံ။	H067; two readers agree; first: 4|o; second: 4|o
+168887	21	168882	5	right now	552	သတာ(တိ)[သမု+တ။ဂါန္တ-သံ။]	H067; two readers agree; first: 5|q; second: 5|q
+168888	21	168882	-	unsure	553		H067; readers differ or unsure; first: -|same_as:168887; second: 6|other:H067.3-21-p553L-2.png:8:after line -:သတ (တိ) [ သီဒ + အ
+168889	21	168882	7	wrong now	553	သတာ(တိ)[သန္တ+ဏ။သတောဘာဝေါ	H067; two readers agree; first: 6|s; second: 7|s
+168890	21	168882	8	wrong now	553	သတ”(န)[သတ+ဇန။နောက်ပုဒ်ကျ	H067; two readers agree; first: 7|v; second: 8|v
+169113	21	169113	1	right now	576	သတိ(ထီ)[သရ+တိ။ရူ။၆၃၂။သရန	H068; two readers agree; first: 1|a; second: 1|a
+169114	21	169113	-	same_as	577	same_as:169113	H068; two readers agree; first: -|same_as:169113; second: -|same_as:169113
+169115	21	169113	-	same_as	578	same_as:169113	H068; two readers agree; first: -|same_as:169113; second: -|same_as:169113
+169116	21	169113	2	right now	579	သတိ(တိ)[သန္တ+သ္မိံ။သန္တ-	H068; two readers agree; first: 2|t; second: 2|t
+169117	21	169113	3	wrong now	579	သတိထီ)[သန္တ+ဤ။သတီသန္တီ-မ	H068; two readers agree; first: 3|w; second: 3|w
+169404	21	169404	1	right now	610	သတ္တာ(တိ)[သပ+တနိန်။သဗ္ဘန	H069; two readers agree; first: 1|a; second: 1|a
+169405	21	169404	2	right now	611	သတ္တ(ပ)[သန္ဇ(သ)+တ။ရူပါဒီ	H069; two readers agree; first: 2|e; second: 2|e
+169406	21	169404	-	same_as	612	same_as:169405	H069; two readers agree; first: -|same_as:169405; second: -|same_as:169405
+169407	21	169404	-	same_as	613	same_as:169405	H069; two readers agree; first: -|same_as:169405; second: -|same_as:169405
+169408	21	169404	3	right now	614	သတ္တ(န)[သန္တ+တ္တ။သံ-သတွ။	H069; two readers agree; first: 5|z8; second: 3|z8
+169409	21	169404	4	right now	615	သတ္တ(တိ)[သန္န(သဇ+တ။နီတိ၊	H069; two readers agree; first: 6|z10; second: 4|z10
+169410	21	169404	5	right now	615	သတ္တာ(တိ)[သပ+တ။သံ-ဂဗ္ဘ။	H069; two readers agree; first: 7|z12; second: 5|z12
+170209	21	170209	1	wrong now	702	သတ္ထမုခံပု၊န[သတ္ထ+မုခ]	H070; two readers agree; first: 1|a; second: 1|a
+170210	21	170209	2	right now	702	သတ္ထမုခ(တိ)[သတ္ထမုခ+မုခ+	H070; two readers agree; first: 2|c; second: 2|c
+170218	21	170218	1	wrong now	703	သတ္ထဝါဟာ(၇)သတ္ထ+ဝါဟ။	H071; two readers agree; first: 1|a; second: 1|a
+170219	21	170218	2	wrong now	703	သတ္ထဝါဟ(တိ)[သတ္ထဝါဟ+ဏ။	H071; two readers agree; first: 2|f; second: 2|f
+170463	21	170463	1	right now	733	သဒိသ(တိ)[သမာန+ဒုသ+ကွိ။	H072; two readers agree; first: 1|a; second: 1|a
+170464	21	170463	2	wrong now	733	သိဒသဒါ(တိ)[သဒိသ+ဝဏ္ဏ]	H072; two readers agree; first: 2|other:H072-21-p733R.png:37:after b:သိဒသ² (တိ) [ သဒိသ + ဝဏ္ဏ ; second: 2|other:H072.1-21-p733R-2.png:54:after line b:သိဒသ² (တိ) [သဒိသ
+170465	21	170463	3	right now	733	သဒိသ?(တိ)[ဧက+သဒိသ]	H072; two readers agree; first: 3|c; second: 3|c
+170596	21	170596	-	wrong now	747	သဒ္ဒကဏ္ဋက(တိ)[သဒ္ဒ+ကဏ္ဋက	H073; session (image read here); first: -|a; second: -|other:H073-21-p747R-2.png:37:before line a:သဒ္ဒကဏ္ဍက (တိ) [သ
+170597	21	170596	-	wrong now	747	သဒ္ဒကဏ္ဍက(တိ)[သဒ္ဒ+ကဏ္ဍက	H073; session (image read here); first: -|same_as:170596; second: -|a
+171385	21	171385	-	right now	830	သန္တကာယကမ္မာဒိတာ(ထီ)	H074; two readers agree; first: -|a; second: -|a
+171386	21	171385	-	same_as	830	same_as:171385	H074; two readers agree; first: -|same_as:171385; second: -|same_as:171385
+171889	21	171889	1	wrong now	884	သန္ထရိံကြို[သံ+ထရ+ဤ]	H075; two readers agree; first: 1|b; second: 1|b
+171890	21	171889	2	wrong now	884	သန္ထရိံပု၊န)[သံ+ထရ+ဣ]	H075; two readers agree; first: 2|c; second: 2|c
+172084	21	172084	-	right now	909	သန္ဓာရေတုံ(ဗျ)[သံ+ဓရ+ဏေ+	H076; two readers agree; first: -|a; second: -|a
+172085	21	172084	-	same_as	909	same_as:172084	H076; two readers agree; first: -|same_as:172084; second: -|same_as:172084
+172131	21	172131	1	right now	917	သန္ဓိယတိ(ကြိ)[သံ+ဓား+တိ။	H077; one reader; first: 1|a; second: -
+172132	21	172131	2	right now	917	သန္ဓိယတိသန္ဓီယတိ(ကမ္မ၊ကြ	H077; one reader; first: 2|b; second: -
+178483	22	178483	-	right now	152	သဗ္ဗကုလ(န)[သဗ္ဗ+ကုလ]အလုံ	H078; two readers agree; first: -|a; second: -|a
+178484	22	178483	-	same_as	152	same_as:178483	H078; two readers agree; first: -|same_as:178483; second: -|same_as:178483
+178849	22	178849	1	wrong now	185	[သဗ္ဗတကာ(တိ)သဗ္ဗ+အတ္ထမ့်	H079; two readers agree; line placed by hand: head read [ သဗ္ဗတကာ (တိ); first: 1|other:H079-22-p185L.png:0:after line -:သဗ္ဗတ္ထက (တိ) [ သဗ္ဗ ; second: 1|other:H079-22-p185L-2.png:30:before line a:သဗ္ဗတ္ထက¹ (တိ) [သ
+178850	22	178849	2	wrong now	185	သဗ္ဗတ္ထက(တိ)သဗ္ဗ+အတ္ထသဗ္	H079; two readers agree; first: 2|b; second: 2|b
+180918	22	180918	-	right now	385	သမန္တသဒ္ဒ(ပု)[သမန္တ+သဒ္ဒ	H080; two readers agree; first: -|a; second: -|a
+180919	22	180918	-	same_as	385	same_as:180918	H080; two readers agree; first: -|same_as:180918; second: -|same_as:180918
+181361	22	181361	1	wrong now	433	သမာစာရာ(ပု)[သံ+အာ+စရ+ဏ။	H081; two readers agree; first: 1|a; second: 1|a
+181362	22	181361	2	wrong now	433	သမာစာရ၊(ပု)[သမာစာရ+ကိရိယ	H081; two readers agree; first: 2|f; second: 2|f
+182329	22	182329	1	wrong now	532	သင်္ဂံပိတာ(တိ)[သံ+အာပ+ဏေ	H082; session (image read here); line placed by hand: head read သင်္ဂံ ပိတာ (တိ); first: 1|unsure; second: 1|other:H082-22-p532L-2.png:17:after -:သမာပိတ¹ (တိ) [ သံ + အာပ
+182330	22	182329	2	right now	532	သမာပိတာါ(တိ)[သမု+ဏာပေ+တ။	H082; two readers agree; first: 2|b; second: 2|b
+182548	22	182548	1	right now	557	သမိဒ္ဓိ(ထီ)[သံ+ဣဓ+တိ။သမိ	H083; two readers agree; first: 1|a; second: 1|a
+182549	22	182548	2	unsure	557		H083; two readers agree; first: 2|unsure; second: 2|unsure
+182883	22	182883	1	right now	593	သမုဌာန(တိ)[သံ.ဥဌာန။သမ+ဥဋ	H084; two readers agree; first: 1|a; second: 1|a
+182884	22	182883	2	right now	594	သမုဋ္ဌာန(န)[သံ.ဥ+ဌာ+ယု။သ	H084; two readers agree; first: 2|c; second: 2|c
+182885	22	182883	3	wrong now	595	သမုဋ္ဌာန(န)[သမုဋ္ဌာန+တ္တ	H084; two readers agree; first: 3|p; second: 3|p
+183112	22	183112	1	wrong now	625	စုံ၂သမုဒါဂမာ(ပု)[သံ+ဥ+အာ	H085; session (image read here); line placed by hand: head read with column debris: စုံ ၂ သမုဒါဂမာ; first: 1|unsure; second: 1|other:H085-22-p625R-2.png:12:after -:သမုဒါဂမ¹ (ပု) [ သံ + ဥ 
+183113	22	183112	2	right now	625	၀သမုဒါဂမ(တိ)[သမုဒါဂမ၃ဏ]ဖ	H085; two readers agree; first: 2|a; second: 2|a
+184961	22	184961	-	wrong now	853	သမ္ဗုသတိ(ကြိ)[သံ+ဖုသ+အ+တ	H086; two readers agree; first: -|a; second: -|a
+184962	22	184961	-	same_as	853	same_as:184961	H086; two readers agree; first: -|same_as:184961; second: -|same_as:184961
+185047	22	185047	-	wrong now	864	သမ္ဗန္ဓီ(တိ)[သမ္ဗန္ဓဤ။ထီ	H087; two readers agree; first: -|a; second: -|a
+185048	22	185047	-	same_as	864	same_as:185047	H087; two readers agree; first: -|same_as:185047; second: -|same_as:185047
+185288	22	185288	1	right now	897	သမ္ဘဝ(ပု)[သံ+ဘူ+အ။သမ္ဘဝတ	H088; two readers agree; first: 1|a; second: 1|a
+185289	22	185288	2	wrong now	900	သမ္ဘဝါ(ပ)သံ+ဘူ+အ](၁)သမ္ဘ	H088; two readers agree; first: 2|p; second: 2|p
+185290	22	185288	3	right now	901	သမ္ဘဝ(န)[ယထာသမ္ဘဝ။အာဒိလေ	H088; two readers agree; first: 3|z2; second: 3|z2
+185419	22	185419	1	right now	922	သမ္ဘိဇ္ဇ(န)[သံ+ဘိဒိကဏ။သံ	H089; two readers agree; first: 1|a; second: 1|a
+185420	22	185419	2	wrong now	922	သမ္ဘိဇ္ဇ)(ကြ၊ဝိ)[သံ+ဘိဒိ	H089; two readers agree; first: 2|b; second: 2|b
+185507	23	185507	-	unsure	36		H090; readers differ or unsure; first: -; second: -
+185508	23	185507	-	unsure	36		H090; readers differ or unsure; first: -; second: -
+185509	23	185507	-	unsure	36		H090; readers differ or unsure; first: -; second: -
+185513	23	185513	1	wrong now	37	သမ္ပက္ခိတ(တိ)[သံ+မက္ခ+တ။	H091; one reader; first: 1|a; second: -
+185514	23	185513	2	wrong now	37	သမ္မက္ခိတ၊(တိ)[သမ္ဗကိုတအ	H091; one reader; first: 2|b; second: -
+185592	23	185592	1	wrong now	46	သမ္ပတ္တာ(တိ)[သံ+မဒ+တ။နိရ	H092; two readers agree; first: 1|a; second: 1|a
+185593	23	185592	2	wrong now	46	သမ္မတ္တာ(ပ)[သမ္မာ+အတ္တ။သ	H092; two readers agree; first: 2|c; second: 2|c
+185594	23	185592	3	wrong now	46	သမ္ပတ္တ(တိ)[သမ္မာ+အတ္တမဖ	H092; two readers agree; first: 3|e; second: 3|e
+185595	23	185592	-	unsure	46		H092; two readers agree; first: -|unsure; second: -|unsure
+185853	23	185853	-	unsure	76		H093; two readers agree; first: -|unsure; second: 1|unsure
+185854	23	185853	2	right now	76	သမ္မာဒဿန(တိ)[သမ္မာဒဿန+ဏ။	H093; two readers agree; first: 2|a; second: 2|a
+185864	23	185864	1	wrong now	77	သမ္မာဒိဋ္ဌိ?(ထီ)[သမ္မာ+ဒ	H094; two readers agree; first: 1|b; second: 1|b
+185865	23	185864	2	right now	78	သမ္မာဒိဋ္ဌိ(တိ)]သမ္မာ+ဒိ	H094; two readers agree; first: 2|f; second: 2|f
+186112	23	186112	1	wrong now	103	သမ္မာတံပ္ပ(တိသမ္မာသင်ပ္ပ	H095; two readers agree; first: 1|other:H095-23-p103R.png:7:before line a:သမ္မာသင်္ကပ္ပ° (တိ) ; second: 1|other:H095-23-p103R-2.png:22:after line -:သမ္မာသင်္ကပ္ပ¹ (တိ
+186113	23	186112	2	wrong now	103	သမ္မာသင်္ကပ္ပ(ပု)[သမ္မာ+	H095; two readers agree; first: 2|b; second: 2|b
+186651	23	186651	1	right now	159	သရ”(ပု)[သရ+အ။သရသဒ္ဒေါပတာ	H096; two readers agree; first: 1|a; second: 1|a
+186652	23	186651	2	right now	160	သရာ(တိ)[သရ+အ။သရံဂတိယံ။သရ	H096; two readers agree; first: 2|c; second: 2|c
+186653	23	186651	3	wrong now	160	သရာ”(ပု၊န)[သရ+အ။မနောဂိုဏ	H096; two readers agree; first: 3|e; second: 3|e
+186654	23	186651	4	wrong now	160	သရာ(၇)]သရ+အ။သရဂတိယံ။နီတိ	H096; two readers agree; first: 4|g; second: 4|g
+186655	23	186651	5	wrong now	160	သရာ(ပ)သရ+အ။သရ+ဏေ+အ။သယံ	H096; two readers agree; first: 5|i; second: 5|i
+186656	23	186651	6	wrong now	160	သရ”(ကြိုသရ+ဟိ။သရတိ-မှ။]အ	H096; two readers agree; first: 6|j; second: 6|j
+187333	23	187333	1	wrong now	217	သရူပဝ(န)သ(အတ္တ)+ရူပ။သွရူ	H097; two readers agree; first: 1|a; second: 1|a
+187334	23	187333	2	wrong now	217	သရူပ(တိ)သမာန+ရူပ။သမာနံရူ	H097; two readers agree; first: 2|b; second: 2|b
+187335	23	187333	3	right now	217	သရူပါ(တိ)[သဟ-+ရူပ။သဟရူပေ	H097; two readers agree; first: 3|d; second: 3|d
+188645	23	188645	1	wrong now	352	သဟဓမ္မာ(၇)[သဟ+ဓမ္မ။သဟမံ-	H098; two readers agree; first: 1|a; second: 1|a
+188646	23	188645	2	wrong now	352	သဟဓမ္မာ(တိ)[သဟ+ဓမ္မ။သဟဓမ	H098; two readers agree; first: 2|d; second: 2|d
+188647	23	188645	3	wrong now	352	သဟဓမ္မ”(ပု)[သဟနဓမ္မ[သဟဓမ	H098; two readers agree; first: 3|g; second: 3|g
+188986	23	188986	1	right now	384	သဟိတဝိ(တိ)[သဟ+ဣ+တ။သဟိတသံ	H099; two readers agree; first: 1|a; second: 1|a
+188987	23	188986	2	wrong now	385	သဟိတာ(တိ)သဟ+ဟိတ[အကျိုးစီ	H099; two readers agree; first: 2|b; second: 2|b
+188988	23	188986	3	wrong now	385	သဟိတ(တိ)[သံ+ဓာ+တ။ဓာ-ကိုဟ	H099; two readers agree; first: 3|c; second: 3|c
+188989	23	188986	4	wrong now	385	သဟိတ(တိ)သမာန+ဟိ+တအညီအမျှ	H099; two readers agree; first: 4|d; second: 4|d
+188990	23	188986	5	right now	385	သဟိတာ(တိ)[သဟ+တုသည်းခံတတ်	H099; two readers agree; first: 5|e; second: 5|e
+188991	23	188986	6	right now	385	သဟိတ်(န)[သ+အတ္တ)ဟိတမိမိ၏	H099; two readers agree; first: 6|g; second: 6|g
+189150	23	189150	1	wrong now	399	သာဝ(ထီ)[တ+အာ။တ-ကိုသာ-ပြု	H100; two readers agree; first: 1|a; second: 1|a
+189151	23	189150	2	wrong now	399	သာ(ပု)[သုန+ဏ။သုန-ဂတိယံ--	H100; two readers agree; first: 2|b; second: 2|b
+189152	23	189150	3	right now	400	သာ”(တိ)[အတ္တ+ဏ။အတ္တနောအယ	H100; two readers agree; first: 3|d; second: 3|d
+189947	23	189947	-	right now	482	သာဓေတုံ(ဗျ)[သိဓ+ဏေ+တုံ(၁	H101; two readers agree; first: -|a; second: -|a
+189948	23	189947	-	same_as	482	same_as:189947	H101; two readers agree; first: -|same_as:189947; second: -|same_as:189947
+190459	23	190459	-	right now	534	သာယိံသု(ကြိ)[သသေ+အ+ဥံ။သာ	H102; two readers agree; first: -|a; second: -|a
+190460	23	190459	-	same_as	534	same_as:190459	H102; two readers agree; first: -|same_as:190459; second: -|same_as:190459
+191070	23	191070	1	right now	602	သာဝဋ္ဋ(တိ)[သဟ+အာဝဋ္ဋ။သဟ	H103; two readers agree; first: 1|a; second: 1|a
+191071	23	191070	2	wrong now	602	ဝဋ္ဋ(န)ဆ+အာဝဋ္ဋ(အံ-ဟုခေါ	H103; two readers agree; line placed by hand: head read ဝဋ္ဋ (န) ဆ + အာဝဋ္ဋ; first: 2|other:H103-23-p602R.png:59:after line c:သာဝဋ္ဋ² (န) [ သ + အာ; second: 2|other:H103-23-p602R-2.png:61:after c:သာဝဋ္ဋ² (န) [ သ + အာဝဋ္
+191238	23	191238	-	wrong now	623	သာသနပ္ပဝေဏီ(ထီ)သာသန+ပဝေဏ	H104; session (image read here); first: -|a; second: -|other:H104-23-p623L-2.png:17:after -:သာသနပ(ပ္ပ)ဝေဏီ (ထီ) [ သ
+191239	23	191238	-	same_as	623	same_as:191238	H104; session (image read here); first: -|same_as:191238; second: -|a
+191848	23	191848	1	right now	687	သိင်္ဂီ(တိ)[သိင်္ဂံ+ဤ။သိ	H105; two readers agree; first: 1|a; second: 1|a
+191849	23	191848	2	wrong now	687	သိင္ဂီပ(ထီ)[သိင်္ဂံ+ဏ+ဤ။	H105; two readers agree; line placed by hand: head read သိင္ဂီပ(ထီ); first: 2|other:H105-23-p687R.png:31:after line d:သိင်္ဂီ² (ထီ) [ သိင်; second: 2|other:H105-23-p687R-2.png:41:after d:သိင်္ဂီ² (ထီ)
+192338	23	192338	1	wrong now	746	သိပ္ဗိယာ(ထီ)[သိပ္ပိကာ=သိ	H106; two readers agree; first: 1|other:H106-23-p746L.png:3:after line none:သိပ္ပိယ¹ (ထီ) [ သိ; second: 1|other:H106-23-p746L-2.png:37:after -:သိပ္ပိယ¹ (ထီ)
+192339	23	192338	2	right now	746	သိပ္ပိယ(တိ)[သိပ္ပ+ဣက-သိပ	H106; two readers agree; first: 2|a; second: 2|a
+192341	23	192341	-	right now	746	သိပ္ပီ(တိ)[သိပ္ပ+ဤ။သိပ္ပ	H107; two readers agree; first: -|a; second: -|a
+192342	23	192341	-	same_as	746	same_as:192341	H107; two readers agree; first: -|same_as:192341; second: -|same_as:192341
+203425	24	203425	1	wrong now	67	နီယတိ(ကြို)[သော(သာ)+ယ+တိ	H108; two readers agree; first: 1|a; second: 1|a
+203426	24	203425	2	wrong now	67	စိယတိ(ကြို[သေ+အတိ။-ကိုဤယ	H108; session (image read here); line placed by hand: head read စိယတိ (ကြို; first: 2|unsure; second: 2|other:H108-24-p67R-2.png:85:after a:သီယတိ² (ကြိ) [ သေ + အ + 
+204187	24	204187	1	right now	136	သီဟ(ပု)[သဟ+အ။သီဟိ+အ။သူ့	H109; two readers agree; first: 1|a; second: 1|a
+204188	24	204187	2	wrong now	137	သီဟ(ပု)[သီဟ-ကြည်။တထာဂတော	H109; two readers agree; first: 2|g; second: 2|g
+204189	24	204187	3	wrong now	137	ဟ(ပ)[သီဟာ-ကြည့်။သီဟ+အ။သီ	H109; two readers agree; line placed by hand: head read ဟ (ပ) [ သီဟာ-ကြည့်; first: 3|other:H109-24-p137R.png:55%:after line h:သီဟ³ (ပု) [ သီဟ¹-ကြ; second: 3|other:H109.2-24-p137R-2.png:37:after h:သီဟ³ (ပု) [ သီဟ¹-ကြည့
+204190	24	204187	4	wrong now	138	သဟလိသိဟကြည်။((သီ	H109; two readers agree; line placed by hand: head read သဟလိ သိဟ ကြည်; first: 4|other:H109-24-p138L.png:66%:after line n:သီဟ⁴ (ထီ၊ ပု) [ သီဟ; second: 4|other:H109.3-24-p138L-2.png:75:after n:သီဟ⁴ (ထီ၊ ပု) [ သီဟ¹-
+204385	24	204385	1	wrong now	158	သုံ(ဓာတု)[သု+အ+တိ။ဘူဝါဒိ	H110; two readers agree; first: 1|b; second: 1|b
+204386	24	204385	2	wrong now	158	သုံ(ဓာတု)[သု+ဏု(ဏာ)+တိ။သ	H110; two readers agree; first: 2|e; second: 2|e
+204387	24	204385	3	wrong now	158	သု”(ဗျ)[သွဒ်-သံ](၁)ပုဒ်ပ	H110; two readers agree; first: 3|f; second: 3|f
+204388	24	204385	4	wrong now	158	သု၊(သုဥ(ခ)၊ထော၊ကေဇ္ဈါ၊	H110; two readers agree; first: 4|i; second: 4|i
+204389	24	204385	-	same_as	158	same_as:204388	H110; two readers agree; first: -|same_as:204388; second: -|same_as:204388
+206131	24	206131	-	unsure	339		H111; two readers agree; first: -|unsure; second: 1|unsure
+206132	24	206131	2	wrong now	339	သုတဝန္တု(တိ)[သု+တဝန္တု။ဘ	H111; two readers agree; first: 2|a; second: 2|a
+206201	24	206201	-	unsure	346		H112; readers differ or unsure; first: -; second: -
+206202	24	206201	-	unsure	346		H112; readers differ or unsure; first: -; second: -
+206203	24	206201	-	unsure	348		H112; readers differ or unsure; first: -; second: -
+207848	24	207848	1	wrong now	504	ုဗဟာယ(ကြ၊ဝိသပဟာ+တွာ	H113; session (image read here); line placed by hand: head read ုဗဟာယ (ကြ၊ ဝိသ; first: -|unsure; second: 1|other:H113-24-p504R-2.png:30:after line none:သုပ္ပဟာယ¹ (ကြိ၊
+207849	24	207848	2	right now	504	ုပ္ပဟာယ(တိ)[သု+ပဟာယပ+ဟာ+	H113; two readers agree; first: 2|a; second: 2|a
+208185	24	208185	-	unsure	540		H114; readers differ or unsure; first: -; second: -
+208186	24	208185	-	unsure	540		H114; readers differ or unsure; first: -; second: -
+208936	24	208936	-	right now	609	သုဝဏ္ဏဘူမိ(ထီ)[သုဝဏ္ဏ+ဘူ	H115; two readers agree; first: -|a; second: -|a
+208937	24	208936	-	same_as	609	same_as:208936	H115; two readers agree; first: -|same_as:208936; second: -|same_as:208936
+209796	24	209796	1	right now	684	သူကရ(ပု၊န)[သု+ကရဏ။သုန္ဒရ	H116; two readers agree; first: 1|a; second: 1|a
+209797	24	209796	2	right now	684	သူကရ၊(တိ)[သူကရ+ဏ။သူကရဿဣဒ	H116; two readers agree; first: 2|c; second: 2|c
+209929	24	209929	1	wrong now	695	သူဏ-ပြာ။]သူန(၃)အနက်ကြည့်	H117; one reader; first: 1|a; second: -
+209930	24	209929	2	right now	695	သူဏာ(၇)သူနသူဏ။သု+ဦဏ။သာမိ	H117; one reader; first: 2|b; second: -
+209951	24	209951	1	right now	697	သုန(၇)]သူန+ဏ။ဓာနိ၊ဋီ။၅၁၉	H118; two readers agree; first: 1|a; second: 1|a
+209952	24	209951	2	wrong now	697	သူနာ(တိ)[သူ+တ။သယိ,ပသဝတီတ	H118; two readers agree; first: 2|b; second: 2|b
+209953	24	209951	3	wrong now	697	သုန(တိ)[သု+တ။တ-ကိုန-ပြု။	H118; two readers agree; line placed by hand: head read သုန (တိ) [ သု + တ; first: 3|other:H118-24-p697R.png:31:after b:သူန³ (တိ) [ သု + တ။ တ-ကို; second: 3|other:H118-24-p697R-2.png:41:after line b:သူန³ (တိ) [ သု + တ
+209954	24	209951	4	wrong now	697	သုန(ထီ၊န)[သဟ+ဦန။သဒါအာကော	H118; two readers agree; first: 4|other:H118-24-p697R.png:89:after c:သူန⁴ (ထီ၊ န) [ သဟ + ဦန; second: 4|other:H118-24-p697R-2.png:82:after line c:သူန⁴ (ထီ၊ န) [ သဟ 
+217361	25	217361	1	wrong now	62	သောဏံ(ထီ)သု+ဏိ။သဝတိပသဝတီ	H119; session (image read here); line placed by hand: head read သောဏံ (ထီ); first: 1|a; second: 1|other:H119-25-p62L-2.png:43%:after -:သောဏီ¹ (ထီ) သု + ဏီ
+217362	25	217361	2	wrong now	62	သောဏီ(ထီ)သောဏ+ဤ]ခွေးမ။	H119; two readers agree; first: 2|c; second: 2|c
+217456	25	217456	-	wrong now	73	သောတပ(ပ္ပဒေသ(တိ)[သောတ+ပဒ	H120; two readers agree; first: -|a; second: -|a
+217457	25	217456	-	same_as	73	same_as:217456	H120; two readers agree; first: -|same_as:217456; second: -|same_as:217456
+217631	25	217631	1	right now	94	သောတ္ထိ(ထီ)[သ+ဣတ္ထိ။သန္န	H121; two readers agree; first: 1|a; second: 1|a
+217632	25	217631	2	wrong now	94	သောတ(တိ)[သု+အတ္ထ။အဆုံး၌ဣ	H121; two readers agree; first: 2|other:H121-25-p94R.png:41:after c:သောတ္ထိ² (တိ) [ သု + အတ္ထ; second: 2|other:H121-25-p94R-2.png:52%:after c:သောတ္ထိ² (တိ) [ သု + အတ
+218210	25	218210	1	unsure	158		H122; two readers agree; first: 1|unsure; second: 1|unsure
+218211	25	218210	2	wrong now	158	သွေဟာါ(တိ)[သေေ့ဟ+ဏနိုအဆီ	H122; session (image read here); line placed by hand: head read သွေဟာါ (တိ); first: 2|other:H122-25-p158R.png:5:after line a:သ္နေဟ² (တိ) [ သ္နေဟ +; second: 2|other:H122-25-p158R-2.png:38%:after -:သ္နေဟ² (တိ) [ သ္နေဟ + 
+218212	25	218210	3	right now	158	သိ္နေဟ(န)[သွ္နေဟ+ဏ]အစေး၏	H122; two readers agree; first: 3|b; second: 3|b
+218220	25	218220	-	wrong now	159	သေ္နေ့ဟယတိ-သွေဟေတိ(ကာ၊ကြ	H123; two readers agree; first: -|a; second: -|a
+218221	25	218220	-	same_as	159	same_as:218220	H123; two readers agree; first: -|same_as:218220; second: -|same_as:218220
+218405	25	218405	-	wrong now	179	ဟဏုှဟဏုကာ(ထီ၊ပု)[ဟန+ဏု-ဟ	H124; two readers agree; first: -|a; second: -|a
+218406	25	218405	-	same_as	179	same_as:218405	H124; two readers agree; first: -|same_as:218405; second: -|same_as:218405
+218794	25	218794	-	wrong now	219	ဟတ္ထာဏီကဟတ္ထာနံက(၂)[ဟတ္ထ	H125; two readers agree; first: -|a; second: -|a
+218795	25	218794	-	same_as	219	same_as:218794	H125; two readers agree; first: -|same_as:218794; second: -|same_as:218794
+218810	25	218810	1	wrong now	221	ဟတ္ထာရုရူဠှ(တိ)ဟတ္ထ+အာရု	H126; two readers agree; first: 1|b; second: 1|b
+218811	25	218810	1	unsure	221		H126; session: the print has two heads, each with its ru/rū variant, for four index rows; which index row is ² cannot be read from the page; first: 1|same_as:218810; second: 2|c
+218812	25	218810	2	unsure	221		H126; session: as 218811; first: 2|c; second: -|same_as:218810
+218813	25	218810	2	unsure	221		H126; session: as 218811; first: 2|same_as:218812; second: -|same_as:218811
+218859	25	218859	1	wrong now	226	ဟတ္ထက(တိ)[ဟတ္ထ+ဏိကနိုလက်	H127; session (image read here); line placed by hand: head read ဟတ္ထက (တိ); first: 1|unsure; second: 1|other:H127-25-p226L-ctx.png:57%:after -:ဟတ္ထိက¹ (တိ) [ ဟတ္ထ 
+218860	25	218859	2	wrong now	226	ဟတ္ထက(န)[ဟတ္ထံ+ကဏ်]ဆင်းအ	H127; session (image read here); line placed by hand: head read ဟတ္ထက (န); first: 2|unsure; second: 2|other:H127-25-p226L-ctx.png:87%:after -:ဟတ္ထိက² (န) [ ဟတ္ထိ 
+218861	25	218859	3	wrong now	226	ဟတ္ထိက(တိ)[ဟတ္ထိ+က။ဟတ္ထံ	H127; two readers agree; line placed by hand; first: 3|a; second: 3|a
+219679	25	219679	1	right now	317	ဟာယန(န)[ဟာ+ယု။ဟာယတ်ိ-မူ။	H128; two readers agree; first: 1|a; second: 1|a
+219680	25	219679	2	wrong now	317	ဟာယနာ(ပု၊န)[ဟာ+ယု။ဇဟန္တာ	H128; two readers agree; first: 2|other:H128-25-p317L.png:87:after line g:ဟာယန² (ပု၊ န) [ ဟာ +; second: 2|other:H128-25-p317L-2.png:81%:after g:ဟာယန² (ပု၊ န) [ ဟာ + ယ
+219875	25	219875	1	right now	340	ဟိံ(ဗျ)[ဟိ-သံ၊ပြာ။](၁)ချ	H129; two readers agree; first: 1|c; second: 1|c
+219876	25	219875	2	wrong now	343	ဟိပ(န)[ဟိနကွိ]နှစ်သက်-ဝမ	H129; two readers agree; first: 2|l; second: 2|l
+219877	25	219875	3	wrong now	343	ဟိ?(၇)အနက်မရှိသောအာဂမ်-ဟ	H129; two readers agree; first: 3|m; second: 3|m
+219878	25	219875	4	wrong now	343	ဟိ(ပု)ဟိ-ဓာတ်၊ဟိ-သဒ္ဒါ။အ	H129; two readers agree; first: 4|o; second: 4|o
+220009	25	220009	-	wrong now	356	ဟိတသုခပ(ပ္ပါဋိလာဘဟေတုဘာဝ	H130; session (image read here); first: -|other:H130-25-p356R.png:36:after a:ဟိတသုခပ(ပ္ပ)ဋိလာဘဟေတုဘာဝ ; second: -|a
+220010	25	220009	-	same_as	356	same_as:220009	H130; session (image read here); first: -|same_as:220009; second: -|same_as:220009
+220047	25	220047	-	wrong now	359	ဟိတာဓိပ္ပါယပပ္ပဝတ္တိ(တီ)	H131; two readers agree; first: -|a; second: -|a
+220048	25	220047	-	same_as	359	same_as:220047	H131; two readers agree; first: -|same_as:220047; second: -|same_as:220047
+220597	25	220597	1	wrong now	414	ဟေဋ္ဌာဂါမံ(တိ)[ဟေဋ္ဌာ+ဂမ	H132; session (image read here); first: 1|b; second: 1|other:H132-25-p414R-2.png:25:after line -:ဟေဋ္ဌာဂါမီ¹ (တိ) [
+220598	25	220597	2	wrong now	414	ဟေဋ္ဌာဂါမီ(တိ)[ဟေဋ္ဌာ+အာ	H132; session (image read here); first: -|unsure; second: 2|b
+220771	25	220771	-	wrong now	431	ဟေတုဂ(ဂ္ဂ္ဂါဟဏ(န)ဟေတု+ဂဟ	H133; two readers agree; first: -|a; second: -|a
+220772	25	220771	-	same_as	431	same_as:220771	H133; two readers agree; first: -|same_as:220771; second: -|same_as:220771
+221107	25	221107	-	wrong now	462	ဟေဝတ္ထ-ဟေဝတို့က(ပု)[ဟေဝ+	H134; two readers agree; first: -|a; second: -|a
+221108	25	221107	-	same_as	462	same_as:221107	H134; two readers agree; first: -|same_as:221107; second: -|same_as:221107
+221136	25	221136	1	wrong now	464	ဟောမိ(ကြို[ဟု+အ+မ။အယဉ္စဟ	H135; two readers agree; first: 1|a; second: 1|a
+221137	25	221136	2	wrong now	464	ဟောမ(ပု)[ဟု+မာန်။ဟဝနံဟူယ	H135; two readers agree; first: 2|c; second: 2|c
+173071	4c	173071	-	wrong now	142	ဧကဒ္ဒီဟိက(တိ)[ဧကဒ္ဒီဟ+ဏိ	H136; two readers agree; first: -|a; second: -|a
+173072	4c	173071	-	same_as	142	same_as:173071	H136; two readers agree; first: -|same_as:173071; second: -|same_as:173071
+173093	4c	173093	-	wrong now	145	ကေဓိက္ကာရပရိပုဏ္ဏ(တိ)[ဧက	H137; two readers agree; first: -|a; second: -|a
+173094	4c	173093	-	same_as	145	same_as:173093	H137; two readers agree; first: -|same_as:173093; second: -|same_as:173093
+173971	4c	173971	1	wrong now	256	ဦ(၇)[ဧ+ကာရ]"ဧ”"အက္ခရာ။သန	H138; session (image read here); line placed by hand: head read ဦ (၇) [ဧ+ကာရ]; first: 1|unsure; second: 1|other:H138-4c-p256L-2.png:20%:after line none:ဧကာရ¹ (ပု) [ဧ+
+173972	4c	173971	2	wrong now	256	ဧကာရ(တိ)[ဧက+အရ]တစ်ခုသော(	H138; two readers agree; first: 2|b; second: 2|b
+174407	4c	174407	1	wrong now	319	ဧတ္ထကဣ+ထ]ရောက်ပြီ။ဧဓတိ(၃	H139; two readers agree; first: 1|a; second: 1|a
+174408	4c	174407	2	wrong now	319	ဧတ္ထ(ဗျ)[ဧတ+ထ။ကစ္စည်း။၂၃	H139; two readers agree; first: 2|b; second: 2|b
+174427	4c	174427	1	wrong now	321	ဧနံဣမ(ဧတ)+အံ-ဝိဘတ်။အံဝိဘ	H140; two readers agree; first: 1|a; second: 1|a
+174428	4c	174427	2	wrong now	321	ဧနံ(ဗျ)[နိပါတ်ပုဒ်]အနက်မ	H140; two readers agree; first: 2|c; second: 2|c
+174689	4c	174689	1	wrong now	359	ဧသိံ(ကြိ)ဣ+အ+သိ။အာ+ဣန+အ+	H141; one reader; first: 1|a; second: -
+174690	4c	174689	2	wrong now	359	ဧသိ”(ကြိ)[ဣသ(ဣသိ၊ဧသ၊ဧသု)	H141; one reader; first: 2|b; second: -
+174863	4c	174863	1	wrong now	385	ကာရ(၃)[ဩ။ကာရ)ဩ-အက္ခရာ။	H142; two readers agree; first: 1|a; second: 1|a
+174864	4c	174863	2	wrong now	385	[ဩကာရာ(ပ)[အဝ+ကရ+ဏ]ယုတ်ညံ	H142; two readers agree; first: 2|b; second: 2|b
+175058	4c	175058	1	wrong now	413	ဩက္ကလာ(ပု)[ယာဒိစ္ဆကနာမ်၊	H143; two readers agree; first: 1|a; second: 1|a
+175059	4c	175058	2	unsure	413		H143; two readers agree; first: 2|unsure; second: 2|unsure
+175431	4c	175431	1	wrong now	471	[ဩတရာ(ကြိ)[အဝ+တရ+ဟိ]သက်ဆ	H144; two readers agree; first: 1|a; second: 1|a
+175432	4c	175431	2	right now	471	ဩတရတိ)[အဝ+တရ+အ]သက်ဆင်း	H144; two readers agree; first: 2|b; second: 2|b
+175732	4c	175732	1	wrong now	509	[ဩဒိဿ(ကြိဝိ)[ဥ+ဒိသ+တွာ]ရ	H145; two readers agree; first: 1|a; second: 1|a
+175733	4c	175732	2	wrong now	509	ဩဒိဿ(တိ)[သဩဒိဿ+က။ဥဒ္ဒိဿ+	H145; two readers agree; first: 2|b; second: 2|b
+175903	4c	175903	1	wrong now	540	ဩပမညာ(ပ)[ယာဒိစ္ဆကနာမ်၊သြ	H146; two readers agree; first: 1|a; second: 1|a
+175904	4c	175903	2	wrong now	540	[ဩပမည။(တိ)[ဥပမည+ဏ]ဥပမည	H146; two readers agree; first: 2|b; second: 2|b
+175934	4c	175934	1	wrong now	545	[ဩပဝယှာ(တိ)[ဥပ+ဝဟ+ဏျ။ရာဇ	H147; two readers agree; first: 1|a; second: 1|a
+175935	4c	175934	2	right now	545	ပဝယှ(၇)[ပဝယှ)ပဝယှ	H147; two readers agree; first: 2|c; second: 2|c
+176047	4c	176047	1	wrong now	561	[သဩဘာသကာတိ)[ဩဘာသ+ကရ+က္ခိ	H148; session (image read here); line placed by hand: head read [သဩဘာသကာ တိ); first: 1|unsure; second: 1|other:H148-4c-p561R-2.png:25:before line a:ဩဘာသက¹ (တိ) [ဩဘာသ
+176048	4c	176047	2	right now	561	ဩဘာသကာ(၇)[သဘာသ+က]အရောင်	H148; two readers agree; first: 2|a; second: 2|a
+176387	4c	176387	1	right now	608	ဩလဂ္ဂေတိ(ကြိ)[အဝ+လဂ(လဂ္ဂ	H149; one reader; first: 1|a; second: -
+176388	4c	176387	2	wrong now	608	[ဩလဂ္ဂေတိ”(ကာ၊ကြို[အဝ+လဂ	H149; one reader; first: 2|b; second: -
+176585	4c	176585	1	wrong now	632	[ဩလောကေသိ(ကြိ)[အဝ+လောက+ဏ	H150; one reader; first: 1|a; second: -
+176586	4c	176585	2	wrong now	632	ဩလောကေသိ(ကြိ)[အဝ+လောက+ဏေ	H150; one reader; first: 2|b; second: -
+176687	4c	176687	1	right now	645	ဩဝါဒ(ပ)[အဝ+ဝဒ+ဏ။အဝဝါဒ(သံ	H151; two readers agree; first: 1|a; second: 1|a
+176688	4c	176687	2	right now	645	ဩဝါဒ(ပ)[သဝါဒ+ယာစန]အဆုံးအ	H151; two readers agree; first: 2|b; second: 2|b
+176689	4c	176687	3	right now	645	ဩဝါဒ(ပ)[ဩဝါဒ+ပဋိဂ္ဂဟဏ]အဆ	H151; two readers agree; first: 3|c; second: 3|c
+176690	4c	176687	4	wrong now	645	[ဩဝါဒ(၇)[ဩဝါဒ+သဝန)]ဂရုဓံ	H151; two readers agree; first: 4|d; second: 4|d
+176691	4c	176687	5	wrong now	645	ဩဝါဒ(ပု)[ဘိက္ခုနီနဩဝါဒ]ရ	H151; two readers agree; first: 5|f; second: 5|f
+176692	4c	176687	6	right now	646	ဩဝါဒ(ပု)[ဩဝါဒ+ဥပသင်္ကမန]	H151; two readers agree; first: 6|h; second: 6|h
+177256	4c	177256	-	right now	720	ဘိဇ္ဇေယျ(ကြိ)[ဘိဒိ+ယ+ဧယျ	H152; two readers agree; first: -|a; second: -|a
+177257	4c	177256	-	same_as	720	same_as:177256	H152; two readers agree; first: -|same_as:177256; second: -|same_as:177256
+177381	4c	177381	-	wrong now	731	ပဋ္ဋက(ပု)[ယာဒစ္ဆကနာမ]မဇဋ	H153; two readers agree; first: -|a; second: -|a
+177382	4c	177381	-	same_as	731	same_as:177381	H153; two readers agree; first: -|same_as:177381; second: -|same_as:177381
+31548	4a	31548	1	right now	532	အာသု”(ဗျ)[အသ+ဏု။အသတိခေပတ	H154; two readers agree; first: 1|a; second: 1|a
+31549	4a	31548	2	right now	532	အာသု(ပု)[အသ+ဏျါအသက်။ဘဝတိ	H154; two readers agree; first: 2|c; second: 2|c
+32622	4a	32622	1	right now	666	ဤသာ(ပ)[ဤသ+-အ။မာန်ဋီ။၇၂]	H155; one reader; first: 1|a; second: -
+32623	4a	32622	2	wrong now	666	ဤသာ"(ဗျ)လွယ်ကူစွာ၊မငြိငြ	H155; one reader; first: 2|b; second: -
+174350	4c	174350	1	right now	304	ဧတဒဂ္ဂ(န)[အနုကရဏဇနာမံပုဒ	H156; two readers agree; first: 1|d; second: 1|d
+174351	4c	174350	2	right now	305	ဧတဒဂ္ဂ(န)[ဧတဒဂ္ဂ+နသုတ္တ]	H156; two readers agree; first: 2|g; second: 2|g
+174352	4c	174350	3	right now	305	ဧတဒဂ္ဂ?(န)[ဧတဒဂ္ဂ+ဌပန]ဧတ	H156; two readers agree; first: 3|h; second: 3|h
+74014	09	74014	1	wrong now	53	တ၄၁-လုံးသောအက္ခရာတို့တွင	H157; two readers agree; first: 1|a; second: 1|a
+74015	09	74014	2	right now	53	တ(တိ)[တနက။တကိ(၃)ခုံးသ	H157; two readers agree; first: 2|b; second: 2|b
+74016	09	74014	3	right now	54	တလာသော(အာဂုံ)“တာ။/ကစည်း။	H157; two readers agree; first: 3|i; second: 3|i
+74017	09	74014	4	wrong now	54	တါအခြားအက္ခရာမှဤပြောင်းလ	H157; two readers agree; first: 4|l; second: 4|l
+74018	09	74014	5	right now	54	တာါချေရ-ကျေစေရ-သော(လောပ)	H157; two readers agree; first: 5|p; second: 5|p
+74019	09	74014	6	wrong now	55	တ၆ဓာတ်လိင်တို့နောက်သစီရင	H157; two readers agree; first: 6|r; second: 6|r
+74020	09	74014	7	wrong now	56	တလိင်အားလုံးနှင့်ဆက်ဆံသေ	H157; two readers agree; first: 7|z4; second: 7|z4
+74021	09	74014	8	wrong now	61	တ"သင်္ချာ-တ။(ဤတ-သည်ပိဋကသ	H157; two readers agree; first: 8|z65; second: 8|z65
+74022	09	74014	9	wrong now	62	တ၆(ပု)[တရ၂ကို]ဆန်းကျမ်းလ	H157; two readers agree; first: 9|z66; second: 9|z66
+90204	11	90204	1	wrong now	328	ဓာရေသိ?(ကြိ)[ဓရ+ဏေ+သို(၁	H158; two readers agree; first: 1|b; second: 1|b
+90205	11	90204	2	wrong now	328	ဘရေ(ကြု)[ဏေ။ဤ](၃)	H158; two readers agree; line placed by hand: head read ဘရေ (ကြု) [ဏေ။ ဤ]; first: 2|other:H158-11-p328L.png:33%:after b:ဓာရေသိ² (ကြိ) [ဓရ+ဏေ+ဤ]; second: 2|other:H158-11-p328L-2.png:30:after line b:ဓာရေသိ² (ကြိ) [ဓရ+
+90206	11	90204	3	wrong now	328	ဓာရေသိကြို)[ဓရ+ဏေ+သ](၁)	H158; two readers agree; first: 3|c; second: 3|c
+90207	11	90204	4	right now	328	ဓာရေသိ(ကြိ)[ဓရ+-ဏေ+ဿသိ]ဆ	H158; two readers agree; first: 4|d; second: 4|d
+96109	12	96109	1	right now	361	နိပ္ဖါဒေယျာ(ကာ၊ကြို[နိ.ပ	H159; two readers agree; first: 1|a; second: 1|a
+96110	12	96109	2	right now	361	နိပ္ဖါဒေယျာ(တိ)[နိ+ပဒ+ဏေ	H159; two readers agree; first: 2|b; second: 2|b
+99933	12	99933	1	right now	977	နီစာ(တိ)[နိ+စိ+ဏ။နိစောဇမ	H160; two readers agree; first: 1|a; second: 1|a
+99934	12	99933	2	wrong now	978	နီစ)(တိ)နီစ+ဏ။(နီစ-သံ၊ဏိ	H160; two readers agree; first: 2|d; second: 2|d
+109117	14	109117	1	right now	143	ပဋိသံဝေဒေသိ၁(ကာ၊ကြိ)ပတိ+	H161; two readers agree; first: 1|a; second: 1|a
+109118	14	109117	2	right now	143	ပဋိသံဝေဒေသိ(ကြိ)[ပတိ+သံ+	H161; two readers agree; first: 2|c; second: 2|c
+109119	14	109117	3	right now	143	ပဋိသံဝေဒေသိ(ကာ၊ကြီ)ပပတိ+	H161; two readers agree; first: 3|d; second: 3|d
+109820	14	109820	1	right now	236	ပဋ္ဌပေသိ(ကာ၊ကြိ)[ပ+ဌာ+ဏာ	H162; two readers agree; first: 1|b; second: 1|b
+109821	14	109820	2	wrong now	236	ပဋ္ဌပေသိ(ကာ၊ကြို)[ပ+ဋ္ဌာ	H162; two readers agree; first: 2|c; second: 2|c
+193586	14c	193586	1	right now	136	ပဝါရေသိ?(ကာ၊ကြို)[ပ+ဝရ+ဏ	H163; one reader; first: 1|a; second: -
+193587	14c	193586	2	right now	136	ပဝါရေသိ(ကာ၊ကြို)[ပ+ဝရ+ဏေ	H163; one reader; first: 2|b; second: -
+194452	14c	194452	1	right now	214	ပသာဒေတုာ(တိ)[ပ+သဒ(သီဒ)+ဏ	H164; two readers agree; first: 1|b; second: 1|b
+194453	14c	194452	2	right now	214	ပသာဒေတုာ(ကာ၊ကြိုပ+သဒ(သီဒ	H164; two readers agree; first: 2|c; second: 2|c
+132781	16	132781	1	right now	864	မောစေဘု(တိ)[မုစ+ဏေ+တု]လွ	H165; two readers agree; first: 1|b; second: 1|b
+132782	16	132781	2	right now	864	မောစေတုါ(ကာ၊ကြ်)[မစောတို	H165; two readers agree; first: 2|c; second: 2|c
+133104	17	133104	1	wrong now	23	ယားလံးသောအကရာတိတွင်လုံး	H166; two readers agree; first: 1|a; second: 1|a
+133105	17	133104	2	wrong now	23	ယါဤယ-အက္ခရာသည်(၁)အခြားဗျ	H166; two readers agree; first: 2|b; second: 2|b
+133106	17	133104	3	wrong now	23	ယလာသောယ=အာဂုမ်ယ။နယိမဿ	H166; two readers agree; first: 3|d; second: 3|d
+133107	17	133104	4	right now	23	ယသဒွါအစီအရင်အားဖြင့်သနစပ	H166; two readers agree; first: 4|e; second: 4|e
+133108	17	133104	5	wrong now	23	ယာလိင်ဓာတ်တို့နောင်စီရင်	H166; two readers agree; first: 5|f; second: 5|f
+133109	17	133104	6	wrong now	24	ယင်ဓာတ်၌အကျုံးဝင်သောယအက္	H166; two readers agree; first: 6|g; second: 6|g
+133110	17	133104	7	wrong now	24	ယဝိဘတ်အကျုံးဝင်သောယအက္ခရ	H166; two readers agree; first: 7|i; second: 7|i
+133111	17	133104	8	wrong now	24	ယ”နိပါတ်ယ-သဒ္ဒါ၊၎င်းယ-သဒ	H166; two readers agree; first: 8|n; second: 8|n
+133112	17	133104	9	wrong now	24	ယပ်တစ်ခုသင်္ချာဟောယ၊နိဋ္	H166; two readers agree; first: 9|o; second: 9|o
+133113	17	133104	10	wrong now	24	ယာဝ(ပု)[ယာ+အါဆန်းကျမ်းလာ	H166; two readers agree; first: 10|q; second: 10|q
+133114	17	133104	11	right now	24	ယ(ပ)[ယာ+အ](၁)ဆင်မြင်းစသေ	H166; two readers agree; first: 11|s; second: 11|s
+133115	17	133104	12	wrong now	25	ယတိ)[ယဇ+အဒိ=ယဒ်=ယ။ယဇတိ	H166; two readers agree; first: 12|z1; second: 12|z1
+133432	17	133432	1	right now	67	ယတောနိဒါန(န)[ယ+နိဒါန။ယ-န	H167; two readers agree; first: 1|b; second: 1|b
+133433	17	133432	2	right now	67	ယတောနိဒါနါ(တိ)[ယ+နိဒါန။ရ	H167; two readers agree; first: 2|e; second: 2|e
+160713	20	160713	1	right now	508	ဝုပသမေတု”(ထီ၊ပု)[ဝိ+ဥပ+သ	H168; one reader; first: 1|a; second: -
+160714	20	160713	2	right now	508	ဝူပသမေတု(ကာ၊ကြို[ဝိ+ဥပ+သ	H168; one reader; first: 2|b; second: -
+165674	21	165674	1	wrong now	190	သက္ကရေယျာ(တိ)[သန္တ+ကရ+ဏျ	H169; two readers agree; first: 1|c; second: 1|c
+165675	21	165674	2	wrong now	190	သက္ကရေယျကြို[သံ+ကရ+အ+	H169; two readers agree; first: 2|d; second: 2|d
+177609	22	177609	1	right now	62	သန္နိပါတေသိ?(ကာ၊ကြို)[သံ	H170; two readers agree; first: 1|a; second: 1|a
+177610	22	177609	2	right now	62	သန္နိပါတေသိ(ကာ၊ကြို)[သံ+	H170; two readers agree; first: 2|b; second: 2|b
+217298	25	217298	1	right now	54	သောစေယျ(ကြိ)[သုစ+အ+ဧယျ]	H171; two readers agree; first: 1|a; second: 1|a
+217299	25	217298	2	right now	54	သောစေယျာ(ပု၊န)[သုစိ+ဏေယျ	H171; two readers agree; first: 2|b; second: 2|b
+166995	21	166995	1	wrong now	344	သင်္ဂဟေတုံ(ထီ၊၇)[သံ+ဂဟ+တ	H172; two readers agree; first: 1|b; second: 1|b
+166996	21	166995	2	right now	344	သင်္ဂဟေတုံ(ပ)[သင်္ဂ+ဟေတု	H172; two readers agree; first: 2|c; second: 2|c

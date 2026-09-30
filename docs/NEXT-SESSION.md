@@ -307,6 +307,14 @@ reaches few rows; the plan below needs re-sizing before 1.3 (see 1.1).
   more at this session's ~25 k a row); **stage 3**: the redraft of ~230–340 OCR-book lines, the errata, the re-reads, the D1 check, the
   address check, the witness joins on the Mac, a version bump and the push.
 
+  **Stage 2 done 30 Sep (brief §88)**: 172 runs / 456 rows read on the image (238 units, long runs by page; a second reader on 159 runs,
+  93.4% agreement where one decided; the 26 disagreeing rows read here): 166 right now, 193 wrong now, 61 `same_as`, 36 unsure;
+  `docs/homonyms-checked.tsv` → `HOMONYM_FIX` (420 rows, 16 books), applied before R, R and PCED skip those runs; §86's three wrong rows
+  corrected; the 46 split candidates 44 right (made) / 1 wrong / 1 unsure. `ABH_HOMONYM=0` byte-identical to pre-1.8 (64 files); digest vs
+  stage 1: 547 rows, 0 unexplained. `moved-ids.tsv` 1,844 ids; `meaning-rows.tsv` 860 rows for stage 3. Sub-agents 3.65 M tokens (gate:
+  7.4 k a run on the first agent). **Next**: the editor reviews and commits stage 2 locally (no push); **stage 3** as above, with the
+  larger redraft list of §88 §6, the witness joins on the Mac, `recheck.tsv` redone, and the unsure rows (H047 သ …) left for the editor.
+
 ### Phase 2 — (c) the final revision (1c)  — next after the reduced Phase 1
 - **2.1** **Done 29 Sep** (`docs/translation/decisions.md`, Project `claude/decision-sheet.md`: a Markdown file, as the editor asked, not a
   Claude Docs doc). Was: Cowork, ~200–300 k: **one decision sheet** (a Claude Docs doc) with every open question, grouped by kind, not by

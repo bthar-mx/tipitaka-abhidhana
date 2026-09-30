@@ -247,3 +247,49 @@ id	book	headword	host	verdict	pdf_page	rule	note
 176432	4c	ဩလမ္ဗာပေထ	176431	right	614	run-on:fuzzy:label:prev	
 176436	4c	ဩလမ္ဗိ	176435	right	614	run-on:fuzzy:label:prev	
 176779	4c	ဩသက္က	176778	right	657	run-on:fuzzy:label:prev	right start (ဩသက္က¹); its text runs on over ဩသက္က², which the index does not list apart
+212628	14b	ပရိစ္စဇန္တိ	212627	right	365	run-on:exact:label:prev	§88 (plan step 1.8, stage 2; exposed by R): printed at the line: ပရိစ္စဇန္တိ (ကြိ) bold head; Own bold entry, outdented, verb forms defined
+212629	14b	ပရိစ္စဇန္တီ	212627	right	365	run-on:exact:label:prev	§88 (plan step 1.8, stage 2; exposed by R): printed at the line: ပရိစ္စဇန္တီ (ထီ) bold head; Own bold entry following ပရိစ္စဇန္တိ
+213163	14b	ပရိဏေန္တိ	213162	right	436	run-on:exact:label:prev	§88 (plan step 1.8, stage 2; exposed by R): printed at the line: ပရိဏေန္တိ (ကြိ) bold head; Own bold entry after ပရိဏေတိ² article
+194265	14c	ပသယှကာရီ	194263	right	195	run-on:exact:label:prev	§88 (plan step 1.8, stage 2; exposed by R): printed at the line: ပသယှကာရီ (တိ) bold head; Own bold entry after ပသယှကာရ
+194266	14c	ပသယှခါဒက	194263	right	195	run-on:exact:label:prev	§88 (plan step 1.8, stage 2; exposed by R): printed at the line: ပသယှခါဒက (တိ) bold head; Own bold entry, mentions feminine ခါဒိကာ
+194267	14c	ပသယှခါဒိကာ	194263	right	195	run-on:exact:label:prev	§88 (plan step 1.8, stage 2; exposed by R): printed at the line: ပသယှခါဒိကာ (ထီ) bold head; Own bold entry, short, refers above
+194268	14c	ပသယှခါဒီ	194263	right	195	run-on:exact:label:prev	§88 (plan step 1.8, stage 2; exposed by R): printed at the line: ပသယှခါဒီ (တိ) bold head; Own bold entry with citations
+194269	14c	ပသယှစာရီ	194263	right	195	run-on:exact:label:prev	§88 (plan step 1.8, stage 2; exposed by R): printed at the line: ပသယှစာရီ (တိ) bold head; Own bold entry with citations
+157543	20	ဝိသိဗ္ဗနအဂ္ဂိ	157542	right	124	run-on:exact:label:prev	§88 (plan step 1.8, stage 2; exposed by R): printed at the line: ဝိသိဗ္ဗနအဂ္ဂိ (ပု) head; Outdented head in this volume's non-bold typeface
+157545	20	ဝိသိဗ္ဗနဒိဝသ	157542	wrong	124	run-on:exact:label:prev	§88 (plan step 1.8, stage 2; exposed by R): printed at the line: (၂) ဝိသိဗ္ဗနဒိဝသ-ကြည့် see-line; Cross-reference inside ဝိသိဗ္ဗန¹ sense 2, not a head
+157546	20	ဝိသိဗ္ဗနဝတ္ထု	157542	right	124	run-on:exact:label:prev	§88 (plan step 1.8, stage 2; exposed by R): printed at the line: ဝိသိဗ္ဗနဝတ္ထု (န) head; Bold head between ဝိသိဗ္ဗနဒိဝသ and ဝိသိဗ္ဗနသိက္ခာပဒ entries
+157547	20	ဝိသိဗ္ဗနသိက္ခာပဒ	157542	right	124	run-on:exact:label:prev	§88 (plan step 1.8, stage 2; exposed by R): printed at the line: ဝိသိဗ္ဗနသိက္ခာပဒ (န) head; Own crop shows ဝိသိဗ္ဗ/ဝိသိဗ္ဗတိ; head visible in S157546 crop
+157548	20	ဝိသိဗ္ဗနာပေက္ခ	157542	unsure	124	run-on:exact:label:prev	§88 (plan step 1.8, stage 2; exposed by R): printed at the line: crop shows ဝိသိဗ္ဗန² text, '(၁) ဝိသိဗ္ဗနာပေက္ခ-ကြည့်' see-line; No ဝိသိဗ္ဗနာပေက္ခ head in crop; only a see-reference
+158326	20	ဝိဿမနဋ္ဌာန	158325	right	219	run-on:exact:label:prev	§88 (plan step 1.8, stage 2; exposed by R): printed at the line: ဝိဿမနဋ္ဌာန (န) head; Clear bold head after ဝိဿမန text
+158327	20	ဝိဿမနတ္ထ	158325	right	219	run-on:exact:label:prev	§88 (plan step 1.8, stage 2; exposed by R): printed at the line: ဝိဿမနတ္ထ (ပု) head; Clear bold head; gender printed ပု
+160637	20	ဝူပသန္တအဿာသပဿာသ	160636	right	497	run-on:exact:label:prev	§88 (plan step 1.8, stage 2; exposed by R): printed at the line: ဝူပသန္တအဿာသပဿာသ (တိ) head; Bold head, printed as one word
+161919	20	ဝေဟာယသင်္ဂမ	161918	right	673	run-on:exact:label:prev	§88 (plan step 1.8, stage 2; exposed by R): printed at the line: ဝေဟာယသင်္ဂမ (တိ) head; Clear bold head after ဝေဟာယသ text
+161920	20	ဝေဟာယသသညိတ	161918	right	673	run-on:exact:label:prev	§88 (plan step 1.8, stage 2; exposed by R): printed at the line: ဝေဟာယသသညိတ (တိ) head; Bold head at top of new page
+172007	21	သန္ဒိဿန္တ	172006	right	899	run-on:exact:label:prev	§88 (plan step 1.8, stage 2; exposed by R): printed at the line: သန္ဒိဿန္တ (တိ) head; Clear bold head; next is သန္ဒိဿန္တိ
+180102	22	သဘောဇနပသုတ	180101	right	303	run-on:exact:label:prev	§88 (plan step 1.8, stage 2; exposed by R): printed at the line: သဘောဇနပသုတ (တိ) head; Clear bold head before သဘောဇနသိက္ခာပဒ
+188492	23	သဟဇာတအကုသလ	188491	right	336	run-on:exact:label:prev	§88 (plan step 1.8, stage 2; exposed by R): printed at the line: သဟဇာတအကုသလ (ပု) bold head; Own entry, follows သဟဇာတ² entry
+188635	23	သဟတ္ထကရဏ	188634	right	351	run-on:exact:label:prev	§88 (plan step 1.8, stage 2; exposed by R): printed at the line: သဟတ္ထကရဏ (န) bold head; Own entry; also the page running head
+188636	23	သဟတ္ထသဒ္ဒ	188634	right	351	run-on:exact:label:prev	§88 (plan step 1.8, stage 2; exposed by R): printed at the line: သဟတ္ထသဒ္ဒ (ပု) bold head; Own entry with etymology and citation
+188637	23	သဟတ္ထာဏတ္တိက	188634	right	351	run-on:exact:label:prev	§88 (plan step 1.8, stage 2; exposed by R): printed at the line: သဟတ္ထာဏတ္တိက (တိ) bold head; Own entry, followed by သဟတ္ထိပ
+188776	23	သဟဿအစ္ဆရာပရိဝါရိက	188775	right	366	run-on:exact:label:prev	§88 (plan step 1.8, stage 2; exposed by R): printed at the line: သဟဿအစ္ဆရာပရိဝါရိက (တိ) bold head; Own entry after (၃) sense of သဟဿ
+188777	23	အဟဿအဿာဇာနီယ	188775	right	366	run-on:fuzzy:label:prev	§88 (plan step 1.8, stage 2; exposed by R): printed at the line: သဟဿအဿာဇာနီယ (ပု) bold head; Printed with သ; index spelling အဟဿ is a typo
+188778	23	သဟဿအာဇည	188775	right	366	run-on:exact:label:prev	§88 (plan step 1.8, stage 2; exposed by R): printed at the line: သဟဿအာဇည (တိ) bold head; Own entry after သဟဿအဿာဇာနီယ
+191975	23	သိတ္ထက	191974	right	700	run-on:exact:label:prev	§88 (plan step 1.8, stage 2; exposed by R): printed at the line: သိတ္ထက (န) bold head; Own entry, follows သိတ္ထ² entry
+191976	23	သိတ္ထကတေလ	191974	right	700	run-on:exact:label:prev	§88 (plan step 1.8, stage 2; exposed by R): printed at the line: သိတ္ထကတေလ (န) bold head; Own short entry, cross-ref သိတ္ထက (၂)
+191977	23	သိတ္ထဂဏနာ	191974	right	700	run-on:exact:label:prev	§88 (plan step 1.8, stage 2; exposed by R): printed at the line: သိတ္ထဂဏနာ (ထီ) bold head; Own entry with citation
+191978	23	သိတ္ထတေလက	191974	right	700	run-on:exact:label:prev	§88 (plan step 1.8, stage 2; exposed by R): printed at the line: သိတ္ထတေလက (န) head; Bold entry head after သိတ္ထဂဏနာ; own short article
+217313	25	သောဏကကုမာရ	217312	right	57	run-on:exact:label:prev	§88 (plan step 1.8, stage 2; exposed by R): printed at the line: သောဏကကုမာရ (ပု) head; Bold entry head; short article referring to သောဏက (၂)
+217367	25	သောဏ္ဍပါရုတ	217366	right	63	run-on:exact:label:prev	§88 (plan step 1.8, stage 2; exposed by R): printed at the line: သောဏ္ဍပါရုတ (န) head; Bold entry head following end of သောဏ္ဍ article
+217368	25	သောဏ္ဍဗလိ	217366	right	63	run-on:exact:label:prev	§88 (plan step 1.8, stage 2; exposed by R): printed at the line: သောဏ္ဍဗလိ (ပု) head; Bold entry head with its own definition and citation
+217369	25	သောဏ္ဍဝန္တု	217366	right	63	run-on:exact:label:prev	§88 (plan step 1.8, stage 2; exposed by R): printed at the line: သောဏ္ဍဝန္တု (တိ) head; Bold entry head; own definition, Visuddhi citation
+217370	25	သောဏ္ဍသဒိသ	217366	right	63	run-on:exact:label:prev	§88 (plan step 1.8, stage 2; exposed by R): printed at the line: သောဏ္ဍသဒိသ (ပု) head; Bold entry head; bracket reads သောဏ္ဍ + သဒိသ
+217371	25	သောဏ္ဍသဟာယ	217366	right	63	run-on:exact:label:prev	§88 (plan step 1.8, stage 2; exposed by R): printed at the line: သောဏ္ဍသဟာယ (ပု) head; Bold entry head with long article and citations
+217372	25	သောဏ္ဍသဟာယက	217366	right	63	run-on:exact:label:prev	§88 (plan step 1.8, stage 2; exposed by R): printed at the line: သောဏ္ဍသဟာယက (ပု) head; Bold entry head; next is သောဏ္ဍသဟာယသညိတ
+217655	25	သောဓနကာလ	217654	right	97	run-on:exact:label:prev	§88 (plan step 1.8, stage 2; exposed by R): printed at the line: သောဓနကာလ (ပု) head; Bold entry head; short cross-reference article
+217656	25	သောဓနတ္ထေရ	217654	right	97	run-on:exact:label:prev	§88 (plan step 1.8, stage 2; exposed by R): printed at the line: သောဓနတ္ထေရ (ပု) head; Bold entry head with own definition and citation
+172873	4c	ဧကတ္တအညတ္တပဋိက္ခေပ	172872	right	115	run-on:exact:label:prev	§88 (plan step 1.8, stage 2; exposed by R): printed at the line: ဧကတ္တအညတ္တပဋိက္ခေပ (ပု) bold head; Own bold entry with etymology and citation
+172874	4c	ဧကတ္တအညတ္တပုစ္ဆာ	172872	right	115	run-on:exact:label:prev	§88 (plan step 1.8, stage 2; exposed by R): printed at the line: ဧကတ္တအညတ္တပုစ္ဆာ (ထီ) bold head; Own bold entry with etymology and citation
+174163	4c	ဧကေကအင်္ဂ	174162	right	282	run-on:exact:label:prev	§88 (plan step 1.8, stage 2; exposed by R): printed at the line: ဧကေကအင်္ဂ (န) bold head; Bold entry head at column bottom; article continues beyond crop
+174164	4c	ဧကေကအင်္ဂါတိရေက	174162	right	282	run-on:fuzzy:label:prev	§88 (plan step 1.8, stage 2; exposed by R): printed at the line: ဧကေကအင်္ဂါတိရေက (ပု) bold head; Own bold entry, etymology ဧကေကအင်္ဂ+အတိရေက
+174165	4c	ဧကေကအင်္ဂုလ	174162	right	282	run-on:exact:label:prev	§88 (plan step 1.8, stage 2; exposed by R): printed at the line: ဧကေကအင်္ဂုလ (န) bold head; Own bold entry with etymology and Vajira citation
+174166	4c	ဧကေကအနုပဿနာ	174162	right	282	run-on:exact:label:prev	§88 (plan step 1.8, stage 2; exposed by R): printed at the line: ဧကေကအနုပဿနာ (ထီ) bold head; Own bold entry with etymology and Paṭisaṃ citation
