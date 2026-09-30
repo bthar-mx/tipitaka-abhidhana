@@ -84,6 +84,9 @@ needs only one of its two; vol. 18 needs none.
 | 14b | — | ပရတီိိရ, ပရစိိတ္တဇာနနက | (doubled vowel signs) | text layer |
 | 14b | — | ပရိတ္တဇ္စျာန, ပရိပုဏ္ဏဇ္စျာသယ | ဇ္ဈ for ဇ္စျ | text layer |
 | 14b | — | ပရိဘိန္ဒသု | ပရိဘိန္ဒိံသု | text layer, p. 600 |
+| 21 | 170596 | သဒ္ဒကဏ္ဍက | သဒ္ဒကဏ္ဋက | image, PDF 747 (30 Sep, brief §85 §3) |
+| 14c | 197306–197308 | ပါရေဝတက္ခိ, ပါရေဝတက္ခိ, ပါရေဝတက္ခီ | ပါရေဝတက္ခီ¹, ပါရေဝတက္ခီ², ပါရေဝတက္ခိ (the index's ခိ / ခီ in the wrong rows) | image, PDF 517 (§85 §3) |
+| 20 | 161196 | ဝေဒနိယ | ဝေဒနီယ¹ (so the run of ဝေဒနီယ, 161197–, begins at ²) | image, PDF 570 (§85 §3) |
 
 ### 4c: the supplements bound after vol. 4/3 (from §79)
 
@@ -139,3 +142,108 @@ where 4b and 22 print ညာ.
 - Vol. 22: the headwords of the page missing from the scan (about 11, those of the index's p. 879 /
   PDF 919 list not found there) are lost unless another copy of the page is found
   (`pdfs-drive/` has no vol. 22).
+
+## 5. Repeats: the same headword indexed twice, not in adjacent rows
+
+*Added 30 Sep 2026 (plan step 1.8; docs only, nothing applied). An index row whose headword the index gives again within 40 ids, the
+two not adjacent, so the homonym runs of brief §85–86 (adjacent ids) do not take them. Found in the text, **not checked on the image**
+except where it says so. A repeat may be a duplicate row of one printed entry, or a homonym indexed out of its place (174421 below is
+printed ဧဓတိ²); not decided row by row. Pages: the index's printed page, the PDF page in brackets.*
+
+**From brief §85 §1: 78 rows** (66 unlocated, 12 stubs or rows with no label / analysis), each at a line start + label on the head line of
+the other, same-headword, article (§67's test on the articles of 29 Sep; the ids are `tmp/homonym18/cands.json`'s `flag` entries
+`s67x:*`, the same test as §85's `cands.py`; per book as its `s67_nongroup`). 09 80709 has no repeat within 40 ids: its twin 80349 is 360
+ids earlier, on the same index page.
+
+| book | id | headword | index p. (PDF) | the other row(s): id, index p. (PDF) | row (brief §67) | from |
+|---|---|---|---|---|---|---|
+| 01 | 3990 | အဍ္ဎကာသိယ | 347 (467) | 3988, p. 347 (467) | unlocated | §85 §1 |
+| 4a | 30424 | အာရောဟနီယ | 372 (414) | 30433, p. 373 (415) | unlocated | §85 §1 |
+| 4b | 34785 | ဥဒကဗုဗ္ဗုဠက | 17 (33) | 34808, p. 18 (34) | unlocated | §85 §1 |
+| 4b | 37763 | ဥပရိဈာန | 337 (353) | 37758, p. 337 (353) | unlocated | §85 §1 |
+| 4b | 39948 | ဥပ္ပိလာဝိတ | 543 (559) | 39950, p. 544 (560) | unlocated | §85 §1 |
+| 4b | 40668 | ဥရုဝေဠာ | 611 (627) | 40670, p. 612 (628) | unlocated | §85 §1 |
+| 06 | 54423 | ခါရိယ | 511 (533) | 54431, p. 512 (534) | unlocated | §85 §1 |
+| 06 | 57960 | ဂါမပတ္တ | 810 (832) | 57957, p. 810 (832) | unlocated | §85 §1 |
+| 06 | 57988 | ဂါမပ္ပဝေသန | 811 (833) | 57976, p. 811 (833) | unlocated | §85 §1 |
+| 08 | 69199 | ဇဟိံသု | 191 (231) | 69215, p. 192 (232) | unlocated | §85 §1 |
+| 09 | 80709 | ထုတပ္ပသတ္ထ | 775 (827) | 80349, p. 775 (827) (360 ids earlier) | unlocated | §85 §1 |
+| 10 | 83678 | ဒိဋ္ဌိဂ္ဂဟဏ | 440 (488) | 83676, p. 440 (488) | unlocated | §85 §1 |
+| 10 | 87127 | ဒေသနိယမန | 833 (881) | 87119, p. 833 (881) | unlocated | §85 §1 |
+| 10 | 87128 | ဒေသနုပါယ | 833 (881) | 87120, p. 833 (881) | unlocated | §85 §1 |
+| 10 | 87129 | ဒေသန္တရ | 833 (881) | 87121, p. 833 (881) | unlocated | §85 §1 |
+| 10 | 87130 | ဒေသန္တရဂတ | 833 (881) | 87122, p. 833 (881) | unlocated | §85 §1 |
+| 10 | 87131 | ဒေသန္တရဂမန | 834 (882) | 87123, p. 834 (882) | unlocated | §85 §1 |
+| 10 | 87759 | ဒွါစတ္တာလီသ | 895 (943) | 87765, p. 896 (944) | unlocated | §85 §1 |
+| 11 | 93313 | နာသာရဇ္ဇု | 616 (696) | 93330, p. 617 (697) | unlocated | §85 §1 |
+| 13 | 106699 | ပဋိဂ္ဂဟေတုံ | 689 (719) | 106705, p. 690 (720) | unlocated | §85 §1 |
+| 14 | 109098 | ပဋိသံဝေဒိယန္တိ | 119 (140) | 109087, p. 119 (140) | unlocated | §85 §1 |
+| 14 | 109859 | ပဌမ | 223 (244) | 109861, p. 224 (245) | stub | §85 §1 |
+| 14c | 192800 | ပဝတ္တကိစ္စ | 11 (38) | 192804, p. 11 (38) | unlocated | §85 §1 |
+| 14c | 192802 | ပဝတ္တကာရဏ | 11 (38) | 192798, p. 11 (38) | unlocated | §85 §1 |
+| 14c | 192803 | ပဝတ္တကာလ | 11 (38) | 192799, p. 11 (38) | unlocated | §85 §1 |
+| 14c | 194655 | ပဿထ | 213 (240) | 194664, p. 213 (240) | unlocated | §85 §1 |
+| 14c | 194663 | ပဿ | 213 (240) | 194647, p. 212 (239); 194648, p. 213 (240) | unlocated | §85 §1 |
+| 14c | 194664 | ပဿထ | 213 (240) | 194655, p. 213 (240); 194696, p. 214 (241) | unlocated | §85 §1 |
+| 14c | 194745 | ပဿမ္ဘိ | 218 (245) | 194756, p. 219 (246) | unlocated | §85 §1 |
+| 14c | 195771 | ပါဌာနာရုဠှ | 322 (349) | 195767, p. 322 (349) | unlocated | §85 §1 |
+| 14c | 196389 | ပါနီယဃဋ | 391 (418) | 196386, p. 391 (418) | unlocated | §85 §1 |
+| 14c | 197300 | ပါရေတိ | 489 (516) | 197297, p. 489 (516) | unlocated | §85 §1 |
+| 14c | 197302 | ပါရေမိ | 489 (516) | 197298, p. 489 (516) | unlocated | §85 §1 |
+| 14c | 197334 | ပါလယိဿာမိ | 492 (519) | 197328, p. 492 (519) | unlocated | §85 §1 |
+| 14c | 197365 | ပါလေန္တိ | 497 (524) | 197383, p. 498 (525) | no label / analysis | §85 §1 |
+| 14c | 197369 | ပါလေန္တု | 497 (524) | 197384, p. 498 (525) | unlocated | §85 §1 |
+| 14c | 197376 | ပါလေဿာမိ | 497 (524) | 197393, p. 498 (525) | unlocated | §85 §1 |
+| 14c | 197457 | ပါဝုဿကကာလ | 506 (533) | 197449, p. 506 (533) | unlocated | §85 §1 |
+| 14c | 198291 | ပိဒဟထ | 605 (632) | 198301, p. 606 (633) | unlocated | §85 §1 |
+| 14c | 198297 | ပိဒဟိံ | 606 (633) | 198315, p. 607 (634) | unlocated | §85 §1 |
+| 14c | 198356 | ပိဓိယျန္တိ | 610 (637) | 198353, p. 610 (637) | unlocated | §85 §1 |
+| 14c | 202365 | ပေက္ခရေ | 1005 (1032) | 202383, p. 1006 (1033) | unlocated | §85 §1 |
+| 14c | 202585 | ပေသယိ | 1028 (1055) | 202591, p. 1029 (1056) | unlocated | §85 §1 |
+| 14c | 202836 | ပေါထေယျ | 1053 (1080) | 202846, p. 1054 (1081) | unlocated | §85 §1 |
+| 14c | 202837 | ပေါထေယျုံ | 1053 (1080) | 202848, p. 1054 (1081) | unlocated | §85 §1 |
+| 14c | 202840 | ပေါထေဿာမိ | 1053 (1080) | 202850, p. 1054 (1081) | stub | §85 §1 |
+| 15 | 115158 | ဗဟလတ္တစ | 150 (178) | 115170, p. 151 (179) | unlocated | §85 §1 |
+| 15 | 118087 | ဗျာဟရ | 413 (441) | 118085, p. 413 (441) | unlocated | §85 §1 |
+| 15 | 119699 | ဘဝင်္ဂပ္ပဝါဟ | 569 (597) | 119694, p. 569 (597) | unlocated | §85 §1 |
+| 15 | 120077 | ဘဝါဘိသင်္ခရဏဋ္ဌ | 604 (632) | 120080, p. 605 (633) | no label / analysis | §85 §1 |
+| 16 | 125847 | မနောရမ္မ | 265 (291) | 125851, p. 266 (292) | unlocated | §85 §1 |
+| 17 | 138171 | ရုက္ခဆာယာ | 642 (664) | 138176, p. 642 (664) | unlocated | §85 §1 |
+| 17 | 138175 | ရုက္ခဆလ္လိ | 642 (664) | 138168, p. 642 (664) | unlocated | §85 §1 |
+| 17 | 139233 | ရူပူပယ | 774 (796) | 139247, p. 775 (797) | unlocated | §85 §1 |
+| 18 | 142162 | လောကိယပဋိပဒါနုတ္တရိယ | 307 (325) | 142165, p. 308 (326) | unlocated | §85 §1 |
+| 20 | 158939 | ဝီတစ္စိတ | 265 (295) | 158935, p. 265 (295) | unlocated | §85 §1 |
+| 20 | 160880 | ဝေဏီ | 499 (529) | 160889, p. 500 (530) | unlocated | §85 §1 |
+| 20 | 162972 | သံဃာတ | 786 (816) | 162974, p. 787 (817) | stub | §85 §1 |
+| 21 | 166523 | သင်္ခလိက | 257 (285) | 166520, p. 257 (285) | no label / analysis | §85 §1 |
+| 21 | 168114 | သဉ္ဇာတဗလဝဒေါမနဿ | 442 (470) | 168112, p. 442 (470) | unlocated | §85 §1 |
+| 21 | 168524 | သညူပယ | 488 (516) | 168533, p. 489 (517) | unlocated | §85 §1 |
+| 21 | 168601 | သဋ္ဌိတူရိယသဟဿ | 495 (523) | 168598, p. 495 (523) | unlocated | §85 §1 |
+| 21 | 170978 | သဒ္ဓမ္မဿဝန | 756 (784) | 170993, p. 757 (785) | unlocated | §85 §1 |
+| 21 | 170986 | သဒ္ဓမ္မဿဝနာဓီန | 756 (784) | 170995, p. 757 (785) | no label / analysis | §85 §1 |
+| 22 | 178096 | သပ္ပါဋိဟိရကတ | 77 (117) | 178094, p. 77 (117) | no label / analysis | §85 §1 |
+| 23 | 187965 | သဝိသေသ | 251 (286) | 187960, p. 251 (286) | no label / analysis | §85 §1 |
+| 24 | 205449 | သုဂတိဂါမိမဂ္ဂ | 230 (264) | 205446, p. 230 (264) | unlocated | §85 §1 |
+| 24 | 206045 | သုတက္ခရသဒိသ | 296 (330) | 206042, p. 296 (330) | unlocated | §85 §1 |
+| 24 | 206368 | သုတ္တပ္ပမာဏ | 328 (362) | 206388, p. 329 (363) | no label / analysis | §85 §1 |
+| 25 | 219369 | ဟရိ | 250 (284) | 219371, p. 250 (284); 219372, p. 250 (284) | no label / analysis | §85 §1 |
+| 25 | 219383 | ဟရိတက | 251 (285) | 219391, p. 252 (286) | unlocated | §85 §1 |
+| 25 | 219387 | ဟရိတကီ | 251 (285) | 219396, p. 252 (286) | unlocated | §85 §1 |
+| 4c | 175118 | ဩဂဠိတွာ | 395 (422) | 175126, p. 396 (423) | unlocated | §85 §1 |
+| 4c | 175549 | ဩတ္တပန | 458 (485) | 175546, p. 458 (485) | unlocated | §85 §1 |
+| 4c | 175658 | ဩဒဟိဿန္တိ | 473 (500) | 175677, p. 474 (501) | unlocated | §85 §1 |
+| 4c | 175665 | ဩဒဟထ | 473 (500) | 175652, p. 473 (500) | unlocated | §85 §1 |
+| 4c | 175786 | ဩဓုနာထ | 496 (523) | 175783, p. 496 (523) | unlocated | §85 §1 |
+| 4c | 176410 | ဩလမ္ဗန္တိ | 585 (612) | 176420, p. 588 (615) | no label / analysis | §85 §1 |
+
+**From plan step 1.8's farther-body measurement: 6 rows** (30 Sep 2026, the snapshot of that day; unlocated headwords found at a line start +
+label inside an earlier article's body, whose headword the index repeats within 40 ids, not adjacent). None is among the 78.
+
+| book | id | headword | index p. (PDF) | the other row: id, index p. (PDF) | note | from |
+|---|---|---|---|---|---|---|
+| 14c | 196387 | ပါနီယကူပ | 391 (418) | 196384, p. 391 (418) | unlocated | 1.8 farther body (`tmp/farbody18/`) |
+| 14c | 202368 | ပေက္ခတေ | 1005 (1032) | 202376, p. 1005 (1032) | unlocated | 1.8 farther body (`tmp/farbody18/`) |
+| 15 | 118320 | ဗြဟ္မလောကူပပတ္တိ | 441 (469) | 118317, p. 441 (469) | unlocated | 1.8 farther body (`tmp/farbody18/`) |
+| 19 | 150247 | ဝိစ္စေဿတိ | 290 (311) | 150245, p. 290 (311) | unlocated | 1.8 farther body (`tmp/farbody18/`) |
+| 24 | 204839 | သုခပ္ပဋိသံဝေဒီ | 170 (204) | 204879, p. 173 (207) | unlocated | 1.8 farther body (`tmp/farbody18/`) |
+| 4c | 174421 | ဧဓတိ | 293 (320) | 174419, p. 293 (320) | unlocated; image: printed **ဧဓတိ²**, ¹ = 174419, 174420 between (a homonym indexed apart) | 1.8 farther body (`tmp/farbody18/`) |
