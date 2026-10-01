@@ -23,6 +23,24 @@ Versions of the Tipiṭaka Pāḷi-Myanmā Abhidhāna project: the data, the too
 A release note says, per version: what changed, the brief's sections, and the headline figures
 (located, label + body, Meaning rows drafted / reviewed).
 
+## v0.29.2 — 1 Oct 2026
+
+The Meaning box's status line, and the tooltips the ။ parser lost (brief §93). Site and tools only; no article re-run.
+
+- **The Meaning box**: the status badge (*borrador* / *draft*, *revisado* / *reviewed*, *corregido* / *corrected*) moves below the text,
+  small and muted, on one line with its note: "Traducción del birmano al español hecha con IA, sin revisar. No es una lectura." / "AI
+  translation from the Burmese, unreviewed. Not a reading."; "Traducción revisada / corregida por el editor." / "Translation reviewed /
+  corrected by the editor."; the partial states keep their notes; *sin traducir* unchanged. Copy writes the same line after the Meaning;
+  the About page's *drafted* row has the same wording.
+- **`cite_how`** (`tools/abhidhana_browse.py`): when every other step fails, the head is read again with "-" dropped, ။ read as ၊, ၊ put
+  before a mark ending a part and `HEADTYPO` applied. 93 of v0.29.1's 96 lost tooltips are back with their old work; no other tooltip
+  changes its work or is lost; 622 more citations get one (585 inferred). Tooltips 626,130 → **626,845 of 685,834 (91.4%)**, inferred
+  39,328 → 39,974.
+- **`ASAT_WORKS`** (`tools/abhidhana_articles.py`) gains *သုတ္တန်*: simulated, it changes no tooltip (131 rows, 50 new citations, all with a
+  tooltip). Not yet in the data: the next article run applies it.
+- `site/test/editor/ui-test.js`: step 9, the status line at 375 and 1,024 px, ES and EN, and Copy in English (5 checks); the Copy checks of
+  steps 7–8 and the status checks of steps 1 and 3 follow the new wording. Expect UI pass 93 fail 0.
+
 ## v0.29.1 — 30 Sep 2026
 
 The ။ citation parser fix (brief §92). Re-run of the article step and romanisation for all 29 books; only the citation fields change.

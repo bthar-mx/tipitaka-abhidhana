@@ -96,11 +96,12 @@ def abbreviations():
 FOLD = [(r'၊(?:ဌ|္ဌ)$', '၊ဋ္ဌ'), (r'(?<=[^၊])ဋ္ဌ$', '၊ဋ္ဌ'), (r'၊(?:ဋံ|ဋိ)$', '၊ဋီ'), (r'(?<=[^၊])ဋီ$', '၊ဋီ')]
 
 
-def cite_how(c, K, before=None):
+def cite_how(c, K, before=None, _again=False):
     """(index in the table of a citation's abbreviation or -1, inferred): exact, then with the OCR forms
     of the commentary marks folded (ဌ ္ဌ -> ဋ္ဌ, ဋံ ဋိ -> ဋီ) and a trailing သစ် ("new") dropped, then a stray
     word before it; inferred is True when tools/abhidhana_citefold.py had to guess the work (a damaged
-    abbreviation, or a lost head taken from `before`, the body text just before the citation)"""
+    abbreviation, or a lost head taken from `before`, the body text just before the citation); last, when all
+    of that fails, the same again on head_fold(c) (brief §93)"""
     m = re.match(r'^(.*?)[၀-၉0-9]', mynorm(c))
     k = re.sub(r'[\s။]', '', m.group(1) if m else c).rstrip('၊,.')
     if k in K: return K[k], False
@@ -118,7 +119,28 @@ def cite_how(c, K, before=None):
     if h:
         x, _ = cite_how(h + '၊' + mynorm(c), K)
         if x >= 0: return x, True
+    # the head as the ။ parser (brief §92) now keeps it, read again (brief §93): only when all the above failed
+    if not _again:
+        f, typo = head_fold(c)
+        x, inf = cite_how(f, K, before, _again=True)
+        if x >= 0: return x, inf or typo
     return -1, False
+
+
+MARK = '(?:ဋ္ဌ|ဋီ|ဋိ|ဋံ|ဋ|ဌ)'   # the commentary marks as the OCR reads them
+
+
+def head_fold(c):
+    """(the citation with its head folded, whether HEADTYPO was used) -- brief §92-93: the parser of v0.29.1 keeps
+    a head it used to cut off, in forms the folds above do not know: a line-end hyphen (အနု-ဋီ), ။ for ၊ (ဝိ။ဋ),
+    a mark glued to its work (ထေရဋ, အဋီ), the print's သုတ္တနိ read with an asat (citefold.HEADTYPO). Here: "-" and
+    spaces dropped, ။ in the head read as ၊, ၊ put before a mark that ends a part (သံဋံ၊သစ်), HEADTYPO applied to each part."""
+    m = re.match(r'^(.*?)([၀-၉0-9].*)?$', mynorm(c), re.S)
+    h, rest = m.group(1), m.group(2) or ''
+    h = re.sub(r'၊+', '၊', re.sub(r'[\s\-–]', '', h).replace('။', '၊')).strip('၊')
+    h = '၊'.join(re.sub(r'^(.*[^္])(' + MARK + r')$', r'\1၊\2', x) for x in h.split('၊'))   # a mark ending a part
+    parts = h.split('၊'); p2 = [citefold.HEADTYPO.get(x, x) for x in parts]
+    return '၊'.join(p2) + '၊' + rest, p2 != parts
 
 
 def cite_key(c, K, before=None):

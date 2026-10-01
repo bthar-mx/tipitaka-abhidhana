@@ -3795,3 +3795,101 @@ change, the Burmese before and after; 3,584 lines).
 
 *Tokens: this session's counter ~0.40 M at the time of writing (tool output, two cycles of 29-book runs read through digests, one crop
 looked at). The two sub-agents' tokens were not reported to this session and were not measured. No git run in the VM.*
+
+
+## 93. The Meaning box's status line; the `cite_how` fold for the head the ။ parser keeps (1 Oct 2026, Cowork; v0.29.2; site only)
+
+**Asked** (the editor): (1) the Meaning box's status badge moved **below** the text, smaller and muted, on one line with its note,
+which replaces "Traducción en borrador: sin revisar. No es una lectura."; the same wording in Copy and on the About page; (2) §92's
+simulated fold in `cite_how` (`tools/abhidhana_browse.py`), measured: 93 of the 96 lost tooltips back and no other tooltip's work
+changed; then *သုတ္တန်* in `ASAT_WORKS` only if it changes no tooltip (§92 Next 1); (3) screenshots at 375 and 1,024 px, ES and EN,
+the UI test updated; (4) VERSION, CHANGELOG, this section, NEXT-SESSION. No article re-run; builds to `/tmp`; no git in the VM.
+
+### 1. The status line
+
+`site/src/assets/browse.js`: the Meaning box is now the text, then one line `<div class="mstat">`: a small outlined badge
+(`.mbadge`, 11 px, the muted ink, a 5-px dot in the warn or ok colour) · the note (12.5 px, muted), wrapping as text after the badge.
+The chip above the text is gone. `mstat(tr)` gives badge and note to both the box and Copy:
+
+| status | badge ES / EN | note ES | note EN |
+|---|---|---|---|
+| drafted | borrador / draft | Traducción del birmano al español hecha con IA, sin revisar. No es una lectura. | AI translation from the Burmese, unreviewed. Not a reading. |
+| reviewed | revisado / reviewed | Traducción revisada por el editor. | Translation reviewed by the editor. |
+| corrected | corregido / corrected | Traducción corregida por el editor. | Translation corrected by the editor. |
+| partial, rpartial | corregido / revisado en parte | the notes of v0.28 unchanged ("Corregido por el editor: sentido (1). El resto es borrador, sin revisar.") | likewise |
+
+*Sin traducir* (no row, or withdrawn) is unchanged; the edit date line stays below the status line. **Copy**: `Significado: <text>`, then
+the line `borrador · Traducción del birmano …` (was `Significado (borrador, sin revisar): <text>`). **About** (`site/src/about/index.html`):
+the *drafted* / *borrador* row of the status table now has the drafted note's wording. `style.css`: `.mstat`, `.mbadge`, `.msep`, and the
+text's top margin 0 when it opens the box. *Decided without asking*: the partial states keep their v0.28 notes on the same line (the
+request named only the three whole states); the EN badge reads *draft* while the status's name elsewhere (head chip, Copy of the
+partial states, About) stays *drafted*; `cp_unreviewed` / `cp_rest` in `common.js` are no longer used (left there).
+
+### 2. The `cite_how` fold
+
+`head_fold(c)`, tried **only when every step of `cite_how` has failed** (a second pass on the folded citation, so no tooltip that
+matched before can change): in the head (the part before the first digit) "-" and spaces dropped, ။ read as ၊, ၊ put before a
+commentary mark (ဋ္ဌ ဋီ ဋိ ဋံ ဋ ဌ) that ends a part (*ထေရဋ* → ထေရ၊ဋ; *သံဋံ၊သစ်* → သံ၊ဋံ၊သစ် — §92's wording said "trailing"; applied to the
+whole head's end it recovered 91, per part 93), and `citefold.HEADTYPO` applied to each part (*သုတ္တန်* → သုတ္တနိ). Inferred (*leído
+como …*) when the second pass inferred or HEADTYPO was used; dropping "-" and reading ။ as ၊ count as read, like `FOLD`.
+
+**Measured** (`tmp/ui93/meas.py`, `cmp.py`: `cite_how` per citation with `cite_befores` as the build calls it; v0.29.0's 116 files from
+`tmp/cite92/base.tar.zst`, v0.29.1's from `ocr/`; the old code is v0.29.1's `abhidhana_browse.py`, MD5 `3239666b…`):
+
+| | v0.29.0 data, old code | v0.29.1 data, old code | v0.29.1 data, new code |
+|---|---:|---:|---:|
+| citations with a tooltip | 489,082 of 530,869 | 626,130 of 685,834 (91.3%) | **626,845 (91.4%)** |
+| inferred | 38,768 | 39,328 | **39,974** |
+
+- **§92's 96 lost tooltips**: **93 back, each with v0.29.0's work** (61 of them inferred). The 3 not: a word glued before the
+  abbreviation (09/79072 *တုမ္ဗဝိသုဒ္ဓိ*, 14c/202323 *ဝဓမ္မါဋ္ဌ*, 4a/28607 *ဝဝိသုဒ္ဓိ၊ဋီ*), as §92 expected.
+- **Every other tooltip**: work changed **0**, lost **0**, inferred flag changed **0** (685,834 citations compared).
+- **Gained besides the 93: 622** (585 inferred), mostly a bare ဋ / a mark glued to its work, now reaching §82's B1 and A rules: *ဝိဋ*
+  (→ ဝိ၊ဋ္ဌ, 175), *အဋီ / အဋံ / အဋိ* (→ အံ၊ဋီ, 122), *ဇာဋ* (→ ဇာ၊ဋ္ဌ, 73), *အနုဋ* (→ အနုဋီ, 47), *ဒီါဌ* (→ ဒီ၊ဋ္ဌ, 39), *မါဋံ / မါဋိ* (→ မ၊ဋီ, 28),
+  *ထေရဋ*, *ပဋိသံဋ*, *ကင်္ခါဋီ၊ဟောင်း*, *ပေ-ဋကော* (5, read) …; 274 of them in 14/3. B2 is still not resolved (the fold reaches B1 only
+  where one reading is a key). **Not checked on the page images**: they rest on §82's checks of the same rules (A 10/11, B1 9/9 and
+  10/10 on newly resolved citations); confidence medium. The list: `tmp/ui93/res.json` (`other`: book, id, index, citation, inferred).
+- **The full build** (`ABHIDHANA_SITE_OUT=/tmp/abh-new`, VM): 958 files, no errors, "citations matched **626,845 of 685,834 (91.4%;
+  inferred 39,974)**", as measured.
+
+### *သုတ္တန်* in `ASAT_WORKS`: added
+
+Simulated with `abhidhana_articles.cites(body)` on every row whose body holds *သုတ္တန်* (402 rows; `cites(body)` equals the stored
+`citations` in all 402 before the change), with the new `cite_how` (`tmp/ui93/asat2.py`): **131 rows** change their citations — 82
+citations gain the head *သုတ္တန်* (*ဋ္ဌ၊၁။၂၀၁။* → *သုတ္တန်၊ဋ္ဌ၊၁။၂၀၁။*), **50 are new** (*သုတ္တန်။၃၄၉။*, a work in one volume, all 50 with
+a tooltip, Suttanipāta), none lost. Of the 3,136 tooltips the old citations had: **same work 3,136, changed 0, lost 0, inferred flag
+changed 0**; 2 more gained. (A first run, with a bug in the fold since fixed — ဋ္ဌ cut as ဋ္ + ဌ — lost 24: the fold is what keeps them.) So it went into
+`ASAT_WORKS` (`tools/abhidhana_articles.py`, the set and its comment), as asked. **The data were not re-run**: the committed `ocr/` files
+still carry the old reading for these 131 rows (books 01–18, 4a–4c, 22, 23, 25); the next article step picks it up, and `prep` would cut
+the new citations from the Burmese of 4 rows in the OCR books (22, 23, 25, 4c). `ABH_CITE_FIX=0` is unaffected (`ASAT_WORKS` is read only
+with the fix on).
+
+### Tests
+
+- Headless Chromium (the cloud container's Playwright 1.56) on a subset of the build (every file but `data/c/`, plus the 28 chunks of the
+  syllables of the visited articles; `tmp/ui93/sub.tgz`), served with the `/w/*` rewrite, no API, the four web fonts from `@fontsource`
+  5.3.0 as in §83: steps 8 and 9 of the new `ui-test.js` and step 7's Cite / Copy of bhijja, extracted: **35 pass, 0 fail**. bhijja's
+  Meaning box at 375 px starts at 392 px with and without the buttons, as in §84. The partial, reviewed and corrected lines were looked at
+  in the page with the status forced in the record (ES and EN), and their Copy line.
+- **`site/test/editor/ui-test.js`**: step 9 (new, 5 checks): bhijja at 375 and 1,024 px, ES and EN — the line below the text, the badge's
+  word, the note exact, badge and note on one line, both smaller than the text and in one muted colour, no chip left in the box, inside
+  the box, no sideways scroll; and Copy in English (`draft · AI translation …`). Tightened, same count: step 1 (*Traducción corregida por el
+  editor.*), step 3 (*Traducción revisada por el editor.*), step 7's two Copy checks and step 8's Copy check (the new two-line form).
+  Screenshots `meaning-<width>-<lang>.png` in `SHOTS`. **Expect on the Mac: API pass 28 fail 0, UI pass 93 fail 0** (88 + 5). Steps 1–7
+  need wrangler / D1 and were not run here. Not tested: Safari, Firefox, a phone, the dark theme.
+- Screenshots looked at: bhijja 375 px ES and 1,024 px EN (`tmp/ui93/`), and the partial state.
+
+### Changed files
+
+`site/src/assets/browse.js`, `site/src/assets/style.css`, `site/src/about/index.html`, `site/test/editor/ui-test.js`,
+`tools/abhidhana_browse.py` (`cite_how`, `head_fold`, `MARK`), `tools/abhidhana_articles.py` (`ASAT_WORKS` and its comment), `VERSION`,
+`CHANGELOG.md`, this section, `docs/NEXT-SESSION.md`. Gitignored, in `tmp/ui93/`: `meas.py`, `cmp.py`, `asat.py`, `asat2.py`, `res.json`,
+`sub.tgz` (78 MB, can be deleted) and the screenshots.
+
+### Next
+
+1. The next article run (any reason) brings *သုတ္တန်* into the 131 rows' citations; measure then that the tooltips are as simulated.
+2. The 622 tooltips gained besides the 93: a sample on the page images, if wanted (§87's method).
+3. §92 Next 2–4 unchanged (abbreviations the table lacks, the 3,569 `prep` rows, number-only leftovers, B2).
+
+*Tokens: this session's counter ~0.27 M at the time of writing. No sub-agents. No git run in the VM.*

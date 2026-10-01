@@ -333,6 +333,12 @@ body.browsepage > .wrap{flex:none;width:100%}
 .see a{font-family:var(--roman);font-size:16px}
 .meaning{border:1px solid var(--note-line);background:var(--note);border-radius:10px;padding:12px 16px;margin-bottom:12px}
 .meaning > div[lang]{font-size:17px;line-height:1.6;margin:6px 0 4px;white-space:pre-line}
+.meaning > div[lang]:first-child{margin-top:0}
+.meaning .mstat{margin-top:6px;font:12.5px/1.5 var(--ui);color:var(--muted)}
+.mbadge{display:inline-flex;align-items:center;gap:4px;font:500 11px/1.4 var(--ui);color:var(--muted);border:1px solid var(--line2);border-radius:999px;padding:0 7px;white-space:nowrap;vertical-align:1px}
+.msep{margin:0 5px}
+.mbadge::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--ok);opacity:.8}
+.mbadge.m-warn::before{background:var(--warn)}
 .meaning.empty{display:flex;flex-wrap:wrap;align-items:center;gap:8px;background:var(--surface2);border:1px dashed var(--line2);color:var(--muted);font-size:14px}
 .def{font-family:var(--my);font-size:17px;line-height:2;background:var(--card);border:1px solid var(--rule);border-radius:10px;padding:12px 16px;margin:8px 0 4px}
 .def .pali-my{font-weight:700}

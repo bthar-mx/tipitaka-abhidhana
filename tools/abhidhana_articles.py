@@ -423,11 +423,11 @@ BURMESE_ONLY = re.compile('[\u103A\u1038\u1037\u104A\u104B]')
 # abbreviations that carry an asat, those of docs/introduction/citation-abbreviations.tsv and the
 # OCR's readings of them met in the citations (မောင် မောက် မော် for မောဂ်, ဝိမတ် for ဝိမတိ,
 # ဓါန် for ဓာန်, ကင်ါ for ကင်္ခါ, အံ့ for အံ). သစ် "new" and ဟောင်း "old" are not among them: they
-# follow a work and never lead it. Nor is သုတ္တန် (the print's သုတ္တနိ): kept, it would lose the
-# tooltip tools/abhidhana_citefold.py's head() gives it today (HEADTYPO), which the table lacks. The Burmese symbols ၌ ၍ ၎ ၏ mark a Burmese
+# follow a work and never lead it. သုတ္တန် (the print's သုတ္တနိ) joined them in v0.29.2 (brief §93), once
+# tools/abhidhana_browse.py's head_fold() read it through HEADTYPO: measured, it changes no tooltip. The Burmese symbols ၌ ၍ ၎ ၏ mark a Burmese
 # word too (ဆို၏။ ၁၂။ is a sentence's end and a bare page list, not a work).
 ASAT_WORKS = {'ဣတိဝုတ်', 'ကစ္စည်း', 'ဓာန်', 'ပဋ္ဌာန်းကောက်', 'ပါစိတ်', 'ပါစိတ်ယော', 'မောဂ်', 'ယမိုက်ကောက်', 'ဝီလျမ်',
-              'တောင်ပေါက်', 'မောင်', 'မောက်', 'မော်', 'ဝိမတ်', 'ဓါန်', 'ကင်ါ', 'အံ့'}
+              'တောင်ပေါက်', 'မောင်', 'မောက်', 'မော်', 'ဝိမတ်', 'ဓါန်', 'ကင်ါ', 'အံ့', 'သုတ္တန်'}
 
 
 def _burmese(p):

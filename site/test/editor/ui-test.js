@@ -22,7 +22,7 @@ async function seed(token) {
   await page.goto(B + '/w/luñcana'); await page.waitForSelector('.meaning');
   await page.waitForFunction(() => document.querySelector('.meaning').textContent.includes('prueba'), null, { timeout: 5000 }).catch(() => {});
   let m = await page.textContent('.meaning');
-  ok(m.includes('quitar / arrancar (prueba).') && m.includes('corregido'), 'visitor: overlaid Spanish, marked corregido: ' + m.slice(0, 120));
+  ok(m.includes('quitar / arrancar (prueba).') && m.includes('corregido') && m.includes('Traducción corregida por el editor.'), 'visitor: overlaid Spanish, marked corregido: ' + m.slice(0, 120));
   ok(m.includes('Editado por el editor el'), 'visitor: edit date shown');
   ok(!(await page.$('[data-edit]')), 'visitor: no Editar button');
   ok(!reqs.some(u => /editor\.js|\/api\/admin\//.test(u)), 'visitor: editor.js and /api/admin/ never requested');
@@ -68,7 +68,7 @@ async function seed(token) {
   await page.waitForTimeout(500);
   ok((await page.textContent('.ed-msg')).includes('Guardado'), 'save: ' + await page.textContent('.ed-msg'));
   m = await page.textContent('.meaning');
-  ok(m.includes('quitar / arrancar.') && m.includes('revisado'), 'after save: new text, revisado: ' + m.slice(0, 80));
+  ok(m.includes('quitar / arrancar.') && m.includes('revisado') && m.includes('Traducción revisada por el editor.'), 'after save: new text, revisado: ' + m.slice(0, 80));
   ok((await page.textContent('.an')).includes('luñca + ana'), 'after save: analysis in roman from the edit');
   ok((await page.textContent('section:has(.an) h2')).includes('corregido'), 'after save: analysis marked corregido');
   // per-sense status
@@ -185,7 +185,9 @@ async function seed(token) {
   ok(msg === 'cita copiada', 'Cite: flash "' + msg + '"');
   [clip, msg] = await clipAfter('[data-act="copy"]');
   const lines = clip.split('\n');
-  ok(lines[0] === 'bhijja · ဘိဇ္ဇ' && /^Significado \(borrador, sin revisar\): \S/.test(lines.find(l => l.startsWith('Significado')) || '') &&
+  const mi = lines.findIndex(l => l.startsWith('Significado'));
+  ok(lines[0] === 'bhijja · ဘိဇ္ဇ' && /^Significado: \S/.test(lines[mi] || '') &&
+     lines[mi + 1] === 'borrador · Traducción del birmano al español hecha con IA, sin revisar. No es una lectura.' &&
      lines.some(l => l.startsWith('Definición birmana (texto del diccionario;')) &&
      lines[lines.length - 1] === 'Tipiṭaka Pāḷi-Myanmā Abhidhāna — edición digital del IEBH (lo añadido, CC BY-SA 4.0; el texto del diccionario no se relicencia) — https://abhidhana.buddha-dhamma.net/w/bhijja',
      'Copy /w/bhijja: headword, status borrador, the Burmese marked as the dictionary\'s, attribution: ' + JSON.stringify(lines.map(l => l.slice(0, 60))));
@@ -194,7 +196,7 @@ async function seed(token) {
   // the Copy of an edited article carries the edit's status (luñcana: sense 1 corrected in step 3)
   await page.goto(B + '/w/luñcana'); await page.waitForSelector('.head .acts'); await page.waitForTimeout(800);
   [clip] = await clipAfter('[data-act="copy"]');
-  ok(clip.includes('\nSignificado (corregido en parte: sentido (1); el resto sin revisar): '), 'Copy /w/luñcana: the status from editor mode: ' + (clip.split('\n').find(l => l.startsWith('Significado')) || '').slice(0, 90));
+  ok(clip.includes('\nSignificado: ') && clip.includes('\ncorregido en parte · Corregido por el editor: sentido (1). El resto es borrador, sin revisar.\n'), 'Copy /w/luñcana: the status from editor mode: ' + (clip.split('\n').find(l => l.startsWith('corregido')) || '').slice(0, 90));
   // English: the citation's words and date
   await page.evaluate(() => localStorage.setItem('lang', 'en'));
   await page.goto(B + '/w/bhijja'); await page.waitForSelector('.head .acts'); await page.waitForTimeout(300);
@@ -313,7 +315,7 @@ async function seed(token) {
     await page.click('[data-fold="mall"]'); g = await page.evaluate(geo);
     ok(g.n === 8, `senses ${W} px /w/karoti folded back: ${g.n}`);
     const cp = await page.evaluate(() => ABH_ACTS.copyText());
-    ok(cp.includes('Significado (borrador, sin revisar): hace; (1) produce; (2) practica. (3) pone.'),
+    ok(cp.includes('Significado: hace; (1) produce; (2) practica. (3) pone.') && cp.includes('\nborrador · Traducción del birmano al español hecha con IA, sin revisar. No es una lectura.\n'),
       `senses ${W} px /w/karoti: Copy keeps the plain text: ` + (cp.split('\n').find(l => l.startsWith('Significado')) || '').slice(0, 90));
     g = await go('bhava', 'en');
     ok(g.list && g.n === 8 && g.btn === 'show all (16)' && g.sub === 1 && g.hang && g.gap < 0.5 && g.fs.length === 1 && g.sw <= W,
@@ -328,6 +330,42 @@ async function seed(token) {
       }
     }
     ok(!errs.length, `senses ${W} px: no script errors ${errs.join(' | ')}`);
+    await page.evaluate(() => localStorage.removeItem('lang'));
+    await ctx.close();
+  }
+  // 9. the Meaning's status below its text (brief §93): a small muted badge and its note on one line, ES and EN,
+  //    at 375 and 1,024 px; Copy in English writes the same line
+  for (const [W, H] of [[375, 812], [1024, 800]]) {
+    ctx = await browser.newContext({ locale: 'es-ES', viewport: { width: W, height: H }, permissions: ['clipboard-read', 'clipboard-write'] }); page = await ctx.newPage();
+    if (process.env.ABH_FONTS) {
+      const F = process.env.ABH_FONTS, pth = require('path');
+      await page.route(/fonts\.googleapis\.com/, r => r.fulfill({ path: pth.join(F, 'fonts.css'), contentType: 'text/css' }));
+      await page.route(/\/__fonts\//, r => r.fulfill({ path: pth.join(F, pth.basename(new URL(r.request().url()).pathname)), contentType: 'font/woff2' }));
+    }
+    await page.goto(B + '/');
+    for (const [lang, badge, note] of [['es', 'borrador', 'Traducción del birmano al español hecha con IA, sin revisar. No es una lectura.'],
+                                       ['en', 'draft', 'AI translation from the Burmese, unreviewed. Not a reading.']]) {
+      await page.evaluate(l => localStorage.setItem('lang', l), lang);
+      await page.goto(B + '/w/bhijja'); await page.waitForSelector('.meaning .mstat'); await page.waitForTimeout(500);
+      await page.evaluate(() => document.fonts.ready);
+      const g = await page.evaluate(() => {
+        const q = s => document.querySelector(s), R = e => e.getBoundingClientRect(), box = q('.meaning'), st = q('.meaning .mstat'), b = st.querySelector('.mbadge');
+        const nt = st.lastElementChild, rg = document.createRange(); rg.selectNodeContents(nt); const r1 = rg.getClientRects()[0];
+        const css = e => getComputedStyle(e), txt = q('.meaning > div[lang]');
+        return { after: st.previousElementSibling === txt && R(st).top >= R(txt).bottom - 0.5, badge: b.textContent, note: nt.textContent,
+          line: Math.abs((R(b).top + R(b).bottom) / 2 - (r1.top + r1.bottom) / 2) < 4, small: parseFloat(css(b).fontSize) < parseFloat(css(txt).fontSize) && parseFloat(css(st).fontSize) < parseFloat(css(txt).fontSize),
+          muted: css(b).color === css(st).color && css(st).color !== css(txt).color, chips: box.querySelectorAll('.chip').length,
+          old: /Traducción en borrador|Drafted translation/.test(box.textContent), inside: R(st).right <= R(box).right + 0.5, sw: document.documentElement.scrollWidth };
+      });
+      await page.screenshot({ path: `${shots}/meaning-${W}-${lang}.png` });
+      ok(g.after && g.badge === badge && g.note === note && g.line && g.small && g.muted && !g.chips && !g.old && g.inside && g.sw <= W,
+        `status ${W} px /w/bhijja (${lang}): below the text ${g.after}, "${g.badge}" · "${g.note.slice(0, 40)}…", one line ${g.line}, smaller ${g.small}, muted ${g.muted}, chips in the box ${g.chips}, page width ${g.sw}`);
+      if (W === 1024 && lang === 'en') {
+        await page.evaluate(() => navigator.clipboard.writeText('')); await page.click('[data-act="copy"]'); await page.waitForTimeout(300);
+        const cl = (await page.evaluate(() => navigator.clipboard.readText())).split('\n'), j = cl.findIndex(l => l.startsWith('Meaning: '));
+        ok(j > 0 && cl[j + 1] === 'draft · AI translation from the Burmese, unreviewed. Not a reading.', 'Copy /w/bhijja (en): ' + JSON.stringify(cl.slice(j, j + 2).map(l => l.slice(0, 70))));
+      }
+    }
     await page.evaluate(() => localStorage.removeItem('lang'));
     await ctx.close();
   }

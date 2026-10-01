@@ -18,7 +18,8 @@ Object.assign(T.en, {
   open_alpha: 'Alphabet', close: 'Close', in_vols: v => `In vols. ${v}`, entries: 'entries',
   analysis: 'Analysis', see: 'See', meaning: 'Meaning', not_translated: 'not yet translated',
   trans_note: 'This definition has not been translated yet. The translation will appear here with its status (drafted, reviewed, corrected).',
-  drafted_note: 'Drafted translation: not reviewed. Not a reading.',
+  drafted_note: 'AI translation from the Burmese, unreviewed. Not a reading.', mst_drafted: 'draft',
+  reviewed_note: 'Translation reviewed by the editor.', corrected_note: 'Translation corrected by the editor.',
   partial_note: s => `Corrected by the editor: sense ${s}. The rest is a draft, not reviewed.`,
   rpartial_note: s => `Reviewed by the editor: sense ${s}. The rest is a draft, not reviewed.`,
   edited_on: d => `Edited by the editor on ${d}.`,
@@ -57,7 +58,8 @@ Object.assign(T.es, {
   open_alpha: 'Alfabeto', close: 'Cerrar', in_vols: v => `En los vols. ${v}`, entries: 'entradas',
   analysis: 'Análisis', see: 'Véase', meaning: 'Significado', not_translated: 'sin traducir',
   trans_note: 'Esta definición aún no se ha traducido. La traducción aparecerá aquí con su estado (borrador, revisada, corregida).',
-  drafted_note: 'Traducción en borrador: sin revisar. No es una lectura.',
+  drafted_note: 'Traducción del birmano al español hecha con IA, sin revisar. No es una lectura.', mst_drafted: 'borrador',
+  reviewed_note: 'Traducción revisada por el editor.', corrected_note: 'Traducción corregida por el editor.',
   partial_note: s => `Corregido por el editor: sentido ${s}. El resto es borrador, sin revisar.`,
   rpartial_note: s => `Revisado por el editor: sentido ${s}. El resto es borrador, sin revisar.`,
   edited_on: d => `Editado por el editor el ${d}.`,
@@ -358,6 +360,20 @@ const wHref = d => `${SITE}/w/${encodeURIComponent(d.sl).replace(/%2F/g, '/')}`;
 const one = s => String(s || '').replace(/\s+/g, ' ').trim();
 const plainTr = x => (x || '').replace(/\[\[([^\]|]+)\|[^\]]*\]\]/g, '$1').replace(/\[\[([^\]]+)\]\]/g, '$1')
   .replace(/\*([^*]+)\*/g, '$1').replace(/‹([^›]+)›/g, '$1');
+// the Meaning's status, below its text (brief §93): a small muted badge and its note, on one line; Copy writes the same
+function mstat(tr) {
+  const w = tr.s === 'drafted' || tr.s === 'partial' || tr.s === 'rpartial' ? 'warn' : 'ok';
+  const badge = tr.s === 'drafted' ? t('mst_drafted') : t('st_' + tr.s);
+  const cs = (tr.cs || []).map(n => `(${n})`).join(', ');
+  const note = tr.s === 'drafted' ? t('drafted_note') : tr.s === 'reviewed' ? t('reviewed_note') : tr.s === 'corrected' ? t('corrected_note')
+    : tr.s === 'partial' ? t('partial_note', cs) : tr.s === 'rpartial' ? t('rpartial_note', cs) : '';
+  return { w, badge, note };
+}
+function mstatHTML(tr) {
+  const m = mstat(tr);
+  return `<div class="mstat"><span class="mbadge m-${m.w}"${tr.s === 'drafted' ? ` title="${esc(t('drafted_t'))}"` : ''}>${esc(m.badge)}</span>` +
+    (m.note ? `<span class="msep" aria-hidden="true">·</span><span>${esc(m.note)}</span>` : '') + '</div>';
+}
 function today() { const n = new Date(); return `${n.getDate()} ${t('months')[n.getMonth()]} ${n.getFullYear()}`; }
 function copyText(d) {
   const hn = d.hn ? SUPN(d.hn) : '', L = [];
@@ -369,10 +385,9 @@ function copyText(d) {
   if (d.a || d.ai) L.push(`${t('cp_analysis')}: ` + [d.ai && `[${d.ai}]`, d.a && `[${d.a}]`].filter(Boolean).join(' '));
   const tr = d.t && d.t[LANG];
   if (tr) {
-    let st = t('st_' + tr.s);
-    if (tr.s === 'drafted') st += ', ' + t('cp_unreviewed');
-    if (tr.s === 'partial' || tr.s === 'rpartial') st += `: ${t('cp_sense', (tr.cs || []).map(n => `(${n})`).join(', '))}; ${t('cp_rest')}`;
-    L.push(`${t('cp_meaning')} (${st}): ${one(plainTr(tr.x))}`);
+    const m = mstat(tr);
+    L.push(`${t('cp_meaning')}: ${one(plainTr(tr.x))}`);
+    L.push(m.note ? `${m.badge} · ${m.note}` : m.badge);
   } else L.push(`${t('cp_meaning')}: ${t('not_translated')}`);
   if (d.b) L.push(`${t('cp_def')}; ${t((d.cf || []).includes('body') ? 'cp_def_fixed' : 'cp_def_ocr')}: ${one(d.b)}`);
   L.push(t('cp_attr', wURL(d)));
@@ -571,7 +586,7 @@ function article() {
   // Meaning: the translation with its status, or an honest "not yet translated"
   const tr = d.t && d.t[LANG];
   H.push(`<section><h2>${esc(t('meaning'))}</h2>` + (tr
-    ? `<div class="meaning"><span class="chip ${tr.s === 'drafted' || tr.s === 'partial' || tr.s === 'rpartial' ? 'c-warn' : 'c-ok'}"${tr.s === 'drafted' ? ` title="${esc(t('drafted_t'))}"` : ''}>${esc(t('st_' + tr.s))}</span><div lang="${LANG}">${sensesHTML(tr.x)}</div>${tr.s === 'drafted' ? `<div class="muted small">${esc(t('drafted_note'))}</div>` : ''}${tr.s === 'partial' || tr.s === 'rpartial' ? `<div class="muted small">${esc(t(tr.s === 'partial' ? 'partial_note' : 'rpartial_note', (tr.cs || []).map(n => `(${n})`).join(', ')))}</div>` : ''}${tr.date ? `<div class="muted small">${esc(t('edited_on', tr.date.slice(0, 10)))}</div>` : ''}</div>`
+    ? `<div class="meaning"><div lang="${LANG}">${sensesHTML(tr.x)}</div>${mstatHTML(tr)}${tr.date ? `<div class="muted small">${esc(t('edited_on', tr.date.slice(0, 10)))}</div>` : ''}</div>`
     : `<div class="meaning empty"><span class="chip">${esc(t('not_translated'))}</span><span>${esc(t('trans_note'))}</span></div>`));
   const showDef = d.b && (S.defs === 'show' || (S.defs === 'collapse' && open.def));
   if (d.b && S.defs === 'collapse' && !open.def) H.push(`<button type="button" class="btn" data-def="1" aria-expanded="false">${esc(t('show_def'))}</button>`);
