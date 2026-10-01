@@ -23,6 +23,12 @@ Versions of the Tipiṭaka Pāḷi-Myanmā Abhidhāna project: the data, the too
 A release note says, per version: what changed, the brief's sections, and the headline figures
 (located, label + body, Meaning rows drafted / reviewed).
 
+## v0.29.3 — 1 Oct 2026
+
+The Meaning box's drafted note shortened (the editor, 1 Oct): "Traducción del birmano al español hecha con IA, sin revisar." / "AI
+translation from the Burmese, unreviewed." ("No es una lectura." / "Not a reading." removed). The same in Copy and on the About page;
+the UI test's expectations updated. Site only.
+
 ## v0.29.2 — 1 Oct 2026
 
 The Meaning box's status line, and the tooltips the ။ parser lost (brief §93). Site and tools only; no article re-run.

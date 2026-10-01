@@ -3893,3 +3893,12 @@ with the fix on).
 3. §92 Next 2–4 unchanged (abbreviations the table lacks, the 3,569 `prep` rows, number-only leftovers, B2).
 
 *Tokens: this session's counter ~0.27 M at the time of writing. No sub-agents. No git run in the VM.*
+
+## 94. The drafted note shortened (1 Oct 2026, advice chat; v0.29.3; site only)
+
+The editor asked to drop "No es una lectura." / "Not a reading." from the Meaning box's drafted note (§93). Now: *borrador* · "Traducción
+del birmano al español hecha con IA, sin revisar." / *draft* · "AI translation from the Burmese, unreviewed." Changed: the two strings in
+`site/src/assets/browse.js`, the About page's status table (`site/src/about/index.html`), the five expectations in
+`site/test/editor/ui-test.js`. The Introduction banner's own sentence (`tools/abhidhana_intro.py`, about the page images) is untouched.
+The Mac UI test of v0.29.2: pass 93, fail 0 (the editor, 1 Oct). Re-run it after this change.
+

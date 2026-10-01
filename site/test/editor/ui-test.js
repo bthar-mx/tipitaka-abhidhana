@@ -187,7 +187,7 @@ async function seed(token) {
   const lines = clip.split('\n');
   const mi = lines.findIndex(l => l.startsWith('Significado'));
   ok(lines[0] === 'bhijja · ဘိဇ္ဇ' && /^Significado: \S/.test(lines[mi] || '') &&
-     lines[mi + 1] === 'borrador · Traducción del birmano al español hecha con IA, sin revisar. No es una lectura.' &&
+     lines[mi + 1] === 'borrador · Traducción del birmano al español hecha con IA, sin revisar.' &&
      lines.some(l => l.startsWith('Definición birmana (texto del diccionario;')) &&
      lines[lines.length - 1] === 'Tipiṭaka Pāḷi-Myanmā Abhidhāna — edición digital del IEBH (lo añadido, CC BY-SA 4.0; el texto del diccionario no se relicencia) — https://abhidhana.buddha-dhamma.net/w/bhijja',
      'Copy /w/bhijja: headword, status borrador, the Burmese marked as the dictionary\'s, attribution: ' + JSON.stringify(lines.map(l => l.slice(0, 60))));
@@ -315,7 +315,7 @@ async function seed(token) {
     await page.click('[data-fold="mall"]'); g = await page.evaluate(geo);
     ok(g.n === 8, `senses ${W} px /w/karoti folded back: ${g.n}`);
     const cp = await page.evaluate(() => ABH_ACTS.copyText());
-    ok(cp.includes('Significado: hace; (1) produce; (2) practica. (3) pone.') && cp.includes('\nborrador · Traducción del birmano al español hecha con IA, sin revisar. No es una lectura.\n'),
+    ok(cp.includes('Significado: hace; (1) produce; (2) practica. (3) pone.') && cp.includes('\nborrador · Traducción del birmano al español hecha con IA, sin revisar.\n'),
       `senses ${W} px /w/karoti: Copy keeps the plain text: ` + (cp.split('\n').find(l => l.startsWith('Significado')) || '').slice(0, 90));
     g = await go('bhava', 'en');
     ok(g.list && g.n === 8 && g.btn === 'show all (16)' && g.sub === 1 && g.hang && g.gap < 0.5 && g.fs.length === 1 && g.sw <= W,
@@ -343,8 +343,8 @@ async function seed(token) {
       await page.route(/\/__fonts\//, r => r.fulfill({ path: pth.join(F, pth.basename(new URL(r.request().url()).pathname)), contentType: 'font/woff2' }));
     }
     await page.goto(B + '/');
-    for (const [lang, badge, note] of [['es', 'borrador', 'Traducción del birmano al español hecha con IA, sin revisar. No es una lectura.'],
-                                       ['en', 'draft', 'AI translation from the Burmese, unreviewed. Not a reading.']]) {
+    for (const [lang, badge, note] of [['es', 'borrador', 'Traducción del birmano al español hecha con IA, sin revisar.'],
+                                       ['en', 'draft', 'AI translation from the Burmese, unreviewed.']]) {
       await page.evaluate(l => localStorage.setItem('lang', l), lang);
       await page.goto(B + '/w/bhijja'); await page.waitForSelector('.meaning .mstat'); await page.waitForTimeout(500);
       await page.evaluate(() => document.fonts.ready);
@@ -363,7 +363,7 @@ async function seed(token) {
       if (W === 1024 && lang === 'en') {
         await page.evaluate(() => navigator.clipboard.writeText('')); await page.click('[data-act="copy"]'); await page.waitForTimeout(300);
         const cl = (await page.evaluate(() => navigator.clipboard.readText())).split('\n'), j = cl.findIndex(l => l.startsWith('Meaning: '));
-        ok(j > 0 && cl[j + 1] === 'draft · AI translation from the Burmese, unreviewed. Not a reading.', 'Copy /w/bhijja (en): ' + JSON.stringify(cl.slice(j, j + 2).map(l => l.slice(0, 70))));
+        ok(j > 0 && cl[j + 1] === 'draft · AI translation from the Burmese, unreviewed.', 'Copy /w/bhijja (en): ' + JSON.stringify(cl.slice(j, j + 2).map(l => l.slice(0, 70))));
       }
     }
     await page.evaluate(() => localStorage.removeItem('lang'));
