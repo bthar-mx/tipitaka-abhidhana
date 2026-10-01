@@ -1038,7 +1038,9 @@ id	iast	omitted
 178960	sabbadukkhabhayappaha	analysis 'ပဟန္တ-ပဇဟန္တ ]'; stray '၄'
 178961	sabbadukkhavighāta	debris '့်န ီ့[ သို့]'
 178963	sabbadukkhavūpasamatā	analysis 'သဗ္ဗဒုက္ခဝူပသမ + တာ ['
-178964	sabbadukkhasantatā	scan debris '---ာာာ…ဿဿ (တိ)'; analysis bracket '[ သဗ္ဗဒ … + သမ-တတ္တ] )'; stray sense numbers '(၇)'; quotation 'သဗ္ဗဒုက္ခသမတိက္ကမုပါယဘူတေ … ဇနယိတွာ'; citation 'ဝိသုဒ္ဓိ၊ ၁ဝ'; run-on article sabbadukkhasamatikkamupāyabhūta with its analysis and gloss 'ဝဋ်ဆင်းရဲမှ လွတ်မြောက်ခြင်း၏ အကြောင်း ဖြစ်သော'
+178964	sabbadukkhasantatā	scan debris '---ာာာာာာာာာာထာာာဿဿဿဿ'
+178965	sabbadukkhasamatikkama	damaged analysis bracket '[ သဗ္ဗဒ သဗ္ဗဒုက္ခံ တ္တ ဥဒုကတ္ခ + သမ-တတ္တ] )'; quotation 'သဗ္ဗဒုက္ခသမတိက္ကမုပါယဘူတေ ပီတိပါမောဇ္ဇံ ဇနယိတွာ'; citation 'ဝိသုဒ္ဓိ၊ ၁ဝ'; repeated sense numbers '(၇) (၂)'
+178966	sabbadukkhasamatikkamupāyabhūta	damaged analysis bracket '[ သဗ္ဗဒုက္ခ-သမတိက္ကမ +ဥပါယ + ဘူတ'; OCR debris 'ဋ ့ချှါ] ရျ ရ “ ရ'
 178968	sabbadukkhāpanūdana	debris 'မူှ ခုါ ၅. န ဒွံ ိုက္ခ ဦ['
 178970	sabbadukkhūpasama	debris 'သဒ္ဒိ၊'; quotation 'သဗ္ဗဒုက္ခူပသမသင်ါတဿာ မော။ သင်ါတဗ္ဗဿ'
 178971	sabbadukkhūpasamārammaṇa	debris 'ရမ္မ နာ၍ “ရ “'
@@ -3213,7 +3215,8 @@ id	iast	omitted
 182505	samiñjesi	analysis '(ဣဉ္စ) +ဏေ + ဤ'; run-on article samita (analysis; senses '(၁) ဆက်စပ်ခြင်းသို့ရောက်-ပေါင်းဆုံ-တစ်ခုတည်းဖြစ်၍ ဖြစ်-သော။ (၂) မြဲသော။ (၃) အခါခပ်သိမ်း ဖြစ်-မပြတ်ဖြစ်-အကြားမရှိ-သော')
 182506	samita	quotation fragments 'ဧဝံ။ သဓိတ။ (၃) နိစ္စဋ္ဌေန သတတ-သဒ္ဒေန အဘိဏပ္ပဝတ္တိ ဇောတိတာ သိယာတိ'
 182507	samita	citation '(ဣတိဝုတ်။ ၂၇၂)။ အံ၊ [ ဣတိဝုတ်၊'
-182508	samita	analyses and grammarian's notes (Sanskrit and Prakrit forms); references '(၁-၂-၃)။ ၁ဝ'; quotation fragments 'တပနီတိ ...', 'သမိတဿာ တိ သမုဒိဿ'; run-on article samita (proper name: 'the cakkavatti king named Samita', a former life of a thera); run-on article samitakilesa ('ငြိမ်းအေးစေအပ်ပြီးသော ကိလေသာရှိသော၊ ကိလေသာငြိမ်းအေးပြီးသော'); debris
+182508	samita	analyses and grammarian's notes (Sanskrit and Prakrit forms); references '(၁-၂-၃)။ ၁ဝ'; quotation fragments 'တပနီတိ ...', 'သမိတဿာ တိ သမုဒိဿ'; run-on article samita (proper name: 'the cakkavatti king named Samita', a former life of a thera); debris
+182510	samitakilesa	OCR debris 'ဝ ရို့] ၉'
 182511	samitagamana	'----'
 182512	samitapāpa	stray '['; quotation 'သမိတပါပေနာ'; '(-'
 182513	samitapāpaṭṭha	grammarian's note 'တ္ထ-ကို ဌ-ပြု'; page number '၁ဝ၇'
@@ -4712,7 +4715,7 @@ id	iast	omitted
 184889	sampīl̤etvā	stray '၅'; garbled 'သမဉ္စ'; run-on article သမ္ပုစ္စ with its gloss 'တကွ-တိုင်ပင်-ဆွေးနွေး၍' and a see-reference; run-on article သမ္ပုစ္ဆတိ with Sanskrit and Prakrit notes, two senses and quotation; run-on article သမ္ပုစ္ဆန with its notes and two senses
 184891	sampucchati	'ကြည့်' (see) with no target
 184894	sampuṭa	analysis '] သံ + ပုဋ + အ။ ပုဋ သံကိလေသနေ၊ ဘူဝါဒိ၊ အ'; source tag ဓာန်; Sanskrit and Prakrit notes; debris 'မာန်'; quotation fragment for sense (2) 'ပါဏိသမူူဋ- (၇၆)'
-184895	sampuṭita	source tags (ဣ၊ က၊ မူ); run-on articles သမ္ပုဏ္ဏင်္ဂ, သမ္ပုဏ္ဏစန္ဒမဏ္ဍလ with quotation, သမ္ပုဏ္ဏဇဝနဝီထိ, each with its gloss
+184895	sampuṭita	source tags (ဣ၊ က၊ မူ); run-on article သမ္ပုဏ္ဏစန္ဒမဏ္ဍလ with quotation, with its gloss
 184896	sampuṇṇa	grammarian's note (Kaccāyana, Moggallāna, Nirutti 745; Sanskrit, Prakrit, Ardhamāgadhī forms)
 184900	sampuṇṇanadikā	stray '('
 184903	sampuṇṇapattamallava	debris '---'

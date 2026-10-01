@@ -851,6 +851,27 @@ def _farbody_checked():
     return out
 
 
+FARBODY_FIX_TSV = ROOT / 'docs/farbody-fix.tsv'
+
+
+def _farbody_fix():
+    """FARBODY_FIX {book: {id: (sources, start, end)}} from docs/farbody-fix.tsv (brief §95): the 39 farther-body items the
+    page image said wrong in §89, made from the start and end lines its readers gave and read on the image again, and the
+    rows such a fix moves (a row placed on a line of the fixed entry, given its own entry). sources: [('body' | 'raw', id)],
+    read in order -- a host's body lines, then (when the entry runs on into it) the raw lines of the row the OCR placed on a
+    line of the entry; start / end: the first and last line of the entry, spaces removed. Only rows whose verdict is 'right'.
+    ABH_FARBODY_FIX=0 turns the table off."""
+    out = {}
+    if FARBODY_FIX_TSV.exists():
+        for ln in FARBODY_FIX_TSV.read_text(encoding='utf-8').splitlines()[1:]:
+            c = ln.split('\t')
+            if len(c) >= 8 and c[0].strip().isdigit() and c[7].strip() == 'right':
+                src = [(k.strip(), int(x)) for k, x in (s.strip().split(':') for s in c[3].split('+'))]
+                out.setdefault(c[1].strip(), {})[int(c[0])] = (src, c[4].strip(), c[5].strip())
+    return out
+FARBODY_FIX = _farbody_fix() if __import__('os').environ.get('ABH_FARBODY_FIX', '1') != '0' else {}
+
+
 def _pced_cont(text, w):
     """containment: the share of PCED's analysis + definition (spaces out, first 600 characters) found in order in the
     first 2x that length + 60 characters of the text (the measure of the 30 Sep measurement, tmp/farbody18/cont.py)"""
@@ -1065,6 +1086,49 @@ def farbody_split(book, rows, allhw, pages_text):
                 pr['mid_decision'] = 'own line' if ok else f'unlocated (image: {vm[0] if vm else "not checked"})'
             elif ch: pr['mid_decision'] = 'unlocated (own line not found)'
         made.append((pr, ch))
+    # the image table of §95 (FARBODY_FIX): rows whose §89 proposal the image said wrong, placed on the lines its readers gave
+    fixes = []
+    ftab = {} if pced else FARBODY_FIX.get(book, {})
+    if ftab:
+        pos = {int(x['id']): q for q, x in enumerate(rs)}
+        madecov = {}
+        for pr, ch in made:
+            madecov.setdefault(pr['j'], set()).update(range(pr['k'], pr['nxt']))
+            if ch and pr.get('mid_decision') == 'own line': madecov[pr['j']].update(range(pr['mid']['k'], pr['mid']['nxt']))
+        # rows a made split placed: the split rows and the chained rows moved to their own line (a chained row left unlocated,
+        # its own line read wrong in §89, may take the line the table gives it)
+        made_ids = {int(pr['id']) for pr, _ in made} | {int(ch['id']) for pr, ch in made if ch and pr.get('mid_decision') == 'own line'}
+        def m_start(t, k): return t == k or t.startswith(k[:24]) or (len(t) >= 10 and k.startswith(t))
+        def m_end(t, k): return t == k or (len(t) >= 5 and k.endswith(t)) or t.endswith(k)
+        for rid, (src, sk, ek) in sorted(ftab.items()):
+            fz = dict(id=rid, sources=src, status=None)
+            fixes.append(fz)
+            if rid not in pos or any(x not in pos for _, x in src): fz['status'] = 'not applied: id not in the book'; continue
+            i = pos[rid]; r = rs[i]
+            if r.get('homonym_fix') or rid in made_ids or r.get('split_from'):
+                fz['status'] = 'not applied: row already placed by another rule'; continue
+            FL = []
+            for kind, x in src:
+                q = pos[x]
+                ls_ = lines(q)[1] if kind == 'body' else (rs[q].get('raw') or '').split('\n')
+                FL += [(kind, q, n, ln) for n, ln in enumerate(ls_)]
+            a = [z for z, (_, _, _, ln) in enumerate(FL) if _SP(ln) and m_start(_SP(ln), sk)]
+            if not a: fz['status'] = 'not applied: start line not found'; continue
+            a = a[0]
+            e = next((z for z in range(a, len(FL)) if _SP(FL[z][3]) and m_end(_SP(FL[z][3]), ek)), None)
+            if e is None: fz['status'] = 'not applied: end line not found'; continue
+            seg = FL[a:e + 1]
+            body_cov = {}
+            for kind, q, n, _ in seg:
+                if kind == 'body': body_cov.setdefault(q, set()).add(n)
+            if any(madecov.get(q, set()) & ns for q, ns in body_cov.items()):
+                fz['status'] = 'not applied: lines taken by a split already made'; continue
+            last = FL[e]
+            fz.update(i=i, text='\n'.join(ln for _, _, _, ln in seg), body_cov=body_cov,
+                      raw_src=sorted({q for kind, q, _, _ in seg if kind == 'raw'}),
+                      dropped=[ln for kind, q, n, ln in FL[e + 1:] if kind == 'raw' and q == last[1]] if last[0] == 'raw' else [],
+                      first=seg[0], status='made',
+                      before={f: r.get(f) for f in ('located', 'pdf_page', 'raw', 'label', 'body') if r.get(f) is not None})
     # apply
     covered = {}
     for pr, ch in made:
@@ -1094,12 +1158,35 @@ def farbody_split(book, rows, allhw, pages_text):
                 rm['split_checked'] = ('pced:' + ('right' if pr['pced_mid'][0] == 'right' else 'none')) if pced else 'right'
             else:
                 rm['located'] = 'unlocated'; rm['farbody_unlocated'] = True
+    fixto = {}
+    ok = [fz for fz in fixes if fz['status'] == 'made']
+    fixed_ids = {fz['id'] for fz in ok}
+    for fz in ok:                     # a row whose raw lines a fix takes, and which has no fix of its own: left unlocated
+        for q in fz['raw_src']:
+            rm = rs[q]
+            if int(rm['id']) in fixed_ids or rm.get('farbody_unlocated'): continue
+            fb = {'located': rm['located'], 'pdf_page': rm['pdf_page'], 'raw': (rm.get('raw') or '').split('\n')[0]}
+            for f in _TEXT_FIELDS: rm.pop(f, None)
+            rm['farbody_before'] = fb; rm['farbody_text_to'] = fz['id']
+            rm['located'] = 'unlocated'; rm['farbody_unlocated'] = True
+    for fz in ok:
+        r = rs[fz['i']]; kind, q, n, ln = fz['first']
+        for f in _TEXT_FIELDS: r.pop(f, None)
+        r.update(fields(fz['text'], r['headword'], r.get('iast', '')))
+        r['raw'] = fz['text']; r['located'] = 'split'; r.pop('farbody_unlocated', None)
+        r['pdf_page'] = page_of(rs[q], ln) if kind == 'body' else rs[q]['pdf_page']
+        r['split_from'] = fz['sources'][0][1]
+        r['split_rule'] = 'farbody-fix:' + '+'.join(k for k, _ in fz['sources'])
+        r['split_checked'] = 'right'; r['farbody_fix'] = True
+        if fz['before']: r['split_replaced'] = fz['before']
+        for hq, ns in fz['body_cov'].items():
+            covered.setdefault(hq, set()).update(ns); fixto.setdefault(hq, set()).add(r['id'])
     for j, cov in covered.items():
         host = rs[j]; jl, ls = lines(j)
         old = host['body']
         host['body'] = re.sub(r'[ \t]+', ' ', '\n'.join(ln for q, ln in enumerate(ls) if q not in cov)).strip()
         host['citations'] = cites(host['body'])
-        host['split_to'] = sorted(set(host.get('split_to', [])) | {pr['id'] for pr, _ in made if pr['j'] == j}
+        host['split_to'] = sorted(set(host.get('split_to', [])) | {pr['id'] for pr, _ in made if pr['j'] == j} | fixto.get(j, set())
                                   | {ch['id'] for pr, ch in made if pr['j'] == j and ch and pr.get('mid_decision') == 'own line'})
         host.setdefault('body_before_split', old)
     nm = len(made); nch = sum(1 for _, ch in made if ch)
@@ -1110,11 +1197,17 @@ def farbody_split(book, rows, allhw, pages_text):
            f'{st["taken"]} proposed, {nm} made (chained {nch}: {own} rows moved to their own line, {nch - own} left unlocated); '
            f'hosts {len(covered)}; not made {len(props) - nm}'
            + (' (' + ', '.join(f'{k} {v}' for k, v in sorted(_nm.items())) + ')' if _nm else '')]
+    if fixes:
+        _nf = __import__('collections').Counter(fz['status'] for fz in fixes)
+        nv = sum(1 for x in rs if x.get('farbody_unlocated') and int(x.get('farbody_text_to') or 0) in fixed_ids)
+        rep.append(f'the image table of §95 (docs/farbody-fix.tsv): {len(fixes)} rows, ' + ', '.join(f'{k} {v}' for k, v in sorted(_nf.items()))
+                   + f'; rows whose line a fix took, left unlocated {nv}')
     tp = __import__('os').environ.get('ABH_FARBODY_TRACE')
     if tp:
         with open(f'{tp}/farbody-{book}.jsonl', 'w', encoding='utf-8') as tf:
             tf.write(json.dumps(dict(stats=st), ensure_ascii=False) + '\n')
             for pr in props: tf.write(json.dumps(pr, ensure_ascii=False, default=str) + '\n')
+            for fz in fixes: tf.write(json.dumps(dict(fix=fz), ensure_ascii=False, default=str) + '\n')
     return rep, props
 
 # ---- homonyms placed on each other's line: the order rule R and the PCED pass (brief §85, §86; plan step 1.8) ----

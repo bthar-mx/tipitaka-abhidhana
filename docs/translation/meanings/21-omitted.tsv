@@ -1020,8 +1020,9 @@ id	iast	omitted
 165701	sakkādi	quotation 'အယဉှိ သတ္တာဒီနံ ဝိယ စ ဒေါမနဿဿ အတ္ထင်္ဂမာယ သံဝတ္တတိ'
 165704	sakkānubhāva	run-on article sakkāya (ပု) with its bracket and quotations; stray '၅ သက္ကာယဂ္ဂဟဏ'
 165705	sakkāya	tail of article sakkāyaggahaṇa 'သက္ကာယ - ဟူ၍ - ကို -ယူ စွဲလမ်းခြင်း။ (၁၃၅-တို့နှင့် မညီ)'; headword and bracket 'သက္ကာယ (ပု) [ သ + ကာယ ]'
-165706	sakkāya	run-on articles 'သက္ကာယဝရုက (တိ) … အလေးပြုတတ်သော၊ သူ' with a quotation, 'သက္ကာယဂါမိနိပဋိပဒါ (ထီ) … အကျင့်။ ( တရား ၃-ပါး)', 'သတ္တာယဝါဟ (၇) သက္ကာယ-မိမိ၏ ကိုယ်ခန္ဓာ -ဟူ၍ ယူခြင်း'
+165706	sakkāya	run-on article sakkāyagāminipaṭipadā (ထီ): 'the practice that leads to taking and clinging to (things) as sakkāya (dhamma 3)'
 165707	sakkāya	'ခန္ဓာငါးပါးအပေါင်း-ကို ယူခြင်း'
+165709	sakkāyagaruka	quotation 'ယထာ တေ ပုဂ္ဂလာ ရူပဂရုကာ၊ ဧဝံ တဒညေ စ သက္ကာယ ဝေနေယျာ'
 165714	sakkāyathambha	quotation 'တဏှာရဇ္ဇယာ သက္ကာယထမ္ဘေ ဥပနိဗဒ္ဓေါ ဝဋ္ဋနိဿိတော ပဝတ္တတိ'
 165716	sakkāyadassanamukha	debris '['; quotation fragment 'သက္ကာယဒဿနမုခေနာ'
 165718	sakkāyadiṭṭhi	quotation 'ကတမော သောဠသဒိဋ္ဌိယော … ဣမာ သောဠသ ဒိဋ္ဌိယော'
@@ -1366,7 +1367,7 @@ id	iast	omitted
 166305	saṅkāsayissanti	quotation fragment 'မဟာအဋ္ဌကထာယမ္ပိ'
 166307	saṅkāsitabba	quotation fragment 'နနု “ ဒုက္ခသစ္စ ”'
 166309	saṅkāseti	label debris 'ကာ၊ ကြို [။'; Sanskrit note 'သံကာဂယတိ-သံ။ ]'
-166311	saṅkiṇṇa	run-on article 'သင်္ကတ (တိ) [သကိ + တ ... ] (၁) ရွံရှာ - ယုံမှား - သံသယရှိ - သော။ (၂) ရွဲရှာ - ယုံမှား သံသယရှိ- အပ်သော' ('suspecting / doubting / having doubt; suspected …'); run-on article 'သင်္ကိတဗ္ဗ (တိ) ... ရွဲရှာ-ယုံမှာ-သံသယရှိ-အပ် - သင့် - ထိုက် - သော' ('to be suspected …'); 'သင်ိယ-လည်းကြည့်'; fragment 'သင်္ကိီတ'
+166311	saṅkiṇṇa	run-on article 'သင်္ကတ (တိ) [သကိ + တ ... ] (၁) ရွံရှာ - ယုံမှား - သံသယရှိ - သော။ (၂) ရွဲရှာ - ယုံမှား သံသယရှိ- အပ်သော' ('suspecting / doubting / having doubt; suspected …'); fragment 'သင်္ကိီတ'
 166315	saṅkitti	analysis '[ သ ကိတ္တ ဣ'
 166319	saṅkiyamāna	debris 'ဦ'
 166322	saṅkī	analysis '[ သကိ (သင်္က) ဏီ။ သင်္ကာ + ဤ ['; run-on article 'သင်္ကိယတိ (ကမ္မ၊ ကြို [။ ဓာတွန် ရ-ချေ၊ ဣ-ကို ဤ-ပြု။ ] ကြဲဖြန့် -စွန့်-ပယ်စွန့် အပ်၏' ('is scattered / given up / thrown away')
@@ -2098,7 +2099,7 @@ id	iast	omitted
 167534	saccikaṭṭhekadesa	'-- --'
 167536	saccūpasaṁhita	headword fragment '(စ္စူ ပသံဟိတ'; stray '['; quotation 'အယံ ပနေတ္ထ … န သုဘဏံ'
 167537	saccekadesa	citation 'န ဌာ။ နေတ္တ ၄၅'
-167538	saccekadesantogadha	OCR debris 'ရို့ ရျ ဖု့ူ ့ရ ဦ့ ဋ'; run-on articles 'သစ္ဆ (ဆ) န္ဒ [ … ] မိမိ၏-အလိုဆန္ဒ-သဘော- စိတ်အလို', 'သစ္ဆ (ဆ) နာ [ … ] (၁) မိမိ၏ အလိုဆန္ဒရှိ ဝဝဝ ဖို့ သော။ (၂) မိမိ၏-ဆန္ဒရာဂ-လောဘ- ရှိသော။ (၃) (အာဟာရ)', '၁ သစ္ဆ(ဆါ)န္ဒရာဂပရိဘောဂ ၄၄၆။ “ သစ္ဆန္ဒရာဂေါ ”', 'သစ္ဆန္ဒစာရ (၇) [ … ] မိမိ၏ - အလိုဆန္ဒ - … သွားလာခြင်း', 'သစ္ဆ (ဆ) နွရာဂ (တိ) ['
+167538	saccekadesantogadha	OCR debris 'ရို့ ရျ ဖု့ူ ့ရ ဦ့ ဋ'; run-on articles 'သစ္ဆ (ဆ) န္ဒ [ … ] မိမိ၏-အလိုဆန္ဒ-သဘော- စိတ်အလို', 'သစ္ဆ (ဆ) နာ [ … ] (၁) မိမိ၏ အလိုဆန္ဒရှိ ဝဝဝ ဖို့ သော။ (၂) မိမိ၏-ဆန္ဒရာဂ-လောဘ- ရှိသော။ (၃) (အာဟာရ)', '၁ သစ္ဆ(ဆါ)န္ဒရာဂပရိဘောဂ ၄၄၆။ “ သစ္ဆန္ဒရာဂေါ ”', 'သစ္ဆ (ဆ) နွရာဂ (တိ) ['
 167539	sacchanda	analysis fragment '+ ရာဂ ]'
 167544	sacchandarāgaparibhoga	citation '(-ကင်္ခါ ဋီ၊ သစ်'
 167545	sachandarāgaparibhoga	citation '(-ကင်္ခါ ဋီ၊ သစ်'
@@ -2631,7 +2632,7 @@ id	iast	omitted
 168592	saṭṭhikoṭisata	quotations 'သဋ္ဌိကောဋိသတာတိ … ဥပ္ပန္နာ', 'ကောဋီသဒ္ဒေါ … ဝိယ'; citations (၃၂၁-နှာ; သောတတ္တကီ)
 168593	saṭṭhigāmasahassa	stray '['
 168596	saṭṭhisal̤āka	run-on article 'သဋ္ဌိတု (တ) ရိယသဟဿ (န) သဋ္ဌိတူရိယသဟဿ-ကြည့်'
-168597	saṭṭhituriyasahassa	run-on article 'သဋ္ဌိတူရိယ (န) တူရိယာ ၆၀-(ခြောက်ဆယ်)' with quotation 'သမန္တတော … ပဝတ္တယိံသု'
+168600	saṭṭhitūriya	quotation 'သမန္တတော … သဋ္ဌိတူရိယာနီတိ အဋ္ဌသဋ္ဌိ-တူရိယသတသဟဿာနိ ပဝတ္တယိံသု' with OCR debris '၅ သဋ္ဌိဓာတိ အဌ'
 168605	saṭṭhidhammārammaṇanissita	empty quotation marks
 168606	saṭṭhidhāti	stray '['
 168610	saṭṭhinipāta	headword repeated 'သဋ္ဌိနိပါတ်'; locations (Theragāthā 20; Jātaka 19; ထေရ ၃ (-၄)); run-on article '၆-(ခြောက်) ပါးသော အာရုံ-အာရုံ ၆ (ခြောက်) ပါး- ကိုမှီသော' with quotation 'သဋ္ဌိ-သဒ္ဒေါ … သဋ္ဌိနိဿိတာ'
@@ -3311,7 +3312,8 @@ id	iast	omitted
 169984	sattādivatthu	quoted word 'သက္ကာဒိဝတ္ထူ'
 169985	sattādivisaya	quotation 'ဣဒါနိ … ဝဝတ္ထပေတိ'
 169987	sattādisamabhāva	quotation 'ဝေသမ္မံ … သမောရုဒ္ဓါ'
-169989	sattādhikaraṇa	quotation 'သဗ္ဗာ ဝိနိပါတိကာတိ … ဝါ'; run-on article sattādhikaraṇavhaya '(တိ) ] (က) ၇-ပါးသော အမည်ရှိသော။ (ခ) ၇-ပါးသော အဓိကရဏသမထ ဟုဆိုအပ်သော' with its quotations; run-on article sattādhikaraṇasamathanāmaka with its analysis and gloss ('(a state) named the seven adhikaraṇasamatha')
+169989	sattādhikaraṇa	quotation 'သဗ္ဗာ ဝိနိပါတိကာတိ … ဝါ'
+169990	sattādhikaraṇavhaya	quotations '(က) သတ္တာဓိကရဏဝှယာ။ (ခ) သတ္တာဓိကရဏဝှယာ တိ သတ္တာဓိကရဏသမထသင်ါတာ'
 169999	sattānuddaya	OCR debris '၈ သတ္တာနုသယ' (a later headword); quotations 'ဧဝဉ္စ … ဩတရိ' and 'အထ … န အဒါသိ'; fragment 'ထီ) (၂) သတ္တာနုဒ္ဒယာယာ'
 170002	sattānusaya	quotation 'သတ္တာနုသယာ အဝိဇ္ဇာနုသယော'
 170004	sattāpaṭisedha	quoted word 'သတ္တာပဋိသေဓေ'; citation

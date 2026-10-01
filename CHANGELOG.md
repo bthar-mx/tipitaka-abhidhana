@@ -23,6 +23,25 @@ Versions of the Tipiṭaka Pāḷi-Myanmā Abhidhāna project: the data, the too
 A release note says, per version: what changed, the brief's sections, and the headline figures
 (located, label + body, Meaning rows drafted / reviewed).
 
+## v0.29.4 — 1 Oct 2026
+
+The 39 farther-body splits that §89's image check found wrong, made from its readers' notes; the article re-run that brings §93's
+*သုတ္တန်* into the citations (brief §95). Data, tools and Meaning files; no site code changed.
+
+- **`docs/farbody-fix.tsv`** (new) and `FARBODY_FIX` in `tools/abhidhana_articles.py` (`ABH_FARBODY_FIX=0` turns it off): 43 rows, each the
+  start and end line of a printed entry and the rows whose lines hold it, every one read on the page image again (42 items, 7 by a second
+  reader): 36 of the 39 items made, and 7 rows moved to their own printed entry (two swaps of the ငါ and 3rd-person forms, 163760 / 163761
+  and 163811 / 163812; one of ု / ူ, 186731 / 186732). 202368 ပေက္ခတေ's entry goes to 202376, the same headword in the print's order. 4 rows
+  that sat on a line of a fixed entry are left unlocated, flagged (161221, 161399, 182509, 218328). **Not made, for the editor**: 198532,
+  205449 (index questions) and 182509 (an unsettled homonym run).
+- **Articles + romanisation re-run, 29 books** (87 `ocr/` files): 209 rows change — 43 fixed, 31 hosts cut, 4 left unlocated, and 131 rows
+  whose citations gain *သုတ္တန်* (82 headed, 50 new, every new one with a tooltip; no tooltip changed or lost). With the table off the files
+  are the committed tool's, and differ from v0.29.3's only in those 131 rows. Unlocated 12,106 → 12,074; label + body 196,172 → 196,210.
+- **Meaning** (books 14c, 20–25): 35 new drafts and 2 formula rows for the fixed rows, 6 redrafted rows given their own entry, 6 hosts
+  redrafted, 22 hosts' `flag` / `omitted` trimmed, 1 host drafted, 1 re-merged as formula, 3 withdrawn (`docs/translation/withdrawn.tsv`).
+  **217,773 Meaning rows** (98.5% of the index), all drafted but 9 corrected.
+- `docs/splits-checked.tsv` (notes on the 47 rows), `docs/page-checks.tsv` (217511 superseded). The `/w/` addresses: 0 of 221,154 change.
+
 ## v0.29.3 — 1 Oct 2026
 
 The Meaning box's drafted note shortened (the editor, 1 Oct): "Traducción del birmano al español hecha con IA, sin revisar." / "AI

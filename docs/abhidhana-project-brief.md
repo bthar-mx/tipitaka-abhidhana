@@ -3902,3 +3902,184 @@ del birmano al español hecha con IA, sin revisar." / *draft* · "AI translation
 `site/test/editor/ui-test.js`. The Introduction banner's own sentence (`tools/abhidhana_intro.py`, about the page images) is untouched.
 The Mac UI test of v0.29.2: pass 93, fail 0 (the editor, 1 Oct). Re-run it after this change.
 
+## 95. The 39 wrong farther-body splits of §89, made from the image readers' notes; the article re-run that brings in §93's *သုတ္တန်* (1 Oct 2026, Cowork; v0.29.4)
+
+**Asked** (the editor): the 39 items of `docs/splits-checked.tsv` that §89's image check marked wrong (12 wrong start, 18 too long, 9 one
+line short): from each verdict's note the start and end lines its readers gave, recorded as a fix table (as `HOMONYM_FIX`: id → start
+line, end line) applied by `farbody_split()`, each read on the image once more (start and end) before it is made; where a note is
+unclear, read on the image; only the right ones made. Then articles + romanisation for every book changed (the seven books with fixes and
+the books §93's *သုတ္တန်* reaches); the tests (the new table switched off reproduces v0.29.3 but for the *သုတ္တန်* rows; a digest in which
+every change is a fix, its host or a *သုတ္တန်* citation; `pali.jsonl` likewise); the Meaning rows (§70 / §91's way); `prep` before / after for
+the rows §93 named; the `/w/` address check; the D1 check; VERSION 0.29.4. No git in the VM.
+
+**Run** in the Cowork cloud container. Staged: `tmp/fix95/cur-1001a.tar.zst` (`tools/`, `docs/`, `site/src`, `site/test`, the §89 work
+scripts and item list `tmp/farbody18/b18/work/`, the stage lists), §92's `tmp/cite92/in.tar.zst` (db, the witness joins, `pced_k`),
+`pages.tar.zst` and v0.29.1's 116 `ocr/` files (`v0291.tar.zst`); the seven books' pages around the items cut with `qpdf`
+(`tmp/fix95/NN-cut.pdf`); `myab.traineddata`. **Baseline**: the staged `ocr/` files matched `v0291.md5` (116 of 116; v0.29.2–3 changed no
+data), and the committed tool, run on all 29 books (articles, then romanisation), changed exactly **131 rows, `citations` only** (and
+`citations_iast` in `pali.jsonl`) — the *သုတ္တန်* rows §93 counted (books 01–18, 4a–4c, 22, 23, 25).
+
+### 1. From the notes to the table
+
+Each item's note read against our OCR's column text (`col.psm6`, the item's page and the next, as §89's crops listed it) and against the
+article rows that hold those lines now (`tmp/fix95/` `loc.py`): the start and end lines the readers gave were found for 36 of the 39 at once.
+Where the lines are, it turned out, is not always the host's body: in seven items the entry runs on from the host into **the row the OCR
+had placed on a line of that very entry** (a "see" line, a sense line, a running head), which §89's chain had taken whole and so too far.
+The table therefore names its sources: the host's body lines, then that row's raw lines (`body:<id> + raw:<id>`). Such a row loses its
+text; it is given its own entry where one is printed and clear, and is otherwise left unlocated, flagged (the editor's answer 3 of §89).
+
+**`docs/farbody-fix.tsv`** (new): id, book, headword, source, start, end (the entry's first and last line, spaces removed), pdf_page,
+verdict, note — **43 rows**: 36 of the 39 items, and 7 rows a fix moves to their own printed entry (156817, 163760, 163811, 169990, 178965,
+186731, 217512). Where an end line is a short line the body leaves out (a page number alone: *၇၄။*, *၈၈။*), the end is the last body line
+before it, as every article's body already does (7 rows; said in the note).
+
+Found on the way (each settled on the OCR text and the image, recorded in the note):
+- **197940 ပိဋ္ဌိပတ္တ**: §89's line was ပိဋ္ဌိစက္က's; the entry is on p. 590 L (OCR head *ဝန္ဒိပတ္တ*), in its nearest neighbour's body (197939).
+- **163761 / 163812**: the line §89 took was the ငါ (1st-person) entry, *သံဝသေယျံ* / *သံဝိဇိံ*, and those rows (163760, 163811) sat on the
+  3rd-person entries. Both swapped: each row on its own entry.
+- **186732 / 186731**: two printed heads of one word; read at 300 dpi, the first is *ဂမနုပ* (ု), the second *ဂမနူပ* (ူ), as the index orders
+  them (186731 ု, 186732 ူ). 186731 sat on the second; swapped.
+- **169991, 178966, 182510, 156818, 161224, 161403, 218332**: the entry runs on into a row placed on one of its lines (169990's see-line,
+  178965's see-line, 182509's citation lines, 156817, 161221, 161399, 218328). 169990 and 178965 (head garbled: *ဒကုသမတိကဣမ*) and 156817 get
+  their own entries; **161221 ဝေဒဗ္ဗ, 161399 ဝေန, 218328 ဟံသဝတီ, 182509 သမိတ** are left unlocated, flagged.
+- **202368 ပေက္ခတေ → 202376**: the index lists ပေက္ခတေ twice (and ပေက္ခထ, ပေက္ခန); 202376 stands in the print's order (…ပေက္ခတု 202375,
+  ပေက္ခတေ, ပေက္ခထ 202377, ပေက္ခန 202378, ပေက္ခနီယ 202379), and 202368 is the out-of-order repeat of `docs/index-errata.md` §5. The entry is
+  given to 202376; 202368 stays unlocated (as before). A scan of all 43 rows for a same-headword row within ±40 ids found no other.
+- **184899 သမ္ပုဏ္ဏဇဝနဝီထိ**: the entry's last printed line is not in our column OCR (only in `page.psm6`): the text ends one line short.
+
+**Not made (3)**, for the editor:
+- **198532 ပိယဝတ္ထုလောဘ** (14c): the print's ပိယဝတ္ထုလောဘ entry is held by 198527 ပိယဝတ္ထု (folded), and ပိယဝတ္ထုအလာဘ is indexed twice
+  (198528, 198533); an index / homonym question.
+- **205449 သုဂတိဂါမိမဂ္ဂ** (24): its entry (p. 264 L, after သုဂတိဂါမိပဋိပဒါ) is held by 205446, the same headword indexed out of order,
+  whose own entry is the print's သုဂတိဂါမိ**က**မဂ္ဂ (index misspelling); swapping them is an index decision.
+- **182509 သမိတ** (22, a chained row): the homonym run 182506–182509 is unsettled (the readers named ¹–⁶ / ²–⁴); its present text is
+  182510's and goes there, so it is left unlocated, flagged.
+
+### 2. The image check (§87–89's method)
+
+Crops as §89 (`crop2.py`, `tlines.py`: 150 dpi, cut at the gutter, Tesseract `myab` line boxes, our OCR aligned; a red bar at the start,
+a blue bar at the end; 3 lines above, 4 below; a long entry in two crops), **42 items** (the 43 rows, 186731 and 186732 as one item;
+48 crops). Lean read-only sub-agents (`Explore`), 10 items an agent, all crops in one turn. **Gate**: the first agent, 64.5 k for 10 items
+(6.4 k an item, ≤ 9 k): passed. First readers: 5 agents, **307,790 tokens** (7.3 k an item). **41 right, 1 unsure** (186732, the two
+same-looking heads); one end "unsure" (156818, the crop's last line). **Second reader** (the rule): the unsure one, the unsure end, the one
+end "no" (184899, the line our OCR lacks: as the notes said), and 4 of the other 39 at random (seed 2026100195: items 4, 13, 29, 40) — 7
+items, wider crops (6 above, 8 below) and two 300-dpi crops of 186732's heads, **64,573 tokens** (9.2 k an item, the zoom crops; over
+the 9-k gate by 0.2 k). All 7 agree with the notes and the table; 186732 as above (first head ု, second ူ, "moderate confidence"; looked at
+here too: the same). **Verdict: all 43 table rows right** (184899 with its missing line).
+
+### 3. What was built (`tools/abhidhana_articles.py`)
+
+`_farbody_fix()` reads `docs/farbody-fix.tsv` (rows whose verdict is `right`) into **`FARBODY_FIX`** {book: {id: (sources, start, end)}};
+**`ABH_FARBODY_FIX=0`** turns it off. In `farbody_split()`, after §89's gate (the nine books only; PCED books have no table), each row is
+placed on its lines: the sources' lines in order (a host's body lines, a row's raw lines), from the first that matches `start` to the
+first after it that matches `end` (spaces removed). A row is skipped, and the reason reported, if it was placed by `HOMONYM_FIX` or by a
+made split, if a line is not found, or if a host line is already taken by a made split (none was). The row gets `fields()` of its text,
+`raw`, `located: "split"`, `pdf_page` (the page its first line stands on), `split_from` (the first source), `split_rule`
+`farbody-fix:<body|raw>[+raw]`, `split_checked: right`, **`farbody_fix: true`**, `split_replaced` (its state before). A host loses the
+lines (`body`, `citations`, `split_to`, `body_before_split`, as §89). A row whose raw lines a fix takes and that has no row of its own in the
+table is left unlocated (`farbody_unlocated`, `farbody_before`, `farbody_text_to`), as §89's chain left its rows. A chained row that §89
+left unlocated may take its own line from the table (161802, 217621, 219049). The trace (`ABH_FARBODY_TRACE`) writes each fix with its
+status, text and the raw lines dropped after its end (running heads and scan debris: *၄ ဝေဒယတိ = ဝေဒေတိ*, *၅ ဝေနယိက*, *ဝ ီ့] ဖို့]…*).
+The report line: `the image table of §95 (docs/farbody-fix.tsv): N rows, made N; rows whose line a fix took, left unlocated M`.
+
+### 4. Re-runs and tests
+
+- **Articles + romanisation re-run for all 29 books** (the seven books with fixes and the 22 with *သုတ္တန်* rows; 14b and 19 reproduce
+  byte for byte). 87 `ocr/` files change: `articles.jsonl` and `pali.jsonl` of 27 books, 33 reports.
+- **`ABH_FARBODY_FIX=0`**: `articles.jsonl` and `pali.jsonl` of all 29 books **byte for byte as the committed tool's** (the baseline run); against
+  v0.29.3's files, only the **131 *သုတ္တန်* rows** differ, in `citations` (`citations_iast`), and in the reports only the lines "at least one
+  citation parsed" (01) and "citations romanised" (21 books).
+- **The digest** (`tmp/fix95/test_digest.py`, against v0.29.3's files): the same ids in the same order in every book; **209 rows changed,
+  every one explained, 0 exceptions**: **43 fix rows** (each `farbody_fix`, `split`, its text a piece of its sources' old lines, starting
+  at the table's start), **31 hosts cut** (only `body`, `citations`, `split_to`, `body_before_split`; the new body the old one's lines in
+  order), **4 rows left unlocated**, **131 *သုတ္တန်* rows** (only `citations`, equal to the baseline's).
+- **`pali.jsonl`**: 206 rows changed, **0 outside** the changed article rows.
+- Unlocated rows, 29 books: 12,106 → **12,074**; rows with label + body 196,172 → **196,210**; rows without a body 12,467 → **12,435**.
+- **The witness joins** (01–19, 4a, 4b), run here on the new articles: all 20 `join-NN.jsonl` byte for byte as the Mac's of 30 Sep, and
+  `join-table.md` as §91's expected MD5 (`9f18da77…`). Nothing to re-run on the Mac.
+
+| book | items (§89 wrong) | made | not made (unsure) | rows given their own entry | rows left unlocated | hosts cut |
+|---|---:|---:|---:|---:|---:|---:|
+| 14/2 | 0 | — | — | — | — | — |
+| 14/3 | 9 | 8 (one, 202368's, to 202376) | 1 (198532) | — | — | 7 |
+| 20 | 9 | 9 | 0 | 3 (156817, 163760, 163811) | 2 (161221, 161399) | 8 |
+| 21 | 6 | 6 | 0 | 1 (169990) | 0 | 5 |
+| 22 | 5 | 4 | 1 (182509, left unlocated) | 1 (178965) | 1 (182509) | 3 |
+| 23 | 1 | 1 | 0 | 1 (186731) | 0 | 1 |
+| 24 | 3 | 2 | 1 (205449) | — | — | 2 |
+| 25 | 6 | 6 | 0 | 1 (217512) | 1 (218328) | 5 |
+| 4/3 | 0 | — | — | — | — | — |
+| **all** | **39** | **36** | **3** | **7** | **4** | **31** |
+
+**Still wrong: 0** made wrong (every made row read right on the image); the 3 not made are unsure for index reasons, above.
+
+### 5. The *သုတ္တန်* citations (§93 Next 1), measured on the builds
+
+Over the 131 rows (full builds, below): **82 citations gain the head *သုတ္တန်*** (81 + one bare *၂။၁၃၃။* now headed), **50 are new, all
+50 with a tooltip**, none lost; of the **3,136 tooltips** these rows' citations had, **0 changed work, 0 lost**, 2 gained — as §93 simulated.
+
+### 6. The Meaning rows (the seven books)
+
+`prep` on v0.29.3's articles and on the new ones (`--work`, nothing written to `tmp/meanings`): the Burmese changed for 77 of the 78 changed rows
+of the seven books (182509 had none either side) and for **one more**, 24 206331 (below). The hosts were classified the §70 / §91 way by one general-purpose agent
+(`tmp/fix95/cls/`, the §91 task file; 28 hosts with a Meaning, 94,239 tokens): **translated 6** (161398, 178964, 195766, 197404, 202363,
+217511: four of them because a «S» "see X" rendered in the Meaning now stands only in the lost text) → redrafted; **omitted 22** → Meaning
+kept, `flag` / `omitted` trimmed (flag removed 5, shortened 17; `omitted` line removed 5, shortened 17); §70's script check (a link in `es`
+from an «S» now only in the lost text, in a row classed omitted): none. **Drafted**: one shard of 49 lines (`tmp/fix95/tr/`, §91's OCR-book
+prompt with the REDRAFT paragraph for this stage: `role` split 35, homonym 6, host 8), one general-purpose agent, **123,461 tokens**;
+checked (one line per id, in order, valid JSON, every «Sn» in both languages, ⟦ ⟧ ‹ › balanced, no Burmese outside them): **0 errors**;
+flagged 28, with `omitted` 31, one empty ("nothing to translate": 165706 sakkāya, whose only text left is a run-on). `merge NN --ids`
+(drafted, formula and withdrawn ids) per book; trims by script; `report NN` from the new `prep`, and the `-flags.tsv` lines of rows outside
+this stage set back to their committed lines (`report` rewrote several hundred of them a book from today's Burmese: §92's `prep` changes, not re-reported then); for 24, `report`
+fails on 208085 (a Meaning row with no explanation in `prep`, already so in v0.29.3), so its flags and terms were written by the same code
+with that guard. `corrections-es.tsv` has no row of these books. `python3 tools/test_meanings_merge.py`: ok.
+
+| action | 14c | 20 | 21 | 22 | 23 | 24 | 25 | all |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| fix rows: drafted, a new Meaning row | 8 | 9 | 6 | 4 | 1 | 2 | 5 | **35** |
+| fix rows: a new formula row ("see X" only) | 0 | 0 | 0 | 0 | 0 | 0 | 2 | **2** |
+| rows given their own entry: redrafted | 0 | 3 | 1 | 1 | 1 | 0 | 0 | **6** |
+| hosts: redrafted (translated the lost text) | 3 | 1 | 0 | 1 | 0 | 0 | 1 | **6** |
+| hosts: kept, `flag` / `omitted` trimmed | 4 | 7 | 3 | 2 | 1 | 2 | 3 | **22** |
+| hosts: drafted (no Meaning before) / drafted empty / re-merged as formula | 0 | 0 | 0 / 1 / 1 | 0 | 0 | 0 | 1 / 0 / 0 | **1 / 1 / 1** |
+| rows left unlocated: Meaning withdrawn / had none | 0 | 2 / 0 | 0 | 0 / 1 | 0 | 0 | 1 / 0 | **3 / 1** |
+
+Meaning rows, the seven books: 49,399 → **49,434** (+38 new, −3 withdrawn); 76 rows differ (38 new, 12 with new es / en, 23 `flag` /
+`omitted` only, 3 withdrawn: `tmp/fix95/meaning-changed-ids.tsv`). **Totals: 217,773 Meaning rows** (217,738 → 217,773), all `drafted` but
+the 9 corrected: **98.5%** of the index. The three withdrawn (161221 vedabba, 161399 vena, 218328 haṁsavatī: each "Véase el significado."
+or "Véase (…)." from a see-line that belongs to another entry) are added to **`docs/translation/withdrawn.tsv`**. Every changed row is
+`drafted`.
+
+**`prep` before / after for §93's *သုတ္တန်* rows** ("before" with v0.29.3's tools less *သုတ္တန်* in `ASAT_WORKS`, as the drafts were made;
+"after" the new tree): **5 rows, not 4** — §93 named 22, 23, 25, 4c; 24 206331 suttantavivaraṇa also changes. Each loses only the token
+*သုတ္တန်* (with its ၊ / ။): 22 183526 samussitapaṭāka, 24 206331, 25 218378 haññanti, 4c 173942 ekānapassanā — their drafts had put it in
+`omitted` as a source tag or citation (left as they are; the `omitted` notes now name a token `prep` no longer gives); **23 192271 sippa**:
+the draft read *သိပ္ပသုတ်။ သုတ္တန်။* as sense (2) "the Sippa Sutta; a suttanta" — *သုတ္တန်* is the citation (Suttanipāta), so "a suttanta" is
+a misreading: **for the editor** (a redraft of one row, not done).
+
+### 7. The `/w/` addresses and D1
+
+Full builds (`ABHIDHANA_SITE_OUT`, today's `tools/` and `site/src`) over v0.29.3's data with v0.29.3's Meaning files, and over the new:
+both 958 files, 221,154 search entries. Address → id over every record of `data/c/*.json`: **0 differences of 221,154**; no address used
+twice; `hn` the same for every id. Records changed: **209** (the 209 rows above; body 78, Meaning 53, page 2). Citations matched
+626,845 of 685,834 → **626,896 of 685,882** (91.4%; inferred 39,974 → 40,026); see-links 8,489 → 8,492.
+**D1**: the container's proxy still refuses `abhidhana.buddha-dhamma.net` (403). For the Mac: **`tmp/fix95/d1check.py`** (§91's script
+against `tmp/fix95/changed-ids.tsv`, 209 rows with their roles, and `meaning-changed-ids.tsv`, 76); writes `tmp/fix95/d1-hits.tsv`.
+
+### 8. Also changed
+
+- **`docs/splits-checked.tsv`**: a note "[§95: …]" on the 45 §89 rows marked wrong and on 156817 and 217512 (verdict column untouched).
+- **`docs/page-checks.tsv`**: 217511 sotānusāra `superseded (§95)` (the check had named the two "see sotāpatti…" links as run-on; the host is
+  redrafted without them).
+- Not done here: `docs/index-errata.md` (202368's row stays as it is; 205446 / 205449 and 198527–198533 are for the editor first).
+
+**Files changed**: `tools/abhidhana_articles.py`; `docs/farbody-fix.tsv` (new); `docs/splits-checked.tsv`, `docs/page-checks.tsv`;
+`docs/translation/meanings/{14c,20,21,22,23,24,25}.jsonl`, `-flags.tsv`, `-terms.tsv`, `-omitted.tsv` (28 files); `docs/translation/withdrawn.tsv`;
+87 files under `ocr/`; `VERSION`, `CHANGELOG.md`, this section, `docs/NEXT-SESSION.md`. Gitignored, in `tmp/fix95/`: the staged tarballs and
+page cuts, `d1check.py`, `changed-ids.tsv`, `meaning-changed-ids.tsv`, and `work.tar.zst` (the scripts, the item list and crops, the agents'
+tasks and answers, the classification and drafting folders).
+
+*Tokens: sub-agents **590,063** (image check 5 + 1 agents 372,363; host classification 94,239; drafting 123,461; each the agent's final
+context, read from its transcript). This session's own counter: ~0.57 M at the time of writing (tool output, the dossiers of the 39 items,
+the Burmese of the drafts read here, four crops). ~1.2 M in all. One `git log -1` was run in the VM at the start of the session, by mistake
+(read-only; no `index.lock` left, checked); no other git.*

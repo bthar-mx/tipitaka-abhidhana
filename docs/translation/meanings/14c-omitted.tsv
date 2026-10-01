@@ -1671,7 +1671,7 @@ id	iast	omitted
 195761	pāṭhasodhana	citation သာရတ္ထ ၁
 195762	pāṭhā	source tags ဓာန်, ဓာန်၊ ဋီ
 195764	pāṭhāgatanaya	citation ဝိဝိ
-195766	pāṭhānanurūpa	analysis bracket '[ပါဌ အနနုရူပါ'; run-on articles ပါဌာနာရုဠ (တိ) 'အနာရ ပါတ် မဆို-အပ်သော' (citation အနုဋီ ၃), ပါဌာနုရူပ (တိ) 'ပါဠိအား-လျော်-သင့်လျော်-သော', ပါဌာနုရူပတ္တ 'ပါဠိအား လျော်သော အနက်'
+195766	pāṭhānanurūpa	analysis bracket fragment 'ပါဌ အနနုရူပါ'; run-on articles pāṭhānāruḷha (တိ) and pāṭhānurūpatta with their definitions; citation 'အနုဋီ ၃'
 195772	pāṭhānusāra	analysis bracket '[ပါဌအနုသာရျ'
 195773	pāṭhābhāva	quotation fragment 'တေ “'
 195775	pāṭhārul̤ha	quotation fragment 'န ကေဝ-လန္တိအာဒိမာဟ'; citation ဒီဋီ ၁
@@ -2283,7 +2283,7 @@ id	iast	omitted
 196874	pāyāsisutta	analysis bracket fragment 'ပါယာသိ သုတ္တု'
 196882	pāyituṁ	fragment 'တိဋ္ဌာပေသိ'; run-on articles 'ာသိသုတ္တန္တ (န) … ပါယာသိရာဇညသုတ္တန်', '… ွက်သွား-ကုန်ပြီ', 'သု- (ကြု) … သွား ွက်သွား-ကုန်ပြီ', 'သုာ (ကာကို) … သောက် စကုန်ပြီ၊ နို့တိုက်ကုန်န်ပြီ', 'တ (တိ) … သောက်စေ-တိုက် ကျွ-အပ်သော', 'တဗ္ဗ (တိ) … သောက်အပ် ပင့်-ထိုက်-သော။ အောက်ပုဒ်ကြည့်', 'တဗ္ဗယုတ္တက (တိ) … သောက် သင့်သော', 'မီတွာ (ဗျ) [ပါ+ယ+တွာ] သောက်၍'; page numbers and citations; quotation fragment 'ဧသာ “ ာံ'
 196884	pāyu	analysis and citations '[ပူ.ဥ။ ပယ', 'အနုဋီ၂။ ဓာန်။ ပူ။ ပယ ဂမနတ္ထော ဝါ', 'ဓာန်၊ဋီ'; Pāḷi quotation 'ပယတိ ဝစ္စမနေနာတိ ပါယု'
-196885	pāyeti	debris '[၊'; citations and inflected forms '၇၉၊ (-မဋီ၂။ … ပါယေန္တိ ၂၀၉ … ပါယေ သုံ-ဝိ၁'; run-on articles 'ပါယေတွာ (ဗျ) [ပါနဏေ+တွာ သောက်စေ၍၊ တိုက်၍', 'ပါယေထ (ကာ၊ ကြို ပါ+ဏေ+ထါ သောက် စေကုန်လော၊ တိုက်ကုန်လော'
+196885	pāyeti	debris '[၊'; citations and inflected forms '၇၉၊ (-မဋီ၂။ … ပါယေန္တိ ၂၀၉ … ပါယေ သုံ-ဝိ၁'; run-on article 'ပါယေထ (ကာ၊ ကြို ပါ+ဏေ+ထါ သောက် စေကုန်လော၊ တိုက်ကုန်လော'
 196898	pāyetuṁ	stray '['
 196901	pāyenta	feminine form 'ထီ-၌ ပါယေန'
 196907	pāyesuṁ	analysis bracket fragment '[ ပါနဏေနံ'
@@ -2515,7 +2515,7 @@ id	iast	omitted
 197317	pārohopatthambha	source tag 'ဝိ၊လင်္ကာရ'
 197319	pālaka	grammar note 'ထီ ၌ ပါလိကာ' (feminine pālikā); running header '၉၁ ပါလယတိ'
 197320	pālana	citation 'အနုဋီ၃'
-197324	pālayati	citations 'အဘိ၊ဋ္ဌ၁', 'ဇာဋ္ဌ၊၃'; quotation 'ပါလယာဓိ-ပါလ ဓမ္မံ ပါလယ ကောသလာဓိပ'; run-on text from '(ပါလယန္တ (တိ)' to 'ပါလယတိ-ကြည်'
+197324	pālayati	citations 'အဘိ၊ဋ္ဌ၁', 'ဇာဋ္ဌ၊၃'; quotation 'ပါလယာဓိ-ပါလ ဓမ္မံ ပါလယ ကောသလာဓိပ'; run-on text from '(ပါလယန္တိ (ကြို' to 'ပါလယတိ-ကြည်'
 197325	pālayantu	analysis '(ကြို ပါလ+ဏယ+အန္တု ]'; run-on text 'ပါလယာမိ (ကြို [ ပါလ+ဏယ+မိ စောင့် ရှောက်၏။ ပါလယတိ-ကြည်'
 197335	pālāsa	source tag 'ဓာန်၊ဋီ'; running header '၉၂ ပါလိစ္စ'
 197336	pāli	quotation fragment 'ဝိမှိ-ပါလီ'; source tag 'မောင်'
@@ -2552,7 +2552,8 @@ id	iast	omitted
 197400	pāvaki	source tag 'ကစ္စည်း'
 197402	pāvacana	analysis 'ပါ+ဝစ+ယု'; quotation 'ပါဝဒတီ'; citation '၂ ၂၆'; the repeated second copy of senses (1)–(4)
 197403	pāvacanasaṅkhātasampatti	citation 'မါဋီ၃'
-197404	pāvada	analysis '(ကြို ပ+]'; run-on text from 'ပါဝဒာ(ကြိ) [ပ+ဝဒ+အ+အာ' to 'ပါဝဒီ (ကြို [ပ+ ပြောဆိုပြီ' with citations and a running header '၅၁ ပါဝဿိ'
+197404	pāvada	label/analysis fragment '(ကြို ပ+]'; run-on articles ပါဝဒါ (ကြိ) 'spoke', ပါဝဒါသိ (ကြိ) 'speak!', ပါဝဒီ (ကြိ) 'spoke' with their analysis brackets
+197406	pāvadati	citations and OCR fragments 'ပေတ၊ သာရတ္ထ ၂။ ပါဝဒ-ဝိ၁။ ဝိဋ္ဌ၊ ၅၁ ပါဝဿိ ၂။ ဇာဋ္ဌ၄'
 197413	pāvaraṇa	citation 'ဒီ၊ဋီ၃'
 197414	pāvassi	citation 'ဝိ၃'; '(၂) အဘိဝဿီ' (Pāḷi word only); source tag 'ဗုဒ္ဓဝံဋ္ဌ'
 197415	pāval̤anipphoṭanā	Pāḷi quotation 'ပဝါဠနိပ္ဖောဋနာယာတိ ပါဝဠ-နိပ္ဖောဋနတော'; citation 'သံ၊ဋီ၂'
@@ -2877,7 +2878,7 @@ id	iast	omitted
 197936	piṭṭhidukapada	citation
 197937	piṭṭhidukkha	analysis '[ပိဋ္ဌိ-ဒုက္ခ'
 197938	piṭṭhinhāru	analysis '[ပိဋ္ဌိ+နှာရု'
-197939	piṭṭhipaṇṇasālā	run-on article piṭṭhipatta: 'ကျောက်ကုန်း ဖြစ်-ရောက်-သော အစိတ်အပိုင်းဖြစ်သော။ ကျောက်ကုန်းဖုံးရုံဖြစ်သော' with a note on the reading 'မယံ ပိဋ္ဌိမတ္တစ္ဆာဒနမ္ပိ ဥဒကံ န လဘာမ' and the sub-commentary's gloss; citations
+197940	piṭṭhipatta	OCR form of the headword 'ပဌိပတ္တု'; citation 'သံ၊ဋီ၂'; quotation 'မယံ ပိဋ္ဌိမတ္တစ္ဆာဒနမ္ပိ ဥဒကံ န လဘာမ' with its reference '(၈၂-၌ … ဟု ရှိသည်'; truncated word 'ပိဋ္ဌိပ' in the gloss
 197941	piṭṭhipadesa	citation
 197942	piṭṭhiparikamma	headword repeated '[ပိဋ္ဌိပရိကမ္မံ'; running head '၃ ပိဋ္ဌိပဿ'; stray 'ကျောက်ကုန်း'
 197943	piṭṭhiparikammakaronta	fragment of the analysis 'ရောန္တ'
@@ -3770,8 +3771,9 @@ id	iast	omitted
 199657	pujjabhavaphala	analysis '[ပုဇ္ဇဘဝဖလံ'
 199658	pujjabhavaphalanibbattana	analysis '[ပုဇ္ဇဘဝဖလ- နိဗ္ဗတ္တန'; citation
 199660	pujjasabhāva	analysis '[ပုဇ္ဇ-သဘာဝါ'; citation
-199661	puñchati	citations; list of inflected forms (ပုစ္ဆန္တိ, ပုစ္စိ, ပုဉ္ဆေယျာ, ပုစ္စိဿာမိ); run-on articles puñchana (the wiping / rubbing; smearing; clearing, destroying …), puñchanatela (rubbing oil, with quotation), puñchanta (wiping, said of a person), with analyses, page head '၂၀ ပုစ္ဆိတဗ္ဗ' and citations
+199661	puñchati	citations; list of inflected forms (ပုစ္ဆန္တိ, ပုစ္စိ, ပုဉ္ဆေယျာ, ပုစ္စိဿာမိ); run-on articles puñchana (the wiping / rubbing; smearing; clearing, destroying …), puñchanta (wiping, said of a person), with analyses and citations
 199662	puñchanti	run-on articles 'ပုစ္ဆမာန (တိ) ... ပွတ်-ပွတ်တိုက်-သော' and 'ပုစ္ဆာပေတွာ (ဗ) ... သုတ်သင်-ပွတ်တိုက်-စေ၍' with analyses and citation
+199668	puñchanatela	OCR debris '-၂၀ ပုစ္ဆိတဗ္ဗ'; quotation fragment 'ပုစ္ဇ်နတေလတ္ထာယ ... ပိဓာတဗ္ဗော'
 199676	puñchituṁ	citations
 199677	puñchitvā	analysis '[ပဉ္ဆပုဆိ) တွာ'; citation
 199679	puñchissāmi	analysis '[ုဉ္ဆပုဆိ ဿာမိ'
@@ -5537,7 +5539,7 @@ id	iast	omitted
 202359	pekkha	grammatical note 'ထီ-၌ပေက္ခာ'; source tags 'နေရင်း၊သျ', 'ပခုက္ကူသျ'
 202360	pekkhajana	run-on text of pekkha: 'နိသာ၊သူ။ (၅) ကြည့်ရှုအပ်သော။ (၁) ကပွဲသဘင်ကြီး … (၂) တပ်မက်သောတဏှာ။ «S1» (၃) ရှုမြင်တတ်သောပညာ။ (တိ)(၄) ကြည့်-ကြည့်ရှု-သော၊ သူ။ အောက်ပုဒ်ထောင့်ကွင်းကြည့်။ (၅) ကြည့်ရှုအပ်သော'; quotation fragments; 'ပေက္ခာ-လည်း'; analysis bracket '[ပေက္ခ+ဇန'
 202361	pekkhaṇa	grammatical analysis '(ထီ၊န) +ဣက္ခ+ယု+(အာ)]'; citations
-202363	pekkhati	list of inflected forms (ပေက္ခန္တိ, ပေက္ခရေ, ပေက္ခာမိ) with citations; quotation 'န အကာလေ ဝိပေက္ခေယျ၊ ကာလေ ပေက္ခေယျ ပဏ္ဍိတော'; note on a corrupt reading 'ပေက္ခတုန္တိ ပဿာပေတုံ' for pekkhetunti; run-on articles pekkhatu (who looks), pekkhate (looks / observes / sees), pekkhatha (look / observe / see, 2nd pl.)
+202363	pekkhati	quotations 'ပေက္ခန္တိ', 'န အကာလေ ဝိပေက္ခေယျ၊ ကာလေ ပေက္ခေယျ ပဏ္ဍိတော'; citations; run-on article pekkhatuṁ with the compiler's note on the corrupt reading 'ပဿာပေတုံ' at 310; garbled run-on 'ပေက္ခတု (ထံပ၊တုက၊တျ …-သော၊သူ'; run-on article pekkhatha 'they look / observe / see'
 202380	pekkhanta	feminine form 'ထီ-၌ ပေက္ခန္တုံ'
 202385	pekkhāpeti	label and analysis '(ကာ၊ ကြိ) ပ+'; quotation fragments 'န နိဇ္ဈာပေန္တီတိ န', 'ပေက္ခ ဘော၊ ပေက္ခ ဘောတိ အာဟ'
 202388	pekkhāma	label and analysis '(ကြိ) ပ+'

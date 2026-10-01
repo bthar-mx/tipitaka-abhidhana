@@ -83,8 +83,8 @@ id	iast	omitted
 156812	visakiccabheda	stray '] ဖို့'
 156814	visakkati	OCR debris 'ရို၏ [ရျူ ဝ ဝ'
 156815	visakkana	quotation fragment '(၁) (၂ "န္တိပိ (ဝိသက္ကနန္တိ) ဝဒန္တိ'
-156816	visakkiya	run-on article 'ဝိသတ္တိယဒူတ (ပ) ချွတ်ယွင်းသော - တမန် - သံတမန် -တမန် သည်' with quotation 'ဝိသက္ကိယဒူတော'; head of the next article 'ဝိသက္ကိယဒူတပဒနိဒ္ဒေသ (ပု)'
-156817	visakkiyadūta	tail of the article visakkiyadūtapadaniddesa '[…] ဟူသောပုဒ်ကို အကျယ်အားဖြင့်ပြ-ရာ-ကြောင်း-ဖြစ်သော စကားရပ်' ('the passage that explains the word … in detail') with quotation 'ဝိသက္ကိယဒူတပဒနိဒ္ဒေသေ ... အာဏာပေတီတိ'; OCR debris
+156817	visakkiyadūta	quotation 'ဝိသက္ကိယဒူတော'
+156818	visakkiyadūtapadaniddesa	quotation 'ဝိသက္ကိယဒူတပဒနိဒ္ဒေသေ သော အညံ အာဏာပေတီတိ'
 156819	visakhādaka	feminine form 'ထီ-၌ ... ဝိသခါဒိကာ'; OCR debris
 156820	visakhādana	OCR debris inside the word 'ဖ့ူ ဝ ဖို့] ဝ မှု'
 156821	visakhādanasadisa	quotation fragment 'ဇောတေတဗ္ဗာ'; OCR debris
@@ -1359,7 +1359,7 @@ id	iast	omitted
 158926	vītaṁsa	debris 'အလင်္ကာရေ န- ဃဉ်)'; source tags '(အမရ။ ဗြိဟတ်)', '(ကောတ္ထုဘ)', '(ဝါစပ္ပတိ။ ထောမ။ သဒ္ဒတ္ထစိန္တာမဏိ)'
 158928	vīta	quotation 'မဉ္စပီဌံ … ဝီတံ ဟောတိ'; cross-reference fragment '(၂) ဝီတဋ္ဌာန-'
 158929	vīta	cross-references (ဝီတဂေဓ, ဝီတစ္စိတ, ဝီတတဏှ; ဝီတခိလော; ဝီတတဏှ sense 2); quotation fragment; Sanskrit analysis bracket '(ဝီတ (တိ) ဝီ + တ္တ …' with the senses of Sanskrit vīta (1)–(14) and (1)–(6), sources ကောတ္ထုဘ, ဗြိဟတ်
-158934	vītaṅgāra	run-on articles 'ဝီတစ္စိက (တိ) …', 'ဝီတစ္စိကင်္ဂါရသန္ထရ (၇) ] …'
+158934	vītaṅgāra	run-on article 'ဝီတစ္စိက (တိ) …'
 158935	vītaccita	quotation 'မယှံ ပိတု … ပစထ'
 158937	vītaccikaṅgārasanthata	bare page numbers '၄၂၄-၅)'
 158940	vītaccitakhadiraṅgāravaṇṇa	analysis 'န- အင်္ဂါရ + ဝဏ္ဏ'; synonym 'ခဒိရင်္ဂါရသန္နိဘ'
@@ -2492,8 +2492,7 @@ id	iast	omitted
 161212	vedantagū	number '၈ဝ'; quotation
 161213	vedantogadha	stray '"။'
 161215	vedapaṭilābha	run-on article 'ဝေဒပဋိသံယုတ္တ (တိ) အသိဉာဏ်နှင့်စပ်ယှဉ်သော'; fragment 'ဝေဒလ္လကထ'
-161220	vedabahula	run-on articles ဝေဒဗ္ဗ = ဝေဒဗ္ဘ (analysis, senses 'the Vedabbha mantra', 'the brahmin who knows it'), ဝေဒဗ္ဗဗြာဟ္မဏ (ပ)
-161221	vedabba	run-on '၄ ဝေဒယတိ = ဝေဒေတိ'
+161220	vedabahula	run-on article ဝေဒဗ္ဗ = ဝေဒဗ္ဘ (analysis, senses 'the Vedabbha mantra', 'the brahmin who knows it')
 161226	vedamada	quotation
 161227	vedamanta	debris '(-'
 161228	vedamāna	citation 'ဝိသုဒ္ဓိ၊ ဋီ၊ ၁ဝ'
@@ -2589,8 +2588,7 @@ id	iast	omitted
 161393	vedhitā	run-on 'သို့ ဝေဓေယျ'
 161394	vedhima	unclear 'ပြ-သ'
 161396	vedhetvā	quotation '(၁) န သမ္ပဝေဓေယျာ'
-161398	vedheyya	'ကြို'; run-on articles: ဝေန (Abhidhāna, Uṇādi, feminine ဝေနီ, Skt. forms; '(1) one who lives by rushes, a bamboo worker, a rush-worker, a basket-weaver; (2) broad'), ဝေနဇာတိက (တိ) (with see-also ဝေနဇာတိ), ဝေနမုတ္တိ ('a kind of pea, wild pea'; citation), ဝေနသာခ (တိ) ('a tree having broad branches')
-161399	vena	run-on '၅ ဝေနယိက'
+161398	vedheyya	label fragment 'ကြို'; debris 'ဝဝဝ'; run-on article vena with its grammar note 'ထီ-၌ ဝေနီ။ ဝဲဏ၊ ဝေဏ-သံ' and senses '(1) one living by bamboo strips, bamboo worker, basket-maker, peacock-feather worker; (2) wide'; run-on article venamugga 'wild pea' with citation
 161404	venasākhajātaka	location (Khuddakanikāya, Jātaka, 5th nipāta, 1st vagga, 3rd jātaka)
 161405	venateyya	source tags 'ကစ္စည်း', 'ဓာန်'; feminine ဝေနတေယျံ; Skt. form
 161406	venayika	repeated sense list with quotations (the apparatus), including '(၆) … အောက်ပုဒ်ကြည့်'; run-on '၆ ဝေနေယျ'; source tag 'ကစ္စည်း'
@@ -2776,7 +2774,6 @@ id	iast	omitted
 161792	vevacanavicāraṇā	quotation fragment '“ "တိအာဒိ'
 161793	vevacanasamāropana	OCR debris '၇ ဝေဝစနသမာရောပန'; Pāḷi quotation 'ဝေဝစနသမာရောပနော, ဘာဝနာ… ဝေဝစနသမာရောပနော'; list of further references for details (နေတ္တိဟာရတ္ထဒီပနီ, နေတ္တိဟာရတ္ထဒီပနီသစ်, …)
 161794	vevacanahāra	citations '(နေတ္တိ၊ ဝိ။ ၂၁)', '(သီ၊ ဋီ သစ် ၁။ နည်း)'; run-on debris '၈ ဝေဝစနာဟာရသင်္ဂဟိတ'
-161801	vevajja	run-on article ဝေဝဏ္ဏ (န) with grammar bracket, source tag ထောမ, Sanskrit and Prakrit forms and its gloss 'the state of having an altered colour (alteration of colour)'
 161803	vevaṇṇiya	trailing '(-'
 161804	vevāhika	sense pointer '(၁)' with quotation 'ဣဒါနိ ကတိပါဟဿေဝ သော အာဂတော ဘဝိဿတိ'
 161805	vevāhikapurisa	run-on fragment 'ဝေဝါဟိက-'
@@ -3309,8 +3306,9 @@ id	iast	omitted
 162787	saṁghaṭṭanaṭṭha	citation 'ဝိသုဒ္ဓိ၊ ဋီ ၂'
 162788	saṁghaṭṭanarasa	variant headword '= သင်္ဃဋနရသ'; quotation '----စိတ္တံ အာရမ္မဏဉ္စ သင်္ဃဋ္ဋေတီတိ ... ဝေဒိတဗ္ဗော'
 162794	saṁghaṭṭanākāra	stray '၁ သံဃဋ္ဋေတိ' (page number and another headword)
-162796	saṁghaṭṭayanta	variant headword 'သင်္ဃဋယန္တ'; run-on article 'သံဃဋိတ သင်္ဃဋိတ (တိ) [ ... ] (၁) ... အပ်သော။ (၂) ... နှီးနှော ဆက်ဆံ - သော'; quotation fragment '(၁) သုကုသလသမ္ပဟဌ၊ သင်ဋ္ဋေန္တေန'
+162796	saṁghaṭṭayanta	variant headword 'သင်္ဃဋယန္တ'
 162799	saṁghaṭṭita	'ကြည့်' (see) without its target
+162800	saṅghaṭṭita	headword/label fragment 'ဃဋိတ (တိ)'; analysis bracket '[သံ + ဃဋ္ဋ + တ' with Sanskrit and Ardhamāgadhī forms; quotation fragments '(၁) သုကုသလသမ္ပဟဌ၊ သင်ဋ္ဋေန္တေန'
 162802	saṁghaṭṭeti	a second '(၂)' before «S1»
 162805	saṁghaṭṭesi	stray '၂'
 162807	saṁghata	grammatical notes '(ဟရ) + တ။ ဟန (ဟရ) ကို ဃ-ပြု။ မဏိမဉ္စူ ၂။ (တိ) သံဃဋ-သံ၊ သံဃဋ-ပြာ'
@@ -3794,7 +3792,7 @@ id	iast	omitted
 163754	saṁvasissatha	stray label 'ကြို'; grammarian's note '(- the future ending in the sense of the past … ၂၅၀)'
 163755	saṁvasissanti	quotation 'kathaṁ hi nāma chabbaggiyā … kappessanti'; stray '၉' and next headword 'သံဝသေယျ'
 163758	saṁvase	debris 'ာ ကြို' and 'ဦ'
-163759	saṁvasetha	run-on article saṁvaseyya (ကြိ) '(I) would live together … by virtue of the uposatha kamma' with quotation 'bhikkhūhi saddhiṁ saṁvaseyya'
+163760	saṁvaseyyaṁ	quotation 'ဘိက္ခူဟိ သဒ္ဓိံ သံဝသေယျ'
 163765	saṁvādana	citation 'ပါစိတ်'
 163766	saṁvāraṇā	run-on article saṁvāsa (ပု) with analysis bracket, citations, Sanskrit notes and seven senses (living together; the Vinaya communion — ekakamma etc., major and minor formal acts, counting of vassa; living as husband and wife; the ukkhittakasambhoga training rule; the Saṁvāsa sutta; asking the uposatha and doing pavāraṇā), repeated with quotations and source references; run-on article saṁvāsada (ပ) beginning
 163767	saṁvāsa	quotation fragments 'saṁvāsāyā'; citation 'ပါစိတ်'; stray quotation marks
@@ -3818,7 +3816,8 @@ id	iast	omitted
 163806	saṁviggaha	run-on article saṁviggahatā (ထီ) with bracket noting the reading savigghatā, 'the state of having a body and substance'
 163807	saṁviggahadaya	quotations 'atha saṁviggahadayo pucchi. saṁviggahadayo ti calanacitto'; citation 'ပါစိတ်'; run-on article saṁviggāyiṁsu (ကြိ) with bracket 'they became frightened, alarmed, trembled'
 163809	saṁvighāta	quotation '… uppajjanakaparissamaṁ saṁvighātaṁ vihesaṁ'
-163810	saṁvijati	analysis bracket and Sanskrit note; run-on article saṁviji (ကြိ) '(I) became frightened …' with quotation 'aniccatā manasikāravasena saṁvegamāpadi'
+163810	saṁvijati	analysis bracket and Sanskrit note
+163811	saṁvijiṁ	quotation 'အနိစ္စတာ မနသိကာရဝသေန သံဝေဂမာပဋိ'
 163814	saṁvijitabba	stray '၆' and next headword 'saṁvijjanākāravibhāvana'
 163816	saṁvijjati	analysis bracket and Sanskrit note; run-on homonym saṁvijjati (ကြိ) with Sanskrit/Prakrit notes, 'exists / manifestly exists (is obtained)'
 163819	saṁvijjanākāravibhāvana	quotation fragment 'တေနာ'

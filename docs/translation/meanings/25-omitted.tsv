@@ -304,8 +304,9 @@ id	iast	omitted
 217508	sotānugata	citation '၅၀၄-၅'; OCR debris
 217509	sotānuggatadhamma	OCR debris
 217510	sotānuggahakara	analysis fragment '+ကရ+ အ'
-217511	sotānusāra	run-on 'သောတာပတ္တိ (ထီ၊ ပု) [ … ] … (၁)–(၅)' in two copies with cross-references to sotāpattimagga, sotāpattiyaṅga, sotāpattimaggacitta; run-on 'သောတာပတ္တိအင်္ဂ (န) [ … ] သောတာပတ္တိမဂ်-ကို-သို့ရောက်-ခြင်း၏-အင်္ဂ အကြောင်း' with commentary; OCR debris
-217512	sotāpatti	'…အတ္ထ (တိ) [ သောတာပတ္တိမဂ်တည်းဟူသော အကျိုးရှိသော'
+217511	sotānusāra	citation fragment '--၁'; OCR debris 'ရီး] ီ'
+217512	sotāpatti	analysis fragment 'သောတသဒိသတ္တာ ဝါ “ အာပတို့'; Sanskrit note 'ဗြောတာပတ္တိ-သက္ကတပိဋက'; scan debris throughout; first, garbled copy of senses 1–5; garbled cross-reference '(၂ အ သောတာပတ္တိယင်္ဂ-ကြည့်' and '(၄) အရိယာမင်-သို့-ကို-တ္တံဓဂ္ဂ ကြည်'
+217513	sotāpattiaṅga	quotation 'သောတာပတ္ထိယင်္ဂေသု အာပတို့ ဘသံ ပါပုဏနံ သောတာပတ္ထိ၊ သောတာပတ္ထိယာ အင်္ဂါနိ သမ္ဘာရာနိ သောတာပတ္တိအင်္ဂါနိ'
 217515	sotāpattiniyāma	Pāḷi fragment 'တတ္ထ အရိယမဂ္ဂေါ ဝုစ္စတိ'
 217516	sotāpattiphala	quotations '(၁) သောတာပတ္တိဖလသစ္ဆိကိရိယာ …', 'သောတာပတ္တိဖလံ'; OCR debris
 217518	sotāpattiphalaṭṭha	stray '----'
@@ -384,8 +385,8 @@ id	iast	omitted
 217617	sottiyasutta	analysis bracket [ သောတို့ယ + သုတ္တ ]; citation (Aṅguttaranikāya, 9th nipāta, vagga, sutta numbers)
 217618	sottiyākulavaṁsaka	OCR debris 'တ္တိသနာန ၆' inside ဖြစ်…သော
 217619	sottisināna	OCR debris '(ဂျး-တွနး ီ့]ရျ ရို ၆ ဝဝဝ'; quotation 'တေနာဟ သောတ္ထိသိနာနန္တိ …'
-217620	sotthimagga	the whole article sotthiya that runs on (analysis bracket, grammarian's note, its seven senses repeated twice, quotations), and the start of sotthiyakula
-217621	sotthiya	fragment 'ကြည့်' (see) without its target; OCR debris 'တ္ထယ (ရူ) ကြည်'
+217620	sotthimagga	the start of sotthiyakula
+217621	sotthiya	analysis bracket and grammar note '[ သောတို့က=သောတို့ယ။ က-ကိ ယ-ပြု။ သွသ္မိက-သတဣတပိဋက'; '(၇)' before (4); duplicated text of senses 1–7; quotations ('သောတ္ထိယံ … ဂဗ္ဘမလဟရဏံ', 'ဝေဿဘုဿ … သံဃာရာမံ ကာရေသိ', 'သောတို့ယော နာမ တိဏဟာရကော …', 'နိဗ္ဗတ္တာ သောတို့ယေ ကလေ …'); citations and page numbers; scan debris
 217623	sotthiyanagara	garbled cross-reference 'တ္ထယ (ရူ) ကြည်'
 217625	sotthivantu	grammarian's note 'သးသို့တ်-တ္ထဝန္တု'; 'နို'
 217626	sotthivācaka	quotation 'ယထာ မဟာရာဇ သောတ္ထိဝါစကာ …'
@@ -942,8 +943,9 @@ id	iast	omitted
 218323	haṁsavaṭṭakacchadana	debris 'သ ဟို ီ ၂ ဝ ဟို]', 'ဟင် ၂၂ဝ ီ သုခါ] ဟို သ [ချိ', '၂ ီ [ျ ဌ သို့] ိ'; quotation 'ဟံသဝဋ္ဋကစ္ဆဒနေနာ'; citation (ဝိ၊ ဖြုံ ၆ … ၂။ ၂); form 'ဟံသဝဋ္ဋကစ္ဆန္န'
 218324	haṁsavaṭṭakacchanna	quotation fragment 'သဗ္ဗာ-သို့]'; forms 'ဟံသဝဋ္ဋကစ္ဆန္နေနာ' (twice); debris
 218326	haṁsavaṭṭakādipokkharaṇigata	form 'ဟံသဝဋ္ဋကာဒိပေါက္ခရဏိ-သို့]'; debris
-218327	haṁsavaṭṭakādisenāsana	debris 'ိ။ ]ရျ ဝ သို့]'; run-on articles 'ဟံသဝတံ (ထီ) … (က) ဟံသဝတီ မြို့ … (ခ) ဟံသဝတီဥယျာဉ် …', 'ဟံသဝတီနဂရဝါသိက (တိ) … ဟံသဝတီ မြို့သူမြို့သား'
+218327	haṁsavaṭṭakādisenāsana	debris 'ိ။ ]ရျ ဝ သို့]'; run-on article 'ဟံသဝတံ (ထီ) … (က) ဟံသဝတီ မြို့ … (ခ) ဟံသဝတီဥယျာဉ် …'
 218329	haṁsavatīnagara	OCR debris 'ရီး] မှု ဝ ီ့] မ'
+218330	haṁsavatīnagaravāsika	stray 'နို'
 218333	haṁsavattakādipokkharaṇīgata	debris 'ဟို'
 218336	haṁsavaha	debris 'နို', 'ဖို့ ိ၍ စ ၀', '-[ဒ သို့]'
 218337	haṁsasakuṇa	grammarian's note 'ထီ-၌ ဟံသသကုဏီ'; debris 'နို'
@@ -1523,8 +1525,8 @@ id	iast	omitted
 219045	hatthivejja	scan debris 'ထ ပြု။ ထ မပြ'; quotation 'ဟတို့ဝေဇ္ဇာ နာမ ဟတ္ထို့ဘိသတ္ထာ'
 219046	hatthisaññā	stray 'နို', '-ဦ'
 219047	hatthisaññī	quotation 'ဟတ္ထိသည်နော'
-219048	hatthisata	run-on article hatthisadda (see flag) with brackets and quotations; scan debris
-219049	hatthisadda	'ကြည့်' (end of a see-reference); scan debris
+219048	hatthisata	scan debris
+219049	hatthisadda	quotation fragments '(၁) ဟတ္ထ ဝ သို့ မ သဒ္ဒ။ (၂) ဟတ္ထိသဒ္ဒ'
 219050	hatthisaddavantu	OCR debris 'ထ ဧ န္တု ထ ဒ န္တ' inside the first gloss; debris after «S1»
 219051	hatthisannissita	damaged analysis '+ နိ+ သိ+ တ'; stray 'နို'; scan debris
 219053	hatthisamūha	quotation fragments 'ဟတို့ဃဋာ', 'တတ္ထယဋ္ဋာ'
@@ -2344,7 +2346,7 @@ id	iast	omitted
 220069	hitāhitavidhāyaka	stray 'ဝိဓာယက ]'; debris inside the gloss
 220070	hitāhitavinicchayakaraṇa	garbled repeated headword '[ ဟိတာဟိတ နစ္စယကရဏ (န …'; debris inside the gloss
 220071	hitāhitāsī	debris; quotation 'အန္တိမဒေဟ- … ဟိတာဟိတာ- … သီဟိ'; run-on article 'ဟိတ (ပု) [ ဓာ + တ။ နိရုတို။ ၆ဝ သုတ်ဖြင့် … သတ္တာဒိဂိ္ဂိဏ်း။ ] အစီးအပွား ကို ဆောင်တတ်သောသူ' with quotation 'နေတာတိ ဒေဝနဂရံ နေတာ …'
-220072	hitu	run-on articles 'ပဒေသ (ပု) အစီးအပွားကို -ညွန်ကြား-ညွန်ပြ-ခြင်း' (hitupadesa), 'ဟိတုပါယ (ပု) ဟိတာဓိ-ဂမူပါယ-ကြည့်', 'ဟိတဿက (တိ) အစီးအပွား အကျိုးငှာ-လုံ့လပြု-အားထုတ်-တတ် သော', 'ဟိတုပစာ (ပု) အစီးအပွား ကိုကျင့်ခြင်း'; quotations and citation 'ဝိသုဒ္ဓိ၊ ဋံ၊ ၁ဝ'; debris
+220072	hitu	headword tail 'ပဒေသ (ပု)'; scan debris; quotation fragment 'သာသိတဗ္ဗော'; citation 'ဝိသုဒ္ဓိ၊ ဋံ၊ ၁ဝ'; run-on article hitussuka (တိ) 'apt to make effort for welfare' with quotation; run-on article hitūpacāra (ပု) 'the practising of welfare'
 220073	hitupadesa	garbled 'ိ သ-ကြည့်။ ဟိ သာ ဝိယ'; debris
 220078	hitūpadesaka	quotation 'ဟိတူပ-ဒေသတောတိ အာဟ'; run-on cross-reference 'ဟိတူပဒေသပဋိပတ္တိ'; debris
 220079	hitūpadesapaṭipatti	stray 'ပဋိပတ္တိ ]'; Pāḷi quotation 'ပဉ္စသု ပုဂ္ဂလေသု ဟိတူပဒေသပဋိပတ္တိယာ …'

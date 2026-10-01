@@ -11,7 +11,7 @@ Output: `pali.jsonl`, one row per article, keyed by `id`.*
 | articles with Pāḷi found in the definition | 5,575 = 86.5% |
 | Pāḷi spans | 20,856 |
 | tokens in those spans | 78,687, of which **87.9% attested in OSBCT** |
-| citations romanised (mechanically, abbreviations not expanded) | 29,690 |
+| citations romanised (mechanically, abbreviations not expanded) | 29,691 |
 
 What is and is not claimed:
 
