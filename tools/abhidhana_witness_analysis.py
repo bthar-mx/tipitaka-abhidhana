@@ -109,7 +109,7 @@ def head_agrees(added, definition):
 
 
 def gate_head(book, rows):
-    from abhidhana_articles import CITE, cite_trim
+    from abhidhana_articles import cites
     cand = [r for r in rows if r.get('body_head_restored')]
     if book not in PCED_BOOKS:
         for r in cand: r['body_head_how'] = 'shape'
@@ -132,7 +132,7 @@ def gate_head(book, rows):
         assert re.sub(r'\s', '', lines[0]) == re.sub(r'\s', '', h), (r['id'], lines[0], h)
         r['body'] = '\n'.join(lines[1:]).strip()
         r['noise_lines'] = r.get('noise_lines', 0) + 1
-        r['citations'] = [re.sub(r'\s+', '', cite_trim(c)) for c in CITE.findall(r['body'])]
+        r['citations'] = cites(r['body'])
         out += 1
     note = '' if D else ' (no witness here: none kept)'
     return [f'first words on the headword line: {len(cand):,} candidates; PCED agrees with {kept["verbatim"]:,} verbatim '

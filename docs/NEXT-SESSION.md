@@ -1,4 +1,4 @@
-# Abhidhāna — handover, 28 September 2026 (editor mode built, not yet switched on, v0.17.0; roman input in its form, v0.18.0; 14/2's 497 rows redrafted, v0.18.3; the OCR pilot, v0.18.5; vol. 23 drafted from our OCR, v0.19.0; vol. 22 drafted from our OCR, v0.20.0; vol. 24, v0.21.0; vol. 21, v0.22.0; vol. 20, v0.23.0; vol. 25, v0.24.0; 14/3 and 4/3 prepared, §62; `prep`'s no-join fix, v0.24.1; vol. 14/3 drafted from our OCR, v0.25.0, and 4/3's shards drafted, not merged, §63; vol. 4/3 merged, v0.26.0: every book drafted, §64; the next phase planned and decided, the brief shrunk, v0.26.1; `merge` keeps the corrections, 4/3's "see X" targets restored, v0.26.2, §65; site display fixes, v0.26.3, §66, checked live; run-on headwords measured (plan step 1.1), §67; Phase 1 reduced (the editor), and the folds and "analysis not read" refined, v0.26.4, §68; run-on articles split out in the nine books without PCED, every split checked on the image, v0.27.0, §69; the split rows and their hosts redrafted (plan step 1.6), v0.28.0, §70; the decision sheet, plan step 2.1, 29 Sep, docs only; plan step 2.4 page checks done, §73–76, docs only; citation abbreviations from vol. 15's key, v0.28.2, §77; item 9 planned, §78, docs only; `git gc` done, item 4; item 9 built, v0.28.3, §79; its editor tests passed on the Mac, and the supplement misspellings in the index errata, §80, docs only; Copy / Cite / Share on the article and the citation normaliser for the tooltips, v0.28.4, §81–82; its UI test failed at 375 px on the Mac, and the buttons moved out of the head line on phones, v0.28.5, §83; a Meaning's numbered senses shown as a list, v0.28.6, §84; plan step 1.8's homonyms measured and planned, §85, docs only; 1.8 stage 1 of 3: rule R and the PCED pass built and tested, samples 28 / 30 and 19 / 20 right on the image, §86, no version bump; stage 2, the image table, §88; the farther-body splits, §89; the citation tooltips' second pass, §90; stage 3, the redraft, the re-reads and the checks, v0.29.0 prepared, §91, not pushed)
+# Abhidhāna — handover, 28 September 2026 (editor mode built, not yet switched on, v0.17.0; roman input in its form, v0.18.0; 14/2's 497 rows redrafted, v0.18.3; the OCR pilot, v0.18.5; vol. 23 drafted from our OCR, v0.19.0; vol. 22 drafted from our OCR, v0.20.0; vol. 24, v0.21.0; vol. 21, v0.22.0; vol. 20, v0.23.0; vol. 25, v0.24.0; 14/3 and 4/3 prepared, §62; `prep`'s no-join fix, v0.24.1; vol. 14/3 drafted from our OCR, v0.25.0, and 4/3's shards drafted, not merged, §63; vol. 4/3 merged, v0.26.0: every book drafted, §64; the next phase planned and decided, the brief shrunk, v0.26.1; `merge` keeps the corrections, 4/3's "see X" targets restored, v0.26.2, §65; site display fixes, v0.26.3, §66, checked live; run-on headwords measured (plan step 1.1), §67; Phase 1 reduced (the editor), and the folds and "analysis not read" refined, v0.26.4, §68; run-on articles split out in the nine books without PCED, every split checked on the image, v0.27.0, §69; the split rows and their hosts redrafted (plan step 1.6), v0.28.0, §70; the decision sheet, plan step 2.1, 29 Sep, docs only; plan step 2.4 page checks done, §73–76, docs only; citation abbreviations from vol. 15's key, v0.28.2, §77; item 9 planned, §78, docs only; `git gc` done, item 4; item 9 built, v0.28.3, §79; its editor tests passed on the Mac, and the supplement misspellings in the index errata, §80, docs only; Copy / Cite / Share on the article and the citation normaliser for the tooltips, v0.28.4, §81–82; its UI test failed at 375 px on the Mac, and the buttons moved out of the head line on phones, v0.28.5, §83; a Meaning's numbered senses shown as a list, v0.28.6, §84; plan step 1.8's homonyms measured and planned, §85, docs only; 1.8 stage 1 of 3: rule R and the PCED pass built and tested, samples 28 / 30 and 19 / 20 right on the image, §86, no version bump; stage 2, the image table, §88; the farther-body splits, §89; the citation tooltips' second pass, §90; stage 3, the redraft, the re-reads and the checks, v0.29.0 prepared, §91, since pushed; the ။ citation parser fix, v0.29.1, §92)
 
 *All 29 books are digitised end to end, spot-checked and in the Reader: 221,154 index rows, 94.1%
 located, 88.1% with label + body (brief §30). Read
@@ -144,6 +144,18 @@ Project are for advice and for what needs the Mac. What the new chat should know
   sheet D1).
 
 
+## After v0.29.1 (the ။ citation parser fix, brief §92): for the editor, on the Mac
+
+1. **Commit, tag v0.29.1 and push** (the commands given in the session). Changed: `tools/abhidhana_articles.py`, `tools/abhidhana_witness_analysis.py`, the 116 `ocr/` files
+   (`articles.jsonl`, `articles-report.md`, `pali.jsonl`, `pali-report.md` of the 29 books), `VERSION`, `CHANGELOG.md`, the brief (§92),
+   this file. The witness joins need no re-run (the citations are not in them), nor the editor tests (no site code changed).
+2. **Live check** (`/data/version.json` 0.29.1): `/w/thometi` (vol. 9, 80806) has a chip *နီတိ၊ဓာ။၃၁၁၊၃၃၂။* (was *၃၁၁၊၃၃၂။*); works in one
+   volume now have chips (*ဥဒါန။၁၁၆။* in loka, vol. 18, 141771; *ပေတ။၁၇၃။* in dhaṅka¹, vol. 11, 88208); a chip whose work §90 inferred from the word before now
+   mostly carries its head and no *leído como* (2,084 of 2,845).
+3. **Then** (§92 Next): the `cite_how` fold in `tools/abhidhana_browse.py` (93 of the 96 lost tooltips back, simulated); the abbreviations
+   the new citations show and the table lacks; whether the 3,569 rows whose `prep` Burmese changed need a look
+   (`tmp/cite92/prep-changed.tsv`).
+
 ## After v0.29.0 (plan step 1.8 and the citation tooltips, brief §85–91): for the editor, on the Mac, in this order
 
 1. **Commit** stage 3 locally (the commands given in the session). No push yet.
@@ -160,8 +172,7 @@ Project are for advice and for what needs the Mac. What the new chat should know
    `/w/pallaṅka-2` (14/2, 217055, a `same_as` row) no longer shows a Meaning box; a citation chip such as *ဋ္ဌ၊၂။၁၀၃။* after ထေရ၊ names
    Theragāthā Aṭṭhakathā with *leído como …* (§90).
 
-**Next** (brief §90 §Next): **the ။ parser fix** in `CITE` / `cite_trim` (`tools/abhidhana_articles.py`), then the article step and
-romanisation for all 29 books, and measure what `citefold.head()` still adds. Later: the 39 wrong farther-body splits (§89), the 36 unsure
+**Next** (brief §90 §Next): ~~the ။ parser fix~~ done in v0.29.1 (§92: `head()` now adds 373 tooltips, from 2,845). Later: the 39 wrong farther-body splits (§89), the 36 unsure
 homonym rows (§88), then Phase 2 as planned (the decision sheet last).
 
 ## After v0.28.6 (a Meaning's numbered senses as a list, brief §84): for the editor

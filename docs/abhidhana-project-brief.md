@@ -3655,3 +3655,143 @@ archive `s3-work.tgz`: the classification and drafting folders, prompts, scripts
 
 *Tokens: sub-agents **1.72 M** (drafting 7 agents 1,098,544; classification 5 agents 618,012; each the agent's reported total). This
 session's own context: ~0.5 M by its counter when this section was written (tool output, the Burmese read in the re-reads, three page images). ~2.2 M in all. No git run in the VM.*
+
+## 92. The ။ citation parser fix: an abbreviation closed by ။, cut from its mark, or with an asat read as the work (30 Sep 2026, Cowork; v0.29.1)
+
+**Asked** (the editor): fix `CITE` in `tools/abhidhana_articles.py` so that an abbreviation ending in ။ (or split across a line end, or
+carrying an asat) is read as the work, not as part of a page list (§82's "number only" group, §90's finding: the real cause of the lost
+heads), with a switch back; re-run articles and romanisation for all 29 books in the cloud container; test (switch off: the 116 files byte
+for byte as v0.29.0; switch on: only the citation fields change); measure the tooltip share, the number-only citations, §90's lost-head
+rescues and any tooltip whose work changes; check 20 changed citations on the page images (§87–89's method); `prep` for the nine OCR books
+before and after (count, list, no redraft). No git in the VM.
+
+**Run** in the Cowork cloud container. Staged from the folder (`tmp/cite92/`, gitignored): `in.tar.zst` (tools, docs, db, site/src,
+site/test, the witness joins and `pced_k.jsonl`), `pages.tar.zst` (every book's `ocr/NN/pages/`), `base.tar.zst` (the 116 files) and
+`v0290.md5`. **Baseline**: the committed tool, run as it is on all 29 books (articles, then romanisation), reproduced the 116 files byte
+for byte.
+
+### What was wrong
+
+`CITE` let a part of the abbreviation be digits (`_SEG` included ၀–၉) and allowed only ၊ (or , .) before the numbers and between the
+parts. So:
+- **an abbreviation closed by ။** — the dictionary's form for a work in one volume (*မိလိန္ဒ။ ၁၂၃။*, *မဟာနိ၊ ဋ္ဌ။ ၇၅။*) and frequent
+  elsewhere as an OCR reading of ၊ (*ဧက၊ဋီ။၁၆။*) — was either **not parsed at all** (one page number) or read as a bare page list
+  (*ထေရ။ ၂၂၅၊ ၃၄၄။* → ၂၂၅၊၃၄၄။, two or more numbers: the "number only" group);
+- **a head cut from its commentary mark** by ။, a space or a line end (the ၊ lost or read as ။: *ဇာ။ ဋ္ဌ၊ ၂။*, *ထေရ / ဌ၊ ၂။*), or
+  hyphenated across a line (*မူလ- / ဋီ၊*), was left in the body and the citation began with the mark (§90's lost heads);
+- `cite_trim` dropped any leading part with an asat as a Burmese word: also the **kinzi** (င်္, Pāḷi ṅk: *ကင်္ခါ*, *ဝိနယာလင်္ကာရ*) and the
+  table's own abbreviations with an asat (*ဓာန်*, *ဣတိဝုတ်*, *မောဂ်*, *ပါစိတ်* …).
+
+### The fix (`ABH_CITE_FIX=0` restores the old reading)
+
+- `CITE_NEW`, tried first at every position, then the old pattern (`CITE_OLD`, unchanged) as the alternative, so nothing the old pattern
+  read is lost. Its parts are whole words of letters (not preceded by a letter or digit, though they may follow ၊ or ။ with no space; up
+  to 14 characters; beginning with a letter, not a vowel sign); the numbers may follow **။** as well as ၊; and a part may be joined to a
+  following commentary mark (ဋ္ဌ ဋီ ဋိ ဋံ ဋ ဌ ္ဌ) by **။, a space or a line-end hyphen**. The citation keeps what the OCR read, spaces
+  removed, as before (*ထေရဌ၊၂။*, *မူလ-ဋီ၊၂။*), so `abhidhana_browse.cite_befores` still finds it in the body by its characters. (A first
+  version wrote the space join as ၊; it made `cite_befores` jump to a later identical citation and lose the rest of the record's
+  "before" texts — 263 of 317 in 101589 — and was dropped.)
+- `cite_trim`: the parts are also split at the new joins; **not** taken for Burmese: the kinzi, and `ASAT_WORKS` — the table's
+  abbreviations with an asat and the OCR's readings of them met in the citations (*မောင် မောက် မော်* for မောဂ်, *ဝိမတ်*, *ဓါန်*, *ကင်ါ*,
+  *အံ့*); taken for Burmese besides: ၌ ၍ ၎ ၏ (*ဆို၏။ ၁၂။* is a sentence's end and a bare page list). *သုတ္တန်* is left out of
+  `ASAT_WORKS` on purpose: kept, its 70 citations would lose the tooltip `citefold.head()` gives them today (`HEADTYPO`), which the table
+  lacks (measured on a run with it in).
+- `cites(body)`: one function for the three places that collect citations; a new-pattern match whose head is all Burmese is read by
+  the old pattern instead.
+- `tools/abhidhana_witness_analysis.py` (`gate_head`, which takes a row's first words back out of the body in books 01–19 and
+  re-collects its citations) now calls `cites()` too; with its own copy of the old expression, 3 rows (01 6516, 02 12538, 02 15315) got a
+  bare page number from a Burmese-headed match. With the switch off `cites()` is that expression, so the switch-off test covers it.
+- `tools/abhidhana_meanings.py` imports `CITE` and `cite_trim`, so `prep` cuts by the new reading too (below).
+
+### Tests
+
+- **Switch off** (`ABH_CITE_FIX=0`, the final files): **116 of 116 files byte for byte as v0.29.0** (md5 against `v0290.md5`).
+- **Switch on**, record by record over the 29 books (221,154 rows in each of `articles.jsonl` and `pali.jsonl`): **only `citations`
+  (77,921 rows) and `citations_iast` (77,918 rows) differ**; ids, order and every other field identical, and the key order the same
+  apart from 26,047 `pali.jsonl` rows that now carry `citations_iast` (written only when a row has citations; 3 rows change citations
+  but not their romanisation). In the reports only the lines "at least one citation parsed" (`articles-report.md`) and "citations
+  romanised" (`pali-report.md`) change, in all 29 books.
+- **Nothing read before is lost**: of v0.29.0's 530,869 citations, 515,064 are unchanged and 15,797 gain a head, each in order; 8 lose
+  a leading part — 4 rightly (a Burmese word: *နက္ခတ္တ၏*, *၏အရ*, *ဖိ၏*, *၌ပုရိသော*), 4 a damaged head now read as a whole word that fails
+  (*ဝိသုဒ၌*, *ဝိးဝိနိစ္ဆယ*, *ကင်ါါယောဇနာ*, *သုတ်မဟာဝါဘာသာ*; the old pattern had kept their last ≤ 8 characters).
+- Every row's `citations` equals `cites(body)` (0 differences). The final runs (both switches) used the final files. `tools/test_meanings_merge.py`: ok.
+
+### Figures (full site builds to `/tmp`, v0.29.0's data and v0.29.1's, the same `tools/` and `site/src` otherwise)
+
+| | v0.29.0 | v0.29.1 |
+|---|---:|---:|
+| citations | 530,869 | **685,834** (+154,965 newly parsed) |
+| with a tooltip | 489,082 (92.1%) | **626,130 (91.3%)** |
+| — of the 530,869 v0.29.0 had | 489,082 (92.1%) | **497,676 (93.7%)** |
+| — of the 154,965 newly parsed | — | 128,454 (82.9%) |
+| inferred ("leído como …") | 38,768 | 39,328 |
+| number only (first character a digit) | 18,415 | **8,036** |
+
+The share over all citations falls because the newly parsed ones, mostly works in one volume and damaged forms the table lacks, match
+less often; over the citations v0.29.0 had, it rises by 8,594 (8,517 newly direct, 173 newly inferred; 96 lost). *18,415* is the count on
+v0.29.0's data by the definition above; §90's 18,421 was on its 14:58 snapshot. The unmatched newly parsed heads are mostly abbreviations
+the table lacks or the OCR damaged (top: *နီတိ၊ ဓာတု* 1,169, *ဋ္ဌ* alone 721, *နိရုတ္တိ* 632, *ကင်ါ၊ ဋီ၊ သစ်* 471, *ဝိသုဒ္ဓိ၊ ဋီ၊ ဝ* 434,
+*ဝဇီရ* 428, *ယော* 428, *ဗုဒ္ဓဝါဋ္ဌ* 327, *ကခါ၊ ဋီ၊ သစ်* 321); the leftover number-only ones are mostly numbers hyphenated across a line
+(*၂။၅- / ၉၊…*; 3,069 of v0.29.0's number-only citations follow a "-") and heads glued to the volume (*ဝိ၁။*): not touched.
+
+**§90's lost-head rescues** (`citefold.head()`): 2,845 in v0.29.0. The parser now reads **2,084 directly** (a tooltip with no inference),
+668 still get theirs by inference (on the new text), **93 lose it**. Overall, `head()` now adds 373 tooltips (2,845 before).
+
+**Tooltips whose work changes: 2** (108442, 108545: *ကင်္ခါဋီ၊သစ်* now, ကင်္ခါ၊ ဋီ၊ သစ် before → ကင်္ခါ၊ ဋီ, "Kaṅkhāvitaraṇī Ṭīkā (old
+and new)": `cite_how` drops the trailing သစ် before folding the glued ကင်္ခါဋီ — coarser, not wrong). **Tooltips lost: 96** (93 of the
+head rescues, 2 direct, 1 resolved): the head now in the citation is a form `cite_how` does not fold — a line-end hyphen kept (*အနု-ဋီ*, 31),
+a bare ဋ glued or after ။ (*ထေရဋ*, *ဝိ။ဋ*, *အနုဋ*), *အဋီ* / *အဌ* (the niggahīta lost) — or a word glued before the abbreviation (*ဝဝိသုဒ္ဓိ*,
+*တုမ္ဗဝိသုဒ္ဓိ*, *ဝဓမ္မါဋ္ဌ*). **Simulated, not applied**: in `cite_how`, before the folds, drop "-", read ။ in the head as ၊, put ၊ before a
+trailing mark and apply `HEADTYPO` — 93 of the 96 recover. That is `tools/abhidhana_browse.py`, outside this task: for the editor.
+
+### The page check (§87's method)
+
+20 changed citations drawn (seed 2026093092) from the four groups — number only → headed 6, lost head → headed 5, newly parsed 7, asat /
+other 2 — each located by its OCR line in `ocr/NN/pages/pNNNN.json` (`col.psm6`, the half of the lines giving the column), pages cut on the
+Mac with `qpdf` (`tmp/cite92/NN-pages.pdf`), rendered at 220 dpi in the container and cut to the column (±9% of the text height, ≤ 900 px).
+Two lean read-only (Explore) sub-agents, 10 crops each, read in one turn, given the numbers and the OCR text before, **not** the parser's
+reading. `tmp/cite92/verdicts.tsv`.
+
+| group | read | right | wrong | not read |
+|---|---:|---:|---:|---:|
+| number only → headed | 5 | 5 | 0 | 1 (not in crop) |
+| lost head → headed | 5 | 4 | **1** | 0 |
+| newly parsed | 6 | 6 | 0 | 1 (not in crop) |
+| asat / other | 2 | 2 | 0 | 0 |
+| **all** | **18** | **17** | **1** | 2 |
+
+The wrong one, 08/69705 (p. 300 R): the print has *ဂါထမာဟ။ မ၊ဋ္ဌ၊၃။၂၉၇။*; the OCR lost *မ၊*, and the parser joined the Pāḷi word before
+(*ဂါထမာဟ။ဋ္ဌ…*) — no tooltip either way (`head()` would have taken the same word). This is the rule's known risk: where the OCR lost the
+true head, the word before is taken. Right ones include *နီတိ၊ / ဓာ။* across a line (09/80806), *ပဋိသံ။ ဋ္ဌ၊* with ။ in the print
+(19/153242), *ကင်္ခါ၊ ယော၊ မဟာဋီ၊* whole (06/59996). In two the print's separator is ၊ where the OCR read ။; the work was right. Only the
+abbreviation was checked, not the numbers (06 33164's differ from the print). **Confidence**: medium-high that the new reading is right in
+bulk; with 17 of 18, the true precision could be as low as ~73% (95%, exact).
+
+### `prep` for the nine OCR books (task 5)
+
+`abhidhana_meanings.py prep NN --work DIR` on v0.29.0's tree and on v0.29.1's (nothing written to `tmp/meanings`). **The Burmese for
+drafting changes in 3,569 of 61,627 rows** (14b 99, 14c 888, 20 417, 21 401, 22 435, 23 345, 24 272, 25 252, 4c 460): **3,329 lose text
+only** (citation material the new reading cuts: *မောဂ်၊*, *ဣတိဝုတ်၊ဋ္ဌ။*, *ကင်္ခါ၊ ဋီ။*, *ဓာန်၊ ဋီ။* …), 97 gain text only and 143 change
+both — mostly in 14/2's text layer, where a citation is printed numbers-first (*၂၁၈၊ ၉၇-ဣတိဝုတ်၊ဋ္ဌ။ ၁၆၇*) and a work closed by ။ now pairs
+with the next numbers, so a different abbreviation is left behind. Besides, **13 rows leave the list** (their text was only a citation:
+*ဣတိဝုတ်၊ဌ။*, *ကစ္စည်း။*; two were the Pāḷi *ဟောတိ။* alone, 21/170700, 22/179076) and **2 enter it** (*သူ။*: 21/171105, 24/205840); `forms`
+changes in 36 rows, `only` (formula-only) in 14. **Not redrafted.** The list: `tmp/cite92/prep-changed.tsv` (book, id, iast, the kind of
+change, the Burmese before and after; 3,584 lines).
+
+### Changed files
+
+`tools/abhidhana_articles.py`, `tools/abhidhana_witness_analysis.py` (one import, one line); `ocr/*/articles.jsonl`, `articles-report.md`, `pali.jsonl`, `pali-report.md` (116); `VERSION`,
+`CHANGELOG.md`, this section, `docs/NEXT-SESSION.md`. Gitignored, in `tmp/cite92/`: the staged tarballs, `v0290.md5`, the page cuts,
+`verdicts.tsv`, `prep-changed.tsv`, `sample20.json`, `crops.tgz`, the scripts (`digest.py`, `m1–m3.py`, `cmp.py`, `fig.py`, `sample.py`,
+`pick.py`, `crop20.py`) and `pool.json` (every changed citation by group).
+
+### Next
+
+1. The `cite_how` fold above (93 of the 96 lost tooltips back; and *သုတ္တန်* could then join `ASAT_WORKS`).
+2. Abbreviations the newly parsed citations show and the table lacks (*နီတိ၊ ဓာတု*, *နိရုတ္တိ*, *ယော* …) and OCR forms for `citefold`
+   (*ဝဇီရ*, *ကခါ*, *ကင်ါ*, *မောင်*): measured above, not decided.
+3. Whether the 3,569 rows' drafts need a look: a draft from the old Burmese may render citation debris now cut; nothing was compared.
+4. The leftover number-only citations (numbers hyphenated across a line; heads glued to the volume) and B2 (§90).
+
+*Tokens: this session's counter ~0.40 M at the time of writing (tool output, two cycles of 29-book runs read through digests, one crop
+looked at). The two sub-agents' tokens were not reported to this session and were not measured. No git run in the VM.*

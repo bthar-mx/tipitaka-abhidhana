@@ -23,6 +23,23 @@ Versions of the Tipiṭaka Pāḷi-Myanmā Abhidhāna project: the data, the too
 A release note says, per version: what changed, the brief's sections, and the headline figures
 (located, label + body, Meaning rows drafted / reviewed).
 
+## v0.29.1 — 30 Sep 2026
+
+The ။ citation parser fix (brief §92). Re-run of the article step and romanisation for all 29 books; only the citation fields change.
+
+- **`CITE` / `cite_trim` in `tools/abhidhana_articles.py`**: an abbreviation closed by ။ (*မိလိန္ဒ။ ၁၂၃။*, the form of a work in one
+  volume, and the OCR's ။ for ၊), a head cut from its commentary mark by ။, a space or a line end (*ထေရ / ဌ၊*, *မူလ- / ဋီ၊*), and an
+  abbreviation with an asat or a kinzi (*ဓာန်*, *ကင်္ခါ*, *မောဂ်* and its OCR readings) are read as the work; the old pattern stays as the
+  fallback, so nothing it read is lost; `tools/abhidhana_witness_analysis.py` collects them with the same `cites()`. `ABH_CITE_FIX=0` restores the old reading: with it the 116 `ocr/` files are v0.29.0's byte for
+  byte. With the fix, only `citations` (77,921 rows) and `citations_iast` (77,918) change; ids, order and every other field are the same.
+- **Figures**: citations 530,869 → **685,834** (+154,965 parsed for the first time); with a tooltip 489,082 (92.1%) → **626,130 (91.3%)**;
+  over the citations v0.29.0 had, 92.1% → **93.7%**; number-only citations 18,415 → **8,036**; of §90's 2,845 lost-head rescues, 2,084
+  now read directly. 2 tooltips change their work (to the broader *ကင်္ခါ၊ ဋီ*), 96 are lost (a browse-side fold recovers 93 in
+  simulation: not applied). Page images: 18 of 20 sampled citations read, 17 right.
+- **`prep`** (nine OCR books): the Burmese for drafting changes in 3,569 of 61,627 rows (3,329 lose citation material only); 13 rows
+  leave the list, 2 enter it. Not redrafted; the list is in `tmp/cite92/prep-changed.tsv` (gitignored).
+- Meaning rows unchanged: 217,738, all `drafted` but the 9 corrected.
+
 ## v0.29.0 — 30 Sep 2026
 
 Plan step 1.8 (brief §85–89, §91) and the citation tooltips' second pass (§90). Re-runs across all 29 books. Released with the six

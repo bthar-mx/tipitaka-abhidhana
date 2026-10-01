@@ -25,7 +25,9 @@ Fields are then read off the article's text: the grammatical label in ( ) (norma
 printed label, see docs/labels.md), the compound
 analysis in [ ], the rest as body, and the citations inside the body (abbreviation, then
 Burmese numerals separated by ၊, closed by ။) collected into a list. The body is kept
-whole; the citations are not removed from it.
+whole; the citations are not removed from it. Since v0.29.1 an abbreviation closed by ။
+(မိလိန္ဒ။ ၁၂၃။), cut from its commentary mark (ထေရ / ဋ္ဌ၊ …), or carrying an asat (ဓာန်) is read
+as the work (CITE, cite_trim; brief §92); ABH_CITE_FIX=0 restores the older reading.
 
 Nothing here is reviewed. Every row carries status "ocr" and the Burmese is raw OCR, except
 the fields corrected by hand in docs/corrections.tsv (tools/abhidhana_corrections.py), which
@@ -391,20 +393,81 @@ ANALYSIS = re.compile(r'^\s*\[([^\]\n]{0,90}(?:\n[^\]\n]{0,90})?)\]')
 # Aṭṭhakathā, vol. 2 p. 396. (Until 25 Sep 2026 only the last part was kept, ဋ္ဌ၊၂။၃၉၆။,
 # which lost the work: brief §36.)
 _SEG = r'[\u1000-\u1049\u104C-\u109F]{1,8}'
-CITE = re.compile(r'(?:' + _SEG + r'\s*၊\s*){0,2}' + _SEG + r'\s*[၊,.]\s*[' + MY_DIGITS + r']+(?:\s*[၊။,.]\s*[' + MY_DIGITS + r']+)*\s*။')
+CITE_OLD = re.compile(r'(?:' + _SEG + r'\s*၊\s*){0,2}' + _SEG + r'\s*[၊,.]\s*[' + MY_DIGITS + r']+(?:\s*[၊။,.]\s*[' + MY_DIGITS + r']+)*\s*။')
+
+# The ။ fix (brief §92; ABH_CITE_FIX=0 restores the reading above). The pattern above lets a "part" of
+# the abbreviation be digits, and allows only ၊ (or , .) before the numbers and between the parts. So
+#   ထေရ။ ၂၂၅၊ ၃၄၄။      an abbreviation closed by ။, not ၊ (ဧက၊ဋီ။၁၆။, ဓာန်၊ ဋီ။ ၄၅၆။)
+#   ဇာ။ ဋ္ဌ၊ ၂။ ၁၀၃။    ထေရ / ဋ္ဌ၊ …    မူလ- / ဋီ၊ …    the head cut from its commentary mark by ။, a
+#                        space or a line end (with the ၊ lost or read as ။), or hyphenated across a line
+# were read as a bare page list (၂၂၅၊၃၄၄။) or as a citation whose work is only the mark (ဋ္ဌ၊၂။၁၀၃။),
+# its head left in the body. The pattern below is tried first at every position: its parts are
+# letters only (no digit), the numbers may follow ။ as well as ၊, and a part may be joined to a
+# following commentary mark by ။, a space or a hyphen at a line's end (the citation keeps what the OCR
+# read, spaces removed, as before: ထေရဌ၊၂။, မူလ-ဋီ၊၂။, so that it is still found in the body by its
+# characters; tools/abhidhana_browse.py folds ထေရဋ္ဌ to ထေရ၊ဋ္ဌ). Where it does not match, the
+# old pattern still does: nothing it read is lost. A part of the new pattern is a whole word (not
+# preceded by a letter or digit, though it may follow ၊ or ။ with no space: ၉၇။ကင်္ခါ၊ဋီ၊သစ်။၄၇၈။;
+# up to 14 characters) and begins with a letter, not a vowel sign.
+_PART = r'(?:[\u1000-\u102A\u103F][\u1000-\u103F\u104C-\u109F]{0,13}|\u1039\u100C)'
+_MARK = r'(?:ဋ္ဌ|ဋီ|ဋိ|ဋံ|ဋ|ဌ|္ဌ)'
+_JOIN = r'(?:\s*၊\s*|(?:\s*။\s*|\s*-\s*\n\s*|\s+)(?=' + _MARK + r'))'
+_NUMS = r'[' + MY_DIGITS + r']+(?:\s*[၊။,.]\s*[' + MY_DIGITS + r']+)*\s*။'
+CITE_NEW = re.compile(r'(?<![\u1000-\u1049\u104C-\u109F])' + _PART + r'(?:' + _JOIN + _PART + r'){0,2}\s*[၊,.။]\s*' + _NUMS + r'|' + CITE_OLD.pattern)
+CITE_FIX = __import__('os').environ.get('ABH_CITE_FIX', '1') != '0'
+CITE = CITE_NEW if CITE_FIX else CITE_OLD
 
 # Burmese marks that Pāḷi written in Burmese script never carries: asat, visarga-tone, dot-below
 BURMESE_ONLY = re.compile('[\u103A\u1038\u1037\u104A\u104B]')
+# With the fix, not Burmese: the kinzi (င်္, ṅ before a consonant: ကင်္ခါ, ဝိနယာလင်္ကာရ), and the
+# abbreviations that carry an asat, those of docs/introduction/citation-abbreviations.tsv and the
+# OCR's readings of them met in the citations (မောင် မောက် မော် for မောဂ်, ဝိမတ် for ဝိမတိ,
+# ဓါန် for ဓာန်, ကင်ါ for ကင်္ခါ, အံ့ for အံ). သစ် "new" and ဟောင်း "old" are not among them: they
+# follow a work and never lead it. Nor is သုတ္တန် (the print's သုတ္တနိ): kept, it would lose the
+# tooltip tools/abhidhana_citefold.py's head() gives it today (HEADTYPO), which the table lacks. The Burmese symbols ၌ ၍ ၎ ၏ mark a Burmese
+# word too (ဆို၏။ ၁၂။ is a sentence's end and a bare page list, not a work).
+ASAT_WORKS = {'ဣတိဝုတ်', 'ကစ္စည်း', 'ဓာန်', 'ပဋ္ဌာန်းကောက်', 'ပါစိတ်', 'ပါစိတ်ယော', 'မောဂ်', 'ယမိုက်ကောက်', 'ဝီလျမ်',
+              'တောင်ပေါက်', 'မောင်', 'မောက်', 'မော်', 'ဝိမတ်', 'ဓါန်', 'ကင်ါ', 'အံ့'}
+
+
+def _burmese(p):
+    if not CITE_FIX: return BURMESE_ONLY.search(p)
+    p = p.strip()
+    return p not in ASAT_WORKS and (BURMESE_ONLY.search(p.replace('င်္', '')) or re.search('[\u104C-\u104F]', p))
+
+
+def _trim_old(c):
+    parts = re.split(r'(\s*၊\s*)', c)
+    while len(parts) > 2 and BURMESE_ONLY.search(parts[0]) and not re.search('[' + MY_DIGITS + ']', parts[0]):
+        parts = parts[2:]
+    return ''.join(parts)
 
 
 def cite_trim(c):
     """drop leading parts of a citation that are Burmese words, not abbreviation: a Pāḷi
     abbreviation never carries asat, visarga or dot below (the one exception, သစ် "new", only
-    ever follows a work, never leads)"""
-    parts = re.split(r'(\s*၊\s*)', c)
-    while len(parts) > 2 and BURMESE_ONLY.search(parts[0]) and not re.search('[' + MY_DIGITS + ']', parts[0]):
+    ever follows a work, never leads). With the ။ fix, the parts are also split at the other
+    joins CITE allows (။, a space, a line-end hyphen), and see _burmese for what else is kept."""
+    if not CITE_FIX: return _trim_old(c)
+    m = re.search('[' + MY_DIGITS + ']', c)
+    head, tail = (c[:m.start()], c[m.start():]) if m else (c, '')
+    parts = re.split(r'(\s*[၊။,.]\s*|\s*-\s*\n\s*|\s+)', head)
+    while len(parts) > 2 and _burmese(parts[0]):
         parts = parts[2:]
-    return ''.join(parts)
+    return ''.join(parts) + tail
+
+
+def cites(body):
+    """the citations in a body, as the rows carry them. With the fix, a match whose head is all
+    Burmese (ဆို၏။ ၁၂။: a sentence's end, then numbers) is read as the old pattern reads it"""
+    out = []
+    for c in CITE.findall(body):
+        t = cite_trim(c)
+        if CITE_FIX and t[:1] in MY_DIGITS:
+            out += [re.sub(r'\s+', '', _trim_old(x)) for x in CITE_OLD.findall(c)]
+        else:
+            out.append(re.sub(r'\s+', '', t))
+    return out
 
 
 def normalise_analysis(a):
@@ -550,7 +613,7 @@ def fields_after(rest, out_hw, iast='', glued=False):
             out['analysis_ocr'] = out['analysis']
         out['analysis'] = norm
     out['body'] = body
-    out['citations'] = [re.sub(r'\s+', '', cite_trim(c)) for c in CITE.findall(body)]
+    out['citations'] = cites(body)
     return out
 
 
@@ -745,7 +808,7 @@ def split_runons(book, rows, allhw, pages_text):
             if v: r['split_checked'] = v[0]
         host['body'] = re.sub(r'[ \t]+', ' ', '\n'.join(ln for q, ln in enumerate(ls) if q not in covered)).strip()
         if any(q > ks[0] and q not in covered for q in range(len(ls))): host['split_own_line'] = True
-        host['citations'] = [re.sub(r'\s+', '', cite_trim(c)) for c in CITE.findall(host['body'])]
+        host['citations'] = cites(host['body'])
         host['split_to'] = sorted(rs[i]['id'] for _, i, _, _ in xs)
         host['body_before_split'] = old_body
     n = len(splits)
@@ -1035,7 +1098,7 @@ def farbody_split(book, rows, allhw, pages_text):
         host = rs[j]; jl, ls = lines(j)
         old = host['body']
         host['body'] = re.sub(r'[ \t]+', ' ', '\n'.join(ln for q, ln in enumerate(ls) if q not in cov)).strip()
-        host['citations'] = [re.sub(r'\s+', '', cite_trim(c)) for c in CITE.findall(host['body'])]
+        host['citations'] = cites(host['body'])
         host['split_to'] = sorted(set(host.get('split_to', [])) | {pr['id'] for pr, _ in made if pr['j'] == j}
                                   | {ch['id'] for pr, ch in made if pr['j'] == j and ch and pr.get('mid_decision') == 'own line'})
         host.setdefault('body_before_split', old)

@@ -21,7 +21,7 @@
 | compound analysis, either | 6,849 = 98.7% |
 | of which + signs repaired (normalise_analysis) | 372 = 5.4% |
 | non-empty body | 6,887 = 99.2% |
-| at least one citation parsed | 4,965 = 71.5% |
+| at least one citation parsed | 5,696 = 82.1% |
 | label + body (the article is usable) | 6,863 = 98.9% |
 
 **Romanised headwords against OSBCT** (682,010 canonical words):
