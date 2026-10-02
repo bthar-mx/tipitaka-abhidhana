@@ -433,7 +433,7 @@ reaches few rows; the plan below needs re-sizing before 1.3 (see 1.1).
 - **Labels (item 3) and the History (7c)**: the editor's; can go into 2.1's sheet.
 - **Item 9** (the 207 supplement rows beside vols. 15, 4/2, 16): planned (brief §78): way (c), a sidecar table, no Mac re-run; Cowork ~150–250 k.
 - **Later**: 7b (14/3's analysis), 8 (label disagreements on the image), 10 (vol. 13's sixteen pages), 3b (case and citation
-  abbreviations), page records to `sources-v1` (the editor), the title-page counts (open questions), Budistas / Buddhistas (00c).
+  abbreviations), page records to `sources-v1` (the editor), the title-page counts (open questions). ~~Budistas / Buddhistas (00c)~~: Buddhistas, v0.29.5.
 
 **Budget.** Phases 0–2 with B + C: ~10–15 M tokens in all, now mostly in Cowork on the plan's limits (1.6 ~2.5–3 M, 2.3 ~2.5–4.5 M),
 spread over more than one week, with the one-off reset (until 22 Oct) as backup; only 0.3 runs on the cloud credit. At the rough
@@ -562,7 +562,7 @@ Facts and mechanics only; nothing re-renders a translation. Each result is kept 
    follows); the search list; vol. 2 PDF 241 (p. 224) and vol. 22 PDF 920 (p. 881); `/volumes/` read page view (printed
    p. on pages without records); vol. 5's Meaning boxes (`/w/kaṅkhā`); About: "vols. 1–3, 4/1, 4/2 and 5".
 00c. ~~After the §43 push, check the live site~~: done 26 Sep (brief §44).
-   **"Budistas" or "Buddhistas"**: the logo and the footer say Buddhistas, About and README say Budistas; the editor to decide.
+   ~~**"Budistas" or "Buddhistas"**~~: decided **Buddhistas** (the editor, 1 Oct 2026); applied in v0.29.5 (brief §96).
 00b. ~~Check the live site after `5db316f`~~: done 26 Sep (brief §42).
 
 0. ~~Vol. 25 at 200 dpi~~, ~~the README~~, ~~the website~~: done 25–26 Sep. **The site is live** at

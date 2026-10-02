@@ -290,7 +290,7 @@ editor reads the names; (2) is one page for 2.4.
 
 **D3. "Budistas" or "Buddhistas"** (logo and footer say Buddhistas; About and README Budistas; item 00c). *Recommended:
 Budistas*, the institute's own name (Instituto de Estudios Budistas Hispano) and standard Spanish spelling.
-**Decision:**
+**Decision:** **Buddhistas** (the editor, 1 Oct 2026). Applied in About, README and LICENSE, v0.29.5, brief §96.
 
 ---
 

@@ -23,6 +23,11 @@ Versions of the Tipiṭaka Pāḷi-Myanmā Abhidhāna project: the data, the too
 A release note says, per version: what changed, the brief's sections, and the headline figures
 (located, label + body, Meaning rows drafted / reviewed).
 
+## v0.29.5 — 1 Oct 2026
+
+Decision D3 (item 00c): the institute's name is spelt **Instituto de Estudios Buddhistas Hispano**, as the logo and footer
+already had it (the editor). About (EN and ES), README and LICENSE changed from "Budistas" (brief §96). No data or figures changed.
+
 ## v0.29.4 — 1 Oct 2026
 
 The 39 farther-body splits that §89's image check found wrong, made from its readers' notes; the article re-run that brings §93's

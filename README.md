@@ -27,7 +27,7 @@ contiene errores; compare siempre con la imagen de la página. La traducción al
 desde el birmano y nunca a través del inglés, está en borrador para los 25 volúmenes (29 libros), sin revisar
 ([`docs/spanish-method.md`](docs/spanish-method.md), `docs/translation/`). Consulta y búsqueda en
 **[abhidhana.buddha-dhamma.net](https://abhidhana.buddha-dhamma.net)**, en español e inglés. Proyecto del
-[Instituto de Estudios Budistas Hispano](https://iebh.org).
+[Instituto de Estudios Buddhistas Hispano](https://iebh.org).
 
 ## What this repository does
 
@@ -204,4 +204,4 @@ Burmese reader has checked them.
 - [OSBCT](https://github.com/bthar-mx/OSBCT): the Sixth Council Tipiṭaka corpus that the romanised headwords are checked against, and that the citations will resolve to.
 - `bthar-mx/nissaya` (private for now): Burmese nissayas. This dictionary is the reference that makes their Burmese glosses checkable.
 
-A project of the Instituto de Estudios Budistas Hispano ([iebh.org](https://iebh.org)) and Buddhismo Theravāda Hispano A.R.
+A project of the Instituto de Estudios Buddhistas Hispano ([iebh.org](https://iebh.org)) and Buddhismo Theravāda Hispano A.R.

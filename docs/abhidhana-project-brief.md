@@ -4083,3 +4083,18 @@ tasks and answers, the classification and drafting folders).
 context, read from its transcript). This session's own counter: ~0.57 M at the time of writing (tool output, the dossiers of the 39 items,
 the Burmese of the drafts read here, four crops). ~1.2 M in all. One `git log -1` was run in the VM at the start of the session, by mistake
 (read-only; no `index.lock` left, checked); no other git.*
+
+## 96. "Buddhistas", decision D3 (1 Oct 2026, Cowork; v0.29.5)
+
+**Asked** (the editor): "Budistas should be replaced with Buddhistas." This settles D3 / item 00c, which had the logo and footer
+saying Buddhistas and About and README saying Budistas.
+
+**Done**: "Instituto de Estudios Budistas Hispano" → "Instituto de Estudios Buddhistas Hispano" in `site/src/about/index.html` (2, EN
+and ES), `README.md` (2), `LICENSE` (1), and the built `site/dist/index.html` and `site/dist/about/index.html` (2 each; rebuilt by
+`tools/abhidhana_site.py` anyway). D3 recorded in `docs/translation/decisions.md`; 00c closed in NEXT-SESSION. Historical mentions in
+the brief archive and in this brief were left as written. Checked: no "Estudios Budistas" left in `site/`, `tools/`, `functions/`,
+README or LICENSE.
+
+*Also left today in `Claude outputs/seo-handoff-2026-10-01.md`: the search-visibility handoff (Search Console: home page "crawled,
+not indexed"); not implemented. No git was run in the VM.*
+
