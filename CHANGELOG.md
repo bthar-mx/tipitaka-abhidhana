@@ -23,6 +23,10 @@ Versions of the Tipiṭaka Pāḷi-Myanmā Abhidhāna project: the data, the too
 A release note says, per version: what changed, the brief's sections, and the headline figures
 (located, label + body, Meaning rows drafted / reviewed).
 
+## v0.29.6 — 2026-10-12
+
+- **Edits from editor mode exported** (weekly workflow): 0 Meaning row(s), 1 correction(s) to `docs/corrections.tsv`, 0 line(s) to `corrections-es.tsv`. Books and fields: 20: analysis. Article step still to re-run on the Mac for: 20.
+
 ## v0.29.5 — 1 Oct 2026
 
 Decision D3 (item 00c): the institute's name is spelt **Instituto de Estudios Buddhistas Hispano**, as the logo and footer
