@@ -1,5 +1,9 @@
 User-agent: *
 Allow: /
-Disallow: /data/
 Disallow: /edit/
 Disallow: /api/
+
+# /data/ is not disallowed: the pages are drawn by JavaScript from /data/*.json, and a crawler that
+# may not fetch them sees an empty page (Search Console: Soft 404, 19 Oct 2026). The JSON files
+# themselves carry X-Robots-Tag: noindex (site/src/_headers).
+Sitemap: https://abhidhana.buddha-dhamma.net/sitemap.xml
