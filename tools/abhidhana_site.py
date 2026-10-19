@@ -209,6 +209,39 @@ def stamp_version():
     print(f'version v{v} stamped in {n} pages')
 
 
+def write_sitemaps(book_records):
+    """sitemap.xml (an index) over sitemap-pages.xml (the fixed pages) and sitemap-w-<n>.xml (every
+    headword's address, /w/<sl>, as browse.js links it; at most 45,000 per file, under Google's
+    50,000). The addresses (sl) are set by abhidhana_browse.build, which must run first.
+    Listed in robots.txt. Added 19 Oct 2026 (Search Console: the site had no sitemap)."""
+    from urllib.parse import quote
+    from xml.sax.saxutils import escape
+    base = 'https://abhidhana.buddha-dhamma.net'
+    head = '<?xml version="1.0" encoding="UTF-8"?>\n'
+    ent = {"'": '&apos;', '"': '&quot;'}
+    def urlset(paths):
+        return (head + '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+                + ''.join('<url><loc>' + escape(base + p, ent) + '</loc></url>\n' for p in paths) + '</urlset>\n')
+    files = ['sitemap-pages.xml']
+    (OUT / 'sitemap-pages.xml').write_text(
+        urlset(['/', '/volumes/', '/introduction/', '/abbreviations/', '/about/']), encoding='utf-8')
+    seen, words = set(), []
+    for recs in book_records.values():
+        for d in recs:
+            sl = d.get('sl')
+            if sl and sl not in seen:
+                seen.add(sl); words.append('/w/' + quote(sl, safe="-_.!~*'()"))   # = encodeURIComponent
+    N = 45000
+    for k in range(0, len(words), N):
+        name = f'sitemap-w-{k // N + 1}.xml'; files.append(name)
+        (OUT / name).write_text(urlset(words[k:k + N]), encoding='utf-8')
+    (OUT / 'sitemap.xml').write_text(
+        head + '<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+        + ''.join(f'<sitemap><loc>{base}/{f}</loc></sitemap>\n' for f in files) + '</sitemapindex>\n',
+        encoding='utf-8')
+    print(f'sitemaps: {len(files)} files, {len(words):,} headword addresses')
+
+
 def main():
     vols = json.loads((ROOT / 'site/volumes.json').read_text(encoding='utf-8'))
     if OUT.exists(): shutil.rmtree(OUT)
@@ -251,6 +284,7 @@ def main():
     dump(OUT / 'data/volumes.json', vols)
     from abhidhana_browse import build as browse_build   # the Browse page's data (nav, chunks, shards)
     browse_build(OUT, vols, book_records, dump)
+    write_sitemaps(book_records)   # after browse_build: it sets each record's address (sl)
     dump(OUT / 'data/search.json', search)
     labels = [{k: d.get(k, '') for k in ('label', 'roman', 'printed', 'pali', 'en', 'es', 'abbr_en', 'abbr_es',
                                          'status', 'es_status', 'source')}
