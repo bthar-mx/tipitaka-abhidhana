@@ -9,6 +9,7 @@
 # as "coming" for up to an hour after it was published.)
 /data/*
   Cache-Control: public, no-cache
+  X-Robots-Tag: noindex
 
 /assets/*
   Cache-Control: public, no-cache
