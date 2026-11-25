@@ -4250,8 +4250,9 @@ so the count stays 100. Checked here: `node --check` on both files. **Not run**:
 the tooltip itself not seen in a browser. A `title` shows on hover with a mouse and to screen readers, **not on phones or tablets**
 (no hover); the note under *En los artículos: N* says the same for them once they jump.
 
-**Live** (the editor, 25 Nov, screenshots ES and EN): the tooltip shows on hover. **Corrected in v0.31.3**: it said *the headwords above* /
-*las palabras de arriba*, but the jump line is the box's first element and the headwords are below it. Now: *The entries listed below are
-the headwords that match your search … That list comes after the headwords; click to go to it.* / *Las entradas de la lista de abajo son
-las palabras del diccionario que coinciden con la búsqueda … Esa lista va después de las entradas; haga clic para ir a ella.* The test's
-patterns (*articles whose definitions* / *artículos cuya definición*) still match.
+**Live** (the editor, 25 Nov, screenshots ES and EN): the tooltip shows on hover. **Corrected in v0.31.3**: it said *the headwords above* / *las palabras de arriba*, but the jump line is the box's first element and the
+headwords are below it. *This list* was considered and not used (two lists in the box). The tooltip now explains only the number (the
+editor's wording, *empieza con ella*): *Artículos cuya definición cita la palabra, o una que empieza con ella, como pāḷi (romanizada de un
+OCR sin revisar; sin las citas de obras). Haga clic para ir a la lista.* / *Articles whose definitions quote the word, or a word beginning
+with it, as Pāḷi (romanised from unproofed OCR; citations of works left out). Click to go to the list.* The test's two patterns made
+case-insensitive (the text now begins with a capital); count unchanged.
