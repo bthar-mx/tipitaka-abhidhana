@@ -23,6 +23,12 @@ Versions of the Tipiṭaka Pāḷi-Myanmā Abhidhāna project: the data, the too
 A release note says, per version: what changed, the brief's sections, and the headline figures
 (located, label + body, Meaning rows drafted / reviewed).
 
+## v0.30.1 — 2026-11-25
+
+- The home page (EN, ES and the page description) and the README give **221,752 headwords** (was 221,154: the app index's rows, before
+  the 598 of brief §97). Site text only.
+- `docs/fulltext-search-plan.md` (new): the plan for searching words inside the articles (*sesa*), with measured sizes; not built.
+
 ## v0.30.0 — 2026-11-25
 
 **Gaps in the app's index filled** (brief §97, `docs/index-errata.md` §6): 598 headwords the index lacks are now rows of the site and
