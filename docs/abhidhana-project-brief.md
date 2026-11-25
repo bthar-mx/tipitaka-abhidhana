@@ -4250,3 +4250,9 @@ so the count stays 100. Checked here: `node --check` on both files. **Not run**:
 the tooltip itself not seen in a browser. A `title` shows on hover with a mouse and to screen readers, **not on phones or tablets**
 (no hover); the note under *En los artículos: N* says the same for them once they jump.
 
+**Live** (the editor, 25 Nov, screenshots ES and EN): the tooltip shows on hover. **Corrected in v0.31.3**: it said *the headwords above* / *las palabras de arriba*, but the jump line is the box's first element and the
+headwords are below it. *This list* was considered and not used (two lists in the box). The tooltip now explains only the number (the
+editor's wording, *empieza con ella*): *Artículos en cuya definición aparece la palabra, o una que empieza con ella (romanizada de un OCR sin
+revisar; sin las citas de obras). Haga clic para ir a la lista.* / *Articles whose definitions contain the word, or a word beginning with
+it (romanised from unproofed OCR; citations of works left out). Click to go to the list.* (*como pāḷi* dropped, the editor: *romanizada*
+says it.) The test's patterns: case-insensitive, the Spanish one now *artículos en cuya definición*; count unchanged.
