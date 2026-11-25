@@ -144,6 +144,13 @@ Project are for advice and for what needs the Mac. What the new chat should know
   sheet D1).
 
 
+## After v0.31.2 (a tooltip on the jump line, brief §100): for the editor
+
+1. Commit on a branch, push, PR, merge, pull, tag v0.31.2 (no git in the VM). The editor tests on the Mac: still 100 UI checks.
+2. Live check: `/data/version.json` 0.31.2; search *sesa*, hover *También en los artículos: 597 ↓*: the tooltip.
+3. Open (unchanged, not started): single missing headwords in vols. 20–25 (§98); 300243 and 300330 in 14/1; the Project copies of the
+   brief and this file (§96–100 missing there).
+
 ## After v0.31.1 (the jump line to the full-text list, brief §99): for the editor
 
 1. Merge the PR of branch `claude/v0.31.1`, pull, tag v0.31.1. The editor tests on the Mac: expect UI step 10 with 8 checks (100 in all).
