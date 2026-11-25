@@ -1,5 +1,11 @@
 # Full-text search: finding words inside the articles (plan, 25 Nov 2026)
 
+**Status: built 25 Nov 2026, v0.31.0 (brief §98).** `tools/abhidhana_fulltext.py`, called by `abhidhana_browse.py`; the list *In the
+articles / En los artículos* in `assets/browse.js`; editor test step 10. Measured on the real build: 505,994 forms, 1,959,912 postings in
+194,314 articles; 601 shards, 17.4 MB (largest 287 KB); 444 article blocks (`data/ft/d/`, 19 MB). Departures from the plan below: no
+snippet in the result line (it would roughly double the index; the article opens with the Burmese definition shown and the word marked
+instead); shards keyed by up to five letters, not three.
+
 *Asked by the editor (25 Nov 2026): make every word in the PDFs findable, e.g. *sesa*. Planned, not built. Figures measured on the
 committed data at v0.30.0 (`tmp/gap97/ftsize.py`, `ftshard.py`).*
 
@@ -45,7 +51,7 @@ OCR damaged may be missed or misspelt; nothing is proofread.
 
 1. **Pāḷi only**: the Spanish and English drafts are not searched.
 2. **Hits in dictionary order.**
-3. **The commentary abbreviations** (recommended, the editor to confirm): leave out the Pāḷi passages that lie inside a parsed
+3. **The commentary abbreviations** (the editor took the recommendation, 25 Nov): leave out the Pāḷi passages that lie inside a parsed
    citation, and nothing by frequency. Measured (a passage's Burmese found in the article's citation text, a rough test): of 55,181
    occurrences of *ṭṭha*, 32,486 are inside a citation; of *ca* 2 in 25,294, *na* 19 in 23,081, *ti* 3 in 25,878, *vā* 3 in 19,266,
    *sesa* 0 in 51, *pabbata* 0 in 96. A frequency cut-off would drop real words (*ca*, *na*, *vā*); the citation test drops almost only

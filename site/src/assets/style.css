@@ -523,3 +523,10 @@ html[data-script="ro"] .lt.on .pl{color:var(--on-accent)}
 .senses > li{margin:0;padding:0 0 0 var(--sw)}
 .senses > li > .sn{float:left;width:var(--sw);margin-left:calc(-1 * var(--sw));white-space:nowrap}
 .meaning .senses + .fold{margin-top:4px}
+/* full-text search: the words inside the articles (brief §98) */
+.ftres{border-top:2px solid var(--rule);margin-top:4px;padding-bottom:6px}
+.fthead{display:flex;flex-direction:column;gap:2px;padding:9px 14px 6px}
+.fthead strong{font-size:13.5px}
+.fthead .small{font-size:12px;line-height:1.4}
+button.ftmore{cursor:pointer;padding:7px;font:inherit;font-size:12.5px}
+mark.hit{background:var(--mark);color:inherit;border-radius:3px;padding:0 2px}

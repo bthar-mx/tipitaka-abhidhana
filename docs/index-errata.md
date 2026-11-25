@@ -268,9 +268,22 @@ farther-body splits):*
 | 20 | 162332 ဝေါဟရတိ (p. 691) → p. 693 | PDF 722 (printed 692) | ဝေါဟရန္တ, ဝေါဟရန္တိ (image) | ids 300590–300591 |
 | 22 | 183580 (p. 637) → 183581 (indexed p. 639) | PDF 678 (printed 638) | 183581 သမူဟနတု is printed here (`ID_PAGE_FIX`), then သမူဟနထ, သမူဟနန, သမူဟနန္တ, သမူဟနန္တိ, သမူဟနာပေတိ (image) | ids 300592–300596 |
 | 22 | 185091 သမ္ဗာဓ (p. 829) → 185092 (p. 831) | PDF 870 (printed 830) | သမ္ဗာဓဋ္ဌာန, သမ္ဗာဓတရ (image) | ids 300597–300598 |
+| 21 | 164707 → 164708 | PDF 100 (printed 72) | သဥမ္မဒန္တိဝရ (image, 25 Nov 2026; brief §98) | id 300599 |
+| 23 | 188429 → 188430 | PDF 329 (printed 294) | သဟကမ္မသမ္ဘာရ (image) | id 300600 |
+| 20 | 161061 → 161062 | PDF 558 (printed 528) | ဝေဒနာဓိဋ္ဌာန (image) | id 300601 |
+| 23 | 191607 → 191608 | PDF 660 (printed 625) | သိက္ခာပဒါဒါန, သိက္ခာပဒါနုလောမိက, သိက္ခာပဒါဘာဝပ္ပသင်္ဂ (image) | ids 300602–300604 |
+| 24 | 210059 → 210060 | PDF 707 (printed 673) | သူရိယတပနပဉှ, သူရိယတေဇ (image) | ids 300605–300606 |
+| 20 | 158087 → 158088 | PDF 190 (printed 160) | ဝိဿဂ္ဂဗျဉ္ဇန (image) | id 300607 |
+| 24 | 206537 → 206538 | PDF 377 (printed 343) | သုဒလိဒ္ဒ (image) | id 300608 |
 
 Not an index error: **no headword in သေ (*se-*) is printed**. Vol. 24 ends at သူသူ, vol. 25 begins at သော, as the dictionary's own list
 of volumes says (vol. 25 PDF p. 2). Words such as *sesa* occur only inside other articles.
+
+Single missing headwords inside an indexed page (the rows above from 300599 on) were found by an image check of a sample (brief §98):
+in the books without PCED there are probably more (a sample of 30 lines our text pass had explained away held 4). In books 01–19 PCED,
+an independent typing of the same dictionary, has only 36 headwords the index lacks, all its own parsing faults: none missing there.
+Also from that check, a spelling error (§3): **14c 197553** is indexed ပါသာဏဒဏ္ဍ (a repeat of 197552); the print has ပါသာဏဒဒ္ဒု (ထီ) on
+PDF 544 (image; pinned in `docs/homonyms-checked.tsv`).
 
 Every other run of index rows that jumps five PDF pages or more (101 in the 29 books) is one long article: its body holds 0–5 label
 markers, against ~6 a page in an ordinary stretch. One is less clear-cut: 10 83612 diṭṭhi (PDF 457 → 482, 25 pages, 14 markers), not looked
