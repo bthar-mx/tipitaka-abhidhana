@@ -144,6 +144,10 @@ Project are for advice and for what needs the Mac. What the new chat should know
   sheet D1).
 
 
+## After v0.31.3 (the tooltip reworded, brief §100): for the editor
+
+1. Commit on a branch, push, PR, merge, pull, tag v0.31.3. Live: hover the jump line after *sesa*: *The entries listed below …*.
+
 ## After v0.31.2 (a tooltip on the jump line, brief §100): for the editor
 
 1. Commit on a branch, push, PR, merge, pull, tag v0.31.2 (no git in the VM). The editor tests on the Mac: still 100 UI checks.
