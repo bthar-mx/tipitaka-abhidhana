@@ -530,3 +530,5 @@ html[data-script="ro"] .lt.on .pl{color:var(--on-accent)}
 .fthead .small{font-size:12px;line-height:1.4}
 button.ftmore{cursor:pointer;padding:7px;font:inherit;font-size:12.5px}
 mark.hit{background:var(--mark);color:inherit;border-radius:3px;padding:0 2px}
+button.ftjump{display:block;width:100%;text-align:left;padding:8px 14px;font:inherit;font-size:13px;font-weight:600;color:var(--accent);background:var(--accent-soft);border:0;border-bottom:1px solid var(--rule);cursor:pointer}
+button.ftjump:hover,button.ftjump:focus{text-decoration:underline;outline:none}

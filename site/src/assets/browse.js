@@ -35,7 +35,7 @@ Object.assign(T.en, {
   not_found_w: w => `No headword “${w}” was found.`, results_none: 'No headword matches. Roman letters ignore diacritics (nana finds ñāṇa); Burmese is matched as typed.',
   results_more: 'Type more of the word to narrow the list.',
   ft_head: n => `In the articles: ${n.toLocaleString('en')}`, ft_note: 'Pāḷi words quoted inside the definitions (romanised from unproofed OCR; citations left out). Diacritics ignored; the word and the words it begins.',
-  ft_more: n => `Show ${n} more`, ft_none: 'Not found inside any article.', ft_wait: 'Searching inside the articles…', ft_short: 'Type three letters or more to search inside the articles.',
+  ft_jump: n => `Also in the articles: ${n.toLocaleString('en')} ↓`, ft_more: n => `Show ${n} more`, ft_none: 'Not found inside any article.', ft_wait: 'Searching inside the articles…', ft_short: 'Type three letters or more to search inside the articles.',
   report: 'Report an error', vol_short: 'vol.', pdf_p: 'PDF p.', print_p: 'p.',
   label_unknown: 'label not yet identified', printed_as: 'printed', lab_prov: 'provisional',
   hw_fixed: 'headword corrected; the index spells it', homonym: 'homonym', misfiled: 'the index files this headword on another page',
@@ -78,7 +78,7 @@ Object.assign(T.es, {
   not_found_w: w => `No se encontró la entrada «${w}».`, results_none: 'Ninguna entrada coincide. En letras latinas no cuentan los diacríticos (nana encuentra ñāṇa); el birmano se busca tal como se escribe.',
   results_more: 'Escriba más de la palabra para acotar la lista.',
   ft_head: n => `En los artículos: ${n.toLocaleString('es')}`, ft_note: 'Palabras pāḷi citadas dentro de las definiciones (romanizadas de un OCR sin revisar; sin las citas de obras). No cuentan los diacríticos; la palabra y las que empiezan por ella.',
-  ft_more: n => `Mostrar ${n} más`, ft_none: 'No aparece dentro de ningún artículo.', ft_wait: 'Buscando dentro de los artículos…', ft_short: 'Escriba tres letras o más para buscar dentro de los artículos.',
+  ft_jump: n => `También en los artículos: ${n.toLocaleString('es')} ↓`, ft_more: n => `Mostrar ${n} más`, ft_none: 'No aparece dentro de ningún artículo.', ft_wait: 'Buscando dentro de los artículos…', ft_short: 'Escriba tres letras o más para buscar dentro de los artículos.',
   report: 'Informar de un error', vol_short: 'vol.', pdf_p: 'p. del PDF', print_p: 'p.',
   label_unknown: 'categoría aún no identificada', printed_as: 'impreso', lab_prov: 'provisional',
   hw_fixed: 'entrada corregida; el índice la escribe', homonym: 'homónimo', misfiled: 'el índice registra esta entrada en otra página',
@@ -723,6 +723,9 @@ async function ftSection(q, fq, box) {
     sec.innerHTML = `<div class="fthead"><strong>${esc(t('ft_head', gs.length))}</strong><span class="muted small">${esc(t('ft_note'))}</span></div>` +
       (gs.length ? `<div class="ftlist">${rows.map(r => ftLine(r, q)).join('')}</div>` : `<div class="more">${esc(t('ft_none'))}</div>`);
     ftMoreButton();
+    const old = box.querySelector('button.ftjump'); if (old) old.remove();
+    if (gs.length && box.querySelector('a.res:not(.ft)'))
+      box.insertAdjacentHTML('afterbegin', `<button type="button" class="ftjump">${esc(t('ft_jump', gs.length))}</button>`);
   } catch (e) { if (seq === FTSEQ && sec.isConnected) sec.innerHTML = `<div class="more">${esc(t('load_fail'))}</div>`; }
 }
 function ftMoreButton() {
@@ -813,6 +816,7 @@ app.addEventListener('click', async e => {
 });
 document.addEventListener('click', e => {   // search results live in the header, outside #app
   if (e.target.closest('#hresults button.ftmore')) { ftMore(); return; }
+  if (e.target.closest('#hresults button.ftjump')) { const f = $('ftres'); if (f) f.scrollIntoView({ block: 'start' }); return; }
   const a = e.target.closest('#hresults a.res');
   if (a) {
     e.preventDefault(); $('hresults').hidden = true;

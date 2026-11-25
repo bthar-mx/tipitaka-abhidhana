@@ -144,6 +144,12 @@ Project are for advice and for what needs the Mac. What the new chat should know
   sheet D1).
 
 
+## After v0.31.1 (the jump line to the full-text list, brief §99): for the editor
+
+1. Merge the PR of branch `claude/v0.31.1`, pull, tag v0.31.1. The editor tests on the Mac: expect UI step 10 with 8 checks (100 in all).
+2. Live check (`/data/version.json` 0.31.1): search *sesa*: the first line of the box reads *También en los artículos: 597 ↓*; a click
+   scrolls to the list.
+
 ## After v0.31.0 (full-text search, the drafts, the image check, brief §98): for the editor, on the Mac
 
 1. **The editor tests**: `PLAYWRIGHT=~/abhidhana-pw/node_modules/playwright sh site/test/editor/run.sh`; expect API 28 / 0 and UI 93 + 5 = **98

@@ -4227,3 +4227,12 @@ changes; the full-text index as above. Home page and README now say 221,764. Not
 *Tokens (sub-agents, each its final context): drafting 157 k + 175 k + 82 k + 82 k (the 598), 75 k × 6 (the 13) ≈ 0.95 M; image
 check A 158 k + 139 k, B and C (good runs) 180 k + 156 k + 181 k, discarded runs 132 k + 115 k + one stopped ≈ 1.06 M. This session's
 own use not measured. Scratch in `tmp/gap97/` (gitignored); no git in the VM.*
+
+## 99. The full-text list made visible from the top of the search box (25 Nov 2026, cloud; v0.31.1; site only)
+
+**Reported** (the editor, after v0.31.0 went live, with a screenshot): searching *sesa* showed only headwords. The full-text list was
+there, but below the headword list, which for *sesa* (fewer than 10 headwords begin with it) holds up to 60 headwords that contain it.
+**Done**: once the full-text list is drawn and headword lines come before it, a line at the top of the box, *También en los artículos:
+N ↓* / *Also in the articles: N ↓*, scrolls the box to it (`assets/browse.js`, `style.css`). UI step 10: two more checks (the line is the
+box's first element in ES and EN; a click brings the list into view). Run in the cloud container on the v0.31.0 build: pass 8 fail 0,
+twice; looked at in a screenshot (1,280 px, dark). The editor tests (all steps) are for the Mac.
