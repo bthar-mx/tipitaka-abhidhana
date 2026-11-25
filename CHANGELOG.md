@@ -23,6 +23,13 @@ Versions of the Tipiṭaka Pāḷi-Myanmā Abhidhāna project: the data, the too
 A release note says, per version: what changed, the brief's sections, and the headline figures
 (located, label + body, Meaning rows drafted / reviewed).
 
+## v0.31.2 — 2026-11-25
+
+- The search box: the jump line *También en los artículos: N ↓* / *Also in the articles: N ↓* gains a tooltip (`title`) saying what the
+  number counts: articles whose definitions quote the word, or a word beginning with it, as Pāḷi (romanised from unproofed OCR,
+  citations of works left out), unlike the headword lines above it (the editor, 25 Nov; brief §100). Site only; editor test step 10's
+  jump-line check now also requires the tooltip (same count).
+
 ## v0.31.1 — 2026-11-25
 
 - The search box: when headwords are listed first, a line at the top, *También en los artículos: N ↓* / *Also in the articles: N ↓*,

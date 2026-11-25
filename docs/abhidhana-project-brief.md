@@ -4236,3 +4236,17 @@ there, but below the headword list, which for *sesa* (fewer than 10 headwords be
 N ↓* / *Also in the articles: N ↓*, scrolls the box to it (`assets/browse.js`, `style.css`). UI step 10: two more checks (the line is the
 box's first element in ES and EN; a click brings the list into view). Run in the cloud container on the v0.31.0 build: pass 8 fail 0,
 twice; looked at in a screenshot (1,280 px, dark). The editor tests (all steps) are for the Mac.
+
+**Live check** (25 Nov, 15:41 UTC, the next session, the built-in browser): the site served 0.31.0 for about 12 minutes after the merge,
+then 0.31.1; *sesa*: the box's first element reads *También en los artículos: 597 ↓*, and a click scrolls to *En los artículos: 597*.
+
+## 100. A tooltip on the jump line (25 Nov 2026, Cowork; v0.31.2; site only)
+
+**Asked** (the editor): explain on the line *Also in the articles: N* what it means. **Done**: the button gets a `title` from a new string
+`ft_jump_tip` (ES and EN in `site/src/assets/browse.js`): the headwords above are entries that match; N counts the articles whose
+definitions quote the word, or a word beginning with it, as Pāḷi (romanised from unproofed OCR; citations of works left out); a click goes
+to that list. UI step 10's jump-line check also requires the tooltip's text (*articles whose definitions* / *artículos cuya definición*),
+so the count stays 100. Checked here: `node --check` on both files. **Not run**: the site build and the UI test (the Mac or the cloud);
+the tooltip itself not seen in a browser. A `title` shows on hover with a mouse and to screen readers, **not on phones or tablets**
+(no hover); the note under *En los artículos: N* says the same for them once they jump.
+
