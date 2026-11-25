@@ -144,6 +144,24 @@ Project are for advice and for what needs the Mac. What the new chat should know
   sheet D1).
 
 
+## After v0.30.0 prepared (the gap in vol. 14/1's index, brief §97): for the editor, on the Mac, in this order
+
+The branch `claude/index-gap-14` carries the tools and `docs/index-additions.tsv` (587 rows, pages empty). In Terminal, in
+`~/Documents/abhidhana`, on that branch:
+
+1. `python3 tools/abhidhana_index_additions.py pages 14` — fills `pdf_page` from `ocr/14/pages/`; expect ~500 rows "found at a line start"
+   (506 in the simulation) and pages 695–777. Then `python3 tools/abhidhana_index_additions.py check` → `check: ok`.
+2. `python3 tools/abhidhana_articles.py 14 && python3 tools/abhidhana_romanise.py 14` — expect "587 rows added to vol. 14's index rows",
+   5,806 rows, and 113054's body a few hundred characters (was 199,388).
+3. `python3 tools/abhidhana_witness_join.py 14` — the new rows pair with PCED by headword (expect ~587 more paired).
+4. Commit `docs/index-additions.tsv` and `ocr/14/` on the branch, push, open the PR, merge; tag v0.30.0.
+5. **Live check** (`/data/version.json` 0.30.0): searching *pabbata* finds `/w/pabbata` (vol. 14/1 · printed p. 733) and `/w/pabbata-2`;
+   `/w/papañcasaññāsaṅkhānirodhasāruppagāminī` has a short body; `/w/pabbajita` exists. The new rows have no Meaning box yet.
+6. **Then** (a Cowork chat or the cloud, after the push): the 587 Meaning rows — `python3 tools/abhidhana_meanings.py prep 14 --ids
+   docs/index-additions.tsv --shards 2 --work tmp/meanings/v14add` (PCED source, as for the rest of 14/1), draft, `merge 14 --ids …`.
+7. **For the editor**: the home page's "221,154 headwords" (`site/src/index.html`, twice) — keep the index's figure or say 221,741?
+   The unlocated added rows (43 in the simulation, many PCED's split of a printed variant, ပပဋိ(က)ကာ-) are for a later image check.
+
 ## After v0.29.4 (the 39 farther-body items of §89, the *သုတ္တန်* re-run, brief §95): for the editor, on the Mac, in this order
 
 1. **The D1 edits**: `python3 tmp/fix95/d1check.py` (brief §95 §7; 209 changed article rows and 76 Meaning rows). No hits: go on. A hit: an

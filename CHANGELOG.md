@@ -23,6 +23,17 @@ Versions of the Tipiṭaka Pāḷi-Myanmā Abhidhāna project: the data, the too
 A release note says, per version: what changed, the brief's sections, and the headline figures
 (located, label + body, Meaning rows drafted / reviewed).
 
+## v0.30.0 — 2026-11-25 (prepared; the Mac run completes it)
+
+**A gap in the app's index filled** (brief §97, `docs/index-errata.md` §6): vol. 14/1 PDF pp. 696–776 (printed 675–755) have no index
+row, so *pabbata*, *pabbajita*, *pabbajjā* and the rest of *papa-* … *pabbāj-* could not be searched, and their text sat inside 113054.
+
+- `docs/index-additions.tsv` (new): the stretch's 587 headwords from PCED, ids 300001–300587, after 113054.
+- `tools/abhidhana_index_additions.py` (new): `build`, `pages`, `check`.
+- `tools/abhidhana_articles.py`, `tools/abhidhana_witness_join.py`: read the table; added rows carry `index_added`.
+- Still to do on the Mac: `pages 14`, the article step and romanisation for 14, the witness join for 14. Then vol. 14/1 has 5,806 rows
+  and the site 221,741 entries (figures from the simulation until then: 544 of the 587 located).
+
 ## v0.29.6 — 2026-10-19
 
 - **Edits from editor mode exported** (weekly workflow): 0 Meaning row(s), 1 correction(s) to `docs/corrections.tsv`, 0 line(s) to `corrections-es.tsv`. Books and fields: 20: analysis. Article step still to re-run on the Mac for: 20.

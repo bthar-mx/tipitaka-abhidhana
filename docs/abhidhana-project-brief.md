@@ -4098,3 +4098,42 @@ README or LICENSE.
 *Also left today in `Claude outputs/seo-handoff-2026-10-01.md`: the search-visibility handoff (Search Console: home page "crawled,
 not indexed"); not implemented. No git was run in the VM.*
 
+## 97. A gap in the app's index: vol. 14/1 PDF pp. 696–776 have no index row; 587 headwords added from PCED (25 Nov 2026, cloud; v0.30.0 prepared)
+
+**Asked** (the editor): why are *pabbata* and other words not found by the site's search, although printed (vol. 14/1 p. 733)?
+
+**Found.** The search looks only at index rows (one per row of `db/tipitaka_abidan.db`). In vol. 14/1 the index jumps from 113054
+ပပဉ္စသညာသင်္ခါနိရောဓသာရုပ္ပဂါမိနီ (PDF 695) to 113055 ပဗ္ဗာဇေတုံ (PDF 777), the ids consecutive: **PDF 696–776, 81 pages, have no index
+row**. No index row of any book has the headword *pabbata* or a *pabbat-* compound. The article step read the 81 pages whole into 113054
+(its docstring: pages the index does not cover lie inside a long article): body 199,388 characters, ~501 label markers ((ပု), (ထီ), (န),
+(တိ), (ကြိ) …). Its Meaning box is PCED's and is not affected. Across the 29 books, the 101 runs of consecutive index rows that jump ≥ 5
+PDF pages are all single long articles (0–5 label markers each; 10 83612 diṭṭhi 14, not looked into) but this one (`docs/index-errata.md` §6).
+
+**The headwords.** PCED (`siongui/data`, rebuilt here with `tools/abhidhana_witness.py`, witness/ not committed) holds the dictionary to vol.
+19 and has the stretch: **587 entries** whose key sorts strictly between the two index rows (the Pāḷi-alphabet key of
+`abhidhana_supplements.py`), **0** of them an index headword in any book. Against the OCR of the gap (113054's raw text), 515 begin a line
+exactly, and 506 in an order that agrees with the key (longest chain); the rest are mostly OCR damage (သင်္ခါ read သင်ါ) or a printed
+variant PCED keeps as two entries (ပပဋိ(က)ကာ- → *papaṭika-* and *papaṭikā-*), as the index does elsewhere. 569 distinct romanisations
+(the rest homonyms, -2 …); **no address of an existing row changes** (none of them is the romanisation of a row after the gap).
+
+**Done** (tools and one table; no data file re-run, as the OCR pages and the db are on the Mac):
+- `docs/index-additions.tsv` (new): 587 rows, ids **300001–300587** (outside the index's 1–221,154, so never taken for the app's), book 14,
+  `after_id` 113054, PCED's headword (converted), key, seq and label; `pdf_page` / `page_how` empty until `pages` fills them.
+- `tools/abhidhana_index_additions.py` (new): `build` (the table from the witness), `pages 14` (on the Mac: each row's PDF page from
+  `ocr/14/pages/`, the line it begins on, longest ordered chain; a row not found takes the page of the row found before it, `between`),
+  `check`.
+- `tools/abhidhana_articles.py`: the table's rows join their page's index rows, after `after_id` (or at the page's head), in table order;
+  their headwords join `allhw`; each output row carries `index_added: true`, `index_page` the printed page. Without the table, or with
+  `pdf_page` empty, nothing changes (a message says so).
+- `tools/abhidhana_witness_join.py`: the rows pair with PCED like index rows (ids above every index id, so after them).
+
+**Tested** on a simulation (the db's and the page files' stand-ins built from `ocr/14/articles.jsonl`: pp. 690–780, 73 index rows, 113054's
+raw text cut into 81 pages by length): `pages 14` 506 rows at a line start, 81 between; the article step **544 of 587 located** (verbatim
+517, folded 7, fuzzy 18, split 2), 43 unlocated, label + body 514; 113054's body 199,388 → 445 characters; the rows in the file between
+113054 and 113055 in id order; romanisation and the site build ran, and the search shard has `pabbata` and `pabbata-2` (simulated
+p. 754 = printed 733). The real figures come from the Mac run (true page breaks).
+
+**Next** (NEXT-SESSION): on the Mac `pages 14`, articles 14, romanise 14, witness join 14 (all books' join files unchanged otherwise), commit;
+then the 587 Meaning rows (`prep 14 --ids docs/index-additions.tsv`, PCED source, ~2 shards). Open: the home page's "221,154 headwords".
+
+*Tokens: no sub-agents; this session not measured.*
