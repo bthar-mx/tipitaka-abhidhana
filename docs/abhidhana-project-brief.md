@@ -4167,3 +4167,63 @@ one book rewrites it; restored by hand).
 "221,154 headwords"; full-text search (words inside articles, such as *sesa*), for the editor to decide.
 
 *Tokens: no sub-agents; this session not measured. Scratch files in `tmp/gap97/` (gitignored).*
+
+## 98. Full-text search; the 598 rows drafted; the image check of the added rows and the books without PCED, 12 more missing headwords (25 Nov 2026, cloud + the Mac; v0.31.0)
+
+**Asked** (the editor, after v0.30.1): build the full-text search (decided: Pāḷi only, dictionary order, the passages inside citations
+left out, the recommendation of `docs/fulltext-search-plan.md`); draft the 598 Meaning rows; the image check of §97's open items; the
+Padakosa update after the drafts.
+
+**Full-text search** (`tools/abhidhana_fulltext.py`, called at the end of `abhidhana_browse.py`'s build; `assets/browse.js`, `style.css`).
+Indexed: the romanised Pāḷi passages of each article (`sp`), less those overlapping one of the article's citations (each citation string
+found in the body, spaces ignored) and a stop-list of 15 abbreviation fragments that are not words (*ṭṭha*, *paṭisaṁ*, *mahāni*,
+*buddhavaṁ* …; chosen from forms found mostly inside citations, in ≥ 20 articles, and no headword; real words among the candidates kept).
+Measured before building (`tmp/gap97/`, the citation rule exactly): 657,692 passages, 88,664 inside a citation; *ṭṭha* 35,206 → 9,094
+articles, *ca* 20,923 (80 more only in citations), *sesa* 50, *pabbata* 87 (0 in citations). Built: **505,994 forms, 1,959,912 postings
+in 194,314 articles; 601 shards (folded prefix of 2–5 letters, split above 300 KB), 17.4 MB, largest 287 KB; 444 article blocks**
+(`data/ft/d/`, 19 MB). The page: below the headword list, *In the articles: N / En los artículos: N* with a note on what is searched,
+50 lines at a time in dictionary order (*Show 50 more*); a hit opens `/w/<address>?hl=<word>` with the Burmese definition shown and
+the words that begin with the query marked (`mark.hit`; in Burmese script the whole passage). Folded like the headword search (*sesa*
+finds *sesa, sesā, sesaṁ …*: 597 articles by prefix, 133 the word itself). No snippet in the result line (it would roughly double the
+index). Tested in the cloud container on the real build (Chrome, Playwright, a local server for `/w/*`): the new UI step 10 of
+`site/test/editor/ui-test.js`, **pass 5 fail 0** three runs running (after a fix: the list's header and first lines now drawn together,
+and a search superseded by a newer one dropped); screenshots at 1,024 and 375 px looked at. The editor tests (all steps, with wrangler
+and D1) are for the Mac.
+
+**The 598 Meaning rows**: `prep 14 / 20 / 22 --ids docs/index-additions.tsv` (14 from PCED, 20 and 22 from our text), four agents with
+`drafting-prompt.md` (two shards of 294 / 293, one of 4, one of 7), merged with `--ids`: **598 rows, 101 flagged; no existing row
+changed** (14: 5,219 → 5,806, 20: 7,055 → 7,059, 22: 7,669 → 7,676). The agents' notes for review: ရသေ့ *ermitaño*, တက္ကတွန်း *asceta*,
+ရဟန်းမိန်းမ *monja*, ရှင်-သာမဏေ *novicio / ⟦=sāmaṇera⟧*, ပဉ္စင်း *monje de ordenación plena*; ‹တန့်ကျွဲ› (Senna tora?), ‹ပြိတ်›, ‹ဘုံလျှူိ›
+left in ‹ ›; -attha as *beneficio* where *meaning* may be meant (300134, 300163); pabbajittha 300313 and pabbajetha 300328 read as 3rd
+person (attanopada) against the ending rule, flagged; 300592 *vosotros* (*arrancad*); 300589 and 300596 carry run-on text in `omitted`.
+
+**The image check** (crops rendered from `pdfs/` on the Mac, read by sub-agents in the container; my first band crops took the wrong
+column, because `col.psm6` holds both columns as one run of lines: redone, and the two packets that saw nothing were discarded):
+- **The 40 added rows of vol. 14/1 left unlocated** (22 pages, both columns): 12 printed on their own line → pinned in
+  `docs/homonyms-checked.tsv` (several printed in another spelling than PCED's: ပဗုဒ္ဓပဗုဒ္ဓက္ခဏ for PCED's ပဗုဒ္ဓပဒ္ဓက္ခဏ; ပဗ္ဗဇိတာနုရူပ- with
+  ū); 3 printed only as a variant inside another head (ပပဋိ(က)ကာဂန္ဓ for papaṭika- / papaṭikā-; ပဗ္ဗတာရောဟဏ(န); ပဗ္ဗဇ္ဇ(ဇ္ဇာ)ကာရဏ …) →
+  `same_as`; 25 not on the page `pages` gave them → 21 moved to the next page (`page_how` `image`), of which the five ပပဋိ(က)ကာ- heads of
+  PDF 701 were read here and pinned (each covering a PCED pair, the -kā- twin `same_as`); 4 not printed in PCED's form at all (300134
+  pabandhaṭhitattha, 300169 pabujjhayya, 300355 pabbajjākammaṭṭhāna, 300362 pabbajjākkhandhakavaṇṇanā: left unlocated). Vol. 14/1 now
+  **5,626 located = 96.9%, label + body 92.4%**; the 587: located 571, 10 `same_as`, 4 not printed, 2 unlocated (300243 pabbajita, a
+  homonym the PCED pass moved; 300330 pabbajeyya, whose line was 300329's). Old rows changed: only 113054 (1,549 → 445 characters).
+- **The books without PCED.** §97's 40 unmatched candidates and a sample of 30 of the 210 the text pass had explained away, as bands
+  around the line (60 of 70 placed by the line's position in the column, the rest whole columns): B (40) 29 an index row, 3 missing,
+  8 unsure (the line on the next page); C (30) 21 an index row, **4 missing**, 5 unsure — so the text pass's "like a nearby headword"
+  does not prove an index row, and these books **probably hold more single missing headwords** than found here (not measured). Found
+  and read on the image, all absent from the index: vol. 21 PDF 100 သဥမ္မဒန္တိဝရ; 23 PDF 329 သဟကမ္မသမ္ဘာရ; 20 PDF 558 ဝေဒနာဓိဋ္ဌာန;
+  23 PDF 660 သိက္ခာပဒါဒါန, သိက္ခာပဒါနုလောမိက, သိက္ခာပဒါဘာဝပ္ပသင်္ဂ, သိက္ခာပဒါဝိရောဓ, သိက္ခာပဒါဝိလင်္ဃန; 24 PDF 707 သူရိယတပနပဉှ, သူရိယတေဇ;
+  20 PDF 190 ဝိဿဂ္ဂဗျဉ္ဇန; 24 PDF 377 သုဒလိဒ္ဒ → **12 rows, ids 300599–300610**, all located (verbatim 10, fuzzy 2), their hosts cut
+  (the run-on text only). And an index spelling error: **14c 197553** is indexed ပါသာဏဒဏ္ဍ (a repeat of 197552), printed ပါသာဏဒဒ္ဒု →
+  pinned to its line (`index-errata.md` §6). Drafted (six one-shard agents, 13 rows, 6 flagged) and merged; no existing row changed.
+
+**Flags files**: `report` rewrites every line's Burmese from the current work file (240-odd lines of 20 and 22 changed only so, and
+24's run stopped on 208085, which today's work file lacks): the committed files were restored and only the 107 new rows' lines added,
+in the Meaning file's order.
+
+**Checks** (the Mac, the full build): **221,764 headwords** (221,154 + 610), every added row with a Meaning box; no existing address
+changes; the full-text index as above. Home page and README now say 221,764. Not run: the editor tests (Mac), the live check.
+
+*Tokens (sub-agents, each its final context): drafting 157 k + 175 k + 82 k + 82 k (the 598), 75 k × 6 (the 13) ≈ 0.95 M; image
+check A 158 k + 139 k, B and C (good runs) 180 k + 156 k + 181 k, discarded runs 132 k + 115 k + one stopped ≈ 1.06 M. This session's
+own use not measured. Scratch in `tmp/gap97/` (gitignored); no git in the VM.*

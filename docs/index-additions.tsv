@@ -1,8 +1,8 @@
 id	book	after_id	pdf_page	page_how	headword	iast	pced_seq	label_pced	note
-300001	14	113054	695	between	ပပဉ္စသညာသင်္ခါပဘဝ	papañcasaññāsaṅkhāpabhava	339967	တိ	
-300002	14	113054	695	between	ပပဉ္စသညာသင်္ခါပဟာန	papañcasaññāsaṅkhāpahāna	339969	န	
-300003	14	113054	695	between	ပပဉ္စသညာသင်္ခါသမုဒယ	papañcasaññāsaṅkhāsamudaya	339973	တိ	
-300004	14	113054	695	between	ပပဉ္စသညာသင်္ခါသမုဒါစရဏပညတ္တိ	papañcasaññāsaṅkhāsamudācaraṇapaññatti	339971	ထီ	
+300001	14	113054	696	image	ပပဉ္စသညာသင်္ခါပဘဝ	papañcasaññāsaṅkhāpabhava	339967	တိ	page from the image check (brief §98)
+300002	14	113054	696	image	ပပဉ္စသညာသင်္ခါပဟာန	papañcasaññāsaṅkhāpahāna	339969	န	page from the image check (brief §98)
+300003	14	113054	696	image	ပပဉ္စသညာသင်္ခါသမုဒယ	papañcasaññāsaṅkhāsamudaya	339973	တိ	page from the image check (brief §98)
+300004	14	113054	696	image	ပပဉ္စသညာသင်္ခါသမုဒါစရဏပညတ္တိ	papañcasaññāsaṅkhāsamudācaraṇapaññatti	339971	ထီ	page from the image check (brief §98)
 300005	14	113054	696	line	ပပဉ္စသမတိက္ကန္တ	papañcasamatikkanta	339935	တိ	
 300006	14	113054	696	line	ပပဉ္စသမုဒါစာရ	papañcasamudācāra	339941	ပု	
 300007	14	113054	696	line	ပပဉ္စသူဒနိသံဝဏ္ဏနာ	papañcasūdanisaṁvaṇṇanā	339978	ထီ	
@@ -15,7 +15,7 @@ id	book	after_id	pdf_page	page_how	headword	iast	pced_seq	label_pced	note
 300014	14	113054	698	line	ပပဉ္စာရာမ	papañcārāma	339927	တိ	
 300015	14	113054	698	line	ပပဉ္စိတ	papañcita	340033	န	
 300016	14	113054	698	line	ပပဉ္စိတွာ	papañcitvā	340037	ကြိ၊ဝိ	
-300017	14	113054	698	between	ပပဉ္စီယတိ	papañcīyati	340039	ကမ္မ၊ကြိ	
+300017	14	113054	699	image	ပပဉ္စီယတိ	papañcīyati	340039	ကမ္မ၊ကြိ	page from the image check (brief §98)
 300018	14	113054	699	line	ပပဉ္စုပ္ပတ္တိ	papañcuppatti	340042	ထီ	
 300019	14	113054	699	line	ပပဉ္စုပ္ပတ္တိဒဿန	papañcuppattidassana	340044	န	
 300020	14	113054	699	between	ပပဉ္စုပ္ပတ္တိဒဿနဋ္ဌ	papañcuppattidassanaṭṭha	340046	ပု	
@@ -25,18 +25,18 @@ id	book	after_id	pdf_page	page_how	headword	iast	pced_seq	label_pced	note
 300024	14	113054	700	line	ပပဉ္စေတွာ	papañcetvā	340025	ကြိ၊ဝိ	
 300025	14	113054	700	line	ပပဉ္စေန္တ	papañcenta	340008	တိ	
 300026	14	113054	700	between	ပပဋိကဂန္ဓ	papaṭikagandha	340216	ပု	
-300027	14	113054	700	between	ပပဋိကဇာတ	papaṭikajāta	340220	တိ	
-300028	14	113054	700	between	ပပဋိကဋ္ဌာန	papaṭikaṭṭhāna	340228	န	
-300029	14	113054	700	between	ပပဋိကဋ္ဌာနိက	papaṭikaṭṭhānika	340232	တိ	
-300030	14	113054	700	between	ပပဋိကဋ္ဌာနိယ	papaṭikaṭṭhāniya	340236	တိ	
-300031	14	113054	700	between	ပပဋိကပ္ပတ္တ	papaṭikappatta	340224	တိ	
+300027	14	113054	701	image	ပပဋိကဇာတ	papaṭikajāta	340220	တိ	page from the image check (brief §98)
+300028	14	113054	701	image	ပပဋိကဋ္ဌာန	papaṭikaṭṭhāna	340228	န	page from the image check (brief §98)
+300029	14	113054	701	image	ပပဋိကဋ္ဌာနိက	papaṭikaṭṭhānika	340232	တိ	page from the image check (brief §98)
+300030	14	113054	701	image	ပပဋိကဋ္ဌာနိယ	papaṭikaṭṭhāniya	340236	တိ	page from the image check (brief §98)
+300031	14	113054	701	image	ပပဋိကပ္ပတ္တ	papaṭikappatta	340224	တိ	page from the image check (brief §98)
 300032	14	113054	700	between	ပပဋိကာ	papaṭikā	340211	ထီ	
-300033	14	113054	700	between	ပပဋိကာဂန္ဓ	papaṭikāgandha	340218	ပု	
-300034	14	113054	700	between	ပပဋိကာဇာတ	papaṭikājāta	340222	တိ	
-300035	14	113054	700	between	ပပဋိကာဋ္ဌာန	papaṭikāṭṭhāna	340230	န	
-300036	14	113054	700	between	ပပဋိကာဋ္ဌာနိက	papaṭikāṭṭhānika	340234	တိ	
-300037	14	113054	700	between	ပပဋိကာဋ္ဌာနိယ	papaṭikāṭṭhāniya	340238	တိ	
-300038	14	113054	700	between	ပပဋိကာပ္ပတ္တ	papaṭikāppatta	340226	တိ	
+300033	14	113054	700	image	ပပဋိကာဂန္ဓ	papaṭikāgandha	340218	ပု	page from the image check (brief §98)
+300034	14	113054	701	image	ပပဋိကာဇာတ	papaṭikājāta	340222	တိ	page from the image check (brief §98)
+300035	14	113054	701	image	ပပဋိကာဋ္ဌာန	papaṭikāṭṭhāna	340230	န	page from the image check (brief §98)
+300036	14	113054	701	image	ပပဋိကာဋ္ဌာနိက	papaṭikāṭṭhānika	340234	တိ	page from the image check (brief §98)
+300037	14	113054	701	image	ပပဋိကာဋ္ဌာနိယ	papaṭikāṭṭhāniya	340238	တိ	page from the image check (brief §98)
+300038	14	113054	701	image	ပပဋိကာပ္ပတ္တ	papaṭikāppatta	340226	တိ	page from the image check (brief §98)
 300039	14	113054	701	line	ပပဋိကောပမာ	papaṭikopamā	340240	ထီ	
 300040	14	113054	701	between	ပပတ	papata	340091	ပု	
 300041	14	113054	702	line	ပပတ	papata	340092	ကာ၊ကြိ	
@@ -57,7 +57,7 @@ id	book	after_id	pdf_page	page_how	headword	iast	pced_seq	label_pced	note
 300056	14	113054	704	line	ပပတိံသု	papatiṁsu	340244	ကြိ	
 300057	14	113054	704	between	ပပတိ	papati	340200	ကြိ	
 300058	14	113054	704	line	ပပတိ	papati	340201	ကြိ	
-300059	14	113054	704	between	ပပတိကာ	papatikā	340214	ထီ	
+300059	14	113054	700	image	ပပတိကာ	papatikā	340214	ထီ	page from the image check (brief §98)
 300060	14	113054	704	line	ပပတိတ	papatita	340256	န	
 300061	14	113054	704	line	ပပတိတွာ	papatitvā	340263	ကြိ၊ဝိ	
 300062	14	113054	704	line	ပပတိဿံ	papatissaṁ	340249	ကြိ	
@@ -334,7 +334,7 @@ id	book	after_id	pdf_page	page_how	headword	iast	pced_seq	label_pced	note
 300333	14	113054	740	line	ပဗ္ဗဇေယျာသိ	pabbajeyyāsi	318146	ကြိ	
 300334	14	113054	740	between	ပဗ္ဗဇေယျုံ	pabbajeyyuṁ	318152	ကြိ	
 300335	14	113054	740	between	ပဗ္ဗဇ္ဇကမ္မဋ္ဌာန	pabbajjakammaṭṭhāna	318449	န	
-300336	14	113054	740	between	ပဗ္ဗဇ္ဇကာရဏ	pabbajjakāraṇa	318453	န	
+300336	14	113054	741	image	ပဗ္ဗဇ္ဇကာရဏ	pabbajjakāraṇa	318453	န	page from the image check (brief §98)
 300337	14	113054	741	line	ပဗ္ဗဇ္ဇကာရဏဝိဘာဝနမုခ	pabbajjakāraṇavibhāvanamukha	318460	န	
 300338	14	113054	741	between	ပဗ္ဗဇ္ဇက္ခန္ဓက	pabbajjakkhandhaka	318464	ပု	
 300339	14	113054	741	line	ပဗ္ဗဇ္ဇက္ခန္ဓကာဂတသဗ္ဗဒေါသ	pabbajjakkhandhakāgatasabbadosa	318468	ပု	
@@ -343,7 +343,7 @@ id	book	after_id	pdf_page	page_how	headword	iast	pced_seq	label_pced	note
 300342	14	113054	741	line	ပဗ္ဗဇ္ဇနာမဓေယျ	pabbajjanāmadheyya	318490	တိ	
 300343	14	113054	741	line	ပဗ္ဗဇ္ဇန္တရာယ	pabbajjantarāya	318500	ပု	
 300344	14	113054	741	line	ပဗ္ဗဇ္ဇန္တေဝါသိက	pabbajjantevāsika	318502	ပု	
-300345	14	113054	741	between	ပဗ္ဗဇ္ဇပဉှ	pabbajjapañha	318518	တိ	
+300345	14	113054	742	image	ပဗ္ဗဇ္ဇပဉှ	pabbajjapañha	318518	တိ	page from the image check (brief §98)
 300346	14	113054	742	line	ပဗ္ဗဇ္ဇပယောဇန	pabbajjapayojana	318524	န	
 300347	14	113054	742	line	ပဗ္ဗဇ္ဇပရိယောသာန	pabbajjapariyosāna	318520	န	
 300348	14	113054	742	line	ပဗ္ဗဇ္ဇဗြဟ္မစရိယ	pabbajjabrahmacariya	318399	န	
@@ -355,11 +355,11 @@ id	book	after_id	pdf_page	page_how	headword	iast	pced_seq	label_pced	note
 300354	14	113054	745	line	ပဗ္ဗဇ္ဇာဥပသမ္ပဒါကမ္မ	pabbajjāupasampadākamma	318575	န	
 300355	14	113054	745	between	ပဗ္ဗဇ္ဇာကမ္မဋ္ဌာန	pabbajjākammaṭṭhāna	318451	န	
 300356	14	113054	746	line	ပဗ္ဗဇ္ဇာကရဏ	pabbajjākaraṇa	318455	န	
-300357	14	113054	746	between	ပဗ္ဗဇ္ဇာကာရဏ	pabbajjākāraṇa	318457	န	
+300357	14	113054	741	image	ပဗ္ဗဇ္ဇာကာရဏ	pabbajjākāraṇa	318457	န	page from the image check (brief §98)
 300358	14	113054	746	line	ပဗ္ဗဇ္ဇာကာလ	pabbajjākāla	318447	ပု	
 300359	14	113054	746	line	ပဗ္ဗဇ္ဇာကိစ္စ	pabbajjākicca	318462	န	
 300360	14	113054	746	line	ပဗ္ဗဇ္ဇာကောဋ္ဌာသ	pabbajjākoṭṭhāsa	318472	ပု	
-300361	14	113054	746	between	ပဗ္ဗဇ္ဇာက္ခန္ဓက	pabbajjākkhandhaka	318466	ပု	
+300361	14	113054	741	image	ပဗ္ဗဇ္ဇာက္ခန္ဓက	pabbajjākkhandhaka	318466	ပု	page from the image check (brief §98)
 300362	14	113054	746	between	ပဗ္ဗဇ္ဇာက္ခန္ဓကဝဏ္ဏနာ	pabbajjākkhandhakavaṇṇanā	318470	ထီ	
 300363	14	113054	746	line	ပဗ္ဗဇ္ဇာဂရဟဝစန	pabbajjāgarahavacana	318432	န	
 300364	14	113054	746	line	ပဗ္ဗဇ္ဇာဂုဏ	pabbajjāguṇa	318434	ပု	
@@ -442,7 +442,7 @@ id	book	after_id	pdf_page	page_how	headword	iast	pced_seq	label_pced	note
 300441	14	113054	756	line	ပဗ္ဗတ	pabbata	318632	တိ	
 300442	14	113054	756	line	ပဗ္ဗတဥတု	pabbatautu	318855	ပု၊ထီ	
 300443	14	113054	756	line	ပဗ္ဗတကစ္ဆ	pabbatakaccha	318676	ပု၊န	
-300444	14	113054	756	between	ပဗ္ဗတကဏ္ဏ	pabbatakaṇṇa	318685	ပု၊န	
+300444	14	113054	757	image	ပဗ္ဗတကဏ္ဏ	pabbatakaṇṇa	318685	ပု၊န	page from the image check (brief §98)
 300445	14	113054	757	line	ပဗ္ဗတကန္ဒရ	pabbatakandara	318678	ပု၊ထီ	
 300446	14	113054	757	line	ပဗ္ဗတကန္ဒရပဒရသာခါ	pabbatakandarapadarasākhā	318681	ထီ	
 300447	14	113054	757	line	ပဗ္ဗတကန္ဒရသရသာခါ	pabbatakandarasarasākhā	318683	ထီ	
@@ -538,7 +538,7 @@ id	book	after_id	pdf_page	page_how	headword	iast	pced_seq	label_pced	note
 300537	14	113054	768	line	ပဗ္ဗတာယတိ	pabbatāyati	318879	ကြိ	
 300538	14	113054	768	line	ပဗ္ဗတာရာမ	pabbatārāma	318795	ပု	
 300539	14	113054	768	line	ပဗ္ဗတာရောဟဏ	pabbatārohaṇa	318811	န	
-300540	14	113054	768	between	ပဗ္ဗတာရောဟန	pabbatārohana	318813	န	
+300540	14	113054	768	image	ပဗ္ဗတာရောဟန	pabbatārohana	318813	န	page from the image check (brief §98)
 300541	14	113054	768	line	ပဗ္ဗတိ	pabbati	318898	ကြိ	
 300542	14	113054	768	line	ပဗ္ဗတုတ္တမ	pabbatuttama	318914	ပု	
 300543	14	113054	769	line	ပဗ္ဗတူပတ္ထရ	pabbatūpatthara	318911	ပု	
@@ -597,3 +597,15 @@ id	book	after_id	pdf_page	page_how	headword	iast	pced_seq	label_pced	note
 300596	22	183581	678	image	သမူဟနာပေတိ	samūhanāpeti		ကာ၊ကြိ	read from the image, printed p. 638
 300597	22	185091	870	image	သမ္ဗာဓဋ္ဌာန	sambādhaṭṭhāna		န	read from the image, printed p. 830
 300598	22	185091	870	image	သမ္ဗာဓတရ	sambādhatara		တိ	read from the image, printed p. 830
+300599	21	164707	100	image	သဥမ္မဒန္တိဝရ	saümmadantivara		တိ	read from the image, printed p. 72 (brief §98)
+300600	23	188429	329	image	သဟကမ္မသမ္ဘာရ	sahakammasambhāra		တိ	read from the image, printed p. 294 (brief §98)
+300601	20	161061	558	image	ဝေဒနာဓိဋ္ဌာန	vedanādhiṭṭhāna		န	read from the image, printed p. 528 (brief §98)
+300602	23	191607	660	image	သိက္ခာပဒါဒါန	sikkhāpadādāna		န	read from the image, printed p. 625 (brief §98)
+300603	23	191607	660	image	သိက္ခာပဒါနုလောမိက	sikkhāpadānulomika		တိ	read from the image, printed p. 625 (brief §98)
+300604	23	191607	660	image	သိက္ခာပဒါဘာဝပ္ပသင်္ဂ	sikkhāpadābhāvappasaṅga		ပု	read from the image, printed p. 625 (brief §98)
+300605	24	210059	707	image	သူရိယတပနပဉှ	sūriyatapanapañha		ပု	read from the image, printed p. 673 (brief §98)
+300606	24	210059	707	image	သူရိယတေဇ	sūriyateja		ပု	read from the image, printed p. 673 (brief §98)
+300607	20	158087	190	image	ဝိဿဂ္ဂဗျဉ္ဇန	vissaggabyañjana		တိ	read from the image, printed p. 160 (brief §98)
+300608	24	206537	377	image	သုဒလိဒ္ဒ	sudalidda		ပု	read from the image, printed p. 343 (brief §98)
+300609	23	191607	660	image	သိက္ခာပဒါဝိရောဓ	sikkhāpadāvirodha		န	read from the image, printed p. 625 (brief §98)
+300610	23	191607	660	image	သိက္ခာပဒါဝိလင်္ဃန	sikkhāpadāvilaṅghana		န	read from the image, printed p. 625 (brief §98)

@@ -369,6 +369,37 @@ async function seed(token) {
     await page.evaluate(() => localStorage.removeItem('lang'));
     await ctx.close();
   }
+  // 10. full-text search (brief §98): "sesa" (no headword in se-) lists the articles that quote it, after the headword list;
+  //     "Show 50 more" adds lines; a hit opens the article with the Burmese definition shown and the word marked; ES and EN
+  ctx = await browser.newContext({ locale: 'en-GB', viewport: { width: 1024, height: 800 } }); page = await ctx.newPage();
+  await page.goto(B + '/');
+  for (const [lang, head] of [['en', 'In the articles: '], ['es', 'En los artículos: ']]) {
+    await page.evaluate(l => localStorage.setItem('lang', l), lang); await page.goto(B + '/');
+    await page.fill('#hq', 'sesa'); await page.waitForSelector('#ftres .fthead strong', { timeout: 15000 });
+    const f = await page.evaluate(() => {
+      const st = document.querySelector('#ftres .fthead strong').textContent, n = +st.replace(/\D/g, '');
+      const lines = document.querySelectorAll('#ftres a.res.ft'), first = lines[0];
+      return { st, n, lines: lines.length, after: !!document.querySelector('#hresults > .ftres:last-child'),
+               href: first ? first.getAttribute('href') : '', more: !!document.querySelector('#ftres button.ftmore') };
+    });
+    ok(f.st.startsWith(head) && f.n >= 50 && f.lines === Math.min(50, f.n) && f.after && /\?hl=sesa$/.test(f.href) && f.more === (f.n > 50),
+      `full-text "sesa" (${lang}): "${f.st}", ${f.lines} lines, after the headword list ${f.after}, first ${f.href}, more ${f.more}`);
+    if (lang === 'en') {
+      await page.click('#ftres button.ftmore'); await page.waitForTimeout(800);
+      const n2 = await page.evaluate(() => document.querySelectorAll('#ftres a.res.ft').length);
+      ok(n2 === Math.min(100, f.n), `full-text "Show more": ${n2} lines`);
+      await page.click('#ftres a.res.ft'); await page.waitForSelector('#art mark.hit', { timeout: 15000 });
+      const h = await page.evaluate(() => ({ marks: document.querySelectorAll('#art mark.hit').length, def: !!document.querySelector('#art .def'),
+        word: document.querySelector('#art mark.hit').textContent, url: location.pathname }));
+      ok(h.marks >= 1 && h.def && /^ses/i.test(h.word.normalize('NFD').replace(/[\u0300-\u036f]/g, '')) && h.url.startsWith('/w/'),
+        `full-text hit opens ${decodeURIComponent(h.url)}: definition shown ${h.def}, ${h.marks} marked ("${h.word}")`);
+    }
+  }
+  await page.fill('#hq', 'zzzq'); await page.waitForSelector('#ftres .fthead, #ftres .more', { timeout: 15000 }); await page.waitForTimeout(400);
+  const none = await page.evaluate(() => document.querySelector('#ftres').textContent);
+  ok(/0|ningún|any article/.test(none), `full-text, a word found nowhere: "${none.slice(0, 60)}"`);
+  await page.evaluate(() => localStorage.removeItem('lang'));
+  await ctx.close();
   await browser.close();
   console.log(`pass ${pass} fail ${fail}`);
   process.exitCode = fail ? 1 : 0;

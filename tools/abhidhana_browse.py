@@ -268,7 +268,9 @@ def build(OUT, vols, book_records, dump):
                                      for d in other])
     dump(OUT / 'data/nav.json', {'letters': nav, 'total': len(E), 'unsorted': len(other)})
     dump(OUT / 'data/abbr.json', ABBR)
-    matched = sum(1 for d in E for x in d.get('cx', []) if x >= 0)
+    from abhidhana_fulltext import build as fulltext_build   # the words inside the articles (brief §98)
+    fulltext_build(OUT, E, dump)
+    matched =sum(1 for d in E for x in d.get('cx', []) if x >= 0)
     inferred = sum(len(d.get('cg', [])) for d in E)
     cites = sum(len(d.get('c') or []) for d in E)
     print(f'browse: {len(E):,} entries, {ngroups:,} groups, {cn:,} chunks; '

@@ -144,6 +144,18 @@ Project are for advice and for what needs the Mac. What the new chat should know
   sheet D1).
 
 
+## After v0.31.0 (full-text search, the drafts, the image check, brief §98): for the editor, on the Mac
+
+1. **The editor tests**: `PLAYWRIGHT=~/abhidhana-pw/node_modules/playwright sh site/test/editor/run.sh`; expect API 28 / 0 and UI 93 + 5 = **98
+   pass, 0 fail** (step 10 is new: full-text; it passed 5 / 5 in the cloud container against the real build).
+2. **Commit, push, merge, tag v0.31.0** (the commands given in the session).
+3. **Live check** (`/data/version.json` 0.31.0): search *sesa* → *In the articles: 597*; a hit opens with the word marked; *pabbata* → the
+   headwords and *In the articles*; `/w/pabbata` has a Meaning box (*borrador*); `/w/sahakammasambhara` … the new rows (vol. 23 p. 294).
+4. **Padakosa** (a Padakosa chat): the message given in the session, pinned to the v0.31.0 commit.
+5. **Open**: the books without PCED probably hold more single missing headwords (4 in a sample of 30, §98): a systematic pass (every
+   printed head line against the index, on the image where the text cannot decide) is a larger job, to plan; 300243 and 300330 (vol.
+   14/1) to place; the agents' review notes in §98 for the final revision.
+
 ## After v0.30.0 (gaps in the index filled, brief §97): for the editor
 
 Done on the Mac in the session of 25 Nov (pages, articles 14 / 20 / 22, witness join 14, romanisation, a full site build: 221,752
@@ -158,7 +170,7 @@ headwords, no address changed). Left:
    --ids …` (our OCR, as for those books); draft, `merge NN --ids …`.
 4. **For the editor**: (a) ~~the home page's "221,154 headwords"~~: 221,752 (the editor, 25 Nov; v0.30.1);
    (b) **full-text search**: decided 25 Nov (the editor: plan it); planned in `docs/fulltext-search-plan.md` (v0.30.1); decided 25 Nov:
-   Pāḷi only, dictionary order, citations left out (recommended; see the plan); next, steps 1–2 in a cloud session; (c) the 41 + 0 unlocated added rows
+   Pāḷi only, dictionary order, citations left out (the editor took the recommendation); next, steps 1–2 in a cloud session; (c) the 41 + 0 unlocated added rows
    and the 250 unmatched head lines of the nine books (`tmp/gap97/nine-candidates.tsv`) for a later image check.
 
 ## After v0.29.4 (the 39 farther-body items of §89, the *သုတ္တန်* re-run, brief §95): for the editor, on the Mac, in this order

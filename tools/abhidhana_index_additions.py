@@ -18,7 +18,8 @@ Columns: id, book, after_id (the index row the gap follows; the rows of one gap 
 pdf_page and page_how (filled by `pages`: `line` = the headword begins a line on that page, exact or by the
 spelling folds; `between` = not found at a line start, given the page of the row found before it, so the
 article step's fuzzy pass looks for it there), headword (PCED's spelling, converted from Zawgyi), iast
-(PCED's own romanised key), pced_seq (the witness row), label_pced, note.
+(PCED's own romanised key), pced_seq (the witness row), label_pced, note. A row whose page_how is `image` keeps its page
+when `pages` runs again.
 Rows with no pced_seq were read from the page image (books without PCED; brief §97): page_how `image`, the
 headword as printed (homonym numbers left out, as the index does), iast by Aksharamukha; `build` keeps them.
 
@@ -159,7 +160,8 @@ def pages(book):
         if j0 is None: print(f'{before}: its head line not found on p. {arts.get(before, {}).get("pdf_page")}; all of it searched')
         if j1 is None: print(f'{after}: its head line not found on p. {arts.get(after, {}).get("pdf_page")}; all of it searched')
         got = place(span, g, fold)
-        for r in g: r['pdf_page'], r['page_how'] = got[r['id']]
+        for r in g:   # a page read on the image (page_how `image`, brief §98) is kept
+            if r.get('page_how') != 'image': r['pdf_page'], r['page_how'] = got[r['id']]
         n_line = sum(1 for r in g if r['page_how'] == 'line')
         per = {}
         for r in g: per[r['pdf_page']] = per.get(r['pdf_page'], 0) + 1

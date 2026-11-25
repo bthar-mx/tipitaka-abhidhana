@@ -23,6 +23,17 @@ Versions of the Tipiṭaka Pāḷi-Myanmā Abhidhāna project: the data, the too
 A release note says, per version: what changed, the brief's sections, and the headline figures
 (located, label + body, Meaning rows drafted / reviewed).
 
+## v0.31.0 — 2026-11-25
+
+- **Full-text search** (brief §98): words that are not headwords (e.g. *sesa*, which the printed dictionary has no article for) are
+  found inside the articles: below the headword list, *In the articles / En los artículos*, in dictionary order, 50 at a time; a hit opens
+  the article with the Burmese definition shown and the word marked. Romanised Pāḷi only, citations left out. `tools/abhidhana_fulltext.py`
+  (new), `tools/abhidhana_browse.py`, `site/src/assets/browse.js`, `style.css`; editor test step 10. 505,994 forms, 17.4 MB in 601 files.
+- **The 598 added rows drafted** (Meaning boxes, `drafted`): 587 from PCED in vol. 14/1, 11 from our text in vols. 20 and 22.
+- **12 more headwords the index lacks**, found by an image check in vols. 20, 21, 23, 24 (ids 300599–300610), drafted; an index spelling
+  error (14c 197553 is ပါသာဏဒဒ္ဒု) placed; 33 rows of vol. 14/1 placed or marked `same_as` from the image (`docs/homonyms-checked.tsv`).
+- Vol. 14/1: located 96.9%, label + body 92.4%. The site: **221,764 headwords** (home page and README updated).
+
 ## v0.30.1 — 2026-11-25
 
 - The home page (EN, ES and the page description) and the README give **221,752 headwords** (was 221,154: the app index's rows, before

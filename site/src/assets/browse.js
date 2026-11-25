@@ -33,7 +33,10 @@ Object.assign(T.en, {
   unlocated_p: 'The index places this headword on this page, but the OCR text did not yield its article (it is often inside the article before). The printed page shows it.',
   ocr_st: 'ocr · unchecked', loading: 'Loading…', load_fail: 'This part of the dictionary did not load. Reload the page to try again.',
   not_found_w: w => `No headword “${w}” was found.`, results_none: 'No headword matches. Roman letters ignore diacritics (nana finds ñāṇa); Burmese is matched as typed.',
-  results_more: 'Type more of the word to narrow the list.', report: 'Report an error', vol_short: 'vol.', pdf_p: 'PDF p.', print_p: 'p.',
+  results_more: 'Type more of the word to narrow the list.',
+  ft_head: n => `In the articles: ${n.toLocaleString('en')}`, ft_note: 'Pāḷi words quoted inside the definitions (romanised from unproofed OCR; citations left out). Diacritics ignored; the word and the words it begins.',
+  ft_more: n => `Show ${n} more`, ft_none: 'Not found inside any article.', ft_wait: 'Searching inside the articles…', ft_short: 'Type three letters or more to search inside the articles.',
+  report: 'Report an error', vol_short: 'vol.', pdf_p: 'PDF p.', print_p: 'p.',
   label_unknown: 'label not yet identified', printed_as: 'printed', lab_prov: 'provisional',
   hw_fixed: 'headword corrected; the index spells it', homonym: 'homonym', misfiled: 'the index files this headword on another page',
   pced_t: 'From the typed text of this dictionary in the Pali Canon E-Dictionary (PCED), not from our OCR.',
@@ -73,7 +76,10 @@ Object.assign(T.es, {
   unlocated_p: 'El índice sitúa esta entrada en esta página, pero el texto del OCR no dio su artículo (a menudo está dentro del anterior). La página impresa lo muestra.',
   ocr_st: 'ocr · sin revisar', loading: 'Cargando…', load_fail: 'Esta parte del diccionario no se cargó. Recargue la página para intentarlo de nuevo.',
   not_found_w: w => `No se encontró la entrada «${w}».`, results_none: 'Ninguna entrada coincide. En letras latinas no cuentan los diacríticos (nana encuentra ñāṇa); el birmano se busca tal como se escribe.',
-  results_more: 'Escriba más de la palabra para acotar la lista.', report: 'Informar de un error', vol_short: 'vol.', pdf_p: 'p. del PDF', print_p: 'p.',
+  results_more: 'Escriba más de la palabra para acotar la lista.',
+  ft_head: n => `En los artículos: ${n.toLocaleString('es')}`, ft_note: 'Palabras pāḷi citadas dentro de las definiciones (romanizadas de un OCR sin revisar; sin las citas de obras). No cuentan los diacríticos; la palabra y las que empiezan por ella.',
+  ft_more: n => `Mostrar ${n} más`, ft_none: 'No aparece dentro de ningún artículo.', ft_wait: 'Buscando dentro de los artículos…', ft_short: 'Escriba tres letras o más para buscar dentro de los artículos.',
+  report: 'Informar de un error', vol_short: 'vol.', pdf_p: 'p. del PDF', print_p: 'p.',
   label_unknown: 'categoría aún no identificada', printed_as: 'impreso', lab_prov: 'provisional',
   hw_fixed: 'entrada corregida; el índice la escribe', homonym: 'homónimo', misfiled: 'el índice registra esta entrada en otra página',
   pced_t: 'Del texto mecanografiado de este diccionario en el Pali Canon E-Dictionary (PCED), no de nuestro OCR.',
@@ -197,6 +203,7 @@ window.ABH = { ov, setEdits, current: () => cur.recs[cur.k], rows: (book, id) =>
 let cur = { li: 0, gi: 0, si: 0, recs: [], k: 0, off: 0 };   // the syllable shown and the entry in it
 const FRESH = { label: false, def: false, cit: -1, scanDelta: 0, qall: false, qevery: false, call: false, cevery: false, mall: false };   // per article
 let open = Object.assign({ drawer: false, settings: false }, FRESH);
+let HL = null;   // {q: folded word, sl: address}: an article opened from a full-text hit, the word marked in it
 const W = 160;
 
 async function subRecords(li, gi, si) {
@@ -315,18 +322,22 @@ function labelInfo(d) {
     (d.lo ? `<div class="muted small">OCR: <span class="my" lang="my">(${esc(d.lo)})</span></div>` : '') + '</div>';
 }
 // the Burmese definition with its Pāḷi spans in the chosen script
-function defHTML(d) {
-  // the Pāḷi spans in the definition, romanised; a "see X" span (d.see) links to X's article
+function defHTML(d, hl) {
+  // the Pāḷi spans in the definition, romanised; a "see X" span (d.see) links to X's article; hl: a full-text hit marked
   const b = d.b || ''; if (!d.sp) return esc(b);
+  const hit = r => hl && (fold(r || '').match(/[a-z]+/g) || []).some(w => w.startsWith(hl));
+  // the romanised passage with the words that begin with hl marked (Burmese script: the whole passage is marked)
+  const marked = r => !hit(r) ? esc(r) : (r || '').split(/([^\p{L}\p{M}]+)/u)
+    .map(w => /\p{L}/u.test(w) && fold(w).startsWith(hl) ? `<mark class="hit">${esc(w)}</mark>` : esc(w)).join('');
   const SEE = new Map((d.see || []).map(([r, sl]) => [r, sl]));
   const link = (r, inner) => SEE.has(r) ? `<a class="xref" href="/w/${encodeURIComponent(SEE.get(r))}">${inner}</a>` : inner;
   let out = '', k = 0;
   for (const [s, e, r] of d.sp) {
     out += esc(b.slice(k, s));
     const my = esc(b.slice(s, e));
-    out += S.script === 'my' ? link(r, my)
-      : S.script === 'both' ? link(r, `<span class="pali-my" lang="my">${my}</span> <span class="pali" lang="pi">(${esc(r)})</span>`)
-      : link(r, `<span class="pali" lang="pi" title="${my}">${esc(r)}</span>`);
+    out += S.script === 'my' ? (hit(r) ? `<mark class="hit">${link(r, my)}</mark>` : link(r, my))
+      : S.script === 'both' ? link(r, `<span class="pali-my" lang="my">${my}</span> <span class="pali" lang="pi">(${marked(r)})</span>`)
+      : link(r, `<span class="pali" lang="pi" title="${my}">${marked(r)}</span>`);
     k = e;
   }
   return out + esc(b.slice(k));
@@ -588,11 +599,12 @@ function article() {
   H.push(`<section><h2>${esc(t('meaning'))}</h2>` + (tr
     ? `<div class="meaning"><div lang="${LANG}">${sensesHTML(tr.x)}</div>${mstatHTML(tr)}${tr.date ? `<div class="muted small">${esc(t('edited_on', tr.date.slice(0, 10)))}</div>` : ''}</div>`
     : `<div class="meaning empty"><span class="chip">${esc(t('not_translated'))}</span><span>${esc(t('trans_note'))}</span></div>`));
-  const showDef = d.b && (S.defs === 'show' || (S.defs === 'collapse' && open.def));
-  if (d.b && S.defs === 'collapse' && !open.def) H.push(`<button type="button" class="btn" data-def="1" aria-expanded="false">${esc(t('show_def'))}</button>`);
+  const hl = HL && HL.sl === d.sl ? HL.q : null;   // opened from a full-text hit: the definition shown, the word marked
+  const showDef = d.b && (hl || S.defs === 'show' || (S.defs === 'collapse' && open.def));
+  if (d.b && !hl && S.defs === 'collapse' && !open.def) H.push(`<button type="button" class="btn" data-def="1" aria-expanded="false">${esc(t('show_def'))}</button>`);
   if (showDef) {
     H.push((S.defs === 'collapse' ? `<button type="button" class="btn small" data-def="0" aria-expanded="true">${esc(t('hide_def'))}</button>` : '') +
-      `<div class="def my" lang="my">${defHTML(d)}</div>` + ((d.cf || []).includes('body')
+      `<div class="def my" lang="my">${defHTML(d, hl)}</div>` + ((d.cf || []).includes('body')
         ? `<div class="muted small"><span class="chip c-ok">${esc(t('corrected_f'))}</span> ${esc(t('corrected_t'))}</div>`
         : `<div class="muted small">${esc(t('ocrnote'))}</div>`));
   }
@@ -636,6 +648,7 @@ function article() {
     `<a class="report" href="${reportURL(d)}" target="_blank" rel="noopener">${esc(t('report'))}</a></div>`);
   $('art').innerHTML = `<article>${H.join('')}</article><footer class="site-foot"></footer>`;
   fillFoot($('art')); foldCits();
+  if (hl) { const m = $('art').querySelector('mark.hit'); if (m) m.scrollIntoView({ block: 'center' }); }
   if (window.EDITOR) EDITOR.decorate(d);   // editor mode (assets/editor.js), only when the editor is signed in
 }
 
@@ -677,6 +690,54 @@ async function step(dir) {
   await show(li, gi, si, dir > 0 ? 'first' : 'last'); route();
 }
 
+// --- full-text: the Pāḷi words inside the articles (data/ft/, tools/abhidhana_fulltext.py; brief §98) -----------
+const FTN = 50;   // result lines shown at a time
+const ftDec = s => { let g = 0; return s.split(',').map(x => (g += parseInt(x, 36))); };
+async function ftFind(fq) {   // the ordinals (dictionary order) of the articles holding a word that begins with fq
+  const M = await get('/data/ft/meta.json');
+  const ks = M.keys.filter(k => fq.startsWith(k) || k.startsWith(fq));
+  const shards = await Promise.all(ks.map(k => get(`/data/ft/s/${encodeURIComponent(k)}.json`)));
+  const hit = new Set();
+  for (const S of shards) for (const w in S) if (fold(w).startsWith(fq)) for (const g of ftDec(S[w])) hit.add(g);
+  return { M, gs: [...hit].sort((a, b) => a - b) };
+}
+async function ftLines(M, gs) {   // [address, IAST, Burmese, book, PDF page, (book of a supplement row)] for each ordinal
+  const blocks = [...new Set(gs.map(g => Math.floor(g / M.block)))];
+  const got = new Map(await Promise.all(blocks.map(async n => [n, await get(`/data/ft/d/${n}.json`)])));
+  return gs.map(g => got.get(Math.floor(g / M.block))[g % M.block]);
+}
+const ftLine = (r, q) => `<a class="res ft" href="/w/${encodeURIComponent(r[0])}?hl=${encodeURIComponent(q)}"><span>` +
+  (S.script === 'my' ? `<span class="my" lang="my">${esc(r[2])}</span>` : `<span class="pl" lang="pi">${esc(r[1])}</span>${S.script === 'both' ? ` <span class="my sub" lang="my">${esc(r[2])}</span>` : ''}`) +
+  `</span><span class="pg">${esc(t('vol_short'))} ${esc(volLabel(r[3], r[5]))} · ${esc(pageStr(r[3], r[4]))}</span></a>`;
+let FT = null, FTSEQ = 0;   // the open full-text list: {q, M, gs, shown, sec}; FTSEQ drops a search a newer one replaced
+async function ftSection(q, fq, box) {
+  const seq = ++FTSEQ;
+  const sec = document.createElement('div'); sec.className = 'ftres'; sec.id = 'ftres'; box.appendChild(sec);
+  if (fq.length < 3) { sec.innerHTML = `<div class="more">${esc(t('ft_short'))}</div>`; return; }
+  sec.innerHTML = `<div class="more">${esc(t('ft_wait'))}</div>`;
+  try {
+    const { M, gs } = await ftFind(fq);
+    const rows = await ftLines(M, gs.slice(0, FTN));
+    if (seq !== FTSEQ || $('hq').value.trim() !== q || !sec.isConnected) return;
+    FT = { q, M, gs, shown: rows.length, sec };
+    sec.innerHTML = `<div class="fthead"><strong>${esc(t('ft_head', gs.length))}</strong><span class="muted small">${esc(t('ft_note'))}</span></div>` +
+      (gs.length ? `<div class="ftlist">${rows.map(r => ftLine(r, q)).join('')}</div>` : `<div class="more">${esc(t('ft_none'))}</div>`);
+    ftMoreButton();
+  } catch (e) { if (seq === FTSEQ && sec.isConnected) sec.innerHTML = `<div class="more">${esc(t('load_fail'))}</div>`; }
+}
+function ftMoreButton() {
+  const left = FT.gs.length - FT.shown;
+  if (left > 0) FT.sec.insertAdjacentHTML('beforeend', `<button type="button" class="more ftmore">${esc(t('ft_more', Math.min(FTN, left)))}</button>`);
+}
+async function ftMore() {
+  if (!FT || !FT.sec.isConnected) return;
+  const btn = FT.sec.querySelector('button.ftmore'); if (btn) btn.remove();
+  const part = FT.gs.slice(FT.shown, FT.shown + FTN); FT.shown += part.length;
+  const rows = await ftLines(FT.M, part);
+  FT.sec.querySelector('.ftlist').insertAdjacentHTML('beforeend', rows.map(r => ftLine(r, FT.q)).join(''));
+  ftMoreButton();
+}
+
 // --- search: prefix first, then substring; one letter's shard at a time -------------------------
 const FL = LETTERS.map(l => fold(l));
 async function search(q) {
@@ -712,6 +773,7 @@ async function search(q) {
       (S.script === 'my' ? `<span class="my" lang="my">${esc(r[2])}</span>` : `<span class="pl" lang="pi">${esc(r[1])}</span>${S.script === 'both' ? ` <span class="my sub" lang="my">${esc(r[2])}</span>` : ''}`) +
       `</span><span class="pg">${esc(t('vol_short'))} ${esc(volLabel(r[3], r[6]))} · ${esc(pageStr(r[3], r[4]))}</span></a>`).join('') +
       (out.length ? (pre.length + sub.length > 60 ? `<div class="more">${esc(t('results_more'))}</div>` : '') : `<div class="more">${esc(t('results_none'))}</div>`);
+    if (!isMy) ftSection(q, fq, box);   // then the same word inside the articles
   } catch (e) { box.innerHTML = `<div class="more">${esc(t('load_fail'))}</div>`; }
 }
 
@@ -750,8 +812,14 @@ app.addEventListener('click', async e => {
   if (el.matches('a[href^="/w/"]')) { e.preventDefault(); $('hresults').hidden = true; await gotoSlug(el.getAttribute('href').slice(3), true); route(); window.scrollTo({ top: 0 }); }
 });
 document.addEventListener('click', e => {   // search results live in the header, outside #app
+  if (e.target.closest('#hresults button.ftmore')) { ftMore(); return; }
   const a = e.target.closest('#hresults a.res');
-  if (a) { e.preventDefault(); $('hresults').hidden = true; gotoSlug(a.getAttribute('href').slice(3), true).then(() => route()); }
+  if (a) {
+    e.preventDefault(); $('hresults').hidden = true;
+    const u = new URL(a.href), hl = u.searchParams.get('hl'), sl = u.pathname.slice(3);
+    HL = hl ? { q: fold(hl), sl: decodeURIComponent(sl) } : null;
+    gotoSlug(sl, true).then(() => route());
+  }
   else if (!e.target.closest('#hresults, #hq')) $('hresults').hidden = true;
 });
 let tm;
@@ -775,7 +843,7 @@ langHooks.push(() => { if (NAV) renderAll(); if ($('hq').value.trim()) search($(
 async function start() {
   const m = /^\/w\/(.+)$/.exec(location.pathname), b = /^\/browse\/([^/]+)(?:\/([^/]+))?/.exec(location.pathname);
   const q = new URLSearchParams(location.search).get('q');
-  if (m) return gotoSlug(m[1]);
+  if (m) { const hl = new URLSearchParams(location.search).get('hl'); HL = hl ? { q: fold(hl), sl: decodeURIComponent(m[1]) } : null; return gotoSlug(m[1]); }
   if (b) {
     const li = LETTERS.indexOf(decodeURIComponent(b[1]));
     if (li >= 0) {

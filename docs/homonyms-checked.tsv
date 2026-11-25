@@ -456,3 +456,32 @@ id	book	run	printed	verdict	pdf_page	line	note
 166995	21	166995	1	wrong now	344	သင်္ဂဟေတုံ(ထီ၊၇)[သံ+ဂဟ+တ	H172; two readers agree; first: 1|b; second: 1|b
 166996	21	166995	2	right now	344	သင်္ဂဟေတုံ(ပ)[သင်္ဂ+ဟေတု	H172; two readers agree; first: 2|c; second: 2|c
 300588	20	157792	²	wrong now	160	ဝိသေသာ(တိ)	brief §97; image read in the session (printed p. 130, right column: ဝိသေသ² (တိ) [ဝိသေသ + ဏ]); added row, the index lacks it
+300099	14	300099	ပပုန္နာဂ=ပပုန္နာဍ	wrong now	708	ပပုန္နာဂ=ပပုန္နာ	brief §98: added row (index-additions.tsv) read on the image; Right column, p708. Second form read as ပပုန္နာဍ (the article says the correct reading has the muddhaja third letter); OCR gives ဋ. OCR line
+300171	14	300171	ပဗုဇ္ဈိံသု	wrong now	717	ပဗုဇ္ဈိုသုကြ)၃၈.	brief §98: added row (index-additions.tsv) read on the image; Right column, p717: ပဗုဇ္ဈိံသု(ကြိ)[ပ+ဗုဓ+ယ+ဥံ]. OCR line is damaged but is this head line.
+300179	14	300179	ပဗုဒ္ဓပဗုဒ္ဓက္ခဏ	wrong now	718	ပဗုဒ္ဓပဗုဒ္ဓက္ခဏ	brief §98: added row (index-additions.tsv) read on the image; PCED spelling ပဗုဒ္ဓပဒ္ဓက္ခဏ (pabuddhapaddhakkhaṇa) is a corruption of the printed head ပဗုဒ္ဓပဗုဒ္ဓက္ခဏ (right column, p718); no head with 
+300196	14	300196	ပဗောဓေတိ=ပဗောဓယတိ	wrong now	719	ပဗောဓေတိ=-ပဗောဓယ	brief §98: added row (index-additions.tsv) read on the image; Last head, right column, p719; printed with = alternative ပဗောဓယတိ.
+300301	14	300301	ပဗ္ဗဇိတာနုရူပနိဝါသောကာသ	wrong now	737	ပဗ္ဗဇိတာနုရူပနိဝါသောကာသ(ပု)	brief §98: added row (index-additions.tsv) read on the image; Right column, p737. Printed with ရူ (long ū); PCED has ရု (pabbajitānurupa-), a spelling slip.
+300329	14	300329	ပဗ္ဗဇေယျံ	wrong now	740	ပဗ္ဗဇေယျ(ကြိ)ပ+ဝ	brief §98: added row (index-additions.tsv) read on the image; Right column, p740: ပဗ္ဗဇေယျံ(ကြိ)[ပ+ဝဇ+အ+ဧယျံ]; OCR dropped the niggahita on the head. The next head ပဗ္ဗဇေယျ (no ံ) is OCR line 40.
+300372	14	300372	ပဗ္ဗဇ္ဇာဒိဂုဏ	wrong now	747	ပဗ္ဗဇ္ဇာဒိဂဏ(၂)ဗ	brief §98: added row (index-additions.tsv) read on the image; L column, head ပဗ္ဗဇ္ဇာဒိဂုဏ(ပု); OCR reads ဂဏ for ဂုဏ.
+300391	14	300391	ပဗ္ဗဇ္ဇာနုရူပ	wrong now	749	ပဗ္ဗဇ္ဇာနုရူပတိ)	brief §98: added row (index-additions.tsv) read on the image; L column, head ပဗ္ဗဇ္ဇာနုရူပ(တိ), second article on the page.
+300425	14	300425	ပဗ္ဗဇ္ဇာသဟစရိတာ	wrong now	752	ပဗ္ဗဇာသဟစရိတာ၊လိ	brief §98: added row (index-additions.tsv) read on the image; R column, head ပဗ္ဗဇ္ဇာသဟစရိတာ(ထီ); OCR line damaged (ပဗ္ဗဇာ..., label misread) but recognisable.
+300462	14	300462	ပဗ္ဗတစာရီ	wrong now	759	ရီ(တိ)ပဗ္ဗတ+စာရီ	brief §98: added row (index-additions.tsv) read on the image; R column, first head ပဗ္ဗတစာရီ(တိ)[ပဗ္ဗတ+စာရီ။ ထီ-၌ ပဗ္ဗတစာရိနီ။]. OCR split this head line in two: line 34 (given) has the rest of the line
+300479	14	300479	ပဗ္ဗတပဗ္ဘာရ	wrong now	761	ပဗ္ဗတပဗ္ဗာရ(၂)ပဗ	brief §98: added row (index-additions.tsv) read on the image; R column, head ပဗ္ဗတပဗ္ဘာရ(ပု); OCR reads ပဗ္ဗာရ for ပဗ္ဘာရ.
+300524	14	300524	ပဗ္ဗတသညာ	wrong now	766	ပဗုတသ(ထီ)ပဗ္ဗတ+သ	brief §98: added row (index-additions.tsv) read on the image; R column, last head ပဗ္ဗတသညာ(ထီ); OCR line badly damaged (ပဗုတသ (ထီ)...) but its position and label match.
+300026	14	300026	ပပဋိ(က)ကာဂန္ဓ	wrong now	700	ပပဋိ(က)ကာဂန္ဓ(၇)	brief §98: printed ပပဋိ(က)ကာဂန္ဓ, PCED split it in two (with 300033)
+300033	14	300026	ပပဋိ(က)ကာဂန္ဓ	same_as	700	same_as:300026	brief §98: printed only as a variant inside the head of 300026
+300059	14	300032		same_as	700	same_as:300032	brief §98: printed only as a variant inside the head of 300032
+300357	14	300336	ပဗ္ဗဇ္ဇ(ဇ္ဇာ)ကာရဏ	same_as	741	same_as:300336	brief §98: printed only as a variant inside the head of 300336
+300361	14	300338	ပဗ္ဗဇ္ဇ(ဇ္ဇာ)က္ခန္ဓက	same_as	741	same_as:300338	brief §98: printed only as a variant inside the head of 300338
+300540	14	300539	ပဗ္ဗတာရောဟဏ(န)	same_as	768	same_as:300539	brief §98: printed only as a variant inside the head of 300539
+300027	14	300027	ပပဋိ(က)ကာဇာတ	wrong now	701	ပပဋိ(က)ကာဇာတ(တိ)	brief §98: printed ပပဋိ(က)ကာဇာတ (image read in the session, PDF 701 left column); PCED split it in two
+300034	14	300027	ပပဋိ(က)ကာဇာတ	same_as	701	same_as:300027	brief §98: printed only inside the head ပပဋိ(က)ကာဇာတ
+300028	14	300028	ပပဋိ(က)ကာဋ္ဌာန	wrong now	701	ပပဋိ(က)ကာဋ္ဌာန(န)	brief §98: printed ပပဋိ(က)ကာဋ္ဌာန (image read in the session, PDF 701 left column); PCED split it in two
+300035	14	300028	ပပဋိ(က)ကာဋ္ဌာန	same_as	701	same_as:300028	brief §98: printed only inside the head ပပဋိ(က)ကာဋ္ဌာန
+300029	14	300029	ပပဋိ(က)ကာဋ္ဌာနိက	wrong now	701	ပပဋိ(က)ကာဋ္ဌာနိက(	brief §98: printed ပပဋိ(က)ကာဋ္ဌာနိက (image read in the session, PDF 701 left column); PCED split it in two
+300036	14	300029	ပပဋိ(က)ကာဋ္ဌာနိက	same_as	701	same_as:300029	brief §98: printed only inside the head ပပဋိ(က)ကာဋ္ဌာနိက
+300030	14	300030	ပပဋိ(က)ကာဋ္ဌာနိယ	wrong now	701	ပပဋိ(က)ကာဋ္ဌာနိယ(	brief §98: printed ပပဋိ(က)ကာဋ္ဌာနိယ (image read in the session, PDF 701 left column); PCED split it in two
+300037	14	300030	ပပဋိ(က)ကာဋ္ဌာနိယ	same_as	701	same_as:300030	brief §98: printed only inside the head ပပဋိ(က)ကာဋ္ဌာနိယ
+300031	14	300031	ပပဋိ(က)ကာပ္ပတ္တ	wrong now	701	ပပဋိ(က)ကာပ္ပတ္တ(	brief §98: printed ပပဋိ(က)ကာပ္ပတ္တ (image read in the session, PDF 701 left column); PCED split it in two
+300038	14	300031	ပပဋိ(က)ကာပ္ပတ္တ	same_as	701	same_as:300031	brief §98: printed only inside the head ပပဋိ(က)ကာပ္ပတ္တ
+197553	14c	197553	ပါသာဏဒဒ္ဒု	wrong now	544	နသာဏဒဒ္ဒု(ထီ)	brief §98: the index spells this row ပါသာဏဒဏ္ဍ (a repeat of 197552); printed ပါသာဏဒဒ္ဒု (ထီ) [ပါသာဏ+ဒဒ္ဒု] (image)
