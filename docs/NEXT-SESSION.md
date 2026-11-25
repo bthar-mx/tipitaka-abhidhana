@@ -146,7 +146,7 @@ Project are for advice and for what needs the Mac. What the new chat should know
 
 ## After v0.31.3 (the tooltip reworded, brief §100): for the editor
 
-1. Commit on a branch, push, PR, merge, pull, tag v0.31.3. Live: hover the jump line after *sesa*: *Artículos cuya definición cita la palabra …*.
+1. Commit on a branch, push, PR, merge, pull, tag v0.31.3. Live: hover the jump line after *sesa*: *Artículos en cuya definición aparece la palabra …*.
 
 ## After v0.31.2 (a tooltip on the jump line, brief §100): for the editor
 

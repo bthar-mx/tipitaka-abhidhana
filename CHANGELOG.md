@@ -26,9 +26,9 @@ A release note says, per version: what changed, the brief's sections, and the he
 ## v0.31.3 — 2026-11-25
 
 - The jump line's tooltip shortened: it said the headwords were *above* (*las palabras de arriba*), but the line is at the top of the box
-  and the headwords are below it. Now it explains only the number: *Artículos cuya definición cita la palabra, o una que empieza con
-  ella, como pāḷi (…). Haga clic para ir a la lista.* / *Articles whose definitions quote the word, or a word beginning with it, as
-  Pāḷi (…). Click to go to the list.* (the editor, 25 Nov; brief §100). Site only; the UI test's patterns made case-insensitive.
+  and the headwords are below it. Now it explains only the number: *Artículos en cuya definición aparece la palabra, o una que empieza
+  con ella (…). Haga clic para ir a la lista.* / *Articles whose definitions contain the word, or a word beginning with it (…). Click
+  to go to the list.* (the editor, 25 Nov; brief §100). Site only; the UI test's patterns made case-insensitive.
 
 ## v0.31.2 — 2026-11-25
 

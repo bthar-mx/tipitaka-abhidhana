@@ -385,7 +385,7 @@ async function seed(token) {
     ok(f.st.startsWith(head) && f.n >= 50 && f.lines === Math.min(50, f.n) && f.after && /\?hl=sesa$/.test(f.href) && f.more === (f.n > 50),
       `full-text "sesa" (${lang}): "${f.st}", ${f.lines} lines, after the headword list ${f.after}, first ${f.href}, more ${f.more}`);
     const j = await page.evaluate(() => { const b = document.querySelector('#hresults > button.ftjump'); return b ? { first: b === document.querySelector('#hresults').firstElementChild, text: b.textContent, tip: b.title } : null; });
-    ok(j && j.first && /\d/.test(j.text) && (lang === 'en' ? /articles whose definitions/i : /artículos cuya definición/i).test(j.tip),
+    ok(j && j.first && /\d/.test(j.text) && (lang === 'en' ? /articles whose definitions/i : /artículos en cuya definición/i).test(j.tip),
       `full-text jump line at the top, with its tooltip (${lang}): ${j ? '"' + j.text + '", title ' + j.tip.length + ' chars' : 'missing'}`);
     if (lang === 'en') {
       await page.click('#hresults button.ftjump'); await page.waitForTimeout(400);
