@@ -157,8 +157,8 @@ headwords, no address changed). Left:
    --shards 2 --work tmp/meanings/v14add` (PCED source, as for the rest of 14/1); 20 and 22 — the same with `prep 20 --ids …` / `prep 22
    --ids …` (our OCR, as for those books); draft, `merge NN --ids …`.
 4. **For the editor**: (a) ~~the home page's "221,154 headwords"~~: 221,752 (the editor, 25 Nov; v0.30.1);
-   (b) **full-text search**: decided 25 Nov (the editor: plan it); planned in `docs/fulltext-search-plan.md` (v0.30.1), its three
-   questions for the editor first, then steps 1–2 in a cloud session; (c) the 41 + 0 unlocated added rows
+   (b) **full-text search**: decided 25 Nov (the editor: plan it); planned in `docs/fulltext-search-plan.md` (v0.30.1); decided 25 Nov:
+   Pāḷi only, dictionary order, citations left out (recommended; see the plan); next, steps 1–2 in a cloud session; (c) the 41 + 0 unlocated added rows
    and the 250 unmatched head lines of the nine books (`tmp/gap97/nine-candidates.tsv`) for a later image check.
 
 ## After v0.29.4 (the 39 farther-body items of §89, the *သုတ္တန်* re-run, brief §95): for the editor, on the Mac, in this order

@@ -41,8 +41,13 @@ OCR damaged may be missed or misspelt; nothing is proofread.
 2. The page: the second list, snippets, highlighting, ES / EN strings (cloud session).
 3. The editor tests on the Mac; the live check; brief section, VERSION (MINOR: a new site feature), CHANGELOG.
 
-## Questions for the editor (before step 1)
+## Decided (the editor, 25 Nov 2026)
 
-1. Search the Spanish and English drafts too (marked as drafts), or the Pāḷi only?
-2. Hits in dictionary order (proposed) or most frequent first?
-3. Leave out the commentary abbreviations the span finder reads as Pāḷi (*ṭṭha* in 35,206 articles), or keep every form?
+1. **Pāḷi only**: the Spanish and English drafts are not searched.
+2. **Hits in dictionary order.**
+3. **The commentary abbreviations** (recommended, the editor to confirm): leave out the Pāḷi passages that lie inside a parsed
+   citation, and nothing by frequency. Measured (a passage's Burmese found in the article's citation text, a rough test): of 55,181
+   occurrences of *ṭṭha*, 32,486 are inside a citation; of *ca* 2 in 25,294, *na* 19 in 23,081, *ti* 3 in 25,878, *vā* 3 in 19,266,
+   *sesa* 0 in 51, *pabbata* 0 in 96. A frequency cut-off would drop real words (*ca*, *na*, *vā*); the citation test drops almost only
+   abbreviations. For the rest (citations the parser missed), a short stop-list of abbreviation fragments that are not Pāḷi words
+   (*ṭṭha* …), taken from `docs/citation-abbreviations.tsv` and listed in the builder for review.
