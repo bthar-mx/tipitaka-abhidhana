@@ -8,7 +8,7 @@ pp. 6–7), among them မစိုးရိမ် (Masoeyein) monastery in Mand
 volumes by the Department for the Promotion and Propagation of the Sāsana, Ministry of
 Religious Affairs, Union of Myanmar. Its history is in [`docs/history.md`](docs/history.md).
 
-**All 29 books are now digitised**: 221,154 index headwords over 25,700 pages; 94.1% of the
+**All 29 books are now digitised**: 221,752 headwords over 25,700 pages (the app index's 221,154 and 598 it lacks, `docs/index-additions.tsv`); 94.1% of the
 articles are located in the OCR and 88.1% have both their grammatical label and their definition.
 **Nothing is proofread.** Read and search it at **[abhidhana.buddha-dhamma.net](https://abhidhana.buddha-dhamma.net)**,
 article by article beside the printed page (the site's source is in [`site/`](site/)); the data

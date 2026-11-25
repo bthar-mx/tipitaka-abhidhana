@@ -156,9 +156,9 @@ headwords, no address changed). Left:
 3. **The 598 Meaning rows** (a Cowork chat or the cloud): 14 — `python3 tools/abhidhana_meanings.py prep 14 --ids docs/index-additions.tsv
    --shards 2 --work tmp/meanings/v14add` (PCED source, as for the rest of 14/1); 20 and 22 — the same with `prep 20 --ids …` / `prep 22
    --ids …` (our OCR, as for those books); draft, `merge NN --ids …`.
-4. **For the editor**: (a) the home page's "221,154 headwords" (`site/src/index.html`, twice): keep the index's figure or say 221,752?
-   (b) **full-text search**: words that are not headwords (*sesa*, which the printed dictionary has no article for) can only be found
-   inside articles; a search over the articles' romanised Pāḷi is a new site feature, to be decided; (c) the 41 + 0 unlocated added rows
+4. **For the editor**: (a) ~~the home page's "221,154 headwords"~~: 221,752 (the editor, 25 Nov; v0.30.1);
+   (b) **full-text search**: decided 25 Nov (the editor: plan it); planned in `docs/fulltext-search-plan.md` (v0.30.1), its three
+   questions for the editor first, then steps 1–2 in a cloud session; (c) the 41 + 0 unlocated added rows
    and the 250 unmatched head lines of the nine books (`tmp/gap97/nine-candidates.tsv`) for a later image check.
 
 ## After v0.29.4 (the 39 farther-body items of §89, the *သုတ္တန်* re-run, brief §95): for the editor, on the Mac, in this order
