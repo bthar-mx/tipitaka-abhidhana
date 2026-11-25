@@ -19,6 +19,8 @@ pdf_page and page_how (filled by `pages`: `line` = the headword begins a line on
 spelling folds; `between` = not found at a line start, given the page of the row found before it, so the
 article step's fuzzy pass looks for it there), headword (PCED's spelling, converted from Zawgyi), iast
 (PCED's own romanised key), pced_seq (the witness row), label_pced, note.
+Rows with no pced_seq were read from the page image (books without PCED; brief §97): page_how `image`, the
+headword as printed (homonym numbers left out, as the index does), iast by Aksharamukha; `build` keeps them.
 
 Read by tools/abhidhana_articles.py (the rows join the index rows of their page, so the article step cuts
 their text out of the host's) and tools/abhidhana_witness_join.py (they pair with PCED as index rows do).
@@ -43,7 +45,8 @@ def additions(book=None):
     for r in csv.DictReader(TSV.open(encoding='utf-8'), delimiter='\t'):
         if book and r['book'] != book: continue
         r = dict(r)
-        for k in ('id', 'after_id', 'pced_seq'): r[k] = int(r[k])
+        for k in ('id', 'after_id'): r[k] = int(r[k])
+        r['pced_seq'] = int(r['pced_seq']) if r.get('pced_seq') else None   # empty: read from the image
         r['pdf_page'] = int(r['pdf_page']) if r.get('pdf_page') else None
         r['headword'] = nfc(r['headword'])
         out.append(r)
@@ -76,7 +79,7 @@ def build():
     """the PCED entries whose romanised key sorts strictly between the two index rows around each gap"""
     key = _key()
     W = [json.loads(l) for l in open(ROOT / 'witness/pced_k.jsonl', encoding='utf-8')]
-    old = {r['pced_seq']: r for r in additions()}
+    old = {r['pced_seq']: r for r in additions() if r['pced_seq']}
     rows = []
     for book, before, after, first, _ in GAPS:
         ia = _iast_of(book, {before, after})
@@ -90,6 +93,7 @@ def build():
                          'label_pced': d.get('label', ''), 'note': o.get('note', '')})
         print(f'vol. {book}: {len(got)} PCED entries between {before} {ia[before]} and {after} {ia[after]} '
               f'(ids {first}–{first + len(got) - 1})')
+    rows += [r for r in additions() if not r['pced_seq']]   # the rows read from the image are kept as they are
     write(rows)
 
 
@@ -172,7 +176,7 @@ def check():
     if ids and min(ids) <= 221154: bad.append('an id inside the app index range (1-221154)')
     key = _key()
     for book, before, after, first, _ in GAPS:
-        g = [r for r in rows if r['book'] == book and r['after_id'] == before]
+        g = [r for r in rows if r['book'] == book and r['after_id'] == before and r['pced_seq']]
         ks = [key(r['iast']) for r in g]
         if ks != sorted(ks): bad.append(f'{book}: rows out of key order')
         if [r['id'] for r in g] != list(range(first, first + len(g))): bad.append(f'{book}: ids not consecutive from {first}')
@@ -180,6 +184,10 @@ def check():
         print(f'vol. {book}, after {before}: {len(g)} rows, ids {first}–{first + len(g) - 1}; '
               f'pages {"not yet set (run `pages %s` on the Mac)" % book if un else "set"}'
               + (f"; {sum(1 for r in g if r['page_how'] == 'between')} placed between" if not un else ''))
+    img = [r for r in rows if not r['pced_seq']]
+    if any(not r['pdf_page'] for r in img): bad.append('a row read from the image has no pdf_page')
+    if img: print(f'read from the image: {len(img)} rows in {len({(r["book"], r["pdf_page"]) for r in img})} pages '
+                  f'(ids {min(r["id"] for r in img)}–{max(r["id"] for r in img)})')
     print('check: ' + ('; '.join(bad) if bad else 'ok'))
     return not bad
 
