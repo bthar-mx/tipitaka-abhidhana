@@ -115,7 +115,10 @@ ID_PAGE_FIX = {'4c': [(176418, 176427, 613)], '06': [(58264, 58277, 852)],
                # 10: ဒသ² is printed on PDF 219 (၁၇၁), ဒသ³⁻⁵ on 220 (image, 25 Sep 2026)
                '10': [(81975, 81975, 219)],
                '22': [(178676, 178682, 169), (178835, 178847, 184), (179577, 179585, 253),
-                      (185264, 185267, 894)],
+                      (185264, 185267, 894),
+                      # 183581 သမူဟနတု: the index says p. 639, printed on p. 638 = PDF 678 with the five
+                      # headwords the index lacks (docs/index-additions.tsv; image, 25 Nov 2026, brief §97)
+                      (183581, 183581, 678)],
                '23': [(187848, 187857, 275), (187871, 187878, 277), (189039, 189048, 390),
                       (189502, 189513, 436), (190351, 190359, 523)],
                '24': [(206034, 206036, 329), (208187, 208194, 542)],
@@ -1455,6 +1458,21 @@ def main(book):
             if a <= wid <= b: q = pq; misfiled[wid] = p
         idx.setdefault(q, []).append((wid, nfc(w)))
         if q not in ipage or wid not in misfiled: ipage[q] = p
+    # headwords the app's index lacks (docs/index-additions.tsv, brief §97): each joins the rows of its page, after
+    # the index row it follows (or at the head of the page when that row is on an earlier one), in table order
+    from abhidhana_index_additions import additions
+    added, unpaged, lastat = set(), 0, {}
+    for a in additions(book):
+        q = a['pdf_page']
+        if not q: unpaged += 1; continue
+        L = idx.setdefault(q, [])
+        if q in lastat: at = lastat[q] + 1
+        else: at = next((k + 1 for k, (w, _) in enumerate(L) if w == a['after_id']), 0)
+        L.insert(at, (a['id'], a['headword'])); lastat[q] = at; added.add(a['id'])
+        ipage.setdefault(q, q - start)
+    if unpaged: print(f'docs/index-additions.tsv: {unpaged} rows of vol. {book} have no pdf_page and are left out: '
+                      f'run `python3 tools/abhidhana_index_additions.py pages {book}` first')
+    if added: print(f'docs/index-additions.tsv: {len(added)} rows added to vol. {book}\'s index rows')
     pdir = ROOT / f'ocr/{book}/pages'
     pages = {}
     for p in sorted(idx):
@@ -1485,6 +1503,7 @@ def main(book):
     iasts = {wid: transliterate.process('Burmese', 'IAST', re.sub('[' + MY_DIGITS + r'\d\s]', '', hw)).replace('ṃ', 'ṁ')
              for p in order for wid, hw in idx[p]}
     allhw = {re.sub(r'\s', '', nfc(w)) for (w,) in c.execute('select word from words')}
+    allhw |= {re.sub(r'\s', '', a['headword']) for a in additions()}   # brief §97
 
     def build(disabled=frozenset()):
         """the rows, from the placements of the first pass with R applied (unless ABH_HOMONYM=0)"""
@@ -1568,6 +1587,7 @@ def main(book):
                            located=H[p][i], status='ocr')
                 if twins[p][i] is not None: row['variant_of'] = ents[twins[p][i]][0]
                 if wid in misfiled: row['index_page'] = misfiled[wid]; row['index_misfiled'] = True
+                if wid in added: row['index_added'] = True   # not an app index row (brief §97); index_page = printed page
                 iast = iasts[wid]
                 if at is not None:
                     t, f, offs = located[q][:3]

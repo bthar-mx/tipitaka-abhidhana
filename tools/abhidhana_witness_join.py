@@ -57,6 +57,9 @@ def main(books):
     db = sqlite3.connect(f'file:{ROOT}/db/tipitaka_abidan.db?mode=ro', uri=True)
     byhw = defaultdict(list)
     for wid, w in db.execute('select id, word from words order by id'): byhw[sp(w)].append(wid)
+    # the headwords the app's index lacks (docs/index-additions.tsv, brief §97): ids above every index id, so after them
+    from abhidhana_index_additions import additions
+    for a in additions(): byhw[sp(a['headword'])].append(a['id'])
     pair = {}
     for h, ids in byhw.items():
         if not any(i in rows for i in ids): continue

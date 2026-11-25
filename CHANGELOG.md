@@ -23,6 +23,21 @@ Versions of the Tipiṭaka Pāḷi-Myanmā Abhidhāna project: the data, the too
 A release note says, per version: what changed, the brief's sections, and the headline figures
 (located, label + body, Meaning rows drafted / reviewed).
 
+## v0.30.0 — 2026-11-25
+
+**Gaps in the app's index filled** (brief §97, `docs/index-errata.md` §6): 598 headwords the index lacks are now rows of the site and
+the data, searchable, each with its own text.
+
+- Vol. 14/1 PDF pp. 696–776 (printed 675–755): no index row at all, so *pabbata*, *pabbajita*, *pabbajjā* … were not found and their text
+  sat inside 113054. **587 headwords from PCED**, ids 300001–300587: 546 located, label + body 516, all with PCED's analysis; 113054's
+  body 194,062 → 1,549 characters. Vol. 14/1: 5,806 rows, located 96.5%, label + body 92.2%.
+- Four pages of vols. 20 and 22 the index skips: **11 headwords read on the image**, ids 300588–300598, all located; 183581 to PDF 678
+  (`ID_PAGE_FIX`); 300588 ဝိသေသ² pinned to its line (`docs/homonyms-checked.tsv`).
+- `docs/index-additions.tsv`, `tools/abhidhana_index_additions.py` (new); `tools/abhidhana_articles.py`, `tools/abhidhana_witness_join.py`
+  read the table; added rows carry `index_added`. Data: `ocr/14/`, `ocr/20/`, `ocr/22/` (articles, romanisation, reports).
+- The site: **221,752 headwords** (221,154 + 598); no existing address changed. The new rows have no Meaning box yet.
+- Found, not an error of ours: the printed dictionary has no headwords in *se-* (vol. 24 ends at *sūsū*, vol. 25 begins at *so*).
+
 ## v0.29.6 — 2026-10-19
 
 - **Edits from editor mode exported** (weekly workflow): 0 Meaning row(s), 1 correction(s) to `docs/corrections.tsv`, 0 line(s) to `corrections-es.tsv`. Books and fields: 20: analysis. Article step still to re-run on the Mac for: 20.

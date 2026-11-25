@@ -256,3 +256,22 @@ farther-body splits):*
   repeat is indexed before its twin), never on an earlier page it runs on from. One looked at apart: 14c 194663 ပဿ (p. 213 (240)); 194647
   (p. 239) runs on to p. 240, but that page's continuation row is 194648, adjacent to 194647 (a homonym run), and 194663 is 15 ids further.
 - 202368 ပေက္ခတေ stays (still unlocated).
+
+## 6. Gaps: printed pages with no index row at all
+
+*Added 25 Nov 2026 (brief §97). Found because *pabbata* (vol. 14/1, printed p. 733) could not be searched.*
+
+| book | after → before | pages with no row | what is there | applied |
+|---|---|---|---|---|
+| 14 | 113054 ပပဉ္စသညာသင်္ခါနိရောဓသာရုပ္ပဂါမိနီ (PDF 695) → 113055 ပဗ္ဗာဇေတုံ (PDF 777), ids consecutive | PDF 696–776 (81 pages; printed 675–755) | the alphabet from *papañcasaññāsaṅkhāpabhava* to *pabbājeti-*: pabbajati, pabbajita, pabbajjā, pabbata …; PCED has **587 entries** there, none of them in the index; the article step had read all 81 pages into 113054 (body 199,388 characters, ~501 label markers) | `docs/index-additions.tsv` (ids 300001–300587), read by `abhidhana_articles.py` and `abhidhana_witness_join.py` |
+| 20 | 157792 ဝိသေသ (p. 129) → 157793 (p. 131) | PDF 160 (printed 130) | ဝိသေသ², ဝိသေသအဋ္ဌုပ္ပတ္တိ (image, 25 Nov 2026) | ids 300588–300589 |
+| 20 | 162332 ဝေါဟရတိ (p. 691) → p. 693 | PDF 722 (printed 692) | ဝေါဟရန္တ, ဝေါဟရန္တိ (image) | ids 300590–300591 |
+| 22 | 183580 (p. 637) → 183581 (indexed p. 639) | PDF 678 (printed 638) | 183581 သမူဟနတု is printed here (`ID_PAGE_FIX`), then သမူဟနထ, သမူဟနန, သမူဟနန္တ, သမူဟနန္တိ, သမူဟနာပေတိ (image) | ids 300592–300596 |
+| 22 | 185091 သမ္ဗာဓ (p. 829) → 185092 (p. 831) | PDF 870 (printed 830) | သမ္ဗာဓဋ္ဌာန, သမ္ဗာဓတရ (image) | ids 300597–300598 |
+
+Not an index error: **no headword in သေ (*se-*) is printed**. Vol. 24 ends at သူသူ, vol. 25 begins at သော, as the dictionary's own list
+of volumes says (vol. 25 PDF p. 2). Words such as *sesa* occur only inside other articles.
+
+Every other run of index rows that jumps five PDF pages or more (101 in the 29 books) is one long article: its body holds 0–5 label
+markers, against ~6 a page in an ordinary stretch. One is less clear-cut: 10 83612 diṭṭhi (PDF 457 → 482, 25 pages, 14 markers), not looked
+into. Measured on the committed articles, not on the images.

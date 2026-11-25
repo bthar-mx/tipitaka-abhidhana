@@ -4098,3 +4098,72 @@ README or LICENSE.
 *Also left today in `Claude outputs/seo-handoff-2026-10-01.md`: the search-visibility handoff (Search Console: home page "crawled,
 not indexed"); not implemented. No git was run in the VM.*
 
+## 97. Gaps in the app's index: vol. 14/1 PDF pp. 696–776 (587 headwords, from PCED) and four pages of vols. 20 and 22 (11, from the image); *se-* not printed (25 Nov 2026, cloud + the Mac; v0.30.0)
+
+**Asked** (the editor): why are *pabbata* and other words not found by the site's search, although printed (vol. 14/1 p. 733)?
+
+**Found.** The search looks only at index rows (one per row of `db/tipitaka_abidan.db`). In vol. 14/1 the index jumps from 113054
+ပပဉ္စသညာသင်္ခါနိရောဓသာရုပ္ပဂါမိနီ (PDF 695) to 113055 ပဗ္ဗာဇေတုံ (PDF 777), the ids consecutive: **PDF 696–776, 81 pages, have no index
+row**. No index row of any book has the headword *pabbata* or a *pabbat-* compound. The article step read the 81 pages whole into 113054
+(its docstring: pages the index does not cover lie inside a long article): body 199,388 characters, ~501 label markers ((ပု), (ထီ), (န),
+(တိ), (ကြိ) …). Its Meaning box is PCED's and is not affected. Across the 29 books, the 101 runs of consecutive index rows that jump ≥ 5
+PDF pages are all single long articles (0–5 label markers each; 10 83612 diṭṭhi 14, not looked into) but this one (`docs/index-errata.md` §6).
+
+**The headwords.** PCED (`siongui/data`, rebuilt here with `tools/abhidhana_witness.py`, witness/ not committed) holds the dictionary to vol.
+19 and has the stretch: **587 entries** whose key sorts strictly between the two index rows (the Pāḷi-alphabet key of
+`abhidhana_supplements.py`), **0** of them an index headword in any book. Against the OCR of the gap (113054's raw text), 515 begin a line
+exactly, and 506 in an order that agrees with the key (longest chain); the rest are mostly OCR damage (သင်္ခါ read သင်ါ) or a printed
+variant PCED keeps as two entries (ပပဋိ(က)ကာ- → *papaṭika-* and *papaṭikā-*), as the index does elsewhere. 569 distinct romanisations
+(the rest homonyms, -2 …); **no address of an existing row changes** (none of them is the romanisation of a row after the gap).
+
+**Done** (tools and one table; no data file re-run, as the OCR pages and the db are on the Mac):
+- `docs/index-additions.tsv` (new): 587 rows, ids **300001–300587** (outside the index's 1–221,154, so never taken for the app's), book 14,
+  `after_id` 113054, PCED's headword (converted), key, seq and label; `pdf_page` / `page_how` empty until `pages` fills them.
+- `tools/abhidhana_index_additions.py` (new): `build` (the table from the witness), `pages 14` (on the Mac: each row's PDF page from
+  `ocr/14/pages/`, the line it begins on, longest ordered chain; a row not found takes the page of the row found before it, `between`),
+  `check`.
+- `tools/abhidhana_articles.py`: the table's rows join their page's index rows, after `after_id` (or at the page's head), in table order;
+  their headwords join `allhw`; each output row carries `index_added: true`, `index_page` the printed page. Without the table, or with
+  `pdf_page` empty, nothing changes (a message says so).
+- `tools/abhidhana_witness_join.py`: the rows pair with PCED like index rows (ids above every index id, so after them).
+
+**Tested** on a simulation (the db's and the page files' stand-ins built from `ocr/14/articles.jsonl`: pp. 690–780, 73 index rows, 113054's
+raw text cut into 81 pages by length): `pages 14` 506 rows at a line start, 81 between; the article step **544 of 587 located** (verbatim
+517, folded 7, fuzzy 18, split 2), 43 unlocated, label + body 514; 113054's body 199,388 → 445 characters; the rows in the file between
+113054 and 113055 in id order; romanisation and the site build ran, and the search shard has `pabbata` and `pabbata-2` (simulated
+p. 754 = printed 733). The real figures come from the Mac run (true page breaks).
+
+**Run on the Mac** (25 Nov, the same session, through the desktop app; no git in the VM): `pages 14` 506 rows at a line start, 81 between,
+pages 695–775 (*pabbata* PDF 754 = printed 733, as the editor reported); articles 14, witness join 14, articles 14 again, romanise 14.
+Vol. 14/1: **5,806 rows** (was 5,219), located 96.5%, label + body 92.2% (was 96.6% / 92.4%); the 587: 546 located (verbatim 513,
+folded 8, split 9, fuzzy 16), 41 unlocated, label + body 516, all with PCED's analysis; 587 of 587 paired in `join-14.jsonl`. Of the
+5,219 old rows **one changed**: 113054, body 194,062 → 1,549 characters. `witness/join-table.md` keeps the other books' rows (a run on
+one book rewrites it; restored by hand).
+
+**The other books.** Asked next (the editor): *sesa* and others not found either; make every word in the PDFs findable.
+- ***se-* is not printed.** The index has no headword in သေ; vol. 24 ends at သူသူ (PDF 715; 716–717 blank, 718 the donors' page), vol. 25
+  begins at သော (PDF 35), and the dictionary's own list of volumes (vol. 25 PDF p. 2) gives 24 *sīkati – sūsū*, 25 *so – ḷakāra*. No page
+  of the 29 books has a head line in သေ (the few lines found are Burmese words in definitions, and vol. 8's ဆေ read as သေ). *sesa* has
+  no article in this dictionary; it occurs inside other articles (quotations), which the search does not read.
+- **Books 01–19 (PCED's)**: after the 587, PCED has 36 entries whose headword is in no index row, all PCED parsing faults (a label or a
+  note glued to the headword: ဒွါရမဇ္ဈန) …). No other missing headword is attested there.
+- **The nine books without PCED**: a printed page with no row placed and ≥ 2 head lines was read on the image (8 crops, read in the
+  session): four pages the index skips, **11 headwords**: vol. 20 PDF 160 (p. 130) ဝိသေသ², ဝိသေသအဋ္ဌုပ္ပတ္တိ; PDF 722 (p. 692) ဝေါဟရန္တ,
+  ဝေါဟရန္တိ; vol. 22 PDF 678 (p. 638) သမူဟနထ, သမူဟနန, သမူဟနန္တ, သမူဟနန္တိ, သမူဟနာပေတိ (and 183581 သမူဟနတု, indexed p. 639, printed
+  here: `ID_PAGE_FIX`); PDF 870 (p. 830) သမ္ဗာဓဋ္ဌာန, သမ္ဗာဓတရ. Added to `docs/index-additions.tsv` as ids 300588–300598, `page_how`
+  `image`, no `pced_seq` (the tool now keeps such rows); 300588 ဝိသေသ² pinned to its line in `docs/homonyms-checked.tsv` (the first
+  ဝိသေသ at a line start is a quotation in the left column). Articles and romanisation re-run for 20 and 22: all 11 located; old rows
+  changed 2 (20: 157792 body 4,241 → 3,770, 162332 2,286 → 1,737) and 3 (22: 183580 2,679 → 951, 183581 unlocated → verbatim, 185091
+  4,449 → 3,614). Vol. 20 7,155 located 97.1%, label + body 88.9%; vol. 22 7,838 / 96.9% / 91.0%.
+- **Not exhaustive.** Head lines inside another article's body whose headword is in no index row: 4,132 in the 29 books, but most are
+  OCR damage or forms inside an article (paradigms, sub-heads); in the nine books 870, of which 620 are like an index row within ±2
+  pages and 250 like none (`tmp/gap97/nine-candidates.tsv`; a sample of 25: column-cut debris and misreadings of indexed headwords).
+  A single missing headword on a page that has index rows is not found by the page test; those 250 want the image.
+
+**Checks**: the full site build on the real data: 29 books, **221,752 headwords** (221,154 + 598); no existing `/w/` address changes
+(no added row shares a romanisation with an existing row after it). Not run: the editor tests (no site code changed).
+
+**Next** (NEXT-SESSION): commit and push; the 598 Meaning rows (587 from PCED in 14, 11 from our OCR in 20 and 22); the home page's
+"221,154 headwords"; full-text search (words inside articles, such as *sesa*), for the editor to decide.
+
+*Tokens: no sub-agents; this session not measured. Scratch files in `tmp/gap97/` (gitignored).*
