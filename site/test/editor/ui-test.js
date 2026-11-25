@@ -384,7 +384,12 @@ async function seed(token) {
     });
     ok(f.st.startsWith(head) && f.n >= 50 && f.lines === Math.min(50, f.n) && f.after && /\?hl=sesa$/.test(f.href) && f.more === (f.n > 50),
       `full-text "sesa" (${lang}): "${f.st}", ${f.lines} lines, after the headword list ${f.after}, first ${f.href}, more ${f.more}`);
+    const j = await page.evaluate(() => { const b = document.querySelector('#hresults > button.ftjump'); return b ? { first: b === document.querySelector('#hresults').firstElementChild, text: b.textContent } : null; });
+    ok(j && j.first && /\d/.test(j.text), `full-text jump line at the top (${lang}): ${j ? '"' + j.text + '"' : 'missing'}`);
     if (lang === 'en') {
+      await page.click('#hresults button.ftjump'); await page.waitForTimeout(400);
+      const seen = await page.evaluate(() => { const b = document.querySelector('#hresults').getBoundingClientRect(), f = document.querySelector('#ftres').getBoundingClientRect(); return f.top >= b.top - 2 && f.top < b.bottom; });
+      ok(seen, `full-text jump line scrolls the list into view: ${seen}`);
       await page.click('#ftres button.ftmore'); await page.waitForTimeout(800);
       const n2 = await page.evaluate(() => document.querySelectorAll('#ftres a.res.ft').length);
       ok(n2 === Math.min(100, f.n), `full-text "Show more": ${n2} lines`);

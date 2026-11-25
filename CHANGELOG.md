@@ -23,6 +23,12 @@ Versions of the Tipiṭaka Pāḷi-Myanmā Abhidhāna project: the data, the too
 A release note says, per version: what changed, the brief's sections, and the headline figures
 (located, label + body, Meaning rows drafted / reviewed).
 
+## v0.31.1 — 2026-11-25
+
+- The search box: when headwords are listed first, a line at the top, *También en los artículos: N ↓* / *Also in the articles: N ↓*,
+  jumps to the full-text list, which was easy to miss below up to 60 headword lines (the editor, 25 Nov; brief §99). Site only;
+  editor test step 10 gains two checks.
+
 ## v0.31.0 — 2026-11-25
 
 - **Full-text search** (brief §98): words that are not headwords (e.g. *sesa*, which the printed dictionary has no article for) are
